@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
-const Home = () => {
+export default function Home() {
    const [currentText, setCurrentText] = useState("");
    const [isDeleting, setIsDeleting] = useState(false);
    const [textIndex, setTextIndex] = useState(0);
@@ -1204,6 +1204,6 @@ const Home = () => {
          </footer>
       </div>
    );
-};
+}
 
-export default Home;
+import { Metadata } from "next";
