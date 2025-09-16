@@ -9,6 +9,8 @@ export default function Home() {
    const [typingSpeed, setTypingSpeed] = useState(150);
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    const [activeFaq, setActiveFaq] = useState<number | null>(null);
+   // New state to control animation
+   const [isAnimationEnabled, setIsAnimationEnabled] = useState(false);
 
    // Scroll animation refs
    const aboutRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
@@ -18,7 +20,6 @@ export default function Home() {
    const partnersRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
    const faqRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
    const contactRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
-
    const year = new Date().getFullYear();
 
    // Smooth scroll function
@@ -41,7 +42,6 @@ export default function Home() {
    useEffect(() => {
       const handleTyping = () => {
          const currentFullText = texts[textIndex];
-
          if (isDeleting) {
             setCurrentText(currentFullText.substring(0, currentText.length - 1));
             setTypingSpeed(50);
@@ -49,7 +49,6 @@ export default function Home() {
             setCurrentText(currentFullText.substring(0, currentText.length + 1));
             setTypingSpeed(150);
          }
-
          if (!isDeleting && currentText === currentFullText) {
             setTimeout(() => setIsDeleting(true), 1000);
          } else if (isDeleting && currentText === "") {
@@ -61,6 +60,21 @@ export default function Home() {
       const timer = setTimeout(handleTyping, typingSpeed);
       return () => clearTimeout(timer);
    }, [currentText, isDeleting, textIndex, typingSpeed, texts]);
+
+   // Effect to enable animation on desktop only, after mount
+   useEffect(() => {
+      const checkScreenSize = () => {
+         // Enable animation only on larger screens (desktop)
+         setIsAnimationEnabled(window.innerWidth >= 1024);
+      };
+
+      // Run on mount
+      checkScreenSize();
+
+      // Optional: Add a resize listener if you want the animation to start/stop when resizing
+      // window.addEventListener('resize', checkScreenSize);
+      // return () => window.removeEventListener('resize', checkScreenSize);
+   }, []);
 
    const services = [
       {
@@ -226,7 +240,6 @@ export default function Home() {
                      />
                      <h1 className="ml-3 text-xl font-bold text-gray-900">CHINALINK EXPRESS</h1>
                   </div>
-
                   {/* Desktop Navigation */}
                   <nav className="hidden md:flex space-x-8">
                      <button
@@ -254,7 +267,6 @@ export default function Home() {
                         Contact
                      </button>
                   </nav>
-
                   <a
                      href="https://wa.me/8618851725957"
                      className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition flex items-center md:px-6 md:py-2.5"
@@ -262,7 +274,6 @@ export default function Home() {
                      <span className="mr-2 text-lg">💬</span>
                      <span className="hidden sm:inline">WhatsApp</span>
                   </a>
-
                   {/* Mobile menu button */}
                   <button
                      className="md:hidden ml-4"
@@ -284,7 +295,6 @@ export default function Home() {
                      </svg>
                   </button>
                </div>
-
                {/* Mobile Navigation */}
                {mobileMenuOpen && (
                   <div className="md:hidden py-4 border-t border-gray-200">
@@ -338,8 +348,29 @@ export default function Home() {
          </header>
 
          {/* Hero Banner */}
-         <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+         <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 text-white overflow-hidden">
+            {/* Conditionally Render Animated SVG Background */}
+            {isAnimationEnabled ? (
+               <div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                     backgroundImage: `url('/logistics-animation.svg')`,
+                     backgroundSize: "cover",
+                     backgroundPosition: "center",
+                     backgroundRepeat: "no-repeat",
+                  }}
+                  role="presentation"
+                  aria-hidden="true"
+               ></div>
+            ) : (
+               // Fallback for Mobile: Simple static gradient (already defined in parent)
+               <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600"></div>
+            )}
+
+            {/* Semi-Transparent Overlay to Ensure Text Legibility */}
+            <div className="absolute inset-0 bg-black/10"></div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                   <div>
                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
@@ -479,7 +510,6 @@ export default function Home() {
                   </p>
                   <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mt-3 md:mt-4"></div>
                </div>
-
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                   {services.map((service, index) => (
                      <div
@@ -504,7 +534,6 @@ export default function Home() {
                      </div>
                   ))}
                </div>
-
                <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
                   <div className="bg-gradient-to-r from-blue-600 to-yellow-400 rounded-2xl p-6 md:p-8 text-white overflow-hidden relative">
                      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-white/10 rounded-full"></div>
@@ -541,7 +570,6 @@ export default function Home() {
                         </div>
                      </div>
                   </div>
-
                   <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 text-white">
                      <h3 className="text-2xl font-bold mb-4">Découvrez notre application mobile</h3>
                      <p className="opacity-90 mb-6">
@@ -573,7 +601,6 @@ export default function Home() {
                   </h2>
                   <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto"></div>
                </div>
-
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                   {whyUs.map((item, index) => (
                      <div
@@ -594,7 +621,6 @@ export default function Home() {
                      </div>
                   ))}
                </div>
-
                {/* <div className="mt-16 bg-white rounded-2xl p-8 shadow-xl">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                      <div>
@@ -638,7 +664,6 @@ export default function Home() {
                   </h2>
                   <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto"></div>
                </div>
-
                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                   {testimonials.map((testimonial, index) => (
                      <div
@@ -673,7 +698,6 @@ export default function Home() {
                      </div>
                   ))}
                </div>
-
                <div className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4">
                      Rejoignez Nos Clients Satisfaits
@@ -729,7 +753,6 @@ export default function Home() {
                   </p>
                   <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto mt-3 md:mt-4"></div>
                </div>
-
                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-4 md:gap-6">
                   {partners.map((partner, index) => (
                      <div
@@ -746,7 +769,6 @@ export default function Home() {
                      </div>
                   ))}
                </div>
-
                {/* <div className="mt-16 bg-white rounded-2xl p-8 shadow-xl">
                   <div className="text-center mb-8">
                      <h3 className="text-2xl font-bold text-gray-900 mb-2">Notre Réseau Mondial</h3>
@@ -792,7 +814,6 @@ export default function Home() {
                   </h2>
                   <div className="w-20 md:w-24 h-1 bg-blue-600 mx-auto"></div>
                </div>
-
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                   <div>
                      <img
@@ -820,7 +841,6 @@ export default function Home() {
                      </div>
                   </div>
                </div>
-
                <div className="space-y-3 md:space-y-4">
                   {faqs.map((faq, index) => (
                      <div
@@ -872,7 +892,6 @@ export default function Home() {
                   </p>
                   <div className="w-20 md:w-24 h-1 bg-yellow-400 mx-auto mt-3 md:mt-4"></div>
                </div>
-
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                   <div>
                      <h3 className="text-xl md:text-2xl font-bold mb-5 md:mb-6">
@@ -911,7 +930,6 @@ export default function Home() {
                         </button>
                      </form>
                   </div>
-
                   <div>
                      <h3 className="text-xl md:text-2xl font-bold mb-5 md:mb-6">
                         Informations de Contact
@@ -930,7 +948,6 @@ export default function Home() {
                               </p>
                            </div>
                         </div>
-
                         <div className="flex items-start">
                            <div className="bg-white/10 rounded-lg p-3 mr-4 flex-shrink-0">
                               <span className="text-xl md:text-2xl">📞</span>
@@ -942,7 +959,6 @@ export default function Home() {
                               <p className="opacity-90 text-sm md:text-base">+223 7669 61 77</p>
                            </div>
                         </div>
-
                         <div className="flex items-start">
                            <div className="bg-white/10 rounded-lg p-3 mr-4 flex-shrink-0">
                               <span className="text-xl md:text-2xl">📧</span>
@@ -954,7 +970,6 @@ export default function Home() {
                               </p>
                            </div>
                         </div>
-
                         <div className="flex items-start">
                            <div className="bg-white/10 rounded-lg p-3 mr-4 flex-shrink-0">
                               <span className="text-xl md:text-2xl">💬</span>
@@ -970,7 +985,6 @@ export default function Home() {
                               >
                                  WhatsApp +86 188 5172 5957
                               </a>
-
                               <a
                                  href="https://wa.me/22376696177"
                                  className="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg mt-2  transition text-sm md:text-base"
@@ -979,7 +993,6 @@ export default function Home() {
                               </a>
                            </div>
                         </div>
-
                         <div className="flex items-start">
                            <div className="bg-white/10 rounded-lg p-3 mr-4 flex-shrink-0">
                               <span className="text-xl md:text-2xl">📱</span>
@@ -1006,7 +1019,6 @@ export default function Home() {
                            </div>
                         </div>
                      </div>
-
                      <div className="mt-8 md:mt-12">
                         <h4 className="font-bold mb-3 md:mb-4 text-sm md:text-base">
                            Heures d'ouverture
@@ -1025,7 +1037,6 @@ export default function Home() {
                      </div>
                   </div>
                </div>
-
                {/* <div className="mt-16 bg-white/10 rounded-2xl p-6 md:p-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                      <div>
@@ -1087,7 +1098,6 @@ export default function Home() {
                         </a>
                      </div>
                   </div>
-
                   <div>
                      <h4 className="font-bold mb-4 text-sm md:text-base">Services</h4>
                      <ul className="space-y-2 text-gray-400 text-sm">
@@ -1118,7 +1128,6 @@ export default function Home() {
                         </li>
                      </ul>
                   </div>
-
                   <div>
                      <h4 className="font-bold mb-4 text-sm md:text-base">Liens Utiles</h4>
                      <ul className="space-y-2 text-gray-400 text-sm">
@@ -1156,7 +1165,6 @@ export default function Home() {
                         </li>
                      </ul>
                   </div>
-
                   <div>
                      <h4 className="font-bold mb-4 text-sm md:text-base">Newsletter</h4>
                      <p className="text-gray-400 mb-4 text-sm">
@@ -1186,7 +1194,6 @@ export default function Home() {
                      </div>
                   </div>
                </div>
-
                <div className="border-t border-gray-800 mt-8 pt-6 md:mt-10 md:pt-8 text-center text-gray-400 text-sm">
                   <p>&copy; {year} ChinaLink Express. Tous droits réservés.</p>
                   <p>
@@ -1205,6 +1212,3 @@ export default function Home() {
       </div>
    );
 }
-// updae
-
-import { Metadata } from "next";

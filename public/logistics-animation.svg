@@ -1,0 +1,389 @@
+<!-- ChinaLinkExpress — ultra-complex animated hero SVG with plane banner -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1600 700"
+     preserveAspectRatio="xMidYMid slice"
+     role="img"
+     aria-label="Animated logistics hero with multi-layer parallax, routes, vehicles, particles and a plane banner that reads ChinaLink Express">
+  <defs>
+    <!-- gradients -->
+    <linearGradient id="skyG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#062033"/>
+      <stop offset="0.36" stop-color="#0b4168"/>
+      <stop offset="1" stop-color="#02202c"/>
+    </linearGradient>
+
+    <linearGradient id="horizonG" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0f5a8a"/>
+      <stop offset="1" stop-color="#0a2740"/>
+    </linearGradient>
+
+    <radialGradient id="softHalo" cx="20%" cy="20%" r="60%">
+      <stop offset="0" stop-color="#3fb0ff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3fb0ff" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="routeGlow" x1="0" x2="1">
+      <stop offset="0" stop-color="#9fd3ff"/>
+      <stop offset="1" stop-color="#dff9ff" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="vehicleAccent" x1="0" x2="1">
+      <stop offset="0" stop-color="#ff6b6b"/>
+      <stop offset="1" stop-color="#3fb0ff"/>
+    </linearGradient>
+
+    <!-- blurred glow filter -->
+    <filter id="glowLarge" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- subtle grain/noise -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.06"/>
+      </feComponentTransfer>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+
+    <!-- displacement for water shimmer -->
+    <filter id="waterDisp">
+      <feTurbulence baseFrequency="0.0045" numOctaves="3" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- masks and clipPaths -->
+    <clipPath id="heroClip">
+      <rect x="0" y="0" width="1600" height="700" rx="6" ry="6"/>
+    </clipPath>
+
+    <!-- PLANE WITH TRAILING BANNER -->
+    <g id="plane">
+      <!-- plane body -->
+      <g id="planeBody" transform="translate(0,0) scale(1)">
+        <path d="M0 6 L28 0 L26 6 L28 12 L0 6 Z" fill="#ffffff"/>
+        <rect x="4" y="6.2" width="20" height="1.6" fill="#cfeeff" opacity="0.95"/>
+      </g>
+
+      <!-- banner group: rectangle + text; positioned left of plane so it trails -->
+      <g id="planeBanner" transform="translate(-130,2)">
+        <rect x="0" y="-10" width="140" height="22" rx="8" fill="#ff6b6b" opacity="0.95" />
+        <text x="70" y="6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial"
+              font-size="12.5" text-anchor="middle" alignment-baseline="middle" fill="#ffffff" font-weight="700">
+          ChinaLink Express
+        </text>
+
+        <!-- small banner flutter (subtle rotate) -->
+        <animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="rotate"
+                          from="-2 70 1" to="2 70 1"
+                          dur="0.9s"
+                          repeatCount="indefinite"
+                          begin="0s"
+                          fill="freeze"
+                          id="bannerFlutter" />
+      </g>
+    </g>
+
+    <!-- ship, truck, drone, containerBox same as before -->
+    <g id="ship">
+      <path d="M0 16 L160 16 L150 28 L10 28 Z" fill="#062033"/>
+      <rect x="10" y="-6" width="40" height="16" rx="2" fill="#ff6b6b"/>
+      <rect x="56" y="-6" width="40" height="16" rx="2" fill="#3fb0ff"/>
+      <rect x="102" y="-6" width="40" height="16" rx="2" fill="#ffffff"/>
+      <rect x="8" y="4" width="144" height="12" rx="2" fill="#021726"/>
+    </g>
+
+    <g id="truck">
+      <rect x="0" y="4" width="92" height="40" rx="6" fill="#1b3a57"/>
+      <rect x="54" y="12" width="30" height="22" rx="3" fill="#dff4ff"/>
+      <circle cx="20" cy="52" r="8" fill="#fff"/>
+      <circle cx="64" cy="52" r="8" fill="#fff"/>
+      <path d="M0 10 h30 v24 h-30 z" fill="#0f4c81" opacity="0.06"/>
+    </g>
+
+    <g id="drone">
+      <circle cx="0" cy="0" r="8" fill="#fff"/>
+      <rect x="-18" y="8" width="36" height="6" rx="3" fill="#cfeeff" opacity="0.9"/>
+      <path d="M-30 0 h-8 M30 0 h8 M0 -30 v-8 M0 30 v8" stroke="#cfeeff" stroke-width="1" opacity="0.6"/>
+    </g>
+
+    <g id="containerBox">
+      <rect x="0" y="0" width="64" height="40" rx="5" fill="#08324a"/>
+      <path d="M6 8h52M6 16h52M6 24h52" stroke="#dff4ff" stroke-opacity="0.26" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- complex route shapes (used by mpath) -->
+    <path id="pRoute1" d="M40 360 C220 200, 420 200, 640 360 C860 520, 1080 520, 1320 360" fill="none"/>
+    <path id="pRoute2" d="M100 420 C260 320, 520 320, 700 420 C900 520, 1140 480, 1400 360" fill="none"/>
+    <path id="pRoute3" d="M360 540 C420 380, 620 300, 820 360 C980 410, 1220 420, 1450 340" fill="none"/>
+
+    <!-- reusable node -->
+    <g id="node">
+      <circle r="5" fill="#fff" opacity="0.98"/>
+      <circle r="12" fill="#3fb0ff" opacity="0.06"/>
+    </g>
+
+  </defs>
+
+  <!-- clip to hero area -->
+  <g clip-path="url(#heroClip)">
+
+    <!-- background sky -->
+    <rect width="100%" height="100%" fill="url(#skyG)"/>
+
+    <!-- animated gradient band near horizon -->
+    <g id="horizonBand" opacity="0.95" filter="url(#glowLarge)">
+      <rect x="0" y="300" width="1600" height="220" fill="url(#horizonG)" opacity="0.35"/>
+      <rect x="60" y="220" width="540" height="260" rx="18" fill="url(#softHalo)" opacity="0.2"/>
+    </g>
+
+    <!-- distant abstract continents (decorative) -->
+    <g id="continents" opacity="0.06" transform="translate(0, -20)">
+      <path d="M120 420 C200 300, 420 260, 660 340 C900 420, 1180 380, 1430 320 L1430 480 L0 480 Z" fill="#ffffff"/>
+    </g>
+
+    <!-- deep parallax layer: large blurred routes for depth -->
+    <g id="depthRoutes" transform="translate(0,0)" opacity="0.08">
+      <use href="#pRoute1" stroke="#ffffff" stroke-width="48" stroke-linecap="round" stroke-opacity="0.035" fill="none"/>
+      <use href="#pRoute2" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-opacity="0.03" fill="none"/>
+    </g>
+
+    <!-- animated main routes (foreground) -->
+    <g id="routesFG" stroke-linecap="round" stroke-width="2.2" stroke-opacity="0.95">
+      <use href="#pRoute1" stroke="url(#routeGlow)" stroke-dasharray="8 10" class="r1"/>
+      <use href="#pRoute2" stroke="url(#routeGlow)" stroke-dasharray="3 7" class="r2"/>
+      <use href="#pRoute3" stroke="#7fd0ff" stroke-dasharray="2 9" class="r3" opacity="0.75"/>
+    </g>
+
+    <!-- route glow highlight (soft) -->
+    <g id="routeGlowLayer" opacity="0.18" filter="url(#glowLarge)">
+      <use href="#pRoute1" stroke="#3fb0ff" stroke-width="18" stroke-linecap="round" stroke-opacity="0.04" fill="none"/>
+    </g>
+
+    <!-- moving nodes along route1 -->
+    <g id="nodes1">
+      <g transform="translate(-20,-10)">
+        <use href="#node"/>
+        <animateMotion dur="9.6s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#pRoute1"/>
+        </animateMotion>
+        <animate attributeName="opacity" values="0.98;0.6;0.98" dur="4.8s" repeatCount="indefinite"/>
+      </g>
+
+      <g transform="translate(-60,0)">
+        <use href="#node" transform="scale(0.8)"/>
+        <animateMotion dur="13.2s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#pRoute1"/>
+        </animateMotion>
+        <animate attributeName="opacity" values="0.9;0.48;0.9" dur="5.2s" repeatCount="indefinite"/>
+      </g>
+    </g>
+
+    <!-- vehicles on paths -->
+    <g id="vehicles">
+      <!-- plane on route2: plane body + banner are inside the #plane group so banner follows -->
+      <g id="planeL" opacity="0.98" transform="translate(0,0)">
+        <use href="#plane" width="170" height="36"/>
+        <animateMotion dur="8.2s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#pRoute2"/>
+        </animateMotion>
+        <animateTransform attributeName="transform" type="scale" values="1;0.96;1" dur="6s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- ship on route3 with bobbing -->
+      <g id="shipL" opacity="0.98">
+        <use href="#ship" width="160" height="46"/>
+        <animateMotion dur="15s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#pRoute3"/>
+        </animateMotion>
+        <animateTransform attributeName="transform" type="translate" values="0,0; 0,-10; 0,0" dur="7s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- truck (follows route1) -->
+      <g id="truckL" opacity="0.98">
+        <use href="#truck" width="92" height="52"/>
+        <animateMotion dur="11.2s" repeatCount="indefinite" rotate="auto">
+          <mpath xlink:href="#pRoute1"/>
+        </animateMotion>
+        <animateTransform attributeName="transform" type="scale" values="0.94;1.06;0.94" dur="8.5s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- drone — short loop near top -->
+      <g id="droneL" transform="translate(920,120)" opacity="0.98">
+        <use href="#drone" width="22" height="22"/>
+        <animateTransform attributeName="transform" type="translate"
+                          values="920,120; 980,92; 920,120; 860,92; 920,120"
+                          dur="11.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.98;0.68;0.98" dur="6s" repeatCount="indefinite"/>
+      </g>
+    </g>
+
+    <!-- foreground containers and boxes with perspective -->
+    <g id="foregroundBoxes">
+      <g transform="translate(300,180)" opacity="0.98">
+        <use href="#containerBox" width="64" height="40"/>
+        <animateTransform attributeName="transform" type="translate" values="300,180; 340,165; 300,180" dur="6.6s" repeatCount="indefinite"/>
+      </g>
+      <g transform="translate(760,150)" opacity="0.98">
+        <use href="#containerBox" width="64" height="40"/>
+        <animateTransform attributeName="transform" type="translate" values="760,150; 722,138; 760,150" dur="7.2s" repeatCount="indefinite"/>
+      </g>
+      <g transform="translate(1120,220)" opacity="0.98">
+        <use href="#containerBox" width="64" height="40"/>
+        <animateTransform attributeName="transform" type="translate" values="1120,220; 1164,206; 1120,220" dur="8.2s" repeatCount="indefinite"/>
+      </g>
+    </g>
+
+    <!-- particle layer: circles; JS will animate positions for smoothness -->
+    <g id="particleLayer" opacity="0.92">
+      <g id="pGroup">
+        <circle class="p" cx="120" cy="80" r="2.4" fill="#dff4ff" opacity="0.92"/>
+        <circle class="p" cx="340" cy="60" r="1.8" fill="#cfeeff" opacity="0.86"/>
+        <circle class="p" cx="520" cy="40" r="2.2" fill="#eaffff" opacity="0.88"/>
+        <circle class="p" cx="760" cy="70" r="1.6" fill="#bfe9ff" opacity="0.8"/>
+        <circle class="p" cx="980" cy="42" r="2.0" fill="#dff4ff" opacity="0.9"/>
+        <circle class="p" cx="1160" cy="110" r="1.8" fill="#cfeeff" opacity="0.78"/>
+        <circle class="p" cx="1360" cy="74" r="2.6" fill="#eaffff" opacity="0.92"/>
+        <circle class="p" cx="200" cy="140" r="1.6" fill="#dff4ff" opacity="0.75"/>
+        <circle class="p" cx="420" cy="160" r="2.0" fill="#cfeeff" opacity="0.82"/>
+        <circle class="p" cx="660" cy="120" r="1.4" fill="#eaffff" opacity="0.68"/>
+        <circle class="p" cx="900" cy="200" r="2.2" fill="#bfe9ff" opacity="0.9"/>
+        <circle class="p" cx="1240" cy="160" r="1.6" fill="#dff4ff" opacity="0.76"/>
+      </g>
+    </g>
+
+    <!-- subtle foreground shimmer -->
+    <g opacity="0.04">
+      <circle cx="240" cy="62" r="48" fill="#fff"/>
+      <circle cx="1120" cy="34" r="32" fill="#fff"/>
+    </g>
+
+    <!-- hero panel for content placement -->
+    <rect x="48" y="48" width="640" height="240" rx="12" fill="rgba(3,12,27,0.18)"/>
+
+    <!-- accessibility tags -->
+    <title>ChinaLinkExpress advanced hero animation with moving banner</title>
+    <desc>Complex vector hero with multi-layer parallax, animated routes and vehicles. A plane carries a banner that reads ChinaLink Express.</desc>
+
+  </g>
+
+  <!-- styles and animation control -->
+  <style>
+    svg { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; display:block; }
+
+    /* route dash movement (CSS) */
+    .r1 { stroke-dashoffset: 0; animation: dash1 9.2s linear infinite; }
+    .r2 { stroke-dashoffset: 0; animation: dash2 12.4s linear infinite; }
+    .r3 { stroke-dashoffset: 0; animation: dash3 10.1s linear infinite; }
+
+    @keyframes dash1 { to { stroke-dashoffset: -300; } }
+    @keyframes dash2 { to { stroke-dashoffset: -450; } }
+    @keyframes dash3 { to { stroke-dashoffset: -220; } }
+
+    /* subtle fade-in on load for a refined reveal */
+    g, use, path, circle { opacity: 0; transform-origin: center center; animation: fadeIn 1.1s ease-out forwards; }
+    #routesFG, #vehicles, #foregroundBoxes, #particleLayer { animation-delay: 0.18s; }
+    #horizonBand { animation-delay: 0.02s; }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* prefers-reduced-motion: freeze all motion and show static fallback */
+    @media (prefers-reduced-motion: reduce) {
+      .r1, .r2, .r3 { animation: none !important; stroke-dashoffset: 0 !important; }
+      animate, animateMotion, animateTransform { begin: 0s; dur: 0.001s; repeatCount:1; fill:freeze; }
+      /* stop JS-driven particle animation by adding a class (handled in script) */
+      #planeBanner animateTransform { display: none !important; }
+    }
+
+    /* ensure particle circles look crisp */
+    .p { will-change: transform, opacity; }
+  </style>
+
+  <!-- embedded JS: lightweight particle & parallax controller -->
+  <script type="application/ecmascript"><![CDATA[
+    (function(){
+      try {
+        var svg = document.currentScript.ownerDocument;
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) {
+          svg.documentElement.classList.add('reduced-motion');
+          return;
+        }
+
+        var pGroup = svg.getElementById('pGroup');
+        if (!pGroup) return;
+
+        var particles = Array.prototype.slice.call(pGroup.querySelectorAll('.p'));
+        var seeds = particles.map(function(p){
+          return {
+            el: p,
+            cx: parseFloat(p.getAttribute('cx')||0),
+            cy: parseFloat(p.getAttribute('cy')||0),
+            vx: (Math.random()*0.6 - 0.3),
+            vy: (Math.random()*0.3 - 0.15),
+            amp: 12 + Math.random()*26,
+            phase: Math.random()*Math.PI*2,
+            speed: 0.004 + Math.random()*0.01
+          };
+        });
+
+        var last = performance.now();
+        var t0 = last;
+
+        function tick(now){
+          var dt = (now - last);
+          last = now;
+          var elapsed = (now - t0);
+
+          var parx = Math.sin(elapsed*0.0004) * 18;
+          var pary = Math.cos(elapsed*0.00028) * 10;
+
+          seeds.forEach(function(s, i){
+            s.phase += s.speed * dt;
+            var nx = s.cx + Math.cos(s.phase) * s.amp + parx * (0.3 + i%3*0.12);
+            var ny = s.cy + Math.sin(s.phase*1.1) * (s.amp*0.45) + pary * (0.2 + (i%4)*0.07);
+            s.el.setAttribute('cx', nx.toFixed(2));
+            s.el.setAttribute('cy', ny.toFixed(2));
+            var op = 0.7 + 0.25 * (0.5 + 0.5*Math.sin(s.phase*1.7 + i));
+            s.el.setAttribute('opacity', op.toFixed(3));
+          });
+
+          requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+
+        var root = svg.documentElement;
+        var supportsPointer = 'onpointermove' in window;
+        var handler = function(e){
+          var rect = root.getBoundingClientRect();
+          var mx = (e.clientX - rect.left) / rect.width - 0.5;
+          var my = (e.clientY - rect.top) / rect.height - 0.5;
+          var depthRoutes = svg.getElementById('depthRoutes');
+          var routes = svg.getElementById('routesFG');
+          if (depthRoutes) depthRoutes.setAttribute('transform', 'translate(' + (mx*40) + ',' + (my*20) + ')');
+          if (routes) routes.setAttribute('transform', 'translate(' + (mx*18) + ',' + (my*9) + ')');
+          var vehicles = svg.getElementById('vehicles');
+          if (vehicles) vehicles.setAttribute('transform', 'translate(' + (mx*8) + ',' + (my*6) + ')');
+        };
+
+        if (supportsPointer) {
+          window.addEventListener('pointermove', handler, {passive:true});
+        } else {
+          window.addEventListener('mousemove', handler, {passive:true});
+        }
+
+      } catch (e) {
+        console.warn('SVG hero script failed', e);
+      }
+    })();
+  ]]></script>
+
+</svg>
