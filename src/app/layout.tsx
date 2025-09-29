@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       "Acheter en Chine Afrique",
    ],
    openGraph: {
-      title: "ChinaLink Express – Votre partenaire logistique Chine-Afrique",
+      title: "ChinaLink Express - Votre partenaire logistique Chine-Afrique",
       description:
          "Sourcing, achat et expédition sécurisée de vos marchandises de la Chine vers le Mali et l’Afrique. Téléchargez notre application pour suivre vos colis en direct.",
       url: "https://chinalinkexpress.com",
@@ -91,7 +91,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <html lang="en">
+      <html lang="fr">
          <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
             {children}
 
