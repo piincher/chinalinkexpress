@@ -1,0 +1,619 @@
+{
+  "metadata": {
+    "title": "ChinaLink Express | Sourcing & Expédition Chine-Afrique",
+    "description": "ChinaLink Express - Votre partenaire logistique de confiance pour le sourcing, l'achat et l'expédition de marchandises de la Chine vers le Mali et l'Afrique. Devis gratuit.",
+    "keywords": "sourcing Chine Afrique, expédition Chine Mali, fret maritime Chine Afrique, fret aérien Chine Bamako, logistique internationale"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À Propos",
+    "whyUs": "Pourquoi Nous",
+    "contact": "Contact",
+    "tracking": "Suivi",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "pricing": "Tarifs",
+    "calculator": "Calculateur",
+    "privacy": "Confidentialité"
+  },
+  "cta": {
+    "getQuote": "Obtenir un Devis Gratuit",
+    "contactUs": "Contactez-nous",
+    "trackShipment": "Suivre mon Colis",
+    "learnMore": "En Savoir Plus",
+    "discoverServices": "Découvrir Nos Services",
+    "sendMessage": "Envoyer le Message",
+    "downloadApp": "Télécharger l'application"
+  },
+  "hero": {
+    "title": "ChinaLink Express - Votre Partenaire Logistique",
+    "subtitle": "Votre pont logistique entre la Chine et l'Afrique. Expédition aérienne et maritime avec suivi en temps réel.",
+    "typingTexts": ["Solutions Logistiques Complètes", "Expéditions Internationales", "Votre Partenaire de Confiance"],
+    "badge": "Opérationnel 24/7 • Livraison garantie"
+  },
+  "stats": {
+    "satisfiedClients": "Clients satisfaits",
+    "countriesServed": "Pays desservis",
+    "successRate": "Taux de réussite",
+    "support": "Support client",
+    "experienceYears": "Années d'expérience",
+    "deliveryRate": "Taux de livraison"
+  },
+  "about": {
+    "sectionLabel": "À Propos de Nous",
+    "title": "À Propos de ChinaLink Express",
+    "description1": "Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine, le Mali et l'Afrique. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.",
+    "description2": "Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier."
+  },
+  "services": {
+    "sectionLabel": "Nos Services",
+    "title": "Nos Services",
+    "subtitle": "Des solutions complètes pour simplifier votre commerce avec la Chine",
+    "items": {
+      "sourcing": {
+        "title": "ACHAT",
+        "description": "Nous gérons vos achats auprès des fournisseurs chinois avec professionnalisme et transparence."
+      },
+      "airFreight": {
+        "title": "EXPÉDITION AÉRIENNE",
+        "description": "Livraison rapide par voie aérienne pour vos marchandises urgentes à travers le monde."
+      },
+      "seaFreight": {
+        "title": "EXPÉDITION MARITIME",
+        "description": "Solution économique pour le transport de gros volumes par voie maritime."
+      },
+      "payment": {
+        "title": "PAIEMENT FOURNISSEURS",
+        "description": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay et autres méthodes."
+      },
+      "recharge": {
+        "title": "RECHARGE COMPTE",
+        "description": "Rechargez votre compte ChinaLink Express facilement via Orange Money, Wave ou cash pour des transactions plus rapides."
+      }
+    },
+    "appSection": {
+      "title": "Téléchargez l'application",
+      "note": "L'application est disponible uniquement pour les clients enregistrés.",
+      "previewTitle": "Découvrez notre application mobile",
+      "previewDescription": "Suivez vos marchandises à chaque étape de leur voyage."
+    }
+  },
+  "whyUs": {
+    "sectionLabel": "Pourquoi Nous Choisir",
+    "title": "Pourquoi Choisir ChinaLink Express ?",
+    "items": {
+      "speed": {
+        "title": "Rapidité",
+        "description": "Livraison express dans les délais les plus courts du marché."
+      },
+      "reliability": {
+        "title": "Fiabilité",
+        "description": "Suivi en temps réel et service client disponible 24/7."
+      },
+      "price": {
+        "title": "Prix Compétitifs",
+        "description": "Les meilleurs tarifs du marché avec aucune surprise de frais cachés."
+      },
+      "expertise": {
+        "title": "Expertise",
+        "description": "Plus de 7 ans d'expérience dans la logistique internationale."
+      }
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "Témoignages",
+    "title": "Ce Que Disent Nos Clients",
+    "ctaTitle": "Rejoignez Nos Clients Satisfaits",
+    "ctaDescription": "Plus de 100 entreprises nous font confiance pour leurs besoins logistiques",
+    "testimonials": {
+      "sectionLabel": "Témoignages"
+    },
+    "industries": {
+      "retail": "Secteur Retail",
+      "tech": "Secteur Technologie",
+      "automotive": "Secteur Automobile"
+    }
+  },
+  "partners": {
+    "sectionLabel": "Nos Partenaires",
+    "title": "Nos Partenaires",
+    "subtitle": "Nous collaborons avec les meilleurs du secteur",
+    "partners": {
+      "sectionLabel": "Nos Partenaires"
+    }
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title": "Questions Fréquentes",
+    "noAnswer": "Vous ne trouvez pas votre réponse ?",
+    "contactWhatsApp": "Contactez-nous sur WhatsApp",
+    "helpTitle": "Besoin d'aide ?",
+    "helpDescription": "Notre équipe de support client est disponible 24/7 pour répondre à toutes vos questions.",
+    "supportLabel": "Support via Whatsapp",
+    "items": {
+      "0": {
+        "question": "Quels types de marchandises pouvez-vous expédier ?",
+        "answer": "Nous expédions presque tous les types de marchandises, à l'exception des articles dangereux ou interdits par la loi. Contactez-nous pour plus de détails sur vos articles spécifiques +8618851725957."
+      },
+      "1": {
+        "question": "Combien de temps prend une expédition aérienne ?",
+        "answer": "L'expédition aérienne prend généralement entre 14 à 21 jours ouvrables Chine Bamako. Nous offrons également des options express pour des livraisons en 2-5 jours."
+      },
+      "2": {
+        "question": "Combien de temps prend une expédition maritime ?",
+        "answer": "L'expédition maritime prend généralement entre 60 à 75 jours ouvrables Chine Bamako. C'est l'option la plus économique pour les gros volumes."
+      },
+      "3": {
+        "question": "Comment fonctionne le paiement des fournisseurs ?",
+        "answer": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs."
+      },
+      "4": {
+        "question": "Comment recharger mon compte ChinaLink Express ?",
+        "answer": "Vous pouvez recharger votre compte client via Orange Money,Wave et Cash. Les fonds sont crédités instantanément et vous permettent de régler vos expéditions plus rapidement."
+      },
+      "5": {
+        "question": "Proposez-vous un suivi en temps réel ?",
+        "answer": "Oui, tous nos envois sont équipés d'un système de suivi en temps réel accessible depuis votre tableau de bord client dans notre application mobile 24/7."
+      }
+    }
+  },
+  "contact": {
+    "sectionLabel": "Contactez-nous",
+    "title": "Contactez-Nous",
+    "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions",
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Message",
+      "namePlaceholder": "Votre nom",
+      "emailPlaceholder": "votre@email.com",
+      "phonePlaceholder": "+223 XX XX XX XX",
+      "messagePlaceholder": "Décrivez votre besoin...",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": {
+        "title": "Message envoyé !",
+        "message": "Nous vous répondrons dans les plus brefs délais."
+      },
+      "errors": {
+        "nameRequired": "Le nom est requis",
+        "nameMin": "Le nom doit contenir au moins 2 caractères",
+        "emailRequired": "L'email est requis",
+        "emailInvalid": "Veuillez entrer un email valide",
+        "phoneInvalid": "Veuillez entrer un numéro de téléphone valide",
+        "messageRequired": "Le message est requis",
+        "messageMin": "Le message doit contenir au moins 10 caractères"
+      }
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email",
+      "whatsapp": "Contactez-nous sur WhatsApp",
+      "hours": "Heures d'ouverture",
+      "available24_7": "Disponible 24/7 pour vos urgences",
+      "hoursWeekday": "Lundi - Vendredi: 8h00 - 20h00",
+      "hoursSaturday": "Samedi: 9h00 - 17h00",
+      "hoursSunday": "Dimanche: 10h00 - 15h00"
+    }
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour le commerce international avec la Chine. Des solutions logistiques complètes pour faire grandir votre business.",
+    "services": "Services",
+    "links": "Liens Utiles",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Votre email",
+    "scanToFollow": "Scannez pour nous suivre sur facebook",
+    "copyright": "Tous droits réservés.",
+    "developedBy": "Développé et maintenu par NUVOTECH"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "subtitle": "Votre vie privée est notre priorité. Découvrez comment nous protégeons vos données personnelles.",
+    "badge": "Protection des données",
+    "lastUpdated": "Dernière mise à jour",
+    "questions": "Des questions concernant notre politique de confidentialité ?",
+    "backToHome": "Retour à l'accueil",
+    "tableOfContents": "Table des matières",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "ChinaLink Express s'engage à protéger votre vie privée. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos données personnelles lorsque vous utilisez nos services."
+      },
+      "dataCollection": {
+        "title": "Données collectées",
+        "content": "Nous collectons les types de données suivants :",
+        "items": [
+          "Informations d'identification (nom, adresse, numéro de téléphone)",
+          "Informations de connexion (email, mot de passe sécurisé)",
+          "Informations de transaction (historique d'achat, paiements)",
+          "Données de navigation (cookies, adresse IP)",
+          "Informations liées aux expéditions (contenu, destination, poids)"
+        ]
+      },
+      "dataUsage": {
+        "title": "Utilisation des données",
+        "content": "Nous utilisons vos données pour :",
+        "items": [
+          "Fournir et gérer nos services de logistique",
+          "Traiter vos expéditions et paiements",
+          "Communiquer avec vous concernant vos commandes",
+          "Améliorer nos services et votre expérience",
+          "Respecter nos obligations légales"
+        ]
+      },
+      "dataProtection": {
+        "title": "Protection des données",
+        "content": "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction. Vos données sont stockées sur des serveurs sécurisés et chiffrées."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. Les cookies nous aident à comprendre comment vous utilisez notre site et à personnaliser votre expérience. Vous pouvez gérer vos préférences de cookies dans les paramètres de votre navigateur."
+      },
+      "contact": {
+        "title": "Nous contacter",
+        "content": "Si vous avez des questions concernant cette politique de confidentialité ou souhaitez exercer vos droits sur vos données, veuillez nous contacter à contact@chinalinkexpress.com ou par téléphone au +223 76 69 61 77."
+      }
+    },
+    "content": {
+      "introduction": {
+        "p1": "Chez ChinaLink Express, nous accordons une importance capitale à la protection de vos données personnelles. Cette politique de confidentialité décrit comment nous collectons, utilisons, stockons et protégeons vos informations lorsque vous utilisez nos services de logistique et d'expédition.",
+        "p2": "Nous sommes soumis au Règlement Général sur la Protection des Données (RGPD) de l'Union européenne et aux lois locales applicables en matière de protection des données dans les pays où nous opérons, notamment au Mali et en Chine.",
+        "p3": "En utilisant nos services, vous consentez à la collecte et à l'utilisation de vos données personnelles conformément à cette politique. Nous nous engageons à traiter vos données de manière transparente, licite et sécurisée."
+      },
+      "dataCollection": {
+        "p1": "Nous collectons les types de données personnelles suivants lorsque vous utilisez nos services :",
+        "items": {
+          "identification": "Informations d'identification : nom, prénom, numéro de pièce d'identité",
+          "contact": "Coordonnées : adresse email, numéros de téléphone, adresse postale",
+          "shipping": "Informations d'expédition : adresses de livraison, détails des colis, contenu des envois",
+          "payment": "Données de paiement : informations bancaires, historique des transactions (stockées de manière sécurisée)",
+          "technical": "Données techniques : adresse IP, type de navigateur, appareil utilisé, cookies",
+          "usage": "Données d'utilisation : historique des expéditions, préférences de service, communications avec notre support"
+        },
+        "p2": "Nous ne collectons que les données nécessaires à la fourniture de nos services et nous les conservons pendant la durée légalement requise ou nécessaire à la réalisation des finalités pour lesquelles elles ont été collectées."
+      },
+      "dataUsage": {
+        "p1": "Vos données personnelles sont utilisées pour les finalités suivantes :",
+        "items": {
+          "services": "Fourniture de nos services : traitement des expéditions, suivi des colis, gestion des comptes clients",
+          "communication": "Communication : envoi de notifications d'expédition, mises à jour de statut, réponses aux demandes",
+          "tracking": "Suivi et traçabilité : gestion des expéditions en cours, historique des envois",
+          "improvement": "Amélioration des services : analyse statistique, développement de nouvelles fonctionnalités",
+          "security": "Sécurité : détection et prévention des fraudes, sécurisation des transactions",
+          "legal": "Obligations légales : respect des réglementations douanières et fiscales"
+        }
+      },
+      "dataProtection": {
+        "p1": "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles rigoureuses pour protéger vos données contre tout accès non autorisé, altération, divulgation ou destruction.",
+        "p2": "Nos mesures de protection incluent :",
+        "items": {
+          "encryption": "Chiffrement SSL/TLS pour toutes les transmissions de données sensibles",
+          "access": "Contrôle d'accès strict : seuls les employés autorisés peuvent accéder aux données",
+          "training": "Formation régulière de nos équipes aux bonnes pratiques de sécurité",
+          "audits": "Audits de sécurité périodiques et tests d'intrusion"
+        },
+        "p3": "En cas de violation de données susceptible d'affecter vos droits et libertés, nous nous engageons à vous en informer dans les délais légaux et à prendre toutes les mesures nécessaires pour limiter les impacts."
+      },
+      "thirdParty": {
+        "p1": "Nous pouvons partager vos données avec des tiers dans les cas suivants :",
+        "items": {
+          "carriers": "Transporteurs et partenaires logistiques : pour assurer la livraison de vos colis",
+          "payment": "Prestataires de paiement : pour le traitement sécurisé de vos transactions",
+          "authorities": "Autorités compétentes : pour le respect des obligations légales et douanières",
+          "service": "Prestataires de services : hébergement cloud, analyse de données, support client"
+        },
+        "p2": "Tous nos partenaires sont soumis à des accords de confidentialité stricts et ne peuvent utiliser vos données que dans le cadre des services qu'ils fournissent pour notre compte.",
+        "p3": "Nous ne vendons jamais vos données personnelles à des tiers à des fins marketing."
+      },
+      "rights": {
+        "p1": "Conformément au RGPD et aux lois applicables, vous disposez des droits suivants concernant vos données personnelles :",
+        "items": {
+          "access": "Droit d'accès : obtenir une copie de vos données personnelles",
+          "rectification": "Droit de rectification : corriger les données inexactes ou incomplètes",
+          "erasure": "Droit à l'effacement (droit à l'oubli) : demander la suppression de vos données",
+          "portability": "Droit à la portabilité : recevoir vos données dans un format structuré",
+          "objection": "Droit d'opposition : vous opposer au traitement de vos données dans certains cas",
+          "withdraw": "Droit de retrait du consentement : retirer votre consentement à tout moment"
+        },
+        "p2": "Pour exercer ces droits, veuillez nous contacter aux coordonnées indiquées ci-dessous. Nous répondrons à votre demande dans un délai d'un mois, conformément à la réglementation."
+      },
+      "cookies": {
+        "p1": "Notre site utilise des cookies et technologies similaires pour améliorer votre expérience utilisateur et collecter des données statistiques sur l'utilisation de nos services.",
+        "p2": "Nous utilisons les catégories de cookies suivantes :",
+        "items": {
+          "essential": "Cookies essentiels : nécessaires au fonctionnement du site (session, panier)",
+          "analytics": "Cookies analytiques : mesure d'audience et analyse du comportement utilisateur",
+          "functional": "Cookies fonctionnels : mémorisation de vos préférences (langue, paramètres)",
+          "marketing": "Cookies marketing : personnalisation des publicités (avec votre consentement)"
+        },
+        "p3": "Vous pouvez gérer vos préférences cookies à tout moment via le bandeau de consentement ou les paramètres de votre navigateur. La désactivation des cookies essentiels peut affecter le fonctionnement du site."
+      },
+      "contact": {
+        "p1": "Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :",
+        "p2": "Nous nous engageons à traiter vos demandes dans les meilleurs délais et à vous fournir une réponse claire et complète."
+      }
+    }
+  },
+  "common": {
+    "language": "Langue"
+  },
+  "language": {
+    "select": "Changer de langue",
+    "current": "Langue actuelle"
+  },
+  "pricing": {
+    "hero": {
+      "title": "Nos Tarifs d'Expédition",
+      "subtitle": "Des tarifs transparents et compétitifs pour vos expéditions aériennes et maritimes de la Chine vers l'Afrique"
+    },
+    "navigation": {
+      "goToCalculator": "Calculer mon Expédition",
+      "viewPricing": "Voir les Tarifs"
+    },
+    "modes": {
+      "air": "Fret Aérien",
+      "sea": "Fret Maritime"
+    },
+    "categories": {
+      "phones": {
+        "name": "Téléphones",
+        "description": "Smartphones et accessoires mobiles",
+        "unit": "pièce"
+      },
+      "electronics": {
+        "name": "Électronique",
+        "description": "Appareils électroniques et accessoires",
+        "unit": "kg"
+      },
+      "standard": {
+        "name": "Standard",
+        "description": "Marchandises générales",
+        "unit": "kg"
+      },
+      "containers": {
+        "name": "Conteneurs",
+        "description": "Expédition de conteneurs complets",
+        "unit": "m³"
+      }
+    },
+    "priceTable": {
+      "title": "Grille Tarifaire",
+      "subtitle": "Comparez nos tarifs pour choisir la meilleure option pour vos besoins",
+      "air": {
+        "description": "Expédition rapide et sécurisée",
+        "note": "Le poids volumétrique s'applique selon la formule: (L × l × H) ÷ 5000"
+      },
+      "sea": {
+        "description": "Solution économique pour gros volumes",
+        "minCBM": "CBM minimum",
+        "densityThreshold": "Seuil de densité",
+        "adjustment": "Ajustement haute densité",
+        "note": "Les articles avec une densité > 250 kg/m³ sont soumis à un ajustement de volume"
+      }
+    },
+    "calculator": {
+      "title": "Calculateur de Frais",
+      "subtitle": "Estimez instantanément le coût de votre expédition"
+    },
+    "calculatorPage": {
+      "title": "Calculateur d'Expédition",
+      "subtitle": "Obtenez une estimation précise du coût de votre fret en quelques clics"
+    },
+    "airCalculator": {
+      "weight": "Poids réel",
+      "dimensions": "Dimensions (cm)",
+      "optional": "optionnel",
+      "dimensionsHint": "Les dimensions permettent de calculer le poids volumétrique",
+      "category": "Catégorie de marchandise",
+      "standardItems": {
+        "title": "Articles courants",
+        "items": "Vêtements, Chaussures, Articles quotidiens, Accessoires, Textiles"
+      },
+      "estimateNote": "Ces prix sont des estimations uniquement. Contactez-nous pour un devis exact."
+    },
+    "seaCalculator": {
+      "dimensions": "Dimensions (mètres)",
+      "length": "Longueur",
+      "width": "Largeur",
+      "height": "Hauteur",
+      "weight": "Poids (kg)",
+      "weightHint": "pour calcul de densité",
+      "unitMeters": "en mètres",
+      "dimensionsHint": "Ex: 1.2m × 0.8m × 0.9m = 0.86 CBM",
+      "standardItems": {
+        "title": "Articles adaptés au fret maritime",
+        "items": "Meubles, Électroménagers, Matériel de construction, Marchandises en vrac"
+      },
+      "rateInfo": {
+        "title": "Tarif Maritime",
+        "description": "{{rate}} par CBM avec un minimum de {{minCBM}} CBM"
+      },
+      "densityInfo": {
+        "title": "Calcul de Densité",
+        "description": "Si la densité dépasse {{threshold}} kg/m³, un ajustement est appliqué: Poids × 0.005",
+        "standardRule": "Règle standard 1:200 (densité ≤ 200)",
+        "coscoRule": "Règle COSCO/MAERSK 1:250 (densité > 250)"
+      },
+      "minCBM": {
+        "title": "CBM Minimum",
+        "description": "Un minimum de {{minCBM}} CBM est facturé pour toute expédition"
+      }
+    },
+    "result": {
+      "estimatedPrice": "Prix Estimé",
+      "deliveryTime": "Délai de livraison",
+      "actualWeight": "Poids réel",
+      "volumetricWeight": "Poids volumétrique",
+      "chargeableWeight": "Poids taxable",
+      "quantity": "Quantité",
+      "rate": "Tarif",
+      "originalCBM": "CBM original",
+      "density": "Densité",
+      "densityAdjustment": "Ajustement densité appliqué",
+      "minCBMApplied": "CBM minimum appliqué",
+      "finalCBM": "CBM final",
+      "calculating": "Calcul en cours...",
+      "enterDetails": "Entrez les détails pour obtenir un devis",
+      "enterDimensions": "Entrez les dimensions pour calculer",
+      "contactWhatsApp": "Demander un devis sur WhatsApp",
+      "estimateDisclaimer": "Ces prix sont des estimations uniquement",
+      "densityRuleApplied": "Règle COSCO/MAERSK 1:250 appliquée",
+      "seaRecommendation": {
+        "title": "💡 Le fret maritime pourrait être plus économique",
+        "description": "Densité détectée: {{density}} kg/m³. En raison du poids élevé par rapport au volume, le transport maritime pourrait être plus avantageux."
+      },
+      "highDensity": {
+        "title": "Article à haute densité",
+        "description": "Un ajustement de volume a été appliqué conformément aux politiques de Cosco et Maersk."
+      }
+    },
+    "prohibitedItems": {
+      "badge": "Important",
+      "title": "Articles Interdits et Restreints",
+      "subtitle": "Liste des articles qui ne peuvent pas être expédiés ou nécessitent une autorisation spéciale",
+      "categories": {
+        "prohibited": {
+          "title": "Articles Strictement Interdits",
+          "description": "Ne peuvent en aucun cas être expédiés",
+          "items": {
+            "item1": "Armes et munitions",
+            "item2": "Drogues et substances illicites",
+            "item3": "Produits inflammables",
+            "item4": "Matériaux dangereux",
+            "item5": "Espèces et bijoux de valeur",
+            "item6": "Documents confidentiels"
+          }
+        },
+        "restricted": {
+          "title": "Articles Restreints",
+          "description": "Nécessitent une autorisation spéciale",
+          "items": {
+            "item1": "Batteries au lithium",
+            "item2": "Produits chimiques",
+            "item3": "Aliments périssables",
+            "item4": "Plantes et graines",
+            "item5": "Médicaments",
+            "item6": "Cosmétiques"
+          }
+        },
+        "fragile": {
+          "title": "Articles Fragiles",
+          "description": "Nécessitent un emballage spécial",
+          "items": {
+            "item1": "Verre et céramique",
+            "item2": "Électronique sensible",
+            "item3": "Œuvres d'art",
+            "item4": "Instruments de précision",
+            "item5": "Miroirs",
+            "item6": "Écrans LCD/LED"
+          }
+        }
+      },
+      "note": {
+        "title": "Note importante",
+        "description": "Cette liste n'est pas exhaustive. Contactez-nous pour vérifier si votre article peut être expédié."
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "subtitle": "Nous répondons à vos questions",
+      "items": {
+        "priceDecrease": {
+          "question": "Les tarifs peuvent-ils être revus à la baisse ?",
+          "answer": "Non, nos tarifs sont fixes dans la majorité des cas. Néanmoins dans certains cas, nous pouvons appliquer des réductions à notre discrétion."
+        },
+        "priceIncrease": {
+          "question": "Les tarifs peuvent-ils être revus à la hausse ?",
+          "answer": "Oui lorsque certains articles requièrent un dédouanement particulier. Dans ce cas, le propriétaire du colis peut être amené à faire un complément pour supporter la procédure de dédouanement additionnelle."
+        },
+        "advancePayment": {
+          "question": "Le prix du fret doit-il être payé à l'avance ?",
+          "answer": "Généralement, le prix du fret doit être payé à l'arrivée du colis. Néanmoins dans certains cas, une avance ou même un règlement entier peut être requis en fonction du profil du propriétaire ou des caractéristiques du colis à transporter."
+        },
+        "customsClearance": {
+          "question": "A l'arrivée de mes marchandises dois je encore dédouaner ?",
+          "answer": "Non, nos tarifs incluent déjà les frais de douane. Néanmoins dans certains cas particuliers, un dédouanement peut nécessiter des étapes supplémentaires de la part du propriétaire du colis transporté."
+        },
+        "insurance": {
+          "question": "Quelles garanties offrez-vous en cas de perte ou de dommage ?",
+          "answer": "Nous avons une assurance couvrant à 100% les cas de dommages et de perte. Par contre, l'emballage et le conditionnement des articles fragiles sont de la responsabilité du fournisseur ou du propriétaire du colis. En cas de dommages dû à un conditionnement inadéquat, nous excluons notre responsabilité."
+        },
+        "prohibitedItems": {
+          "question": "Il y a t il des articles interdits ?",
+          "answer": "Les marchandises suivantes ne sont en aucun cas acceptées: Animaux, Antiquités (cassables et/ou fragiles), Amiante, Lingots, Monnaie, Armes à feu, leurs parties et munitions, Fourrures, Matières dangereuses et combustibles (telles que définies dans les règlements de l'IATA), Restes humains, y compris les cendres, Métaux précieux et pierres précieuses, Stupéfiants (illégaux), Biens dont le transport est interdit par toute loi, réglementation et statut d'un gouvernement fédéral, étatique ou local d'un pays vers ou par lequel l'envoi peut être transporté, Dans certains pays telles que la Chine, les batteries lithium, les powerbanks, les drones, les cigarettes électroniques, briquet avec gaz, briquet électronique,les produits dangereux, de la contrebande,les produits sous forme spray (insecticides) allume feu ou gaz et autres sont interdits de vol à cause des risques d'incendie et autres risques de sécurité."
+        },
+        "tariffDecrease": {
+          "question": "Les tarifs peuvent-ils être revus à la baisse ?",
+          "answer": "Non, nos tarifs sont fixes dans la majorité des cas. Néanmoins dans certains cas, nous pouvons appliquer des réductions à notre discrétion."
+        },
+        "tariffIncrease": {
+          "question": "Les tarifs peuvent-ils être revus à la hausse ?",
+          "answer": "Oui lorsque certains articles requièrent un dédouanement particulier."
+        },
+        "prepayment": {
+          "question": "Le prix du fret doit-il être payé à l'avance ?",
+          "answer": "Généralement, le prix du fret doit être payé à l'arrivée du colis. Néanmoins dans certains cas, une avance ou même un règlement entier peut être requis."
+        },
+        "customs": {
+          "question": "A l'arrivée de mes marchandises dois je encore dédouaner ?",
+          "answer": "Non, nos tarifs incluent déjà les frais de douane. Néanmoins dans certains cas particuliers, un dédouanement peut nécessiter des étapes supplémentaires."
+        },
+        "guarantee": {
+          "question": "Quelles garanties offrez-vous en cas de perte ou de dommage ?",
+          "answer": "Nous avons une assurance couvrant à 100% les cas de dommages et de perte."
+        },
+        "prohibited": {
+          "question": "Quels articles sont interdits ?",
+          "answer": "Les téléphones, ordinateurs, batteries au lithium, drones, liquides, produits inflammables, compléments alimentaires, produits chimiques, armes et produits en spray sont soumis à des restrictions ou interdits."
+        }
+      }
+    },
+    "prohibited": {
+      "phonesSea": {
+        "title": "Téléphones (interdit en mer)",
+        "description": "Les téléphones ne peuvent pas être expédiés par fret maritime."
+      },
+      "computersSea": {
+        "title": "Ordinateurs (interdit en mer)",
+        "description": "Les ordinateurs ne peuvent pas être expédiés par fret maritime."
+      },
+      "batteries": {
+        "title": "Batteries au lithium",
+        "description": "Interdit en avion et en mer pour des raisons de sécurité."
+      },
+      "drones": {
+        "title": "Drones",
+        "description": "Interdit en avion et en mer. Nécessite des autorisations spéciales."
+      },
+      "liquidsSea": {
+        "title": "Liquides (interdit en mer)",
+        "description": "Les liquides ne peuvent pas être expédiés par fret maritime."
+      },
+      "flammable": {
+        "title": "Produits inflammables",
+        "description": "Strictement interdit en avion et en mer."
+      },
+      "supplements": {
+        "title": "Compléments alimentaires",
+        "description": "Restreint. Nécessite une autorisation spéciale."
+      },
+      "chemicals": {
+        "title": "Produits chimiques",
+        "description": "Produits dangereux interdits."
+      },
+      "weapons": {
+        "title": "Armes",
+        "description": "Strictement interdit."
+      },
+      "spray": {
+        "title": "Produits en spray",
+        "description": "Aérosols interdits en avion."
+      }
+    }
+  }
+}

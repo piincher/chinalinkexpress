@@ -1,0 +1,667 @@
+{
+  "metadata": {
+    "title": "ChinaLink Express | China-Africa Sourcing & Shipping",
+    "description": "ChinaLink Express - Your trusted logistics partner for sourcing, purchasing and shipping goods from China to Mali and Africa. Free quote.",
+    "keywords": "China Africa sourcing, China Mali shipping, freight forwarding China Africa, air freight China Bamako, international logistics"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "whyUs": "Why Us",
+    "contact": "Contact",
+    "tracking": "Tracking",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "calculator": "Calculator",
+    "privacy": "Privacy"
+  },
+  "cta": {
+    "getQuote": "Get Free Quote",
+    "contactUs": "Contact Us",
+    "trackShipment": "Track Shipment",
+    "learnMore": "Learn More",
+    "discoverServices": "Discover Our Services",
+    "sendMessage": "Send Message",
+    "downloadApp": "Download App"
+  },
+  "hero": {
+    "title": "ChinaLink Express - Your Logistics Partner",
+    "subtitle": "Your logistics bridge between China and Africa. Air and sea shipping with real-time tracking.",
+    "typingTexts": ["Complete Logistics Solutions", "International Shipping", "Your Trusted Partner"],
+    "badge": "Operating 24/7 • Guaranteed Delivery"
+  },
+  "stats": {
+    "satisfiedClients": "Satisfied Clients",
+    "countriesServed": "Countries Served",
+    "successRate": "Success Rate",
+    "support": "Customer Support",
+    "experienceYears": "Years of Experience",
+    "deliveryRate": "Delivery Rate"
+  },
+  "about": {
+    "sectionLabel": "About Us",
+    "title": "About ChinaLink Express",
+    "description1": "Founded in 2019, ChinaLink Express has become a major player in international logistics, specializing in trade between China, Mali and Africa. We offer complete solutions for purchasing, shipping and delivery of goods.",
+    "description2": "Our mission is to simplify international trade by offering complete purchasing, shipping and payment solutions, allowing our clients to focus on their core business."
+  },
+  "services": {
+    "sectionLabel": "Our Services",
+    "title": "Our Services",
+    "subtitle": "Complete solutions to simplify your trade with China",
+    "items": {
+      "sourcing": {
+        "title": "SOURCING",
+        "description": "We manage your purchases from Chinese suppliers with professionalism and transparency."
+      },
+      "airFreight": {
+        "title": "AIR FREIGHT",
+        "description": "Fast delivery by air for your urgent shipments worldwide."
+      },
+      "seaFreight": {
+        "title": "SEA FREIGHT",
+        "description": "Economical solution for transporting large volumes by sea."
+      },
+      "payment": {
+        "title": "SUPPLIER PAYMENT",
+        "description": "We facilitate secure payment to your suppliers in China via Alipay, WeChat Pay and other methods."
+      },
+      "recharge": {
+        "title": "ACCOUNT TOP-UP",
+        "description": "Top up your ChinaLink Express account easily via Orange Money, Wave or cash for faster transactions."
+      }
+    },
+    "appSection": {
+      "title": "Download the App",
+      "note": "The app is available only for registered customers.",
+      "previewTitle": "Discover Our Mobile App",
+      "previewDescription": "Track your goods at every step of their journey."
+    }
+  },
+  "whyUs": {
+    "sectionLabel": "Why Choose Us",
+    "title": "Why Choose ChinaLink Express?",
+    "items": {
+      "speed": {
+        "title": "Speed",
+        "description": "Express delivery in the shortest timeframes on the market."
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Real-time tracking and 24/7 customer service."
+      },
+      "price": {
+        "title": "Competitive Prices",
+        "description": "Best rates on the market with no hidden fees."
+      },
+      "expertise": {
+        "title": "Expertise",
+        "description": "Over 7 years of experience in international logistics."
+      }
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "Testimonials",
+    "title": "What Our Clients Say",
+    "ctaTitle": "Join Our Satisfied Clients",
+    "ctaDescription": "Over 100 companies trust us for their logistics needs",
+    "testimonials": {
+      "sectionLabel": "Testimonials"
+    },
+    "industries": {
+      "retail": "Retail Sector",
+      "tech": "Technology Sector",
+      "automotive": "Automotive Sector"
+    }
+  },
+  "partners": {
+    "sectionLabel": "Our Partners",
+    "title": "Our Partners",
+    "subtitle": "We collaborate with the best in the industry",
+    "partners": {
+      "sectionLabel": "Our Partners"
+    }
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title": "Frequently Asked Questions",
+    "noAnswer": "Can't find your answer?",
+    "contactWhatsApp": "Contact us on WhatsApp",
+    "helpTitle": "Need Help?",
+    "helpDescription": "Our support team is available 24/7 to answer all your questions.",
+    "supportLabel": "Support via Whatsapp",
+    "items": {
+      "0": {
+        "question": "What types of goods can you ship?",
+        "answer": "We ship almost all types of goods, except dangerous items or those prohibited by law. Contact us for more details about your specific items +8618851725957."
+      },
+      "1": {
+        "question": "How long does air freight take?",
+        "answer": "Air freight generally takes between 14 to 21 business days from China to Bamako. We also offer express options for deliveries in 2-5 days."
+      },
+      "2": {
+        "question": "How long does sea freight take?",
+        "answer": "Sea freight generally takes between 60 to 75 business days from China to Bamako. This is the most economical option for large volumes."
+      },
+      "3": {
+        "question": "How does supplier payment work?",
+        "answer": "We facilitate secure payment to your suppliers in China via Alipay, WeChat Pay, credit cards and other methods. You pay the amount to us based on the daily rate and we settle with your suppliers."
+      },
+      "4": {
+        "question": "How do I top up my ChinaLink Express account?",
+        "answer": "You can top up your customer account via Orange Money, Wave and Cash. Funds are credited instantly and allow you to pay for your shipments more quickly."
+      },
+      "5": {
+        "question": "Do you offer real-time tracking?",
+        "answer": "Yes, all our shipments are equipped with a real-time tracking system accessible from your customer dashboard in our mobile app 24/7."
+      }
+    }
+  },
+  "contact": {
+    "sectionLabel": "Contact Us",
+    "title": "Contact Us",
+    "subtitle": "Our team is available to answer all your questions",
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your@email.com",
+      "phonePlaceholder": "+223 XX XX XX XX",
+      "messagePlaceholder": "Describe your needs...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": {
+        "title": "Message sent!",
+        "message": "We will respond as soon as possible."
+      },
+      "errors": {
+        "nameRequired": "Name is required",
+        "nameMin": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "phoneInvalid": "Please enter a valid phone number",
+        "messageRequired": "Message is required",
+        "messageMin": "Message must be at least 10 characters"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "whatsapp": "Contact us on WhatsApp",
+      "hours": "Opening Hours",
+      "available24_7": "Available 24/7 for emergencies",
+      "hoursWeekday": "Monday - Friday: 8:00 AM - 8:00 PM",
+      "hoursSaturday": "Saturday: 9:00 AM - 5:00 PM",
+      "hoursSunday": "Sunday: 10:00 AM - 3:00 PM"
+    }
+  },
+  "footer": {
+    "description": "Your trusted partner for international trade with China. Complete logistics solutions to grow your business.",
+    "services": "Services",
+    "links": "Useful Links",
+    "newsletter": "Newsletter",
+    "newsletterPlaceholder": "Your email",
+    "scanToFollow": "Scan to follow us on facebook",
+    "copyright": "All rights reserved.",
+    "developedBy": "Developed and maintained by NUVOTECH"
+  },
+  "common": {
+    "language": "Language"
+  },
+  "language": {
+    "select": "Change language",
+    "current": "Current language"
+  },
+  "pricing": {
+    "hero": {
+      "title": "Our Shipping Rates",
+      "subtitle": "Transparent and competitive rates for your air and sea shipments from China to Africa"
+    },
+    "navigation": {
+      "goToCalculator": "Calculate My Shipment",
+      "viewPricing": "View Pricing"
+    },
+    "modes": {
+      "air": "Air Freight",
+      "sea": "Sea Freight"
+    },
+    "categories": {
+      "phones": {
+        "name": "Phones",
+        "description": "Smartphones and mobile accessories",
+        "unit": "piece"
+      },
+      "electronics": {
+        "name": "Electronics",
+        "description": "Electronic devices and accessories",
+        "unit": "kg"
+      },
+      "standard": {
+        "name": "Standard",
+        "description": "General merchandise",
+        "unit": "kg"
+      },
+      "containers": {
+        "name": "Containers",
+        "description": "Full container shipping",
+        "unit": "m³"
+      }
+    },
+    "priceTable": {
+      "title": "Price List",
+      "subtitle": "Compare our rates to choose the best option for your needs",
+      "air": {
+        "description": "Fast and secure shipping",
+        "note": "Volumetric weight applies according to formula: (L × W × H) ÷ 5000"
+      },
+      "sea": {
+        "description": "Economical solution for large volumes",
+        "minCBM": "Minimum CBM",
+        "densityThreshold": "Density threshold",
+        "adjustment": "High density adjustment",
+        "note": "Items with density > 250 kg/m³ are subject to volume adjustment"
+      }
+    },
+    "calculator": {
+      "title": "Shipping Calculator",
+      "subtitle": "Instantly estimate the cost of your shipment"
+    },
+    "calculatorPage": {
+      "title": "Shipping Calculator",
+      "subtitle": "Get an accurate estimate of your freight cost in just a few clicks"
+    },
+    "airCalculator": {
+      "weight": "Actual weight",
+      "dimensions": "Dimensions (cm)",
+      "optional": "optional",
+      "dimensionsHint": "Dimensions allow us to calculate volumetric weight",
+      "category": "Item category",
+      "standardItems": {
+        "title": "Common items",
+        "items": "Clothes, Shoes, Daily items, Accessories, Textiles"
+      },
+      "estimateNote": "These prices are estimates only. Contact us for an exact quote."
+    },
+    "seaCalculator": {
+      "dimensions": "Dimensions (meters)",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "weight": "Weight (kg)",
+      "weightHint": "for density calculation",
+      "unitMeters": "in meters",
+      "dimensionsHint": "Ex: 1.2m × 0.8m × 0.9m = 0.86 CBM",
+      "standardItems": {
+        "title": "Items suitable for sea freight",
+        "items": "Furniture, Appliances, Construction materials, Bulk goods"
+      },
+      "rateInfo": {
+        "title": "Sea Freight Rate",
+        "description": "{{rate}} per CBM with a minimum of {{minCBM}} CBM"
+      },
+      "densityInfo": {
+        "title": "Density Calculation",
+        "description": "If density exceeds {{threshold}} kg/m³, an adjustment is applied: Weight × 0.005",
+        "standardRule": "Standard rule 1:200 (density ≤ 200)",
+        "coscoRule": "COSCO/MAERSK 1:250 rule (density > 250)"
+      },
+      "minCBM": {
+        "title": "Minimum CBM",
+        "description": "A minimum of {{minCBM}} CBM is charged for any shipment"
+      }
+    },
+    "seaCalculator": {
+      "dimensions": "Dimensions (meters)",
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "weight": "Weight (kg)",
+      "weightHint": "for density calculation",
+      "rateInfo": {
+        "title": "Sea Freight Rate",
+        "description": "{{rate}} per CBM with a minimum of {{minCBM}} CBM"
+      },
+      "densityInfo": {
+        "title": "Density Calculation",
+        "description": "If density exceeds {{threshold}} kg/m³, an adjustment is applied: Weight × 0.005"
+      },
+      "minCBM": {
+        "title": "Minimum CBM",
+        "description": "A minimum of {{minCBM}} CBM is charged for any shipment"
+      }
+    },
+    "result": {
+      "estimatedPrice": "Estimated Price",
+      "deliveryTime": "Delivery time",
+      "actualWeight": "Actual weight",
+      "volumetricWeight": "Volumetric weight",
+      "chargeableWeight": "Chargeable weight",
+      "quantity": "Quantity",
+      "rate": "Rate",
+      "originalCBM": "Original CBM",
+      "density": "Density",
+      "densityAdjustment": "Density adjustment applied",
+      "minCBMApplied": "Minimum CBM applied",
+      "finalCBM": "Final CBM",
+      "calculating": "Calculating...",
+      "enterDetails": "Enter details to get a quote",
+      "enterDimensions": "Enter dimensions to calculate",
+      "contactWhatsApp": "Request a quote on WhatsApp",
+      "estimateDisclaimer": "These prices are estimates only",
+      "densityRuleApplied": "COSCO/MAERSK 1:250 rule applied",
+      "seaRecommendation": {
+        "title": "💡 Sea freight might be more economical",
+        "description": "Detected density: {{density}} kg/m³. Due to high weight relative to volume, sea transport might be more advantageous."
+      },
+      "highDensity": {
+        "title": "High density item",
+        "description": "A volume adjustment has been applied according to Cosco and Maersk policies."
+      }
+    },
+    "prohibitedItems": {
+      "badge": "Important",
+      "title": "Prohibited and Restricted Items",
+      "subtitle": "List of items that cannot be shipped or require special authorization",
+      "categories": {
+        "prohibited": {
+          "title": "Strictly Prohibited Items",
+          "description": "Cannot be shipped under any circumstances",
+          "items": {
+            "item1": "Weapons and ammunition",
+            "item2": "Drugs and illicit substances",
+            "item3": "Flammable products",
+            "item4": "Hazardous materials",
+            "item5": "Cash and valuable jewelry",
+            "item6": "Confidential documents"
+          }
+        },
+        "restricted": {
+          "title": "Restricted Items",
+          "description": "Require special authorization",
+          "items": {
+            "item1": "Lithium batteries",
+            "item2": "Chemical products",
+            "item3": "Perishable foods",
+            "item4": "Plants and seeds",
+            "item5": "Medications",
+            "item6": "Cosmetics"
+          }
+        },
+        "fragile": {
+          "title": "Fragile Items",
+          "description": "Require special packaging",
+          "items": {
+            "item1": "Glass and ceramics",
+            "item2": "Sensitive electronics",
+            "item3": "Artworks",
+            "item4": "Precision instruments",
+            "item5": "Mirrors",
+            "item6": "LCD/LED screens"
+          }
+        }
+      },
+      "note": {
+        "title": "Important note",
+        "description": "This list is not exhaustive. Contact us to verify if your item can be shipped."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "We answer your questions",
+      "items": {
+        "priceDecrease": {
+          "question": "Can rates be revised downward?",
+          "answer": "No, our rates are fixed in most cases. However, in some cases, we may apply discounts at our discretion."
+        },
+        "priceIncrease": {
+          "question": "Can rates be revised upward?",
+          "answer": "Yes, when certain items require special customs clearance. In this case, the package owner may be required to make an additional payment to support the additional clearance procedure."
+        },
+        "advancePayment": {
+          "question": "Does freight price need to be paid in advance?",
+          "answer": "Generally, the freight price must be paid upon arrival of the package. However, in some cases, a deposit or even full payment may be required depending on the owner's profile or the characteristics of the package to be transported."
+        },
+        "customsClearance": {
+          "question": "Do I need to clear customs upon arrival of my goods?",
+          "answer": "No, our rates already include customs fees. However, in some particular cases, customs clearance may require additional steps on the part of the owner of the transported package."
+        },
+        "insurance": {
+          "question": "What guarantees do you offer in case of loss or damage?",
+          "answer": "We have insurance covering 100% of cases of damage and loss. However, packaging and conditioning of fragile items are the responsibility of the supplier or package owner. In case of damage due to inadequate conditioning, we exclude our liability."
+        },
+        "prohibitedItems": {
+          "question": "Are there prohibited items?",
+          "answer": "The following goods are not accepted under any circumstances: Animals, Antiques (breakable and/or fragile), Asbestos, Ingots, Currency, Firearms, their parts and ammunition, Furs, Hazardous and combustible materials (as defined in IATA regulations), Human remains, including ashes, Precious metals and stones, Narcotics (illegal), Goods whose transport is prohibited by any law, regulation and statute of a federal, state or local government of a country to or through which the shipment may be transported. In some countries such as China, lithium batteries, power banks, drones, electronic cigarettes, lighters with gas, electronic lighters, dangerous products, contraband, spray products (insecticides), fire starters or gas and others are prohibited from flying due to fire risks and other security risks."
+        },
+        "tariffDecrease": {
+          "question": "Can rates be revised downward?",
+          "answer": "No, our rates are fixed in most cases. However, in some cases, we may apply discounts at our discretion."
+        },
+        "tariffIncrease": {
+          "question": "Can rates be revised upward?",
+          "answer": "Yes, when certain items require special customs clearance."
+        },
+        "prepayment": {
+          "question": "Does freight price need to be paid in advance?",
+          "answer": "Generally, the freight price must be paid upon arrival of the package. However, in some cases, a deposit or even full payment may be required."
+        },
+        "customs": {
+          "question": "Do I need to clear customs upon arrival of my goods?",
+          "answer": "No, our rates already include customs fees. However, in some particular cases, customs clearance may require additional steps."
+        },
+        "guarantee": {
+          "question": "What guarantees do you offer in case of loss or damage?",
+          "answer": "We have insurance covering 100% of cases of damage and loss."
+        },
+        "prohibited": {
+          "question": "What items are prohibited?",
+          "answer": "Phones, computers, lithium batteries, drones, liquids, flammable products, supplements, chemicals, weapons and spray products are restricted or prohibited."
+        },
+        "whatIsCBM": {
+          "question": "What is CBM?",
+          "answer": "CBM (Cubic Meter) is the volume measurement unit used for sea freight. 1 CBM = 1 cubic meter. The sea freight rate is calculated by multiplying CBM by the unit rate."
+        },
+        "volumetricWeight": {
+          "question": "How do you calculate volumetric weight?",
+          "answer": "Volumetric weight is calculated using the formula: (Length × Width × Height) ÷ 5000. The result is in kilograms. The chargeable weight is the higher of the actual weight and volumetric weight."
+        },
+        "chargeableWeight": {
+          "question": "What is chargeable weight?",
+          "answer": "Chargeable weight is the weight used to calculate the shipping rate. It is the maximum between your package's actual weight and its volumetric weight."
+        },
+        "deliveryTime": {
+          "question": "What are the delivery times?",
+          "answer": "Air freight: 14-21 business days. Sea freight: 60-75 business days. Times may vary depending on exact destination and customs checks."
+        },
+        "customsFees": {
+          "question": "Are customs fees included?",
+          "answer": "No, displayed rates are for transport only. Customs fees and import taxes are the recipient's responsibility and vary by country and type of goods."
+        },
+        "paymentMethods": {
+          "question": "What payment methods are accepted?",
+          "answer": "We accept: bank transfer, Orange Money, Wave, cash, and payment via our online platform. Regular customers can benefit from a customer account with credit."
+        },
+        "tracking": {
+          "question": "How can I track my shipment?",
+          "answer": "You receive a tracking number as soon as your goods are shipped. Track your package in real-time via our mobile app or website in the 'Tracking' section."
+        }
+      }
+    },
+    "prohibited": {
+      "phonesSea": {
+        "title": "Phones (prohibited by sea)",
+        "description": "Phones cannot be shipped by sea freight."
+      },
+      "computersSea": {
+        "title": "Computers (prohibited by sea)",
+        "description": "Computers cannot be shipped by sea freight."
+      },
+      "batteries": {
+        "title": "Lithium Batteries",
+        "description": "Prohibited by air and sea for safety reasons."
+      },
+      "drones": {
+        "title": "Drones",
+        "description": "Prohibited by air and sea. Requires special authorization."
+      },
+      "liquidsSea": {
+        "title": "Liquids (prohibited by sea)",
+        "description": "Liquids cannot be shipped by sea freight."
+      },
+      "flammable": {
+        "title": "Flammable Products",
+        "description": "Strictly prohibited by air and sea."
+      },
+      "supplements": {
+        "title": "Supplements",
+        "description": "Restricted. Requires special authorization."
+      },
+      "chemicals": {
+        "title": "Chemicals",
+        "description": "Dangerous products prohibited."
+      },
+      "weapons": {
+        "title": "Weapons",
+        "description": "Strictly prohibited."
+      },
+      "spray": {
+        "title": "Spray Products",
+        "description": "Aerosols prohibited by air."
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy is our priority. Learn how we protect your personal data.",
+    "badge": "Data Protection",
+    "lastUpdated": "Last updated",
+    "questions": "Questions about our privacy policy?",
+    "backToHome": "Back to Home",
+    "tableOfContents": "Table of Contents",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "At ChinaLink Express, we place the highest importance on protecting your personal data. This privacy policy describes how we collect, use, store, and protect your information when you use our logistics and shipping services."
+      },
+      "dataCollection": {
+        "title": "Data We Collect",
+        "content": "We collect the following types of personal data when you use our services:",
+        "items": [
+          "Identification information: name, first name, ID number",
+          "Contact details: email address, phone numbers, postal address",
+          "Shipping information: delivery addresses, package details, shipment contents",
+          "Payment data: banking information, transaction history (stored securely)",
+          "Technical data: IP address, browser type, device used, cookies"
+        ]
+      },
+      "dataUsage": {
+        "title": "How We Use Your Data",
+        "content": "Your personal data is used for the following purposes:",
+        "items": [
+          "Service provision: processing shipments, tracking packages, managing customer accounts",
+          "Communication: sending shipping notifications, status updates, responding to inquiries",
+          "Tracking and traceability: managing ongoing shipments, shipping history",
+          "Service improvement: statistical analysis, development of new features",
+          "Legal obligations: compliance with customs and tax regulations"
+        ]
+      },
+      "dataProtection": {
+        "title": "Data Protection",
+        "content": "We implement rigorous technical and organizational security measures to protect your data against any unauthorized access, alteration, disclosure, or destruction. Our measures include SSL/TLS encryption, strict access control, regular team training, and periodic security audits."
+      },
+      "cookies": {
+        "title": "Cookies and Similar Technologies",
+        "content": "Our website uses cookies and similar technologies to improve your user experience and collect statistical data on the use of our services. You can manage your cookie preferences at any time via the consent banner or your browser settings."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "For any questions regarding this privacy policy or to exercise your rights, you can contact us at contact@chinalinkexpress.com or by phone at +223 76 69 61 77. We are committed to processing your requests as soon as possible."
+      }
+    },
+    "content": {
+      "introduction": {
+        "p1": "At ChinaLink Express, we place the highest importance on protecting your personal data. This privacy policy describes how we collect, use, store, and protect your information when you use our logistics and shipping services.",
+        "p2": "We are subject to the General Data Protection Regulation (GDPR) of the European Union and applicable local data protection laws in the countries where we operate, including Mali and China.",
+        "p3": "By using our services, you consent to the collection and use of your personal data in accordance with this policy. We are committed to processing your data in a transparent, lawful, and secure manner."
+      },
+      "dataCollection": {
+        "p1": "We collect the following types of personal data when you use our services:",
+        "items": {
+          "identification": "Identification information: name, first name, ID number",
+          "contact": "Contact details: email address, phone numbers, postal address",
+          "shipping": "Shipping information: delivery addresses, package details, shipment contents",
+          "payment": "Payment data: banking information, transaction history (stored securely)",
+          "technical": "Technical data: IP address, browser type, device used, cookies",
+          "usage": "Usage data: shipping history, service preferences, communications with our support"
+        },
+        "p2": "We only collect data necessary for the provision of our services and retain it for the legally required period or as long as necessary to fulfill the purposes for which it was collected."
+      },
+      "dataUsage": {
+        "p1": "Your personal data is used for the following purposes:",
+        "items": {
+          "services": "Service provision: processing shipments, tracking packages, managing customer accounts",
+          "communication": "Communication: sending shipping notifications, status updates, responding to inquiries",
+          "tracking": "Tracking and traceability: managing ongoing shipments, shipping history",
+          "improvement": "Service improvement: statistical analysis, development of new features",
+          "security": "Security: fraud detection and prevention, transaction security",
+          "legal": "Legal obligations: compliance with customs and tax regulations"
+        }
+      },
+      "dataProtection": {
+        "p1": "We implement rigorous technical and organizational security measures to protect your data against any unauthorized access, alteration, disclosure, or destruction.",
+        "p2": "Our protection measures include:",
+        "items": {
+          "encryption": "SSL/TLS encryption for all sensitive data transmissions",
+          "access": "Strict access control: only authorized employees can access data",
+          "training": "Regular training of our teams on security best practices",
+          "audits": "Periodic security audits and penetration testing"
+        },
+        "p3": "In the event of a data breach likely to affect your rights and freedoms, we commit to informing you within the legal deadlines and taking all necessary measures to limit the impacts."
+      },
+      "thirdParty": {
+        "p1": "We may share your data with third parties in the following cases:",
+        "items": {
+          "carriers": "Carriers and logistics partners: to ensure delivery of your packages",
+          "payment": "Payment providers: for secure processing of your transactions",
+          "authorities": "Competent authorities: to comply with legal and customs obligations",
+          "service": "Service providers: cloud hosting, data analysis, customer support"
+        },
+        "p2": "All our partners are subject to strict confidentiality agreements and can only use your data within the scope of the services they provide on our behalf.",
+        "p3": "We never sell your personal data to third parties for marketing purposes."
+      },
+      "rights": {
+        "p1": "In accordance with the GDPR and applicable laws, you have the following rights regarding your personal data:",
+        "items": {
+          "access": "Right of access: obtain a copy of your personal data",
+          "rectification": "Right to rectification: correct inaccurate or incomplete data",
+          "erasure": "Right to erasure (right to be forgotten): request deletion of your data",
+          "portability": "Right to data portability: receive your data in a structured format",
+          "objection": "Right to object: object to the processing of your data in certain cases",
+          "withdraw": "Right to withdraw consent: withdraw your consent at any time"
+        },
+        "p2": "To exercise these rights, please contact us at the details provided below. We will respond to your request within one month, in accordance with regulations."
+      },
+      "cookies": {
+        "p1": "Our website uses cookies and similar technologies to improve your user experience and collect statistical data on the use of our services.",
+        "p2": "We use the following categories of cookies:",
+        "items": {
+          "essential": "Essential cookies: necessary for the website to function (session, cart)",
+          "analytics": "Analytics cookies: audience measurement and user behavior analysis",
+          "functional": "Functional cookies: remembering your preferences (language, settings)",
+          "marketing": "Marketing cookies: advertising personalization (with your consent)"
+        },
+        "p3": "You can manage your cookie preferences at any time via the consent banner or your browser settings. Disabling essential cookies may affect website functionality."
+      },
+      "contact": {
+        "p1": "For any questions regarding this privacy policy or to exercise your rights, you can contact us:",
+        "p2": "We are committed to processing your requests as soon as possible and providing you with a clear and complete response."
+      }
+    }
+  }
+}

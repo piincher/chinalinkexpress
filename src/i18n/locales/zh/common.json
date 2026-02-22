@@ -1,0 +1,619 @@
+{
+  "metadata": {
+    "title": "ChinaLink Express | 中非采购与物流服务",
+    "description": "ChinaLink Express - 您值得信赖的中非物流合作伙伴，提供从中国到马里及非洲的采购、代购和货运服务。免费报价。",
+    "keywords": "中非采购, 中国到马里货运, 中非货运代理, 中国到巴马科空运, 国际物流"
+  },
+  "navigation": {
+    "home": "首页",
+    "services": "服务",
+    "about": "关于我们",
+    "whyUs": "为什么选择我们",
+    "contact": "联系我们",
+    "tracking": "追踪货物",
+    "faq": "常见问题",
+    "blog": "博客",
+    "pricing": "价格",
+    "calculator": "计算器",
+    "privacy": "隐私政策"
+  },
+  "cta": {
+    "getQuote": "获取免费报价",
+    "contactUs": "联系我们",
+    "trackShipment": "追踪货物",
+    "learnMore": "了解更多",
+    "discoverServices": "了解我们的服务",
+    "sendMessage": "发送消息",
+    "downloadApp": "下载应用"
+  },
+  "hero": {
+    "title": "ChinaLink Express - 您的物流合作伙伴",
+    "subtitle": "为您提供与中国贸易的采购、运输和支付一站式解决方案。保证快速、可靠和透明。",
+    "typingTexts": ["完整物流解决方案", "国际货运服务", "您信赖的合作伙伴"],
+    "badge": "全天候运营 • 保证送达"
+  },
+  "stats": {
+    "satisfiedClients": "满意客户",
+    "countriesServed": "服务国家",
+    "successRate": "成功率",
+    "support": "客户支持",
+    "experienceYears": "年行业经验",
+    "deliveryRate": "送达率"
+  },
+  "about": {
+    "sectionLabel": "关于我们",
+    "title": "关于 ChinaLink Express",
+    "description1": "成立于2019年，ChinaLink Express 已成为国际物流领域的重要参与者，专注于中国、马里和非洲之间的贸易。我们提供采购、运输和货物交付的完整解决方案。",
+    "description2": "我们的使命是通过提供完整的采购、运输和支付解决方案来简化国际贸易，让我们的客户能够专注于他们的核心业务。"
+  },
+  "services": {
+    "sectionLabel": "我们的服务",
+    "title": "我们的服务",
+    "subtitle": "简化您与中国贸易的完整解决方案",
+    "items": {
+      "sourcing": {
+        "title": "采购服务",
+        "description": "我们以专业和透明的方式为您管理中国供应商的采购。"
+      },
+      "airFreight": {
+        "title": "空运服务",
+        "description": "通过空运快速交付您的紧急货物到世界各地。"
+      },
+      "seaFreight": {
+        "title": "海运服务",
+        "description": "通过海运运输大批量货物的经济解决方案。"
+      },
+      "payment": {
+        "title": "供应商付款",
+        "description": "我们通过支付宝、微信支付等方式为您安全地向中国供应商付款。"
+      },
+      "recharge": {
+        "title": "账户充值",
+        "description": "通过橙色货币、Wave或现金轻松为您的ChinaLink Express账户充值，实现更快的交易。"
+      }
+    },
+    "appSection": {
+      "title": "下载应用",
+      "note": "该应用仅对注册客户开放。",
+      "previewTitle": "探索我们的移动应用",
+      "previewDescription": "追踪您货物的每一步旅程。"
+    }
+  },
+  "whyUs": {
+    "sectionLabel": "为什么选择我们",
+    "title": "为什么选择 ChinaLink Express？",
+    "items": {
+      "speed": {
+        "title": "快速",
+        "description": "以市场上最短的时间提供快递服务。"
+      },
+      "reliability": {
+        "title": "可靠",
+        "description": "实时追踪和24/7客户服务。"
+      },
+      "price": {
+        "title": "价格竞争力",
+        "description": "市场上最优惠的价格，无隐藏费用。"
+      },
+      "expertise": {
+        "title": "专业",
+        "description": "超过7年的国际物流经验。"
+      }
+    }
+  },
+  "testimonials": {
+    "sectionLabel": "客户评价",
+    "title": "客户评价",
+    "ctaTitle": "加入我们的满意客户",
+    "ctaDescription": "超过100家企业信赖我们的物流服务",
+    "testimonials": {
+      "sectionLabel": "客户评价"
+    },
+    "industries": {
+      "retail": "零售行业",
+      "tech": "科技行业",
+      "automotive": "汽车行业"
+    }
+  },
+  "partners": {
+    "sectionLabel": "我们的合作伙伴",
+    "title": "合作伙伴",
+    "subtitle": "我们与业内最优秀的公司合作",
+    "partners": {
+      "sectionLabel": "我们的合作伙伴"
+    }
+  },
+  "faq": {
+    "sectionLabel": "常见问题",
+    "title": "常见问题",
+    "noAnswer": "没有找到您的答案？",
+    "contactWhatsApp": "通过 WhatsApp 联系我们",
+    "helpTitle": "需要帮助？",
+    "helpDescription": "我们的支持团队24/7全天候为您解答所有问题。",
+    "supportLabel": "WhatsApp 支持",
+    "items": {
+      "0": {
+        "question": "你们可以运送哪些类型的货物？",
+        "answer": "我们几乎可以运送所有类型的货物，除了危险品或法律禁止的物品。请联系我们以获取有关您特定物品的更多详情 +8618851725957。"
+      },
+      "1": {
+        "question": "空运需要多长时间？",
+        "answer": "空运通常需要14到21个工作日从中国到巴马科。我们还提供2-5天的快递选项。"
+      },
+      "2": {
+        "question": "海运需要多长时间？",
+        "answer": "海运通常需要60到75个工作日从中国到巴马科。这是大批量货物最经济的选择。"
+      },
+      "3": {
+        "question": "供应商付款如何运作？",
+        "answer": "我们通过支付宝、微信支付、信用卡和其他方式为您在中国向供应商提供安全付款。您根据当日汇率向我们支付金额，我们会与您的供应商结算。"
+      },
+      "4": {
+        "question": "如何为我的ChinaLink Express账户充值？",
+        "answer": "您可以通过Orange Money、Wave和现金为您的客户账户充值。资金即时到账，让您可以更快地支付运费。"
+      },
+      "5": {
+        "question": "你们提供实时追踪吗？",
+        "answer": "是的，我们所有的货物都配备了实时追踪系统，可通过我们的移动应用程序从您的客户仪表板24/7访问。"
+      }
+    }
+  },
+  "contact": {
+    "sectionLabel": "联系我们",
+    "title": "联系我们",
+    "subtitle": "我们的团队随时为您提供帮助，解答您的所有问题",
+    "form": {
+      "title": "给我们发送消息",
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话",
+      "message": "留言",
+      "namePlaceholder": "您的姓名",
+      "emailPlaceholder": "your@email.com",
+      "phonePlaceholder": "+223 XX XX XX XX",
+      "messagePlaceholder": "描述您的需求...",
+      "send": "发送消息",
+      "sending": "发送中...",
+      "success": {
+        "title": "消息已发送！",
+        "message": "我们会尽快回复您。"
+      },
+      "errors": {
+        "nameRequired": "请输入姓名",
+        "nameMin": "姓名至少需要2个字符",
+        "emailRequired": "请输入电子邮箱",
+        "emailInvalid": "请输入有效的电子邮箱地址",
+        "phoneInvalid": "请输入有效的电话号码",
+        "messageRequired": "请输入留言",
+        "messageMin": "留言至少需要10个字符"
+      }
+    },
+    "info": {
+      "title": "联系信息",
+      "address": "地址",
+      "phone": "电话",
+      "email": "电子邮箱",
+      "whatsapp": "通过 WhatsApp 联系我们",
+      "hours": "营业时间",
+      "available24_7": "24/7紧急服务",
+      "hoursWeekday": "周一至周五：上午8:00 - 晚上8:00",
+      "hoursSaturday": "周六：上午9:00 - 下午5:00",
+      "hoursSunday": "周日：上午10:00 - 下午3:00"
+    }
+  },
+  "footer": {
+    "description": "您值得信赖的中非贸易合作伙伴。完整的物流解决方案助力您的业务发展。",
+    "services": "服务",
+    "links": "有用链接",
+    "newsletter": "订阅通讯",
+    "newsletterPlaceholder": "您的电子邮箱",
+    "scanToFollow": "扫描二维码关注我们的Facebook",
+    "copyright": "版权所有。",
+    "developedBy": "由 NUVOTECH 开发和维护"
+  },
+  "language": {
+    "select": "选择语言",
+    "current": "当前语言"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "subtitle": "您的隐私是我们的首要任务。了解我们如何保护您的个人数据。",
+    "badge": "数据保护",
+    "lastUpdated": "最后更新",
+    "questions": "对我们的隐私政策有疑问？",
+    "backToHome": "返回首页",
+    "tableOfContents": "目录",
+    "sections": {
+      "introduction": {
+        "title": "简介",
+        "content": "ChinaLink Express 致力于保护您的隐私。本隐私政策说明我们如何收集、使用和保护您在使用我们服务时的个人数据。"
+      },
+      "dataCollection": {
+        "title": "收集的数据",
+        "content": "我们收集以下类型的数据：",
+        "items": [
+          "身份信息（姓名、地址、电话号码）",
+          "登录信息（电子邮箱、安全密码）",
+          "交易信息（购买历史、付款记录）",
+          "浏览数据（Cookie、IP地址）",
+          "货运相关信息（内容、目的地、重量）"
+        ]
+      },
+      "dataUsage": {
+        "title": "数据使用",
+        "content": "我们使用您的数据用于：",
+        "items": [
+          "提供和管理我们的物流服务",
+          "处理您的货运和付款",
+          "就您的订单与您沟通",
+          "改进我们的服务和您的体验",
+          "履行我们的法律义务"
+        ]
+      },
+      "dataProtection": {
+        "title": "数据保护",
+        "content": "我们实施技术和组织安全措施，保护您的数据免受未经授权的访问、修改、披露或破坏。您的数据存储在安全加密的服务器上。"
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "我们使用Cookie来改善您在我们网站上的体验。Cookie帮助我们了解您如何使用我们的网站并个性化您的体验。您可以在浏览器设置中管理您的Cookie偏好。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "content": "如果您对本隐私政策有任何疑问或希望行使您的数据权利，请通过 contact@chinalinkexpress.com 或电话 +223 76 69 61 77 联系我们。"
+      }
+    },
+    "content": {
+      "introduction": {
+        "p1": "在ChinaLink Express，我们高度重视保护您的个人数据。本隐私政策描述了我们如何在使用我们的物流和运输服务时收集、使用、存储和保护您的信息。",
+        "p2": "我们遵守欧盟通用数据保护条例（GDPR）以及我们运营所在国家（包括马里和中国）适用的当地数据保护法。",
+        "p3": "通过使用我们的服务，您同意根据本政策收集和使用您的个人数据。我们承诺以透明、合法和安全的方式处理您的数据。"
+      },
+      "dataCollection": {
+        "p1": "我们在您使用服务时收集以下类型的个人数据：",
+        "items": {
+          "identification": "身份信息：姓名、身份证号",
+          "contact": "联系方式：电子邮箱、电话号码、邮政地址",
+          "shipping": "运输信息：送货地址、包裹详情、货物内容",
+          "payment": "支付数据：银行信息、交易记录（安全存储）",
+          "technical": "技术数据：IP地址、浏览器类型、设备信息、Cookie",
+          "usage": "使用数据：货运历史、服务偏好、与客服的沟通"
+        },
+        "p2": "我们只收集提供服务所必需的数据，并在法律要求的期限或为实现收集目的所需的期限内保留这些数据。"
+      },
+      "dataUsage": {
+        "p1": "您的个人数据用于以下目的：",
+        "items": {
+          "services": "提供服务：处理货运、追踪包裹、管理客户账户",
+          "communication": "沟通交流：发送货运通知、状态更新、回复咨询",
+          "tracking": "追踪追溯：管理正在进行的货运、历史记录",
+          "improvement": "服务改进：统计分析、开发新功能",
+          "security": "安全保障：欺诈检测和预防、交易安全",
+          "legal": "法律义务：遵守海关和税务法规"
+        }
+      },
+      "dataProtection": {
+        "p1": "我们实施严格的技术和组织安全措施，保护您的数据免受任何未经授权的访问、更改、披露或破坏。",
+        "p2": "我们的保护措施包括：",
+        "items": {
+          "encryption": "所有敏感数据传输的SSL/TLS加密",
+          "access": "严格的访问控制：只有授权员工才能访问数据",
+          "training": "定期对团队进行安全最佳实践培训",
+          "audits": "周期性安全审计和渗透测试"
+        },
+        "p3": "如果发生可能影响您权利和自由的数据泄露，我们承诺在法律规定的期限内通知您，并采取一切必要措施限制影响。"
+      },
+      "thirdParty": {
+        "p1": "我们可能在以下情况下与第三方共享您的数据：",
+        "items": {
+          "carriers": "承运商和物流合作伙伴：确保您的包裹送达",
+          "payment": "支付提供商：安全处理您的交易",
+          "authorities": "主管当局：遵守法律和海关义务",
+          "service": "服务提供商：云托管、数据分析、客户支持"
+        },
+        "p2": "我们所有的合作伙伴都受到严格的保密协议约束，只能在我们委托的服务范围内使用您的数据。",
+        "p3": "我们永远不会将您的个人数据出售给第三方用于营销目的。"
+      },
+      "rights": {
+        "p1": "根据GDPR和适用法律，您对个人数据享有以下权利：",
+        "items": {
+          "access": "访问权：获取您的个人数据副本",
+          "rectification": "更正权：更正不准确或不完整的数据",
+          "erasure": "删除权（被遗忘权）：要求删除您的数据",
+          "portability": "可携带权：以结构化格式接收您的数据",
+          "objection": "反对权：在某些情况下反对处理您的数据",
+          "withdraw": "撤回同意权：随时撤回您的同意"
+        },
+        "p2": "要行使这些权利，请通过以下提供的联系方式与我们联系。我们将在一个月内回复您的请求，符合法规要求。"
+      },
+      "cookies": {
+        "p1": "我们的网站使用Cookie和类似技术来改善您的用户体验并收集有关我们服务使用的统计数据。",
+        "p2": "我们使用以下类别的Cookie：",
+        "items": {
+          "essential": "必要Cookie：网站运行所必需的（会话、购物车）",
+          "analytics": "分析Cookie：受众测量和用户行为分析",
+          "functional": "功能Cookie：记住您的偏好（语言、设置）",
+          "marketing": "营销Cookie：广告个性化（需经您同意）"
+        },
+        "p3": "您可以随时通过同意横幅或浏览器设置管理您的Cookie偏好。禁用必要Cookie可能会影响网站功能。"
+      },
+      "contact": {
+        "p1": "如有任何关于本隐私政策的问题或要行使您的权利，您可以通过以下方式联系我们：",
+        "p2": "我们承诺尽快处理您的请求，并为您提供清晰完整的回复。"
+      }
+    }
+  },
+  "common": {
+    "language": "语言"
+  },
+  "pricing": {
+    "hero": {
+      "title": "我们的运费价格",
+      "subtitle": "从中国到非洲的空运和海运透明且具有竞争力的价格"
+    },
+    "navigation": {
+      "goToCalculator": "计算我的运费",
+      "viewPricing": "查看价格"
+    },
+    "modes": {
+      "air": "空运",
+      "sea": "海运"
+    },
+    "categories": {
+      "phones": {
+        "name": "手机",
+        "description": "智能手机及手机配件",
+        "unit": "件"
+      },
+      "electronics": {
+        "name": "电子产品",
+        "description": "电子设备及配件",
+        "unit": "公斤"
+      },
+      "standard": {
+        "name": "普通货物",
+        "description": "一般商品",
+        "unit": "公斤"
+      },
+      "containers": {
+        "name": "集装箱",
+        "description": "整箱运输",
+        "unit": "立方米"
+      }
+    },
+    "priceTable": {
+      "title": "价格表",
+      "subtitle": "比较我们的价格，选择最适合您需求的方案",
+      "air": {
+        "description": "快速安全的运输",
+        "note": "体积重量按以下公式计算：（长 × 宽 × 高）÷ 5000"
+      },
+      "sea": {
+        "description": "大批量货物的经济方案",
+        "minCBM": "最低立方米",
+        "densityThreshold": "密度阈值",
+        "adjustment": "高密度调整",
+        "note": "密度超过250公斤/立方米的物品将收取体积调整费"
+      }
+    },
+    "calculator": {
+      "title": "运费计算器",
+      "subtitle": "即时估算您的运输成本"
+    },
+    "calculatorPage": {
+      "title": "运费计算器",
+      "subtitle": "只需点击几下即可获得准确的运费估算"
+    },
+    "airCalculator": {
+      "weight": "实际重量",
+      "dimensions": "尺寸（厘米）",
+      "optional": "可选",
+      "dimensionsHint": "尺寸用于计算体积重量",
+      "category": "商品类别",
+      "standardItems": {
+        "title": "常见物品",
+        "items": "服装、鞋类、日用品、配件、纺织品"
+      },
+      "estimateNote": "这些价格仅为估算。请联系我们获取准确报价。"
+    },
+    "seaCalculator": {
+      "dimensions": "尺寸（米）",
+      "length": "长度",
+      "width": "宽度",
+      "height": "高度",
+      "weight": "重量（公斤）",
+      "weightHint": "用于密度计算",
+      "unitMeters": "以米为单位",
+      "dimensionsHint": "例如：1.2m × 0.8m × 0.9m = 0.86 立方米",
+      "standardItems": {
+        "title": "适合海运的物品",
+        "items": "家具、家电、建筑材料、散装货物"
+      },
+      "rateInfo": {
+        "title": "海运价格",
+        "description": "每立方米 {{rate}}，最低 {{minCBM}} 立方米"
+      },
+      "densityInfo": {
+        "title": "密度计算",
+        "description": "如果密度超过 {{threshold}} 公斤/立方米，将应用调整：重量 × 0.005",
+        "standardRule": "标准规则 1:200（密度 ≤ 200）",
+        "coscoRule": "中远/马士基规则 1:250（密度 > 250）"
+      },
+      "minCBM": {
+        "title": "最低立方米",
+        "description": "任何货运最低收费 {{minCBM}} 立方米"
+      }
+    },
+    "result": {
+      "estimatedPrice": "预估价格",
+      "deliveryTime": " delivery时间",
+      "actualWeight": "实际重量",
+      "volumetricWeight": "体积重量",
+      "chargeableWeight": "计费重量",
+      "quantity": "数量",
+      "rate": "费率",
+      "originalCBM": "原始立方米",
+      "density": "密度",
+      "densityAdjustment": "已应用密度调整",
+      "minCBMApplied": "已应用最低立方米",
+      "finalCBM": "最终立方米",
+      "calculating": "计算中...",
+      "enterDetails": "输入详情以获取报价",
+      "enterDimensions": "输入尺寸以计算",
+      "contactWhatsApp": "在 WhatsApp 上询价",
+      "estimateDisclaimer": "这些价格仅为估算",
+      "densityRuleApplied": "已应用中远/马士基 1:250 规则",
+      "seaRecommendation": {
+        "title": "💡 海运可能更经济",
+        "description": "检测到密度：{{density}} 公斤/立方米。由于重量相对于体积较高，海运可能更有优势。"
+      },
+      "highDensity": {
+        "title": "高密度物品",
+        "description": "已根据中远和马士基的政策应用体积调整。"
+      }
+    },
+    "prohibitedItems": {
+      "badge": "重要",
+      "title": "禁止和限制物品",
+      "subtitle": "无法运输或需要特别许可的物品清单",
+      "categories": {
+        "prohibited": {
+          "title": "严格禁止物品",
+          "description": "任何情况下均不可运输",
+          "items": {
+            "item1": "武器和弹药",
+            "item2": "毒品和非法物质",
+            "item3": "易燃产品",
+            "item4": "危险材料",
+            "item5": "现金和贵重珠宝",
+            "item6": "机密文件"
+          }
+        },
+        "restricted": {
+          "title": "限制物品",
+          "description": "需要特别许可",
+          "items": {
+            "item1": "锂电池",
+            "item2": "化学品",
+            "item3": "易腐食品",
+            "item4": "植物和种子",
+            "item5": "药品",
+            "item6": "化妆品"
+          }
+        },
+        "fragile": {
+          "title": "易碎物品",
+          "description": "需要特殊包装",
+          "items": {
+            "item1": "玻璃和陶瓷",
+            "item2": "精密电子",
+            "item3": "艺术品",
+            "item4": "精密仪器",
+            "item5": "镜子",
+            "item6": "LCD/LED屏幕"
+          }
+        }
+      },
+      "note": {
+        "title": "重要提示",
+        "description": "本清单并非详尽无遗。请联系我们确认您的物品是否可以运输。"
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "subtitle": "我们解答您的问题",
+      "items": {
+        "priceDecrease": {
+          "question": "费率可以降低吗？",
+          "answer": "不可以，我们的费率在大多数情况下是固定的。但在某些情况下，我们可以酌情给予折扣。"
+        },
+        "priceIncrease": {
+          "question": "费率会提高吗？",
+          "answer": "是的，当某些物品需要特殊清关时。在这种情况下，包裹所有人可能需要支付额外费用来承担额外的清关程序。"
+        },
+        "advancePayment": {
+          "question": "运费需要提前支付吗？",
+          "answer": "一般来说，运费需要在包裹到达时支付。但在某些情况下，根据所有人资料或运输包裹的特征，可能需要预付定金甚至全额付款。"
+        },
+        "customsClearance": {
+          "question": "我的货物到达后还需要清关吗？",
+          "answer": "不需要，我们的费率已包含海关费用。但在某些特殊情况下，清关可能需要包裹所有人的额外步骤。"
+        },
+        "insurance": {
+          "question": "在丢失或损坏的情况下你们提供什么保障？",
+          "answer": "我们有保险100%覆盖损坏和丢失的情况。但是，易碎物品的包装和装箱由供应商或包裹所有人负责。如果因包装不当造成损坏，我们免除责任。"
+        },
+        "prohibitedItems": {
+          "question": "有哪些禁止物品？",
+          "answer": "以下货物在任何情况下均不接受：动物、古董（易碎和/或易损）、石棉、金条、货币、枪支及其零部件和弹药、毛皮、危险品和易燃物（如IATA法规所定义）、人类遗骸（包括骨灰）、贵金属和宝石、毒品（非法）、任何联邦、州或地方法律、法规禁止运输的货物。在某些国家如中国，锂电池、充电宝、无人机、电子烟、带气体的打火机、电子打火机、危险品、走私品、喷雾产品（杀虫剂）、点火器或气体等因火灾风险和其他安全风险而禁止空运。"
+        },
+        "tariffDecrease": {
+          "question": "费率可以降低吗？",
+          "answer": "不可以，我们的费率在大多数情况下是固定的。但在某些情况下，我们可以酌情给予折扣。"
+        },
+        "tariffIncrease": {
+          "question": "费率会提高吗？",
+          "answer": "是的，当某些物品需要特殊清关时。"
+        },
+        "prepayment": {
+          "question": "运费需要提前支付吗？",
+          "answer": "一般来说，运费需要在包裹到达时支付。但在某些情况下，可能需要预付定金甚至全额付款。"
+        },
+        "customs": {
+          "question": "我的货物到达后还需要清关吗？",
+          "answer": "不需要，我们的费率已包含海关费用。但在某些特殊情况下，清关可能需要额外的步骤。"
+        },
+        "guarantee": {
+          "question": "在丢失或损坏的情况下你们提供什么保障？",
+          "answer": "我们有保险100%覆盖损坏和丢失的情况。"
+        },
+        "prohibited": {
+          "question": "哪些物品是禁止的？",
+          "answer": "手机、电脑、锂电池、无人机、液体、易燃产品、保健品、化学品、武器和喷雾产品受到限制或禁止。"
+        }
+      }
+    },
+    "prohibited": {
+      "phonesSea": {
+        "title": "手机（海运禁止）",
+        "description": "手机不能通过海运运输。"
+      },
+      "computersSea": {
+        "title": "电脑（海运禁止）",
+        "description": "电脑不能通过海运运输。"
+      },
+      "batteries": {
+        "title": "锂电池",
+        "description": "出于安全原因，空运和海运均禁止。"
+      },
+      "drones": {
+        "title": "无人机",
+        "description": "空运和海运禁止。需要特别授权。"
+      },
+      "liquidsSea": {
+        "title": "液体（海运禁止）",
+        "description": "液体不能通过海运运输。"
+      },
+      "flammable": {
+        "title": "易燃产品",
+        "description": "空运和海运严格禁止。"
+      },
+      "supplements": {
+        "title": "保健品",
+        "description": "受限。需要特别授权。"
+      },
+      "chemicals": {
+        "title": "化学品",
+        "description": "危险品禁止运输。"
+      },
+      "weapons": {
+        "title": "武器",
+        "description": "严格禁止。"
+      },
+      "spray": {
+        "title": "喷雾产品",
+        "description": "气溶胶空运禁止。"
+      }
+    }
+  }
+}
