@@ -127,7 +127,7 @@ export function FAQSection() {
         <div className="text-center mb-16">
           <AnimatedSection>
             <span className="inline-block px-4 py-1.5 bg-[var(--color-primary-50)] text-[var(--color-primary-700)] rounded-full text-sm font-semibold mb-4">
-              {t('faq.sectionLabel') || 'FAQ'}
+              {t('sectionLabel') || 'FAQ'}
             </span>
           </AnimatedSection>
           
@@ -230,7 +230,7 @@ export function FAQSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-[var(--text-secondary)] mb-4">{t('faq.noAnswer') || 'Vous ne trouvez pas votre réponse ?'}</p>
+          <p className="text-[var(--text-secondary)] mb-4">{t('noAnswer') || 'Vous ne trouvez pas votre réponse ?'}</p>
           <motion.a
             href="https://wa.me/8618851725957"
             target="_blank"
@@ -238,7 +238,7 @@ export function FAQSection() {
             className="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-[var(--color-primary-dark)]"
             whileHover={{ x: 5 }}
           >
-            {t('faq.contactWhatsApp') || 'Contactez-nous sur WhatsApp'}
+            {t('contactWhatsApp') || 'Contactez-nous sur WhatsApp'}
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

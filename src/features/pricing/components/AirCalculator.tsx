@@ -82,11 +82,11 @@ export function AirCalculator() {
     <div className="grid lg:grid-cols-2 gap-8">
       {/* Input Section */}
       <div className="space-y-6">
-        {/* Weight Input */}
+        {/* Weight/Quantity Input */}
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Package className="w-4 h-4 text-blue-500" />
-            {t('airCalculator.weight')}
+            {airState.category === 'phones' ? t('airCalculator.quantity') : t('airCalculator.weight')}
             <span className="text-red-500">*</span>
           </label>
           <div className="relative">
@@ -95,13 +95,18 @@ export function AirCalculator() {
               inputMode="decimal"
               value={airState.weight}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('weight', e.target.value)}
-              placeholder="0.00"
+              placeholder={airState.category === 'phones' ? '1' : '0.00'}
               className="pr-12 text-lg"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-              kg
+              {airState.category === 'phones' ? t('categories.phones.unit') : 'kg'}
             </span>
           </div>
+          {airState.category === 'phones' && (
+            <p className="text-xs text-blue-600 dark:text-blue-400">
+              {t('airCalculator.phoneHint')}
+            </p>
+          )}
         </div>
 
         {/* Dimensions Input */}

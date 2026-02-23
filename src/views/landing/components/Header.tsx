@@ -36,7 +36,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { key: 'about', sectionId: SECTION_IDS.ABOUT, label: 'about' },
   { key: 'services', sectionId: SECTION_IDS.SERVICES, label: 'services' },
-  { key: 'pricing', sectionId: 'pricing', label: 'pricing', href: '/pricing' },
+  { key: 'pricing', sectionId: 'pricing', label: 'pricing', href: '/tarifs' },
   { key: 'whyUs', sectionId: SECTION_IDS.WHY_US, label: 'whyUs' },
   { key: 'contact', sectionId: SECTION_IDS.CONTACT, label: 'contact' },
 ];

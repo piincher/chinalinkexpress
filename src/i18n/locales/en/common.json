@@ -15,7 +15,8 @@
     "blog": "Blog",
     "pricing": "Pricing",
     "calculator": "Calculator",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "cta": {
     "getQuote": "Get Free Quote",
@@ -278,9 +279,11 @@
     },
     "airCalculator": {
       "weight": "Actual weight",
+      "quantity": "Quantity",
       "dimensions": "Dimensions (cm)",
       "optional": "optional",
       "dimensionsHint": "Dimensions allow us to calculate volumetric weight",
+      "phoneHint": "Enter the number of phones you want to ship (price is per phone)",
       "category": "Item category",
       "standardItems": {
         "title": "Common items",
@@ -310,26 +313,6 @@
         "description": "If density exceeds {{threshold}} kg/m³, an adjustment is applied: Weight × 0.005",
         "standardRule": "Standard rule 1:200 (density ≤ 200)",
         "coscoRule": "COSCO/MAERSK 1:250 rule (density > 250)"
-      },
-      "minCBM": {
-        "title": "Minimum CBM",
-        "description": "A minimum of {{minCBM}} CBM is charged for any shipment"
-      }
-    },
-    "seaCalculator": {
-      "dimensions": "Dimensions (meters)",
-      "length": "Length",
-      "width": "Width",
-      "height": "Height",
-      "weight": "Weight (kg)",
-      "weightHint": "for density calculation",
-      "rateInfo": {
-        "title": "Sea Freight Rate",
-        "description": "{{rate}} per CBM with a minimum of {{minCBM}} CBM"
-      },
-      "densityInfo": {
-        "title": "Density Calculation",
-        "description": "If density exceeds {{threshold}} kg/m³, an adjustment is applied: Weight × 0.005"
       },
       "minCBM": {
         "title": "Minimum CBM",
@@ -536,6 +519,20 @@
       }
     }
   },
+  "liveFeed": {
+    "title": "Live Shipments",
+    "packagesToday": "packages delivered today",
+    "deliveredTo": "Delivered to",
+    "inTransit": "In transit",
+    "from": "From",
+    "to": "To",
+    "filterAll": "All",
+    "filterAir": "Air",
+    "filterSea": "Sea",
+    "totalToday": "Total today",
+    "lastUpdated": "Last updated",
+    "liveUpdates": "Live updates"
+  },
   "privacy": {
     "title": "Privacy Policy",
     "subtitle": "Your privacy is our priority. Learn how we protect your personal data.",
@@ -663,5 +660,99 @@
         "p2": "We are committed to processing your requests as soon as possible and providing you with a clear and complete response."
       }
     }
+  },
+  "countdown": {
+    "estimatedDelivery": "Estimated delivery",
+    "arrivingToday": "Arriving today",
+    "delivered": "Delivered",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds",
+    "ordered": "Ordered",
+    "shipped": "Shipped",
+    "inTransit": "In transit",
+    "outForDelivery": "Out for delivery",
+    "trackingNumber": "Tracking number",
+    "progress": "Progress",
+    "urgent": "Urgent - Less than 24h"
+  },
+  "socialProof": {
+    "viewingNow": "people currently viewing",
+    "justShipped": "Package shipped to",
+    "justDelivered": "Package delivered to",
+    "newQuote": "New quote request from",
+    "people": "people",
+    "trustVerified": "Verified Company",
+    "trustSecure": "Secure Payment",
+    "trustSupport": "24/7 Support",
+    "trustExperience": "7+ Years Experience",
+    "trustCustomers": "5000+ Customers"
+  },
+  "tracking": {
+    "timeline": "Delivery timeline",
+    "estimatedDelivery": "Estimated delivery",
+    "actualDelivery": "Actual delivery",
+    "currentStatus": "Current status",
+    "status": {
+      "pending": "Pending",
+      "pickedUp": "Picked up",
+      "inTransit": "In transit",
+      "customs": "Customs",
+      "outForDelivery": "Out for delivery",
+      "delivered": "Delivered"
+    },
+    "trackAnother": "Track another package",
+    "enterNumber": "Enter tracking number",
+    "delayed": "Delayed",
+    "onTime": "On time",
+    "refresh": "Refresh",
+    "orderReceived": "Order received",
+    "packagePickedUp": "Package picked up",
+    "customsClearance": "Customs clearance",
+    "packageDelivered": "Package delivered"
+  },
+  "routesMap": {
+    "title": "Popular Routes",
+    "subtitle": "Discover our most requested routes",
+    "airRoute": "Air Route",
+    "seaRoute": "Sea Route",
+    "popularity": "Popularity",
+    "avgDays": "days average",
+    "priceRange": "Price range",
+    "shipments": "shipments",
+    "topRoutes": "Top Routes",
+    "clickForDetails": "Click for more details",
+    "volume": "Volume"
+  },
+  "quickQuote": {
+    "title": "Quick Quote",
+    "subtitle": "Get a quote in seconds",
+    "step1": "Route",
+    "step2": "Package",
+    "step3": "Service",
+    "step4": "Quote",
+    "origin": "Origin",
+    "destination": "Destination",
+    "weight": "Weight",
+    "dimensions": "Dimensions",
+    "length": "Length",
+    "width": "Width",
+    "height": "Height",
+    "service": {
+      "air": "Air Freight",
+      "sea": "Sea Freight",
+      "express": "Express"
+    },
+    "estimate": "Estimate",
+    "price": "Estimated price",
+    "deliveryTime": "Delivery time",
+    "submit": "Request detailed quote",
+    "next": "Next",
+    "back": "Back",
+    "popularRoutes": "Popular routes",
+    "volumetricWeight": "Volumetric weight",
+    "contactInfo": "Contact information",
+    "success": "Request sent!"
   }
 }

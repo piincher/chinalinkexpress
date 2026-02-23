@@ -91,16 +91,25 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               {t('footer.links')}
             </h3>
             <ul className="space-y-3">
-              {['navigation.about', 'navigation.faq', 'navigation.contact', 'navigation.privacy'].map((key) => (
-                <li key={key}>
-                  <Link
-                    href={`/${locale}/${key === 'navigation.about' ? '#about' : key === 'navigation.contact' ? '#contact' : key === 'navigation.privacy' ? 'privacy' : 'faq'}`}
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                  >
-                    {t(key)}
-                  </Link>
-                </li>
-              ))}
+              {['navigation.about', 'navigation.faq', 'navigation.contact', 'navigation.privacy', 'navigation.terms'].map((key) => {
+                const getHref = () => {
+                  if (key === 'navigation.about') return '#about';
+                  if (key === 'navigation.contact') return '#contact';
+                  if (key === 'navigation.privacy') return 'privacy';
+                  if (key === 'navigation.terms') return 'terms';
+                  return 'faq';
+                };
+                return (
+                  <li key={key}>
+                    <Link
+                      href={`/${locale}/${getHref()}`}
+                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
+                    >
+                      {t(key)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

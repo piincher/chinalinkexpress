@@ -15,7 +15,8 @@
     "blog": "Blog",
     "pricing": "Tarifs",
     "calculator": "Calculateur",
-    "privacy": "Confidentialité"
+    "privacy": "Confidentialité",
+    "terms": "CGV"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -232,7 +233,7 @@
           "Informations de connexion (email, mot de passe sécurisé)",
           "Informations de transaction (historique d'achat, paiements)",
           "Données de navigation (cookies, adresse IP)",
-          "Informations liées aux expéditions (contenu, destination, poids)"
+          "Informations liées aux expéditions (content, destination, poids)"
         ]
       },
       "dataUsage": {
@@ -406,9 +407,11 @@
     },
     "airCalculator": {
       "weight": "Poids réel",
+      "quantity": "Quantité",
       "dimensions": "Dimensions (cm)",
       "optional": "optionnel",
       "dimensionsHint": "Les dimensions permettent de calculer le poids volumétrique",
+      "phoneHint": "Entrez le nombre de téléphones à expédier (prix par téléphone)",
       "category": "Catégorie de marchandise",
       "standardItems": {
         "title": "Articles courants",
@@ -615,5 +618,113 @@
         "description": "Aérosols interdits en avion."
       }
     }
+  },
+  "liveFeed": {
+    "title": "Expéditions en Direct",
+    "packagesToday": "colis livrés aujourd'hui",
+    "deliveredTo": "Livré à",
+    "inTransit": "En transit",
+    "from": "De",
+    "to": "À",
+    "filterAll": "Tous",
+    "filterAir": "Aérien",
+    "filterSea": "Maritime",
+    "totalToday": "Total aujourd'hui",
+    "lastUpdated": "Dernière mise à jour",
+    "liveUpdates": "Mises à jour en temps réel"
+  },
+  "countdown": {
+    "estimatedDelivery": "Livraison estimée",
+    "arrivingToday": "Arrive aujourd'hui",
+    "delivered": "Livré",
+    "days": "jours",
+    "hours": "heures",
+    "minutes": "minutes",
+    "seconds": "secondes",
+    "ordered": "Commandé",
+    "shipped": "Expédié",
+    "inTransit": "En transit",
+    "outForDelivery": "En cours de livraison",
+    "trackingNumber": "Numéro de suivi",
+    "progress": "Progression",
+    "urgent": "Urgent - Moins de 24h"
+  },
+  "socialProof": {
+    "viewingNow": "personnes consultent actuellement",
+    "justShipped": "Colis expédié vers",
+    "justDelivered": "Colis livré à",
+    "newQuote": "Nouvelle demande de devis de",
+    "people": "personnes",
+    "trustVerified": "Entreprise Vérifiée",
+    "trustSecure": "Paiement Sécurisé",
+    "trustSupport": "Support 24/7",
+    "trustExperience": "7+ Ans d'Expérience",
+    "trustCustomers": "5000+ Clients"
+  },
+  "tracking": {
+    "timeline": "Chronologie de livraison",
+    "estimatedDelivery": "Livraison estimée",
+    "actualDelivery": "Livraison réelle",
+    "currentStatus": "Statut actuel",
+    "status": {
+      "pending": "En attente",
+      "pickedUp": "Collecté",
+      "inTransit": "En transit",
+      "customs": "Douane",
+      "outForDelivery": "En cours de livraison",
+      "delivered": "Livré"
+    },
+    "trackAnother": "Suivre un autre colis",
+    "enterNumber": "Entrez le numéro de suivi",
+    "delayed": "Retardé",
+    "onTime": "À l'heure",
+    "refresh": "Actualiser",
+    "orderReceived": "Commande reçue",
+    "packagePickedUp": "Colis collecté",
+    "customsClearance": "Dédouanement",
+    "packageDelivered": "Colis livré"
+  },
+  "routesMap": {
+    "title": "Routes Populaires",
+    "subtitle": "Découvrez nos routes les plus demandées",
+    "airRoute": "Route Aérienne",
+    "seaRoute": "Route Maritime",
+    "popularity": "Popularité",
+    "avgDays": "jours en moyenne",
+    "priceRange": "Fourchette de prix",
+    "shipments": "expéditions",
+    "topRoutes": "Top Routes",
+    "clickForDetails": "Cliquez pour plus de détails",
+    "volume": "Volume"
+  },
+  "quickQuote": {
+    "title": "Devis Express",
+    "subtitle": "Obtenez un devis en quelques secondes",
+    "step1": "Route",
+    "step2": "Colis",
+    "step3": "Service",
+    "step4": "Devis",
+    "origin": "Origine",
+    "destination": "Destination",
+    "weight": "Poids",
+    "dimensions": "Dimensions",
+    "length": "Longueur",
+    "width": "Largeur",
+    "height": "Hauteur",
+    "service": {
+      "air": "Fret Aérien",
+      "sea": "Fret Maritime",
+      "express": "Express"
+    },
+    "estimate": "Estimation",
+    "price": "Prix estimé",
+    "deliveryTime": "Délai de livraison",
+    "submit": "Demander un devis détaillé",
+    "next": "Suivant",
+    "back": "Retour",
+    "popularRoutes": "Routes populaires",
+    "volumetricWeight": "Poids volumétrique",
+    "contactInfo": "Coordonnées",
+    "success": "Demande envoyée !"
   }
 }

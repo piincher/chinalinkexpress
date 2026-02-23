@@ -15,7 +15,8 @@
     "blog": "博客",
     "pricing": "价格",
     "calculator": "计算器",
-    "privacy": "隐私政策"
+    "privacy": "隐私政策",
+    "terms": "条款"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -215,6 +216,20 @@
     "select": "选择语言",
     "current": "当前语言"
   },
+  "liveFeed": {
+    "title": "实时货运",
+    "packagesToday": "今日已送达包裹",
+    "deliveredTo": "送达至",
+    "inTransit": "运输中",
+    "from": "从",
+    "to": "至",
+    "filterAll": "全部",
+    "filterAir": "空运",
+    "filterSea": "海运",
+    "totalToday": "今日总计",
+    "lastUpdated": "最后更新",
+    "liveUpdates": "实时更新"
+  },
   "privacy": {
     "title": "隐私政策",
     "subtitle": "您的隐私是我们的首要任务。了解我们如何保护您的个人数据。",
@@ -406,9 +421,11 @@
     },
     "airCalculator": {
       "weight": "实际重量",
+      "quantity": "数量",
       "dimensions": "尺寸（厘米）",
       "optional": "可选",
       "dimensionsHint": "尺寸用于计算体积重量",
+      "phoneHint": "输入您要运送的手机数量（每部手机的价格）",
       "category": "商品类别",
       "standardItems": {
         "title": "常见物品",
@@ -446,7 +463,7 @@
     },
     "result": {
       "estimatedPrice": "预估价格",
-      "deliveryTime": " delivery时间",
+      "deliveryTime": "预计送达时间",
       "actualWeight": "实际重量",
       "volumetricWeight": "体积重量",
       "chargeableWeight": "计费重量",
@@ -615,5 +632,99 @@
         "description": "气溶胶空运禁止。"
       }
     }
+  },
+  "countdown": {
+    "estimatedDelivery": "预计送达",
+    "arrivingToday": "今日送达",
+    "delivered": "已送达",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒",
+    "ordered": "已下单",
+    "shipped": "已发货",
+    "inTransit": "运输中",
+    "outForDelivery": "派送中",
+    "trackingNumber": "追踪号码",
+    "progress": "进度",
+    "urgent": "紧急 - 少于24小时"
+  },
+  "socialProof": {
+    "viewingNow": "人正在浏览",
+    "justShipped": "包裹已发往",
+    "justDelivered": "包裹已送达",
+    "newQuote": "新的报价请求来自",
+    "people": "人",
+    "trustVerified": "认证企业",
+    "trustSecure": "安全支付",
+    "trustSupport": "24/7支持",
+    "trustExperience": "7年以上经验",
+    "trustCustomers": "5000+客户"
+  },
+  "tracking": {
+    "timeline": "配送时间线",
+    "estimatedDelivery": "预计送达",
+    "actualDelivery": "实际送达",
+    "currentStatus": "当前状态",
+    "status": {
+      "pending": "待处理",
+      "pickedUp": "已揽收",
+      "inTransit": "运输中",
+      "customs": "清关中",
+      "outForDelivery": "派送中",
+      "delivered": "已送达"
+    },
+    "trackAnother": "追踪其他包裹",
+    "enterNumber": "输入追踪号码",
+    "delayed": "延误",
+    "onTime": "准时",
+    "refresh": "刷新",
+    "orderReceived": "订单已接收",
+    "packagePickedUp": "包裹已揽收",
+    "customsClearance": "清关",
+    "packageDelivered": "包裹已送达"
+  },
+  "routesMap": {
+    "title": "热门路线",
+    "subtitle": "探索我们最热门的运输路线",
+    "airRoute": "空运路线",
+    "seaRoute": "海运路线",
+    "popularity": "热门程度",
+    "avgDays": "天平均",
+    "priceRange": "价格范围",
+    "shipments": " shipments",
+    "topRoutes": "热门路线",
+    "clickForDetails": "点击查看详情",
+    "volume": "货量"
+  },
+  "quickQuote": {
+    "title": "快速报价",
+    "subtitle": "几秒钟内获取报价",
+    "step1": "路线",
+    "step2": "包裹",
+    "step3": "服务",
+    "step4": "报价",
+    "origin": "出发地",
+    "destination": "目的地",
+    "weight": "重量",
+    "dimensions": "尺寸",
+    "length": "长度",
+    "width": "宽度",
+    "height": "高度",
+    "service": {
+      "air": "空运",
+      "sea": "海运",
+      "express": "快递"
+    },
+    "estimate": "估算",
+    "price": "预估价格",
+    "deliveryTime": "送达时间",
+    "submit": "申请详细报价",
+    "next": "下一步",
+    "back": "返回",
+    "popularRoutes": "热门路线",
+    "volumetricWeight": "体积重量",
+    "contactInfo": "联系信息",
+    "success": "请求已发送！"
   }
 }

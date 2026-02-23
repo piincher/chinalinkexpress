@@ -135,7 +135,7 @@ export function WhyUsSection() {
         <div className="text-center mb-16">
           <AnimatedSection>
             <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-blue-100 dark:from-blue-900/30 to-cyan-100 dark:to-cyan-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-semibold mb-4">
-              {t('whyUs.sectionLabel') || 'Pourquoi Nous Choisir'}
+              {t('sectionLabel') || 'Pourquoi Nous Choisir'}
             </span>
           </AnimatedSection>
           

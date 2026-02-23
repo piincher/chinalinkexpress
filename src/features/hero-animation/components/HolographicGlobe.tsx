@@ -8,7 +8,7 @@
 
 'use client';
 
-import React, { useRef, useMemo, Suspense } from 'react';
+import React, { useRef, useMemo, Suspense, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import * as THREE from 'three';
@@ -335,6 +335,12 @@ function GlobeScene({ tier }: { tier: PerformanceTier }) {
 
 export function HolographicGlobe({ tier, className = '' }: HolographicGlobeProps) {
   const isPageVisible = usePageVisibility();
+  const [dpr, setDpr] = useState(1); // Default to 1 for SSR
+
+  // Set DPR on client side only
+  useEffect(() => {
+    setDpr(Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1));
+  }, [tier]);
 
   if (tier === 'minimal' || tier === 'low') {
     return null;
@@ -349,7 +355,7 @@ export function HolographicGlobe({ tier, className = '' }: HolographicGlobeProps
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        dpr={Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1)}
+        dpr={dpr}
         frameloop={isPageVisible ? 'always' : 'never'}
       >
         <Suspense fallback={null}>

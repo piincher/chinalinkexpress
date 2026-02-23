@@ -342,6 +342,12 @@ function TeleportScene({ tier }: { tier: PerformanceTier }) {
 
 export function QuantumTeleport({ tier, className = '' }: QuantumTeleportProps) {
   const isPageVisible = usePageVisibility();
+  const [dpr, setDpr] = useState(1); // Default to 1 for SSR
+
+  // Set DPR on client side only
+  useEffect(() => {
+    setDpr(Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1));
+  }, [tier]);
 
   if (tier === 'minimal' || tier === 'low') {
     return null;
@@ -356,7 +362,7 @@ export function QuantumTeleport({ tier, className = '' }: QuantumTeleportProps) 
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        dpr={Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1)}
+        dpr={dpr}
         frameloop={isPageVisible ? 'always' : 'never'}
       >
         <TeleportScene tier={tier} />

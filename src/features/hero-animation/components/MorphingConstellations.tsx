@@ -308,6 +308,12 @@ function MorphingParticles({ tier }: { tier: PerformanceTier }) {
 
 export function MorphingConstellations({ tier, className = '' }: MorphingConstellationsProps) {
   const isPageVisible = usePageVisibility();
+  const [dpr, setDpr] = React.useState(1); // Default to 1 for SSR
+
+  // Set DPR on client side only
+  useEffect(() => {
+    setDpr(Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1));
+  }, [tier]);
 
   if (tier === 'minimal' || tier === 'low') {
     return null;
@@ -322,7 +328,7 @@ export function MorphingConstellations({ tier, className = '' }: MorphingConstel
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        dpr={Math.min(window.devicePixelRatio, tier === 'high' ? 2 : 1)}
+        dpr={dpr}
         frameloop={isPageVisible ? 'always' : 'never'}
       >
         <ambientLight intensity={0.5} />

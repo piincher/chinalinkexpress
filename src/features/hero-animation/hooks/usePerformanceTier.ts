@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { PerformanceTier, DeviceCapabilities } from '../types';
 import { PERFORMANCE_THRESHOLDS } from '../constants';
 
@@ -117,9 +117,12 @@ export function usePerformanceTier(): {
   });
   const [isReady, setIsReady] = useState(false);
   const fps = useFPSMonitor();
+  const hasDetectedRef = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    // Only run detection once to prevent infinite loops
+    if (hasDetectedRef.current) return;
 
     const detectCapabilities = () => {
       const webgl = detectWebGLSupport();
@@ -172,6 +175,7 @@ export function usePerformanceTier(): {
       setCapabilities(caps);
       setTier(detectedTier);
       setIsReady(true);
+      hasDetectedRef.current = true;
     };
 
     // Delay detection to allow for FPS stabilization

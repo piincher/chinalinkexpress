@@ -31,7 +31,7 @@ export function NavigationButton({ variant, className }: NavigationButtonProps) 
       bgColor: 'bg-blue-600 hover:bg-blue-700',
     },
     'calculator-to-pricing': {
-      href: `/${locale}/pricing`,
+      href: `/${locale}/tarifs`,
       icon: <FileText className="w-5 h-5" />,
       text: t('navigation.viewPricing'),
       bgColor: 'bg-indigo-600 hover:bg-indigo-700',

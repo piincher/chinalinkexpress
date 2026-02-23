@@ -8,7 +8,7 @@
 
 'use client';
 
-import React, { useRef, useMemo, useEffect, Suspense } from 'react';
+import React, { useRef, useMemo, useEffect, Suspense, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useIsAnimationPlaying } from '../store/useAnimationStore';
@@ -219,6 +219,12 @@ function WebGLFallback() {
 export function WebGLParticleSystem({ tier, className = '' }: WebGLParticleSystemProps) {
   const config = TIER_CONFIG[tier];
   const isPageVisible = usePageVisibility();
+  const [dpr, setDpr] = useState(1); // Default to 1 for SSR
+
+  // Set DPR on client side only
+  useEffect(() => {
+    setDpr(Math.min(window.devicePixelRatio, 2));
+  }, []);
 
   if (tier !== 'high' || !config.enableGlow) {
     return null;
@@ -233,7 +239,7 @@ export function WebGLParticleSystem({ tier, className = '' }: WebGLParticleSyste
           alpha: true,
           powerPreference: 'high-performance',
         }}
-        dpr={Math.min(window.devicePixelRatio, 2)}
+        dpr={dpr}
         frameloop={isPageVisible ? 'always' : 'never'}
       >
         <Suspense fallback={<WebGLFallback />}>

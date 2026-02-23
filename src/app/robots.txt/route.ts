@@ -1,54 +1,64 @@
 /**
- * Dynamic Robots.txt
+ * Robots.txt Route
  * 
- * Generates robots.txt with sitemap reference for all locales.
+ * Dynamic robots.txt generation for SEO.
  */
 
 import { NextResponse } from 'next/server';
-import { i18nConfig } from '@/i18n/config';
-
-const baseUrl = 'https://www.chinalinkexpress.com';
 
 export async function GET() {
-  const robots = `# robots.txt for ChinaLink Express
-# Multilingual logistics website
-
+  const robotsTxt = `
 User-agent: *
 Allow: /
 
-# Sitemap for all locales
-Sitemap: ${baseUrl}/sitemap.xml
+# Sitemap
+Sitemap: https://www.chinalinkexpress.com/sitemap.xml
 
-# Localized sitemaps (for search engines that support it)
-${i18nConfig.locales
-  .map(
-    (locale) => `# Sitemap for ${i18nConfig.seoLocales[locale]}
-# ${baseUrl}/${locale}/sitemap.xml`
-  )
-  .join('\n')}
-
-# Crawl-delay for polite bots
+# Crawl rate
 Crawl-delay: 1
 
-# Disallow admin and API routes
+# Disallow patterns
 Disallow: /api/
-Disallow: /admin/
-Disallow: /login
-Disallow: /register
+Disallow: /_next/
+Disallow: /*.json$
+Disallow: /*.xml$
 
-# Allow important assets
-Allow: /assets/
-Allow: /images/
+# Allow important pages
+Allow: /fr/
+Allow: /en/
+Allow: /zh/
+Allow: /ar/
+Allow: /fr/services/
+Allow: /en/services/
+Allow: /fr/routes/
+Allow: /en/routes/
+Allow: /fr/tarifs
+Allow: /en/tarifs
+Allow: /fr/calculateur
+Allow: /en/calculator
+Allow: /fr/contact
+Allow: /en/contact
+Allow: /fr/faq
+Allow: /en/faq
 
-# Block specific bots (optional)
-# User-agent: BadBot
-# Disallow: /
-`;
+# Search engine specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
 
-  return new NextResponse(robots, {
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+`.trim();
+
+  return new NextResponse(robotsTxt, {
     headers: {
       'Content-Type': 'text/plain',
-      'Cache-Control': 'public, max-age=86400',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }
