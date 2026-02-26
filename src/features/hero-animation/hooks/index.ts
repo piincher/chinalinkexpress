@@ -5,5 +5,4 @@
  */
 
 export { usePerformanceTier, useReducedMotion } from './usePerformanceTier';
-export { useScrollProgress, useParallax } from './useScrollProgress';
-export { useIntersectionObserver, useVisibilityPause, usePageVisibility } from './useIntersectionObserver';
+export { useIntersectionObserver, usePageVisibility } from './useIntersectionObserver';

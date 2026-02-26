@@ -15,10 +15,6 @@ interface UIState {
   closeMobileMenu: () => void;
   openMobileMenu: () => void;
 
-  // Active sections
-  activeSection: string | null;
-  setActiveSection: (section: string | null) => void;
-
   // FAQ accordion
   activeFaq: number | null;
   setActiveFaq: (index: number | null) => void;
@@ -27,11 +23,6 @@ interface UIState {
   // Scroll state
   isScrolled: boolean;
   setIsScrolled: (value: boolean) => void;
-
-  // Modal states
-  activeModal: string | null;
-  openModal: (modalId: string) => void;
-  closeModal: () => void;
 }
 
 /**
@@ -40,17 +31,13 @@ interface UIState {
 export const useUIStore = create<UIState>()(
   devtools(
     persist(
-      (set, get) => ({
+      (set) => ({
         // Mobile menu
         isMobileMenuOpen: false,
         toggleMobileMenu: () =>
           set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
         closeMobileMenu: () => set({ isMobileMenuOpen: false }),
         openMobileMenu: () => set({ isMobileMenuOpen: true }),
-
-        // Active sections
-        activeSection: null,
-        setActiveSection: (section) => set({ activeSection: section }),
 
         // FAQ accordion
         activeFaq: null,
@@ -63,11 +50,6 @@ export const useUIStore = create<UIState>()(
         // Scroll state
         isScrolled: false,
         setIsScrolled: (value) => set({ isScrolled: value }),
-
-        // Modal states
-        activeModal: null,
-        openModal: (modalId) => set({ activeModal: modalId }),
-        closeModal: () => set({ activeModal: null }),
       }),
       {
         name: 'ui-storage',

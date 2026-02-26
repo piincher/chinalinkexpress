@@ -5,77 +5,7 @@
  * Keeping constants close to where they are used.
  */
 
-import type { Service, Testimonial, Partner, FAQ } from '@/types';
-
-export const HERO_TEXTS = [
-  'Solutions Logistiques Complètes',
-  'Expéditions Internationales',
-  'Votre Partenaire de Confiance',
-] as const;
-
-export const SERVICES: Service[] = [
-  {
-    id: 'achat',
-    title: 'ACHAT',
-    description:
-      'Nous gérons vos achats auprès des fournisseurs chinois avec professionnalisme et transparence.',
-    icon: '🛒',
-  },
-  {
-    id: 'expedition-aerienne',
-    title: 'EXPÉDITION AÉRIENNE',
-    description:
-      'Livraison rapide par voie aérienne pour vos marchandises urgentes à travers le monde.',
-    icon: '✈️',
-  },
-  {
-    id: 'expedition-maritime',
-    title: 'EXPÉDITION MARITIME',
-    description: 'Solution économique pour le transport de gros volumes par voie maritime.',
-    icon: '🚢',
-  },
-  {
-    id: 'paiement-fournisseurs',
-    title: 'PAIEMENT FOURNISSEURS',
-    description:
-      'Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay et autres méthodes.',
-    icon: '💳',
-  },
-  {
-    id: 'recharge-compte',
-    title: 'RECHARGE COMPTE',
-    description:
-      'Rechargez votre compte ChinaLink Express facilement via Orange Money, Wave ou cash pour des transactions plus rapides.',
-    icon: '📱',
-  },
-];
-
-export const WHY_US = [
-  {
-    id: 'rapidite',
-    title: 'Rapidité',
-    description: 'Livraison express dans les délais les plus courts du marché.',
-    image: 'https://placehold.co/200x200/3B82F6/FFFFFF?text=Livraison+Rapide',
-  },
-  {
-    id: 'fiabilite',
-    title: 'Fiabilité',
-    description: 'Suivi en temps réel et service client disponible 24/7.',
-    image: 'https://placehold.co/200x200/10B981/FFFFFF?text=Suivi+en+Temps+Réel',
-  },
-  {
-    id: 'prix',
-    title: 'Prix Compétitifs',
-    description: 'Les meilleurs tarifs du marché avec aucune surprise de frais cachés.',
-    image: 'https://placehold.co/200x200/F59E0B/FFFFFF?text=Prix+Compétitifs',
-  },
-  {
-    id: 'expertise',
-    title: 'Expertise',
-    description: "Plus de 7ans d'expérience dans la logistique internationale.",
-    image: 'https://placehold.co/200x200/8B5CF6/FFFFFF?text=Expertise+Logistique',
-  },
-];
+import type { Partner, FAQ, Testimonial } from '@/types';
 
 export const TESTIMONIALS: Testimonial[] = [
   {
@@ -155,6 +85,7 @@ export const FAQS: FAQ[] = [
 
 export const SECTION_IDS = {
   HERO: 'hero',
+  STATS: 'stats',
   ABOUT: 'about',
   SERVICES: 'services',
   WHY_US: 'why-us',

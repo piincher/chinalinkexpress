@@ -8,9 +8,6 @@
  * - Holographic Globe (3D cyberpunk Earth)
  * - Liquid Background (WebGL fluid simulation)
  * - Morphing Constellations (shape-shifting particles)
- * - Holographic Cards (3D glassmorphism)
- * - Kinetic Typography (physics-based text)
- * - Quantum Teleport (dissolve/reassemble effect)
  * 
  * @example
  * ```tsx
@@ -23,7 +20,6 @@
  * <HeroAnimation effectMode="globe" />      // 3D holographic globe only
  * <HeroAnimation effectMode="liquid" />     // Fluid simulation only
  * <HeroAnimation effectMode="morphing" />   // Shape-shifting particles only
- * <HeroAnimation effectMode="teleport" />   // Quantum teleport only
  * <HeroAnimation effectMode="classic" />    // Original tiered animation
  * 
  * // Disable mind-blowing effects
@@ -44,19 +40,13 @@ export {
   HolographicGlobe,
   LiquidBackground,
   MorphingConstellations,
-  HolographicCards,
-  KineticTypography,
-  QuantumTeleport,
 } from './components';
 
 // Hooks
 export {
   usePerformanceTier,
   useReducedMotion,
-  useScrollProgress,
-  useParallax,
   useIntersectionObserver,
-  useVisibilityPause,
   usePageVisibility,
 } from './hooks';
 

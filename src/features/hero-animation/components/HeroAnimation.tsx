@@ -28,8 +28,6 @@ import { WebGLParticleSystem } from './WebGLParticleSystem';
 import { HolographicGlobe } from './HolographicGlobe';
 import { LiquidBackground } from './LiquidBackground';
 import { MorphingConstellations } from './MorphingConstellations';
-import { KineticTypography } from './KineticTypography';
-import { QuantumTeleport } from './QuantumTeleport';
 
 import type { AnimationMode } from '../types';
 
@@ -140,9 +138,6 @@ export function HeroAnimation({
       
       case 'morphing':
         return <MorphingConstellations tier={tier} />;
-      
-      case 'teleport':
-        return <QuantumTeleport tier={tier} />;
       
       case 'classic':
         return renderClassicAnimation();

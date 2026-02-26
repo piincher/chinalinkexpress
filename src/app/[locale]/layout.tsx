@@ -1,9 +1,14 @@
 /**
- * Locale-Aware Root Layout
+ * Locale-Aware Root Layout - SEO Optimized
  * 
- * Root layout that handles RTL/LTR direction and locale-specific settings.
- * Includes shared navigation and footer components on all pages.
- * Features SSR-safe theme initialization via cookie.
+ * Features:
+ * - Dynamic metadata generation per locale
+ * - Proper hreflang implementation
+ * - Preconnect to critical domains
+ * - Structured data injection
+ * - SSR-safe theme handling
+ * 
+ * @see https://nextjs.org/docs/app/building-your-application/routing/internationalization
  */
 
 import { ReactNode } from 'react';
@@ -16,24 +21,43 @@ import { Analytics } from '@vercel/analytics/next';
 import { i18nConfig, type Locale, getLocaleDirection, getSeoLocale } from '@/i18n/config';
 import { SharedNavbar, SharedFooter } from '@/components/layout';
 import { ThemeProvider, ThemeInitScript } from '@/components/theme';
-import { StructuredData } from '@/app/components/StructuredData';
 import { PWAProvider, InstallPrompt, UpdateNotification, OfflineIndicator } from '@/components/pwa';
+import { SmoothScroll } from '@/components/smooth-scroll';
+import { AnimationProvider } from '@/components/animation';
 import type { Theme, ResolvedTheme } from '@/store/useThemeStore';
 import '../globals.css';
+import '@/styles/scroll-animations.css';
+
+// Animation component styles
+import '@/components/animations/SpotlightCard.css';
+import '@/components/animations/GradientMesh.css';
+import '@/components/animations/GridPattern.css';
+import '@/components/animations/SpotlightBorder.css';
+import '@/components/animations/GradientText.css';
+import '@/components/animations/Marquee.css';
+
+// ============================================================================
+// Font Configuration
+// ============================================================================
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap', // Prevent invisible text during font loading
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
+  preload: false, // Monospace is less critical
 });
 
-/**
- * Get the resolved theme from cookie on server
- */
+// ============================================================================
+// Server-Side Theme Resolution
+// ============================================================================
+
 async function getServerTheme(): Promise<{ theme: Theme; resolvedTheme: ResolvedTheme }> {
   const cookieStore = await cookies();
   const themeCookie = cookieStore.get('theme')?.value;
@@ -57,22 +81,25 @@ async function getServerTheme(): Promise<{ theme: Theme; resolvedTheme: Resolved
   return { theme, resolvedTheme };
 }
 
-/**
- * Generate static params for all locales
- */
+// ============================================================================
+// Static Generation Configuration
+// ============================================================================
+
 export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
-/**
- * Generate metadata for each locale
- */
+// ============================================================================
+// Metadata Generation
+// ============================================================================
+
 export async function generateMetadata({ 
   params 
 }: { 
   params: Promise<{ locale: string }> 
 }) {
   const { locale } = await params;
+  
   const validLocale = i18nConfig.locales.includes(locale as Locale) 
     ? locale 
     : i18nConfig.defaultLocale;
@@ -82,7 +109,7 @@ export async function generateMetadata({
   const seoLocale = getSeoLocale(validLocale as Locale);
   const isEn = validLocale === 'en';
   
-  // Comprehensive SEO keywords
+  // Comprehensive SEO keywords by locale
   const keywords = isEn 
     ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, 1688 sourcing agent, China procurement services, door to door shipping China, container shipping China Africa, FCL shipping, LCL consolidation, air cargo China to Africa, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, China Dakar shipping, shipping China Abidjan, customs clearance Africa'
     : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Afrique, expédition colis Chine Afrique, fret Chine Mali, envoi marchandises Chine Sénégal, transport maritime Chine Côte d\'Ivoire, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine, conteneur Chine Afrique, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Afrique, express Chine Mali, expédition Chine Bamako, transitaire Bamako, fret Chine Dakar, déclaration en douane';
@@ -105,6 +132,7 @@ export async function generateMetadata({
         'en-US': '/en/',
         'zh-CN': '/zh/',
         'ar-SA': '/ar/',
+        'x-default': '/fr/',
       },
     },
     openGraph: {
@@ -114,10 +142,10 @@ export async function generateMetadata({
       siteName: 'ChinaLink Express',
       images: [
         {
-          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png',
+          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'ChinaLink Express - Freight Forwarding China to Africa',
+          alt: isEn ? 'ChinaLink Express - Freight Forwarding China to Africa' : 'ChinaLink Express - Fret Chine Afrique',
         },
       ],
       locale: seoLocale,
@@ -127,12 +155,14 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: messages.metadata?.title || 'ChinaLink Express',
       description: messages.metadata?.description || '',
-      images: ['https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png'],
+      images: ['https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg'],
       creator: '@chinalinkexpress',
+      site: '@chinalinkexpress',
     },
     robots: {
       index: true,
       follow: true,
+      nocache: false,
       googleBot: {
         index: true,
         follow: true,
@@ -142,22 +172,36 @@ export async function generateMetadata({
       },
     },
     verification: {
-      google: 'your-google-verification-code', // Replace with actual code
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
     },
     category: 'logistics',
+    classification: 'Business & Industrial > Shipping & Logistics',
+    other: {
+      'geo.region': 'ML-BM',
+      'geo.placename': 'Bamako',
+      'geo.position': '12.6392;-8.0029',
+      'ICBM': '12.6392, -8.0029',
+    },
+    appleWebApp: {
+      capable: true,
+      title: 'ChinaLink Express',
+      statusBarStyle: 'default',
+    },
+    applicationName: 'ChinaLink Express',
+    manifest: '/manifest.json',
   };
 }
 
-/**
- * Locale layout component
- */
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
+// ============================================================================
+// Layout Component
+// ============================================================================
+
+interface LayoutProps {
+  children: ReactNode;
   params: Promise<{ locale: string }>;
-}) {
+}
+
+export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   
   // Validate locale
@@ -168,10 +212,10 @@ export default async function LocaleLayout({
   // Set locale for static generation
   setRequestLocale(validLocale);
 
-  // Get text direction
+  // Get text direction (LTR/RTL)
   const direction = getLocaleDirection(validLocale as Locale);
 
-  // Load messages directly for the validated locale
+  // Load messages for this locale
   const messages = (await import(`@/i18n/locales/${validLocale}/common.json`)).default;
 
   // Get theme from cookie for SSR
@@ -183,11 +227,21 @@ export default async function LocaleLayout({
       dir={direction}
       className={resolvedTheme === 'dark' ? 'dark' : ''}
       data-theme={resolvedTheme}
+      suppressHydrationWarning // Suppress mismatch warnings for theme
     >
       <head>
+        {/* Theme Initialization Script - Prevents flash */}
         <ThemeInitScript />
+        
+        {/* Performance: Preconnect to Critical Domains */}
+        <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* DNS Prefetch for Third-Party Services */}
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        
         {/* PWA Meta Tags */}
-        <link rel="manifest" href="/manifest.json" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -211,32 +265,37 @@ export default async function LocaleLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
         <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2563eb" />
         
-        {/* Preconnect */}
-        <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />
-        
-        {/* Hreflang */}
+        {/* Hreflang Tags */}
         <link rel="alternate" hrefLang="fr-FR" href="https://www.chinalinkexpress.com/fr/" />
         <link rel="alternate" hrefLang="en-US" href="https://www.chinalinkexpress.com/en/" />
         <link rel="alternate" hrefLang="zh-CN" href="https://www.chinalinkexpress.com/zh/" />
         <link rel="alternate" hrefLang="ar-SA" href="https://www.chinalinkexpress.com/ar/" />
         <link rel="alternate" hrefLang="x-default" href="https://www.chinalinkexpress.com/fr/" />
       </head>
+      
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <PWAProvider>
             <NextIntlClientProvider locale={validLocale} messages={messages}>
-              <StructuredData type="all" />
-              <OfflineIndicator />
-              <UpdateNotification />
-              <SharedNavbar locale={validLocale as Locale} />
-              <div className="flex-grow">
-                {children}
-              </div>
-              <SharedFooter locale={validLocale as Locale} />
-              <InstallPrompt />
+              <AnimationProvider>
+                <SmoothScroll>
+                  <OfflineIndicator />
+                  <UpdateNotification />
+                  <SharedNavbar locale={validLocale as Locale} />
+                  
+                  <main className="flex-grow">
+                    {children}
+                  </main>
+                  
+                  <SharedFooter locale={validLocale as Locale} />
+                  <InstallPrompt />
+                </SmoothScroll>
+              </AnimationProvider>
             </NextIntlClientProvider>
           </PWAProvider>
         </ThemeProvider>
+        
+        {/* Analytics */}
         <SpeedInsights />
         <Analytics />
       </body>

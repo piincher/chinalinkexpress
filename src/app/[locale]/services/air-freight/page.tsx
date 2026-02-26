@@ -1,90 +1,90 @@
 /**
- * Air Freight Service Page
+ * Air Freight Service Page - SEO Optimized
  * 
- * SEO-optimized page for air freight services from China to Africa.
- * Targets keywords: air freight China Africa, air cargo, express shipping
+ * Features:
+ * - Dynamic metadata with comprehensive SEO
+ * - Enhanced structured data with Service schema
+ * - Breadcrumb navigation structured data
+ * - OpenGraph and Twitter card optimization
+ * 
+ * Target Keywords:
+ * - Primary: air freight China Africa, air cargo, express shipping
+ * - Long-tail: air freight Bamako, China to Mali air shipping
+ * - Location: shipping China Bamako, air freight Dakar
  */
 
 import type { Metadata } from 'next';
-import { PAGE_SEO, STRUCTURED_DATA } from '@/config/seo';
+import { setRequestLocale } from 'next-intl/server';
+import { Locale } from '@/i18n/config';
+import { generateServiceMetadata } from '@/lib/metadata';
+import { ServiceStructuredData } from '@/components/seo';
 import { AirFreightPage } from '@/features/services/AirFreightPage';
 
-interface Props {
+// ============================================================================
+// Dynamic Metadata
+// ============================================================================
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateServiceMetadata(locale as Locale, 'air');
+}
+
+// ============================================================================
+// Page Component
+// ============================================================================
+
+interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export default async function AirFreightService({ params }: PageProps) {
   const { locale } = await params;
-  const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.services.airFreight.en : PAGE_SEO.services.airFreight.fr;
   
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: {
-      canonical: `/${locale}/services/air-freight/`,
-      languages: {
-        'en-US': '/en/services/air-freight/',
-        'fr-FR': '/fr/services/air-freight/',
-      },
-    },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://www.chinalinkexpress.com/${locale}/services/air-freight/`,
-      type: 'website',
-      images: [
-        {
-          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/air-freight-og.jpg',
-          width: 1200,
-          height: 630,
-          alt: isEn ? 'Air Freight China to Africa' : 'Fret Aérien Chine Afrique',
-        },
-      ],
-    },
-  };
-}
+  // Set locale for static generation
+  setRequestLocale(locale);
+  
+  const isEn = locale === 'en';
+  
+  // Breadcrumb data for structured data
+  const breadcrumbs = [
+    { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: isEn ? 'Services' : 'Services', url: `/${locale}/services/` },
+    { name: isEn ? 'Air Freight' : 'Fret Aérien', url: `/${locale}/services/air-freight/` },
+  ];
 
-export default async function AirFreight({ params }: Props) {
-  const { locale } = await params;
-  const isEn = locale === 'en';
-  
-  const serviceStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: isEn ? 'Air Freight China to Africa' : 'Fret Aérien Chine Afrique',
-    description: isEn 
-      ? 'Fast air freight from China to Mali, Senegal, Ivory Coast & West Africa. Delivery in 14-21 days.'
-      : 'Fret aérien rapide de la Chine vers le Mali, Sénégal, Côte d\'Ivoire & Afrique de l\'Ouest. Livraison en 14-21 jours.',
-    provider: STRUCTURED_DATA.organization,
-    serviceType: 'Air Freight',
-    areaServed: [
-      { '@type': 'Country', name: 'Mali' },
-      { '@type': 'Country', name: 'Senegal' },
-      { '@type': 'Country', name: 'Ivory Coast' },
-      { '@type': 'Country', name: 'Nigeria' },
-      { '@type': 'Country', name: 'Ghana' },
-      { '@type': 'Country', name: 'Guinea' },
-      { '@type': 'Country', name: 'Burkina Faso' },
-      { '@type': 'Country', name: 'Benin' },
-      { '@type': 'Country', name: 'Togo' },
-    ],
-    offers: {
-      '@type': 'Offer',
-      description: isEn 
-        ? 'Air freight delivery in 14-21 business days'
-        : 'Livraison fret aérien en 14-21 jours ouvrables',
-    },
-  };
-  
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }}
+      {/* Enhanced Structured Data */}
+      <ServiceStructuredData 
+        serviceType="air" 
+        locale={locale as Locale}
+        breadcrumbs={breadcrumbs}
       />
+      
+      {/* Page Content */}
       <AirFreightPage locale={locale} />
     </>
   );
 }
+
+// ============================================================================
+// Static Generation Configuration
+// ============================================================================
+
+// Generate static pages for all locales at build time
+export function generateStaticParams() {
+  return [
+    { locale: 'fr' },
+    { locale: 'en' },
+    { locale: 'zh' },
+    { locale: 'ar' },
+  ];
+}
+
+// Route segment config for caching
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Revalidate every hour

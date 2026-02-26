@@ -1,0 +1,151 @@
+/**
+ * SpotlightBorder.css
+ * Animated gradient border effect following mouse position
+ * Creates a premium "Linear app" style spotlight border
+ */
+
+/* CSS Variables */
+:root {
+  --spotlight-border-width: 1px;
+  --spotlight-border-radius: 16px;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  --spotlight-animation-duration: 4s;
+  --spotlight-background: rgba(10, 10, 10, 0.9);
+}
+
+/* Container for the spotlight border effect */
+.spotlight-border {
+  position: relative;
+  border-radius: var(--spotlight-border-radius);
+  padding: var(--spotlight-border-width);
+  overflow: hidden;
+}
+
+/* Gradient border layer */
+.spotlight-border__gradient {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--spotlight-border-width);
+  background: conic-gradient(
+    from var(--border-angle, 0deg) at var(--spotlight-x) var(--spotlight-y),
+    #3b82f6,
+    #a855f7,
+    #ec4899,
+    #3b82f6
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Interactive mode - no rotation animation, follows mouse */
+.spotlight-border--interactive .spotlight-border__gradient {
+  animation: none;
+}
+
+/* Auto-rotate mode - continuous rotation */
+.spotlight-border--auto-rotate .spotlight-border__gradient {
+  animation: spotlight-rotate var(--spotlight-animation-duration) linear infinite;
+}
+
+/* Rotation animation */
+@keyframes spotlight-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Register custom property for animation */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Inner content wrapper */
+.spotlight-border__content {
+  position: relative;
+  background: var(--spotlight-background);
+  border-radius: calc(var(--spotlight-border-radius) - var(--spotlight-border-width));
+  height: 100%;
+  z-index: 1;
+}
+
+/* Glassmorphism variant for inner content */
+.spotlight-border__content--glass {
+  background: rgba(38, 38, 38, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Light mode adjustments */
+.spotlight-border[data-theme='light'] .spotlight-border__content,
+.light .spotlight-border__content {
+  --spotlight-background: rgba(255, 255, 255, 0.95);
+}
+
+.spotlight-border[data-theme='light'] .spotlight-border__content--glass,
+.light .spotlight-border__content--glass {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover state enhancements */
+.spotlight-border[data-hovered='true'] .spotlight-border__gradient {
+  filter: brightness(1.2);
+}
+
+/* Pause animation when data-animated is false */
+.spotlight-border[data-animated='false'] .spotlight-border__gradient {
+  animation-play-state: paused;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-border__gradient {
+    animation: none !important;
+  }
+  
+  .spotlight-border--auto-rotate .spotlight-border__gradient {
+    /* Show a static gradient instead of animating */
+    background: linear-gradient(
+      135deg,
+      #3b82f6 0%,
+      #a855f7 50%,
+      #ec4899 100%
+    );
+  }
+}
+
+/* Disable animations class */
+.spotlight-border--static .spotlight-border__gradient {
+  animation: none !important;
+}
+
+/* Dark mode adjustments for gradient brightness */
+.dark .spotlight-border__gradient,
+[data-theme='dark'] .spotlight-border__gradient {
+  filter: brightness(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --spotlight-border-radius: 12px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .spotlight-border__gradient {
+    background: currentColor;
+    opacity: 0.8;
+  }
+}

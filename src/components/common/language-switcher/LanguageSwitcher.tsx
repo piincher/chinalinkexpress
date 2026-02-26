@@ -7,7 +7,7 @@
 
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/i18n/navigation';
 import { i18nConfig, type Locale } from '@/i18n/config';

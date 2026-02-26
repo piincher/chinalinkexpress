@@ -1,0 +1,104 @@
+/**
+ * GridPattern.css
+ * Subtle grid pattern overlay for background textures
+ * Perfect for hero sections, feature cards, and "precision/logistics" feeling
+ */
+
+/* Base grid pattern styles */
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dots pattern specific */
+.grid-pattern--dots {
+  /* Default opacity applied via inline style */
+}
+
+/* Lines pattern specific */
+.grid-pattern--lines {
+  /* Default opacity applied via inline style */
+}
+
+/* Animated variant - subtle pulse */
+.grid-pattern--animated {
+  animation: grid-pattern-pulse 4s ease-in-out infinite;
+}
+
+@keyframes grid-pattern-pulse {
+  0%, 100% {
+    opacity: var(--base-opacity, 0.1);
+  }
+  50% {
+    opacity: calc(var(--base-opacity, 0.1) * 1.5);
+  }
+}
+
+/* CSS-only grid pattern variant */
+.css-grid-pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dots pattern using radial gradient */
+.css-grid-pattern--dots {
+  background-image: radial-gradient(
+    circle at center,
+    currentColor 1px,
+    transparent 1px
+  );
+  background-size: var(--grid-size, 20px) var(--grid-size, 20px);
+}
+
+/* Lines pattern using linear gradients */
+.css-grid-pattern--lines {
+  background-image: 
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: var(--grid-size, 20px) var(--grid-size, 20px);
+}
+
+/* Animated CSS grid pattern */
+.css-grid-pattern--animated {
+  animation: css-grid-fade 3s ease-in-out infinite;
+}
+
+@keyframes css-grid-fade {
+  0%, 100% {
+    opacity: var(--base-opacity, 0.1);
+  }
+  50% {
+    opacity: calc(var(--base-opacity, 0.1) * 1.3);
+  }
+}
+
+/* Dark mode adjustments */
+.dark .grid-pattern,
+[data-theme='dark'] .grid-pattern,
+.dark .css-grid-pattern,
+[data-theme='dark'] .css-grid-pattern {
+  /* Slightly reduced opacity for dark mode to avoid harsh contrast */
+  opacity: calc(var(--base-opacity, 0.1) * 0.8);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .grid-pattern--animated,
+  .css-grid-pattern--animated {
+    animation: none;
+  }
+}
+
+/* Disable animations class */
+.grid-pattern--static,
+.css-grid-pattern--static {
+  animation: none !important;
+}

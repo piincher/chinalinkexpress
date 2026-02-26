@@ -14,8 +14,16 @@ export const APP_TAGLINE = 'Votre Partenaire Logistique Chine-Afrique';
 export const FOUNDING_YEAR = 2019;
 export const YEARS_OF_EXPERIENCE = new Date().getFullYear() - FOUNDING_YEAR;
 
-// Stats
+// Stats (numeric values for Counter animation)
 export const STATS = {
+  SHIPMENTS: { value: 12847, suffix: '+' },
+  COUNTRIES: { value: 3, suffix: '+' },
+  RATING: { value: 4.9, suffix: '/5', decimals: 1 },
+  REVENUE: { value: 2.4, suffix: 'M+', prefix: '$' },
+} as const;
+
+// Legacy stats (for backward compatibility)
+export const LEGACY_STATS = {
   SATISFIED_CLIENTS: '1000+',
   COUNTRIES_SERVED: '5+',
   SUCCESS_RATE: '89.8%',
@@ -60,25 +68,6 @@ export const ANIMATION = {
   MOBILE_BREAKPOINT: 1024,
 } as const;
 
-// API Status Constants
-export const API_STATUS = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  SUCCESS: 'success',
-  ERROR: 'error',
-} as const;
-
-// HTTP Status Codes
-export const HTTP_STATUS = {
-  OK: 200,
-  CREATED: 201,
-  BAD_REQUEST: 400,
-  UNAUTHORIZED: 401,
-  FORBIDDEN: 403,
-  NOT_FOUND: 404,
-  SERVER_ERROR: 500,
-} as const;
-
 // Local Storage Keys
 export const STORAGE_KEYS = {
   TOKEN: 'cle_token',
@@ -95,12 +84,4 @@ export const ERROR_MESSAGES = {
   NOT_FOUND: 'Page non trouvée.',
   UNAUTHORIZED: 'Vous devez être connecté pour accéder à cette page.',
   FORBIDDEN: 'Vous n\'avez pas les permissions nécessaires.',
-} as const;
-
-// Validation Rules
-export const VALIDATION = {
-  EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-  PHONE_REGEX: /^\+?[\d\s-]{8,}$/,
-  MIN_PASSWORD_LENGTH: 8,
-  MAX_FILE_SIZE: 10 * 1024 * 1024, // 10MB
 } as const;

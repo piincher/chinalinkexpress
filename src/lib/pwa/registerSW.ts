@@ -28,8 +28,6 @@ export async function registerServiceWorker(): Promise<SWRegistrationResult> {
       updateViaCache: 'imports',
     });
 
-    console.log('[PWA] Service Worker registered:', registration.scope);
-
     // Handle updates
     let isUpdateAvailable = false;
 
@@ -39,7 +37,6 @@ export async function registerServiceWorker(): Promise<SWRegistrationResult> {
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             isUpdateAvailable = true;
-            console.log('[PWA] New version available');
           }
         });
       }
@@ -55,7 +52,6 @@ export async function registerServiceWorker(): Promise<SWRegistrationResult> {
       error: null,
     };
   } catch (error) {
-    console.error('[PWA] Service Worker registration failed:', error);
     return {
       registration: null,
       isUpdateAvailable: false,
@@ -65,23 +61,12 @@ export async function registerServiceWorker(): Promise<SWRegistrationResult> {
   }
 }
 
-// Unregister service worker (for debugging)
-export async function unregisterServiceWorker(): Promise<boolean> {
-  if (!('serviceWorker' in navigator)) return false;
-
-  const registration = await navigator.serviceWorker.ready;
-  const result = await registration.unregister();
-  console.log('[PWA] Service Worker unregistered:', result);
-  return result;
-}
-
 // Update service worker
 export async function updateServiceWorker(): Promise<void> {
   if (!('serviceWorker' in navigator)) return;
 
   const registration = await navigator.serviceWorker.ready;
   await registration.update();
-  console.log('[PWA] Service Worker update check triggered');
 }
 
 // Skip waiting and activate new service worker
@@ -118,48 +103,6 @@ export async function checkForUpdates(): Promise<boolean> {
   });
 }
 
-// Listen for messages from service worker
-export function listenToSWMessages(
-  callback: (event: MessageEvent) => void
-): () => void {
-  if (!('serviceWorker' in navigator)) return () => {};
-
-  navigator.serviceWorker.addEventListener('message', callback);
-  
-  return () => {
-    navigator.serviceWorker.removeEventListener('message', callback);
-  };
-}
-
-// Send message to service worker
-export async function sendMessageToSW(message: unknown): Promise<void> {
-  if (!('serviceWorker' in navigator)) return;
-
-  const registration = await navigator.serviceWorker.ready;
-  if (registration.active) {
-    registration.active.postMessage(message);
-  }
-}
-
-// Cache specific URLs
-export async function cacheUrls(urls: string[]): Promise<void> {
-  return sendMessageToSW({ type: 'CACHE_URLS', urls });
-}
-
-// Check if app is installed
-export function isAppInstalled(): boolean {
-  if (typeof window === 'undefined') return false;
-  
-  // Check display mode
-  const displayMode = window.matchMedia('(display-mode: standalone)').matches;
-  const displayModeFullscreen = window.matchMedia('(display-mode: fullscreen)').matches;
-  
-  // Check iOS standalone
-  const iOSStandalone = (window.navigator as { standalone?: boolean }).standalone === true;
-  
-  return displayMode || displayModeFullscreen || iOSStandalone;
-}
-
 // Check online status
 export function isOnline(): boolean {
   return typeof navigator !== 'undefined' && navigator.onLine;
@@ -181,44 +124,18 @@ export function listenToNetworkChanges(
   };
 }
 
-// Request background sync
-export async function requestBackgroundSync(tag: string): Promise<void> {
-  if (!('serviceWorker' in navigator) || !('SyncManager' in window)) {
-    console.warn('[PWA] Background sync not supported');
-    return;
-  }
-
-  const registration = await navigator.serviceWorker.ready;
-  try {
-    // @ts-expect-error - sync is not in standard types yet
-    await registration.sync.register(tag);
-    console.log('[PWA] Background sync registered:', tag);
-  } catch (error) {
-    console.error('[PWA] Background sync registration failed:', error);
-  }
-}
-
-// Request periodic sync (for content updates)
-export async function requestPeriodicSync(tag: string, minInterval: number): Promise<void> {
-  if (!('serviceWorker' in navigator)) {
-    console.warn('[PWA] Periodic sync not supported');
-    return;
-  }
-
-  const registration = await navigator.serviceWorker.ready;
+// Check if app is installed
+export function isAppInstalled(): boolean {
+  if (typeof window === 'undefined') return false;
   
-  if (!('periodicSync' in registration)) {
-    console.warn('[PWA] Periodic sync not supported');
-    return;
-  }
-
-  try {
-    // @ts-expect-error - periodicSync is not in standard types yet
-    await registration.periodicSync.register(tag, { minInterval });
-    console.log('[PWA] Periodic sync registered:', tag);
-  } catch (error) {
-    console.error('[PWA] Periodic sync registration failed:', error);
-  }
+  // Check display mode
+  const displayMode = window.matchMedia('(display-mode: standalone)').matches;
+  const displayModeFullscreen = window.matchMedia('(display-mode: fullscreen)').matches;
+  
+  // Check iOS standalone
+  const iOSStandalone = (window.navigator as { standalone?: boolean }).standalone === true;
+  
+  return displayMode || displayModeFullscreen || iOSStandalone;
 }
 
 // Get installation prompt (for manual install button)
@@ -230,7 +147,6 @@ export function captureInstallPrompt(): void {
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    console.log('[PWA] Install prompt captured');
   });
 }
 
@@ -246,24 +162,4 @@ export async function showInstallPrompt(): Promise<boolean> {
   
   deferredPrompt = null;
   return outcome === 'accepted';
-}
-
-// Check if install prompt is available
-export function isInstallPromptAvailable(): boolean {
-  return deferredPrompt !== null;
-}
-
-// Get PWA installability info
-export function getPWAInfo(): {
-  isStandalone: boolean;
-  isOnline: boolean;
-  isInstallable: boolean;
-  hasSW: boolean;
-} {
-  return {
-    isStandalone: isAppInstalled(),
-    isOnline: isOnline(),
-    isInstallable: isInstallPromptAvailable(),
-    hasSW: 'serviceWorker' in navigator,
-  };
 }

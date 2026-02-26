@@ -9,7 +9,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { AnimatedSection } from '@/components/animations';
@@ -90,12 +89,10 @@ export function Footer() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring' }}
               >
-                <Image
+                <img
                   src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png"
                   alt="ChinaLink Express Logo"
                   className="h-16 w-16 rounded-xl"
-                  width={1024}
-                  height={1024}
                 />
               </motion.div>
               <h3 className="text-xl ml-3 font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
@@ -189,11 +186,9 @@ export function Footer() {
               className="mt-6 bg-white rounded-2xl p-3"
               whileHover={{ scale: 1.05 }}
             >
-              <Image
+              <img
                 src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/FACEBOOK%20QR.png"
                 alt="QR Code"
-                width={120}
-                height={120}
                 className="w-full rounded-xl"
               />
               <p className="text-xs text-gray-600 dark:text-gray-500 mt-2 text-center font-medium">

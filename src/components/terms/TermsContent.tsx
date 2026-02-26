@@ -8,12 +8,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 import {
    Ship,
    Plane,
    Package,
    Ruler,
-   AlertTriangle,
    Shield,
    FileText,
    Phone,
@@ -24,15 +24,13 @@ import {
    Clock,
    MapPin,
    Scale,
-   Truck,
    Globe,
    Ban,
-   Lock,
    Gavel,
    HeadphonesIcon,
 } from "lucide-react";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
+
 
 interface SectionProps {
    icon: LucideIcon;

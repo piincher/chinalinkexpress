@@ -1,0 +1,173 @@
+/* ============================================
+   Spotlight Card Effect
+   CSS-heavy spotlight and border glow effects
+   ============================================ */
+
+.spotlight-card {
+  position: relative;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Spotlight effect layer */
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--spotlight-color, rgba(255, 255, 255, 0.15)) 0%,
+    transparent var(--spotlight-size, 50%)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Border glow effect layer */
+.spotlight-card--border-glow::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: calc(1rem + 1px);
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    transparent 0%,
+    var(--spotlight-color, rgba(255, 255, 255, 0.15)) 10%,
+    var(--spotlight-color, rgba(255, 255, 255, 0.15)) 25%,
+    transparent 35%,
+    transparent 50%,
+    var(--spotlight-color, rgba(255, 255, 255, 0.15)) 60%,
+    var(--spotlight-color, rgba(255, 255, 255, 0.15)) 75%,
+    transparent 85%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+}
+
+.spotlight-card--border-glow:hover::after {
+  opacity: 1;
+  animation: border-rotate 4s linear infinite;
+}
+
+/* Border rotation animation */
+@keyframes border-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* CSS property for border angle animation */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Gradient border variant */
+.spotlight-card--gradient-border::after {
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    #ff4545 0deg,
+    #00ff99 90deg,
+    #006aff 180deg,
+    #ff0095 270deg,
+    #ff4545 360deg
+  );
+}
+
+/* Inner content wrapper */
+.spotlight-card__content {
+  position: relative;
+  z-index: 2;
+  border-radius: inherit;
+  background: inherit;
+}
+
+/* Dark theme variant */
+.spotlight-card--dark {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.spotlight-card--dark::before {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent var(--spotlight-size, 50%)
+  );
+}
+
+/* Glassmorphism variant */
+.spotlight-card--glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-card::before,
+  .spotlight-card::after {
+    transition: none;
+    animation: none;
+  }
+  
+  .spotlight-card--border-glow:hover::after {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .spotlight-card {
+    border: 2px solid currentColor;
+  }
+  
+  .spotlight-card::before,
+  .spotlight-card::after {
+    display: none;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+  .spotlight-card::before {
+    display: none;
+  }
+  
+  .spotlight-card::after {
+    opacity: 0.5;
+    animation: none;
+  }
+}

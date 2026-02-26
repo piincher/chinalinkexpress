@@ -13,10 +13,7 @@ export { SVGRouteNetwork } from './SVGRouteNetwork';
 export { CanvasParticleSystem } from './CanvasParticleSystem';
 export { WebGLParticleSystem } from './WebGLParticleSystem';
 
-// NEW: Mind-Blowing Effects
+// Mind-Blowing Effects (used by HeroAnimation)
 export { HolographicGlobe } from './HolographicGlobe';
 export { LiquidBackground } from './LiquidBackground';
 export { MorphingConstellations } from './MorphingConstellations';
-export { HolographicCards } from './HolographicCards';
-export { KineticTypography } from './KineticTypography';
-export { QuantumTeleport } from './QuantumTeleport';

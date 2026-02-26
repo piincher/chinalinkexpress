@@ -41,12 +41,3 @@ export const API_ENDPOINTS = {
     PREFERENCES: '/user/preferences',
   },
 } as const;
-
-export const API_STATUS = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  SUCCESS: 'success',
-  ERROR: 'error',
-} as const;
-
-export type ApiStatus = typeof API_STATUS[keyof typeof API_STATUS];

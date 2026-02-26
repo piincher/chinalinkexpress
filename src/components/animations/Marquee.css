@@ -1,0 +1,196 @@
+/**
+ * Marquee Animation Styles
+ * 
+ * Infinite horizontal scroll animation in Vercel/Stripe style
+ * Features:
+ * - Seamless infinite loop with duplicated content
+ * - Gradient masks on edges for fade effect
+ * - Pause on hover for accessibility
+ * - Grayscale to color transition on hover
+ * - Dark mode compatible
+ */
+
+/* Marquee Container */
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Gradient masks on left and right edges */
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Left gradient mask */
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--surface, #ffffff) 0%,
+    var(--surface, #ffffff) 20%,
+    transparent 100%
+  );
+}
+
+/* Right gradient mask */
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--surface, #ffffff) 0%,
+    var(--surface, #ffffff) 20%,
+    transparent 100%
+  );
+}
+
+/* Dark mode support for gradient masks */
+.dark .marquee-container::before,
+[data-theme='dark'] .marquee-container::before,
+.dark .marquee-container::after,
+[data-theme='dark'] .marquee-container::after {
+  background: linear-gradient(
+    to right,
+    var(--surface, #0f0f0f) 0%,
+    var(--surface, #0f0f0f) 20%,
+    transparent 100%
+  );
+}
+
+.dark .marquee-container::after,
+[data-theme='dark'] .marquee-container::after {
+  background: linear-gradient(
+    to left,
+    var(--surface, #0f0f0f) 0%,
+    var(--surface, #0f0f0f) 20%,
+    transparent 100%
+  );
+}
+
+/* Alternative: use CSS variables for better theme support */
+@media (prefers-color-scheme: dark) {
+  .marquee-container::before {
+    background: linear-gradient(
+      to right,
+      var(--surface, #0f0f0f) 0%,
+      var(--surface, #0f0f0f) 20%,
+      transparent 100%
+    );
+  }
+  
+  .marquee-container::after {
+    background: linear-gradient(
+      to left,
+      var(--surface, #0f0f0f) 0%,
+      var(--surface, #0f0f0f) 20%,
+      transparent 100%
+    );
+  }
+}
+
+/* Marquee Track - the scrolling container */
+.marquee-track {
+  display: flex;
+  width: fit-content;
+  animation: marquee-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation on hover for accessibility */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Keyframes for seamless infinite scroll */
+/* Translate from 0 to -50% because we duplicate the content */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Marquee Item - individual logo container */
+.marquee-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Logo styles */
+.marquee-logo {
+  height: 2.5rem;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+/* Logo hover effect - colorize */
+.marquee-item:hover .marquee-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-item {
+    padding: 0 1.5rem;
+  }
+  
+  .marquee-logo {
+    height: 2rem;
+  }
+  
+  /* Smaller gradient masks on mobile */
+  .marquee-container::before,
+  .marquee-container::after {
+    width: 60px;
+  }
+  
+  /* Slightly faster on mobile for better UX */
+  .marquee-track {
+    animation-duration: 25s;
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .marquee-item {
+    padding: 1rem;
+  }
+}
+
+/* Alternative animation speeds */
+.marquee-track--slow {
+  animation-duration: 50s;
+}
+
+.marquee-track--fast {
+  animation-duration: 20s;
+}
+
+/* Reverse direction */
+.marquee-track--reverse {
+  animation-direction: reverse;
+}

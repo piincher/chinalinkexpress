@@ -1,65 +1,91 @@
 /**
- * Localized Home Page
+ * Home Page - SEO Optimized
  * 
- * The main landing page with i18n support and comprehensive SEO.
- * Targets primary keywords: freight forwarding, shipping from China, logistics company
+ * Features:
+ * - Dynamic metadata generation for each locale
+ * - Complete structured data (Organization, LocalBusiness, WebSite)
+ * - OpenGraph and Twitter card optimization
+ * - Canonical and hreflang tags
+ * 
+ * Target Keywords:
+ * - Primary: freight forwarding, shipping from China, logistics company
+ * - Long-tail: shipping from China to Africa, China to West Africa shipping
+ * - Local: shipping China Bamako, freight forwarder China Mali
  */
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { i18nConfig, type Locale } from '@/i18n/config';
-import { PAGE_SEO } from '@/config/seo';
+import { Locale, i18nConfig } from '@/i18n/config';
+import { generateHomeMetadata, defaultViewport } from '@/lib/metadata';
+import { HomeStructuredData } from '@/components/seo';
 import { LandingPage } from '@/views/landing';
+
+// ============================================================================
+// Viewport Configuration
+// ============================================================================
+
+export const viewport: Viewport = defaultViewport;
+
+// ============================================================================
+// Dynamic Metadata
+// ============================================================================
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateHomeMetadata(locale as Locale);
+}
+
+// ============================================================================
+// Page Component
+// ============================================================================
 
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.home.en : PAGE_SEO.home.fr;
-  
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: {
-      canonical: `/${locale}/`,
-      languages: {
-        'en-US': '/en/',
-        'fr-FR': '/fr/',
-        'zh-CN': '/zh/',
-        'ar-SA': '/ar/',
-      },
-    },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://www.chinalinkexpress.com/${locale}/`,
-      type: 'website',
-      images: [
-        {
-          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: isEn ? 'ChinaLink Express - Freight Forwarding China to Africa' : 'ChinaLink Express - Fret Chine Afrique',
-        },
-      ],
-    },
-  };
-}
-
 export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   
-  // Validate locale
+  // Validate and set locale for static generation
   const validLocale = i18nConfig.locales.includes(locale as Locale) 
     ? locale 
     : i18nConfig.defaultLocale;
 
-  // Set locale for static generation
+  // Set locale for next-intl
   setRequestLocale(validLocale);
 
-  return <LandingPage locale={validLocale as Locale} />;
+  return (
+    <>
+      {/* Complete structured data for homepage */}
+      <HomeStructuredData locale={validLocale as Locale} />
+      
+      {/* Landing page content */}
+      <LandingPage locale={validLocale as Locale} />
+    </>
+  );
 }
+
+// ============================================================================
+// Static Generation Configuration
+// ============================================================================
+
+/**
+ * Generate static pages for all supported locales at build time.
+ * This ensures optimal performance and SEO.
+ */
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
+
+// Use static generation with ISR
+export const dynamic = 'force-static';
+
+// Revalidate every hour for content freshness
+export const revalidate = 3600;
+
+// Use Node.js runtime for full Next.js features
+export const runtime = 'nodejs';

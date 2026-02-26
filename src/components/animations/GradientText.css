@@ -1,0 +1,108 @@
+/**
+ * GradientText.css
+ * Animated gradient text shimmer effect
+ * Creates premium headline effects with smooth background-position animation
+ */
+
+/* Base gradient text styles */
+.gradient-text {
+  display: inline;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  will-change: background-position;
+}
+
+/* Keyframe animation for gradient shimmer */
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Shimmer heading styles */
+.shimmer-heading {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.shimmer-heading-1 {
+  font-size: 2.5rem;
+}
+
+.shimmer-heading-2 {
+  font-size: 2rem;
+}
+
+.shimmer-heading-3 {
+  font-size: 1.5rem;
+}
+
+/* Shimmer text inline styles */
+.shimmer-text {
+  font-weight: 600;
+}
+
+/* Premium shimmer - enhanced glow effect */
+.premium-shimmer {
+  font-weight: 700;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* Subtle shimmer - softer effect */
+.subtle-shimmer {
+  font-weight: 500;
+}
+
+/* Dark mode adjustments */
+.dark .gradient-text,
+[data-theme='dark'] .gradient-text {
+  /* Slightly enhance brightness in dark mode for better visibility */
+  filter: brightness(1.1);
+}
+
+.dark .premium-shimmer,
+[data-theme='dark'] .premium-shimmer {
+  text-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none !important;
+    background-position: 0% 50%;
+  }
+}
+
+/* Disable animations class */
+.gradient-text--static {
+  animation: none !important;
+}
+
+/* Responsive heading sizes */
+@media (max-width: 768px) {
+  .shimmer-heading-1 {
+    font-size: 2rem;
+  }
+  
+  .shimmer-heading-2 {
+    font-size: 1.75rem;
+  }
+  
+  .shimmer-heading-3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .gradient-text {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: inherit;
+  }
+}

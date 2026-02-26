@@ -1,89 +1,111 @@
 /**
- * China to Mali Shipping Route Page
+ * China to Mali Route Page - SEO Optimized
  * 
- * SEO-optimized page for shipping from China to Mali.
- * Targets keywords: shipping China Mali, freight forwarder Bamako
+ * Features:
+ * - Route-specific metadata targeting "shipping China Mali" keywords
+ * - ShippingDeliveryTime structured data
+ * - Geographic targeting for Mali market
+ * 
+ * Target Keywords:
+ * - Primary: shipping China Mali, freight forwarder Bamako
+ * - Long-tail: import China Mali, China to Bamako shipping
+ * - Local: transitaire Bamako, fret Chine Mali
  */
 
 import type { Metadata } from 'next';
-import { PAGE_SEO, STRUCTURED_DATA } from '@/config/seo';
+import { setRequestLocale } from 'next-intl/server';
+import { Locale } from '@/i18n/config';
+import { generateRouteMetadata } from '@/lib/metadata';
+import { RouteStructuredData, StructuredData } from '@/components/seo';
+import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/config/seo-advanced';
 import { RoutePage } from '@/features/routes/RoutePage';
 
-interface Props {
+// ============================================================================
+// Dynamic Metadata
+// ============================================================================
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateRouteMetadata(locale as Locale, 'mali');
+}
+
+// ============================================================================
+// Page Component
+// ============================================================================
+
+interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export default async function ChinaToMaliRoute({ params }: PageProps) {
   const { locale } = await params;
-  const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.routes.chinaToMali.en : PAGE_SEO.routes.chinaToMali.fr;
   
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: {
-      canonical: `/${locale}/routes/china-to-mali/`,
-      languages: {
-        'en-US': '/en/routes/china-to-mali/',
-        'fr-FR': '/fr/routes/china-to-mali/',
-      },
-    },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://www.chinalinkexpress.com/${locale}/routes/china-to-mali/`,
-      type: 'website',
-    },
+  // Set locale for static generation
+  setRequestLocale(locale);
+  
+  const isEn = locale === 'en';
+  
+  // Breadcrumb data
+  const breadcrumbs = [
+    { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: isEn ? 'Routes' : 'Routes', url: `/${locale}/routes/` },
+    { name: isEn ? 'China to Mali' : 'Chine vers Mali', url: `/${locale}/routes/china-to-mali/` },
+  ];
+  
+  // Shipping route data for structured data
+  const shippingRoute = {
+    origin: 'China',
+    destination: 'Mali',
+    durationDays: { min: 14, max: 75 },
+    methods: ['air', 'sea'] as ('air' | 'sea')[],
   };
-}
 
-export default async function ChinaToMali({ params }: Props) {
-  const { locale } = await params;
-  const isEn = locale === 'en';
-  
-  const routeData = {
-    origin: { country: 'China', city: 'Guangzhou', code: 'CN' },
-    destination: { country: 'Mali', city: 'Bamako', code: 'ML' },
-    airFreight: {
-      duration: '14-21 days',
-      routes: [
-        { via: 'Ethiopian Airlines', path: 'Guangzhou → Addis Ababa → Bamako' },
-        { via: 'Turkish Airlines', path: 'Guangzhou → Istanbul → Bamako' },
-      ],
-    },
-    seaFreight: {
-      duration: '60-75 days',
-      routes: [
-        { via: 'MSC', path: 'Shanghai → Lagos → Bamako (inland)' },
-        { via: 'CMA CGM', path: 'Shenzhen → Dakar → Bamako (inland)' },
-      ],
-    },
-  };
-  
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: isEn ? 'Shipping from China to Mali' : 'Expédition de la Chine vers le Mali',
-    provider: STRUCTURED_DATA.organization,
-    serviceType: 'Freight Forwarding',
-    areaServed: {
-      '@type': 'City',
-      name: 'Bamako',
-      containedInPlace: {
-        '@type': 'Country',
-        name: 'Mali',
-      },
-    },
-  };
-  
+  // Additional schemas for route page
+  const additionalSchemas = [
+    generateOrganizationSchema(),
+    generateLocalBusinessSchema(),
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      {/* Route-specific Structured Data */}
+      <RouteStructuredData 
+        route={shippingRoute}
+        method="air"
+        locale={locale as Locale}
+        breadcrumbs={breadcrumbs}
       />
-      <RoutePage locale={locale} route={routeData} routeKey="china-to-mali" />
+      
+      {/* Organization & LocalBusiness */}
+      <StructuredData schemas={additionalSchemas} />
+      
+      {/* Page Content */}
+      <RoutePage 
+        locale={locale} 
+        routeKey="china-to-mali"
+        country="Mali"
+        capital="Bamako"
+      />
     </>
   );
 }
+
+// ============================================================================
+// Static Generation Configuration
+// ============================================================================
+
+export function generateStaticParams() {
+  return [
+    { locale: 'fr' },
+    { locale: 'en' },
+    { locale: 'zh' },
+    { locale: 'ar' },
+  ];
+}
+
+export const dynamic = 'force-static';
+export const revalidate = 3600;

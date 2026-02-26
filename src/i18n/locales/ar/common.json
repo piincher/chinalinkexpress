@@ -33,6 +33,11 @@
     "typingTexts": ["حلول لوجستية متكاملة", "الشحن الدولي", "شريكك الموثوق"]
   },
   "stats": {
+    "sectionLabel": "أرقامنا",
+    "title": "نتائج تتحدث عن نفسها",
+    "shipments": "شحنات",
+    "countries": "البلدان المخدومة",
+    "rating": "التقييم المتوسط",
     "satisfiedClients": "عميل راضٍ",
     "countriesServed": "دولة",
     "successRate": "معدل النجاح",
@@ -70,6 +75,38 @@
       "recharge": {
         "title": "شحن الحساب",
         "description": "اشحن حسابك بسهولة عبر Orange Money أو Wave أو النقد لمعاملات أسرع."
+      }
+    },
+    "features": {
+      "sourcing": {
+        "supplierVerification": "التحقق من الموردين",
+        "qualityControl": "مراقبة الجودة",
+        "negotiation": "التفاوض على الأسعار",
+        "consolidation": "تجميع الطرود"
+      },
+      "airFreight": {
+        "expressDelivery": "سريع 14-21 يوم",
+        "tracking": "تتبع في الوقت الفعلي",
+        "insurance": "تأمين شامل",
+        "doorToDoor": "من الباب إلى الباب"
+      },
+      "seaFreight": {
+        "fullContainer": "حاوية كاملة",
+        "sharedContainer": "مشاركة الحاوية",
+        "economical": "اقتصادي 60-75 يوم",
+        "tracking": "تتبع عبر الإنترنت"
+      },
+      "payment": {
+        "alipay": "الدفع عبر Alipay",
+        "wechat": "WeChat Pay",
+        "secure": "100% آمن",
+        "fast": "معالجة 24 ساعة"
+      },
+      "recharge": {
+        "orangeMoney": "Orange Money",
+        "wave": "Wave",
+        "cash": "الدفع نقداً",
+        "instant": "رصيد فوري"
       }
     },
     "appSection": {
@@ -119,6 +156,7 @@
     "sectionLabel": "شركاؤنا",
     "title": "شركاؤنا",
     "subtitle": "نتعاون مع الأفضل في الصناعة",
+    "trustedBy": "موثوق به من قادة الصناعة",
     "partners": {
       "sectionLabel": "شركاؤنا"
     }
@@ -217,20 +255,6 @@
   "language": {
     "select": "تغيير اللغة",
     "current": "اللغة الحالية"
-  },
-  "liveFeed": {
-    "title": "الشحنات المباشرة",
-    "packagesToday": "طرد تم تسليمه اليوم",
-    "deliveredTo": "تم التسليم إلى",
-    "inTransit": "في النقل",
-    "from": "من",
-    "to": "إلى",
-    "filterAll": "الكل",
-    "filterAir": "جوي",
-    "filterSea": "بحري",
-    "totalToday": "المجموع اليوم",
-    "lastUpdated": "آخر تحديث",
-    "liveUpdates": "تحديثات مباشرة"
   },
   "privacy": {
     "title": "سياسة الخصوصية",
@@ -631,99 +655,5 @@
         "description": "المواد الهبابية ممنوعة جواً."
       }
     }
-  },
-  "countdown": {
-    "estimatedDelivery": "التسليم المتوقع",
-    "arrivingToday": "يصل اليوم",
-    "delivered": "تم التسليم",
-    "days": "أيام",
-    "hours": "ساعات",
-    "minutes": "دقائق",
-    "seconds": "ثواني",
-    "ordered": "تم الطلب",
-    "shipped": "تم الشحن",
-    "inTransit": "في النقل",
-    "outForDelivery": "جاري التوصيل",
-    "trackingNumber": "رقم التتبع",
-    "progress": "التقدم",
-    "urgent": "عاجل - أقل من 24 ساعة"
-  },
-  "socialProof": {
-    "viewingNow": "شخص يتصفح الآن",
-    "justShipped": "تم شحن طرد إلى",
-    "justDelivered": "تم تسليم طرد إلى",
-    "newQuote": "طلب عرض سعر جديد من",
-    "people": "أشخاص",
-    "trustVerified": "شركة موثوقة",
-    "trustSecure": "دفع آمن",
-    "trustSupport": "دعم 24/7",
-    "trustExperience": "خبرة +7 سنوات",
-    "trustCustomers": "+5000 عميل"
-  },
-  "tracking": {
-    "timeline": "الجدول الزمني للتسليم",
-    "estimatedDelivery": "التسليم المتوقع",
-    "actualDelivery": "التسليم الفعلي",
-    "currentStatus": "الحالة الحالية",
-    "status": {
-      "pending": "معلق",
-      "pickedUp": "تم الاستلام",
-      "inTransit": "في النقل",
-      "customs": "الجمارك",
-      "outForDelivery": "جاري التوصيل",
-      "delivered": "تم التسليم"
-    },
-    "trackAnother": "تتبع طرد آخر",
-    "enterNumber": "أدخل رقم التتبع",
-    "delayed": "متأخر",
-    "onTime": "في الموعد",
-    "refresh": "تحديث",
-    "orderReceived": "تم استلام الطلب",
-    "packagePickedUp": "تم استلام الطرد",
-    "customsClearance": "التخليص الجمركي",
-    "packageDelivered": "تم تسليم الطرد"
-  },
-  "routesMap": {
-    "title": "الطرق الشائعة",
-    "subtitle": "اكتشف طرقنا الأكثر طلباً",
-    "airRoute": "طريق جوي",
-    "seaRoute": "طريق بحري",
-    "popularity": "الشعبية",
-    "avgDays": "يوماً في المتوسط",
-    "priceRange": "نطاق السعر",
-    "shipments": "شحنات",
-    "topRoutes": "أفضل الطرق",
-    "clickForDetails": "اضغط للمزيد من التفاصيل",
-    "volume": "الحجم"
-  },
-  "quickQuote": {
-    "title": "عرض سعر سريع",
-    "subtitle": "احصل على عرض سعر في ثوانٍ",
-    "step1": "الطريق",
-    "step2": "الطرد",
-    "step3": "الخدمة",
-    "step4": "العرض",
-    "origin": "نقطة الانطلاق",
-    "destination": "الوجهة",
-    "weight": "الوزن",
-    "dimensions": "الأبعاد",
-    "length": "الطول",
-    "width": "العرض",
-    "height": "الارتفاع",
-    "service": {
-      "air": "الشحن الجوي",
-      "sea": "الشحن البحري",
-      "express": "الشحن السريع"
-    },
-    "estimate": "تقدير",
-    "price": "السعر المقدر",
-    "deliveryTime": "وقت التسليم",
-    "submit": "اطلب عرض سعر تفصيلي",
-    "next": "التالي",
-    "back": "السابق",
-    "popularRoutes": "الطرق الشائعة",
-    "volumetricWeight": "الوزن الحجمي",
-    "contactInfo": "معلومات الاتصال",
-    "success": "تم إرسال الطلب!"
   }
 }

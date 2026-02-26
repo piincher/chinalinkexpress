@@ -53,8 +53,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: meta.title as string,
-      description: meta.description as string,
+      title: meta.title || '',
+      description: meta.description || '',
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'en' ? 'en_US' : locale === 'zh' ? 'zh_CN' : 'ar_SA',
     },

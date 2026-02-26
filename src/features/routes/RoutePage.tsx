@@ -9,28 +9,22 @@
 import { motion } from 'framer-motion';
 import { Plane, Ship, Clock, MapPin, Phone, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-
-interface RouteData {
-  origin: { country: string; city: string; code: string };
-  destination: { country: string; city: string; code: string };
-  airFreight: {
-    duration: string;
-    routes: Array<{ via: string; path: string }>;
-  };
-  seaFreight: {
-    duration: string;
-    routes: Array<{ via: string; path: string }>;
-  };
-}
+import { getRouteData } from './route-data';
 
 interface Props {
   locale: string;
-  route: RouteData;
   routeKey: string;
+  country: string;
+  capital: string;
 }
 
-export function RoutePage({ locale, route, routeKey }: Props) {
+export function RoutePage({ locale, routeKey, country, capital }: Props) {
   const isEn = locale === 'en';
+  const route = getRouteData(routeKey);
+  
+  if (!route) {
+    return <div>Route not found</div>;
+  }
 
   return (
     <main className="min-h-screen bg-[var(--surface)]">

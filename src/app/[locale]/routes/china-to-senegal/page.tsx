@@ -42,25 +42,6 @@ export default async function ChinaToSenegal({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
   
-  const routeData = {
-    origin: { country: 'China', city: 'Guangzhou', code: 'CN' },
-    destination: { country: 'Senegal', city: 'Dakar', code: 'SN' },
-    airFreight: {
-      duration: '12-18 days',
-      routes: [
-        { via: 'Turkish Airlines', path: 'Guangzhou → Istanbul → Dakar' },
-        { via: 'Air France', path: 'Shanghai → Paris → Dakar' },
-      ],
-    },
-    seaFreight: {
-      duration: '45-60 days',
-      routes: [
-        { via: 'CMA CGM', path: 'Shanghai → Dakar (direct)' },
-        { via: 'Maersk', path: 'Shenzhen → Tangier → Dakar' },
-      ],
-    },
-  };
-  
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -83,7 +64,7 @@ export default async function ChinaToSenegal({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <RoutePage locale={locale} route={routeData} routeKey="china-to-senegal" />
+      <RoutePage locale={locale} routeKey="china-to-senegal" country="Sénégal" capital="Dakar" />
     </>
   );
 }

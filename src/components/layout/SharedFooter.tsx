@@ -9,10 +9,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Linkedin, Twitter, Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
-import { getCurrentYear } from '@/lib/utils';
+import { cn, getCurrentYear } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 
 interface SharedFooterProps {

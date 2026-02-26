@@ -54,9 +54,6 @@ interface PricingState {
   isCalculating: boolean;
   setIsCalculating: (isCalculating: boolean) => void;
   
-  showDetails: boolean;
-  setShowDetails: (show: boolean) => void;
-  
   // Error handling
   error: string | null;
   setError: (error: string | null) => void;
@@ -114,9 +111,6 @@ export const usePricingStore = create<PricingState>()(
       // UI State
       isCalculating: false,
       setIsCalculating: (isCalculating) => set({ isCalculating }),
-      
-      showDetails: false,
-      setShowDetails: (showDetails) => set({ showDetails }),
       
       // Error
       error: null,

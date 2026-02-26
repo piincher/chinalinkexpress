@@ -13,7 +13,7 @@
 
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { LiveFeaturesDemo } from '@/features/live-features/components/LiveFeaturesDemo';
+import Link from 'next/link';
 
 interface DemoPageProps {
   params: Promise<{ locale: string }>;
@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: DemoPageProps): Promise<Metad
   const t = await getTranslations({ locale, namespace: 'metadata' });
   
   return {
-    title: `Live Features Demo | ${t('title')}`,
-    description: 'Experience our live shipment tracking, real-time updates, and interactive features.',
-    robots: { index: false, follow: false }, // Don't index demo page
+    title: `Demo | ${t('title')}`,
+    description: 'Experience our shipment tracking and interactive features.',
+    robots: { index: false, follow: false },
   };
 }
 
@@ -34,8 +34,14 @@ export default async function DemoPage({ params }: DemoPageProps) {
   const { locale } = await params;
   
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <LiveFeaturesDemo locale={locale} />
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+      <div className="text-center p-8">
+        <h1 className="text-3xl font-bold mb-4">Demo Page</h1>
+        <p className="text-gray-600 mb-6">This demo page is under construction.</p>
+        <Link href={`/${locale}`} className="text-blue-600 hover:underline">
+          Return to Home
+        </Link>
+      </div>
     </main>
   );
 }

@@ -34,6 +34,11 @@
     "badge": "Operating 24/7 • Guaranteed Delivery"
   },
   "stats": {
+    "sectionLabel": "Our Numbers",
+    "title": "Results That Speak",
+    "shipments": "Shipments",
+    "countries": "Countries Served",
+    "rating": "Average Rating",
     "satisfiedClients": "Satisfied Clients",
     "countriesServed": "Countries Served",
     "successRate": "Success Rate",
@@ -71,6 +76,38 @@
       "recharge": {
         "title": "ACCOUNT TOP-UP",
         "description": "Top up your ChinaLink Express account easily via Orange Money, Wave or cash for faster transactions."
+      }
+    },
+    "features": {
+      "sourcing": {
+        "supplierVerification": "Supplier Verification",
+        "qualityControl": "Quality Control",
+        "negotiation": "Price Negotiation",
+        "consolidation": "Package Consolidation"
+      },
+      "airFreight": {
+        "expressDelivery": "Express 14-21 days",
+        "tracking": "Real-time Tracking",
+        "insurance": "Insurance Included",
+        "doorToDoor": "Door-to-Door"
+      },
+      "seaFreight": {
+        "fullContainer": "Full Container",
+        "sharedContainer": "Shared Container",
+        "economical": "Economical 60-75 days",
+        "tracking": "Online Tracking"
+      },
+      "payment": {
+        "alipay": "Alipay Payment",
+        "wechat": "WeChat Pay",
+        "secure": "100% Secure",
+        "fast": "24h Processing"
+      },
+      "recharge": {
+        "orangeMoney": "Orange Money",
+        "wave": "Wave",
+        "cash": "Cash Payment",
+        "instant": "Instant Credit"
       }
     },
     "appSection": {
@@ -120,6 +157,7 @@
     "sectionLabel": "Our Partners",
     "title": "Our Partners",
     "subtitle": "We collaborate with the best in the industry",
+    "trustedBy": "Trusted by Industry Leaders",
     "partners": {
       "sectionLabel": "Our Partners"
     }
@@ -519,20 +557,6 @@
       }
     }
   },
-  "liveFeed": {
-    "title": "Live Shipments",
-    "packagesToday": "packages delivered today",
-    "deliveredTo": "Delivered to",
-    "inTransit": "In transit",
-    "from": "From",
-    "to": "To",
-    "filterAll": "All",
-    "filterAir": "Air",
-    "filterSea": "Sea",
-    "totalToday": "Total today",
-    "lastUpdated": "Last updated",
-    "liveUpdates": "Live updates"
-  },
   "privacy": {
     "title": "Privacy Policy",
     "subtitle": "Your privacy is our priority. Learn how we protect your personal data.",
@@ -660,99 +684,5 @@
         "p2": "We are committed to processing your requests as soon as possible and providing you with a clear and complete response."
       }
     }
-  },
-  "countdown": {
-    "estimatedDelivery": "Estimated delivery",
-    "arrivingToday": "Arriving today",
-    "delivered": "Delivered",
-    "days": "days",
-    "hours": "hours",
-    "minutes": "minutes",
-    "seconds": "seconds",
-    "ordered": "Ordered",
-    "shipped": "Shipped",
-    "inTransit": "In transit",
-    "outForDelivery": "Out for delivery",
-    "trackingNumber": "Tracking number",
-    "progress": "Progress",
-    "urgent": "Urgent - Less than 24h"
-  },
-  "socialProof": {
-    "viewingNow": "people currently viewing",
-    "justShipped": "Package shipped to",
-    "justDelivered": "Package delivered to",
-    "newQuote": "New quote request from",
-    "people": "people",
-    "trustVerified": "Verified Company",
-    "trustSecure": "Secure Payment",
-    "trustSupport": "24/7 Support",
-    "trustExperience": "7+ Years Experience",
-    "trustCustomers": "5000+ Customers"
-  },
-  "tracking": {
-    "timeline": "Delivery timeline",
-    "estimatedDelivery": "Estimated delivery",
-    "actualDelivery": "Actual delivery",
-    "currentStatus": "Current status",
-    "status": {
-      "pending": "Pending",
-      "pickedUp": "Picked up",
-      "inTransit": "In transit",
-      "customs": "Customs",
-      "outForDelivery": "Out for delivery",
-      "delivered": "Delivered"
-    },
-    "trackAnother": "Track another package",
-    "enterNumber": "Enter tracking number",
-    "delayed": "Delayed",
-    "onTime": "On time",
-    "refresh": "Refresh",
-    "orderReceived": "Order received",
-    "packagePickedUp": "Package picked up",
-    "customsClearance": "Customs clearance",
-    "packageDelivered": "Package delivered"
-  },
-  "routesMap": {
-    "title": "Popular Routes",
-    "subtitle": "Discover our most requested routes",
-    "airRoute": "Air Route",
-    "seaRoute": "Sea Route",
-    "popularity": "Popularity",
-    "avgDays": "days average",
-    "priceRange": "Price range",
-    "shipments": "shipments",
-    "topRoutes": "Top Routes",
-    "clickForDetails": "Click for more details",
-    "volume": "Volume"
-  },
-  "quickQuote": {
-    "title": "Quick Quote",
-    "subtitle": "Get a quote in seconds",
-    "step1": "Route",
-    "step2": "Package",
-    "step3": "Service",
-    "step4": "Quote",
-    "origin": "Origin",
-    "destination": "Destination",
-    "weight": "Weight",
-    "dimensions": "Dimensions",
-    "length": "Length",
-    "width": "Width",
-    "height": "Height",
-    "service": {
-      "air": "Air Freight",
-      "sea": "Sea Freight",
-      "express": "Express"
-    },
-    "estimate": "Estimate",
-    "price": "Estimated price",
-    "deliveryTime": "Delivery time",
-    "submit": "Request detailed quote",
-    "next": "Next",
-    "back": "Back",
-    "popularRoutes": "Popular routes",
-    "volumetricWeight": "Volumetric weight",
-    "contactInfo": "Contact information",
-    "success": "Request sent!"
   }
 }

@@ -7,7 +7,7 @@
 
 'use client';
 
-import React, { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 // Split text into animated characters
@@ -111,11 +111,11 @@ export function Typewriter({
   deleteSpeed = 50,
   pauseDuration = 2000,
 }: TypewriterProps) {
-  const [displayText, setDisplayText] = React.useState('');
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [isDeleting, setIsDeleting] = React.useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const currentText = texts[currentIndex];
     
     const timeout = setTimeout(
@@ -202,14 +202,14 @@ export function ScrambleText({
   className = '',
   delay = 0,
 }: ScrambleTextProps) {
-  const [displayText, setDisplayText] = React.useState(children.split('').map(() => ' ').join(''));
-  const [hasStarted, setHasStarted] = React.useState(false);
+  const [displayText, setDisplayText] = useState(children.split('').map(() => ' ').join(''));
+  const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
   
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isInView || hasStarted) return;
     
     const timeout = setTimeout(() => {

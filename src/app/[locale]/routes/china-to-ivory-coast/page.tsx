@@ -42,25 +42,6 @@ export default async function ChinaToIvoryCoast({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
   
-  const routeData = {
-    origin: { country: 'China', city: 'Guangzhou', code: 'CN' },
-    destination: { country: "Ivory Coast", city: 'Abidjan', code: 'CI' },
-    airFreight: {
-      duration: '12-18 days',
-      routes: [
-        { via: 'Air France', path: 'Shanghai → Paris → Abidjan' },
-        { via: 'Turkish Airlines', path: 'Guangzhou → Istanbul → Abidjan' },
-      ],
-    },
-    seaFreight: {
-      duration: '45-60 days',
-      routes: [
-        { via: 'CMA CGM', path: 'Shanghai → Abidjan (direct)' },
-        { via: 'MSC', path: 'Shenzhen → Tema → Abidjan' },
-      ],
-    },
-  };
-  
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -83,7 +64,7 @@ export default async function ChinaToIvoryCoast({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <RoutePage locale={locale} route={routeData} routeKey="china-to-ivory-coast" />
+      <RoutePage locale={locale} routeKey="china-to-ivory-coast" country="Côte d'Ivoire" capital="Abidjan" />
     </>
   );
 }

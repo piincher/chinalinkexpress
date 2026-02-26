@@ -11,14 +11,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useScrollTo } from '@/hooks/useScrollTo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useUIStore } from '@/store/useUIStore';
 import { MagneticButton } from '@/components/animations';
-import { i18nConfig, type Locale } from '@/i18n/config';
+import { type Locale, i18nConfig } from '@/i18n/config';
 import { LanguageSelector } from '@/components/language';
 import { SECTION_IDS } from '../constants';
 
@@ -113,24 +113,8 @@ export function Header({ locale }: HeaderProps) {
 
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  
-  // Track scroll position for header styling - only on client
-  const { scrollY } = useScroll();
-  const headerBg = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.95)']
-  );
-  const headerBlur = useTransform(scrollY, [0, 100], [0, 12]);
-  const headerShadow = useTransform(
-    scrollY,
-    [0, 100],
-    ['0 0 0 rgba(0,0,0,0)', '0 4px 20px rgba(0,0,0,0.1)']
-  );
 
   useEffect(() => {
-    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
@@ -159,12 +143,11 @@ export function Header({ locale }: HeaderProps) {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        backgroundColor: isMounted ? headerBg : 'rgba(255, 255, 255, 0)',
-        backdropFilter: isMounted ? `blur(${12}px)` : 'none',
-        boxShadow: isMounted ? '0 4px 20px rgba(0,0,0,0.1)' : 'none',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-xl shadow-lg' 
+          : 'bg-transparent'
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}

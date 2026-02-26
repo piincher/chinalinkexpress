@@ -8,9 +8,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Calculator, ArrowRight, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
