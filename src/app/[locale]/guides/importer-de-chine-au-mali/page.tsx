@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'Comment choisir un bon fournisseur sur Alibaba ?',
-    answer: 'Vérifiez l\'identité de l\'entreprise, demandez des preuves de production, commencez par un échantillon et utilisez un intermédiaire de confiance pour le paiement.'},{
+    answer: 'Vérifiez l\'identité de l\'entreprise, demandez des preuves de production, commencez par un échantillon et utilisez un intermédiaire de confiance pour le paiement.',
   },
   {
     question: 'Quel fret choisir pour Bamako ?',
