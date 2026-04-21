@@ -8,19 +8,39 @@
 import { createClient } from '@supabase/supabase-js';
 import { Database } from './database.types';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+function getSupabaseUrl(): string {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!url) {
+    throw new Error(
+      'Missing NEXT_PUBLIC_SUPABASE_URL environment variable. Please check your .env.local file.'
+    );
+  }
+  return url;
+}
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
-    'Missing Supabase environment variables. Please check your .env.local file.'
-  );
+function getSupabaseAnonKey(): string {
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!key) {
+    throw new Error(
+      'Missing NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable. Please check your .env.local file.'
+    );
+  }
+  return key;
+}
+
+function getSupabaseServiceKey(): string {
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!key) {
+    throw new Error(
+      'Missing SUPABASE_SERVICE_ROLE_KEY environment variable. Please check your .env.local file.'
+    );
+  }
+  return key;
 }
 
 // Client-side client (uses anon key, respects RLS)
 export const createBrowserClient = () => {
-  return createClient<Database>(supabaseUrl, supabaseAnonKey, {
+  return createClient<Database>(getSupabaseUrl(), getSupabaseAnonKey(), {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
@@ -34,11 +54,7 @@ export const createBrowserClient = () => {
 
 // Server-side client (uses service key for admin operations)
 export const createServerClient = () => {
-  if (!supabaseServiceKey) {
-    throw new Error('SUPABASE_SERVICE_ROLE_KEY is required for server operations');
-  }
-  
-  return createClient<Database>(supabaseUrl, supabaseServiceKey, {
+  return createClient<Database>(getSupabaseUrl(), getSupabaseServiceKey(), {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
@@ -64,5 +80,20 @@ export const getBrowserClient = () => {
   return browserClient;
 };
 
-// Utility for server components and API routes
-export const supabaseAdmin = createServerClient();
+// Lazy singleton for server-side to avoid throwing at module load time during build
+let _supabaseAdmin: ReturnType<typeof createServerClient> | null = null;
+
+export const getSupabaseAdmin = () => {
+  if (!_supabaseAdmin) {
+    _supabaseAdmin = createServerClient();
+  }
+  return _supabaseAdmin;
+};
+
+// Backward-compatible lazy proxy — only initializes when actually used
+export const supabaseAdmin = new Proxy({} as ReturnType<typeof createServerClient>, {
+  get(_target, prop) {
+    const client = getSupabaseAdmin();
+    return (client as any)[prop];
+  },
+});
