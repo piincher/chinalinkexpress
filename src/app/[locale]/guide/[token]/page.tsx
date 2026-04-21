@@ -3,7 +3,7 @@
  * 
  * Dynamic route that displays personalized import guides based on quiz results.
  * - Validates token from URL
- * - Fetches guide data from API
+ * - Fetches guide data directly from Supabase
  * - Shows loading, error, or guide content states
  * - Tracks access for analytics
  * 
@@ -11,10 +11,9 @@
  */
 
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-// Guide feature components (to be implemented)
+// Guide feature components
 import {
   GuideLayout,
   CoverSection,
@@ -25,9 +24,9 @@ import {
   WhatsAppSection,
 } from '@/features/import-quiz/components/guide';
 
-import { WhatsAppButton } from '@/features/import-quiz/components/guide/WhatsAppButton';
 import { GuideData, LeadCategory } from '@/features/import-quiz/types';
 import { QUIZ_CONFIG } from '@/features/import-quiz/lib/constants';
+import { createServerClient } from '@/lib/supabase/client';
 
 // ============================================================================
 // Types
@@ -35,12 +34,6 @@ import { QUIZ_CONFIG } from '@/features/import-quiz/lib/constants';
 
 interface GuidePageProps {
   params: Promise<{ locale: string; token: string }>;
-}
-
-interface GuideApiResponse {
-  valid: boolean;
-  data?: GuideData;
-  error?: string;
 }
 
 // ============================================================================
@@ -73,47 +66,85 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
 // ============================================================================
 
 /**
- * Fetch guide data from API
+ * Masks a WhatsApp number for privacy
+ * Shows only first 3 and last 3 digits
  */
-async function fetchGuideData(token: string): Promise<GuideData | null> {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/guide/${token}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // Cache for 5 minutes to reduce load
-      next: { revalidate: 300 },
-    });
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        return null;
-      }
-      throw new Error(`Failed to fetch guide: ${response.status}`);
-    }
-
-    const result: GuideApiResponse = await response.json();
-    
-    if (!result.valid || !result.data) {
-      return null;
-    }
-
-    return result.data;
-  } catch (error) {
-    console.error('Error fetching guide data:', error);
-    return null;
-  }
+function maskWhatsAppNumber(phone: string): string {
+  if (phone.length < 6) return phone;
+  const firstThree = phone.slice(0, 3);
+  const lastThree = phone.slice(-3);
+  const masked = '*'.repeat(phone.length - 6);
+  return `${firstThree}${masked}${lastThree}`;
 }
 
 /**
- * Track guide access for analytics
- * Note: Access is already tracked by the GET /api/guide/[token] endpoint
+ * Fetch guide data directly from Supabase
+ * Replaces internal HTTP API call to avoid localhost/network issues
  */
-async function trackGuideAccess(_token: string): Promise<void> {
-  // No-op - tracking is handled by the API route itself
-  // The GET request logs access and marks guide as opened
+async function fetchGuideData(token: string): Promise<GuideData | null> {
+  try {
+    // Validate token format
+    if (!token || token.length < 10) {
+      return null;
+    }
+
+    const supabase = createServerClient();
+
+    // Fetch submission by guide token
+    const { data: submission, error: fetchError } = await (supabase as any)
+      .from('quiz_submissions')
+      .select('*')
+      .eq('guide_token', token)
+      .single();
+
+    if (fetchError || !submission) {
+      console.error('[GuidePage] Guide not found for token:', token, fetchError);
+      return null;
+    }
+
+    // Check if guide has expired (30 days from creation)
+    const now = new Date();
+    const createdAt = new Date(submission.created_at);
+    const expiresAt = new Date(createdAt);
+    expiresAt.setDate(expiresAt.getDate() + 30);
+
+    if (now > expiresAt) {
+      console.log('[GuidePage] Guide expired. Token:', token, 'Expired at:', expiresAt.toISOString());
+      return null;
+    }
+
+    // Log access and mark as opened (fire-and-forget, don't block render)
+    try {
+      await (supabase as any).from('guide_access_logs').insert({
+        guide_token: token,
+        ip_address: null,
+        user_agent: null,
+      });
+
+      await (supabase as any)
+        .from('quiz_submissions')
+        .update({
+          guide_opened: true,
+          guide_opened_at: new Date().toISOString(),
+        })
+        .eq('guide_token', token);
+    } catch (logError) {
+      console.warn('[GuidePage] Access logging skipped:', logError);
+    }
+
+    return {
+      token,
+      whatsappNumber: maskWhatsAppNumber(submission.whatsapp_number),
+      score: submission.score,
+      category: submission.category as LeadCategory,
+      answers: submission.answers as Record<number, string>,
+      generatedAt: submission.created_at,
+      expiresAt: expiresAt.toISOString(),
+    };
+  } catch (error) {
+    console.error('[GuidePage] Unexpected error fetching guide:', error);
+    return null;
+  }
 }
 
 // ============================================================================
@@ -316,9 +347,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (now > expiresAt) {
     return <GuideErrorState />;
   }
-
-  // Track access (non-blocking)
-  trackGuideAccess(token);
 
   return (
     <Suspense fallback={<GuideLoadingState />}>

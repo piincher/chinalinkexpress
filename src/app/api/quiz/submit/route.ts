@@ -239,9 +239,24 @@ export async function POST(
 
     if (dbError) {
       console.error('Database error saving quiz submission:', dbError);
+
+      const errorMessage = String(dbError.message || '');
+      const isConnectionError =
+        errorMessage.includes('fetch failed') ||
+        errorMessage.includes('timeout') ||
+        errorMessage.includes('connection') ||
+        errorMessage.includes('network') ||
+        errorMessage.includes('ECONNREFUSED') ||
+        errorMessage.includes('ENOTFOUND') ||
+        errorMessage.includes('ETIMEDOUT');
+
+      const userFacingError = isConnectionError
+        ? 'Database temporarily unavailable. Please try again in a moment.'
+        : 'Failed to save quiz submission: ' + errorMessage;
+
       return NextResponse.json(
-        { success: false, error: 'Failed to save quiz submission: ' + dbError.message },
-        { status: 500 }
+        { success: false, error: userFacingError },
+        { status: isConnectionError ? 503 : 500 }
       );
     }
     
