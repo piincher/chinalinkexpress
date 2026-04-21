@@ -16,14 +16,14 @@ export const SEO_KEYWORDS = {
     'sea freight', 'air freight', 'freight forwarder', 'China Mali shipping',
     // Long-tail
     'shipping from China to Mali', 'freight forwarding China to Bamako', 'Alibaba shipping agent',
-    '1688 sourcing agent', 'China procurement services', 'door to door shipping China Mali',
+    'China procurement services', 'door to door shipping China Mali',
     'container shipping China Mali', 'FCL shipping', 'LCL consolidation',
     // Locations
     'shipping China Bamako', 'freight forwarder China Mali', 'import China Mali',
     'Bamako logistics', 'China to Bamako shipping',
     // Services
     'air cargo China Mali', 'express shipping China Mali', 'Alibaba payment agent',
-    'WeChat Pay business', 'supplier verification China', 'quality inspection China',
+    'supplier verification China', 'quality inspection China',
     'customs clearance Mali', 'import export China Mali', 'sourcing agent Mali',
   ].join(', '),
   
@@ -83,26 +83,26 @@ export const PAGE_SEO = {
     seaFreight: {
       en: {
         title: 'Sea Freight China to Mali | FCL & LCL Shipping | ChinaLink Express',
-        description: 'Economical sea freight from China to Mali via coastal ports. FCL container shipping & LCL consolidation. Delivery in 60-75 days through partner carriers. Get a quote!',
+        description: 'Economical sea freight from Foshan port to Dakar port, then land transit to Bamako. FCL container shipping & LCL consolidation in 60-75 days. Get a quote!',
         keywords: 'sea freight China Mali, FCL shipping, LCL consolidation, container shipping, maritime freight China Mali, sea freight Bamako',
       },
       fr: {
         title: 'Fret Maritime Chine Mali | Conteneur FCL & Groupage LCL',
-        description: 'Fret maritime économique de la Chine vers le Mali via les ports côtiers. Conteneurs complets FCL & groupage LCL. Livraison en 60-75 jours via des partenaires. Devis gratuit!',
+        description: 'Fret maritime économique du port de Foshan au port de Dakar, puis transit terrestre vers Bamako. Conteneurs FCL & groupage LCL en 60-75 jours. Devis gratuit!',
         keywords: 'fret maritime Chine Mali, conteneur FCL, groupage LCL, transport maritime, fret maritime Chine Bamako',
       },
     },
     
     sourcing: {
     en: {
-      title: 'China Sourcing Agent for Mali | Alibaba 1688 Procurement',
-        description: 'Professional sourcing agent in China. We buy from Alibaba, 1688, Taobao on your behalf. Supplier verification, quality inspection, payment processing. Start sourcing today!',
-        keywords: 'China sourcing agent, Alibaba agent, 1688 sourcing, procurement China, supplier verification, quality inspection China',
+      title: 'China Sourcing Agent for Mali | Alibaba Procurement',
+        description: 'Professional sourcing agent in China. We buy from Alibaba on your behalf. Supplier verification, quality inspection, payment processing. Start sourcing today!',
+        keywords: 'China sourcing agent, Alibaba agent, procurement China, supplier verification, quality inspection China',
       },
     fr: {
-      title: 'Agent Sourcing Chine pour le Mali | Achat Alibaba 1688',
-      description: 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, 1688 et Taobao, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
-      keywords: 'agent sourcing Chine Mali, agent Alibaba Mali, achat 1688 Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
+      title: 'Agent Sourcing Chine pour le Mali | Achat Alibaba',
+      description: 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
+      keywords: 'agent sourcing Chine Mali, agent Alibaba Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
       },
     },
   },

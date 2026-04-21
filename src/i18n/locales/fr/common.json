@@ -112,7 +112,7 @@
       "items": {
         "scam": {
           "title": "Risque d'arnaques",
-          "description": "Vous trouvez les fournisseurs vous-même sur Alibaba ou 1688. Sans vérification locale, le risque d'escroquerie est réel."
+          "description": "Vous trouvez les fournisseurs vous-même sur Alibaba. Sans vérification locale, le risque d'escroquerie est réel."
         },
         "quality": {
           "title": "Aucun contrôle qualité",
@@ -120,7 +120,7 @@
         },
         "payment": {
           "title": "Galères de paiement",
-          "description": "Alipay, WeChat Pay, virement bancaire chinois... Vous devez tout gérer seul, avec les risques de change et de fraude."
+          "description": "Alipay, virement bancaire chinois... Vous devez tout gérer seul, avec les risques de change et de fraude."
         },
         "consolidation": {
           "title": "Fournisseurs multiples",
@@ -151,7 +151,7 @@
         },
         "payment": {
           "label": "Paiement fournisseurs",
-          "simple": "Vous gérez Alipay/WeChat",
+          "simple": "Vous gérez Alipay/",
           "full": "Nous payons pour vous"
         },
         "consolidation": {
@@ -213,7 +213,7 @@
       "sourcing": {
         "label": "Recherche fournisseurs",
         "us": "Nous trouvons et vérifions vos fournisseurs en Chine",
-        "them": "Vous devez trouver seul sur Alibaba/1688"
+        "them": "Vous devez trouver seul sur Alibaba"
       },
       "qualityControl": {
         "label": "Contrôle qualité",
@@ -223,7 +223,7 @@
       "payment": {
         "label": "Paiement fournisseurs",
         "us": "Nous payons pour vous en Chine",
-        "them": "Vous gérez Alipay/WeChat Pay seul"
+        "them": "Vous gérez Alipay/ seul"
       },
       "multiCountry": {
         "label": "Service Complet",
@@ -267,7 +267,7 @@
       },
       "payment": {
         "title": "PAIEMENT FOURNISSEURS",
-        "description": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay et autres méthodes."
+        "description": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay et autres méthodes."
       },
       "recharge": {
         "title": "RECHARGE COMPTE",
@@ -295,7 +295,6 @@
       },
       "payment": {
         "alipay": "Paiement Alipay",
-        "wechat": "WeChat Pay",
         "secure": "100% sécurisé",
         "fast": "Traitement 24h"
       },
@@ -425,7 +424,7 @@
       },
       "3": {
         "question": "Comment fonctionne le paiement des fournisseurs ?",
-        "answer": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs."
+        "answer": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs."
       },
       "4": {
         "question": "Comment recharger mon compte ChinaLink Express ?",
@@ -1122,7 +1121,7 @@
       "reliableSuppliers": {
         "title": "Fournisseurs fiables",
         "tags": [
-          "Alibaba vs 1688",
+          "Alibaba vs",
           "Visites usines",
           "Vérification"
         ]

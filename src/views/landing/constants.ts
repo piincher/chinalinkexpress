@@ -67,7 +67,7 @@ export const FAQS: FAQ[] = [
     id: '4',
     question: 'Comment fonctionne le paiement des fournisseurs ?',
     answer:
-      'Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, WeChat Pay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs.',
+      'Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs.',
   },
   {
     id: '5',

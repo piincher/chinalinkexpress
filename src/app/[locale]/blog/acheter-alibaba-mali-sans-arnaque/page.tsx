@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '4. Payer en toute sécurité depuis le Mali',
-            body: 'Le paiement direct au fournisseur depuis le Mali peut être compliqué. ChinaLink facilite le paiement sécurisé via Alipay, WeChat Pay ou virement bancaire, et agit comme intermédiaire de confiance.',
+            body: 'Le paiement direct au fournisseur depuis le Mali peut être compliqué. ChinaLink facilite le paiement sécurisé via Alipay ou virement bancaire, et agit comme intermédiaire de confiance.',
           },
           {
             title: '5. Inspection qualité avant expédition',

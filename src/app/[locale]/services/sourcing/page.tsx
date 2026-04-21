@@ -17,7 +17,7 @@ interface Props {
 
 const sourcingFaqs = [
   {
-    question: 'Pouvez-vous acheter sur Alibaba, 1688 et Taobao pour un client au Mali ?',
+    question: 'Pouvez-vous acheter sur Alibaba pour un client au Mali ?',
     answer: 'Oui. ChinaLink Express peut rechercher le fournisseur, vérifier ses informations, payer la commande en Chine, contrôler les marchandises et organiser l’expédition vers Bamako.',
   },
   {

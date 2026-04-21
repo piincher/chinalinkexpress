@@ -75,7 +75,7 @@ export default async function AlibabaGuidePage({ params }: Props) {
           { href: '/fr/services/sourcing', label: 'Service achat Alibaba' },
           { href: '/fr/services/verification-fournisseur-chine', label: 'Vérifier un fournisseur Alibaba' },
           { href: '/fr/services/paiement-fournisseur-chine', label: 'Payer un fournisseur chinois' },
-          { href: '/fr/guides/acheter-sur-1688-depuis-le-mali', label: 'Comparer avec 1688' },
+          { href: '/fr/guides/importer-de-chine-au-mali', label: 'Guide import Chine-Mali' },
         ]}
       />
     </>

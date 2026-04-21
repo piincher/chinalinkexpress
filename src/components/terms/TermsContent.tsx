@@ -304,7 +304,7 @@ export function TermsContent() {
                <SubSection title="2.4 Service Paiement Fournisseurs">
                   <List
                      items={[
-                        "Paiement via Alipay, WeChat Pay, virement bancaire (T/T)",
+                        "Paiement via Alipay, virement bancaire (T/T)",
 
                         "Garantie de paiement sécurisé et traçable",
                         "Justificatifs de paiement fournis (reçus, factures)",

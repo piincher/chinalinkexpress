@@ -31,7 +31,7 @@ const faqs = [
   {
     question: 'Quels sont les délais d\'un conteneur Chine-Bamako ?',
     answer:
-      'Le transport maritime dure 45–60 jours jusqu\'au port côtier (Lomé, Dakar, Abidjan), plus 7–15 jours de transit routier jusqu\'à Bamako. Soit un total de 60–75 jours porte-à-porte.',
+      'Le transport maritime part du port de Foshan vers le port de Dakar, puis continue par transit routier jusqu’à Bamako. Le délai total est généralement de 60–75 jours porte-à-porte.',
   },
 ];
 
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '4. Les ports de départ et d\'arrivée pour le Mali',
-            body: 'Les principaux ports de départ en Chine sont Shanghai, Shenzhen, Guangzhou et Ningbo. Au Mali, les marchandises arrivent par voie routière depuis Lomé, Dakar ou Abidjan après débarquement maritime.',
+            body: 'Le port de départ est Foshan en Chine. Les marchandises arrivent au port de Dakar, puis continuent par voie routière jusqu’à Bamako après débarquement maritime.',
           },
           {
             title: '5. Comment réserver votre conteneur avec ChinaLink',

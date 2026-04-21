@@ -66,7 +66,7 @@ export default async function FreightComparisonGuide({ params }: Props) {
         readTime="Lecture : 6 minutes"
         sections={[
           { title: 'Quand choisir le fret aérien', body: 'Choisissez l’aérien si la marchandise est urgente, légère, à forte marge ou nécessaire pour tester rapidement un produit sur le marché malien.', items: ['Délais 14-21 jours', 'Petits colis ou échantillons', 'Produits à rotation rapide', 'Budget plus élevé au kg'] },
-          { title: 'Quand choisir le fret maritime', body: 'Choisissez le maritime pour les gros volumes, meubles, machines, cartons lourds ou commandes qui supportent un délai long. Le prix au volume devient plus compétitif.', items: ['Délais 60-75 jours', 'FCL ou LCL', 'Transport via ports côtiers', 'Meilleur pour gros volumes'] },
+          { title: 'Quand choisir le fret maritime', body: 'Choisissez le maritime pour les gros volumes, meubles, machines, cartons lourds ou commandes qui supportent un délai long. Le prix au volume devient plus compétitif.', items: ['Délais 60-75 jours', 'FCL ou LCL', 'Foshan → Dakar → Bamako', 'Meilleur pour gros volumes'] },
           { title: 'Attention au poids volumétrique', body: 'Un colis léger mais volumineux peut coûter cher en aérien. Mesurez longueur, largeur, hauteur et poids réel avant de décider.' },
           { title: 'Notre recommandation pratique', body: 'Testez en aérien quand vous découvrez un produit, puis passez en maritime quand la demande est validée et que les volumes augmentent.' },
         ]}

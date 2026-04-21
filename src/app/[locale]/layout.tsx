@@ -111,7 +111,7 @@ export async function generateMetadata({
   
   // Comprehensive SEO keywords by locale
   const keywords = isEn 
-    ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Mali shipping, shipping from China to Mali, freight forwarding China to Bamako, Alibaba shipping agent, 1688 sourcing agent, China procurement services, door to door shipping China Mali, container shipping China Mali, FCL shipping, LCL consolidation, air cargo China to Mali, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, import China Mali, customs clearance Mali, sourcing agent Mali'
+    ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Mali shipping, shipping from China to Mali, freight forwarding China to Bamako, Alibaba shipping agent, China procurement services, door to door shipping China Mali, container shipping China Mali, FCL shipping, LCL consolidation, air cargo China to Mali, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, import China Mali, customs clearance Mali, sourcing agent Mali'
     : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Mali, expédition colis Chine Mali, fret Chine Bamako, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine Mali, conteneur Chine Mali, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Mali, express Chine Mali, expédition Chine Bamako, transitaire Bamako, import Chine Mali, sourcing Mali';
   
   return {

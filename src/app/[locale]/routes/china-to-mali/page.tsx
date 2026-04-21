@@ -45,7 +45,7 @@ interface PageProps {
 const routeFaqs = [
   {
     question: 'Combien de temps prend le fret Chine-Mali ?',
-    answer: 'Le fret aérien prend généralement 14 à 21 jours vers Bamako. Le fret maritime prend généralement 60 à 75 jours via Lomé, Dakar ou Abidjan puis transport terrestre.',
+    answer: 'Le fret aérien prend généralement 14 à 21 jours vers Bamako. Le fret maritime prend généralement 60 à 75 jours depuis le port de Foshan jusqu’au port de Dakar, puis par transport terrestre vers Bamako.',
   },
   {
     question: 'ChinaLink peut-il gérer le sourcing avant l’expédition ?',

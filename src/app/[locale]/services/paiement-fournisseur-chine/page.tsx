@@ -17,7 +17,7 @@ interface Props {
 const faqs = [
   {
     question: 'Puis-je payer un fournisseur chinois depuis le Mali ?',
-    answer: 'Oui. ChinaLink Express peut faciliter le paiement de fournisseurs en Chine pour les importateurs maliens, notamment lorsque le fournisseur demande Alipay, WeChat Pay ou un virement local chinois.',
+    answer: 'Oui. ChinaLink Express peut faciliter le paiement de fournisseurs en Chine pour les importateurs maliens, notamment lorsque le fournisseur demande Alipay ou un virement local chinois.',
   },
   {
     question: 'Recevrai-je une preuve de paiement ?',
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     question: 'Vérifiez-vous le fournisseur avant paiement ?',
-    answer: 'Nous recommandons toujours une vérification avant paiement, surtout pour un nouveau fournisseur, un gros montant ou une commande sur 1688.',
+    answer: 'Nous recommandons toujours une vérification avant paiement, surtout pour un nouveau fournisseur ou un gros montant.',
   },
   {
     question: 'Pouvez-vous payer plusieurs fournisseurs puis regrouper les colis ?',
@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   return generatePageMetadata({
-    title: 'Paiement fournisseur chinois depuis le Mali | Alipay, WeChat, Virement',
+    title: 'Paiement fournisseur chinois depuis le Mali | Alipay, Virement',
     description:
-      'Payez un fournisseur en Chine depuis le Mali avec ChinaLink Express. Paiement Alipay, WeChat Pay, virement, preuve de paiement, vérification fournisseur et expédition vers Bamako.',
+      'Payez un fournisseur en Chine depuis le Mali avec ChinaLink Express. Paiement Alipay, virement, preuve de paiement, vérification fournisseur et expédition vers Bamako.',
     keywords:
-      'paiement fournisseur chinois Mali, payer fournisseur Chine depuis Mali, Alipay Mali Chine, WeChat Pay fournisseur Chine, paiement 1688 Mali',
+      'paiement fournisseur chinois Mali, payer fournisseur Chine depuis Mali, Alipay Mali Chine, virement fournisseur Chine',
     path: '/services/paiement-fournisseur-chine',
     locale: locale as Locale,
   });
@@ -64,7 +64,7 @@ export default async function SupplierPaymentPage({ params }: Props) {
         { '@type': 'Country', name: 'China' },
       ],
       description:
-        'Service de paiement fournisseur en Chine pour importateurs maliens avec Alipay, WeChat Pay, virement, vérification et preuve de paiement.',
+        'Service de paiement fournisseur en Chine pour importateurs maliens avec Alipay, virement, vérification et preuve de paiement.',
     },
     generateBreadcrumbSchema([
       { name: 'Accueil', url: '/fr/' },
@@ -80,9 +80,9 @@ export default async function SupplierPaymentPage({ params }: Props) {
       <SeoServicePage
         badge="Paiement fournisseur Chine-Mali"
         title="Payer un fournisseur en Chine depuis le Mali"
-        intro="Vous avez trouvé un fournisseur sur Alibaba, 1688, Taobao ou WeChat, mais il demande un paiement en Chine ? ChinaLink Express vous aide à sécuriser le paiement, vérifier les informations essentielles et organiser la suite : contrôle, consolidation et expédition vers Bamako."
+        intro="Vous avez trouvé un fournisseur sur Alibaba, mais il demande un paiement en Chine ? ChinaLink Express vous aide à sécuriser le paiement, vérifier les informations essentielles et organiser la suite : contrôle, consolidation et expédition vers Bamako."
         highlights={[
-          'Paiement Alipay, WeChat Pay ou virement selon le cas',
+          'Paiement Alipay ou virement selon le cas',
           'Preuve de paiement partagée avec le client',
           'Vérification recommandée avant tout gros montant',
           'Suivi fournisseur puis expédition Chine-Mali',
@@ -90,8 +90,8 @@ export default async function SupplierPaymentPage({ params }: Props) {
         sections={[
           {
             title: 'Plateformes et paiements acceptés',
-            body: 'Les fournisseurs chinois travaillent souvent avec des moyens de paiement difficiles à utiliser depuis le Mali. Nous aidons à payer les commandes lorsque le fournisseur accepte Alipay, WeChat Pay, virement bancaire chinois ou paiement via plateforme.',
-            items: ['Alibaba et fournisseurs B2B', '1688 et vendeurs domestiques chinois', 'Taobao et Tmall pour certains achats', 'Fournisseurs contactés sur WeChat'],
+            body: 'Les fournisseurs chinois travaillent souvent avec des moyens de paiement difficiles à utiliser depuis le Mali. Nous aidons à payer les commandes lorsque le fournisseur accepte Alipay, virement bancaire chinois ou paiement via plateforme.',
+            items: ['Alibaba et fournisseurs B2B', 'Vendeurs domestiques chinois', 'Tmall pour certains achats', 'Fournisseurs contactés directement'],
           },
           {
             title: 'Les risques à éviter avant de payer',
@@ -107,7 +107,7 @@ export default async function SupplierPaymentPage({ params }: Props) {
         table={{
           headers: ['Besoin', 'Sans ChinaLink', 'Avec ChinaLink'],
           rows: [
-            ['Payer via Alipay/WeChat', 'Souvent impossible depuis le Mali', 'Paiement assisté en Chine'],
+            ['Payer via Alipay', 'Souvent impossible depuis le Mali', 'Paiement assisté en Chine'],
             ['Limiter les arnaques', 'Vérification difficile à distance', 'Contrôles avant paiement'],
             ['Regrouper les achats', 'Chaque fournisseur expédie séparément', 'Consolidation avant fret'],
             ['Suivre la commande', 'Messages éparpillés', 'Coordination WhatsApp'],

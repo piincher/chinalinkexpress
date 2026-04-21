@@ -20,7 +20,7 @@ const faqs = [
     answer: 'Il faut vérifier l’identité de l’entreprise, la cohérence des informations, les preuves de production, les avis, les photos réelles, les conditions de paiement et la capacité à fournir les documents demandés.',
   },
   {
-    question: 'Pouvez-vous vérifier un fournisseur Alibaba ou 1688 ?',
+    question: 'Pouvez-vous vérifier un fournisseur Alibaba ?',
     answer: 'Oui. Nous pouvons analyser les informations disponibles, contacter le fournisseur, demander des preuves, organiser un contrôle photo ou recommander une inspection plus poussée selon le montant.',
   },
   {
@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title: 'Vérification fournisseur Chine | Inspection avant achat',
     description:
-      'Vérifiez un fournisseur chinois avant de payer. ChinaLink Express contrôle les informations Alibaba, 1688, usine, certificats, échantillons et marchandises pour les importateurs maliens.',
+      'Vérifiez un fournisseur chinois avant de payer. ChinaLink Express contrôle les informations Alibaba, usine, certificats, échantillons et marchandises pour les importateurs maliens.',
     keywords:
-      'vérification fournisseur Chine, inspection qualité Chine, fournisseur Alibaba fiable, fournisseur 1688 fiable, contrôler fournisseur chinois Mali',
+      'vérification fournisseur Chine, inspection qualité Chine, fournisseur Alibaba fiable, contrôler fournisseur chinois Mali',
     path: '/services/verification-fournisseur-chine',
     locale: locale as Locale,
   });
@@ -93,7 +93,7 @@ export default async function SupplierVerificationPage({ params }: Props) {
         title="Vérifier un fournisseur chinois avant de payer"
         intro="Avant de transférer de l’argent à un fournisseur en Chine, ChinaLink Express vous aide à vérifier les signaux essentiels : identité, capacité réelle, cohérence des prix, qualité annoncée, risques de fraude et options d’inspection avant expédition vers le Mali."
         highlights={[
-          'Contrôle Alibaba, 1688, Taobao ou WeChat',
+          'Contrôle Alibaba et autres plateformes',
           'Vérification d’usine et de société selon les données disponibles',
           'Inspection photo avant expédition',
           'Conseils avant paiement fournisseur',
@@ -105,8 +105,8 @@ export default async function SupplierVerificationPage({ params }: Props) {
             items: ['Nom de société et coordonnées', 'Cohérence entre prix, quantité et qualité', 'Photos ou vidéos réelles', 'Capacité à préparer la commande et documents'],
           },
           {
-            title: 'Alibaba, 1688 et fournisseurs WeChat',
-            body: 'Alibaba est plus international, 1688 vise le marché chinois, et beaucoup de fournisseurs travaillent sur WeChat. Chaque canal a ses risques. Nous adaptons la vérification selon la plateforme et le montant à engager.',
+            title: 'Alibaba et autres plateformes',
+            body: 'Alibaba est la plateforme internationale la plus utilisée. Chaque canal a ses risques. Nous adaptons la vérification selon la plateforme et le montant à engager.',
             items: ['Analyse de fiche fournisseur', 'Questions ciblées au vendeur', 'Contrôle du mode de paiement demandé', 'Signalement des prix irréalistes'],
           },
           {
@@ -134,7 +134,7 @@ export default async function SupplierVerificationPage({ params }: Props) {
         faqs={faqs}
         links={[
           { href: '/fr/services/paiement-fournisseur-chine', label: 'Payer un fournisseur chinois' },
-          { href: '/fr/guides/acheter-sur-1688-depuis-le-mali', label: 'Acheter sur 1688 depuis le Mali' },
+          { href: '/fr/guides/acheter-sur-alibaba-depuis-le-mali', label: 'Acheter sur Alibaba depuis le Mali' },
           { href: '/fr/guides/acheter-sur-alibaba-depuis-le-mali', label: 'Acheter sur Alibaba depuis le Mali' },
           { href: '/fr/services/sourcing', label: 'Service sourcing Chine' },
         ]}

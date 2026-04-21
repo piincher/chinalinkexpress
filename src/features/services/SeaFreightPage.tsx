@@ -37,14 +37,12 @@ export function SeaFreightPage({ locale }: Props) {
     {
       icon: Clock,
       title: isEn ? 'Regular Departures' : 'Départs Réguliers',
-      desc: isEn ? 'Weekly sailings from Shanghai, Shenzhen, Guangzhou' : 'Départs hebdomadaires de Shanghai, Shenzhen, Guangzhou',
+      desc: isEn ? 'Weekly sailings from Foshan port' : 'Départs hebdomadaires du port de Foshan',
     },
   ];
 
   const routes = [
-    { origin: 'Shanghai', destination: 'Lomé → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
-    { origin: 'Shenzhen', destination: 'Dakar → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
-    { origin: 'Guangzhou', destination: 'Abidjan → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
+    { origin: 'Foshan', destination: 'Dakar → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
   ];
 
   return (
@@ -68,8 +66,8 @@ export function SeaFreightPage({ locale }: Props) {
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
               {isEn 
-                ? 'Cost-effective ocean shipping for large volumes to Bamako. Containers arrive at coastal ports (Lomé, Dakar, Abidjan) and continue by land to Mali. We coordinate with trusted partner carriers for the entire journey.'
-                : 'Transport maritime économique pour gros volumes vers Bamako. Les conteneurs arrivent aux ports côtiers (Lomé, Dakar, Abidjan) et continuent par route vers le Mali. Nous coordonnons avec des transporteurs partenaires de confiance pour tout le trajet.'}
+                ? 'Cost-effective ocean shipping for large volumes to Bamako. Containers depart from Foshan, arrive at Dakar port, then continue by land transit to Bamako. We coordinate with trusted partner carriers for the entire journey.'
+                : 'Transport maritime économique pour gros volumes vers Bamako. Les conteneurs partent du port de Foshan, arrivent au port de Dakar, puis continuent par transit terrestre jusqu’à Bamako. Nous coordonnons avec des transporteurs partenaires de confiance pour tout le trajet.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -138,8 +136,8 @@ export function SeaFreightPage({ locale }: Props) {
             </h2>
             <p className="text-lg text-[var(--text-secondary)]">
               {isEn 
-                ? 'Sea freight to coastal ports with onward land transport to Bamako, coordinated through our partner network'
-                : 'Fret maritime vers les ports côtiers avec transport terrestre vers Bamako, coordonné via notre réseau de partenaires'}
+                ? 'Sea freight from Foshan to Dakar port with onward land transport to Bamako, coordinated through our partner network'
+                : 'Fret maritime de Foshan au port de Dakar avec transport terrestre vers Bamako, coordonné via notre réseau de partenaires'}
             </p>
           </div>
 

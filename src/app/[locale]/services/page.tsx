@@ -13,13 +13,13 @@ const services = [
   {
     href: '/services/sourcing',
     title: 'Agent sourcing Chine pour le Mali',
-    description: 'Recherche fournisseurs, achat Alibaba/1688, négociation, contrôle qualité et consolidation.',
+    description: 'Recherche fournisseurs, achat Alibaba, négociation, contrôle qualité et consolidation.',
   },
   {
     href: '/services/paiement-fournisseur-chine',
     frOnly: true,
     title: 'Paiement fournisseur chinois',
-    description: 'Paiement Alipay, WeChat Pay ou virement avec preuve de paiement et suivi fournisseur.',
+    description: 'Paiement Alipay ou virement avec preuve de paiement et suivi fournisseur.',
   },
   {
     href: '/services/verification-fournisseur-chine',

@@ -223,8 +223,8 @@ export function HeroAnimation({
       {/* Accessibility: Hidden description */}
       <span className="sr-only">
         Animated visualization of China-Mali logistics network showing shipping routes 
-        connecting major cities including Shanghai, Shenzhen, Guangzhou to Bamako via 
-        coastal ports (Lomé, Dakar, Abidjan) and air freight corridors. Features real-time data visualization,
+        connecting Foshan port to Dakar port with onward land transit to Bamako, plus
+        air freight corridors. Features real-time data visualization,
         holographic effects, and quantum teleportation animations.
       </span>
     </div>

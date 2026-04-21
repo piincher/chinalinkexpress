@@ -60,7 +60,7 @@ const SERVICES_CONFIG = [
     gradient: 'rgba(168, 85, 247, 0.3), rgba(219, 39, 119, 0.3)',
     borderGlow: ['rgba(168, 85, 247, 0.8)', 'rgba(147, 51, 234, 0.4)', 'rgba(126, 34, 206, 0.6)'], // Purple gradient
     span: '2x1' as const,
-    features: ['alipay', 'wechat', 'secure', 'fast'],
+    features: ['alipay', 'secure', 'fast'],
   },
   {
     key: 'recharge' as const,

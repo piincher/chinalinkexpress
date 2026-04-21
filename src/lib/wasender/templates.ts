@@ -350,8 +350,8 @@ Merci pour votre intérêt. Pour vous donner un devis précis, j'ai besoin de qu
 📐 *Dimensions ou volume :*
 (Longueur x Largeur x Hauteur)
 
-🇨🇳 *Ville de départ en Chine :*
-(Shanghai, Guangzhou, Shenzhen...)
+🇨🇳 *Port de départ en Chine :*
+(Foshan)
 
 🇲🇱 *Destination :*
 (Bamako ou autre)

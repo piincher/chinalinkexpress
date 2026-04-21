@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: 'Pouvez-vous payer mon fournisseur chinois ?',
-    answer: 'Oui. Nous facilitons le paiement de fournisseurs en Chine via Alipay, WeChat Pay ou virement bancaire, avec preuve de paiement et suivi de la commande.',
+    answer: 'Oui. Nous facilitons le paiement de fournisseurs en Chine via Alipay ou virement bancaire, avec preuve de paiement et suivi de la commande.',
   },
   {
     question: 'Expédiez-vous vers d\u2019autres pays d\u2019Afrique ?',

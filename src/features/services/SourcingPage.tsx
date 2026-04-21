@@ -20,8 +20,6 @@ export function SourcingPage({ locale }: Props) {
 
   const platforms = [
     { name: 'Alibaba', desc: isEn ? 'B2B wholesale platform' : 'Plateforme B2B en gros', color: 'bg-orange-500' },
-    { name: '1688', desc: isEn ? 'Chinese domestic market' : 'Marché domestique chinois', color: 'bg-blue-500' },
-    { name: 'Taobao', desc: isEn ? 'Retail marketplace' : 'Marché de détail', color: 'bg-red-500' },
     { name: 'Tmall', desc: isEn ? 'Brand products' : 'Produits de marque', color: 'bg-red-600' },
   ];
 
@@ -30,8 +28,8 @@ export function SourcingPage({ locale }: Props) {
       icon: Search,
       title: isEn ? 'Supplier Search' : 'Recherche Fournisseurs',
       desc: isEn 
-        ? 'We find reliable suppliers on Alibaba, 1688, Taobao based on your requirements'
-        : 'Nous trouvons des fournisseurs fiables sur Alibaba, 1688, Taobao selon vos besoins',
+        ? 'We find reliable suppliers on Alibaba based on your requirements'
+        : 'Nous trouvons des fournisseurs fiables sur Alibaba selon vos besoins',
     },
     {
       icon: CheckCircle,
@@ -58,8 +56,8 @@ export function SourcingPage({ locale }: Props) {
       icon: CreditCard,
       title: isEn ? 'Payment Processing' : 'Traitement Paiement',
       desc: isEn 
-        ? 'Secure payments via Alipay, WeChat Pay, bank transfer on your behalf'
-        : 'Paiements sécurisés via Alipay, WeChat Pay, virement bancaire pour vous',
+        ? 'Secure payments via Alipay, bank transfer on your behalf'
+        : 'Paiements sécurisés via Alipay, virement bancaire pour vous',
     },
     {
       icon: Truck,
@@ -91,8 +89,8 @@ export function SourcingPage({ locale }: Props) {
             </h1>
             <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
               {isEn 
-                ? 'Your China sourcing agent for Mali and Bamako. We buy from Alibaba, 1688 and Taobao, verify suppliers, process payments, inspect goods, consolidate parcels, and ship by air or sea.'
-                : 'Votre agent sourcing en Chine pour le Mali et Bamako. Nous achetons sur Alibaba, 1688 et Taobao, vérifions les fournisseurs, gérons le paiement, inspectons les marchandises, consolidons les colis et expédions par avion ou par mer.'}
+                ? 'Your China sourcing agent for Mali and Bamako. We buy from Alibaba, verify suppliers, process payments, inspect goods, consolidate parcels, and ship by air or sea.'
+                : 'Votre agent sourcing en Chine pour le Mali et Bamako. Nous achetons sur Alibaba, vérifions les fournisseurs, gérons le paiement, inspectons les marchandises, consolidons les colis et expédions par avion ou par mer.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -132,7 +130,7 @@ export function SourcingPage({ locale }: Props) {
             <div className="grid gap-4">
               {[
                 isEn ? 'Alibaba supplier search and negotiation' : 'Recherche et négociation fournisseur Alibaba',
-                isEn ? '1688 purchasing with China-side payment support' : 'Achat 1688 avec paiement côté Chine',
+                isEn ? 'Alibaba purchasing with China-side payment support' : 'Achat Alibaba avec paiement côté Chine',
                 isEn ? 'Pre-shipment photos and quality control' : 'Photos et contrôle qualité avant expédition',
                 isEn ? 'Air or sea freight to Bamako based on margin' : 'Fret aérien ou maritime vers Bamako selon votre marge',
               ].map((item) => (

@@ -49,7 +49,7 @@ const TOPICS: TopicConfig[] = [
     borderGradient: 'from-emerald-500 via-teal-500 to-emerald-500',
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
     iconColor: 'text-emerald-600 dark:text-emerald-400',
-    tags: ['Alibaba vs 1688', 'Visites usines', 'Vérification'],
+    tags: ['Alibaba', 'Visites usines', 'Vérification'],
     discussionCount: 94,
   },
   {

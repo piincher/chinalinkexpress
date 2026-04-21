@@ -10,6 +10,7 @@ import type { Route, CityNode, TransportNode } from './types';
 // China-Africa logistics corridor key cities (normalized coordinates 0-1)
 export const CITIES: CityNode[] = [
   // China - Origin
+  { id: 'foshan', name: 'Foshan', nameCN: '佛山', x: 0.755, y: 0.465, region: 'china', importance: 1 },
   { id: 'shanghai', name: 'Shanghai', nameCN: '上海', x: 0.82, y: 0.35, region: 'china', importance: 1 },
   { id: 'shenzhen', name: 'Shenzhen', nameCN: '深圳', x: 0.78, y: 0.48, region: 'china', importance: 0.9 },
   { id: 'guangzhou', name: 'Guangzhou', nameCN: '广州', x: 0.76, y: 0.46, region: 'china', importance: 0.85 },
@@ -30,11 +31,11 @@ export const CITIES: CityNode[] = [
 
 // Trade routes (China ↔ Africa)
 export const ROUTES: Route[] = [
-  // Maritime routes to coastal ports (Bamako is landlocked)
+  // Maritime route to Dakar port, then land transit to Bamako (Mali is landlocked)
   {
-    id: 'sea-shanghai-lome',
-    from: 'shanghai',
-    to: 'lome',
+    id: 'sea-foshan-dakar',
+    from: 'foshan',
+    to: 'dakar',
     points: [], // Calculated at runtime
     color: '#3fb0ff',
     width: 3,
@@ -42,24 +43,14 @@ export const ROUTES: Route[] = [
     trafficIntensity: 'high',
   },
   {
-    id: 'sea-shenzhen-dakar',
-    from: 'shenzhen',
-    to: 'dakar',
+    id: 'land-dakar-bamako',
+    from: 'dakar',
+    to: 'bamako',
     points: [],
     color: '#7fd0ff',
     width: 2.5,
-    dashArray: '6 8',
-    trafficIntensity: 'medium',
-  },
-  {
-    id: 'sea-guangzhou-abidjan',
-    from: 'guangzhou',
-    to: 'abidjan',
-    points: [],
-    color: '#9fd3ff',
-    width: 2,
-    dashArray: '4 10',
-    trafficIntensity: 'medium',
+    dashArray: '4 6',
+    trafficIntensity: 'high',
   },
 
   // Air routes to Bamako
@@ -97,9 +88,8 @@ export const ROUTES: Route[] = [
 
 // Transport nodes moving along routes
 export const TRANSPORT_NODES: TransportNode[] = [
-  { id: 'ship1', type: 'ship', routeId: 'sea-shanghai-lome', progress: 0, speed: 0.0003, icon: '🚢' },
-  { id: 'ship2', type: 'ship', routeId: 'sea-shenzhen-dakar', progress: 0.3, speed: 0.00025, icon: '🚢' },
-  { id: 'ship3', type: 'ship', routeId: 'sea-guangzhou-abidjan', progress: 0.6, speed: 0.0002, icon: '🚢' },
+  { id: 'ship1', type: 'ship', routeId: 'sea-foshan-dakar', progress: 0, speed: 0.0003, icon: '🚢' },
+  { id: 'truck1', type: 'truck', routeId: 'land-dakar-bamako', progress: 0.35, speed: 0.0002, icon: '🚚' },
   { id: 'plane1', type: 'plane', routeId: 'air-shanghai-addis-bamako', progress: 0.1, speed: 0.001, icon: '✈️' },
   { id: 'plane2', type: 'plane', routeId: 'air-shenzhen-dubai-bamako', progress: 0.5, speed: 0.0008, icon: '✈️' },
   { id: 'plane3', type: 'plane', routeId: 'air-guangzhou-istanbul-bamako', progress: 0.8, speed: 0.0009, icon: '✈️' },

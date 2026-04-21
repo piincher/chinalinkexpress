@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '2. Trouver et vérifier un fournisseur chinois fiable',
-            body: 'Alibaba, 1688 et Taobao offrent des millions de fournisseurs, mais tous ne sont pas fiables. Demandez des preuves de production, vérifiez les avis et commencez par un échantillon avant toute grosse commande.',
+            body: 'Alibaba offre des millions de fournisseurs, mais tous ne sont pas fiables. Demandez des preuves de production, vérifiez les avis et commencez par un échantillon avant toute grosse commande.',
             items: [
               'Demandez des photos et vidéos récentes de l\'usine',
               'Vérifiez la licence commerciale et les avis clients',
@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '3. Sécuriser le paiement de votre fournisseur',
-            body: 'Les fournisseurs chinois demandent souvent Alipay, WeChat Pay ou virement bancaire. Ces méthodes peuvent être risquées si vous ne connaissez pas le fournisseur. ChinaLink facilite le paiement sécurisé et vous protège contre les arnaques.',
+            body: 'Les fournisseurs chinois demandent souvent Alipay ou virement bancaire. Ces méthodes peuvent être risquées si vous ne connaissez pas le fournisseur. ChinaLink facilite le paiement sécurisé et vous protège contre les arnaques.',
           },
           {
             title: '4. Choisir entre fret aérien et fret maritime',

@@ -18,7 +18,7 @@ interface Props {
 const seaFreightFaqs = [
   {
     question: 'Combien de temps prend le fret maritime Chine-Mali ?',
-    answer: 'Le fret maritime vers Bamako prend généralement 60 à 75 jours, selon le port de départ en Chine, le port d’arrivée en Afrique de l’Ouest et le transport terrestre vers le Mali.',
+    answer: 'Le fret maritime vers Bamako prend généralement 60 à 75 jours depuis le port de Foshan jusqu’au port de Dakar, puis par transit terrestre vers le Mali.',
   },
   {
     question: 'Quelle est la différence entre FCL et LCL ?',
@@ -26,7 +26,7 @@ const seaFreightFaqs = [
   },
   {
     question: 'Par quels ports passent les conteneurs vers Bamako ?',
-    answer: 'Les routes fréquentes passent par Lomé, Dakar ou Abidjan, puis continuent par transport terrestre jusqu’à Bamako.',
+    answer: 'La route maritime part du port de Foshan, arrive au port de Dakar, puis continue par transport terrestre jusqu’à Bamako.',
   },
   {
     question: 'Le fret maritime convient-il aux petits colis ?',

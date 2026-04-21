@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'Quel est le délais de livraison cargo Chine Bamako ?',
     answer:
-      'Le fret aérien met entre 14 et 21 jours porte-à-porte. Le fret maritime met entre 60 et 75 jours selon le port de transbordement (Lomé, Dakar ou Abidjan).',
+      'Le fret aérien met entre 14 et 21 jours porte-à-porte. Le fret maritime met entre 60 et 75 jours depuis le port de Foshan jusqu’au port de Dakar, puis par transit terrestre vers Bamako.',
   },
   {
     question: 'ChinaLink propose-t-il du cargo porte-à-porte ?',
@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '2. Fret maritime Chine-Mali : le choix économique',
-            body: 'Le fret maritime est parfait pour les gros volumes, les meubles, l\'électroménager et les marchandises lourdes. Vos colis arrivent par port conteneur à Lomé, Dakar ou Abidjan, puis sont transportés par route jusqu\'à Bamako.',
+            body: 'Le fret maritime est parfait pour les gros volumes, les meubles, l\'électroménager et les marchandises lourdes. Vos colis partent du port de Foshan, arrivent au port de Dakar, puis sont transportés par route jusqu’à Bamako.',
             items: [
               'Conteneur FCL 20ft ou 40ft',
               'Groupage LCL pour les petits volumes',
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '4. Les ports et routes utilisés pour le Mali',
-            body: 'Le Mali étant enclavé, les marchandises maritimes transitent par les ports côtiers de Lomé (Togo), Dakar (Sénégal) ou Abidjan (Côte d\'Ivoire). Le choix du port influence le délai et le coût final. ChinaLink sélectionne la meilleure route selon votre budget et vos délais.',
+            body: 'Le Mali étant enclavé, les marchandises maritimes transitent par le port de Dakar (Sénégal), puis continuent par route jusqu’à Bamako. ChinaLink coordonne la route Foshan → Dakar → Bamako selon votre volume et vos délais.',
           },
           {
             title: '5. Comment réserver votre cargo avec ChinaLink',

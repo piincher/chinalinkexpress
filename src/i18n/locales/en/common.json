@@ -112,7 +112,7 @@
       "items": {
         "scam": {
           "title": "Scam risk",
-          "description": "You find suppliers yourself on Alibaba or 1688. Without local verification, the risk of fraud is real."
+          "description": "You find suppliers yourself on Alibaba or . Without local verification, the risk of fraud is real."
         },
         "quality": {
           "title": "No quality control",
@@ -120,7 +120,7 @@
         },
         "payment": {
           "title": "Payment headaches",
-          "description": "Alipay, WeChat Pay, Chinese bank transfers... You handle everything alone, with currency and fraud risks."
+          "description": "Alipay, Chinese bank transfers... You handle everything alone, with currency and fraud risks."
         },
         "consolidation": {
           "title": "Multiple vendors",
@@ -151,7 +151,7 @@
         },
         "payment": {
           "label": "Supplier payment",
-          "simple": "You handle Alipay/WeChat",
+          "simple": "You handle Alipay/",
           "full": "We pay on your behalf"
         },
         "consolidation": {
@@ -213,7 +213,7 @@
       "sourcing": {
         "label": "Supplier Sourcing",
         "us": "We find and verify your suppliers in China",
-        "them": "You have to find them alone on Alibaba/1688"
+        "them": "You have to find them alone on Alibaba"
       },
       "qualityControl": {
         "label": "Quality Control",
@@ -223,7 +223,7 @@
       "payment": {
         "label": "Supplier Payment",
         "us": "We pay for you in China",
-        "them": "You handle Alipay/WeChat Pay alone"
+        "them": "You handle Alipay/ alone"
       },
       "multiCountry": {
         "label": "Full Service",
@@ -267,7 +267,7 @@
       },
       "payment": {
         "title": "SUPPLIER PAYMENT",
-        "description": "We facilitate secure payment to your suppliers in China via Alipay, WeChat Pay and other methods."
+        "description": "We facilitate secure payment to your suppliers in China via Alipay, and other methods."
       },
       "recharge": {
         "title": "ACCOUNT TOP-UP",
@@ -295,7 +295,6 @@
       },
       "payment": {
         "alipay": "Alipay Payment",
-        "wechat": "WeChat Pay",
         "secure": "100% Secure",
         "fast": "24h Processing"
       },
@@ -425,7 +424,7 @@
       },
       "3": {
         "question": "How does supplier payment work?",
-        "answer": "We facilitate secure payment to your suppliers in China via Alipay, WeChat Pay, credit cards and other methods. You pay the amount to us based on the daily rate and we settle with your suppliers."
+        "answer": "We facilitate secure payment to your suppliers in China via Alipay, credit cards and other methods. You pay the amount to us based on the daily rate and we settle with your suppliers."
       },
       "4": {
         "question": "How do I top up my ChinaLink Express account?",
@@ -1150,7 +1149,7 @@
       "reliableSuppliers": {
         "title": "Reliable Suppliers",
         "tags": [
-          "Alibaba vs 1688",
+          "Alibaba vs",
           "Factory Visits",
           "Verification"
         ]

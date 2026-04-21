@@ -99,7 +99,7 @@ export const SERVICE_OFFERS: Record<string, ServiceOffer> = {
   },
   seaFreightFCL: {
     name: 'Sea Freight FCL to Mali',
-    description: 'Full container load shipping from China to Mali (via coastal ports) in 60-75 days through partner network',
+    description: 'Full container load shipping from Foshan port to Dakar port, then land transit to Bamako in 60-75 days through partner network',
     price: { min: 2000, max: 4500, unit: 'USD per 20ft container' },
   },
   seaFreightLCL: {
@@ -109,7 +109,7 @@ export const SERVICE_OFFERS: Record<string, ServiceOffer> = {
   },
   sourcing: {
     name: 'China Sourcing Service',
-    description: 'Professional sourcing from Alibaba, 1688, Taobao with quality inspection and partner shipping to Mali',
+    description: 'Professional sourcing from Alibaba with quality inspection and partner shipping to Mali',
     price: { min: 50, max: 500, unit: 'USD per order' },
   },
 };
@@ -193,7 +193,7 @@ export function generateLocalBusinessSchema() {
       closes: h.closes,
     })),
     priceRange: '$$$',
-    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer', 'Mobile Money', 'WeChat Pay', 'Alipay'],
+    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer', 'Mobile Money', 'Alipay'],
     currenciesAccepted: ['USD', 'EUR', 'CNY', 'XOF', 'XAF'],
     areaServed: [
       { '@type': 'Country', name: 'Mali' },
@@ -252,8 +252,8 @@ export function generateServiceSchema(
     sea: {
       name: isEn ? 'Sea Freight China to Mali' : 'Fret Maritime Chine-Mali',
       description: isEn
-        ? 'Economical sea freight from China to Mali via coastal ports. FCL and LCL options. Delivery in 60-75 days through trusted partners.'
-        : 'Fret maritime économique de la Chine vers le Mali via les ports côtiers. Options FCL et LCL. Livraison en 60-75 jours via des partenaires de confiance.',
+        ? 'Economical sea freight from Foshan port to Dakar port, then land transit to Bamako. FCL and LCL options. Delivery in 60-75 days through trusted partners.'
+        : 'Fret maritime économique du port de Foshan au port de Dakar, puis transit terrestre vers Bamako. Options FCL et LCL. Livraison en 60-75 jours via des partenaires de confiance.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
       areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
@@ -298,8 +298,8 @@ export function generateServiceSchema(
     sourcing: {
       name: isEn ? 'China Sourcing & Procurement' : 'Sourcing & Approvisionnement Chine',
       description: isEn
-        ? 'Professional sourcing agent services from Alibaba, 1688, Taobao. Supplier verification, quality inspection, and payment processing.'
-        : 'Services d\'agent sourcing professionnel sur Alibaba, 1688, Taobao. Vérification fournisseurs, inspection qualité et paiement.',
+        ? 'Professional sourcing agent services from Alibaba. Supplier verification, quality inspection, and payment processing.'
+        : 'Services d\'agent sourcing professionnel sur Alibaba. Vérification fournisseurs, inspection qualité et paiement.',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: { '@type': 'Place', name: 'Worldwide' },
@@ -312,7 +312,7 @@ export function generateServiceSchema(
             itemOffered: {
               '@type': 'Service',
               name: isEn ? 'Supplier Search' : 'Recherche Fournisseur',
-              description: isEn ? 'Find reliable suppliers on Alibaba/1688' : 'Trouver des fournisseurs fiables sur Alibaba/1688',
+              description: isEn ? 'Find reliable suppliers on Alibaba' : 'Trouver des fournisseurs fiables sur Alibaba',
             },
             price: '50.00',
             priceCurrency: 'USD',
@@ -631,7 +631,7 @@ export const PAGE_PATHS = {
 export const SEO_KEYWORDS = {
   en: {
     primary: 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight',
-    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent, 1688 sourcing agent',
+    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent',
     service: 'air cargo China Africa, express shipping China Mali, FCL shipping, LCL consolidation, customs clearance Africa',
     location: 'shipping China Bamako, freight forwarder China Mali, import China Mali, sourcing Bamako',
   },

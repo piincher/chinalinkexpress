@@ -161,7 +161,7 @@ export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
       ? 'Leading freight forwarder from China to Africa. Air freight (14-21 days) & sea freight (60-75 days) to Mali, Senegal, Ivory Coast & more. Get your free quote today!'
       : 'Envoi de cargo et colis de la Chine vers le Mali et l\'Afrique de l\'Ouest. Fret aérien 14-21 jours, maritime 60-75 jours. Devis gratuit par WhatsApp !',
     keywords: isEn
-      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, 1688 sourcing agent'
+      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent'
       : 'cargo chine mali, transitaire chine mali, fret chine bamako, envoi colis chine mali, fret aerien chine afrique, conteneur chine mali, expedition chine mali, achat alibaba mali, agent sourcing chine, chinalink express, fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale',
     path: '/',
     locale,
@@ -196,8 +196,8 @@ export async function generateServiceMetadata(
         ? 'Sea Freight China to Mali | FCL & LCL Shipping'
         : 'Conteneur Chine Mali | Fret Maritime Bamako | FCL & LCL',
       description: isEn
-        ? 'Economical sea freight from China to Mali via Lome, Dakar, or Abidjan. FCL and LCL shipping to Bamako in 60-75 days.'
-        : 'Fret maritime économique de la Chine vers le Mali via Lomé, Dakar ou Abidjan. Conteneur FCL et groupage LCL vers Bamako en 60-75 jours.',
+        ? 'Economical sea freight from Foshan port to Dakar port, then land transit to Bamako. FCL and LCL shipping to Mali in 60-75 days.'
+        : 'Fret maritime économique du port de Foshan au port de Dakar, puis transit terrestre vers Bamako. Conteneur FCL et groupage LCL vers le Mali en 60-75 jours.',
       keywords: isEn
         ? 'sea freight China Mali, FCL shipping Mali, LCL consolidation Mali, container shipping China Mali, sea freight Bamako'
         : 'fret maritime Chine Mali, conteneur Chine Mali, conteneur chine mali, groupage LCL Mali, transport maritime Chine Mali, fret maritime Chine Bamako',
@@ -205,14 +205,14 @@ export async function generateServiceMetadata(
     },
     sourcing: {
       title: isEn
-        ? 'China Sourcing Agent for Mali | Alibaba 1688 Procurement'
-        : 'Agent Sourcing Chine | Achat Alibaba 1688 | Paiement Fournisseur',
+        ? 'China Sourcing Agent for Mali | Alibaba Procurement'
+        : 'Agent Sourcing Chine | Achat Alibaba | Paiement Fournisseur',
       description: isEn
-        ? 'China sourcing agent for Mali importers. We buy from Alibaba, 1688, and Taobao, verify suppliers, inspect goods, process payment, and ship to Bamako.'
-        : 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, 1688 et Taobao, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
+        ? 'China sourcing agent for Mali importers. We buy from Alibaba, verify suppliers, inspect goods, process payment, and ship to Bamako.'
+        : 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
       keywords: isEn
-        ? 'China sourcing agent Mali, Alibaba agent Mali, 1688 sourcing Mali, China procurement services, supplier verification China'
-        : 'agent sourcing Chine Mali, agent Alibaba Mali, achat 1688 Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
+        ? 'China sourcing agent Mali, Alibaba agent Mali, China procurement services, supplier verification China'
+        : 'agent sourcing Chine Mali, agent Alibaba Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
       path: '/services/sourcing',
     },
   };

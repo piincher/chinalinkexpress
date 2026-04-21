@@ -23,8 +23,8 @@ const faqs = [
     answer: 'Le budget dépend du produit, du minimum de commande, du mode de transport et des frais de paiement. Pour commencer prudemment, testez un petit lot ou un échantillon avant une grosse commande.',
   },
   {
-    question: 'Faut-il choisir Alibaba ou 1688 ?',
-    answer: 'Alibaba est plus simple pour les acheteurs internationaux. 1688 peut être moins cher, mais demande souvent un agent local pour payer, communiquer et contrôler le fournisseur.',
+    question: 'Comment choisir un bon fournisseur sur Alibaba ?',
+    answer: 'Vérifiez l\'identité de l\'entreprise, demandez des preuves de production, commencez par un échantillon et utilisez un intermédiaire de confiance pour le paiement.'},{
   },
   {
     question: 'Quel fret choisir pour Bamako ?',
@@ -88,12 +88,12 @@ export default async function ImportGuidePage({ params }: Props) {
           },
           {
             title: '2. Trouver un fournisseur chinois sans se faire piéger',
-            body: 'Alibaba, 1688, Taobao et WeChat peuvent donner accès à de bons fournisseurs, mais aussi à des intermédiaires ou vendeurs risqués. Demandez des preuves réelles avant de payer.',
+            body: 'Alibaba peut donner accès à de bons fournisseurs, mais aussi à des intermédiaires ou vendeurs risqués. Demandez des preuves réelles avant de payer.',
             items: ['Photos/vidéos récentes de production', 'Devis clair avec quantité et délai', 'Nom de société cohérent', 'Conditions de paiement et d’expédition écrites'],
           },
           {
             title: '3. Sécuriser le paiement fournisseur',
-            body: 'Beaucoup de fournisseurs demandent Alipay, WeChat Pay ou un virement local. Avant de payer, vérifiez le fournisseur et gardez une preuve. ChinaLink peut faciliter le paiement et le suivi.',
+            body: 'Beaucoup de fournisseurs demandent Alipay ou un virement local. Avant de payer, vérifiez le fournisseur et gardez une preuve. ChinaLink peut faciliter le paiement et le suivi.',
             items: ['Ne payez pas un compte personnel suspect', 'Demandez une facture ou confirmation', 'Gardez les échanges importants', 'Évitez les gros acomptes sans contrôle'],
           },
           {

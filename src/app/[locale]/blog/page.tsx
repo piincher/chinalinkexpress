@@ -35,7 +35,7 @@ const posts = [
   },
   {
     slug: 'paiement-fournisseur-chine-guide',
-    title: 'Paiement Fournisseur Chinois : Alipay, WeChat Pay, Virement — Guide Mali',
+    title: 'Paiement Fournisseur Chinois : Alipay, Virement — Guide Mali',
     excerpt: 'Comparez les méthodes de paiement fournisseur en Chine. Sécurité, frais, délais. Guide pour les importateurs au Mali.',
     date: '2026-04-10',
     readTime: '5 min',

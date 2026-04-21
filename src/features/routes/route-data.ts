@@ -21,7 +21,7 @@ export const ROUTES: Record<string, RouteData> = {
   'china-to-mali': {
     origin: {
       country: 'Chine',
-      city: 'Guangzhou / Shanghai',
+      city: 'Foshan',
       code: 'CN',
     },
     destination: {
@@ -39,9 +39,7 @@ export const ROUTES: Record<string, RouteData> = {
     seaFreight: {
       duration: '60-75 jours',
       routes: [
-        { via: 'Lomé + route', path: 'Shanghai → Lomé → Bamako (terrestre)' },
-        { via: 'Dakar + route', path: 'Ningbo → Dakar → Bamako (terrestre)' },
-        { via: 'Abidjan + route', path: 'Shenzhen → Abidjan → Bamako (terrestre)' },
+        { via: 'Dakar + route', path: 'Foshan → Dakar → Bamako (terrestre)' },
       ],
     },
   },
@@ -120,9 +118,7 @@ export const ROUTES: Record<string, RouteData> = {
     seaFreight: {
       duration: '45-75 jours',
       routes: [
-        { via: 'Lomé', path: 'Shanghai → Lomé → pays enclavés' },
-        { via: 'Dakar', path: 'Ningbo → Dakar → Sénégal / Mali' },
-        { via: 'Abidjan', path: 'Shenzhen → Abidjan → Côte d’Ivoire / Mali' },
+        { via: 'Dakar', path: 'Foshan → Dakar → Bamako (terrestre)' },
       ],
     },
   },

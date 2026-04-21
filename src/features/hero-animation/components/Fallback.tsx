@@ -61,30 +61,21 @@ export function Fallback({ className = '' }: FallbackProps) {
 
         {/* Static route lines */}
         <g opacity="0.4">
-          {/* Shanghai to Bamako */}
+          {/* Foshan to Dakar port */}
           <path
-            d="M 1312 245 Q 900 100 608 336"
+            d="M 1188 310 Q 850 180 526 307"
             fill="none"
             stroke="url(#staticRouteGrad)"
             strokeWidth="2"
           />
           
-          {/* Shenzhen to Lagos */}
+          {/* Dakar to Bamako land transit */}
           <path
-            d="M 1248 336 Q 950 400 720 364"
+            d="M 526 307 Q 575 285 618 318"
             fill="none"
             stroke="#7fd0ff"
             strokeWidth="1.5"
             opacity="0.6"
-          />
-          
-          {/* Guangzhou to Dakar */}
-          <path
-            d="M 1216 322 Q 900 250 512 322"
-            fill="none"
-            stroke="#9fd3ff"
-            strokeWidth="1"
-            opacity="0.5"
           />
 
           {/* Air route - Shanghai to Bamako via Addis */}
@@ -143,9 +134,17 @@ export function Fallback({ className = '' }: FallbackProps) {
         {/* Transport icons - static positions */}
         <g opacity="0.8">
           {/* Ship icon on route */}
-          <g transform="translate(1000, 180) rotate(15)">
+          <g transform="translate(850, 210) rotate(15)">
             <path d="M-15 -5 L15 -5 L12 8 L-12 8 Z" fill="#062033" stroke="#3fb0ff" strokeWidth="1" />
             <rect x="-10" y="-12" width="20" height="7" rx="1" fill="#ff6b6b" />
+          </g>
+
+          {/* Truck icon on land transit */}
+          <g transform="translate(575, 300) rotate(8)">
+            <rect x="-12" y="-6" width="24" height="12" rx="2" fill="#1b3a57" stroke="#7fd0ff" strokeWidth="1" />
+            <rect x="3" y="-4" width="7" height="7" rx="1" fill="#dff4ff" opacity="0.85" />
+            <circle cx="-6" cy="7" r="3" fill="#fff" />
+            <circle cx="6" cy="7" r="3" fill="#fff" />
           </g>
           
           {/* Plane icon on air route */}

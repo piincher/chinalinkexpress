@@ -85,7 +85,7 @@ const ROUTE_PAGES = [
 const GUIDE_PAGES = [
   { path: 'guides/importer-de-chine-au-mali', priority: 0.85, changeFrequency: 'monthly' as const },
   { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'guides/acheter-sur-1688-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/fret-aerien-vs-maritime-chine-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
 ];

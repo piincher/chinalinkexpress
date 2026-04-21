@@ -14,7 +14,7 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const title = 'Paiement Fournisseur Chinois : Alipay, WeChat Pay, Virement — Guide Mali';
+const title = 'Paiement Fournisseur Chinois : Alipay, Virement — Guide Mali';
 const description =
   'Comparez les méthodes de paiement fournisseur en Chine. Sécurité, frais, délais. Guide complet pour les importateurs au Mali avec conseils pratiques.';
 const faqs = [
@@ -26,22 +26,22 @@ const faqs = [
   {
     question: 'Puis-je payer un fournisseur chinois depuis le Mali ?',
     answer:
-      'Directement, c\'est difficile. Alipay et WeChat Pay nécessitent un compte chinois. Le virement international est possible mais cher et lent. ChinaLink vous permet de payer en FCFA, Orange Money ou Wave, et nous réglons le fournisseur en Chine.',
+      'Directement, c\'est difficile. Alipay nécessite un compte chinois. Le virement international est possible mais cher et lent. ChinaLink vous permet de payer en FCFA, Orange Money ou Wave, et nous réglons le fournisseur en Chine.',
   },
   {
     question: 'Combien de temps prend un paiement fournisseur Chine ?',
     answer:
-      'Alipay et WeChat Pay sont instantanés. Un virement bancaire international prend 3 à 7 jours ouvrés. Avec ChinaLink, le paiement est traité en 24h une fois vos fonds crédités.',
+      'Alipay est instantané. Un virement bancaire international prend 3 à 7 jours ouvrés. Avec ChinaLink, le paiement est traité en 24h une fois vos fonds crédités.',
   },
 ];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    title: 'Paiement Fournisseur Chinois | Alipay, WeChat Pay, Virement — Guide Mali',
+    title: 'Paiement Fournisseur Chinois | Alipay, Virement — Guide Mali',
     description,
     keywords:
-      'paiement fournisseur chinois, Alipay Mali, WeChat Pay Mali, virement fournisseur Chine, payer fournisseur depuis le Mali, paiement sécurisé Chine',
+      'paiement fournisseur chinois, Alipay Mali, virement fournisseur Chine, payer fournisseur depuis le Mali, paiement sécurisé Chine',
     path: '/blog/paiement-fournisseur-chine-guide',
     locale: locale as Locale,
     ogType: 'article',
@@ -89,10 +89,10 @@ export default async function BlogPostPage({ params }: Props) {
         sections={[
           {
             title: '1. Les méthodes de paiement acceptées en Chine',
-            body: 'Les fournisseurs chinois acceptent principalement Alipay, WeChat Pay, virement bancaire local et parfois Western Union. Chaque méthode a ses avantages, ses frais et ses risques.',
+            body: 'Les fournisseurs chinois acceptent principalement Alipay, virement bancaire local et parfois Western Union. Chaque méthode a ses avantages, ses frais et ses risques.',
             items: [
               'Alipay : rapide, populaire, nécessite un compte chinois',
-              'WeChat Pay : très répandu, limité aux comptes chinois',
+              'Virement local : rapide en Chine, limité aux comptes locaux',
               'Virement bancaire : sécurisé mais lent et coûteux',
               'Trade Assurance Alibaba : protection limitée à la plateforme',
             ],
@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }: Props) {
           },
           {
             title: '4. Comparer les frais et délais de chaque méthode',
-            body: 'Alipay et WeChat Pay sont gratuits en interne mais inaccessibles depuis le Mali. Le virement SWIFT coûte 30–80 USD de frais et prend 3 à 7 jours. ChinaLink propose des frais réduits et un traitement en 24h.',
+            body: 'Alipay est gratuit en interne mais inaccessible depuis le Mali. Le virement SWIFT coûte 30–80 USD de frais et prend 3 à 7 jours. ChinaLink propose des frais réduits et un traitement en 24h.',
           },
           {
             title: '5. Conseils pour sécuriser votre paiement',
