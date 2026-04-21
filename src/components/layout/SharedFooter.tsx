@@ -25,6 +25,15 @@ const SOCIAL_LINKS = [
   { icon: Linkedin, href: 'https://linkedin.com/company/chinalinkexpress', label: 'LinkedIn', color: 'hover:bg-blue-700' },
 ] as const;
 
+const SERVICE_LINKS = [
+  { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
+  { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
+  { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
+  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', frOnly: true },
+  { labelKey: 'services.features.sourcing.supplierVerification', href: '/services/verification-fournisseur-chine', frOnly: true },
+  { label: 'Cargo Chine Mali', href: '/cargo-chine-mali', frOnly: true },
+] as const;
+
 export function SharedFooter({ locale, className }: SharedFooterProps) {
   const t = useTranslations();
   const year = getCurrentYear();
@@ -71,16 +80,29 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               {t('footer.services')}
             </h3>
             <ul className="space-y-3">
-              {['navigation.services', 'navigation.tracking', 'navigation.pricing', 'navigation.calculator'].map((key) => (
-                <li key={key}>
-                  <Link
-                    href={`/${locale}/services`}
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                  >
-                    {t(key)}
-                  </Link>
-                </li>
-              ))}
+              {SERVICE_LINKS.map((link) => {
+                const linkLocale = 'frOnly' in link && link.frOnly ? 'fr' : locale;
+                const label = 'labelKey' in link ? t(link.labelKey) : link.label;
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={`/${linkLocale}${link.href}`}
+                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <Link
+                  href={`/${locale}/calculateur`}
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
+                >
+                  {t('navigation.calculator')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -90,18 +112,21 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               {t('footer.links')}
             </h3>
             <ul className="space-y-3">
-              {['navigation.about', 'navigation.faq', 'navigation.contact', 'navigation.privacy', 'navigation.terms'].map((key) => {
+              {['navigation.about', 'navigation.blog', 'navigation.faq', 'navigation.contact', 'navigation.privacy', 'navigation.terms'].map((key) => {
                 const getHref = () => {
                   if (key === 'navigation.about') return '#about';
+                  if (key === 'navigation.blog') return 'blog';
                   if (key === 'navigation.contact') return '#contact';
                   if (key === 'navigation.privacy') return 'privacy';
                   if (key === 'navigation.terms') return 'terms';
                   return 'faq';
                 };
+                const linkLocale = key === 'navigation.blog' ? 'fr' : locale;
+
                 return (
                   <li key={key}>
                     <Link
-                      href={`/${locale}/${getHref()}`}
+                      href={`/${linkLocale}/${getHref()}`}
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
                     >
                       {t(key)}

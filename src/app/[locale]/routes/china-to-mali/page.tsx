@@ -16,8 +16,9 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/config';
 import { generateRouteMetadata } from '@/lib/metadata';
-import { RouteStructuredData, StructuredData } from '@/components/seo';
+import { FAQStructuredData, RouteStructuredData, StructuredData } from '@/components/seo';
 import { generateOrganizationSchema, generateLocalBusinessSchema } from '@/config/seo-advanced';
+import { Breadcrumb } from '@/components/Breadcrumb';
 import { RoutePage } from '@/features/routes/RoutePage';
 
 // ============================================================================
@@ -40,6 +41,25 @@ export async function generateMetadata({
 interface PageProps {
   params: Promise<{ locale: string }>;
 }
+
+const routeFaqs = [
+  {
+    question: 'Combien de temps prend le fret Chine-Mali ?',
+    answer: 'Le fret aérien prend généralement 14 à 21 jours vers Bamako. Le fret maritime prend généralement 60 à 75 jours via Lomé, Dakar ou Abidjan puis transport terrestre.',
+  },
+  {
+    question: 'ChinaLink peut-il gérer le sourcing avant l’expédition ?',
+    answer: 'Oui. ChinaLink peut rechercher le fournisseur, gérer le paiement, contrôler la marchandise, consolider les colis et organiser l’expédition vers le Mali.',
+  },
+  {
+    question: 'Quels produits sont adaptés au fret aérien Chine-Mali ?',
+    answer: 'Le fret aérien convient aux colis urgents, vêtements, accessoires, petites pièces, échantillons et produits à forte marge. Les batteries, liquides et produits dangereux doivent être validés avant expédition.',
+  },
+  {
+    question: 'Quels produits sont adaptés au fret maritime Chine-Mali ?',
+    answer: 'Le fret maritime convient aux gros volumes, meubles, machines, cartons lourds et marchandises non urgentes.',
+  },
+];
 
 export default async function ChinaToMaliRoute({ params }: PageProps) {
   const { locale } = await params;
@@ -70,6 +90,11 @@ export default async function ChinaToMaliRoute({ params }: PageProps) {
     generateLocalBusinessSchema(),
   ];
 
+  const breadcrumbItems = breadcrumbs.map((b) => ({
+    label: b.name,
+    href: b.url,
+  }));
+
   return (
     <>
       {/* Route-specific Structured Data */}
@@ -82,6 +107,14 @@ export default async function ChinaToMaliRoute({ params }: PageProps) {
       
       {/* Organization & LocalBusiness */}
       <StructuredData schemas={additionalSchemas} />
+      <FAQStructuredData faqs={routeFaqs} locale={locale as Locale} />
+
+      {/* Visible Breadcrumb Navigation */}
+      <div className="bg-white pt-28 dark:bg-slate-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbItems} locale={locale as Locale} />
+        </div>
+      </div>
       
       {/* Page Content */}
       <RoutePage 

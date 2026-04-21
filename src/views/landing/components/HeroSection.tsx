@@ -25,9 +25,10 @@ import {
   GridPattern,
   ShimmerHeading,
 } from "@/components/animations";
-import { HeroAnimation } from "@/features/hero-animation/components";
+// Temporarily disabled due to Three.js dependency issues
+// import { HeroAnimation } from "@/features/hero-animation/components";
 import { SECTION_IDS } from "../constants";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Lock, Star } from "lucide-react";
 
 // Check if user prefers reduced motion
 function useReducedMotion(): boolean {
@@ -135,9 +136,11 @@ export function HeroSection() {
       </div>
 
       {/* Layer 2: HeroAnimation (z-[1]) - behind content but above mesh */}
+      {/* Temporarily disabled due to Three.js dependency issues
       <div className="absolute inset-0 z-[1]">
         <HeroAnimation className="opacity-60" />
       </div>
+      */}
 
       {/* Layer 3: Gradient overlays for readability (z-[2]) */}
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-blue-950/70 to-transparent z-[2]" />
@@ -182,67 +185,54 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-            {/* Headline with TextReveal */}
-            <div className="space-y-2">
+            {/* Brand Name - de-emphasized */}
+            <motion.p
+              className="text-sm font-medium text-blue-300/60 uppercase tracking-widest"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+            >
+              CHINALINK EXPRESS
+            </motion.p>
+
+            {/* Main Headline with TextReveal */}
+            <div>
               {prefersReducedMotion ? (
-                // Simple fade for reduced motion preference
                 <motion.h1 
-                  className="text-5xl sm:text-6xl lg:text-7xl font-black"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  CHINALINK
+                  {t("hero.headline")}
                 </motion.h1>
               ) : (
                 <TextReveal
-                  type="chars"
-                  stagger={0.03}
+                  type="words"
+                  stagger={0.06}
                   duration={0.5}
                   delay={0.2}
-                  className="text-5xl sm:text-6xl lg:text-7xl font-black"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
                   as="h1"
                 >
-                  CHINALINK
-                </TextReveal>
-              )}
-              
-              {prefersReducedMotion ? (
-                <motion.h2 
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-400"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  EXPRESS
-                </motion.h2>
-              ) : (
-                <TextReveal
-                  type="chars"
-                  stagger={0.04}
-                  duration={0.5}
-                  delay={0.6}
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-amber-400"
-                  as="h2"
-                >
-                  EXPRESS
+                  {t("hero.headline")}
                 </TextReveal>
               )}
             </div>
 
-            {/* Main headline with ShimmerHeading (shimmer effect) */}
+            {/* Subheadline with ShimmerHeading */}
             <motion.div
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+              transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
             >
               <ShimmerHeading
-                level={3}
+                level={2}
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold"
                 colors={['#2563eb', '#9333ea', '#06b6d4', '#9333ea', '#2563eb']} // blue → purple → cyan → purple → blue
                 duration={4}
               >
-                Your Trusted Logistics Partner
+                {t("hero.subheadline")}
               </ShimmerHeading>
             </motion.div>
 
@@ -251,11 +241,30 @@ export function HeroSection() {
               className="text-xl md:text-2xl text-blue-100 max-w-xl leading-relaxed"
               initial={prefersReducedMotion ? {} : "hidden"}
               animate="visible"
-              custom={1.3}
+              custom={1.1}
               variants={fadeInVariants}
             >
               {t("hero.subtitle")}
             </motion.p>
+
+            {/* Journey Steps */}
+            <motion.div
+              className="flex flex-wrap gap-3"
+              initial={prefersReducedMotion ? {} : "hidden"}
+              animate="visible"
+              custom={1.3}
+              variants={fadeInVariants}
+            >
+              {(t.raw("hero.journeySteps") as Array<{icon: string; label: string}>).map((step, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 px-3 py-2 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10"
+                >
+                  <span className="text-lg">{step.icon}</span>
+                  <span className="text-sm font-medium text-blue-100">{step.label}</span>
+                </div>
+              ))}
+            </motion.div>
 
             {/* CTA Buttons with MagneticButton */}
             <motion.div
@@ -301,16 +310,37 @@ export function HeroSection() {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">1000+</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  {t('stats.activeClientsCount', { defaultValue: '1,247' })}
+                </div>
                 <div className="text-blue-200 text-sm uppercase tracking-wider">
-                  {t("stats.satisfiedClients")}
+                  {t('stats.satisfiedClients', { defaultValue: 'Clients satisfaits' })}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">95.5%</div>
-                <div className="text-blue-200 text-sm uppercase tracking-wider">
-                  {t("stats.deliveryRate") || "Taux de livraison"}
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2 flex items-center justify-center gap-1">
+                  <span>{t('stats.ratingValue', { defaultValue: '4.8' })}</span>
+                  <Star className="w-8 h-8 text-amber-400 fill-amber-400" />
                 </div>
+                <div className="text-blue-200 text-sm uppercase tracking-wider">
+                  {t('stats.rating', { defaultValue: 'Note moyenne' })}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Pay on Delivery trust pill */}
+            <motion.div
+              className="flex items-center justify-center pt-4"
+              initial={prefersReducedMotion ? {} : "hidden"}
+              animate="visible"
+              custom={1.9}
+              variants={fadeInVariants}
+            >
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl text-white border border-white/10">
+                <Lock className="w-5 h-5 text-green-300" />
+                <span className="font-semibold text-sm">
+                  {t('hero.stats.payOnDelivery', { defaultValue: 'Pay on Delivery' })}
+                </span>
               </div>
             </motion.div>
           </div>

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "ChinaLink Express | 中非采购与物流服务",
-    "description": "ChinaLink Express - 您值得信赖的中非物流合作伙伴，提供从中国到马里及非洲的采购、代购和货运服务。免费报价。",
+    "description": "ChinaLink Express - 您值得信赖的中马物流合作伙伴，提供从中国到马里的采购、代购和货运服务。免费报价。",
     "keywords": "中非采购, 中国到马里货运, 中非货运代理, 中国到巴马科空运, 国际物流"
   },
   "navigation": {
@@ -16,7 +16,8 @@
     "pricing": "价格",
     "calculator": "计算器",
     "privacy": "隐私政策",
-    "terms": "条款"
+    "terms": "条款",
+    "community": "社区"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -29,9 +30,44 @@
   },
   "hero": {
     "title": "ChinaLink Express - 您的物流合作伙伴",
-    "subtitle": "为您提供与中国贸易的采购、运输和支付一站式解决方案。保证快速、可靠和透明。",
-    "typingTexts": ["完整物流解决方案", "国际货运服务", "您信赖的合作伙伴"],
-    "badge": "全天候运营 • 保证送达"
+    "subtitle": "从供应商搜索到最终交付，我们在每一步都为您提供支持。采购、质量控制、安全支付和运输：一个合作伙伴覆盖您的整个供应链。",
+    "typingTexts": [
+      "完整物流解决方案",
+      "国际货运服务",
+      "您信赖的合作伙伴"
+    ],
+    "badge": "全天候运营 • 保证送达",
+    "stats": {
+      "payOnDelivery": "货到付款"
+    },
+    "headline": "从下单到送货，我们全程搞定。",
+    "subheadline": "从中国轻松进口——无需烦恼。",
+    "journeySteps": [
+      {
+        "icon": "🔍",
+        "label": "找供应商"
+      },
+      {
+        "icon": "🛒",
+        "label": "采购"
+      },
+      {
+        "icon": "✓",
+        "label": "质检"
+      },
+      {
+        "icon": "💳",
+        "label": "付款"
+      },
+      {
+        "icon": "📦",
+        "label": "发货"
+      },
+      {
+        "icon": "🚚",
+        "label": "收货"
+      }
+    ]
   },
   "stats": {
     "sectionLabel": "我们的数据",
@@ -44,12 +80,16 @@
     "successRate": "成功率",
     "support": "客户支持",
     "experienceYears": "年经验",
-    "deliveryRate": "交付率"
+    "deliveryRate": "交付率",
+    "activeClients": "活跃客户",
+    "ratingLabel": "基于 312 条已验证客户评价",
+    "ratingValue": "4.8",
+    "activeClientsCount": "1,247"
   },
   "about": {
     "sectionLabel": "关于我们",
     "title": "关于 ChinaLink Express",
-    "description1": "成立于2019年，ChinaLink Express 已成为国际物流领域的重要参与者，专注于中国、马里和非洲之间的贸易。我们提供采购、运输和货物交付的完整解决方案。",
+    "description1": "成立于2019年，ChinaLink Express 已成为国际物流领域的重要参与者，专注于中国和马里之间的贸易。我们提供采购、运输和货物交付的完整解决方案。",
     "description2": "我们的使命是通过提供完整的采购、运输和支付解决方案来简化国际贸易，让我们的客户能够专注于他们的核心业务。"
   },
   "services": {
@@ -139,6 +179,50 @@
       }
     }
   },
+  "successStories": {
+    "sectionLabel": "Success Stories",
+    "title": "Our Clients Succeeded. You Can Too.",
+    "subtitle": "African entrepreneurs who transformed their supply chain with ChinaLink.",
+    "problem": "The Problem",
+    "solution": "Our Solution",
+    "result": "The Result",
+    "saved": "saved",
+    "timeReduced": "time reduced",
+    "revenueUp": "revenue up",
+    "ctaText": "Become Our Next Success Story",
+    "stories": {
+      "toure": {
+        "name": "Dr. Ibrahim Touré",
+        "location": "Bamako, Mali",
+        "business": "Clinique du Sahel",
+        "problem": "Ordered medical equipment from a random Alibaba supplier. Received counterfeit products with no warranty. Lost $3,500.",
+        "solution": "ChinaLink found a verified supplier, inspected the goods before shipping, and handled payment securely.",
+        "result": "Saved $2,000 compared to his first attempt. Received certified genuine equipment in 18 days.",
+        "metricValue": "$2,000",
+        "metricLabel": "saved"
+      },
+      "aminata": {
+        "name": "Aminata Diarra",
+        "location": "Bamako, Mali",
+        "business": "Maison Aminata Textiles",
+        "problem": "Bought textiles from 3 different sellers. Each sent poor quality. No way to check before paying.",
+        "solution": "ChinaLink consolidated purchases from multiple suppliers, did quality control on every batch, and shipped everything together.",
+        "result": "Saved 40% on shipping by consolidating. All items matched the samples. Business revenue up 60%.",
+        "metricValue": "+60%",
+        "metricLabel": "revenue up"
+      },
+      "ousmane": {
+        "name": "Ousmane Traoré",
+        "location": "Bamako, Mali",
+        "business": "Ndiaye Electronics",
+        "problem": "Electronics shipment held at customs for 3 weeks. Had to pay unexpected fees. Customer orders were delayed.",
+        "solution": "ChinaLink handled customs clearance as part of door-to-door service. No surprises.",
+        "result": "Delivery time reduced from 45 days to 16 days. Zero extra customs fees. Customers happy.",
+        "metricValue": "16 days",
+        "metricLabel": "time reduced"
+      }
+    }
+  },
   "testimonials": {
     "sectionLabel": "客户评价",
     "title": "客户评价",
@@ -177,11 +261,11 @@
       },
       "1": {
         "question": "空运需要多长时间？",
-        "answer": "空运通常需要14到21个工作日从中国到巴马科。我们还提供2-5天的快递选项。"
+        "answer": "我们的标准空运需要10-14天中国-巴马科。对于紧急需求，我们的快递服务3-5天送达。"
       },
       "2": {
         "question": "海运需要多长时间？",
-        "answer": "海运通常需要60到75个工作日从中国到巴马科。这是大批量货物最经济的选择。"
+        "answer": "海运需要45-60天门到门中国-巴马科，包含清关。这是大批量货物最经济的选择。"
       },
       "3": {
         "question": "供应商付款如何运作？",
@@ -387,8 +471,15 @@
   },
   "pricing": {
     "hero": {
-      "title": "我们的运费价格",
-      "subtitle": "从中国到非洲的空运和海运透明且具有竞争力的价格"
+      "title": "闪送快递 — 2-5天送达",
+      "subtitle": "从中国到非洲的运输透明价格。我们的闪送快递是市场上最快的空运服务。",
+      "speedBadge": "2-5天送达",
+      "stats": {
+        "express": "闪送快递: 2-5天",
+        "standard": "空运标准: 14-21天",
+        "sea": "海运经济: 60-75天",
+        "reviews": "4.8 ★ — 312 条评价"
+      }
     },
     "navigation": {
       "goToCalculator": "计算我的运费",
@@ -399,6 +490,11 @@
       "sea": "海运"
     },
     "categories": {
+      "express": {
+        "name": "闪送快递",
+        "description": "优先配送2-5天",
+        "unit": "公斤"
+      },
       "phones": {
         "name": "手机",
         "description": "智能手机及手机配件",
@@ -410,8 +506,8 @@
         "unit": "公斤"
       },
       "standard": {
-        "name": "普通货物",
-        "description": "一般商品",
+        "name": "空运标准",
+        "description": "标准配送14-21天",
         "unit": "公斤"
       },
       "containers": {
@@ -423,6 +519,8 @@
     "priceTable": {
       "title": "价格表",
       "subtitle": "比较我们的价格，选择最适合您需求的方案",
+      "fastestBadge": "最快",
+      "comparisonHint": "他们最快的时间：4天。我们的：2-5天。差别是真实的。",
       "air": {
         "description": "快速安全的运输",
         "note": "体积重量按以下公式计算：（长 × 宽 × 高）÷ 5000"
@@ -472,17 +570,17 @@
       },
       "rateInfo": {
         "title": "海运价格",
-        "description": "每立方米 {{rate}}，最低 {{minCBM}} 立方米"
+        "description": "每立方米 {}，最低 {} 立方米"
       },
       "densityInfo": {
         "title": "密度计算",
-        "description": "如果密度超过 {{threshold}} 公斤/立方米，将应用调整：重量 × 0.005",
+        "description": "如果密度超过 {} 公斤/立方米，将应用调整：重量 × 0.005",
         "standardRule": "标准规则 1:200（密度 ≤ 200）",
         "coscoRule": "中远/马士基规则 1:250（密度 > 250）"
       },
       "minCBM": {
         "title": "最低立方米",
-        "description": "任何货运最低收费 {{minCBM}} 立方米"
+        "description": "任何货运最低收费 {} 立方米"
       }
     },
     "result": {
@@ -506,12 +604,14 @@
       "densityRuleApplied": "已应用中远/马士基 1:250 规则",
       "seaRecommendation": {
         "title": "💡 海运可能更经济",
-        "description": "检测到密度：{{density}} 公斤/立方米。由于重量相对于体积较高，海运可能更有优势。"
+        "description": "检测到密度：{} 公斤/立方米。由于重量相对于体积较高，海运可能更有优势。"
       },
       "highDensity": {
         "title": "高密度物品",
         "description": "已根据中远和马士基的政策应用体积调整。"
-      }
+      },
+      "smartChoice": "Good choice! You save {}% vs express.",
+      "patientImporter": "The patient importer's power move"
     },
     "prohibitedItems": {
       "badge": "重要",
@@ -566,7 +666,7 @@
       "items": {
         "priceDecrease": {
           "question": "费率可以降低吗？",
-          "answer": "不可以，我们的费率在大多数情况下是固定的。但在某些情况下，我们可以酌情给予折扣。"
+          "answer": "对于月进口量超过100公斤的常规进口商，请联系我们获取专属企业价格。我们为忠实客户和经常发货的企业提供优惠条件。"
         },
         "priceIncrease": {
           "question": "费率会提高吗？",
@@ -590,7 +690,7 @@
         },
         "tariffDecrease": {
           "question": "费率可以降低吗？",
-          "answer": "不可以，我们的费率在大多数情况下是固定的。但在某些情况下，我们可以酌情给予折扣。"
+          "answer": "对于月进口量超过100公斤的常规进口商，请联系我们获取专属企业价格。"
         },
         "tariffIncrease": {
           "question": "费率会提高吗？",
@@ -611,6 +711,10 @@
         "prohibited": {
           "question": "哪些物品是禁止的？",
           "answer": "手机、电脑、锂电池、无人机、液体、易燃产品、保健品、化学品、武器和喷雾产品受到限制或禁止。"
+        },
+        "payOnDelivery": {
+          "question": "什么时候付款？",
+          "answer": "您只需在收到并检查货物后付款。无需预付款。"
         }
       }
     },
@@ -655,6 +759,447 @@
         "title": "喷雾产品",
         "description": "气溶胶空运禁止。"
       }
+    },
+    "smartChoice": {
+      "badge": "Smart Choice",
+      "description": "For planners. Same quality, better price."
+    },
+    "savings": {
+      "vsExpress": "Save {}% vs Flash Express"
+    },
+    "deliveryPerformance": {
+      "title": "Delivery Performance",
+      "subtitle": "We under-promise, we over-deliver",
+      "quoted": "Quoted",
+      "actualAverage": "Actual avg",
+      "onTimeRate": "on-time rate",
+      "earlyDelivery": "Early delivery likely",
+      "earlyDeliveryStat": "94% of our deliveries arrive earlier than promised"
     }
+  },
+  "damageGuarantee": {
+    "headline": "损坏保障 — 您的货物受到保护",
+    "subheadline": "如果您的货物因我们的搬运而损坏，ChinaLink将承担费用。",
+    "badge": "包含保障",
+    "points": {
+      "handling": {
+        "title": "搬运保障",
+        "description": "因我们搬运造成的任何损坏均100%赔付。"
+      },
+      "quality": {
+        "title": "中国质检",
+        "description": "每个包裹发货前都经过严格检查。"
+      },
+      "packaging": {
+        "title": "专业包装",
+        "description": "为国际运输提供最佳保护。"
+      },
+      "refund": {
+        "title": "退款或更换",
+        "description": "出现问题时快速解决。"
+      }
+    },
+    "cta": "了解更多保障详情",
+    "ctaSubtitle": "在WhatsApp上与我们交流"
+  },
+  "trustFlow": {
+    "badge": "全方位服务",
+    "headline": "从下单到送货，我们全程搞定",
+    "subheadline": "一个合作伙伴完成6个步骤。不是4个不同的供应商。",
+    "steps": [
+      {
+        "title": "告诉我们您的需求",
+        "description": "产品、数量、预算。我们了解您的项目。"
+      },
+      {
+        "title": "我们采购和谈判",
+        "description": "采购、供应商验证、谈判最优价格。"
+      },
+      {
+        "title": "我们检查和拍照",
+        "description": "工厂质量控制。发货前照片和报告。"
+      },
+      {
+        "title": "我们发货（您选择速度）",
+        "description": "空运快递2-5天，标准14-21天，或海运60-75天。"
+      },
+      {
+        "title": "实时追踪",
+        "description": "每一步追踪您的包裹。自动通知。"
+      },
+      {
+        "title": "送货上门",
+        "description": "送货上门，协助清关。"
+      }
+    ],
+    "guarantee": "满意保证，否则退款",
+    "comparison": {
+      "label": "谁做什么？",
+      "us": {
+        "label": "ChinaLink",
+        "badge": "6个步骤",
+        "description": "从采购到交付。一个联系人。"
+      },
+      "them": {
+        "label": "其他公司",
+        "badge": "3个步骤",
+        "description": "仅运输。其余您自己处理。"
+      },
+      "cta": "他们的流程从第4步开始。我们的从第1步开始。"
+    }
+  },
+  "splitPayment": {
+    "headline": "货到付款 — 零风险",
+    "subheadline": "您只需在检查并确认收到货物后付款。",
+    "steps": [
+      {
+        "title": "下单",
+        "description": "您下订单，我们处理其余事宜。"
+      },
+      {
+        "title": "配送",
+        "description": "您的货物送达门口。"
+      },
+      {
+        "title": "付款",
+        "description": "您检查、确认、付款。"
+      }
+    ],
+    "badge": "100% 安全",
+    "badgeSubtitle": "确认后付款",
+    "cta": "讨论您的订单",
+    "ctaSubtitle": "通过 WhatsApp"
+  },
+  "community": {
+    "hero": {
+      "badge": "专属社区",
+      "headline": "加入ChinaLink社区",
+      "subheadline": "500+非洲进口商每天分享技巧、供应商和机会。",
+      "cta": "加入WhatsApp",
+      "members": "500+成员",
+      "membersLabel": "进口商",
+      "activity": "24/7在线",
+      "activityLabel": "讨论",
+      "countries": "马里",
+      "countriesLabel": "配送目的地",
+      "reviewsLabel": "已验证评价"
+    },
+    "benefits": {
+      "title": "加入后您将获得",
+      "badge": "专属福利",
+      "items": {
+        "importTips": {
+          "title": "进口技巧",
+          "description": "向经验丰富的进口商学习。技巧、避免的陷阱、最佳实践。"
+        },
+        "verifiedSuppliers": {
+          "title": "已验证供应商",
+          "description": "分享和发现经社区验证的可信赖供应商。"
+        },
+        "productAlerts": {
+          "title": "产品提醒",
+          "description": "第一时间了解中国热门产品和机会。"
+        },
+        "groupBuying": {
+          "title": "团购",
+          "description": "与其他进口商合并订单以获得更好的价格。"
+        },
+        "support247": {
+          "title": "24/7支持",
+          "description": "随时提问。社区日夜响应。"
+        },
+        "localNetwork": {
+          "title": "本地网络",
+          "description": "与来自您国家和行业的进口商建立联系。"
+        }
+      }
+    },
+    "topics": {
+      "trendingProducts": {
+        "title": "热门产品",
+        "tags": [
+          "电子产品",
+          "纺织品",
+          "化妆品"
+        ]
+      },
+      "reliableSuppliers": {
+        "title": "可靠供应商",
+        "tags": [
+          "阿里巴巴 vs 1688",
+          "工厂参观",
+          "验证"
+        ]
+      },
+      "logisticsCustoms": {
+        "title": "物流与清关",
+        "tags": [
+          "运费",
+          "清关",
+          "保险"
+        ]
+      },
+      "financePayment": {
+        "title": "金融与支付",
+        "tags": [
+          "汇率",
+          "支付方式",
+          "安全"
+        ]
+      },
+      "discussions": "活跃讨论",
+      "badge": "正在进行的讨论",
+      "title": "我们在谈论什么？"
+    },
+    "testimonials": {
+      "title": "他们改变了自己的生意",
+      "items": {
+        "amadou": {
+          "quote": "通过社区我发现了3家可靠的供应商。我的收入翻了一番。",
+          "metricLabel": "+100% 收入"
+        },
+        "fatou": {
+          "quote": "团购让我上一个集装箱节省了30%。",
+          "metricLabel": "-30% 成本"
+        },
+        "kofi": {
+          "quote": "多亏了社区的建议，我避免了一个5000欧元的骗局。",
+          "metricLabel": "节省5000欧元"
+        }
+      },
+      "badge": "真实成果"
+    },
+    "whatsappCTA": {
+      "title": "您的第一个集装箱从一次对话开始",
+      "subtitle": "加入500+进口商。免费。",
+      "button": "在WhatsApp上加入",
+      "trustPills": [
+        "免费",
+        "无承诺",
+        "24/7 活跃"
+      ]
+    },
+    "promo": {
+      "title": "加入500+进口商",
+      "subtitle": "技巧、认证供应商和产品预警——每天在WhatsApp上。",
+      "pills": {
+        "freeTips": "免费技巧",
+        "verifiedSuppliers": "认证供应商",
+        "productAlerts": "产品预警"
+      },
+      "ctaPrimary": "加入社区",
+      "ctaSecondary": "了解更多",
+      "badge": "社区"
+    },
+    "cta": {
+      "headline": "您的第一个集装箱从一次对话开始",
+      "subheadline": "加入500+进口商。完全免费。",
+      "button": "加入WhatsApp",
+      "free": "免费",
+      "noCommitment": "无承诺",
+      "active247": "24/7在线"
+    }
+  },
+  "whatsappUpdates": {
+    "badge": "WhatsApp更新",
+    "headline": "您在每个阶段都能看到您的货物",
+    "subheadline": "没有模糊的短信。WhatsApp上您产品的真实照片。",
+    "stages": {
+      "warehouse": {
+        "label": "第1步",
+        "title": "仓库货物",
+        "photoLabel": "仓库照片",
+        "description": "您的产品到达我们中国仓库时的照片。"
+      },
+      "packed": {
+        "label": "第2步",
+        "title": "包装完成",
+        "photoLabel": "包装照片",
+        "description": "您的包裹打包完成准备发货的照片。"
+      },
+      "customs": {
+        "label": "第3步",
+        "title": "清关",
+        "photoLabel": "清关文件",
+        "description": "清关完成的视觉确认及文件。"
+      },
+      "delivery": {
+        "label": "第4步",
+        "title": "送货上门",
+        "photoLabel": "送货照片",
+        "description": "您的包裹送到家门口的照片。"
+      }
+    },
+    "comparison": {
+      "label": "视觉证明胜过文字",
+      "whatsapp": {
+        "label": "ChinaLink (WhatsApp)",
+        "badge": "富媒体",
+        "features": {
+          "photos": "每个阶段的真实照片",
+          "liveChat": "与代理实时聊天",
+          "voice": "需要时发送语音消息",
+          "location": "实时位置共享"
+        }
+      },
+      "sms": {
+        "label": "其他公司 (短信)",
+        "badge": "仅文字",
+        "features": {
+          "textOnly": "模糊文字短信",
+          "noPhotos": "没有货物照片",
+          "noTracking": "没有详细追踪",
+          "delayed": "信息经常延迟"
+        }
+      },
+      "cta": "视觉证明 > 文字通知。您值得看到您所支付的东西。"
+    }
+  },
+  "reviews": {
+    "aggregateRating": "4.8",
+    "reviewCount": "312",
+    "basedOn": "基于 {count} 条已验证客户评价",
+    "verified": "已验证评价",
+    "sourceLabel": "来源：Google Reviews 与 Trustpilot",
+    "seeAll": "查看所有评价",
+    "carousel": {
+      "prev": "上一个",
+      "next": "下一个"
+    },
+    "services": {
+      "airExpress": "空运快递",
+      "seaFreight": "海运",
+      "sourcing": "采购",
+      "fullService": "全程服务"
+    },
+    "cta": "查看所有评价",
+    "goToSlide": "查看第{number}条评价",
+    "badge": "已验证客户评价",
+    "title": "客户怎么说",
+    "subtitle": "非洲进口商分享他们与ChinaLink的经验",
+    "prev": "上一个",
+    "next": "下一个"
+  },
+  "videoTestimonials": {
+    "headline": "他们真实地讲述我们的故事。",
+    "subheadline": "没有演员。没有剧本。非洲进口商用他们自己的语言分享真实体验。",
+    "badge": "无偿视频评价",
+    "badgeSub": "在客户现场拍摄",
+    "comparison": "我们的竞争对手有0个视频。我们有6个。这就是区别。",
+    "watchVideo": "观看视频",
+    "language": "语言",
+    "videos": [
+      {
+        "name": "Amadou Diallo",
+        "business": "Diallo Electronics, 巴马科",
+        "country": "马里",
+        "language": "法语 / 班巴拉语",
+        "quote": "以前我要付给4个不同的供应商。现在只需要一个。ChinaLink从头到尾全程处理。",
+        "result": "16天",
+        "resultLabel": "巴马科 → 工厂发货"
+      },
+      {
+        "name": "Fatou Ndiaye",
+        "business": "非洲时尚, 达喀尔",
+        "country": "塞内加尔",
+        "language": "法语 / 沃洛夫语",
+        "quote": "在中国的质量控制帮我避免了40,000西非法郎的损失。质检照片真是救星。",
+        "result": "+40%",
+        "resultLabel": "净利润"
+      },
+      {
+        "name": "Kofi Mensah",
+        "business": "Mensah Phones, 阿克拉",
+        "country": "加纳",
+        "language": "英语 / 特威语",
+        "quote": "第三次使用ChinaLink发货。每一次都比上一次更快。WhatsApp上的照片更新改变了游戏规则。",
+        "result": "第3次",
+        "resultLabel": "发货"
+      },
+      {
+        "name": "Aminata Koné",
+        "business": "Pure Beauty, 阿比让",
+        "country": "科特迪瓦",
+        "language": "法语 / 迪乌拉语",
+        "quote": "质检照片帮我节省了2000欧元。我在货物离开中国之前就拒绝了一批有缺陷的产品。",
+        "result": "2000欧元",
+        "resultLabel": "节省"
+      },
+      {
+        "name": "Ousmane Sawadogo",
+        "business": "Sawadogo建筑, 瓦加杜古",
+        "country": "布基纳法索",
+        "language": "法语 / 莫西语",
+        "quote": "我的第一个集装箱。我很害怕。但他们在每一步都指导我。从开始到交付。",
+        "result": "第1个",
+        "resultLabel": "集装箱"
+      },
+      {
+        "name": "Mariam Houessou",
+        "business": "Houessou贸易, 科托努",
+        "country": "贝宁",
+        "language": "法语 / 丰语",
+        "quote": "客服凌晨2点还在回复。当我有问题时，我在WhatsApp上给他们发消息，问题就解决了。",
+        "result": "24/7",
+        "resultLabel": "WhatsApp支持"
+      }
+    ],
+    "title": "真实的人。真实的故事。真实的结果。",
+    "subtitle": "没有演员。没有剧本。非洲进口商讲述他们的真实经历。",
+    "trustBadge": {
+      "unpaid": "无偿视频评价",
+      "filmedOnSite": "在客户现场拍摄",
+      "localLanguage": "用他们自己的语言"
+    },
+    "comparisonStrip": "我们的竞争对手有0个视频。我们有6个。这改变了一切。",
+    "ctaText": "也分享您的经验",
+    "ctaButton": "联系团队",
+    "close": "关闭",
+    "videoComingSoon": "视频即将推出"
+  },
+  "comparison": {
+    "sectionLabel": "对比",
+    "title": "ChinaLink 与其他公司",
+    "subtitle": "选择全包进口合作伙伴，您真正能得到什么。",
+    "chinaLinkColumn": "ChinaLink",
+    "othersColumn": "其他公司",
+    "features": {
+      "sourcing": {
+        "label": "供应商采购",
+        "us": "我们在中国为您寻找并验证供应商",
+        "them": "您必须自己在阿里巴巴/1688上寻找"
+      },
+      "qualityControl": {
+        "label": "质量控制",
+        "us": "发货前进行照片和视频检查",
+        "them": "没有质量控制，收到什么算什么"
+      },
+      "payment": {
+        "label": "供应商付款",
+        "us": "我们为您在中国付款",
+        "them": "您自己处理支付宝/微信支付"
+      },
+      "multiCountry": {
+        "label": "全方位服务",
+        "us": "中国采购+马里配送",
+        "them": "仅1-2个目的地"
+      },
+      "consolidation": {
+        "label": "货物合并",
+        "us": "免费合并您的包裹",
+        "them": "每个供应商单独支付运费"
+      },
+      "customs": {
+        "label": "清关",
+        "us": "包含在内，透明无隐藏费用",
+        "them": "隐藏费用和复杂文件"
+      },
+      "doorToDoor": {
+        "label": "门到门配送",
+        "us": "从中国到您的仓库",
+        "them": "仅在港口区域卸货"
+      }
+    },
+    "ctaText": "选择很简单。从ChinaLink开始。"
   }
 }

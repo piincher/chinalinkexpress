@@ -42,10 +42,9 @@ export function SeaFreightPage({ locale }: Props) {
   ];
 
   const routes = [
-    { origin: 'Shanghai', destination: 'Lagos', duration: '45-60 days', carrier: 'MSC' },
-    { origin: 'Shenzhen', destination: 'Dakar', duration: '45-60 days', carrier: 'CMA CGM' },
-    { origin: 'Guangzhou', destination: 'Abidjan', duration: '45-60 days', carrier: 'Maersk' },
-    { origin: 'Ningbo', destination: 'Tema', duration: '50-65 days', carrier: 'Evergreen' },
+    { origin: 'Shanghai', destination: 'Lomé → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
+    { origin: 'Shenzhen', destination: 'Dakar → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
+    { origin: 'Guangzhou', destination: 'Abidjan → Bamako (land)', duration: '60-75 days', carrier: 'Partner' },
   ];
 
   return (
@@ -64,13 +63,13 @@ export function SeaFreightPage({ locale }: Props) {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               {isEn 
-                ? 'Sea Freight from China to Africa' 
-                : 'Fret Maritime de la Chine vers l\'Afrique'}
+                ? 'Sea Freight from China to Mali' 
+                : 'Fret Maritime de la Chine vers le Mali'}
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
               {isEn 
-                ? 'Cost-effective ocean shipping for large volumes. FCL and LCL options available. Delivery in 45-75 days.'
-                : 'Transport maritime économique pour gros volumes. Options FCL et LCL disponibles. Livraison en 45-75 jours.'}
+                ? 'Cost-effective ocean shipping for large volumes to Bamako. Containers arrive at coastal ports (Lomé, Dakar, Abidjan) and continue by land to Mali. We coordinate with trusted partner carriers for the entire journey.'
+                : 'Transport maritime économique pour gros volumes vers Bamako. Les conteneurs arrivent aux ports côtiers (Lomé, Dakar, Abidjan) et continuent par route vers le Mali. Nous coordonnons avec des transporteurs partenaires de confiance pour tout le trajet.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -80,7 +79,7 @@ export function SeaFreightPage({ locale }: Props) {
                 {isEn ? 'Calculate Shipping Cost' : 'Calculer les Frais'}
               </Link>
               <a
-                href="https://wa.me/8618851725957"
+                href="https://wa.me/+8618851725957"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
@@ -102,8 +101,8 @@ export function SeaFreightPage({ locale }: Props) {
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
               {isEn 
-                ? 'The most economical solution for shipping large volumes from China to Africa'
-                : 'La solution la plus économique pour expédier de gros volumes de la Chine vers l\'Afrique'}
+                ? 'The most economical solution for shipping large volumes from China to Mali'
+                : 'La solution la plus économique pour expédier de gros volumes de la Chine vers le Mali'}
             </p>
           </div>
 
@@ -135,12 +134,12 @@ export function SeaFreightPage({ locale }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              {isEn ? 'Popular Shipping Routes' : 'Routes Maritimes Populaires'}
+              {isEn ? 'Popular Shipping Routes to Mali' : 'Routes Maritimes Populaires vers le Mali'}
             </h2>
             <p className="text-lg text-[var(--text-secondary)]">
               {isEn 
-                ? 'Direct and transshipment services to major African ports'
-                : 'Services directs et avec transbordement vers les grands ports africains'}
+                ? 'Sea freight to coastal ports with onward land transport to Bamako, coordinated through our partner network'
+                : 'Fret maritime vers les ports côtiers avec transport terrestre vers Bamako, coordonné via notre réseau de partenaires'}
             </p>
           </div>
 
@@ -155,7 +154,7 @@ export function SeaFreightPage({ locale }: Props) {
                     {isEn ? 'Destination' : 'Destination'}
                   </th>
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
-                    {isEn ? 'Carrier' : 'Compagnie'}
+                    {isEn ? 'Partner Carrier' : 'Transporteur Partenaire'}
                   </th>
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
                     {isEn ? 'Duration' : 'Durée'}
@@ -190,8 +189,8 @@ export function SeaFreightPage({ locale }: Props) {
             </h2>
             <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
               {isEn 
-                ? 'Perfect for furniture, machinery, and large shipments. Get your quote today!'
-                : 'Parfait pour meubles, machines et gros envois. Obtenez votre devis aujourd\'hui!'}
+                ? 'Perfect for furniture, machinery, and large shipments to Mali. Get your quote today!'
+                : 'Parfait pour meubles, machines et gros envois vers le Mali. Obtenez votre devis aujourd\'hui!'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

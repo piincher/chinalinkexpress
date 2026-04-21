@@ -13,40 +13,38 @@ export const SEO_KEYWORDS = {
   en: [
     // Primary
     'freight forwarding', 'shipping from China', 'logistics company', 'international shipping',
-    'sea freight', 'air freight', 'freight forwarder', 'China Africa shipping',
+    'sea freight', 'air freight', 'freight forwarder', 'China Mali shipping',
     // Long-tail
-    'shipping from China to Africa', 'China to West Africa shipping', 'freight forwarding China to Mali',
-    'shipping from China to Senegal', 'China to Ivory Coast freight', 'Alibaba shipping agent',
-    '1688 sourcing agent', 'China procurement services', 'door to door shipping China',
-    'container shipping China Africa', 'FCL shipping', 'LCL consolidation',
+    'shipping from China to Mali', 'freight forwarding China to Bamako', 'Alibaba shipping agent',
+    '1688 sourcing agent', 'China procurement services', 'door to door shipping China Mali',
+    'container shipping China Mali', 'FCL shipping', 'LCL consolidation',
     // Locations
-    'shipping China Bamako', 'freight forwarder China Mali', 'China Dakar shipping',
-    'shipping China Abidjan', 'China Lome freight', 'China Cotonou shipping',
-    'China Lagos freight', 'China Accra shipping', 'China Conakry freight',
+    'shipping China Bamako', 'freight forwarder China Mali', 'import China Mali',
+    'Bamako logistics', 'China to Bamako shipping',
     // Services
-    'air cargo China Africa', 'express shipping China', 'Alibaba payment agent',
+    'air cargo China Mali', 'express shipping China Mali', 'Alibaba payment agent',
     'WeChat Pay business', 'supplier verification China', 'quality inspection China',
-    'warehouse China Africa', 'customs clearance Africa', 'import export China',
+    'customs clearance Mali', 'import export China Mali', 'sourcing agent Mali',
   ].join(', '),
   
   fr: [
     // Primary
     'fret maritime', 'fret aérien', 'expédition Chine', 'transitaire',
     'logistique internationale', 'transport international', 'commissionnaire transport',
-    'fret Chine Afrique',
+    'fret Chine Mali', 'cargo chine mali', 'transitaire chine mali', 'envoi colis chine mali',
     // Long-tail
-    'expédition colis Chine Afrique', 'fret Chine Mali', 'envoi marchandises Chine Sénégal',
-    'transport maritime Chine Côte d\'Ivoire', 'achat fournisseur Chine', 'agent sourcing Chine',
-    'paiement fournisseur chinois', 'dédouanement Mali', 'livraison porte à porte Chine',
-    'conteneur Chine Afrique', 'conteneur complet FCL', 'groupage maritime LCL',
-    // Countries
-    'expédition Chine Bamako', 'fret Chine Dakar', 'transport Chine Abidjan',
-    'envoi colis Chine Lomé', 'fret maritime Chine Cotonou', 'expédition Chine Lagos',
-    'transport Chine Accra', 'fret Chine Conakry', 'expédition Chine Ouagadougou',
+    'expédition colis Chine Mali', 'fret Chine Mali', 'envoi marchandises Chine Bamako',
+    'achat fournisseur Chine', 'agent sourcing Chine',
+    'paiement fournisseur chinois', 'dédouanement Mali', 'livraison porte à porte Chine Mali',
+    'conteneur Chine Mali', 'conteneur complet FCL', 'groupage maritime LCL',
+    'cargo chine mali', 'fret chine bamako', 'conteneur chine mali',
+    // Locations
+    'expédition Chine Bamako', 'fret Chine Bamako', 'transitaire Bamako',
+    'envoi colis Chine Bamako', 'fret maritime Chine Mali', 'expédition Chine Mali',
     // Services
-    'cargo aérien Chine Afrique', 'express Chine Mali', 'agent paiement Alipay',
-    'vérification fournisseur', 'inspection qualité Chine', 'entrepôt Chine Afrique',
-    'formalités douanières', 'déclaration en douane', 'import export Chine',
+    'cargo aérien Chine Mali', 'express Chine Mali', 'agent paiement Alipay',
+    'vérification fournisseur', 'inspection qualité Chine', 'entrepôt Chine Mali',
+    'formalités douanières', 'déclaration en douane', 'import export Chine Mali',
   ].join(', '),
 } as const;
 
@@ -57,148 +55,124 @@ export const SEO_KEYWORDS = {
 export const PAGE_SEO = {
   home: {
     en: {
-      title: 'ChinaLink Express | Freight Forwarding China to Africa | Air & Sea Shipping',
-      description: 'Leading freight forwarder from China to Africa. Air freight (14-21 days) & sea freight (60-75 days) to Mali, Senegal, Ivory Coast, Nigeria & more. Get your free quote today!',
-      keywords: `${SEO_KEYWORDS.en}, ChinaLink Express, logistics Africa`,
+      title: 'ChinaLink Express | Sourcing & Shipping China to Mali | Air & Sea Freight',
+      description: 'Your trusted partner for sourcing products from China and shipping to Mali. Air freight (14-21 days) & sea freight (60-75 days) to Bamako via our partner network. Get your free quote today!',
+      keywords: `${SEO_KEYWORDS.en}, ChinaLink Express, logistics Mali`,
     },
     fr: {
-      title: 'ChinaLink Express | Fret Maritime & Aérien Chine-Afrique | Transitaire',
-      description: 'Transitaire de référence de la Chine vers l\'Afrique. Fret aérien (14-21 jours) & maritime (60-75 jours) vers le Mali, Sénégal, Côte d\'Ivoire, Nigeria. Devis gratuit!',
-      keywords: `${SEO_KEYWORDS.fr}, ChinaLink Express, logistique Afrique`,
+      title: 'Cargo Chine Mali | Fret Aérien & Maritime | ChinaLink Express',
+      description: 'cargo chine mali — Votre partenaire de confiance pour le sourcing de produits en Chine et l\'expédition vers le Mali. Fret aérien (14-21 jours) & maritime (60-75 jours) vers Bamako via notre réseau de partenaires. Devis gratuit!',
+      keywords: `${SEO_KEYWORDS.fr}, ChinaLink Express, logistique Mali`,
     },
   },
   
   services: {
     airFreight: {
-      en: {
-        title: 'Air Freight China to Africa | Express Shipping | ChinaLink Express',
-        description: 'Fast air freight from China to Mali, Senegal, Ivory Coast & West Africa. Delivery in 14-21 days. Real-time tracking. Get a quote for your air cargo!',
-        keywords: 'air freight China Africa, air cargo, express shipping China Mali, air freight Bamako, air freight Dakar, China air shipping',
+    en: {
+      title: 'Air Freight China to Mali | Express Shipping',
+        description: 'Fast air freight from China to Bamako, Mali through trusted partner carriers. Delivery in 14-21 days. Real-time tracking. Get a quote for your air cargo!',
+        keywords: 'air freight China Mali, air cargo, express shipping China Mali, air freight Bamako, China air shipping',
       },
-      fr: {
-        title: 'Fret Aérien Chine Afrique | Expédition Express | ChinaLink Express',
-        description: 'Fret aérien rapide de la Chine vers le Mali, Sénégal, Côte d\'Ivoire & Afrique de l\'Ouest. Livraison en 14-21 jours. Suivi en temps réel. Demandez votre devis!',
-        keywords: 'fret aérien Chine Afrique, cargo aérien, express Chine Mali, fret aérien Bamako, fret aérien Dakar',
+    fr: {
+      title: 'Fret Aérien Chine Mali | Expédition Express',
+        description: 'Fret aérien rapide de la Chine vers Bamako, Mali via des transporteurs partenaires de confiance. Livraison en 14-21 jours. Suivi en temps réel. Demandez votre devis!',
+        keywords: 'fret aérien Chine Mali, cargo aérien, express Chine Mali, fret aérien Bamako',
       },
     },
     
     seaFreight: {
       en: {
-        title: 'Sea Freight China to Africa | FCL & LCL Shipping | ChinaLink Express',
-        description: 'Economical sea freight from China to Africa. FCL container shipping & LCL consolidation. Delivery in 60-75 days. Best rates for bulk goods. Get a quote!',
-        keywords: 'sea freight China Africa, FCL shipping, LCL consolidation, container shipping, maritime freight China Mali, sea freight Bamako',
+        title: 'Sea Freight China to Mali | FCL & LCL Shipping | ChinaLink Express',
+        description: 'Economical sea freight from China to Mali via coastal ports. FCL container shipping & LCL consolidation. Delivery in 60-75 days through partner carriers. Get a quote!',
+        keywords: 'sea freight China Mali, FCL shipping, LCL consolidation, container shipping, maritime freight China Mali, sea freight Bamako',
       },
       fr: {
-        title: 'Fret Maritime Chine Afrique | Conteneur FCL & Groupage LCL',
-        description: 'Fret maritime économique de la Chine vers l\'Afrique. Conteneurs complets FCL & groupage LCL. Livraison en 60-75 jours. Meilleurs tarifs pour gros volumes. Devis gratuit!',
-        keywords: 'fret maritime Chine Afrique, conteneur FCL, groupage LCL, transport maritime, fret maritime Chine Mali',
+        title: 'Fret Maritime Chine Mali | Conteneur FCL & Groupage LCL',
+        description: 'Fret maritime économique de la Chine vers le Mali via les ports côtiers. Conteneurs complets FCL & groupage LCL. Livraison en 60-75 jours via des partenaires. Devis gratuit!',
+        keywords: 'fret maritime Chine Mali, conteneur FCL, groupage LCL, transport maritime, fret maritime Chine Bamako',
       },
     },
     
     sourcing: {
-      en: {
-        title: 'China Sourcing Agent | Alibaba 1688 Procurement | ChinaLink Express',
+    en: {
+      title: 'China Sourcing Agent for Mali | Alibaba 1688 Procurement',
         description: 'Professional sourcing agent in China. We buy from Alibaba, 1688, Taobao on your behalf. Supplier verification, quality inspection, payment processing. Start sourcing today!',
         keywords: 'China sourcing agent, Alibaba agent, 1688 sourcing, procurement China, supplier verification, quality inspection China',
       },
-      fr: {
-        title: 'Agent Sourcing Chine | Achat Alibaba 1688 | ChinaLink Express',
-        description: 'Agent sourcing professionnel en Chine. Nous achetons sur Alibaba, 1688, Taobao pour vous. Vérification fournisseurs, inspection qualité, paiement. Commencez vos achats!',
-        keywords: 'agent sourcing Chine, agent Alibaba, achat 1688, approvisionnement Chine, vérification fournisseur, inspection qualité',
+    fr: {
+      title: 'Agent Sourcing Chine pour le Mali | Achat Alibaba 1688',
+      description: 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, 1688 et Taobao, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
+      keywords: 'agent sourcing Chine Mali, agent Alibaba Mali, achat 1688 Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
       },
     },
   },
   
   routes: {
     chinaToMali: {
-      en: {
-        title: 'Shipping from China to Mali | Freight Forwarder Bamako | ChinaLink Express',
+    en: {
+        title: 'Shipping from China to Mali | Freight Forwarder Bamako',
         description: 'Reliable freight forwarding from China to Mali. Air & sea shipping to Bamako. Door-to-door delivery. 7+ years experience. Get your free quote now!',
         keywords: 'shipping China Mali, freight forwarder Bamako, China to Bamako shipping, Mali logistics, import China Mali',
       },
-      fr: {
-        title: 'Expédition Chine vers Mali | Transitaire Bamako | ChinaLink Express',
-        description: 'Transitaire fiable de la Chine vers le Mali. Fret aérien et maritime vers Bamako. Livraison porte à porte. 7+ ans d\'expérience. Devis gratuit!',
-        keywords: 'expédition Chine Mali, transitaire Bamako, fret Chine Bamako, logistique Mali, import Chine Mali',
+    fr: {
+        title: 'Cargo Chine Mali | Fret Aérien & Maritime | ChinaLink Express',
+        description: 'Fret Chine-Mali fiable pour importer vers Bamako. Fret aérien 14-21 jours, fret maritime 60-75 jours, sourcing, paiement fournisseur et suivi WhatsApp.',
+        keywords: 'fret Chine Mali, expédition Chine Mali, transitaire Chine Mali, fret Chine Bamako, cargo Chine Mali, import Chine Mali',
       },
     },
     
-    chinaToSenegal: {
-      en: {
-        title: 'Shipping from China to Senegal | Freight Forwarder Dakar | ChinaLink Express',
-        description: 'Freight forwarding from China to Senegal. Air & sea shipping to Dakar. Competitive rates, reliable service. Get your quote today!',
-        keywords: 'shipping China Senegal, freight forwarder Dakar, China to Dakar shipping, Senegal logistics, import China Senegal',
-      },
-      fr: {
-        title: 'Expédition Chine vers Sénégal | Transitaire Dakar | ChinaLink Express',
-        description: 'Transitaire de la Chine vers le Sénégal. Fret aérien et maritime vers Dakar. Tarifs compétitifs, service fiable. Demandez votre devis!',
-        keywords: 'expédition Chine Sénégal, transitaire Dakar, fret Chine Dakar, logistique Sénégal, import Chine Sénégal',
-      },
-    },
-    
-    chinaToIvoryCoast: {
-      en: {
-        title: 'Shipping from China to Ivory Coast | Freight Forwarder Abidjan',
-        description: 'Freight forwarding from China to Ivory Coast. Air & sea shipping to Abidjan. Professional logistics services. Get your free quote!',
-        keywords: 'shipping China Ivory Coast, freight forwarder Abidjan, China to Abidjan shipping, Cote d\'Ivoire logistics',
-      },
-      fr: {
-        title: 'Expédition Chine vers Côte d\'Ivoire | Transitaire Abidjan',
-        description: 'Transitaire de la Chine vers la Côte d\'Ivoire. Fret aérien et maritime vers Abidjan. Services logistiques professionnels. Devis gratuit!',
-        keywords: 'expédition Chine Côte d\'Ivoire, transitaire Abidjan, fret Chine Abidjan, logistique Côte d\'Ivoire',
-      },
-    },
+
   },
   
   calculator: {
     en: {
-      title: 'Shipping Cost Calculator | Freight Rates China to Africa | ChinaLink Express',
-      description: 'Calculate your shipping costs from China to Africa instantly. Air freight & sea freight rates to Mali, Senegal, Ivory Coast. Get an accurate estimate in seconds!',
-      keywords: 'shipping calculator, freight rates China Africa, shipping cost estimator, air freight calculator, sea freight calculator',
+      title: 'Shipping Cost Calculator | Freight Rates China to Mali',
+      description: 'Calculate your shipping costs from China to Mali instantly. Air freight & sea freight rates to Bamako via our partner network. Get an accurate estimate in seconds!',
+      keywords: 'shipping calculator, freight rates China Mali, shipping cost estimator, air freight calculator, sea freight calculator',
     },
     fr: {
-      title: 'Calculateur de Frais d\'Expédition | Tarifs Fret Chine-Afrique',
-      description: 'Calculez vos frais d\'expédition de la Chine vers l\'Afrique instantanément. Tarifs fret aérien et maritime vers Mali, Sénégal, Côte d\'Ivoire. Estimation précise!',
-      keywords: 'calculateur frais expédition, tarifs fret Chine Afrique, estimateur coût transport, calculateur fret aérien',
+      title: 'Calculateur de Frais d\'Expédition | Tarifs Fret Chine-Mali',
+      description: 'Calculez vos frais d\'expédition de la Chine vers le Mali instantanément. Tarifs fret aérien et maritime vers Bamako via notre réseau de partenaires. Estimation précise!',
+      keywords: 'calculateur frais expédition, tarifs fret Chine Mali, estimateur coût transport, calculateur fret aérien',
     },
   },
   
   pricing: {
     en: {
-      title: 'Shipping Rates China to Africa | Air & Sea Freight Prices | ChinaLink Express',
-      description: 'Competitive shipping rates from China to Africa. Air freight from $X/kg, sea freight from $X/CBM. Transparent pricing, no hidden fees. View our price list!',
-      keywords: 'shipping rates China Africa, freight prices, air freight rates, sea freight rates, shipping costs',
+      title: 'Shipping Rates China to Mali | Air & Sea Freight Prices',
+      description: 'Competitive shipping rates from China to Mali. Air freight & sea freight to Bamako via partner carriers. Transparent pricing, no hidden fees. View our price list!',
+      keywords: 'shipping rates China Mali, freight prices, air freight rates, sea freight rates, shipping costs',
     },
     fr: {
-      title: 'Tarifs d\'Expédition Chine-Afrique | Prix Fret Aérien & Maritime',
-      description: 'Tarifs compétitifs pour expédier de la Chine vers l\'Afrique. Fret aérien à partir de X FCFA/kg, maritime à partir de X FCFA/CBM. Prix transparents. Consultez nos tarifs!',
-      keywords: 'tarifs expédition Chine Afrique, prix fret, tarifs fret aérien, tarifs fret maritime, coûts transport',
+      title: 'Tarifs d\'Expédition Chine-Mali | Prix Fret Aérien & Maritime',
+      description: 'Tarifs compétitifs pour expédier de la Chine vers le Mali. Fret aérien et maritime vers Bamako via des partenaires. Prix transparents. Consultez nos tarifs!',
+      keywords: 'tarifs expédition Chine Mali, prix fret, tarifs fret aérien, tarifs fret maritime, coûts transport',
     },
   },
   
   contact: {
     en: {
-      title: 'Contact ChinaLink Express | Freight Quote | China to Africa Shipping',
-      description: 'Contact ChinaLink Express for a free freight quote. WhatsApp: +86 188 5172 5957. Air & sea shipping from China to Mali, Senegal & West Africa. 24/7 support!',
-      keywords: 'contact freight forwarder, shipping quote China Africa, ChinaLink Express contact, freight inquiry',
+      title: 'Contact ChinaLink Express | Freight Quote China to Mali',
+      description: 'Contact ChinaLink Express for a free freight quote. WhatsApp: +86 188 5172 5957. Air & sea shipping from China to Bamako, Mali through trusted partners. 24/7 support!',
+      keywords: 'contact freight forwarder, shipping quote China Mali, ChinaLink Express contact, freight inquiry',
     },
     fr: {
-      title: 'Contact ChinaLink Express | Devis Fret | Expédition Chine-Afrique',
-      description: 'Contactez ChinaLink Express pour un devis fret gratuit. WhatsApp: +86 188 5172 5957. Fret aérien et maritime de la Chine vers le Mali, Sénégal & Afrique. Support 24/7!',
-      keywords: 'contact transitaire, devis fret Chine Afrique, ChinaLink Express contact, demande expédition',
+      title: 'Contact ChinaLink Express | Devis Fret Chine-Mali',
+      description: 'Contactez ChinaLink Express pour un devis fret gratuit. WhatsApp: +86 188 5172 5957. Fret aérien et maritime de la Chine vers Bamako, Mali via des partenaires de confiance. Support 24/7!',
+      keywords: 'contact transitaire, devis fret Chine Mali, ChinaLink Express contact, demande expédition',
     },
   },
   
   faq: {
     en: {
-      title: 'Shipping FAQ | China to Africa Freight Questions | ChinaLink Express',
-      description: 'Find answers to all your shipping questions. Delivery times, rates, customs, prohibited items. Everything you need to know about shipping from China to Africa.',
-      keywords: 'shipping FAQ, freight questions, China Africa shipping FAQ, customs clearance FAQ, shipping times',
+      title: 'Shipping FAQ | China to Mali Freight Questions',
+      description: 'Find answers to all your shipping questions. Delivery times, rates, customs, prohibited items. Everything you need to know about shipping from China to Mali.',
+      keywords: 'shipping FAQ, freight questions, China Mali shipping FAQ, customs clearance FAQ, shipping times',
     },
     fr: {
-      title: 'FAQ Expédition | Questions Fret Chine-Afrique | ChinaLink Express',
-      description: 'Trouvez les réponses à toutes vos questions sur l\'expédition. Délais, tarifs, douanes, articles interdits. Tout savoir sur l\'expédition de la Chine vers l\'Afrique.',
-      keywords: 'FAQ expédition, questions fret, FAQ fret Chine Afrique, FAQ dédouanement, délais livraison',
+      title: 'FAQ Expédition | Questions Fret Chine-Mali',
+      description: 'Trouvez les réponses à toutes vos questions sur l\'expédition. Délais, tarifs, douanes, articles interdits. Tout savoir sur l\'expédition de la Chine vers le Mali.',
+      keywords: 'FAQ expédition, questions fret, FAQ fret Chine Mali, FAQ dédouanement, délais livraison',
     },
   },
 } as const;

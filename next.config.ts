@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
     // Modern image formats for better compression
     formats: ['image/avif', 'image/webp'],
@@ -49,6 +55,16 @@ const nextConfig: NextConfig = {
       {
         source: '/sourcing',
         destination: '/fr/services/sourcing',
+        permanent: true,
+      },
+      {
+        source: '/:locale(fr|en|zh|ar)/routes/china-to-ivory-coast',
+        destination: '/:locale/routes/china-to-cote-divoire',
+        permanent: true,
+      },
+      {
+        source: '/:locale(fr|en|zh|ar)/routes/china-to-ivory-coast/',
+        destination: '/:locale/routes/china-to-cote-divoire',
         permanent: true,
       },
       // Force lowercase URLs

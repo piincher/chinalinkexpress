@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ChinaLink Express | Sourcing & Expédition Chine-Afrique",
-    "description": "ChinaLink Express - Votre partenaire logistique de confiance pour le sourcing, l'achat et l'expédition de marchandises de la Chine vers le Mali et l'Afrique. Devis gratuit.",
-    "keywords": "sourcing Chine Afrique, expédition Chine Mali, fret maritime Chine Afrique, fret aérien Chine Bamako, logistique internationale"
+    "title": "ChinaLink Express | Cargo Chine Mali | Fret Aérien & Maritime",
+    "description": "ChinaLink Express - cargo chine mali. Votre partenaire logistique de confiance pour le sourcing, l'achat et l'expédition de marchandises de la Chine vers le Mali. Devis gratuit.",
+    "keywords": "cargo chine mali, transitaire chine mali, sourcing Chine Afrique, expédition Chine Mali, fret maritime Chine Afrique, fret aérien Chine Bamako, logistique internationale"
   },
   "navigation": {
     "home": "Accueil",
@@ -16,7 +16,8 @@
     "pricing": "Tarifs",
     "calculator": "Calculateur",
     "privacy": "Confidentialité",
-    "terms": "CGV"
+    "terms": "CGV",
+    "community": "Communauté"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -29,9 +30,44 @@
   },
   "hero": {
     "title": "ChinaLink Express - Votre Partenaire Logistique",
-    "subtitle": "Votre pont logistique entre la Chine et l'Afrique. Expédition aérienne et maritime avec suivi en temps réel.",
-    "typingTexts": ["Solutions Logistiques Complètes", "Expéditions Internationales", "Votre Partenaire de Confiance"],
-    "badge": "Opérationnel 24/7 • Livraison garantie"
+    "headline": "Sourcing et expédition Chine-Mali",
+    "subheadline": "Importez à Bamako avec un partenaire qui gère tout.",
+    "subtitle": "De la recherche fournisseur en Chine à la livraison finale au Mali, nous vous accompagnons à chaque étape. Achats, contrôle qualité, paiement sécurisé, cargo, fret aérien, fret maritime et suivi WhatsApp : un seul partenaire pour toute votre chaîne d'approvisionnement.",
+    "typingTexts": [
+      "Solutions Logistiques Complètes",
+      "Expéditions Internationales",
+      "Votre Partenaire de Confiance"
+    ],
+    "badge": "Opérationnel 24/7 • Livraison garantie",
+    "journeySteps": [
+      {
+        "icon": "🔍",
+        "label": "Fournisseur"
+      },
+      {
+        "icon": "🛒",
+        "label": "Achat"
+      },
+      {
+        "icon": "✓",
+        "label": "Qualité"
+      },
+      {
+        "icon": "💳",
+        "label": "Paiement"
+      },
+      {
+        "icon": "📦",
+        "label": "Expédition"
+      },
+      {
+        "icon": "🚚",
+        "label": "Livraison"
+      }
+    ],
+    "stats": {
+      "payOnDelivery": "Payez à la livraison"
+    }
   },
   "stats": {
     "sectionLabel": "Nos Chiffres",
@@ -44,13 +80,173 @@
     "successRate": "Taux de réussite",
     "support": "Support client",
     "experienceYears": "Années d'expérience",
-    "deliveryRate": "Taux de livraison"
+    "deliveryRate": "Taux de livraison",
+    "activeClients": "Clients actifs",
+    "ratingLabel": "Basé sur 312 avis clients vérifiés",
+    "ratingValue": "4.8",
+    "activeClientsCount": "1,247"
   },
   "about": {
     "sectionLabel": "À Propos de Nous",
     "title": "À Propos de ChinaLink Express",
-    "description1": "Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine, le Mali et l'Afrique. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.",
+    "description1": "Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine et le Mali. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.",
     "description2": "Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier."
+  },
+  "comparison": {
+    "metadata": {
+      "title": "Pourquoi Nous | Service Complet vs Simple Transit | ChinaLink Express",
+      "description": "Pourquoi choisir un partenaire d'importation complet plutôt qu'un simple transitaire. Découvrez comment ChinaLink Express sécurise vos achats en Chine.",
+      "keywords": "transitaire chine afrique, partenaire importation, sourcing chine, fret complet vs simple, importation chine mali"
+    },
+    "hero": {
+      "badge": "Partenaire d'Importation Complet",
+      "title": "Ne payez pas pour un simple transport. Investissez dans un partenaire d'importation.",
+      "subtitle": "Ne vous contentez pas d'un transitaire. Avec ChinaLink Express, vous avez un partenaire qui gère tout : sourcing, paiement, qualité, expédition.",
+      "ctaWhatsApp": "Commencer à Importer",
+      "ctaRates": "Voir Nos Tarifs"
+    },
+    "problem": {
+      "sectionLabel": "Le Problème",
+      "title": "Ce qui arrive quand vous ne choisissez qu'un simple transitaire",
+      "subtitle": "Un transitaire ne transporte que vos colis. Le reste ? C'est à vous de gérer.",
+      "items": {
+        "scam": {
+          "title": "Risque d'arnaques",
+          "description": "Vous trouvez les fournisseurs vous-même sur Alibaba ou 1688. Sans vérification locale, le risque d'escroquerie est réel."
+        },
+        "quality": {
+          "title": "Aucun contrôle qualité",
+          "description": "Vous recevez les produits tels quels. Mauvaise surprise si la qualité ne correspond pas aux photos."
+        },
+        "payment": {
+          "title": "Galères de paiement",
+          "description": "Alipay, WeChat Pay, virement bancaire chinois... Vous devez tout gérer seul, avec les risques de change et de fraude."
+        },
+        "consolidation": {
+          "title": "Fournisseurs multiples",
+          "description": "Vous achetez chez plusieurs vendeurs ? Impossible de regrouper les colis. Vous payez le fret plusieurs fois."
+        },
+        "customs": {
+          "title": "Surprises douanières",
+          "description": "Frais cachés, dédouanement compliqué, paperasse interminable. Le prix annoncé n'est jamais le prix final."
+        }
+      }
+    },
+    "comparisonTable": {
+      "sectionLabel": "La Comparaison",
+      "title": "Simple Transit vs Service Complet",
+      "subtitle": "Comparez ce que vous obtenez réellement.",
+      "simpleTransit": "Simple Transit",
+      "fullService": "Service Complet ChinaLink",
+      "rows": {
+        "supplierFinding": {
+          "label": "Recherche fournisseurs",
+          "simple": "À vous de trouver",
+          "full": "Nous trouvons et vérifions"
+        },
+        "qualityCheck": {
+          "label": "Contrôle qualité",
+          "simple": "Aucun",
+          "full": "Inspection avant expédition"
+        },
+        "payment": {
+          "label": "Paiement fournisseurs",
+          "simple": "Vous gérez Alipay/WeChat",
+          "full": "Nous payons pour vous"
+        },
+        "consolidation": {
+          "label": "Consolidation colis",
+          "simple": "Impossible",
+          "full": "Regroupement gratuit"
+        },
+        "customs": {
+          "label": "Dédouanement",
+          "simple": "Frais cachés",
+          "full": "Inclus et transparent"
+        },
+        "tracking": {
+          "label": "Suivi",
+          "simple": "Numéro de suivi basique",
+          "full": "Suivi temps réel + app"
+        },
+        "support": {
+          "label": "Support client",
+          "simple": "Email, réponse en 48h",
+          "full": "WhatsApp 24/7"
+        }
+      }
+    },
+    "result": {
+      "sectionLabel": "Le Résultat",
+      "title": "Avec ChinaLink Express, vous obtenez",
+      "subtitle": "Un partenaire qui travaille pour vous, pas seulement un transporteur.",
+      "items": {
+        "peaceOfMind": {
+          "title": "Tranquillité d'esprit",
+          "description": "Nous vérifions vos fournisseurs, contrôlons la qualité et gérons les problèmes. Vous n'avez qu'à attendre votre livraison."
+        },
+        "qualityGoods": {
+          "title": "Produits de qualité",
+          "description": "Inspection photo et vidéo avant expédition. Si ça ne correspond pas, on ne vous l'envoie pas."
+        },
+        "costSavings": {
+          "title": "Économies réelles",
+          "description": "Consolidation de vos achats, négociation des prix, pas de frais douaniers cachés. Vous économisez sur toute la ligne."
+        },
+        "timeSavings": {
+          "title": "Gain de temps",
+          "description": "Plus besoin de passer des nuits à négocier avec des fournisseurs en chinois. On s'occupe de tout."
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à importer sans stress ?",
+      "subtitle": "Rejoignez des centaines d'entreprises africaines qui ont choisi un partenaire d'importation complet.",
+      "button": "Discuter sur WhatsApp"
+    },
+    "sectionLabel": "La comparaison",
+    "title": "ChinaLink vs Les autres",
+    "subtitle": "Ce que vous obtenez réellement avec un partenaire d'importation complet.",
+    "chinaLinkColumn": "ChinaLink",
+    "othersColumn": "Les autres",
+    "features": {
+      "sourcing": {
+        "label": "Recherche fournisseurs",
+        "us": "Nous trouvons et vérifions vos fournisseurs en Chine",
+        "them": "Vous devez trouver seul sur Alibaba/1688"
+      },
+      "qualityControl": {
+        "label": "Contrôle qualité",
+        "us": "Inspection photo et vidéo avant expédition",
+        "them": "Aucun contrôle, vous recevez ce qui part"
+      },
+      "payment": {
+        "label": "Paiement fournisseurs",
+        "us": "Nous payons pour vous en Chine",
+        "them": "Vous gérez Alipay/WeChat Pay seul"
+      },
+      "multiCountry": {
+        "label": "Service Complet",
+        "us": "Sourcing en Chine + livraison au Mali",
+        "them": "Seulement transport, pas de sourcing"
+      },
+      "consolidation": {
+        "label": "Consolidation",
+        "us": "Regroupement gratuit de vos colis",
+        "them": "Fret payé pour chaque fournisseur"
+      },
+      "customs": {
+        "label": "Dédouanement",
+        "us": "Inclus et transparent, pas de surprise",
+        "them": "Frais cachés et paperasse complexe"
+      },
+      "doorToDoor": {
+        "label": "Livraison porte-à-porte",
+        "us": "De la Chine jusqu'à votre entrepôt",
+        "them": "Déchargement en zone portuaire"
+      }
+    },
+    "ctaText": "Le choix est simple. Commencez avec ChinaLink."
   },
   "services": {
     "sectionLabel": "Nos Services",
@@ -63,7 +259,7 @@
       },
       "airFreight": {
         "title": "EXPÉDITION AÉRIENNE",
-        "description": "Livraison rapide par voie aérienne pour vos marchandises urgentes à travers le monde."
+        "description": "Livraison rapide par voie aérienne pour vos marchandises urgentes vers le Mali via nos partenaires."
       },
       "seaFreight": {
         "title": "EXPÉDITION MARITIME",
@@ -136,6 +332,50 @@
       "expertise": {
         "title": "Expertise",
         "description": "Plus de 7 ans d'expérience dans la logistique internationale."
+      }
+    }
+  },
+  "successStories": {
+    "sectionLabel": "Histoires de Réussite",
+    "title": "Nos Clients Ont Réussi. Vous Pouvez Aussi.",
+    "subtitle": "Des entrepreneurs africains qui ont transformé leur approvisionnement avec ChinaLink.",
+    "problem": "Le Problème",
+    "solution": "Notre Solution",
+    "result": "Le Résultat",
+    "saved": "économisé",
+    "timeReduced": "délai réduit",
+    "revenueUp": "CA en hausse",
+    "ctaText": "Devenez notre prochain succès",
+    "stories": {
+      "toure": {
+        "name": "Dr. Ibrahim Touré",
+        "location": "Bamako, Mali",
+        "business": "Clinique du Sahel",
+        "problem": "A commandé du matériel médical auprès d'un fournisseur Alibaba au hasard. A reçu des produits contrefaits sans garantie. A perdu 3 500 $.",
+        "solution": "ChinaLink a trouvé un fournisseur vérifié, inspecté les marchandises avant l'expédition et géré le paiement en toute sécurité.",
+        "result": "A économisé 2 000 $ par rapport à sa première tentative. A reçu du matériel certifié authentique en 18 jours.",
+        "metricValue": "2 000 $",
+        "metricLabel": "économisés"
+      },
+      "aminata": {
+        "name": "Aminata Diarra",
+        "location": "Bamako, Mali",
+        "business": "Maison Aminata Textiles",
+        "problem": "A acheté des textiles chez 3 vendeurs différents sur Alibaba. Chacun a envoyé de la mauvaise qualité. Aucun moyen de vérifier avant de payer.",
+        "solution": "ChinaLink a consolidé les achats de plusieurs fournisseurs, fait du contrôle qualité sur chaque lot et tout expédié ensemble vers Bamako.",
+        "result": "40% d'économie sur l'expédition grâce à la consolidation. Tous les articles correspondaient aux échantillons. Chiffre d'affaires en hausse de 60%.",
+        "metricValue": "+60%",
+        "metricLabel": "CA en hausse"
+      },
+      "ousmane": {
+        "name": "Ousmane Traoré",
+        "location": "Bamako, Mali",
+        "business": "Traoré Electronics",
+        "problem": "Expédition d'électronique bloquée en douane à Bamako pendant 3 semaines. A dû payer des frais imprévus. Les commandes clients étaient retardées.",
+        "solution": "ChinaLink a géré le dédouanement dans le cadre du service porte-à-porte. Pas de mauvaises surprises.",
+        "result": "Délai de livraison réduit de 45 jours à 16 jours. Zéro frais de douane supplémentaires. Clients satisfaits.",
+        "metricValue": "16 jours",
+        "metricLabel": "délai réduit"
       }
     }
   },
@@ -387,8 +627,15 @@
   },
   "pricing": {
     "hero": {
-      "title": "Nos Tarifs d'Expédition",
-      "subtitle": "Des tarifs transparents et compétitifs pour vos expéditions aériennes et maritimes de la Chine vers l'Afrique"
+      "title": "Tarifs fret Chine-Mali : aérien, maritime et cargo",
+      "subtitle": "Des tarifs transparents pour vos expéditions de la Chine vers Bamako. Comparez fret aérien, fret maritime, cargo urgent et options économiques selon votre marge.",
+      "speedBadge": "Livraison en 2-5 jours",
+      "stats": {
+        "express": "Flash Express: 2-5 jours",
+        "standard": "Air Standard: 14-21 jours",
+        "sea": "Économique Maritime: 60-75 jours",
+        "reviews": "4.8 ★ — 312 avis"
+      }
     },
     "navigation": {
       "goToCalculator": "Calculer mon Expédition",
@@ -399,6 +646,11 @@
       "sea": "Fret Maritime"
     },
     "categories": {
+      "express": {
+        "name": "Flash Express",
+        "description": "Livraison prioritaire 2-5 jours",
+        "unit": "kg"
+      },
       "phones": {
         "name": "Téléphones",
         "description": "Smartphones et accessoires mobiles",
@@ -410,8 +662,8 @@
         "unit": "kg"
       },
       "standard": {
-        "name": "Standard",
-        "description": "Marchandises générales",
+        "name": "Air Standard",
+        "description": "Livraison standard 14-21 jours",
         "unit": "kg"
       },
       "containers": {
@@ -420,9 +672,27 @@
         "unit": "m³"
       }
     },
+    "smartChoice": {
+      "badge": "Le Choix Malin",
+      "description": "Pour les importateurs qui planifient. Même qualité, meilleur prix."
+    },
+    "deliveryPerformance": {
+      "title": "Performance de Livraison",
+      "subtitle": "On sous-estime les délais pour les dépasser.",
+      "quoted": "Délai annoncé",
+      "actualAverage": "Moyenne réelle",
+      "onTimeRate": "Livraisons à l'heure",
+      "earlyDelivery": "Livraison anticipée probable",
+      "earlyDeliveryStat": "94% de nos livraisons arrivent avant le délai annoncé."
+    },
+    "savings": {
+      "vsExpress": "Économisez {percent}% vs Flash Express"
+    },
     "priceTable": {
       "title": "Grille Tarifaire",
       "subtitle": "Comparez nos tarifs pour choisir la meilleure option pour vos besoins",
+      "fastestBadge": "LE PLUS RAPIDE",
+      "comparisonHint": "Leur délai le plus rapide : 4 jours. Le nôtre : 2-5 jours. La différence est réelle.",
       "air": {
         "description": "Expédition rapide et sécurisée",
         "note": "Le poids volumétrique s'applique selon la formule: (L × l × H) ÷ 5000"
@@ -437,11 +707,50 @@
     },
     "calculator": {
       "title": "Calculateur de Frais",
-      "subtitle": "Estimez instantanément le coût de votre expédition"
+      "subtitle": "Choisissez votre deadline, on trouve l'option la moins chère",
+      "deadlineView": "Par Deadline",
+      "classicView": "Par Mode"
     },
     "calculatorPage": {
-      "title": "Calculateur d'Expédition",
-      "subtitle": "Obtenez une estimation précise du coût de votre fret en quelques clics"
+      "title": "Calculateur de frais Chine-Mali",
+      "subtitle": "Estimez le coût de fret vers Bamako selon le poids, le volume, le produit et votre délai."
+    },
+    "deadlineCalculator": {
+      "title": "Par Deadline",
+      "subtitle": "Quand en avez-vous besoin ? On trouve la meilleure option.",
+      "weight": "Poids estimé",
+      "dimensions": "Dimensions (cm)",
+      "optional": "optionnel",
+      "dimensionsHint": "Pour calculer le poids volumétrique et le CBM",
+      "category": "Catégorie",
+      "whenDoYouNeedIt": "Quand en avez-vous besoin ?",
+      "day": "jour",
+      "days": "jours",
+      "destination": "Destination",
+      "recommended": "Recommandé pour votre deadline",
+      "cheaperOption": "Option moins chère disponible",
+      "cheaperOptionDescription": "{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.",
+      "fasterOption": "Besoin de plus de vitesse ?",
+      "fasterOptionDescription": "{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.",
+      "tooLate": "Aucune option ne garantit cette deadline",
+      "tooLateDescription": "Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.",
+      "tooLateShort": "Trop tard",
+      "meetsDeadline": "OK",
+      "bestChoice": "Meilleur choix",
+      "timelineLabel": "Comparatif des délais",
+      "yourDeadline": "Votre deadline",
+      "forYourShipment": "pour votre envoi",
+      "enterWeight": "Entrez un poids pour voir les options",
+      "enterWeightHint": "Choisissez votre deadline et nous trouvons la meilleure option",
+      "urgent": "Urgent",
+      "standard": "Standard",
+      "relaxed": "Relax",
+      "economy": "Économie",
+      "positioning": {
+        "flash": "Pour les commandes urgentes",
+        "air_standard": "Le choix malin pour les non-urgents",
+        "sea_economy": "Le moins cher pour les gros volumes"
+      }
     },
     "airCalculator": {
       "weight": "Poids réel",
@@ -488,6 +797,9 @@
     "result": {
       "estimatedPrice": "Prix Estimé",
       "deliveryTime": "Délai de livraison",
+      "smartChoice": "Bon choix ! Vous économisez {percent}% par rapport à l'express.",
+      "deliveryConfidence": "Livraison anticipée probable",
+      "patientImporter": "Le choix stratégique des importateurs patients",
       "actualWeight": "Poids réel",
       "volumetricWeight": "Poids volumétrique",
       "chargeableWeight": "Poids taxable",
@@ -566,7 +878,7 @@
       "items": {
         "priceDecrease": {
           "question": "Les tarifs peuvent-ils être revus à la baisse ?",
-          "answer": "Non, nos tarifs sont fixes dans la majorité des cas. Néanmoins dans certains cas, nous pouvons appliquer des réductions à notre discrétion."
+          "answer": "Pour les importateurs réguliers avec des volumes mensuels supérieurs à 100 kg, contactez-nous pour un tarif entreprise dédié. Nous proposons des conditions préférentielles pour les clients fidèles et les entreprises avec des expéditions fréquentes."
         },
         "priceIncrease": {
           "question": "Les tarifs peuvent-ils être revus à la hausse ?",
@@ -590,7 +902,7 @@
         },
         "tariffDecrease": {
           "question": "Les tarifs peuvent-ils être revus à la baisse ?",
-          "answer": "Non, nos tarifs sont fixes dans la majorité des cas. Néanmoins dans certains cas, nous pouvons appliquer des réductions à notre discrétion."
+          "answer": "Pour les importateurs réguliers avec des volumes mensuels supérieurs à 100 kg, contactez-nous pour un tarif entreprise dédié."
         },
         "tariffIncrease": {
           "question": "Les tarifs peuvent-ils être revus à la hausse ?",
@@ -611,6 +923,10 @@
         "prohibited": {
           "question": "Quels articles sont interdits ?",
           "answer": "Les téléphones, ordinateurs, batteries au lithium, drones, liquides, produits inflammables, compléments alimentaires, produits chimiques, armes et produits en spray sont soumis à des restrictions ou interdits."
+        },
+        "payOnDelivery": {
+          "question": "Quand dois-je payer ?",
+          "answer": "Vous payez uniquement après avoir reçu et inspecté vos marchandises. Aucun acompte requis."
         }
       }
     },
@@ -656,5 +972,385 @@
         "description": "Aérosols interdits en avion."
       }
     }
+  },
+  "damageGuarantee": {
+    "headline": "Garantie Dommages — Vos marchandises sont protégées",
+    "subheadline": "Si vos marchandises arrivent endommagées suite à notre manutention, ChinaLink prend en charge les coûts.",
+    "badge": "Garantie incluse",
+    "points": {
+      "handling": {
+        "title": "Garantie manutention",
+        "description": "Tout dommage causé par notre manutention est couvert à 100%."
+      },
+      "quality": {
+        "title": "Contrôle qualité en Chine",
+        "description": "Inspection rigoureuse de chaque colis avant départ."
+      },
+      "packaging": {
+        "title": "Emballage professionnel",
+        "description": "Protection optimale pour le transport international."
+      },
+      "refund": {
+        "title": "Remboursement ou remplacement",
+        "description": "Solution rapide en cas de problème avéré."
+      }
+    },
+    "cta": "En savoir plus sur notre garantie",
+    "ctaSubtitle": "Discutez avec nous sur WhatsApp"
+  },
+  "trustFlow": {
+    "badge": "Service complet",
+    "headline": "De la commande à la livraison, on gère tout",
+    "subheadline": "Un seul partenaire pour les 6 étapes. Pas 4 fournisseurs différents.",
+    "steps": [
+      {
+        "title": "Dites-nous ce dont vous avez besoin",
+        "description": "Produits, quantités, budget. Nous comprenons votre projet."
+      },
+      {
+        "title": "On trouve et négocie",
+        "description": "Sourcing, vérification fournisseurs, négociation des meilleurs prix."
+      },
+      {
+        "title": "On inspecte et photographie",
+        "description": "Contrôle qualité en usine. Photos et rapports avant expédition."
+      },
+      {
+        "title": "On expédie (votre choix)",
+        "description": "Air express 2-5j, standard 14-21j, ou maritime 60-75j."
+      },
+      {
+        "title": "Suivi en temps réel",
+        "description": "Localisez votre colis à chaque étape. Notifications automatiques."
+      },
+      {
+        "title": "Réception à votre porte",
+        "description": "Livraison domicile avec assistance dédouanement."
+      }
+    ],
+    "guarantee": "Satisfaction garantie ou nous remboursons",
+    "comparison": {
+      "label": "Qui fait quoi ?",
+      "us": {
+        "label": "ChinaLink",
+        "badge": "6 étapes",
+        "description": "Du sourcing à la livraison. Un seul contact."
+      },
+      "them": {
+        "label": "Les autres",
+        "badge": "3 étapes",
+        "description": "Expédition uniquement. Vous gérez le reste seul."
+      },
+      "cta": "Leur processus commence à l'étape 4. Le nôtre commence à l'étape 1."
+    }
+  },
+  "splitPayment": {
+    "headline": "Payez à la livraison — Zéro risque",
+    "subheadline": "Vous ne réglez qu'après avoir inspecté et confirmé la réception de vos marchandises.",
+    "steps": [
+      {
+        "title": "Commande",
+        "description": "Vous passez votre commande, nous nous occupons du reste."
+      },
+      {
+        "title": "Livraison",
+        "description": "Vos marchandises arrivent à votre porte."
+      },
+      {
+        "title": "Paiement",
+        "description": "Vous inspectez, vous confirmez, vous payez."
+      }
+    ],
+    "badge": "100% sécurisé",
+    "badgeSubtitle": "Paiement après confirmation",
+    "cta": "Discutez de votre commande",
+    "ctaSubtitle": "Sur WhatsApp"
+  },
+  "community": {
+    "hero": {
+      "badge": "Communauté privée",
+      "headline": "Rejoignez la Communauté ChinaLink",
+      "subheadline": "+500 importateurs africains échangent conseils, fournisseurs et opportunités chaque jour.",
+      "cta": "Rejoindre sur WhatsApp",
+      "members": "500+ membres",
+      "membersLabel": "importateurs",
+      "activity": "Actif 24/7",
+      "activityLabel": "discussions",
+      "countries": "Mali",
+      "countriesLabel": "livraison",
+      "reviewsLabel": "avis vérifiés"
+    },
+    "benefits": {
+      "title": "Ce que vous gagnez en rejoignant",
+      "badge": "Avantages exclusifs",
+      "items": {
+        "importTips": {
+          "title": "Conseils d'importation",
+          "description": "Apprenez des importateurs expérimentés. Astuces, pièges à éviter, meilleures pratiques."
+        },
+        "verifiedSuppliers": {
+          "title": "Fournisseurs vérifiés",
+          "description": "Partagez et découvrez des fournisseurs de confiance validés par la communauté."
+        },
+        "productAlerts": {
+          "title": "Alertes produits",
+          "description": "Soyez le premier sur les produits tendance et les opportunités en Chine."
+        },
+        "groupBuying": {
+          "title": "Négociation groupée",
+          "description": "Regroupez vos commandes avec d'autres importateurs pour de meilleurs prix."
+        },
+        "support247": {
+          "title": "Support 24/7",
+          "description": "Posez vos questions à tout moment. La communauté répond jour et nuit."
+        },
+        "localNetwork": {
+          "title": "Réseau local",
+          "description": "Connectez-vous avec des importateurs de votre pays et de votre secteur."
+        }
+      }
+    },
+    "topics": {
+      "trendingProducts": {
+        "title": "Produits tendance",
+        "tags": [
+          "Électronique",
+          "Textiles",
+          "Cosmétiques"
+        ]
+      },
+      "reliableSuppliers": {
+        "title": "Fournisseurs fiables",
+        "tags": [
+          "Alibaba vs 1688",
+          "Visites usines",
+          "Vérification"
+        ]
+      },
+      "logisticsCustoms": {
+        "title": "Logistique & douanes",
+        "tags": [
+          "Tarifs fret",
+          "Dédouanement",
+          "Assurance"
+        ]
+      },
+      "financePayment": {
+        "title": "Finance & paiement",
+        "tags": [
+          "Taux de change",
+          "Moyens de paiement",
+          "Sécurité"
+        ]
+      },
+      "discussions": "discussions actives",
+      "badge": "Discussions en cours",
+      "title": "De quoi parle-t-on ?"
+    },
+    "testimonials": {
+      "title": "Ils ont transformé leur business",
+      "items": {
+        "amadou": {
+          "quote": "J'ai découvert 3 fournisseurs fiables grâce à la communauté. Mon chiffre d'affaires a doublé.",
+          "metricLabel": "+100% CA"
+        },
+        "fatou": {
+          "quote": "Le groupe d'achat m'a fait économiser 30% sur mon dernier conteneur.",
+          "metricLabel": "-30% coûts"
+        },
+        "kofi": {
+          "quote": "J'ai évité une arnaque de 5000€ grâce aux conseils de la communauté.",
+          "metricLabel": "5000€ sauvés"
+        }
+      },
+      "badge": "Résultats concrets"
+    },
+    "whatsappCTA": {
+      "title": "Votre premier conteneur commence par une conversation",
+      "subtitle": "Rejoignez +500 importateurs. C'est gratuit.",
+      "button": "Rejoindre sur WhatsApp",
+      "trustPills": [
+        "Gratuit",
+        "Sans engagement",
+        "Actif 24/7"
+      ]
+    },
+    "promo": {
+      "title": "Rejoignez +500 importateurs",
+      "subtitle": "Conseils, fournisseurs vérifiés et alertes produits — chaque jour sur WhatsApp.",
+      "pills": {
+        "freeTips": "Conseils gratuits",
+        "verifiedSuppliers": "Fournisseurs vérifiés",
+        "productAlerts": "Alertes produits"
+      },
+      "ctaPrimary": "Rejoindre la communauté",
+      "ctaSecondary": "En savoir plus",
+      "badge": "Communauté"
+    },
+    "cta": {
+      "headline": "Votre premier conteneur commence par une conversation",
+      "subheadline": "Rejoignez +500 importateurs. C'est gratuit.",
+      "button": "Rejoindre sur WhatsApp",
+      "free": "Gratuit",
+      "noCommitment": "Sans engagement",
+      "active247": "Actif 24/7"
+    }
+  },
+  "whatsappUpdates": {
+    "badge": "Mises à jour WhatsApp",
+    "headline": "Vous voyez vos marchandises à chaque étape",
+    "subheadline": "Pas de SMS vague. Des photos réelles de vos produits sur WhatsApp.",
+    "stages": {
+      "warehouse": {
+        "label": "Étape 1",
+        "title": "Marchandises en entrepôt",
+        "photoLabel": "Photo en entrepôt",
+        "description": "Photo de vos produits dès leur arrivée à notre entrepôt en Chine."
+      },
+      "packed": {
+        "label": "Étape 2",
+        "title": "Colis préparé",
+        "photoLabel": "Photo emballage",
+        "description": "Photo de votre colis emballé et prêt pour expédition."
+      },
+      "customs": {
+        "label": "Étape 3",
+        "title": "Dédouanement",
+        "photoLabel": "Doc. douane",
+        "description": "Confirmation visuelle du passage en douane avec documents."
+      },
+      "delivery": {
+        "label": "Étape 4",
+        "title": "Livraison à domicile",
+        "photoLabel": "Photo livraison",
+        "description": "Photo de votre colis livré à votre porte."
+      }
+    },
+    "comparison": {
+      "label": "La preuve visuelle bat le texte",
+      "whatsapp": {
+        "label": "ChinaLink (WhatsApp)",
+        "badge": "Média riche",
+        "features": {
+          "photos": "Photos réelles à chaque étape",
+          "liveChat": "Chat en direct avec votre agent",
+          "voice": "Messages vocaux si besoin",
+          "location": "Partage de localisation en temps réel"
+        }
+      },
+      "sms": {
+        "label": "Les autres (SMS)",
+        "badge": "Texte uniquement",
+        "features": {
+          "textOnly": "SMS texte vague",
+          "noPhotos": "Aucune photo de vos marchandises",
+          "noTracking": "Pas de suivi détaillé",
+          "delayed": "Informations souvent en retard"
+        }
+      },
+      "cta": "Visual proof > text notification. Vous méritez de voir ce que vous payez."
+    }
+  },
+  "reviews": {
+    "aggregateRating": "4.8",
+    "reviewCount": "312",
+    "basedOn": "Basé sur {count} avis clients vérifiés",
+    "verified": "Avis vérifié",
+    "sourceLabel": "Source : Google Reviews & Trustpilot",
+    "seeAll": "Voir tous les avis",
+    "carousel": {
+      "prev": "Précédent",
+      "next": "Suivant"
+    },
+    "services": {
+      "airExpress": "Air Express",
+      "seaFreight": "Fret Maritime",
+      "sourcing": "Sourcing",
+      "fullService": "Service Complet"
+    },
+    "cta": "Voir tous les avis",
+    "goToSlide": "Aller à l'avis {number}",
+    "badge": "Avis clients vérifiés",
+    "title": "Ce que disent nos clients",
+    "subtitle": "Des importateurs africains partagent leur expérience avec ChinaLink",
+    "prev": "Précédent",
+    "next": "Suivant"
+  },
+  "videoTestimonials": {
+    "headline": "Ils parlent de nous. En vrai.",
+    "subheadline": "Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience dans leur langue.",
+    "badge": "Avis vidéo non rémunérés",
+    "badgeSub": "Tournés chez le client",
+    "comparison": "Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.",
+    "watchVideo": "Regarder la vidéo",
+    "language": "Langue",
+    "videos": [
+      {
+        "name": "Amadou Diallo",
+        "business": "Diallo Electronics, Bamako",
+        "country": "Mali",
+        "language": "Français / Bambara",
+        "quote": "Avant je payais 4 fournisseurs différents. Maintenant j'en ai qu'un seul. ChinaLink gère tout de A à Z.",
+        "result": "16 jours",
+        "resultLabel": "Bamako → départ usine"
+      },
+      {
+        "name": "Fatou Ndiaye",
+        "business": "Mode Africaine, Dakar",
+        "country": "Sénégal",
+        "language": "Français / Wolof",
+        "quote": "La qualité contrôlée en Chine m'a évité une perte de 40 000 FCFA. Les photos QC sont une bénédiction.",
+        "result": "+40%",
+        "resultLabel": "Marge nette"
+      },
+      {
+        "name": "Kofi Mensah",
+        "business": "Mensah Phones, Accra",
+        "country": "Ghana",
+        "language": "English / Twi",
+        "quote": "Third shipment with ChinaLink. Each one arrived faster than the last. The WhatsApp updates with photos are game-changing.",
+        "result": "3ème",
+        "resultLabel": "Expédition"
+      },
+      {
+        "name": "Aminata Koné",
+        "business": "Beauté Pure, Abidjan",
+        "country": "Côte d'Ivoire",
+        "language": "Français / Dioula",
+        "quote": "Les photos de contrôle qualité m'ont sauvé 2000€. J'ai refusé un lot défectueux avant qu'il parte de Chine.",
+        "result": "2000€",
+        "resultLabel": "Economisés"
+      },
+      {
+        "name": "Ousmane Sawadogo",
+        "business": "Sawadogo BTP, Ouagadougou",
+        "country": "Burkina Faso",
+        "language": "Français / Mooré",
+        "quote": "Mon premier conteneur. J'avais peur. Mais ils m'ont guidé à chaque étape. Du début jusqu'à la livraison.",
+        "result": "1er",
+        "resultLabel": "Conteneur"
+      },
+      {
+        "name": "Mariam Houessou",
+        "business": "Houessou Commerce, Cotonou",
+        "country": "Bénin",
+        "language": "Français / Fon",
+        "quote": "Le service client répond à 2h du matin. Quand j'ai un problème, je leur écris sur WhatsApp et c'est réglé.",
+        "result": "24/7",
+        "resultLabel": "Support WhatsApp"
+      }
+    ],
+    "title": "Ils parlent de nous. En vrai.",
+    "subtitle": "Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience.",
+    "trustBadge": {
+      "unpaid": "Avis vidéo non rémunérés",
+      "filmedOnSite": "Tournés chez le client",
+      "localLanguage": "Dans leur langue"
+    },
+    "comparisonStrip": "Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.",
+    "ctaText": "Vous aussi, partagez votre expérience",
+    "ctaButton": "Contacter l'équipe",
+    "close": "Fermer",
+    "videoComingSoon": "Vidéo bientôt disponible"
   }
 }

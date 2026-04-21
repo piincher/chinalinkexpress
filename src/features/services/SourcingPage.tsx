@@ -16,6 +16,7 @@ interface Props {
 
 export function SourcingPage({ locale }: Props) {
   const isEn = locale === 'en';
+  const frenchContentLocale = 'fr';
 
   const platforms = [
     { name: 'Alibaba', desc: isEn ? 'B2B wholesale platform' : 'Plateforme B2B en gros', color: 'bg-orange-500' },
@@ -85,13 +86,13 @@ export function SourcingPage({ locale }: Props) {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               {isEn 
-                ? 'Buy from China Without the Hassle' 
-                : 'Achetez en Chine Sans Souci'}
+                ? 'China Sourcing Agent for Mali Importers' 
+                : 'Agent sourcing Chine pour le Mali'}
             </h1>
             <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
               {isEn 
-                ? 'Your trusted sourcing agent for Alibaba, 1688, Taobao. We handle supplier verification, quality control, and shipping.'
-                : 'Votre agent sourcing de confiance pour Alibaba, 1688, Taobao. Nous gérons la vérification, le contrôle qualité et l\'expédition.'}
+                ? 'Your China sourcing agent for Mali and Bamako. We buy from Alibaba, 1688 and Taobao, verify suppliers, process payments, inspect goods, consolidate parcels, and ship by air or sea.'
+                : 'Votre agent sourcing en Chine pour le Mali et Bamako. Nous achetons sur Alibaba, 1688 et Taobao, vérifions les fournisseurs, gérons le paiement, inspectons les marchandises, consolidons les colis et expédions par avion ou par mer.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -104,13 +105,43 @@ export function SourcingPage({ locale }: Props) {
                 {isEn ? 'Start Sourcing Now' : 'Commencer à Sourcer'}
               </a>
               <Link
-                href={`/${locale}/tarifs`}
+                href={`/${frenchContentLocale}/services/verification-fournisseur-chine`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 rounded-xl font-semibold hover:bg-purple-50 transition-colors"
               >
-                {isEn ? 'View Sourcing Rates' : 'Voir Tarifs Sourcing'}
+                {isEn ? 'Verify a Supplier' : 'Vérifier un Fournisseur'}
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Mali Importers Section */}
+      <section className="py-16 md:py-24 bg-[var(--surface-elevated)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
+                {isEn ? 'Built for Mali importers buying in China' : 'Pensé pour les importateurs maliens qui achètent en Chine'}
+              </h2>
+              <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                {isEn
+                  ? 'Most Mali importers do not only need a shipper. They need someone who can understand a supplier quote, pay in China, check the goods, combine multiple purchases, and choose the right freight route to Bamako.'
+                  : 'La plupart des importateurs maliens n’ont pas seulement besoin d’un transporteur. Ils ont besoin d’un partenaire qui comprend le devis fournisseur, paie en Chine, contrôle la marchandise, regroupe plusieurs achats et choisit la bonne route de fret vers Bamako.'}
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {[
+                isEn ? 'Alibaba supplier search and negotiation' : 'Recherche et négociation fournisseur Alibaba',
+                isEn ? '1688 purchasing with China-side payment support' : 'Achat 1688 avec paiement côté Chine',
+                isEn ? 'Pre-shipment photos and quality control' : 'Photos et contrôle qualité avant expédition',
+                isEn ? 'Air or sea freight to Bamako based on margin' : 'Fret aérien ou maritime vers Bamako selon votre marge',
+              ].map((item) => (
+                <div key={item} className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 text-[var(--text-secondary)]">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -152,7 +183,7 @@ export function SourcingPage({ locale }: Props) {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-24 bg-[var(--surface-elevated)]">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
@@ -183,6 +214,31 @@ export function SourcingPage({ locale }: Props) {
                 </h3>
                 <p className="text-[var(--text-secondary)]">{service.desc}</p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links Section */}
+      <section className="py-16 md:py-24 bg-[var(--surface-elevated)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-8 text-center">
+            {isEn ? 'Secure the full import chain' : 'Sécurisez toute la chaîne d’import'}
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { href: `/${frenchContentLocale}/services/paiement-fournisseur-chine`, label: isEn ? 'Supplier payment' : 'Paiement fournisseur chinois' },
+              { href: `/${frenchContentLocale}/services/verification-fournisseur-chine`, label: isEn ? 'Supplier verification' : 'Vérification fournisseur Chine' },
+              { href: `/${locale}/routes/china-to-mali`, label: isEn ? 'China to Mali freight' : 'Fret Chine-Mali' },
+              { href: `/${frenchContentLocale}/guides/importer-de-chine-au-mali`, label: isEn ? 'Import guide' : 'Guide importer de Chine au Mali' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 font-semibold text-purple-600 hover:bg-purple-50"
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
         </div>

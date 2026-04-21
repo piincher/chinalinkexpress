@@ -17,8 +17,8 @@ export const YEARS_OF_EXPERIENCE = new Date().getFullYear() - FOUNDING_YEAR;
 // Stats (numeric values for Counter animation)
 export const STATS = {
   SHIPMENTS: { value: 12847, suffix: '+' },
-  COUNTRIES: { value: 3, suffix: '+' },
-  RATING: { value: 4.9, suffix: '/5', decimals: 1 },
+  CLIENTS: { value: 1247, suffix: '' },
+  RATING: { value: 4.8, suffix: '', decimals: 1 },
   REVENUE: { value: 2.4, suffix: 'M+', prefix: '$' },
 } as const;
 

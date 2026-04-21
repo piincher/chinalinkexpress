@@ -21,7 +21,7 @@ interface FAQItem {
 const FAQ_ITEMS: FAQItem[] = [
   {
     question: "Les tarifs peuvent-ils être revus à la baisse ?",
-    answer: "Non, nos tarifs sont fixes dans la majorité des cas. Néanmoins dans certains cas, nous pouvons appliquer des réductions à notre discrétion."
+    answer: "Pour les importateurs réguliers avec des volumes mensuels supérieurs à 100 kg, contactez-nous pour un tarif entreprise dédié. Nous proposons des conditions préférentielles pour les clients fidèles et les entreprises avec des expéditions fréquentes."
   },
   {
     question: "Les tarifs peuvent-ils être revus à la hausse ?",
@@ -83,7 +83,11 @@ const FAQ_ITEMS: FAQItem[] = [
         </div>
       </div>
     )
-  }
+  },
+  {
+    question: "Quand dois-je payer ?",
+    answer: "Vous payez uniquement après avoir reçu et inspecté vos marchandises. Aucun acompte requis."
+  },
 ];
 
 export function PricingFAQ() {

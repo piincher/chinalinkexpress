@@ -18,7 +18,9 @@ import {
   Send,
   CheckCircle,
   AlertCircle,
-  MessageCircle
+  MessageCircle,
+  Building2,
+  ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -230,9 +232,55 @@ export function ContactPage() {
               </div>
             </motion.div>
 
+            {/* China Operations */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.35 }}
+              className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    Bureau et réseau Chine
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    Guangzhou / Shenzhen / Yiwu<br />
+                    Réception fournisseur, contrôle photo, consolidation et départ fret.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Trust */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.38 }}
+              className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    Informations entreprise
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    Adresse Bamako : Kalaban Coura, près du lycée Birgo.<br />
+                    Support Mali et Chine, reçus de paiement, suivi WhatsApp et contrôle avant expédition.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/8618851725957"
+              href="https://wa.me/+8618851725957"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}

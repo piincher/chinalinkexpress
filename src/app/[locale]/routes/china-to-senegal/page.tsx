@@ -1,12 +1,8 @@
-/**
- * China to Senegal Shipping Route Page
- * 
- * SEO-optimized page for shipping from China to Senegal.
- * Targets keywords: shipping China Senegal, freight forwarder Dakar
- */
-
 import type { Metadata } from 'next';
-import { PAGE_SEO, STRUCTURED_DATA } from '@/config/seo';
+import { setRequestLocale } from 'next-intl/server';
+import { Locale } from '@/i18n/config';
+import { generatePageMetadata } from '@/config/seo-advanced';
+import { RouteStructuredData } from '@/components/seo';
 import { RoutePage } from '@/features/routes/RoutePage';
 
 interface Props {
@@ -15,56 +11,41 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.routes.chinaToSenegal.en : PAGE_SEO.routes.chinaToSenegal.fr;
-  
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: {
-      canonical: `/${locale}/routes/china-to-senegal/`,
-      languages: {
-        'en-US': '/en/routes/china-to-senegal/',
-        'fr-FR': '/fr/routes/china-to-senegal/',
-      },
-    },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: `https://www.chinalinkexpress.com/${locale}/routes/china-to-senegal/`,
-      type: 'website',
-    },
-  };
+  return generatePageMetadata({
+    title: 'Expédition Chine Sénégal | Fret vers Dakar',
+    description: 'Fret aérien et maritime de la Chine vers le Sénégal. Routes vers Dakar, sourcing, paiement fournisseur, consolidation et devis ChinaLink Express.',
+    keywords: 'fret Chine Sénégal, expédition Chine Dakar, transitaire Chine Sénégal, cargo Chine Dakar',
+    path: '/routes/china-to-senegal',
+    locale: locale as Locale,
+  });
 }
 
-export default async function ChinaToSenegal({ params }: Props) {
+export default async function ChinaToSenegalRoute({ params }: Props) {
   const { locale } = await params;
-  const isEn = locale === 'en';
-  
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: isEn ? 'Shipping from China to Senegal' : 'Expédition de la Chine vers le Sénégal',
-    provider: STRUCTURED_DATA.organization,
-    serviceType: 'Freight Forwarding',
-    areaServed: {
-      '@type': 'City',
-      name: 'Dakar',
-      containedInPlace: {
-        '@type': 'Country',
-        name: 'Senegal',
-      },
-    },
-  };
-  
+  setRequestLocale(locale);
+
+  const breadcrumbs = [
+    { name: 'Accueil', url: `/${locale}/` },
+    { name: 'Routes', url: `/${locale}/routes/china-to-senegal` },
+    { name: 'Chine vers Sénégal', url: `/${locale}/routes/china-to-senegal` },
+  ];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      <RouteStructuredData
+        route={{ origin: 'China', destination: 'Senegal', durationDays: { min: 12, max: 60 }, methods: ['air', 'sea'] }}
+        method="air"
+        locale={locale as Locale}
+        breadcrumbs={breadcrumbs}
       />
       <RoutePage locale={locale} routeKey="china-to-senegal" country="Sénégal" capital="Dakar" />
     </>
   );
 }
+
+export function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
+}
+
+export const dynamic = 'force-static';
+export const revalidate = 3600;

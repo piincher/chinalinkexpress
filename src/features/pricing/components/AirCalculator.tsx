@@ -11,11 +11,11 @@
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle } from 'lucide-react';
+import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown, ShieldCheck, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateAirFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { AIR_RATES, ITEM_CATEGORIES, STANDARD_ITEMS, type ItemCategory, type ItemCategoryInfo } from '../constants';
+import { AIR_RATES, ITEM_CATEGORIES, STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
 import { Input } from '@/components/common/form/FormField';
 
 export function AirCalculator() {
@@ -77,6 +77,20 @@ export function AirCalculator() {
   );
 
   const selectedRate = AIR_RATES.find((r) => r.category === airState.category);
+
+  // Calculate savings vs express for standard category
+  const expressRate = AIR_RATES.find((r) => r.category === 'express');
+  const standardRate = AIR_RATES.find((r) => r.category === 'standard');
+  const savingsPercent = expressRate && standardRate
+    ? Math.floor(((expressRate.rateFCFA - standardRate.rateFCFA) / expressRate.rateFCFA) * 100)
+    : 37;
+
+  const isStandardSelected = airState.category === 'standard';
+  const deliveryPerf = isStandardSelected
+    ? DELIVERY_PERFORMANCE.airStandard
+    : airState.category === 'express'
+      ? DELIVERY_PERFORMANCE.flashExpress
+      : null;
 
   return (
     <div className="grid lg:grid-cols-2 gap-8">
@@ -152,13 +166,32 @@ export function AirCalculator() {
                 key={category.id}
                 onClick={() => setAirField('category', category.id)}
                 className={cn(
-                  'p-3 rounded-xl border-2 text-left transition-all duration-200',
+                  'p-3 rounded-xl border-2 text-left transition-all duration-200 relative',
                   airState.category === category.id
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                    ? category.id === 'standard'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                      : category.id === 'express'
+                        ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20'
+                        : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                     : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
                 )}
               >
-                <div className="font-medium text-sm text-gray-900 dark:text-white">
+                {category.id === 'express' && (
+                  <div className="absolute -top-2 -right-1 px-1.5 py-0.5 bg-amber-500 text-white text-[10px] font-bold rounded-full flex items-center gap-0.5">
+                    <Zap className="w-2.5 h-2.5 fill-current" />
+                    2-5j
+                  </div>
+                )}
+                {category.id === 'standard' && airState.category === 'standard' && (
+                  <div className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center gap-0.5">
+                    <Lightbulb className="w-2.5 h-2.5" />
+                    {t('smartChoice.badge')}
+                  </div>
+                )}
+                <div className={cn(
+                  "font-medium text-sm",
+                  category.id === 'express' ? 'text-amber-900 dark:text-amber-100' : 'text-gray-900 dark:text-white'
+                )}>
                   {t(`categories.${category.id}.name`)}
                 </div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
@@ -214,49 +247,96 @@ export function AirCalculator() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 rounded-2xl p-6 text-white"
+              className={cn(
+                'rounded-2xl p-6 text-white',
+                isStandardSelected
+                  ? 'bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700'
+                  : 'bg-gradient-to-br from-amber-500 to-orange-600 dark:from-amber-600 dark:to-orange-700'
+              )}
             >
               {/* Price Display */}
               <div className="text-center mb-6">
-                <div className="text-blue-100 text-sm mb-1">{t('result.estimatedPrice')}</div>
+                <div className={cn(
+                  "text-sm mb-1",
+                  isStandardSelected ? 'text-blue-100' : 'text-amber-100'
+                )}>{t('result.estimatedPrice')}</div>
                 <div className="text-4xl md:text-5xl font-bold">
                   {formatPriceFCFA(airResult.totalPrice)}
                 </div>
-                <div className="text-blue-100 text-sm mt-2">
+                <div className={cn(
+                  "text-sm mt-2",
+                  isStandardSelected ? 'text-blue-100' : 'text-amber-100'
+                )}>
                   {t('result.deliveryTime')}: {airResult.deliveryTime}
                 </div>
               </div>
+
+              {/* Smart Choice Banner for Standard */}
+              {isStandardSelected && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-4 p-3 bg-white/20 border border-white/30 rounded-lg"
+                >
+                  <div className="flex items-start gap-2">
+                    <Lightbulb className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
+                    <div className="text-sm text-white">
+                      <strong>{t('result.smartChoice', { percent: savingsPercent })}</strong>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Delivery Confidence Indicator */}
+              {deliveryPerf && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="mb-4 p-3 bg-white/10 border border-white/20 rounded-lg"
+                >
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-emerald-300" />
+                    <span className="text-sm text-emerald-100">
+                      {t('deliveryPerformance.earlyDelivery')}
+                    </span>
+                    <span className="text-xs text-white/70 ml-auto">
+                      {t('deliveryPerformance.actualAverage')}: {deliveryPerf.actualAverage}j
+                    </span>
+                  </div>
+                </motion.div>
+              )}
 
               {/* Calculation Breakdown */}
               <div className="space-y-3 bg-white/10 rounded-xl p-4">
                 {airResult.volumetricWeight && (
                   <>
                     <div className="flex justify-between text-sm">
-                      <span className="text-blue-100">{t('result.actualWeight')}</span>
+                      <span className={isStandardSelected ? 'text-blue-100' : 'text-amber-100'}>{t('result.actualWeight')}</span>
                       <span className="font-medium">{formatNumber(airResult.actualWeight)} kg</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-blue-100">{t('result.volumetricWeight')}</span>
+                      <span className={isStandardSelected ? 'text-blue-100' : 'text-amber-100'}>{t('result.volumetricWeight')}</span>
                       <span className="font-medium">
                         {formatNumber(airResult.volumetricWeight)} kg
                       </span>
                     </div>
                     <div className="flex justify-between text-sm border-t border-white/20 pt-2">
-                      <span className="text-blue-100">{t('result.chargeableWeight')}</span>
+                      <span className={isStandardSelected ? 'text-blue-100' : 'text-amber-100'}>{t('result.chargeableWeight')}</span>
                       <span className="font-bold">{formatNumber(airResult.chargeableWeight)} kg</span>
                     </div>
                   </>
                 )}
                 {!airResult.volumetricWeight && (
                   <div className="flex justify-between text-sm">
-                    <span className="text-blue-100">{t('result.quantity')}</span>
+                    <span className={isStandardSelected ? 'text-blue-100' : 'text-amber-100'}>{t('result.quantity')}</span>
                     <span className="font-medium">
                       {airResult.actualWeight} {t(`categories.${airResult.category}.unit`)}
                     </span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm">
-                  <span className="text-blue-100">{t('result.rate')}</span>
+                  <span className={isStandardSelected ? 'text-blue-100' : 'text-amber-100'}>{t('result.rate')}</span>
                   <span className="font-medium">
                     {formatPriceFCFA(airResult.baseRate)}/{t(`categories.${airResult.category}.unit`)}
                   </span>
@@ -300,7 +380,7 @@ export function AirCalculator() {
                   <MessageCircle className="w-5 h-5" />
                   {t('result.contactWhatsApp', { defaultValue: 'Demander un devis sur WhatsApp' })}
                 </a>
-                <p className="text-center text-xs text-blue-100 mt-2 italic">
+                <p className="text-center text-xs text-white/70 mt-2 italic">
                   {t('result.estimateDisclaimer', { defaultValue: 'Ces prix sont des estimations uniquement' })}
                 </p>
               </motion.div>
@@ -326,17 +406,35 @@ export function AirCalculator() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl"
+            className={cn(
+              "p-4 rounded-xl",
+              selectedRate.category === 'standard'
+                ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800'
+                : 'bg-gray-50 dark:bg-gray-800/50'
+            )}
           >
             <div className="flex items-center gap-2 mb-2">
-              <Info className="w-4 h-4 text-blue-500" />
+              <Info className={cn(
+                "w-4 h-4",
+                selectedRate.category === 'standard' ? 'text-blue-500' : 'text-blue-500'
+              )} />
               <span className="font-medium text-sm text-gray-900 dark:text-white">
                 {t(`categories.${selectedRate.category}.name`)}
               </span>
+              {selectedRate.category === 'standard' && (
+                <span className="ml-auto text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
+                  {t('smartChoice.badge')}
+                </span>
+              )}
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {t(`categories.${selectedRate.category}.description`)}
             </p>
+            {selectedRate.category === 'standard' && (
+              <p className="mt-2 text-xs text-blue-600 dark:text-blue-400 font-medium">
+                {t('savings.vsExpress', { percent: savingsPercent })}
+              </p>
+            )}
           </motion.div>
         )}
       </div>

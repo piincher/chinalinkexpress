@@ -23,10 +23,10 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Match all paths except api, _next, static files
+  // Match all paths except api, _next, static files, and share links
   matcher: [
     '/',
     '/(fr|en|zh|ar)/:path*',
-    '/((?!api|_next|_vercel|.*\\..*).*)',
+    '/((?!api|_next|_vercel|s|.*\\..*).*)',
   ],
 };

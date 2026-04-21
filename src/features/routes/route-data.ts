@@ -30,19 +30,18 @@ export const ROUTES: Record<string, RouteData> = {
       code: 'ML',
     },
     airFreight: {
-      duration: '7-12 jours',
+      duration: '14-21 jours',
       routes: [
-        { via: 'Direct', path: 'Guangzhou → Bamako' },
         { via: 'Addis Abeba', path: 'Guangzhou → Addis → Bamako' },
         { via: 'Dubai', path: 'Shanghai → Dubai → Bamako' },
       ],
     },
     seaFreight: {
-      duration: '45-60 jours',
+      duration: '60-75 jours',
       routes: [
-        { via: 'Lomé', path: 'Shanghai → Lomé → Bamako' },
-        { via: 'Dakar', path: 'Ningbo → Dakar → Bamako' },
-        { via: 'Abidjan', path: 'Shenzhen → Abidjan → Bamako' },
+        { via: 'Lomé + route', path: 'Shanghai → Lomé → Bamako (terrestre)' },
+        { via: 'Dakar + route', path: 'Ningbo → Dakar → Bamako (terrestre)' },
+        { via: 'Abidjan + route', path: 'Shenzhen → Abidjan → Bamako (terrestre)' },
       ],
     },
   },
@@ -58,43 +57,72 @@ export const ROUTES: Record<string, RouteData> = {
       code: 'SN',
     },
     airFreight: {
-      duration: '8-14 jours',
+      duration: '12-20 jours',
       routes: [
-        { via: 'Direct', path: 'Guangzhou → Dakar' },
-        { via: 'Paris', path: 'Shanghai → Paris → Dakar' },
+        { via: 'Dubai', path: 'Guangzhou → Dubai → Dakar' },
+        { via: 'Addis Abeba', path: 'Shanghai → Addis → Dakar' },
       ],
     },
     seaFreight: {
-      duration: '40-50 jours',
+      duration: '45-60 jours',
       routes: [
-        { via: 'Direct', path: 'Ningbo → Dakar' },
-        { via: 'Barcelone', path: 'Shanghai → Barcelone → Dakar' },
+        { via: 'Dakar', path: 'Shanghai → Dakar' },
+        { via: 'Dakar', path: 'Ningbo → Dakar' },
+        { via: 'Dakar', path: 'Shenzhen → Dakar' },
       ],
     },
   },
-  'china-to-ivory-coast': {
+  'china-to-cote-divoire': {
     origin: {
       country: 'Chine',
       city: 'Guangzhou / Shanghai',
       code: 'CN',
     },
     destination: {
-      country: "Côte d'Ivoire",
+      country: 'Côte d’Ivoire',
       city: 'Abidjan',
       code: 'CI',
     },
     airFreight: {
-      duration: '8-12 jours',
+      duration: '12-20 jours',
       routes: [
-        { via: 'Addis', path: 'Guangzhou → Addis → Abidjan' },
-        { via: 'Dubai', path: 'Shanghai → Dubai → Abidjan' },
+        { via: 'Dubai', path: 'Guangzhou → Dubai → Abidjan' },
+        { via: 'Addis Abeba', path: 'Shanghai → Addis → Abidjan' },
       ],
     },
     seaFreight: {
-      duration: '42-52 jours',
+      duration: '45-60 jours',
       routes: [
-        { via: 'Direct', path: 'Shenzhen → Abidjan' },
-        { via: 'Lomé', path: 'Ningbo → Lomé → Abidjan' },
+        { via: 'Abidjan', path: 'Shanghai → Abidjan' },
+        { via: 'Abidjan', path: 'Ningbo → Abidjan' },
+        { via: 'Abidjan', path: 'Shenzhen → Abidjan' },
+      ],
+    },
+  },
+  'china-to-africa': {
+    origin: {
+      country: 'Chine',
+      city: 'Guangzhou / Shanghai / Shenzhen',
+      code: 'CN',
+    },
+    destination: {
+      country: 'Afrique de l’Ouest',
+      city: 'Bamako / Dakar / Abidjan',
+      code: 'WA',
+    },
+    airFreight: {
+      duration: '12-21 jours',
+      routes: [
+        { via: 'Dubai', path: 'Chine → Dubai → Afrique de l’Ouest' },
+        { via: 'Addis Abeba', path: 'Chine → Addis → Afrique de l’Ouest' },
+      ],
+    },
+    seaFreight: {
+      duration: '45-75 jours',
+      routes: [
+        { via: 'Lomé', path: 'Shanghai → Lomé → pays enclavés' },
+        { via: 'Dakar', path: 'Ningbo → Dakar → Sénégal / Mali' },
+        { via: 'Abidjan', path: 'Shenzhen → Abidjan → Côte d’Ivoire / Mali' },
       ],
     },
   },

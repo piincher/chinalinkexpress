@@ -15,7 +15,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { BentoGrid, BentoCard, BentoCardContent } from '@/components/bento';
 import { 
@@ -72,6 +72,14 @@ const SERVICES_CONFIG = [
   },
 ];
 
+const SERVICE_HREFS: Record<string, string> = {
+  sourcing: '/services/sourcing',
+  airFreight: '/services/air-freight',
+  seaFreight: '/services/sea-freight',
+  payment: '/services/paiement-fournisseur-chine',
+  recharge: '/tarifs',
+};
+
 // Collapsed card content
 function CollapsedContent({
   icon,
@@ -112,6 +120,7 @@ function ExpandedContent({
   t,
   serviceKey,
   ctaText,
+  locale,
 }: {
   icon: string;
   title: string;
@@ -120,7 +129,11 @@ function ExpandedContent({
   t: ReturnType<typeof useTranslations>;
   serviceKey: string;
   ctaText: string;
+  locale: string;
 }) {
+  const href = SERVICE_HREFS[serviceKey] || '/services/sourcing';
+  const targetLocale = serviceKey === 'payment' ? 'fr' : locale;
+
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-start gap-4 mb-6">
@@ -157,7 +170,7 @@ function ExpandedContent({
       {/* CTA Button */}
       <div>
         <Link
-          href={`/services/${serviceKey}`}
+          href={`/${targetLocale}${href}`}
           className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-semibold hover:bg-white/90 transition-colors"
         >
           {ctaText}
@@ -175,10 +188,12 @@ function ServiceCardWithSpotlightBorder({
   service,
   t,
   ctaText,
+  locale,
 }: {
   service: typeof SERVICES_CONFIG[0];
   t: ReturnType<typeof useTranslations>;
   ctaText: string;
+  locale: string;
 }) {
   const title = t(`items.${service.key}.title`);
   const description = t(`items.${service.key}.description`);
@@ -220,6 +235,7 @@ function ServiceCardWithSpotlightBorder({
                 t={t}
                 serviceKey={service.key}
                 ctaText={ctaText}
+                locale={locale}
               />
             }
           />
@@ -233,6 +249,7 @@ function ServiceCardWithSpotlightBorder({
 export function ServicesSection() {
   const t = useTranslations('services');
   const ctaT = useTranslations('cta');
+  const locale = useLocale();
   const { ref, isActive } = useAnimationActivation({
     threshold: 0.1,
     delay: 200,
@@ -336,6 +353,7 @@ export function ServicesSection() {
                   service={service} 
                   t={t} 
                   ctaText={ctaT('learnMore')} 
+                  locale={locale}
                 />
               </motion.div>
             ))}

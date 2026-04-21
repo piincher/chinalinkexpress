@@ -23,7 +23,7 @@ export function AirFreightPage({ locale }: Props) {
     {
       icon: Clock,
       title: isEn ? 'Fast Delivery' : 'Livraison Rapide',
-      desc: isEn ? '14-21 business days to any destination in West Africa' : '14-21 jours ouvrables vers toute destination en Afrique de l\'Ouest',
+      desc: isEn ? '14-21 business days to Bamako, Mali' : '14-21 jours ouvrables vers Bamako, Mali',
     },
     {
       icon: Shield,
@@ -32,8 +32,8 @@ export function AirFreightPage({ locale }: Props) {
     },
     {
       icon: Globe,
-      title: isEn ? 'Global Network' : 'Réseau Global',
-      desc: isEn ? 'Partnerships with Ethiopian Airlines, Turkish Airlines & more' : 'Partenariats avec Ethiopian Airlines, Turkish Airlines & plus',
+      title: isEn ? 'Partner Network' : 'Réseau de Partenaires',
+      desc: isEn ? 'We work with trusted airlines and freight partners to ensure safe delivery' : 'Nous collaborons avec des compagnies aériennes et des partenaires fret de confiance pour assurer une livraison sécurisée',
     },
     {
       icon: Package,
@@ -44,11 +44,6 @@ export function AirFreightPage({ locale }: Props) {
 
   const destinations = [
     { city: 'Bamako', country: 'Mali', time: '14-21 days' },
-    { city: 'Dakar', country: 'Senegal', time: '12-18 days' },
-    { city: 'Abidjan', country: 'Ivory Coast', time: '12-18 days' },
-    { city: 'Lomé', country: 'Togo', time: '14-21 days' },
-    { city: 'Cotonou', country: 'Benin', time: '14-21 days' },
-    { city: 'Accra', country: 'Ghana', time: '12-18 days' },
   ];
 
   return (
@@ -67,13 +62,13 @@ export function AirFreightPage({ locale }: Props) {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               {isEn 
-                ? 'Air Freight from China to Africa' 
-                : 'Fret Aérien de la Chine vers l\'Afrique'}
+                ? 'Air Freight from China to Mali' 
+                : 'Fret Aérien de la Chine vers le Mali'}
             </h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
               {isEn 
-                ? 'Fast, reliable air cargo services. Delivery in 14-21 days to Mali, Senegal, Ivory Coast & all West Africa destinations.'
-                : 'Services de cargo aérien rapides et fiables. Livraison en 14-21 jours vers le Mali, Sénégal, Côte d\'Ivoire & toute l\'Afrique de l\'Ouest.'}
+                ? 'Fast, reliable air cargo services to Bamako through our trusted partner network. Delivery in 14-21 days. We handle sourcing, consolidation, and shipping so you receive your goods safely.'
+                : 'Services de cargo aérien rapides et fiables vers Bamako via notre réseau de partenaires de confiance. Livraison en 14-21 jours. Nous gérons le sourcing, la consolidation et l\'expédition pour que vous receviez vos marchandises en toute sécurité.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -83,7 +78,7 @@ export function AirFreightPage({ locale }: Props) {
                 {isEn ? 'Calculate Shipping Cost' : 'Calculer les Frais'}
               </Link>
               <a
-                href="https://wa.me/8618851725957"
+                href="https://wa.me/+8618851725957"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
@@ -105,8 +100,8 @@ export function AirFreightPage({ locale }: Props) {
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
               {isEn 
-                ? 'Professional air cargo services with competitive rates and reliable delivery'
-                : 'Services de cargo aérien professionnels avec tarifs compétitifs et livraison fiable'}
+                ? 'Professional air cargo services with competitive rates and reliable delivery to Mali'
+                : 'Services de cargo aérien professionnels avec tarifs compétitifs et livraison fiable vers le Mali'}
             </p>
           </div>
 
@@ -138,12 +133,12 @@ export function AirFreightPage({ locale }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              {isEn ? 'Air Freight Destinations' : 'Destinations Fret Aérien'}
+              {isEn ? 'Air Freight Destination' : 'Destination Fret Aérien'}
             </h2>
             <p className="text-lg text-[var(--text-secondary)]">
               {isEn 
-                ? 'Direct and connecting flights to major West African cities'
-                : 'Vols directs et avec correspondance vers les grandes villes d\'Afrique de l\'Ouest'}
+                ? 'Direct and connecting flights to Bamako, Mali through our partner airlines'
+                : 'Vols directs et avec correspondance vers Bamako, Mali via nos compagnies aériennes partenaires'}
             </p>
           </div>
 
@@ -185,8 +180,8 @@ export function AirFreightPage({ locale }: Props) {
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               {isEn 
-                ? 'Get your air freight quote in seconds. Fast, reliable delivery to your destination.'
-                : 'Obtenez votre devis fret aérien en quelques secondes. Livraison rapide et fiable.'}
+                ? 'Get your air freight quote in seconds. Fast, reliable delivery to Bamako through our trusted partners.'
+                : 'Obtenez votre devis fret aérien en quelques secondes. Livraison rapide et fiable à Bamako via nos partenaires de confiance.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

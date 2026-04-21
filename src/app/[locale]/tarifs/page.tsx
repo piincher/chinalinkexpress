@@ -7,6 +7,7 @@
 
 import type { Metadata } from 'next';
 import { PAGE_SEO } from '@/config/seo';
+import { FAQStructuredData } from '@/components/seo';
 import { PricingPage } from '@/features/pricing';
 
 interface Props {
@@ -23,17 +24,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: seo.description,
     keywords: seo.keywords,
     alternates: {
-      canonical: `/${locale}/tarifs/`,
+      canonical: `/${locale}/tarifs`,
       languages: {
-        'en-US': '/en/tarifs/',
-        'fr-FR': '/fr/tarifs/',
-        'zh-CN': '/zh/tarifs/',
-        'ar-SA': '/ar/tarifs/',
+        'en-US': '/en/tarifs',
+        'fr-FR': '/fr/tarifs',
+        'zh-CN': '/zh/tarifs',
+        'ar-SA': '/ar/tarifs',
+        'x-default': '/fr/tarifs',
       },
     },
   };
 }
 
-export default function PricingRoute() {
-  return <PricingPage />;
+const pricingFaqs = [
+  {
+    question: 'Quels sont les tarifs de fret Chine-Mali ?',
+    answer: 'Les tarifs dépendent du poids, du volume, du type de produit, du mode aérien ou maritime et de la destination finale à Bamako. Le calculateur donne une estimation avant validation sur WhatsApp.',
+  },
+  {
+    question: 'Le dédouanement est-il inclus ?',
+    answer: 'Les tarifs courants incluent l’accompagnement de dédouanement standard. Les produits sensibles ou réglementés peuvent nécessiter des frais ou documents supplémentaires.',
+  },
+  {
+    question: 'Puis-je payer le fret à l’arrivée ?',
+    answer: 'Dans de nombreux cas, le paiement se fait à l’arrivée après inspection. Certains profils, produits ou montants peuvent demander une avance.',
+  },
+];
+
+export default async function PricingRoute({ params }: Props) {
+  const { locale } = await params;
+
+  return (
+    <>
+      <FAQStructuredData faqs={pricingFaqs} locale={locale as 'fr' | 'en' | 'zh' | 'ar'} />
+      <PricingPage />
+    </>
+  );
 }

@@ -12,11 +12,11 @@
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Ruler, Weight, Info, AlertCircle, ArrowRight, Ship, MessageCircle } from 'lucide-react';
+import { Ruler, Weight, Info, AlertCircle, ArrowRight, Ship, MessageCircle, TrendingDown, ShieldCheck, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateSeaFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { SEA_RATES, DENSITY_THRESHOLDS, SEA_STANDARD_ITEMS } from '../constants';
+import { SEA_RATES, DENSITY_THRESHOLDS, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
 import { Input } from '@/components/common/form/FormField';
 
 export function SeaCalculator() {
@@ -78,6 +78,8 @@ export function SeaCalculator() {
     },
     [setSeaField]
   );
+
+  const seaPerf = DELIVERY_PERFORMANCE.seaEconomy;
 
   return (
     <div className="grid lg:grid-cols-2 gap-8">
@@ -175,6 +177,29 @@ export function SeaCalculator() {
           </p>
         </div>
 
+        {/* Delivery Performance Note */}
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
+          <div className="flex items-start gap-3">
+            <ShieldCheck className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <span className="font-medium text-sm text-emerald-800 dark:text-emerald-300">
+                {t('deliveryPerformance.title')}
+              </span>
+              <p className="text-sm text-emerald-700 dark:text-emerald-400 mt-1">
+                {t('deliveryPerformance.subtitle')}
+              </p>
+              <div className="mt-2 flex items-center gap-3 text-xs text-emerald-600 dark:text-emerald-500">
+                <span>
+                  {t('deliveryPerformance.quoted')}: {seaPerf.quoted}
+                </span>
+                <span className="font-medium">
+                  {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage}j
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Density Explanation */}
         <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
           <div className="flex items-start gap-3">
@@ -225,9 +250,21 @@ export function SeaCalculator() {
                 'rounded-2xl p-6 text-white',
                 seaResult.highDensity
                   ? 'bg-gradient-to-br from-amber-500 to-orange-600 dark:from-amber-600 dark:to-orange-700'
-                  : 'bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700'
+                  : 'bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-600 dark:to-teal-700'
               )}
             >
+              {/* Patient Importer Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-4 flex items-center justify-center"
+              >
+                <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-sm">
+                  <TrendingDown className="w-4 h-4" />
+                  {t('result.patientImporter')}
+                </div>
+              </motion.div>
+
               {/* Price Display */}
               <div className="text-center mb-6">
                 <div className="text-white/80 text-sm mb-1">{t('result.estimatedPrice')}</div>
@@ -238,6 +275,24 @@ export function SeaCalculator() {
                   {t('result.deliveryTime')}: {seaResult.deliveryTime}
                 </div>
               </div>
+
+              {/* Delivery Confidence */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="mb-4 p-3 bg-white/10 border border-white/20 rounded-lg"
+              >
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-300" />
+                  <span className="text-sm text-emerald-100">
+                    {t('deliveryPerformance.earlyDelivery')}
+                  </span>
+                  <span className="text-xs text-white/70 ml-auto">
+                    {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage}j
+                  </span>
+                </div>
+              </motion.div>
 
               {/* Calculation Breakdown */}
               <div className="space-y-3 bg-white/10 rounded-xl p-4">

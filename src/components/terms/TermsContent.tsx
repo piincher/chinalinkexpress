@@ -716,28 +716,12 @@ export function TermsContent() {
                         </thead>
                         <tbody className="divide-y divide-[var(--border)]">
                            <tr>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">Mali</td>
+                              <td className="px-4 py-3 text-[var(--text-secondary)]">Mali (Bamako)</td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 Bamako / Abidjan
+                                 Lomé / Dakar / Abidjan (transit terrestre)
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
                                  60-75 jours
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 Côte d'Ivoire
-                              </td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">Abidjan</td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 50-65 jours
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">Sénégal</td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">Dakar</td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 55-70 jours
                               </td>
                            </tr>
                         </tbody>
@@ -896,8 +880,6 @@ export function TermsContent() {
                   </p>
                   <ul className="space-y-2 text-[var(--text-secondary)]">
                      <li>• Mali : TVA 18% + droits de douane (0-20% selon produit)</li>
-                     <li>• Côte d'Ivoire : TVA 18% + droits de douane</li>
-                     <li>• Sénégal : TVA 18% + droits de douane</li>
                   </ul>
                </SubSection>
             </Section>

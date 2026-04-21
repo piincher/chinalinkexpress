@@ -15,6 +15,7 @@ import { GridPattern } from '@/components/animations/GridPattern';
 import { GradientText } from '@/components/animations/TextAnimations';
 import { SpotlightCard } from '@/components/animations/SpotlightCard';
 import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 import { STATS } from '@/constants/appConstants';
 import { SECTION_IDS } from '../constants';
 
@@ -26,6 +27,7 @@ interface StatItemProps {
   labelKey: string;
   index: number;
   duration?: number;
+  showStars?: boolean;
 }
 
 function StatItem({
@@ -36,6 +38,7 @@ function StatItem({
   labelKey,
   index,
   duration = 2,
+  showStars = false,
 }: StatItemProps) {
   const t = useTranslations('stats');
 
@@ -76,11 +79,16 @@ function StatItem({
               decimals={decimals}
               duration={duration}
             />
+            {showStars && (
+              <span className="inline-flex items-center gap-1 ml-2 text-amber-400">
+                <Star className="w-8 h-8 fill-current" />
+              </span>
+            )}
           </div>
 
           {/* Label with proper contrast */}
           <div className="text-[var(--text-secondary)] font-medium text-lg">
-            {t(labelKey)}
+            {t(labelKey, { defaultValue: labelKey })}
           </div>
 
           {/* Decorative line */}
@@ -104,6 +112,7 @@ export function StatsSection() {
     decimals?: number;
     labelKey: string;
     duration: number;
+    showStars?: boolean;
   }> = [
     {
       value: STATS.SHIPMENTS.value,
@@ -112,17 +121,18 @@ export function StatsSection() {
       duration: 2,
     },
     {
-      value: STATS.COUNTRIES.value,
-      suffix: STATS.COUNTRIES.suffix,
-      labelKey: 'countries',
+      value: STATS.CLIENTS.value,
+      suffix: STATS.CLIENTS.suffix,
+      labelKey: 'activeClients',
       duration: 1.5,
     },
     {
       value: STATS.RATING.value,
       suffix: STATS.RATING.suffix,
       decimals: STATS.RATING.decimals,
-      labelKey: 'rating',
+      labelKey: 'ratingLabel',
       duration: 1.5,
+      showStars: true,
     },
   ];
 
@@ -184,6 +194,7 @@ export function StatsSection() {
               labelKey={stat.labelKey}
               index={index}
               duration={stat.duration}
+              showStars={stat.showStars}
             />
           ))}
         </div>

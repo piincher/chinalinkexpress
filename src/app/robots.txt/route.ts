@@ -21,7 +21,6 @@ Crawl-delay: 1
 Disallow: /api/
 Disallow: /_next/
 Disallow: /*.json$
-Disallow: /*.xml$
 
 # Allow important pages
 Allow: /fr/
@@ -35,7 +34,7 @@ Allow: /en/routes/
 Allow: /fr/tarifs
 Allow: /en/tarifs
 Allow: /fr/calculateur
-Allow: /en/calculator
+Allow: /en/calculateur
 Allow: /fr/contact
 Allow: /en/contact
 Allow: /fr/faq

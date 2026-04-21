@@ -7,7 +7,7 @@
 export const APP_CONFIG = {
   NAME: 'ChinaLink Express',
   SHORT_NAME: 'CLE',
-  DESCRIPTION: 'Solutions logistiques complètes pour le sourcing, achat et expédition de la Chine vers l\'Afrique',
+  DESCRIPTION: 'Solutions logistiques complètes pour le sourcing, achat et expédition de la Chine vers le Mali',
   VERSION: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0',
   ENV: process.env.NODE_ENV || 'development',
   IS_PRODUCTION: process.env.NODE_ENV === 'production',
@@ -16,15 +16,15 @@ export const APP_CONFIG = {
 
 export const META_CONFIG = {
   TITLE: 'ChinaLink Express | Sourcing & Expédition Chine-Afrique',
-  DESCRIPTION: 'ChinaLink Express - Votre partenaire logistique de confiance pour le sourcing, l\'achat et l\'expédition de marchandises de la Chine vers le Mali et l\'Afrique. Devis gratuit.',
+  DESCRIPTION: 'ChinaLink Express - Votre partenaire logistique de confiance pour le sourcing, l\'achat et l\'expédition de marchandises de la Chine vers le Mali. Devis gratuit.',
   KEYWORDS: [
     'ChinaLink Express',
-    'sourcing Chine Afrique',
+    'sourcing Chine Mali',
     'expédition Chine Mali',
-    'fret maritime Chine Afrique',
+    'fret maritime Chine Mali',
     'fret aérien Chine Bamako',
     'logistique internationale',
-    'import export Chine Afrique',
+    'import export Chine Mali',
   ],
   URL: 'https://www.chinalinkexpress.com',
   IMAGE: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png',

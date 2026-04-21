@@ -111,8 +111,8 @@ export async function generateMetadata({
   
   // Comprehensive SEO keywords by locale
   const keywords = isEn 
-    ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, 1688 sourcing agent, China procurement services, door to door shipping China, container shipping China Africa, FCL shipping, LCL consolidation, air cargo China to Africa, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, China Dakar shipping, shipping China Abidjan, customs clearance Africa'
-    : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Afrique, expédition colis Chine Afrique, fret Chine Mali, envoi marchandises Chine Sénégal, transport maritime Chine Côte d\'Ivoire, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine, conteneur Chine Afrique, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Afrique, express Chine Mali, expédition Chine Bamako, transitaire Bamako, fret Chine Dakar, déclaration en douane';
+    ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Mali shipping, shipping from China to Mali, freight forwarding China to Bamako, Alibaba shipping agent, 1688 sourcing agent, China procurement services, door to door shipping China Mali, container shipping China Mali, FCL shipping, LCL consolidation, air cargo China to Mali, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, import China Mali, customs clearance Mali, sourcing agent Mali'
+    : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Mali, expédition colis Chine Mali, fret Chine Bamako, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine Mali, conteneur Chine Mali, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Mali, express Chine Mali, expédition Chine Bamako, transitaire Bamako, import Chine Mali, sourcing Mali';
   
   return {
     title: {
@@ -222,58 +222,43 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { resolvedTheme } = await getServerTheme();
 
   return (
-    <html 
-      lang={validLocale} 
-      dir={direction}
-      className={resolvedTheme === 'dark' ? 'dark' : ''}
-      data-theme={resolvedTheme}
-      suppressHydrationWarning // Suppress mismatch warnings for theme
-    >
-      <head>
-        {/* Theme Initialization Script - Prevents flash */}
-        <ThemeInitScript />
-        
-        {/* Performance: Preconnect to Critical Domains */}
-        <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* DNS Prefetch for Third-Party Services */}
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        
-        {/* PWA Meta Tags */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="ChinaLink" />
-        <meta name="application-name" content="ChinaLink Express" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-        
-        {/* PWA Icons */}
-        <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
-        <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
-        <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png" />
-        <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
-        <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2563eb" />
-        
-        {/* Hreflang Tags */}
-        <link rel="alternate" hrefLang="fr-FR" href="https://www.chinalinkexpress.com/fr/" />
-        <link rel="alternate" hrefLang="en-US" href="https://www.chinalinkexpress.com/en/" />
-        <link rel="alternate" hrefLang="zh-CN" href="https://www.chinalinkexpress.com/zh/" />
-        <link rel="alternate" hrefLang="ar-SA" href="https://www.chinalinkexpress.com/ar/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.chinalinkexpress.com/fr/" />
-      </head>
+    <>
+      {/* Theme Initialization Script - Prevents flash */}
+      <ThemeInitScript />
       
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      {/* Performance: Preconnect to Critical Domains */}
+      <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      
+      {/* DNS Prefetch for Third-Party Services */}
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      
+      {/* PWA Meta Tags */}
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="ChinaLink" />
+      <meta name="application-name" content="ChinaLink Express" />
+      <meta name="msapplication-TileColor" content="#2563eb" />
+      <meta name="msapplication-config" content="/browserconfig.xml" />
+      <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
+      <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+      
+      {/* PWA Icons */}
+      <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
+      <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
+      <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+      <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2563eb" />
+      
+      <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <PWAProvider>
             <NextIntlClientProvider locale={validLocale} messages={messages}>
@@ -298,7 +283,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         {/* Analytics */}
         <SpeedInsights />
         <Analytics />
-      </body>
-    </html>
+      </div>
+    </>
   );
 }

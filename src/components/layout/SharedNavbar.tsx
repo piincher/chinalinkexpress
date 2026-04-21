@@ -8,11 +8,13 @@
 
 'use client';
 
+// Navbar component - rebuilt after feature removal
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
@@ -28,7 +30,9 @@ const NAV_LINKS = [
   { key: 'services', href: '/#services', label: 'navigation.services' },
   { key: 'about', href: '/#about', label: 'navigation.about' },
   { key: 'whyUs', href: '/#why-us', label: 'navigation.whyUs' },
+  { key: 'community', href: '/communaute', label: 'navigation.community' },
   { key: 'pricing', href: '/tarifs', label: 'navigation.pricing' },
+  { key: 'blog', href: '/blog', label: 'navigation.blog' },
   { key: 'contact', href: '/#contact', label: 'navigation.contact' },
 ] as const;
 
@@ -50,6 +54,11 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
   const isActive = (href: string) => {
     if (href === '/') return false;
     return isScrolled;
+  };
+
+  const getNavHref = (link: (typeof NAV_LINKS)[number]) => {
+    const linkLocale = link.key === 'blog' ? 'fr' : locale;
+    return `/${linkLocale}${link.href}`;
   };
 
   return (
@@ -91,7 +100,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.key}
-                href={`/${locale}${link.href}`}
+                href={getNavHref(link)}
                 className={cn(
                   'relative px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                   isActive(link.href)
@@ -121,7 +130,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
               href={`https://wa.me/22376696177`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl font-medium transition-colors"
+              className="hidden lg:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl font-medium transition-colors"
             >
               <Phone className="w-4 h-4" />
               <span>WhatsApp</span>
@@ -153,24 +162,35 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
             className="lg:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
           >
             <nav className="px-4 py-4 space-y-2">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.key}
-                  href={`/${locale}${link.href}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={cn(
-                    'block px-4 py-3 rounded-xl text-base font-medium transition-colors',
-                    isActive(link.href)
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                  )}
-                >
-                  {t(link.label)}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isCommunity = link.key === 'community';
+                return (
+                  <Link
+                    key={link.key}
+                    href={getNavHref(link)}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      'flex items-center gap-2 px-4 py-3 rounded-xl text-base font-medium transition-colors',
+                      isActive(link.href)
+                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    )}
+                  >
+                    {isCommunity && <Users className="w-4 h-4" />}
+                    {t(link.label)}
+                  </Link>
+                );
+              })}
               
               <div className="pt-4 border-t border-gray-200 dark:border-gray-800 space-y-3">
-                <div className="flex items-center justify-between px-4">
+                {/* Tools Section */}
+                <div className="px-4 pb-2">
+                  <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    Outils
+                  </span>
+                </div>
+                
+                <div className="flex items-center justify-between px-4 pt-2">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Langue</span>
                   <LanguageSelector locale={locale} variant="default" />
                 </div>

@@ -13,3 +13,6 @@ export { TestimonialsSection } from './TestimonialsSection';
 export { PartnersSection } from './PartnersSection';
 export { FAQSection } from './FAQSection';
 export { ContactSection } from './ContactSection';
+export { QuizSection } from './QuizSection';
+export { SuccessStoriesSection } from './SuccessStoriesSection';
+export { ComparisonSection } from './ComparisonSection';

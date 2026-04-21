@@ -7,6 +7,7 @@
 
 import type { Metadata } from 'next';
 import { PAGE_SEO } from '@/config/seo';
+import { StructuredData } from '@/components/seo';
 import { ContactPage } from '@/features/contact';
 
 interface Props {
@@ -23,15 +24,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: seo.description,
     keywords: seo.keywords,
     alternates: {
-      canonical: `/${locale}/contact/`,
+      canonical: `/${locale}/contact`,
       languages: {
-        'en-US': '/en/contact/',
-        'fr-FR': '/fr/contact/',
+        'en-US': '/en/contact',
+        'fr-FR': '/fr/contact',
+        'zh-CN': '/zh/contact',
+        'ar-SA': '/ar/contact',
+        'x-default': '/fr/contact',
       },
     },
   };
 }
 
 export default function ContactRoute() {
-  return <ContactPage />;
+  return (
+    <>
+      <StructuredData type="localBusiness" />
+      <ContactPage />
+    </>
+  );
 }

@@ -34,7 +34,7 @@ export const BUSINESS_INFO = {
   alternateName: 'CLE Logistics',
   url: 'https://www.chinalinkexpress.com',
   logo: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png',
-  founded: '2017',
+  founded: '2019',
   employees: '50-200',
   
   contact: {
@@ -42,7 +42,7 @@ export const BUSINESS_INFO = {
     phones: {
       china: '+86 188 5172 5957',
       mali: '+223 7669 61 77',
-      senegal: '+223 5100 50 42',
+      maliAlt: '+223 5100 50 42',
     },
     whatsapp: {
       china: '+8618851725957',
@@ -85,12 +85,6 @@ export const BUSINESS_INFO = {
 
 export const SHIPPING_ROUTES: ShippingRoute[] = [
   { origin: 'China', destination: 'Mali', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Senegal', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Ivory Coast', durationDays: { min: 14, max: 72 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Nigeria', durationDays: { min: 14, max: 68 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Ghana', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Guinea', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Burkina Faso', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
 ];
 
 // ============================================================================
@@ -99,23 +93,23 @@ export const SHIPPING_ROUTES: ShippingRoute[] = [
 
 export const SERVICE_OFFERS: Record<string, ServiceOffer> = {
   airFreight: {
-    name: 'Air Freight China to Africa',
-    description: 'Express air freight delivery from China to West Africa in 14-21 business days',
+    name: 'Air Freight China to Mali',
+    description: 'Express air freight delivery from China to Bamako, Mali in 14-21 business days via trusted partner carriers',
     price: { min: 8, max: 15, unit: 'USD per kg' },
   },
   seaFreightFCL: {
-    name: 'Sea Freight FCL',
-    description: 'Full container load shipping from China to Africa in 60-75 days',
+    name: 'Sea Freight FCL to Mali',
+    description: 'Full container load shipping from China to Mali (via coastal ports) in 60-75 days through partner network',
     price: { min: 2000, max: 4500, unit: 'USD per 20ft container' },
   },
   seaFreightLCL: {
-    name: 'Sea Freight LCL',
-    description: 'Less than container load consolidation shipping from China to Africa',
+    name: 'Sea Freight LCL to Mali',
+    description: 'Less than container load consolidation shipping from China to Mali via trusted partners',
     price: { min: 80, max: 150, unit: 'USD per CBM' },
   },
   sourcing: {
     name: 'China Sourcing Service',
-    description: 'Professional sourcing from Alibaba, 1688, Taobao with quality inspection',
+    description: 'Professional sourcing from Alibaba, 1688, Taobao with quality inspection and partner shipping to Mali',
     price: { min: 50, max: 500, unit: 'USD per order' },
   },
 };
@@ -155,7 +149,7 @@ export function generateOrganizationSchema() {
         '@type': 'ContactPoint',
         telephone: BUSINESS_INFO.contact.phones.china,
         contactType: 'customer service',
-        areaServed: ['CN', 'ML', 'SN', 'CI', 'NG'],
+        areaServed: ['CN', 'ML'],
         availableLanguage: ['French', 'English', 'Chinese'],
       },
       {
@@ -169,7 +163,7 @@ export function generateOrganizationSchema() {
         '@type': 'ContactPoint',
         contactType: 'WhatsApp',
         url: `https://wa.me/${BUSINESS_INFO.contact.whatsapp.china}`,
-        areaServed: ['CN', 'ML', 'SN', 'CI', 'NG'],
+        areaServed: ['CN', 'ML'],
         availableLanguage: ['French', 'English', 'Chinese'],
       },
     ],
@@ -203,14 +197,6 @@ export function generateLocalBusinessSchema() {
     currenciesAccepted: ['USD', 'EUR', 'CNY', 'XOF', 'XAF'],
     areaServed: [
       { '@type': 'Country', name: 'Mali' },
-      { '@type': 'Country', name: 'Senegal' },
-      { '@type': 'Country', name: 'Ivory Coast' },
-      { '@type': 'Country', name: 'Nigeria' },
-      { '@type': 'Country', name: 'Ghana' },
-      { '@type': 'Country', name: 'Guinea' },
-      { '@type': 'Country', name: 'Burkina Faso' },
-      { '@type': 'Country', name: 'Benin' },
-      { '@type': 'Country', name: 'Togo' },
     ],
     hasMap: 'https://www.google.com/maps/search/?api=1&query=12.6392,-8.0029',
   };
@@ -227,10 +213,10 @@ export function generateServiceSchema(
   
   const serviceConfig = {
     air: {
-      name: isEn ? 'Air Freight China to Africa' : 'Fret Aérien Chine-Afrique',
+      name: isEn ? 'Air Freight China to Mali' : 'Fret Aérien Chine-Mali',
       description: isEn 
-        ? 'Fast and reliable air freight from China to West Africa. Delivery in 14-21 days with real-time tracking.'
-        : 'Fret aérien rapide et fiable de la Chine vers l\'Afrique de l\'Ouest. Livraison en 14-21 jours avec suivi en temps réel.',
+        ? 'Fast and reliable air freight from China to Bamako, Mali. Delivery in 14-21 days with real-time tracking via our partner network.'
+        : 'Fret aérien rapide et fiable de la Chine vers Bamako, Mali. Livraison en 14-21 jours avec suivi en temps réel via notre réseau de partenaires.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
       areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
@@ -264,10 +250,10 @@ export function generateServiceSchema(
       },
     },
     sea: {
-      name: isEn ? 'Sea Freight China to Africa' : 'Fret Maritime Chine-Afrique',
+      name: isEn ? 'Sea Freight China to Mali' : 'Fret Maritime Chine-Mali',
       description: isEn
-        ? 'Economical sea freight from China to West Africa. FCL and LCL options. Delivery in 60-75 days.'
-        : 'Fret maritime économique de la Chine vers l\'Afrique de l\'Ouest. Options FCL et LCL. Livraison en 60-75 jours.',
+        ? 'Economical sea freight from China to Mali via coastal ports. FCL and LCL options. Delivery in 60-75 days through trusted partners.'
+        : 'Fret maritime économique de la Chine vers le Mali via les ports côtiers. Options FCL et LCL. Livraison en 60-75 jours via des partenaires de confiance.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
       areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
@@ -625,8 +611,6 @@ export const PAGE_PATHS = {
   },
   routes: {
     chinaToMali: '/routes/china-to-mali',
-    chinaToSenegal: '/routes/china-to-senegal',
-    chinaToIvoryCoast: '/routes/china-to-ivory-coast',
   },
   tools: {
     calculator: '/calculateur',
@@ -649,13 +633,13 @@ export const SEO_KEYWORDS = {
     primary: 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight',
     longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent, 1688 sourcing agent',
     service: 'air cargo China Africa, express shipping China Mali, FCL shipping, LCL consolidation, customs clearance Africa',
-    location: 'shipping China Bamako, freight forwarder China Mali, China Dakar shipping, China Abidjan freight',
+    location: 'shipping China Bamako, freight forwarder China Mali, import China Mali, sourcing Bamako',
   },
   fr: {
     primary: 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale',
     longTail: 'expédition colis Chine Afrique, fret Chine Mali, agent sourcing Chine, paiement fournisseur chinois',
     service: 'cargo aérien Chine Afrique, express Chine Mali, conteneur complet FCL, groupage maritime LCL, dédouanement Mali',
-    location: 'expédition Chine Bamako, transitaire Bamako, fret Chine Dakar, transport Chine Abidjan',
+    location: 'expédition Chine Bamako, transitaire Bamako, fret Chine Mali, sourcing Mali',
   },
 } as const;
 

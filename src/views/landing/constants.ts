@@ -87,10 +87,12 @@ export const SECTION_IDS = {
   HERO: 'hero',
   STATS: 'stats',
   ABOUT: 'about',
+  COMPARISON: 'comparison',
   SERVICES: 'services',
   WHY_US: 'why-us',
   TESTIMONIALS: 'testimonials',
   PARTNERS: 'partners',
+  SUCCESS_STORIES: 'success-stories',
   FAQ: 'faq',
   CONTACT: 'contact',
 } as const;

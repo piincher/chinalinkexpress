@@ -23,19 +23,18 @@ export const CITIES: CityNode[] = [
   
   // Africa - Destination (Mali focus)
   { id: 'bamako', name: 'Bamako', x: 0.38, y: 0.48, region: 'africa', importance: 1 },
-  { id: 'dakar', name: 'Dakar', x: 0.32, y: 0.46, region: 'africa', importance: 0.7 },
-  { id: 'lagos', name: 'Lagos', x: 0.45, y: 0.52, region: 'africa', importance: 0.8 },
-  { id: 'casablanca', name: 'Casablanca', x: 0.40, y: 0.35, region: 'africa', importance: 0.6 },
-  { id: 'cairo', name: 'Cairo', x: 0.54, y: 0.38, region: 'africa', importance: 0.75 },
+  { id: 'lome', name: 'Lomé', x: 0.41, y: 0.52, region: 'africa', importance: 0.7 },
+  { id: 'dakar', name: 'Dakar', x: 0.32, y: 0.46, region: 'africa', importance: 0.6 },
+  { id: 'abidjan', name: 'Abidjan', x: 0.36, y: 0.50, region: 'africa', importance: 0.6 },
 ];
 
 // Trade routes (China ↔ Africa)
 export const ROUTES: Route[] = [
-  // Maritime routes
+  // Maritime routes to coastal ports (Bamako is landlocked)
   {
-    id: 'sea-shanghai-bamako',
+    id: 'sea-shanghai-lome',
     from: 'shanghai',
-    to: 'bamako',
+    to: 'lome',
     points: [], // Calculated at runtime
     color: '#3fb0ff',
     width: 3,
@@ -43,27 +42,27 @@ export const ROUTES: Route[] = [
     trafficIntensity: 'high',
   },
   {
-    id: 'sea-shenzhen-lagos',
+    id: 'sea-shenzhen-dakar',
     from: 'shenzhen',
-    to: 'lagos',
+    to: 'dakar',
     points: [],
     color: '#7fd0ff',
     width: 2.5,
     dashArray: '6 8',
-    trafficIntensity: 'high',
+    trafficIntensity: 'medium',
   },
   {
-    id: 'sea-guangzhou-dakar',
+    id: 'sea-guangzhou-abidjan',
     from: 'guangzhou',
-    to: 'dakar',
+    to: 'abidjan',
     points: [],
     color: '#9fd3ff',
     width: 2,
     dashArray: '4 10',
     trafficIntensity: 'medium',
   },
-  
-  // Air routes
+
+  // Air routes to Bamako
   {
     id: 'air-shanghai-addis-bamako',
     from: 'shanghai',
@@ -98,9 +97,9 @@ export const ROUTES: Route[] = [
 
 // Transport nodes moving along routes
 export const TRANSPORT_NODES: TransportNode[] = [
-  { id: 'ship1', type: 'ship', routeId: 'sea-shanghai-bamako', progress: 0, speed: 0.0003, icon: '🚢' },
-  { id: 'ship2', type: 'ship', routeId: 'sea-shenzhen-lagos', progress: 0.3, speed: 0.00025, icon: '🚢' },
-  { id: 'ship3', type: 'ship', routeId: 'sea-guangzhou-dakar', progress: 0.6, speed: 0.0002, icon: '🚢' },
+  { id: 'ship1', type: 'ship', routeId: 'sea-shanghai-lome', progress: 0, speed: 0.0003, icon: '🚢' },
+  { id: 'ship2', type: 'ship', routeId: 'sea-shenzhen-dakar', progress: 0.3, speed: 0.00025, icon: '🚢' },
+  { id: 'ship3', type: 'ship', routeId: 'sea-guangzhou-abidjan', progress: 0.6, speed: 0.0002, icon: '🚢' },
   { id: 'plane1', type: 'plane', routeId: 'air-shanghai-addis-bamako', progress: 0.1, speed: 0.001, icon: '✈️' },
   { id: 'plane2', type: 'plane', routeId: 'air-shenzhen-dubai-bamako', progress: 0.5, speed: 0.0008, icon: '✈️' },
   { id: 'plane3', type: 'plane', routeId: 'air-guangzhou-istanbul-bamako', progress: 0.8, speed: 0.0009, icon: '✈️' },

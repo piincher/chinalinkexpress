@@ -16,6 +16,12 @@ import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 type SplitTypeOption = 'chars' | 'words' | 'lines';
 type ElementType = 'h1' | 'h2' | 'h3' | 'p' | 'span';
 
+function splitTextForSsr(text: string, type: SplitTypeOption): string[] {
+  if (type === 'chars') return Array.from(text);
+  if (type === 'lines') return [text];
+  return text.split(/\s+/).filter(Boolean);
+}
+
 interface TextRevealProps {
   /** Text to animate */
   children: string;
@@ -56,7 +62,7 @@ export function TextReveal({
 }: TextRevealProps) {
   const containerRef = useRef<HTMLElement>(null);
   const splitRef = useRef<SplitType | null>(null);
-  const [elements, setElements] = useState<string[]>([]);
+  const [elements, setElements] = useState<string[]>(() => splitTextForSsr(children, type));
   const { isActive } = useAnimationActivation({
     once,
     threshold,

@@ -1,0 +1,447 @@
+# WasenderAPI Integration
+
+WhatsApp Business API integration for ChinaLink Express Import Readiness Quiz.
+
+## Setup
+
+### Environment Variables
+
+Add these to your `.env.local`:
+
+```bash
+# WasenderAPI Configuration
+WASENDER_API_URL=https://api.wasender.com/v1
+WASENDER_API_KEY=your_api_key_here
+WASENDER_WEBHOOK_SECRET=your_webhook_secret_here
+
+# Optional: Retry Configuration
+WASENDER_MAX_RETRIES=3
+WASENDER_RETRY_DELAY_MS=1000
+WASENDER_RETRY_BACKOFF_MULTIPLIER=2
+
+# Optional: Scheduler Configuration
+WASENDER_SCHEDULER_INTERVAL_MINUTES=60
+WASENDER_FOLLOW_UP_DAYS=3,7,14
+```
+
+### Phone Number Configuration
+
+Configure the WhatsApp Business phone number in your admin dashboard or environment:
+
+```bash
+WASENDER_BUSINESS_PHONE=+1234567890
+```
+
+## Sending Messages
+
+### Basic Usage
+
+```typescript
+import { sendWhatsAppMessage, validateConfig } from '@/lib/wasender';
+
+// Validate configuration first
+const config = validateConfig();
+
+// Send a simple message
+const response = await sendWhatsAppMessage({
+  to: '+22378901234',
+  body: 'Hello! Thank you for your interest in ChinaLink Express.',
+  templateName: 'welcome_message',
+});
+
+console.log('Message ID:', response.messageId);
+console.log('Status:', response.status);
+```
+
+### With Retry Logic
+
+```typescript
+import { sendWhatsAppMessage, withRetry, classifyError } from '@/lib/wasender';
+
+const sendWithRetry = async (phone: string, message: string) => {
+  return withRetry(
+    () => sendWhatsAppMessage({ to: phone, body: message }),
+    {
+      maxRetries: 3,
+      baseDelayMs: 1000,
+      backoffMultiplier: 2,
+      onRetry: (error, attempt) => {
+        console.warn(`Retry ${attempt}: ${error.message}`);
+      },
+    }
+  );
+};
+```
+
+## Templates
+
+### Lead Temperature Templates
+
+Templates are automatically selected based on quiz score:
+
+```typescript
+import { 
+  getHotLeadMessage, 
+  getWarmLeadMessage, 
+  getColdLeadMessage 
+} from '@/lib/wasender';
+
+// Hot lead (score 80-100) - Immediate priority
+const hotMessage = getHotLeadMessage({
+  name: 'Moussa Diarra',
+  score: 85,
+  interestAreas: ['Electronics', 'Fashion'],
+  timeline: '1-2 months',
+});
+
+// Warm lead (score 50-79) - Nurture
+const warmMessage = getWarmLeadMessage({
+  name: 'Aminata Keita',
+  score: 65,
+  painPoints: ['Payment methods', 'Customs clearance'],
+});
+
+// Cold lead (score 0-49) - Educational
+const coldMessage = getColdLeadMessage({
+  name: 'Fatou Sylla',
+  painPoints: ['Lack of knowledge about importing'],
+});
+```
+
+### Follow-Up Templates
+
+```typescript
+import { getFollowUpMessage, getNurtureMessage } from '@/lib/wasender';
+
+// Day 3 follow-up
+const followUp = getFollowUpMessage({
+  name: 'Moussa',
+  daysSinceLastContact: 3,
+  previousInteractions: ['quiz_completed', 'guide_downloaded'],
+});
+
+// Nurture sequence
+const nurture = getNurtureMessage({
+  name: 'Aminata',
+  stage: 'education',
+  contentTopic: 'customs_clearance',
+});
+```
+
+### Guide Confirmation Template
+
+```typescript
+import { getGuideOpenedConfirmation } from '@/lib/wasender';
+
+const confirmation = getGuideOpenedConfirmation({
+  name: 'Moussa',
+  guideName: 'Import from China to Mali Guide',
+  nextSteps: ['Review Section 3: Customs Documentation', 'Calculate shipping costs'],
+});
+```
+
+## Retry Logic
+
+The retry system handles transient failures automatically:
+
+```typescript
+import { withRetry, classifyError, shouldRetry } from '@/lib/wasender';
+
+// Automatic retry with exponential backoff
+const result = await withRetry(
+  async () => {
+    return await sendWhatsAppMessage({ to: phone, body: message });
+  },
+  {
+    maxRetries: 3,
+    baseDelayMs: 1000,
+    backoffMultiplier: 2,
+    maxDelayMs: 30000,
+  }
+);
+
+// Manual error classification
+const error = new Error('Rate limit exceeded');
+const classification = classifyError(error);
+console.log(classification.type); // 'rate_limit'
+console.log(classification.retryable); // true
+console.log(classification.suggestedDelayMs); // 60000
+```
+
+### Retry Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `maxRetries` | number | 3 | Maximum retry attempts |
+| `baseDelayMs` | number | 1000 | Initial delay between retries |
+| `backoffMultiplier` | number | 2 | Exponential backoff multiplier |
+| `maxDelayMs` | number | 30000 | Maximum delay cap |
+| `onRetry` | function | - | Callback on each retry |
+
+## Webhooks
+
+### Webhook Endpoint URL
+
+Configure this URL in your Wasender dashboard:
+
+```
+https://yourdomain.com/api/webhooks/wasender
+```
+
+### Webhook Handler Example
+
+```typescript
+// app/api/webhooks/wasender/route.ts
+import { 
+  verifyWebhookSignature, 
+  parseWebhookPayload,
+  handleMessageDelivered,
+  handleMessageFailed,
+  handleMessageRead 
+} from '@/lib/wasender';
+
+export async function POST(request: Request) {
+  const signature = request.headers.get('x-wasender-signature');
+  const body = await request.text();
+  
+  // Verify webhook signature
+  if (!verifyWebhookSignature(body, signature, process.env.WASENDER_WEBHOOK_SECRET)) {
+    return new Response('Invalid signature', { status: 401 });
+  }
+  
+  const payload = parseWebhookPayload(body);
+  
+  switch (payload.event) {
+    case 'message.delivered':
+      await handleMessageDelivered(payload);
+      break;
+    case 'message.failed':
+      await handleMessageFailed(payload);
+      break;
+    case 'message.read':
+      await handleMessageRead(payload);
+      break;
+  }
+  
+  return new Response('OK', { status: 200 });
+}
+```
+
+### Webhook Events
+
+| Event | Description | Payload |
+|-------|-------------|---------|
+| `message.delivered` | Message delivered to recipient | `{ messageId, timestamp, recipient }` |
+| `message.failed` | Message delivery failed | `{ messageId, error, retryable }` |
+| `message.read` | Message read by recipient | `{ messageId, timestamp, recipient }` |
+| `message.sent` | Message sent from server | `{ messageId, timestamp }` |
+
+## Cron Jobs
+
+### Follow-Up Scheduler Setup
+
+Create a Vercel Cron Job or scheduled function:
+
+```typescript
+// app/api/cron/follow-ups/route.ts
+import { processFollowUps, getPendingFollowUps } from '@/lib/wasender';
+
+export async function GET(request: Request) {
+  // Verify cron secret
+  const authHeader = request.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+  
+  // Process all pending follow-ups
+  const results = await processFollowUps({
+    batchSize: 50,
+    dryRun: false,
+  });
+  
+  return Response.json({
+    processed: results.processed,
+    succeeded: results.succeeded,
+    failed: results.failed,
+    timestamp: new Date().toISOString(),
+  });
+}
+```
+
+### Vercel Cron Configuration
+
+Add to `vercel.json`:
+
+```json
+{
+  "crons": [
+    {
+      "path": "/api/cron/follow-ups",
+      "schedule": "0 */6 * * *"
+    }
+  ]
+}
+```
+
+### Manual Follow-Up Check
+
+```typescript
+import { getPendingFollowUps, sendFollowUpMessage } from '@/lib/wasender';
+
+// Get pending follow-ups for today
+const pending = await getPendingFollowUps({
+  dueDate: new Date(),
+  limit: 100,
+});
+
+// Process each follow-up
+for (const followUp of pending) {
+  await sendFollowUpMessage({
+    leadId: followUp.leadId,
+    stage: followUp.stage,
+    templateData: followUp.templateData,
+  });
+}
+```
+
+## Error Handling
+
+### Common Errors and Solutions
+
+| Error | Code | Solution |
+|-------|------|----------|
+| `INVALID_PHONE_NUMBER` | 400 | Validate phone number format before sending |
+| `RATE_LIMIT_EXCEEDED` | 429 | Implement exponential backoff, reduce send rate |
+| `INVALID_TEMPLATE` | 400 | Check template name and parameters |
+| `PHONE_NOT_REGISTERED` | 404 | Ensure number has WhatsApp account |
+| `MESSAGE_TOO_LONG` | 400 | Split message into multiple parts |
+| `AUTHENTICATION_FAILED` | 401 | Check API key, verify credentials |
+| `API_UNAVAILABLE` | 503 | Retry with backoff, check API status |
+
+### Error Handling Example
+
+```typescript
+import { sendWhatsAppMessage, classifyError } from '@/lib/wasender';
+
+try {
+  await sendWhatsAppMessage({ to: phone, body: message });
+} catch (error) {
+  const classification = classifyError(error);
+  
+  switch (classification.type) {
+    case 'rate_limit':
+      // Queue for later retry
+      await queueMessageForLater(phone, message, classification.suggestedDelayMs);
+      break;
+      
+    case 'invalid_phone':
+      // Mark contact as invalid
+      await markContactInvalid(phone);
+      break;
+      
+    case 'auth_error':
+      // Alert admin
+      await alertAdmin('WhatsApp API authentication failed');
+      break;
+      
+    case 'network_error':
+      // Retry immediately
+      if (classification.retryable) {
+        await retryWithDelay(phone, message, classification.suggestedDelayMs);
+      }
+      break;
+      
+    default:
+      console.error('Unhandled error:', error);
+  }
+}
+```
+
+## Rate Limiting
+
+The API has the following rate limits:
+
+- **Messages per minute**: 100
+- **Messages per hour**: 1000
+- **Messages per day**: 5000
+
+Use the rate limit headers to manage sending:
+
+```typescript
+const response = await sendWhatsAppMessage({ to, body });
+
+console.log('Remaining:', response.rateLimit.remaining);
+console.log('Reset at:', response.rateLimit.resetAt);
+console.log('Limit:', response.rateLimit.limit);
+```
+
+## Testing
+
+### Test Mode
+
+Enable test mode to simulate API calls without sending real messages:
+
+```typescript
+const response = await sendWhatsAppMessage({
+  to: '+22378901234',
+  body: 'Test message',
+  testMode: true, // Simulates API response
+});
+```
+
+### Webhook Testing
+
+Use ngrok for local webhook testing:
+
+```bash
+ngrok http 3000
+# Use the https URL as webhook endpoint in Wasender dashboard
+```
+
+## Integration with Quiz System
+
+### Quiz Completion Handler
+
+```typescript
+// In your quiz completion handler
+import { 
+  sendWhatsAppMessage, 
+  getHotLeadMessage,
+  getWarmLeadMessage,
+  getColdLeadMessage 
+} from '@/lib/wasender';
+
+export async function handleQuizCompletion(quizResult: QuizResult) {
+  const { phone, score, name } = quizResult;
+  
+  // Select template based on score
+  let message;
+  if (score >= 80) {
+    message = getHotLeadMessage({ name, score, ...quizResult });
+  } else if (score >= 50) {
+    message = getWarmLeadMessage({ name, score, ...quizResult });
+  } else {
+    message = getColdLeadMessage({ name, ...quizResult });
+  }
+  
+  // Send with retry
+  await withRetry(() => sendWhatsAppMessage({
+    to: phone,
+    body: message,
+  }));
+  
+  // Schedule follow-ups
+  await scheduleFollowUps(quizResult.leadId);
+}
+```
+
+## Support
+
+For API issues:
+1. Check [WasenderAPI Documentation](https://docs.wasender.com)
+2. Review webhook logs in dashboard
+3. Contact support: support@wasender.com
+
+---
+
+*Last updated: 2026-03-11*
