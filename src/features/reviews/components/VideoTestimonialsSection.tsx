@@ -3,12 +3,12 @@
  *
  * Prominent section showcasing real client video testimonials.
  * Features scroll-triggered animations, trust badges, and a
- * competitive comparison strip.
+ * competitive comparison strip. Real videos play in a modal lightbox.
  */
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -19,10 +19,12 @@ import {
   X,
   ChevronRight,
   Camera,
+  Loader2,
+  AlertCircle,
 } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { VideoTestimonialCard } from './VideoTestimonialCard';
-import { VIDEO_TESTIMONIALS } from '../data/videoTestimonials';
+import { VIDEO_TESTIMONIALS, REAL_VIDEO_COUNT } from '../data/videoTestimonials';
 
 export function VideoTestimonialsSection() {
   const t = useTranslations('videoTestimonials');
@@ -31,10 +33,24 @@ export function VideoTestimonialsSection() {
     delay: 100,
   });
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [videoState, setVideoState] = useState<
+    'loading' | 'playing' | 'error'
+  >('loading');
 
   const selectedTestimonial = VIDEO_TESTIMONIALS.find(
     (v) => v.id === selectedVideo
   );
+  const hasRealVideo = Boolean(selectedTestimonial?.videoUrl);
+
+  const handleOpen = useCallback((id: string) => {
+    setVideoState('loading');
+    setSelectedVideo(id);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setSelectedVideo(null);
+    setVideoState('loading');
+  }, []);
 
   return (
     <>
@@ -129,8 +145,7 @@ export function VideoTestimonialsSection() {
             <p className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 dark:text-gray-200 bg-gradient-to-r from-amber-100 dark:from-amber-900/20 to-orange-100 dark:to-orange-900/20 px-5 py-2.5 rounded-full border border-amber-200 dark:border-amber-800/30">
               <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400" />
               {t('comparisonStrip', {
-                defaultValue:
-                  'Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.',
+                defaultValue: `Nos concurrents ont 0 vidéo. Nous avons déjà ${REAL_VIDEO_COUNT}. Et ça change tout.`,
               })}
             </p>
           </motion.div>
@@ -145,7 +160,7 @@ export function VideoTestimonialsSection() {
             {VIDEO_TESTIMONIALS.map((testimonial, i) => (
               <button
                 key={testimonial.id}
-                onClick={() => setSelectedVideo(testimonial.id)}
+                onClick={() => handleOpen(testimonial.id)}
                 className="text-left w-full"
                 aria-label={t('watchVideo', {
                   name: testimonial.name,
@@ -186,7 +201,7 @@ export function VideoTestimonialsSection() {
         </div>
       </section>
 
-      {/* Video Modal (placeholder since no real videos) */}
+      {/* Video Modal */}
       <AnimatePresence>
         {selectedTestimonial && (
           <motion.div
@@ -198,13 +213,13 @@ export function VideoTestimonialsSection() {
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-black/70 dark:bg-black/80 backdrop-blur-sm"
-              onClick={() => setSelectedVideo(null)}
+              className="absolute inset-0 bg-black/80 dark:bg-black/90 backdrop-blur-sm"
+              onClick={handleClose}
             />
 
             {/* Modal */}
             <motion.div
-              className="relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-3xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
               initial={{ scale: 0.92, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 16 }}
@@ -212,26 +227,69 @@ export function VideoTestimonialsSection() {
             >
               {/* Close button */}
               <button
-                onClick={() => setSelectedVideo(null)}
-                className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/40 dark:bg-white/20 text-white hover:bg-black/60 dark:hover:bg-white/30 transition-colors"
+                onClick={handleClose}
+                className="absolute top-3 right-3 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 dark:bg-white/20 text-white hover:bg-black/70 dark:hover:bg-white/40 transition-colors"
                 aria-label={t('close', { defaultValue: 'Fermer' })}
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
 
-              {/* Placeholder video area */}
-              <div className="relative aspect-video">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${selectedTestimonial.thumbnailColor}`}
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                  <Play className="w-14 h-14 mb-3 opacity-90" />
-                  <p className="text-sm font-medium opacity-80">
-                    {t('videoComingSoon', {
-                      defaultValue: 'Vidéo bientôt disponible',
-                    })}
-                  </p>
-                </div>
+              {/* Video Player (real video) or Placeholder */}
+              <div className="relative aspect-video bg-black">
+                {hasRealVideo ? (
+                  <>
+                    {/* Loading spinner */}
+                    {videoState === 'loading' && (
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/60">
+                        <Loader2 className="w-10 h-10 text-white animate-spin mb-3" />
+                        <p className="text-sm text-white/80 font-medium">
+                          Chargement de la vidéo…
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Error state */}
+                    {videoState === 'error' && (
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/80">
+                        <AlertCircle className="w-12 h-12 text-red-400 mb-3" />
+                        <p className="text-sm text-white/90 font-medium mb-1">
+                          Impossible de charger la vidéo
+                        </p>
+                        <p className="text-xs text-white/60">
+                          Vérifiez votre connexion ou essayez de recharger la page
+                        </p>
+                      </div>
+                    )}
+
+                    <video
+                      key={selectedTestimonial.videoUrl}
+                      src={selectedTestimonial.videoUrl}
+                      className="w-full h-full object-contain"
+                      controls
+                      autoPlay
+                      playsInline
+                      muted
+                      preload="metadata"
+                      onLoadedData={() => setVideoState('playing')}
+                      onCanPlay={() => setVideoState('playing')}
+                      onError={() => setVideoState('error')}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${selectedTestimonial.thumbnailColor}`}
+                    />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                      <Play className="w-14 h-14 mb-3 opacity-90" />
+                      <p className="text-sm font-medium opacity-80">
+                        {t('videoComingSoon', {
+                          defaultValue: 'Vidéo bientôt disponible',
+                        })}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Modal content */}
@@ -247,6 +305,12 @@ export function VideoTestimonialsSection() {
                   >
                     {selectedTestimonial.countryFlag}
                   </span>
+                  {hasRealVideo && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-full text-[10px] font-bold border border-red-100 dark:border-red-800/40">
+                      <Video className="w-3 h-3" />
+                      VIDÉO RÉELLE
+                    </span>
+                  )}
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                   {selectedTestimonial.business}

@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: QuizPageProps): Promise<Metad
   
   return {
     title: isEn 
-      ? 'Import Readiness Quiz | ChinaLink Express'
-      : 'Quiz Importation | ChinaLink Express',
+      ? 'Import Readiness Quiz'
+      : 'Quiz Importation',
     description: isEn
       ? 'Take our 2-minute quiz to assess your import readiness and get a personalized guide on WhatsApp.'
       : 'Faites notre quiz de 2 minutes pour évaluer votre readiness et recevoir un guide personnalisé sur WhatsApp.',

@@ -31,6 +31,12 @@ export {
 } from './lib/scoring';
 
 export {
+  calculateQuizDimensions,
+  buildServiceRecommendation,
+  generateDiagnostic,
+} from './lib/diagnostics';
+
+export {
   validateWhatsAppNumber,
   formatPhoneForDisplay,
   maskPhoneNumber,

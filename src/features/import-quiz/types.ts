@@ -19,6 +19,19 @@ export interface QuizState {
 
 export type LeadCategory = 'hot' | 'warm' | 'cold';
 
+export type QuizLocale = 'fr' | 'en' | 'zh' | 'ar';
+
+export type QuizEventName =
+  | 'quiz_viewed'
+  | 'quiz_started'
+  | 'question_answered'
+  | 'question_previous'
+  | 'whatsapp_step_viewed'
+  | 'quiz_submitted'
+  | 'quiz_submit_failed'
+  | 'guide_opened'
+  | 'guide_cta_clicked';
+
 // Question & Answer Types
 export interface QuizOption {
   value: string;
@@ -34,12 +47,55 @@ export interface QuizQuestion {
   options: QuizOption[];
 }
 
+export interface QuizAttribution {
+  source?: string;
+  medium?: string;
+  campaign?: string;
+  term?: string;
+  content?: string;
+  referrer?: string;
+  landingPath?: string;
+}
+
+export interface QuizDimensions {
+  supplierReadiness: number;
+  budgetReadiness: number;
+  logisticsReadiness: number;
+  urgency: number;
+  experience: number;
+  riskLevel: 'low' | 'medium' | 'high';
+}
+
+export interface ServiceRecommendation {
+  primaryService:
+    | 'sourcing'
+    | 'supplier_verification'
+    | 'supplier_payment'
+    | 'air_freight'
+    | 'sea_freight'
+    | 'import_consultation';
+  shippingMode: 'air' | 'sea_lcl' | 'sea_fcl' | 'undecided';
+  nextAction: string;
+  priorityReason: string;
+  leadPriority: number;
+}
+
+export interface QuizDiagnostic {
+  score: number;
+  category: LeadCategory;
+  dimensions: QuizDimensions;
+  recommendation: ServiceRecommendation;
+}
+
 // Submission Types
 export interface QuizSubmissionData {
   whatsappNumber: string;
   answers: Record<number, string>;
   score: number;
   category: LeadCategory;
+  sessionId?: string;
+  attribution?: QuizAttribution;
+  diagnostic?: QuizDiagnostic;
 }
 
 export interface QuizSubmissionResponse {
@@ -78,4 +134,14 @@ export interface QuizAnalytics {
     cold: number;
   };
   guideOpenRate: number;
+}
+
+export interface QuizEventPayload {
+  eventName: QuizEventName;
+  sessionId: string;
+  locale: QuizLocale;
+  questionId?: number;
+  answerValue?: string;
+  metadata?: Record<string, unknown>;
+  attribution?: QuizAttribution;
 }

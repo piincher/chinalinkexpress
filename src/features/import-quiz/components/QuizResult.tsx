@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Share2, ExternalLink, MessageCircle } from 'lucide-react';
+import { QUIZ_CONFIG } from '../lib/constants';
 
 interface QuizResultProps {
   score: number;
@@ -152,7 +153,7 @@ export function QuizResult({
     alert('Résultat copié! Partagez-le avec vos contacts.');
   };
 
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Bonjour! J'ai terminé le quiz d'import et j'ai obtenu ${score}/100 (${config.label}). Je souhaite en savoir plus!`;
+  const whatsappUrl = `https://wa.me/${QUIZ_CONFIG.whatsappBusinessNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Bonjour! J'ai terminé le quiz d'import avec le numéro ${whatsappNumber} et j'ai obtenu ${score}/100 (${config.label}). Je souhaite en savoir plus!`)}`;
 
   return (
     <motion.div

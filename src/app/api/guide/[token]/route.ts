@@ -82,7 +82,7 @@ export async function GET(
     if (fetchError || !submission) {
       console.error('Error fetching guide:', fetchError, 'Submission:', submission);
       return NextResponse.json(
-        { valid: false, error: 'Guide non trouvé ou expiré', debug: fetchError?.message },
+        { valid: false, error: 'Guide non trouvé ou expiré' },
         { status: 404 }
       );
     }
@@ -114,7 +114,7 @@ export async function GET(
         .from('guide_access_logs')
         .insert({
           guide_token: token,
-          ip_address: ip.split(',')[0].trim(),
+          ip_address: ip === 'unknown' ? null : ip.split(',')[0].trim(),
           user_agent: userAgent,
         });
 

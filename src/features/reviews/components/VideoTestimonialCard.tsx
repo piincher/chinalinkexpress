@@ -3,13 +3,14 @@
  *
  * Individual video testimonial card with gradient thumbnail,
  * play button overlay, duration badge, and result pill.
+ * Shows a "Vidéo réelle" badge when a videoUrl is present.
  */
 
 'use client';
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Mic, Globe } from 'lucide-react';
+import { Play, Mic, Film } from 'lucide-react';
 import type { VideoTestimonial } from '../data/videoTestimonials';
 
 interface VideoTestimonialCardProps {
@@ -19,6 +20,7 @@ interface VideoTestimonialCardProps {
 
 export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonialCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const hasVideo = Boolean(testimonial.videoUrl);
 
   return (
     <motion.div
@@ -50,14 +52,31 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
             />
           </div>
 
+          {/* Real video badge */}
+          {hasVideo && (
+            <motion.div
+              className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-full shadow-md"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 + index * 0.1 }}
+            >
+              <Film className="w-3 h-3" />
+              VIDÉO RÉELLE
+            </motion.div>
+          )}
+
           {/* Play button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              className="w-16 h-16 rounded-full bg-white/90 dark:bg-gray-900/90 flex items-center justify-center shadow-lg backdrop-blur-sm"
+              className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm ${
+                hasVideo
+                  ? 'bg-red-600/90 text-white'
+                  : 'bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-white'
+              }`}
               animate={{ scale: isHovered ? 1.12 : 1 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <Play className="w-7 h-7 text-gray-900 dark:text-white fill-current ml-1" />
+              <Play className="w-7 h-7 fill-current ml-1" />
             </motion.div>
           </div>
 

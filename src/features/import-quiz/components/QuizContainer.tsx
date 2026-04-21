@@ -9,7 +9,7 @@
 
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, Package, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -17,9 +17,11 @@ import { Button } from '@/components/common/button/Button';
 
 // Quiz state and utilities
 import { useQuizStore } from '../stores/useQuizStore';
-import { QUIZ_QUESTIONS, QUIZ_CONFIG, RESULT_MESSAGES } from '../lib/constants';
-import { calculateScore, getLeadCategory, prepareSubmissionData } from '../lib/scoring';
-import { validateWhatsAppNumber, generateWhatsAppLink } from '../lib/whatsapp';
+import { QUIZ_QUESTIONS, QUIZ_CONFIG } from '../lib/constants';
+import { prepareSubmissionData } from '../lib/scoring';
+import { validateWhatsAppNumber } from '../lib/whatsapp';
+import { captureQuizAttribution, createQuizSessionId } from '../lib/attribution';
+import { trackQuizEvent } from '../lib/events';
 
 // Sub-components
 import { QuizProgress } from './QuizProgress';
@@ -39,6 +41,9 @@ export function QuizContainer({ className }: QuizContainerProps) {
   // Prevent hydration mismatch with Zustand persist
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const sessionIdRef = useRef<string>(createQuizSessionId());
+  const attribution = useMemo(() => (mounted ? captureQuizAttribution() : {}), [mounted]);
+  const locale = mounted ? window.location.pathname.split('/')[1] || 'fr' : 'fr';
   
   // Quiz store state and actions
   const {
@@ -66,6 +71,18 @@ export function QuizContainer({ className }: QuizContainerProps) {
 
   // Local state for intro screen
   const [showIntro, setShowIntro] = useState(true);
+  const whatsappStepTrackedRef = useRef(false);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    trackQuizEvent({
+      eventName: 'quiz_viewed',
+      sessionId: sessionIdRef.current,
+      locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+      attribution,
+    });
+  }, [mounted, locale, attribution]);
 
   // Reset intro when quiz is reset
   useEffect(() => {
@@ -79,7 +96,15 @@ export function QuizContainer({ className }: QuizContainerProps) {
    */
   const handleAnswerSelect = useCallback((questionId: number, value: string) => {
     setAnswer(questionId, value);
-  }, [setAnswer]);
+    trackQuizEvent({
+      eventName: 'question_answered',
+      sessionId: sessionIdRef.current,
+      locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+      questionId,
+      answerValue: value,
+      attribution,
+    });
+  }, [setAnswer, locale, attribution]);
 
   // Direction for animations
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
@@ -101,15 +126,28 @@ export function QuizContainer({ className }: QuizContainerProps) {
     if (currentQuestion > 0) {
       setDirection('backward');
       previousQuestion();
+      trackQuizEvent({
+        eventName: 'question_previous',
+        sessionId: sessionIdRef.current,
+        locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+        questionId: currentQuestion,
+        attribution,
+      });
     }
-  }, [currentQuestion, previousQuestion]);
+  }, [currentQuestion, previousQuestion, locale, attribution]);
 
   /**
    * Handle quiz start
    */
   const handleStartQuiz = useCallback(() => {
     setShowIntro(false);
-  }, []);
+    trackQuizEvent({
+      eventName: 'quiz_started',
+      sessionId: sessionIdRef.current,
+      locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+      attribution,
+    });
+  }, [locale, attribution]);
 
   /**
    * Handle WhatsApp number change
@@ -131,8 +169,6 @@ export function QuizContainer({ className }: QuizContainerProps) {
       return;
     }
 
-    // Mark as complete and calculate score
-    setComplete();
     setSubmitting(true);
     setError(null);
 
@@ -140,16 +176,18 @@ export function QuizContainer({ className }: QuizContainerProps) {
       // Prepare submission data
       const submissionData = prepareSubmissionData(validation.formattedNumber, answers);
       
-      // Get locale from URL or default to 'fr'
-      const locale = window.location.pathname.split('/')[1] || 'fr';
-
       // Submit to API
       const response = await fetch('/api/quiz/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...submissionData, locale }),
+        body: JSON.stringify({
+          ...submissionData,
+          locale,
+          sessionId: sessionIdRef.current,
+          attribution,
+        }),
       });
 
       const result = await response.json();
@@ -158,16 +196,38 @@ export function QuizContainer({ className }: QuizContainerProps) {
         throw new Error(result.error || 'Erreur lors de la soumission');
       }
 
+      setComplete();
+      trackQuizEvent({
+        eventName: 'quiz_submitted',
+        sessionId: sessionIdRef.current,
+        locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+        metadata: {
+          score: result.score,
+          category: result.category,
+          leadPriority: result.diagnostic?.recommendation?.leadPriority,
+          primaryService: result.diagnostic?.recommendation?.primaryService,
+        },
+        attribution,
+      });
+
       // Success - set guide URL
       if (result.guideUrl) {
         setGuideUrl(result.guideUrl);
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
+      const message = err instanceof Error ? err.message : 'Une erreur est survenue';
+      setError(message);
+      trackQuizEvent({
+        eventName: 'quiz_submit_failed',
+        sessionId: sessionIdRef.current,
+        locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+        metadata: { error: message },
+        attribution,
+      });
     } finally {
       setSubmitting(false);
     }
-  }, [whatsappNumber, answers, setComplete, setSubmitting, setError, setGuideUrl]);
+  }, [whatsappNumber, answers, setComplete, setSubmitting, setError, setGuideUrl, locale, attribution]);
 
   /**
    * Handle quiz restart
@@ -175,16 +235,9 @@ export function QuizContainer({ className }: QuizContainerProps) {
   const handleRestart = useCallback(() => {
     resetQuiz();
     setShowIntro(true);
+    whatsappStepTrackedRef.current = false;
+    sessionIdRef.current = createQuizSessionId();
   }, [resetQuiz]);
-
-  /**
-   * Get WhatsApp link for direct contact
-   */
-  const getWhatsAppLink = useCallback(() => {
-    if (!category) return '';
-    const message = RESULT_MESSAGES[category](score, guideUrl || '');
-    return generateWhatsAppLink(QUIZ_CONFIG.whatsappBusinessNumber, message);
-  }, [category, score, guideUrl]);
 
   // Animation variants
   const containerVariants = {
@@ -219,6 +272,18 @@ export function QuizContainer({ className }: QuizContainerProps) {
   const isQuestionStep = !isIntro && currentQuestion < QUIZ_CONFIG.totalQuestions;
   const isWhatsAppStep = !isIntro && currentQuestion === QUIZ_CONFIG.totalQuestions && !isComplete;
   const isResultStep = isComplete;
+
+  useEffect(() => {
+    if (!isWhatsAppStep || whatsappStepTrackedRef.current) return;
+
+    whatsappStepTrackedRef.current = true;
+    trackQuizEvent({
+      eventName: 'whatsapp_step_viewed',
+      sessionId: sessionIdRef.current,
+      locale: locale as 'fr' | 'en' | 'zh' | 'ar',
+      attribution,
+    });
+  }, [isWhatsAppStep, locale, attribution]);
 
   // Get current question data
   const currentQuestionData = isQuestionStep 

@@ -7,6 +7,7 @@ c * to quiz participants who haven't opened their guide after 24 hours.
 
 import { createServerClient } from '@/lib/supabase/client';
 import { QuizSubmission } from '@/lib/supabase/database.types';
+import { sendWhatsAppMessage } from './client';
 
 // Configuration
 const BATCH_SIZE = 50; // Process in batches to avoid rate limits
@@ -106,38 +107,19 @@ export async function getPendingFollowUps(): Promise<QuizSubmission[]> {
 export async function sendFollowUpMessage(
   submission: QuizSubmission
 ): Promise<FollowUpResult> {
-  const wasenderApiKey = process.env.WASENDER_API_KEY;
-
-  if (!wasenderApiKey) {
-    console.error('WASENDER_API_KEY not configured');
-    return {
-      submissionId: submission.id,
-      success: false,
-      error: 'WASENDER_API_KEY not configured',
-    };
-  }
-
   const phoneNumber = getWhatsAppNumber(submission);
-  // Default to 'fr' - will use stored locale once migration is applied
-  const locale = 'fr';
+  const locale = submission.locale || 'fr';
   const message = buildFollowUpMessage(submission.guide_token, locale);
 
   try {
-    // Send message via WasenderAPI
-    const response = await fetch('https://api.wasender.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${wasenderApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        to: phoneNumber,
-        body: message,
-      }),
+    const response = await sendWhatsAppMessage({
+      to: phoneNumber,
+      text: message,
+      sessionId: `follow-up-${submission.id}`,
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
+    if (!response.success) {
+      const errorText = response.error || 'Unknown WasenderAPI error';
       console.error('WasenderAPI error:', errorText);
 
       // Log failure
@@ -146,7 +128,7 @@ export async function sendFollowUpMessage(
       return {
         submissionId: submission.id,
         success: false,
-        error: `WasenderAPI error: ${response.status} ${errorText}`,
+        error: `WasenderAPI error: ${errorText}`,
       };
     }
 

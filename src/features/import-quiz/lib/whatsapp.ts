@@ -4,8 +4,9 @@
  * Phone number validation and formatting for WhatsApp integration.
  */
 
-import { parsePhoneNumber, isValidPhoneNumber, CountryCode } from 'libphonenumber-js';
-import { PhoneValidationResult } from '../types';
+import { parsePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js/min';
+import type { CountryCode } from 'libphonenumber-js';
+import type { PhoneValidationResult } from '../types';
 
 /**
  * Validate and format WhatsApp phone number
@@ -48,7 +49,16 @@ export function validateWhatsAppNumber(
       formattedNumber,
       countryCode: phoneNumberObj.countryCallingCode,
     };
-  } catch (error) {
+  } catch {
+    const digitsOnly = phoneNumber.replace(/\D/g, '');
+    if (digitsOnly.length >= 8 && digitsOnly.length <= 15) {
+      return {
+        isValid: true,
+        formattedNumber: digitsOnly,
+        countryCode: digitsOnly.startsWith('223') ? '223' : '',
+      };
+    }
+
     return {
       isValid: false,
       formattedNumber: '',
