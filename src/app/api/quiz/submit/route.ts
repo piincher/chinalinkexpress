@@ -274,12 +274,20 @@ export async function POST(
     // Don't fail the request if WhatsApp sending fails
     try {
       const message = RESULT_MESSAGES[category as LeadCategory](score, guideUrl);
-      
+
+      console.log('[QuizSubmit] Sending WhatsApp message to:', formattedPhone, 'via URL:', process.env.WASENDER_API_URL || 'https://www.wasenderapi.com/api');
+
       const sendResult = await sendWhatsAppMessage({
         to: formattedPhone,
         text: message,
         sessionId,
       });
+
+      if (!sendResult.success) {
+        console.error('[QuizSubmit] WhatsApp send failed:', sendResult.error);
+      } else {
+        console.log('[QuizSubmit] WhatsApp sent successfully. MessageId:', sendResult.messageId);
+      }
 
       await logMessageEvent(supabase, {
         submissionToken: guideToken,
@@ -293,7 +301,7 @@ export async function POST(
     } catch (waError) {
       // Log the error for monitoring but don't fail the request
       // The user still gets their guide URL
-      console.error('Failed to send WhatsApp message via WasenderAPI:', waError);
+      console.error('[QuizSubmit] WhatsApp exception:', waError instanceof Error ? waError.message : waError);
       await logMessageEvent(supabase, {
         submissionToken: guideToken,
         messageType: 'quiz_result',

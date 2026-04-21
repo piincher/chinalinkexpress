@@ -44,16 +44,17 @@ const WASENDER_BASE_URL = 'https://www.wasenderapi.com/api';
  */
 function getWasenderConfig(): WasenderConfig {
   const apiKey = process.env.WASENDER_API_KEY;
-  
+  const baseUrl = process.env.WASENDER_API_URL || WASENDER_BASE_URL;
+
   if (!apiKey) {
     throw new WasenderAuthError(
       'WASENDER_API_KEY environment variable is not set'
     );
   }
-  
+
   return {
     apiKey,
-    baseUrl: WASENDER_BASE_URL,
+    baseUrl: baseUrl.replace(/\/$/, ''), // Remove trailing slash if present
   };
 }
 
