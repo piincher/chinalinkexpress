@@ -17,7 +17,10 @@
     "calculator": "Calculator",
     "privacy": "Privacy",
     "terms": "Terms",
-    "community": "Community"
+    "community": "Community",
+    "tools": "Tools",
+    "compareShipping": "Compare Shipping",
+    "checkProduct": "Check Product"
   },
   "cta": {
     "getQuote": "Get Free Quote",

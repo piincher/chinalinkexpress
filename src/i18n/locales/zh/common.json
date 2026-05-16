@@ -17,7 +17,10 @@
     "calculator": "计算器",
     "privacy": "隐私政策",
     "terms": "条款",
-    "community": "社区"
+    "community": "社区",
+    "tools": "工具",
+    "compareShipping": "运费对比",
+    "checkProduct": "产品检查"
   },
   "cta": {
     "getQuote": "获取免费报价",

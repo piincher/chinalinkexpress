@@ -17,7 +17,10 @@
     "calculator": "Calculateur",
     "privacy": "Confidentialité",
     "terms": "CGV",
-    "community": "Communauté"
+    "community": "Communauté",
+    "tools": "Outils",
+    "compareShipping": "Comparateur",
+    "checkProduct": "Vérifier Produit"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",

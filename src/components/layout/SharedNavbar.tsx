@@ -8,13 +8,11 @@
 
 'use client';
 
-// Navbar component - rebuilt after feature removal
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, Users } from 'lucide-react';
+import { Menu, X, Phone, Users, ChevronDown, Calculator, Scale, ShieldCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
@@ -31,24 +29,43 @@ const NAV_LINKS = [
   { key: 'about', href: '/#about', label: 'navigation.about' },
   { key: 'whyUs', href: '/#why-us', label: 'navigation.whyUs' },
   { key: 'community', href: '/communaute', label: 'navigation.community' },
-  { key: 'pricing', href: '/tarifs', label: 'navigation.pricing' },
   { key: 'blog', href: '/blog', label: 'navigation.blog' },
   { key: 'contact', href: '/#contact', label: 'navigation.contact' },
+] as const;
+
+const TOOL_LINKS = [
+  { key: 'pricing', href: '/tarifs', label: 'navigation.pricing', icon: null },
+  { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
+  { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
+  { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },
 ] as const;
 
 export function SharedNavbar({ locale }: SharedNavbarProps) {
   const t = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
-    handleScroll(); // Check initial position
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close tools dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (toolsRef.current && !toolsRef.current.contains(event.target as Node)) {
+        setIsToolsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const isActive = (href: string) => {
@@ -59,6 +76,10 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
   const getNavHref = (link: (typeof NAV_LINKS)[number]) => {
     const linkLocale = link.key === 'blog' ? 'fr' : locale;
     return `/${linkLocale}${link.href}`;
+  };
+
+  const getToolHref = (href: string) => {
+    return `/${locale}${href}`;
   };
 
   return (
@@ -118,13 +139,64 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                 )}
               </Link>
             ))}
+
+            {/* Tools Dropdown */}
+            <div ref={toolsRef} className="relative">
+              <button
+                onClick={() => setIsToolsOpen(!isToolsOpen)}
+                onMouseEnter={() => setIsToolsOpen(true)}
+                className={cn(
+                  'flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors',
+                  isToolsOpen
+                    ? 'text-blue-600 dark:text-blue-400 bg-gray-100 dark:bg-gray-800'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                )}
+              >
+                {t('navigation.tools')}
+                <ChevronDown
+                  className={cn(
+                    'w-4 h-4 transition-transform',
+                    isToolsOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isToolsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.15 }}
+                    onMouseLeave={() => setIsToolsOpen(false)}
+                    className="absolute top-full left-0 mt-2 w-56 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl shadow-black/10 dark:shadow-black/30 py-2"
+                  >
+                    {TOOL_LINKS.map((tool) => {
+                      const Icon = tool.icon;
+                      return (
+                        <Link
+                          key={tool.key}
+                          href={getToolHref(tool.href)}
+                          onClick={() => setIsToolsOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        >
+                          {Icon && <Icon className="w-4 h-4 shrink-0" />}
+                          {!Icon && <div className="w-4 h-4 shrink-0" />}
+                          {t(tool.label)}
+                        </Link>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* Right Section */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <LanguageSelector locale={locale} variant="minimal" />
-            
+
             {/* CTA Button - Desktop */}
             <a
               href={`https://wa.me/22376696177`}
@@ -181,20 +253,36 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                   </Link>
                 );
               })}
-              
+
               <div className="pt-4 border-t border-gray-200 dark:border-gray-800 space-y-3">
                 {/* Tools Section */}
                 <div className="px-4 pb-2">
                   <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                    Outils
+                    {t('navigation.tools')}
                   </span>
                 </div>
-                
+
+                {TOOL_LINKS.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <Link
+                      key={tool.key}
+                      href={getToolHref(tool.href)}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                      {Icon && <Icon className="w-4 h-4" />}
+                      {!Icon && <div className="w-4 h-4" />}
+                      {t(tool.label)}
+                    </Link>
+                  );
+                })}
+
                 <div className="flex items-center justify-between px-4 pt-2">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Langue</span>
                   <LanguageSelector locale={locale} variant="default" />
                 </div>
-                
+
                 <a
                   href={`https://wa.me/22376696177`}
                   target="_blank"
