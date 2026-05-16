@@ -20,6 +20,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { i18nConfig, type Locale, getLocaleDirection, getSeoLocale } from '@/i18n/config';
 import { SharedNavbar, SharedFooter } from '@/components/layout';
+import { GoogleAnalytics } from '@/components/seo';
 import { ThemeProvider, ThemeInitScript } from '@/components/theme';
 import { PWAProvider, InstallPrompt, UpdateNotification, OfflineIndicator } from '@/components/pwa';
 import { SmoothScroll } from '@/components/smooth-scroll';
@@ -283,6 +284,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         {/* Analytics */}
         <SpeedInsights />
         <Analytics />
+        <GoogleAnalytics />
       </div>
     </>
   );

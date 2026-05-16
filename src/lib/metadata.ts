@@ -11,6 +11,233 @@ import { Locale, i18nConfig, getSeoLocale } from '@/i18n/config';
 import { BUSINESS_INFO, generatePageMetadata } from '@/config/seo-advanced';
 
 // ============================================================================
+// NEW: Expanded Metadata Generators for #1 Rankings
+// ============================================================================
+
+/**
+ * Payment service page metadata
+ */
+export async function generatePaymentMetadata(locale: Locale): Promise<Metadata> {
+  const isEn = locale === 'en';
+  
+  return generatePageMetadata({
+    title: isEn
+      ? 'Pay Chinese Suppliers Safely | Alibaba & 1688 Payment Agent | ChinaLink'
+      : 'Payer Fournisseur Chinois | Service Paiement Alibaba 1688 | ChinaLink',
+    description: isEn
+      ? 'Secure payment service for Chinese suppliers. Pay Alibaba, 1688 & factory suppliers safely via Alipay, WeChat Pay, bank transfer. Avoid scams. Trusted by 500+ African businesses. WhatsApp: +86 188 5172 5957'
+      : 'Service de paiement sécurisé pour fournisseurs chinois. Payez Alibaba, 1688 et usines via Alipay, WeChat Pay, virement. Évitez les arnaques. 500+ entreprises africaines nous font confiance.',
+    keywords: isEn
+      ? 'pay Chinese supplier, supplier payment China, Alibaba payment service, 1688 payment, pay factory in China, secure payment China, escrow payment China, WeChat Pay supplier, Alipay supplier payment, payment agent China, avoid Alibaba scam, safe payment China, freight forwarder China Mali'
+      : 'payer fournisseur chinois, paiement fournisseur Chine, service paiement Alibaba, paiement 1688, payer usine Chine, paiement sécurisé Chine, escrow Chine, WeChat Pay fournisseur, Alipay paiement, agent paiement Chine, éviter arnaque Alibaba, cargo chine mali, transitaire chine mali',
+    path: '/services/paiement-fournisseur-chine',
+    locale,
+    ogType: 'article',
+  });
+}
+
+/**
+ * Supplier verification page metadata
+ */
+export async function generateVerificationMetadata(locale: Locale): Promise<Metadata> {
+  const isEn = locale === 'en';
+  
+  return generatePageMetadata({
+    title: isEn
+      ? 'Verify Chinese Suppliers | Avoid Alibaba Scams | Factory Audit China'
+      : 'Vérifier Fournisseur Chinois | Éviter Arnaque Alibaba | Audit Usine Chine',
+    description: isEn
+      ? 'Avoid scams on Alibaba & 1688. On-site Chinese supplier verification: factory audit, license check, quality inspection. Protect your investment. Trusted by African importers since 2019.'
+      : 'Évitez les arnaques sur Alibaba et 1688. Vérification sur place des fournisseurs chinois : audit usine, vérification licence, inspection qualité. Protégez votre investissement.',
+    keywords: isEn
+      ? 'verify Chinese supplier, Alibaba supplier verification, check Chinese factory, avoid China scam, legitimate Chinese supplier, factory audit China, supplier background check, Alibaba scam check, 1688 supplier check, trusted manufacturer China, freight forwarder China Mali'
+      : 'vérifier fournisseur chinois, vérification fournisseur Alibaba, vérifier usine chinoise, éviter arnaque Chine, fournisseur chinois sérieux, audit usine Chine, vérification arnaque Alibaba, vérification fournisseur 1688, fabricant de confiance Chine, cargo chine mali, transitaire chine mali',
+    path: '/services/verification-fournisseur-chine',
+    locale,
+    ogType: 'article',
+  });
+}
+
+/**
+ * Alibaba agent page metadata
+ */
+export async function generateAlibabaAgentMetadata(locale: Locale): Promise<Metadata> {
+  const isEn = locale === 'en';
+  
+  return generatePageMetadata({
+    title: isEn
+      ? 'Alibaba Buying Agent for Africa | Buy from China | ChinaLink Express'
+      : 'Agent Achat Alibaba Afrique | Acheter en Chine | ChinaLink Express',
+    description: isEn
+      ? 'Your trusted Alibaba buying agent for Mali, Senegal, Ivory Coast & West Africa. We find suppliers, negotiate prices, verify quality, handle payment & ship to your door. Get started on WhatsApp!'
+      : 'Votre agent achat Alibaba de confiance pour le Mali, Sénégal, Côte d\'Ivoire et Afrique de l\'Ouest. Nous trouvons les fournisseurs, négocions, vérifions la qualité, payons et expédions. Commencez sur WhatsApp !',
+    keywords: isEn
+      ? 'Alibaba buying agent, Alibaba agent Africa, buy from Alibaba Mali, Alibaba sourcing agent, Alibaba procurement Africa, Alibaba shipping agent, buy from China agent, China buying agent Africa, Alibaba middleman, cargo chine mali, freight forwarder China Mali'
+      : 'agent achat Alibaba, agent Alibaba Afrique, acheter Alibaba Mali, agent sourcing Alibaba, approvisionnement Alibaba Afrique, agent maritime Alibaba, acheter Chine agent, agent achat Chine Afrique, intermédiaire Alibaba, cargo chine mali, transitaire chine mali',
+    path: '/services/agent-sourcing-chine',
+    locale,
+    ogType: 'article',
+  });
+}
+
+/**
+ * Industry page metadata generator
+ */
+export async function generateIndustryMetadata(
+  locale: Locale,
+  industry: 'textiles' | 'electronics' | 'machinery' | 'cosmetics' | 'autoParts' | 'construction'
+): Promise<Metadata> {
+  const isEn = locale === 'en';
+  
+  const industryConfig = {
+    textiles: {
+      title: isEn
+        ? 'Import Textiles from China to Africa | Clothing Wholesale Agent | ChinaLink'
+        : 'Importer Textiles Chine Afrique | Agent Grossiste Vêtements | ChinaLink',
+      description: isEn
+        ? 'Import clothing, fabrics & textiles from China to Mali, Senegal & West Africa. We source from Guangzhou wholesale markets, inspect quality, and ship via air or sea. Best prices guaranteed!'
+        : 'Importez vêtements, tissus et textiles de Chine vers le Mali, Sénégal et Afrique de l\'Ouest. Nous sourçons sur les marchés de gros de Guangzhou, inspectons et expédions par air ou mer.',
+      keywords: isEn
+        ? 'import textiles from China, wholesale clothing China, buy clothes from China, textile sourcing agent, import fabrics China Africa, garment factory China, wholesale fashion China, clothing supplier China, freight forwarder China Mali'
+        : 'importer textiles Chine, grossiste vêtements Chine, acheter vêtements Chine, agent sourcing textile, importer tissus Chine Afrique, usine vêtements Chine, grossiste mode Chine, fournisseur vêtements Chine, cargo chine mali',
+      path: '/industries/textiles-chine-afrique',
+    },
+    electronics: {
+      title: isEn
+        ? 'Import Electronics from China to Africa | Phones, Laptops, Gadgets | ChinaLink'
+        : 'Importer Électronique Chine Afrique | Téléphones, Ordinateurs | ChinaLink',
+      description: isEn
+        ? 'Import phones, laptops, accessories & electronics from China to Africa. Shenzhen sourcing agent with quality control and warranty support. Air freight 14-21 days to Bamako.'
+        : 'Importez téléphones, ordinateurs, accessoires et électronique de Chine vers l\'Afrique. Agent sourcing Shenzhen avec contrôle qualité et support garantie. Fret aérien 14-21 jours à Bamako.',
+      keywords: isEn
+        ? 'import electronics from China, wholesale phones China, buy laptops from China, electronics sourcing agent, Shenzhen electronics market, import gadgets China Africa, phone supplier China, electronics wholesale Africa, cargo chine mali'
+        : 'importer électronique Chine, gros téléphones Chine, acheter ordinateurs Chine, agent sourcing électronique, marché électronique Shenzhen, importer gadgets Chine Afrique, fournisseur téléphones Chine, cargo chine mali',
+      path: '/industries/electronique-chine-afrique',
+    },
+    machinery: {
+      title: isEn
+        ? 'Import Machinery from China to Africa | Industrial Equipment | ChinaLink'
+        : 'Importer Machines Chine Afrique | Équipement Industriel | ChinaLink',
+      description: isEn
+        ? 'Import industrial machinery, construction equipment & tools from China to Africa. FCL container shipping, factory direct pricing, installation support. Get your quote today!'
+        : 'Importez machines industrielles, équipement construction et outils de Chine vers l\'Afrique. Expédition conteneur FCL, prix direct usine, support installation. Devis gratuit !',
+      keywords: isEn
+        ? 'import machinery from China, industrial equipment China, buy machines from China, machinery sourcing agent, factory equipment China Africa, construction machinery import, machine supplier China, heavy equipment shipping, cargo chine mali'
+        : 'importer machines Chine, équipement industriel Chine, acheter machines Chine, agent sourcing machines, équipement usine Chine Afrique, importer matériel construction, fournisseur machines Chine, cargo chine mali',
+      path: '/industries/machines-chine-afrique',
+    },
+    cosmetics: {
+      title: isEn
+        ? 'Import Cosmetics from China to Africa | Beauty Products Wholesale | ChinaLink'
+        : 'Importer Cosmétiques Chine Afrique | Produits Beauté Gros | ChinaLink',
+      description: isEn
+        ? 'Import beauty products, skincare, hair products & cosmetics from China to Africa. Guangzhou cosmetics market sourcing with FDA-compliant labeling. Air & sea freight available.'
+        : 'Importez produits beauté, soins visage, cheveux et cosmétiques de Chine vers l\'Afrique. Sourcing marché cosmétiques Guangzhou avec étiquetage conforme. Fret aérien et maritime disponible.',
+      keywords: isEn
+        ? 'import cosmetics from China, wholesale beauty products China, buy skincare from China, cosmetics sourcing agent, Guangzhou cosmetics market, import hair products China Africa, beauty supplier China, cosmetics wholesale Africa, cargo chine mali'
+        : 'importer cosmétiques Chine, gros produits beauté Chine, acheter soins visage Chine, agent sourcing cosmétiques, marché cosmétiques Guangzhou, importer produits cheveux Chine Afrique, cargo chine mali',
+      path: '/industries/cosmetiques-chine-afrique',
+    },
+    autoParts: {
+      title: isEn
+        ? 'Import Auto Parts from China to Africa | Car Spare Parts Wholesale | ChinaLink'
+        : 'Importer Pièces Auto Chine Afrique | Gros Pièces Détachées | ChinaLink',
+      description: isEn
+        ? 'Import car parts, truck spare parts & auto accessories from China to Africa. Guangzhou auto parts market sourcing with quality guarantee. Container shipping for bulk orders.'
+        : 'Importez pièces auto, pièces détachées camion et accessoires de Chine vers l\'Afrique. Sourcing marché pièces auto Guangzhou avec garantie qualité. Expédition conteneur pour gros volumes.',
+      keywords: isEn
+        ? 'import auto parts from China, wholesale car parts China, buy spare parts from China, auto parts sourcing agent, Guangzhou auto parts market, import truck parts China Africa, car accessories supplier China, auto parts wholesale Africa, cargo chine mali'
+        : 'importer pièces auto Chine, gros pièces auto Chine, acheter pièces détachées Chine, agent sourcing pièces auto, marché pièces auto Guangzhou, importer pièces camion Chine Afrique, cargo chine mali',
+      path: '/industries/pieces-auto-chine-afrique',
+    },
+    construction: {
+      title: isEn
+        ? 'Import Building Materials from China to Africa | Construction Supplies | ChinaLink'
+        : 'Importer Matériaux Construction Chine Afrique | Fournitures Bâtiment | ChinaLink',
+      description: isEn
+        ? 'Import tiles, sanitary ware, hardware, tools & building materials from China to Africa. Foshan ceramics market sourcing. FCL container shipping at best rates. Quote in 24h!'
+        : 'Importez carreaux, sanitaire, quincaillerie, outils et matériaux construction de Chine vers l\'Afrique. Sourcing marché céramique Foshan. Expédition conteneur FCL aux meilleurs tarifs. Devis en 24h !',
+      keywords: isEn
+        ? 'import building materials from China, wholesale tiles China, buy sanitary ware from China, construction materials sourcing agent, Foshan ceramics market, import hardware China Africa, building supplies supplier China, cargo chine mali'
+        : 'importer matériaux construction Chine, gros carreaux Chine, acheter sanitaire Chine, agent sourcing matériaux construction, marché céramique Foshan, importer quincaillerie Chine Afrique, cargo chine mali',
+      path: '/industries/materiaux-construction-chine-afrique',
+    },
+  };
+  
+  const config = industryConfig[industry];
+  
+  return generatePageMetadata({
+    title: config.title,
+    description: config.description,
+    keywords: config.keywords,
+    path: config.path,
+    locale,
+    ogType: 'article',
+  });
+}
+
+/**
+ * Comparison page metadata
+ */
+export async function generateComparisonMetadata(
+  locale: Locale,
+  topic: 'air-vs-sea' | 'alibaba-vs-1688' | 'dhl-vs-forwarder'
+): Promise<Metadata> {
+  const isEn = locale === 'en';
+  
+  const comparisonConfig = {
+    'air-vs-sea': {
+      title: isEn
+        ? 'Air Freight vs Sea Freight from China to Africa | 2026 Comparison | ChinaLink'
+        : 'Fret Aérien vs Maritime Chine Afrique | Comparaison 2026 | ChinaLink',
+      description: isEn
+        ? 'Air freight (14-21 days, $8-15/kg) vs sea freight (60-75 days, $80-150/CBM). Which is best for your China to Africa shipment? Complete 2026 comparison with costs, times, and recommendations.'
+        : 'Fret aérien (14-21 jours, 8-15$/kg) vs maritime (60-75 jours, 80-150$/CBM). Lequel choisir pour votre expédition Chine-Afrique ? Comparaison complète 2026 avec coûts, délais et recommandations.',
+      keywords: isEn
+        ? 'air freight vs sea freight China Africa, shipping by air or sea from China, container vs air cargo cost, cheapest shipping method China Africa, DHL vs freight forwarder China, cargo chine mali'
+        : 'fret aérien vs maritime Chine Afrique, expédition air ou mer depuis Chine, conteneur vs cargo aérien coût, moyen expédition pas cher Chine Afrique, DHL vs transitaire Chine, cargo chine mali',
+      path: '/guides/fret-aerien-vs-maritime-chine-mali',
+    },
+    'alibaba-vs-1688': {
+      title: isEn
+        ? 'Alibaba vs 1688 for African Importers | Which is Better? | ChinaLink'
+        : 'Alibaba vs 1688 pour Importateurs Africains | Lequel Choisir? | ChinaLink',
+      description: isEn
+        ? 'Alibaba (international, English, higher prices) vs 1688 (Chinese-only, factory direct, 30-50% cheaper). Which platform should African importers use? Complete guide with pros, cons, and our recommendation.'
+        : 'Alibaba (international, anglais, prix plus élevés) vs 1688 (chinois uniquement, direct usine, 30-50% moins cher). Quelle plateforme pour les importateurs africains ? Guide complet avec avantages et inconvénients.',
+      keywords: isEn
+        ? 'Alibaba vs 1688 for Africa, difference Alibaba 1688, buy from 1688 Africa, 1688 sourcing agent, Alibaba agent Africa, cheaper than Alibaba, Chinese factory direct, cargo chine mali'
+        : 'Alibaba vs 1688 pour Afrique, différence Alibaba 1688, acheter sur 1688 Afrique, agent sourcing 1688, agent Alibaba Afrique, moins cher qu Alibaba, direct usine chinoise, cargo chine mali',
+      path: '/guides/alibaba-vs-1688-pour-afrique',
+    },
+    'dhl-vs-forwarder': {
+      title: isEn
+        ? 'DHL vs Freight Forwarder from China to Africa | Cost Comparison 2026 | ChinaLink'
+        : 'DHL vs Transitaire Chine Afrique | Comparaison Coût 2026 | ChinaLink',
+      description: isEn
+        ? 'DHL ($25-50/kg, 5-7 days) vs freight forwarder ($8-15/kg, 14-21 days). Which is better for shipping from China to Mali, Senegal, Ivory Coast? Detailed cost comparison for African businesses.'
+        : 'DHL (25-50$/kg, 5-7 jours) vs transitaire (8-15$/kg, 14-21 jours). Lequel choisir pour expédier de Chine vers le Mali, Sénégal, Côte d\'Ivoire ? Comparaison détaillée pour entreprises africaines.',
+      keywords: isEn
+        ? 'DHL vs freight forwarder China Africa, DHL shipping China Mali cost, cheap alternative DHL China, freight forwarder vs courier China, shipping cost comparison China Africa, cargo chine mali'
+        : 'DHL vs transitaire Chine Afrique, coût DHL Chine Mali, alternative pas cher DHL Chine, transitaire vs courrier Chine, comparaison coût expédition Chine Afrique, cargo chine mali',
+      path: '/guides/dhl-vs-transitaire-chine-afrique',
+    },
+  };
+  
+  const config = comparisonConfig[topic];
+  
+  return generatePageMetadata({
+    title: config.title,
+    description: config.description,
+    keywords: config.keywords,
+    path: config.path,
+    locale,
+    ogType: 'article',
+  });
+}
+
+
+// ============================================================================
 // Default Metadata Templates
 // ============================================================================
 
@@ -155,14 +382,14 @@ export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
   
   return generatePageMetadata({
     title: isEn 
-      ? 'ChinaLink Express | Freight Forwarding China to Africa | Air & Sea Shipping'
-      : 'Cargo Chine Mali | Fret Aérien & Maritime | ChinaLink Express',
+      ? 'ChinaLink Express | #1 Freight Forwarder China to Africa | Shipping & Sourcing'
+      : 'ChinaLink Express | N°1 Transitaire Chine Afrique | Fret & Sourcing',
     description: isEn
-      ? 'Leading freight forwarder from China to Africa. Air freight (14-21 days) & sea freight (60-75 days) to Mali, Senegal, Ivory Coast & more. Get your free quote today!'
-      : 'Envoi de cargo et colis de la Chine vers le Mali et l\'Afrique de l\'Ouest. Fret aérien 14-21 jours, maritime 60-75 jours. Devis gratuit par WhatsApp !',
+      ? '#1 freight forwarder and sourcing agent from China to Africa. Air freight 14-21 days, sea freight 60-75 days. Alibaba & 1688 buying agent, supplier payment, verification. Free WhatsApp quote! Serving Mali, Senegal, Ivory Coast, Ghana, Nigeria & all West Africa.'
+      : 'N°1 transitaire et agent sourcing de la Chine vers l\'Afrique. Fret aérien 14-21 jours, maritime 60-75 jours. Agent achat Alibaba & 1688, paiement fournisseur, vérification. Devis gratuit WhatsApp ! Livraison Mali, Sénégal, Côte d\'Ivoire, Ghana, Nigeria et Afrique de l\'Ouest.',
     keywords: isEn
-      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent'
-      : 'cargo chine mali, transitaire chine mali, fret chine bamako, envoi colis chine mali, fret aerien chine afrique, conteneur chine mali, expedition chine mali, achat alibaba mali, agent sourcing chine, chinalink express, fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale',
+      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, China sourcing agent, buy from Alibaba Africa, supplier payment China, verify Chinese supplier, cargo chine mali, transitaire chine mali, import from China Mali, wholesale from China Africa, container shipping China Africa, door to door shipping China Africa, cheapest shipping China Africa, Alibaba agent Mali, 1688 sourcing agent, pay Chinese supplier, factory audit China, import textiles China, import electronics China, import machinery China, import cosmetics China, import auto parts China, building materials China Africa, cargo shipping Bamako, freight forwarder Bamako, China Mali trade, West Africa logistics'
+      : 'cargo chine mali, transitaire chine mali, fret chine bamako, envoi colis chine mali, fret aerien chine afrique, conteneur chine mali, expedition chine mali, achat alibaba mali, agent sourcing chine, chinalink express, fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, agent achat Alibaba, acheter sur 1688 Afrique, payer fournisseur chinois, vérifier fournisseur chinois, cargo aérien Chine Mali, conteneur maritime Chine Afrique, livraison porte à porte Chine Afrique, fret pas cher Chine Afrique, agent Alibaba Mali, agent sourcing 1688, paiement fournisseur Chine, audit usine Chine, importer textiles Chine, importer électronique Chine, importer machines Chine, importer cosmétiques Chine, importer pièces auto Chine, matériaux construction Chine Afrique, expédition Bamako, transitaire Bamako, commerce Chine Mali, logistique Afrique de l\'Ouest',
     path: '/',
     locale,
     ogType: 'website',

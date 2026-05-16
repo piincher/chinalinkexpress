@@ -488,6 +488,17 @@
       "air": "الشحن الجوي",
       "sea": "الشحن البحري"
     },
+    "destinations": {
+      "mali": "مالي",
+      "senegal": "السنغال",
+      "ivoryCoast": "ساحل العاج",
+      "benin": "بنين",
+      "togo": "توغو",
+      "burkina": "بوركينا فاسو",
+      "niger": "النيجر",
+      "guinea": "غينيا",
+      "ghana": "غانا"
+    },
     "categories": {
       "express": {
         "name": "فلاش إكسبريس",

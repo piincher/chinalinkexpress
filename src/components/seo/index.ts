@@ -14,3 +14,5 @@ export {
 } from './StructuredData';
 
 export type { StructuredDataType } from './StructuredData';
+
+export { GoogleAnalytics } from './GoogleAnalytics';

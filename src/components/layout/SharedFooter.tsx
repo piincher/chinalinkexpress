@@ -27,10 +27,12 @@ const SOCIAL_LINKS = [
 
 const SERVICE_LINKS = [
   { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
+  { label: 'Agent sourcing Chine', href: '/services/agent-sourcing-chine', locales: ['fr', 'en'] },
+  { label: 'Achat Alibaba Mali', href: '/services/achat-alibaba-mali', locales: ['fr', 'en'] },
   { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
   { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
-  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', frOnly: true },
-  { labelKey: 'services.features.sourcing.supplierVerification', href: '/services/verification-fournisseur-chine', frOnly: true },
+  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', locales: ['fr', 'en'] },
+  { labelKey: 'services.features.sourcing.supplierVerification', href: '/services/verification-fournisseur-chine', locales: ['fr', 'en'] },
   { label: 'Cargo Chine Mali', href: '/cargo-chine-mali', frOnly: true },
 ] as const;
 
@@ -81,7 +83,12 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
             </h3>
             <ul className="space-y-3">
               {SERVICE_LINKS.map((link) => {
-                const linkLocale = 'frOnly' in link && link.frOnly ? 'fr' : locale;
+                const linkLocale =
+                  'frOnly' in link && link.frOnly
+                    ? 'fr'
+                    : 'locales' in link && !(link.locales as readonly string[]).includes(locale)
+                      ? 'fr'
+                      : locale;
                 const label = 'labelKey' in link ? t(link.labelKey) : link.label;
 
                 return (

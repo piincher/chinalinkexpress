@@ -644,6 +644,17 @@
       "air": "Fret Aérien",
       "sea": "Fret Maritime"
     },
+    "destinations": {
+      "mali": "Mali",
+      "senegal": "Sénégal",
+      "ivoryCoast": "Côte d'Ivoire",
+      "benin": "Bénin",
+      "togo": "Togo",
+      "burkina": "Burkina Faso",
+      "niger": "Niger",
+      "guinea": "Guinée",
+      "ghana": "Ghana"
+    },
     "categories": {
       "express": {
         "name": "Flash Express",

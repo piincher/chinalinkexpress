@@ -48,43 +48,42 @@ const faqs = [
   },
 ];
 
-const howToSchema = {
+const shippingProcessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'Comment expédier un cargo de la Chine vers le Mali',
+  '@type': 'ItemList',
+  name: 'Processus cargo Chine-Mali',
   description:
-    'Guide étape par étape pour envoyer un cargo de la Chine vers Bamako, Mali avec ChinaLink Express.',
-  totalTime: 'P14D',
-  step: [
+    'Les grandes étapes pour envoyer un cargo de la Chine vers Bamako, Mali avec ChinaLink Express.',
+  itemListElement: [
     {
-      '@type': 'HowToStep',
+      '@type': 'ListItem',
       position: 1,
       name: 'Demander un devis',
-      text: 'Envoyez le lien produit, les quantités et les dimensions sur WhatsApp pour recevoir un devis gratuit.',
+      description: 'Envoyez le lien produit, les quantités et les dimensions sur WhatsApp pour recevoir un devis gratuit.',
     },
     {
-      '@type': 'HowToStep',
+      '@type': 'ListItem',
       position: 2,
       name: 'Valider le mode de fret',
-      text: 'Choisissez entre fret aérien (14-21 jours) et conteneur maritime (60-75 jours) selon votre budget et urgence.',
+      description: 'Choisissez entre fret aérien (14-21 jours) et conteneur maritime (60-75 jours) selon votre budget et urgence.',
     },
     {
-      '@type': 'HowToStep',
+      '@type': 'ListItem',
       position: 3,
       name: 'Envoyer ou faire acheter la marchandise',
-      text: 'Faites livrer vos colis à notre entrepôt en Chine ou demandez notre service sourcing et paiement fournisseur.',
+      description: 'Faites livrer vos colis à notre entrepôt en Chine ou demandez notre service sourcing et paiement fournisseur.',
     },
     {
-      '@type': 'HowToStep',
+      '@type': 'ListItem',
       position: 4,
       name: "Suivre l'expédition",
-      text: "Recevez des photos et mises à jour WhatsApp à chaque étape : réception, emballage, départ et arrivée.",
+      description: "Recevez des photos et mises à jour WhatsApp à chaque étape : réception, emballage, départ et arrivée.",
     },
     {
-      '@type': 'HowToStep',
+      '@type': 'ListItem',
       position: 5,
       name: 'Livraison au Mali',
-      text: 'Nous gérons le dédouanement et livrons votre cargo à votre adresse à Bamako ou dans une autre ville du Mali.',
+      description: 'Nous gérons le dédouanement et livrons votre cargo à votre adresse à Bamako ou dans une autre ville du Mali.',
     },
   ],
 };
@@ -100,6 +99,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'cargo chine mali, fret chine mali, envoi colis chine mali, transitaire bamako, fret chine bamako, conteneur chine mali, expedition chine bamako, cargo aerien bamako, import chine mali',
     path: '/cargo-chine-mali',
     locale: locale as Locale,
+    supportedLocales: ['fr'],
   });
 }
 
@@ -169,7 +169,7 @@ export default async function CargoChineMaliPage({ params }: Props) {
       locale as Locale
     ),
     generateFAQPageSchema(faqs, locale as Locale),
-    howToSchema,
+    shippingProcessSchema,
   ];
 
   return (

@@ -8,12 +8,12 @@ interface SeoLink {
 interface SeoSection {
   title: string;
   body: string;
-  items?: string[];
+  items?: readonly string[];
 }
 
 interface SeoTable {
-  headers: string[];
-  rows: string[][];
+  headers: readonly string[];
+  rows: readonly (readonly string[])[];
 }
 
 interface SeoFaq {
@@ -25,13 +25,23 @@ interface SeoServicePageProps {
   badge: string;
   title: string;
   intro: string;
-  highlights: string[];
-  sections: SeoSection[];
-  process: string[];
+  highlights: readonly string[];
+  sections: readonly SeoSection[];
+  process: readonly string[];
   table?: SeoTable;
-  faqs: SeoFaq[];
-  links: SeoLink[];
+  faqs: readonly SeoFaq[];
+  links: readonly SeoLink[];
   ctaLabel?: string;
+  routeCtaLabel?: string;
+  routeCtaHref?: string;
+  comparisonTitle?: string;
+  processTitle?: string;
+  faqTitle?: string;
+  usefulLinksTitle?: string;
+  asideTitle?: string;
+  asideText?: string;
+  asideCtaLabel?: string;
+  stepLabel?: string;
 }
 
 const whatsappHref =
@@ -48,6 +58,16 @@ export function SeoServicePage({
   faqs,
   links,
   ctaLabel = 'Demander un devis sur WhatsApp',
+  routeCtaLabel = 'Voir le fret Chine-Mali',
+  routeCtaHref = '/fr/routes/china-to-mali',
+  comparisonTitle = 'Comparaison rapide',
+  processTitle = 'Notre processus',
+  faqTitle = 'Questions fréquentes',
+  usefulLinksTitle = 'Liens utiles',
+  asideTitle = "Besoin d'un avis avant de payer ?",
+  asideText = 'Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.',
+  asideCtaLabel = 'Contacter ChinaLink',
+  stepLabel = 'Etape',
 }: SeoServicePageProps) {
   return (
     <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
@@ -72,10 +92,10 @@ export function SeoServicePage({
               {ctaLabel}
             </a>
             <Link
-              href="/fr/routes/china-to-mali"
+              href={routeCtaHref}
               className="inline-flex justify-center rounded-lg border border-white/20 px-6 py-3 font-bold text-white transition hover:bg-white/10"
             >
-              Voir le fret Chine-Mali
+              {routeCtaLabel}
             </Link>
           </div>
         </div>
@@ -112,7 +132,7 @@ export function SeoServicePage({
 
             {table && (
               <section>
-                <h2 className="text-2xl font-bold md:text-3xl">Comparaison rapide</h2>
+                <h2 className="text-2xl font-bold md:text-3xl">{comparisonTitle}</h2>
                 <div className="mt-5 overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
                   <table className="w-full min-w-[640px] text-left text-sm">
                     <thead className="bg-slate-100 dark:bg-slate-900">
@@ -141,11 +161,11 @@ export function SeoServicePage({
             )}
 
             <section>
-              <h2 className="text-2xl font-bold md:text-3xl">Notre processus</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{processTitle}</h2>
               <ol className="mt-5 grid gap-4">
                 {process.map((step, index) => (
                   <li key={step} className="rounded-lg border border-slate-200 p-5 dark:border-slate-800">
-                    <span className="text-sm font-bold text-blue-600">Etape {index + 1}</span>
+                    <span className="text-sm font-bold text-blue-600">{stepLabel} {index + 1}</span>
                     <p className="mt-2 text-slate-700 dark:text-slate-300">{step}</p>
                   </li>
                 ))}
@@ -153,7 +173,7 @@ export function SeoServicePage({
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold md:text-3xl">Questions fréquentes</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{faqTitle}</h2>
               <div className="mt-5 space-y-4">
                 {faqs.map((faq) => (
                   <div key={faq.question} className="rounded-lg border border-slate-200 p-5 dark:border-slate-800">
@@ -166,7 +186,7 @@ export function SeoServicePage({
           </article>
 
           <aside className="h-fit rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h2 className="text-lg font-bold">Liens utiles</h2>
+            <h2 className="text-lg font-bold">{usefulLinksTitle}</h2>
             <div className="mt-4 grid gap-3">
               {links.map((link) => (
                 <Link key={link.href} href={link.href} className="rounded-lg bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 dark:bg-slate-950 dark:text-blue-300 dark:hover:bg-slate-800">
@@ -175,9 +195,9 @@ export function SeoServicePage({
               ))}
             </div>
             <div className="mt-6 rounded-lg bg-blue-600 p-5 text-white">
-              <p className="font-bold">Besoin d'un avis avant de payer ?</p>
+              <p className="font-bold">{asideTitle}</p>
               <p className="mt-2 text-sm text-blue-50">
-                Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.
+                {asideText}
               </p>
               <a
                 href={whatsappHref}
@@ -185,7 +205,7 @@ export function SeoServicePage({
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex rounded-lg bg-white px-4 py-2 text-sm font-bold text-blue-700"
               >
-                Contacter ChinaLink
+                {asideCtaLabel}
               </a>
             </div>
           </aside>

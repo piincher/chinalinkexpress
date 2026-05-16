@@ -11,10 +11,10 @@
  */
 
 import { NextResponse } from 'next/server';
-import { i18nConfig, getSeoLocale } from '@/i18n/config';
+import { i18nConfig, getSeoLocale, type Locale } from '@/i18n/config';
 
 const BASE_URL = 'https://www.chinalinkexpress.com';
-const LAST_MODIFIED = '2026-04-21T00:00:00.000Z';
+const LAST_MODIFIED = '2026-05-17T00:00:00.000Z';
 
 // ============================================================================
 // Types
@@ -26,6 +26,13 @@ interface SitemapEntry {
   changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
   priority: number;
   alternates?: Record<string, string>;
+}
+
+interface PageConfig {
+  path: string;
+  priority: number;
+  changeFrequency: SitemapEntry['changeFrequency'];
+  locales?: readonly Locale[];
 }
 
 // ============================================================================
@@ -43,15 +50,14 @@ const STATIC_PAGES = [
   { path: 'terms', priority: 0.3, changeFrequency: 'yearly' as const },
 ];
 
-const SERVICE_PAGES = [
+const SERVICE_PAGES: PageConfig[] = [
   { path: 'services/air-freight', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/sea-freight', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/sourcing', priority: 0.9, changeFrequency: 'weekly' as const },
-];
-
-const FR_ONLY_SERVICE_PAGES = [
-  { path: 'services/paiement-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
-  { path: 'services/verification-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'services/paiement-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'services/verification-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'services/agent-sourcing-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'services/achat-alibaba-mali', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
 ];
 
 const FR_LANDING_PAGES = [
@@ -85,9 +91,22 @@ const ROUTE_PAGES = [
 const GUIDE_PAGES = [
   { path: 'guides/importer-de-chine-au-mali', priority: 0.85, changeFrequency: 'monthly' as const },
   { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'guides/acheter-sur-1688-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/fret-aerien-vs-maritime-chine-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
+];
+
+const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
+  { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+];
+
+const INDUSTRY_PAGES: PageConfig[] = [
+  { path: 'industries/textiles-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/electronique-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/machines-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/cosmetiques-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/pieces-auto-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/materiaux-construction-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
 ];
 
 // ============================================================================
@@ -97,10 +116,10 @@ const GUIDE_PAGES = [
 /**
  * Generate hreflang alternates for a given path
  */
-function generateAlternates(path: string): Record<string, string> {
+function generateAlternates(path: string, locales: readonly Locale[] = i18nConfig.locales): Record<string, string> {
   const alternates: Record<string, string> = {};
   
-  i18nConfig.locales.forEach((locale) => {
+  locales.forEach((locale) => {
     const seoLocale = getSeoLocale(locale);
     const url = path 
       ? `${BASE_URL}/${locale}/${path}`
@@ -109,9 +128,10 @@ function generateAlternates(path: string): Record<string, string> {
   });
   
   // Add x-default
+  const defaultLocale = locales.includes('fr') ? 'fr' : locales[0];
   const defaultUrl = path 
-    ? `${BASE_URL}/fr/${path}`
-    : `${BASE_URL}/fr/`;
+    ? `${BASE_URL}/${defaultLocale}/${path}`
+    : `${BASE_URL}/${defaultLocale}/`;
   alternates['x-default'] = defaultUrl;
   
   return alternates;
@@ -184,13 +204,14 @@ export async function GET() {
 
   // Generate entries for service pages
   SERVICE_PAGES.forEach((page) => {
-    i18nConfig.locales.forEach((locale) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
       entries.push({
         url: `${BASE_URL}/${locale}/${page.path}`,
         lastModified: currentDate,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
-        alternates: generateAlternates(page.path),
+        alternates: generateAlternates(page.path, locales),
       });
     });
   });
@@ -205,19 +226,6 @@ export async function GET() {
         priority: page.priority,
         alternates: generateAlternates(page.path),
       });
-    });
-  });
-
-  FR_ONLY_SERVICE_PAGES.forEach((page) => {
-    entries.push({
-      url: `${BASE_URL}/fr/${page.path}`,
-      lastModified: currentDate,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      alternates: {
-        'fr-FR': `${BASE_URL}/fr/${page.path}`,
-        'x-default': `${BASE_URL}/fr/${page.path}`,
-      },
     });
   });
 
@@ -257,6 +265,32 @@ export async function GET() {
         'fr-FR': `${BASE_URL}/fr/${page.path}`,
         'x-default': `${BASE_URL}/fr/${page.path}`,
       },
+    });
+  });
+
+  MULTILINGUAL_GUIDE_PAGES.forEach((page) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
+    });
+  });
+
+  INDUSTRY_PAGES.forEach((page) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
     });
   });
 

@@ -488,6 +488,17 @@
       "air": "空运",
       "sea": "海运"
     },
+    "destinations": {
+      "mali": "马里",
+      "senegal": "塞内加尔",
+      "ivoryCoast": "科特迪瓦",
+      "benin": "贝宁",
+      "togo": "多哥",
+      "burkina": "布基纳法索",
+      "niger": "尼日尔",
+      "guinea": "几内亚",
+      "ghana": "加纳"
+    },
     "categories": {
       "express": {
         "name": "闪送快递",

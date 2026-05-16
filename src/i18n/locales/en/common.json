@@ -516,6 +516,17 @@
       "air": "Air Freight",
       "sea": "Sea Freight"
     },
+    "destinations": {
+      "mali": "Mali",
+      "senegal": "Senegal",
+      "ivoryCoast": "Ivory Coast",
+      "benin": "Benin",
+      "togo": "Togo",
+      "burkina": "Burkina Faso",
+      "niger": "Niger",
+      "guinea": "Guinea",
+      "ghana": "Ghana"
+    },
     "categories": {
       "express": {
         "name": "Flash Express",
