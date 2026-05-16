@@ -224,7 +224,24 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               &copy; {year} ChinaLink Express. {t('footer.copyright')}
             </p>
             <p className="text-gray-500 dark:text-gray-500 text-sm">
-              {t('footer.developedBy')}
+              Made with <span className="text-rose-500">❤</span> by{' '}
+              <a
+                href="https://nuvotech.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-400 transition-colors"
+              >
+                nuvotech.tech
+              </a>{' '}
+              team{' '}
+              <a
+                href="https://wa.me/8617865673053"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-500 hover:text-green-400 transition-colors"
+              >
+                +86 178 6567 3053
+              </a>
             </p>
           </div>
         </div>
