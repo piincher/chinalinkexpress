@@ -100,6 +100,15 @@ const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
   { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
 ];
 
+const TOOL_PAGES: PageConfig[] = [
+  { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+];
+
+const COMMUNITY_PAGES: PageConfig[] = [
+  { path: 'communaute', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+];
+
 const INDUSTRY_PAGES: PageConfig[] = [
   { path: 'industries/textiles-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
   { path: 'industries/electronique-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
@@ -282,6 +291,32 @@ export async function GET() {
   });
 
   INDUSTRY_PAGES.forEach((page) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
+    });
+  });
+
+  TOOL_PAGES.forEach((page) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
+    });
+  });
+
+  COMMUNITY_PAGES.forEach((page) => {
     const locales = page.locales || i18nConfig.locales;
     locales.forEach((locale) => {
       entries.push({

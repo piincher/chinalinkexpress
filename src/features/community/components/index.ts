@@ -1,11 +1,12 @@
 /**
  * Community Feature Components
  *
- * All components for the ChinaLink Community page.
+ * All components for the ChinaLink Community Hub.
  */
 
 export { CommunityHero } from './CommunityHero';
-export { CommunityBenefits } from './CommunityBenefits';
-export { CommunityTopics } from './CommunityTopics';
-export { MemberTestimonials } from './MemberTestimonials';
-export { WhatsAppJoinCTA } from './WhatsAppJoinCTA';
+export { WhatsAppCTA } from './WhatsAppCTA';
+export { TopicCard } from './TopicCard';
+export { TopicList } from './TopicList';
+export { CommunityGuidelines } from './CommunityGuidelines';
+export { SuccessStories } from './SuccessStories';
