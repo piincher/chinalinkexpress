@@ -6,62 +6,59 @@
  */
 
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
+import { fetchSharedShipment } from '@/lib/shareApi';
 import { SharePageClient } from './SharePageClient';
 import { SharedShipmentResult, getStatusConfig, TYPE_LABELS } from './types';
+
+export const dynamic = 'force-dynamic';
 
 // ============================================================================
 // Config
 // ============================================================================
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.chinalinkexpress.com';
 const WEB_BASE_URL = process.env.NEXT_PUBLIC_WEB_URL || 'https://chinalinkexpress.com';
 const OG_IMAGE_URL = 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg';
+const SUPPORTED_LOCALES = ['fr', 'en', 'zh', 'ar'];
 
 // ============================================================================
-// Data Fetching
+// Locale Detection
 // ============================================================================
 
-async function fetchSharedShipment(token: string): Promise<SharedShipmentResult | null> {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
-
-    const res = await fetch(`${API_BASE_URL}/api/v2/public/share/${token}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      cache: 'no-store',
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeout);
-
-    if (res.status === 404 || res.status === 410) {
-      return null;
-    }
-
-    if (!res.ok) {
-      throw new Error(`API error: ${res.status}`);
-    }
-
-    const json = await res.json();
-    return json.data as SharedShipmentResult;
-  } catch {
-    return null;
+function detectLocale(headersList: Headers, searchParams: Record<string, string | string[] | undefined>): string {
+  const langParam = typeof searchParams.lang === 'string' ? searchParams.lang : undefined;
+  if (langParam && SUPPORTED_LOCALES.includes(langParam)) {
+    return langParam;
   }
+
+  const acceptLang = headersList.get('accept-language') || '';
+  const preferred = acceptLang
+    .split(',')[0]
+    ?.trim()
+    .split('-')[0]
+    .toLowerCase();
+
+  if (preferred && SUPPORTED_LOCALES.includes(preferred)) {
+    return preferred;
+  }
+
+  return 'fr';
 }
 
 // ============================================================================
 // Metadata
 // ============================================================================
 
-export async function generateMetadata({ params }: { params: Promise<{ token: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ token: string }>;
+}): Promise<Metadata> {
   const { token } = await params;
-  const data = await fetchSharedShipment(token);
+  const result = await fetchSharedShipment(token);
 
   // Default metadata for invalid/expired links (still needs OG tags for WhatsApp previews)
-  if (!data) {
+  if (result.error || !result.data) {
     return {
       title: 'Suivi ChinaLink Express — Lien invalide',
       description: 'Ce lien de suivi est invalide ou a expiré. Contactez l\'expéditeur pour un nouveau lien.',
@@ -84,6 +81,7 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
     };
   }
 
+  const data = result.data;
   const statusConfig = getStatusConfig(data.currentStatus);
   const typeLabel = TYPE_LABELS[data.type] || data.type;
 
@@ -129,10 +127,15 @@ export async function generateMetadata({ params }: { params: Promise<{ token: st
 // Page Component
 // ============================================================================
 
-export default async function SharePage({ params }: { params: Promise<{ token: string }> })
- {
+export default async function SharePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ token: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { token } = await params;
-  const data = await fetchSharedShipment(token);
+  const result = await fetchSharedShipment(token);
 
   // Detect platform from user-agent server-side
   const headersList = await headers();
@@ -143,10 +146,20 @@ export default async function SharePage({ params }: { params: Promise<{ token: s
 
   const platform = { isIOS, isAndroid, isDesktop };
 
+  // Detect locale
+  const sp = (await searchParams) || {};
+  const locale = detectLocale(headersList, sp);
+
+  // Load i18n messages
+  const messages = (await import(`@/i18n/locales/${locale}/common.json`)).default;
+
   return (
     <SharePageClient
       token={token}
-      initialData={data}
+      data={result.data}
+      error={result.error}
+      locale={locale}
+      messages={messages}
       platform={platform}
     />
   );

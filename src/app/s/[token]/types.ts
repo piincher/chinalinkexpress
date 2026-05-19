@@ -92,26 +92,33 @@ export const TYPE_LABELS: Record<string, string> = {
   order: 'Commande',
 };
 
-export const STATUS_CONFIG: Record<string, { color: string; bg: string; label: string }> = {
-  RECEIVED_AT_WAREHOUSE: { color: '#6366F1', bg: '#EEF2FF', label: 'Reçu à l\'entrepôt' },
-  PACKED: { color: '#3B82F6', bg: '#EFF6FF', label: 'Emballé' },
-  ASSIGNED_TO_CONTAINER: { color: '#3B82F6', bg: '#EFF6FF', label: 'Assigné au container' },
-  LOADED_IN_CONTAINER: { color: '#0EA5E9', bg: '#F0F9FF', label: 'Chargé' },
-  IN_TRANSIT: { color: '#F59E0B', bg: '#FFFBEB', label: 'En Transit' },
-  ARRIVED_DESTINATION: { color: '#10B981', bg: '#ECFDF5', label: 'Arrivé' },
-  READY_FOR_PICKUP: { color: '#059669', bg: '#ECFDF5', label: 'Prêt pour retrait' },
-  DELIVERED: { color: '#059669', bg: '#ECFDF5', label: 'Livré' },
-  BOOKED: { color: '#6366F1', bg: '#EEF2FF', label: 'Réservé' },
-  LOADING: { color: '#3B82F6', bg: '#EFF6FF', label: 'Chargement' },
-  LOADED: { color: '#0EA5E9', bg: '#F0F9FF', label: 'Chargé' },
-  ARRIVED: { color: '#10B981', bg: '#ECFDF5', label: 'Arrivé' },
-  DISCHARGED: { color: '#10B981', bg: '#ECFDF5', label: 'Déchargé' },
-  Pending: { color: '#6B7280', bg: '#F3F4F6', label: 'En Attente' },
-  Active: { color: '#F59E0B', bg: '#FFFBEB', label: 'Actif' },
-  Delivered: { color: '#059669', bg: '#ECFDF5', label: 'Livré' },
-  Cancelled: { color: '#EF4444', bg: '#FEF2F2', label: 'Annulé' },
+export interface StatusConfig {
+  color: string;
+  bg: string;
+  label: string;
+  icon: string;
+}
+
+export const STATUS_CONFIG: Record<string, StatusConfig> = {
+  RECEIVED_AT_WAREHOUSE: { color: '#D97706', bg: '#FEF3C7', label: 'Reçu à l\'entrepôt', icon: 'Warehouse' },
+  PACKED:               { color: '#2563EB', bg: '#DBEAFE', label: 'Emballé', icon: 'Package' },
+  ASSIGNED_TO_CONTAINER:{ color: '#2563EB', bg: '#DBEAFE', label: 'Assigné au container', icon: 'Package' },
+  LOADED_IN_CONTAINER:  { color: '#4F46E5', bg: '#E0E7FF', label: 'Chargé', icon: 'Ship' },
+  IN_TRANSIT:           { color: '#2563EB', bg: '#DBEAFE', label: 'En transit', icon: 'Ship' },
+  ARRIVED_DESTINATION:  { color: '#0D9488', bg: '#CCFBF1', label: 'Arrivé à destination', icon: 'MapPin' },
+  READY_FOR_PICKUP:     { color: '#9333EA', bg: '#F3E8FF', label: 'Prêt pour retrait', icon: 'PackageCheck' },
+  DELIVERED:            { color: '#059669', bg: '#D1FAE5', label: 'Livré', icon: 'CheckCircle2' },
+  BOOKED:               { color: '#D97706', bg: '#FEF3C7', label: 'Réservé', icon: 'Warehouse' },
+  LOADING:              { color: '#2563EB', bg: '#DBEAFE', label: 'Chargement', icon: 'Ship' },
+  LOADED:               { color: '#4F46E5', bg: '#E0E7FF', label: 'Chargé', icon: 'Ship' },
+  ARRIVED:              { color: '#0D9488', bg: '#CCFBF1', label: 'Arrivé', icon: 'MapPin' },
+  DISCHARGED:           { color: '#0D9488', bg: '#CCFBF1', label: 'Déchargé', icon: 'MapPin' },
+  Pending:              { color: '#6B7280', bg: '#F3F4F6', label: 'En attente', icon: 'Clock' },
+  Active:               { color: '#2563EB', bg: '#DBEAFE', label: 'Actif', icon: 'Ship' },
+  Delivered:            { color: '#059669', bg: '#D1FAE5', label: 'Livré', icon: 'CheckCircle2' },
+  Cancelled:            { color: '#EF4444', bg: '#FEF2F2', label: 'Annulé', icon: 'AlertTriangle' },
 };
 
-export function getStatusConfig(status: string) {
-  return STATUS_CONFIG[status] || { color: '#6B7280', bg: '#F3F4F6', label: status };
+export function getStatusConfig(status: string): StatusConfig {
+  return STATUS_CONFIG[status] || { color: '#6B7280', bg: '#F3F4F6', label: status, icon: 'HelpCircle' };
 }
