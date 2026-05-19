@@ -1255,6 +1255,25 @@
     "androidDetected": "检测到 Android。如果已安装应用，将自动打开。",
     "retry": "重试",
     "backHome": "返回首页",
-    "disclaimer": "数据由 ChinaLink Express 提供。配送时间仅供参考。"
+    "disclaimer": "数据由 ChinaLink Express 提供。配送时间仅供参考。",
+    "noTimeline": "暂无历史记录",
+    "description": "描述",
+    "category": "类别",
+    "volume": "体积",
+    "container": "集装箱",
+    "awb": "空运提单",
+    "containerNumber": "集装箱号",
+    "shippingLine": "航运公司",
+    "origin": "起运地",
+    "destination": "目的地",
+    "goods": "货物",
+    "items": "件",
+    "orderId": "订单",
+    "line": "线路",
+    "revokedTitle": "链接已撤销",
+    "revokedDescription": "发件人已撤销此分享链接。",
+    "unknownErrorTitle": "未知错误",
+    "unknownErrorDescription": "发生错误，请重试。",
+    "home": "首页"
   }
 }

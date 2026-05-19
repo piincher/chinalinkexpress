@@ -66,7 +66,7 @@ export async function generateMetadata({
       openGraph: {
         title: 'Suivi ChinaLink Express — Lien invalide',
         description: 'Ce lien de suivi est invalide ou a expiré. Contactez l\'expéditeur pour un nouveau lien.',
-        url: `${WEB_BASE_URL}/s/${token}`,
+        url: `${WEB_BASE_URL}/s/${encodeURIComponent(token)}`,
         siteName: 'ChinaLink Express',
         type: 'website',
         images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: 'ChinaLink Express' }],
@@ -104,7 +104,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      url: `${WEB_BASE_URL}/s/${token}`,
+      url: `${WEB_BASE_URL}/s/${encodeURIComponent(token)}`,
       siteName: 'ChinaLink Express',
       type: 'website',
       images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: title }],
@@ -118,7 +118,7 @@ export async function generateMetadata({
     robots: { index: false, follow: false },
     // Smart App Banner for iOS
     other: {
-      'apple-itunes-app': 'app-id=6503253700, app-argument=https://chinalinkexpress.com/s/' + token,
+      'apple-itunes-app': `app-id=6503253700, app-argument=${WEB_BASE_URL}/s/${encodeURIComponent(token)}`,
     },
   };
 }

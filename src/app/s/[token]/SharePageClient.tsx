@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import { NextIntlClientProvider } from 'next-intl';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Package,
   Warehouse,
@@ -131,6 +131,14 @@ const containerVariants = {
   },
 } as const;
 
+const reducedMotionContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 },
+  },
+} as const;
+
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -140,12 +148,28 @@ const itemVariants = {
   },
 } as const;
 
+const reducedMotionItemVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.3 },
+  },
+} as const;
+
 const timelineItemVariants = {
   hidden: { opacity: 0, x: -10 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
     transition: { delay: i * 0.1, duration: 0.4 },
+  }),
+};
+
+const reducedMotionTimelineItemVariants = {
+  hidden: { opacity: 0 },
+  visible: (i: number) => ({
+    opacity: 1,
+    transition: { delay: i * 0.05, duration: 0.2 },
   }),
 };
 
@@ -159,6 +183,15 @@ const errorContainerVariants = {
   exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } },
 } as const;
 
+const reducedMotionErrorContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.2 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+} as const;
+
 // ============================================================================
 // Sub-Components
 // ============================================================================
@@ -167,7 +200,7 @@ function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 group">
       <div className="w-8 h-8 rounded-lg bg-[#0277BD] flex items-center justify-center transition-transform group-hover:scale-105">
-        <Package className="w-5 h-5 text-white" />
+        <Package className="w-5 h-5 text-white" aria-hidden="true" />
       </div>
       <span className="font-bold text-[#0277BD] text-lg tracking-tight">ChinaLink Express</span>
     </Link>
@@ -178,6 +211,7 @@ function StatusBadge({ status }: { status: string }) {
   const config = getStatusConfig(status);
   return (
     <span
+      role="status"
       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold"
       style={{ color: config.color, backgroundColor: config.bg }}
     >
@@ -203,9 +237,16 @@ function DetailRow({
         {icon}
         {label}
       </span>
-      <span className="text-sm font-medium text-[var(--text-primary)]">{value}</span>
+      <span className="text-sm font-medium text-[var(--text-primary)] min-w-0">{value}</span>
     </div>
   );
+}
+
+function findLastIndex<T>(arr: T[], fn: (item: T) => boolean): number {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (fn(arr[i])) return i;
+  }
+  return -1;
 }
 
 function Timeline({
@@ -219,6 +260,7 @@ function Timeline({
 }) {
   const { formatDate } = useFormatters(locale);
   const t = useTranslations('sharedShipment');
+  const reducedMotion = useReducedMotion();
 
   if (!events || events.length === 0) {
     return (
@@ -229,11 +271,12 @@ function Timeline({
     );
   }
 
-  const currentIndex = events.findIndex((e) => e.status === currentStatus);
+  const currentIndex = findLastIndex(events, (e) => e.status === currentStatus);
   const activeIndex = currentIndex >= 0 ? currentIndex : events.length - 1;
+  const activeVariants = reducedMotion ? reducedMotionTimelineItemVariants : timelineItemVariants;
 
   return (
-    <div className="space-y-0">
+    <ol role="list" aria-label={t('timeline')} className="space-y-0">
       <AnimatePresence>
         {events.map((event, index) => {
           const config = getStatusConfig(event.status);
@@ -246,10 +289,10 @@ function Timeline({
           const isLast = index === events.length - 1;
 
           return (
-            <motion.div
+            <motion.li
               key={`${event.status}-${index}`}
               custom={index}
-              variants={timelineItemVariants}
+              variants={activeVariants}
               initial="hidden"
               animate="visible"
               className="flex gap-3"
@@ -261,12 +304,19 @@ function Timeline({
                     style={{ backgroundColor: dotColor }}
                   />
                   {isCurrent && (
-                    <motion.div
-                      className="absolute inset-0 rounded-full"
-                      style={{ backgroundColor: config.color }}
-                      animate={{ scale: [1, 2], opacity: [0.5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: 'easeOut' }}
-                    />
+                    reducedMotion ? (
+                      <div
+                        className="absolute inset-0 rounded-full"
+                        style={{ outline: `2px solid ${config.color}`, outlineOffset: '2px' }}
+                      />
+                    ) : (
+                      <motion.div
+                        className="absolute inset-0 rounded-full"
+                        style={{ backgroundColor: config.color }}
+                        animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeOut' }}
+                      />
+                    )
                   )}
                 </div>
                 {!isLast && (
@@ -288,26 +338,41 @@ function Timeline({
                     {formatDate(event.timestamp)}
                   </span>
                 </div>
-                <p className="text-xs text-[var(--text-secondary)] mt-0.5">{event.location}</p>
+                {event.location && (
+                  <p className="text-xs text-[var(--text-secondary)] mt-0.5">{event.location}</p>
+                )}
                 {event.description && (
                   <p className="text-xs text-[var(--text-muted)] mt-0.5">{event.description}</p>
                 )}
               </div>
-            </motion.div>
+            </motion.li>
           );
         })}
       </AnimatePresence>
-    </div>
+    </ol>
   );
+}
+
+function getShippingModeLabel(
+  mode: string | undefined,
+  t: ReturnType<typeof useTranslations>
+): string | undefined {
+  if (!mode) return undefined;
+  const m = mode.toUpperCase();
+  if (m === 'AIR') return t('air');
+  if (m === 'SEA') return t('sea');
+  return mode;
 }
 
 function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: string }) {
   const { type, data: details, estimatedDelivery } = data;
   const { formatDate } = useFormatters(locale);
   const t = useTranslations('sharedShipment');
+  const reducedMotion = useReducedMotion();
+  const activeItemVariants = reducedMotion ? reducedMotionItemVariants : itemVariants;
 
   return (
-    <motion.div variants={itemVariants} className="rounded-2xl card-surface p-5">
+    <motion.div variants={activeItemVariants} className="rounded-2xl card-surface p-5">
       <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">{t('details')}</h2>
 
       {type === 'goods' && (
@@ -325,7 +390,7 @@ function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: stri
           <DetailRow label={t('quantity')} value={(details as SharedShipmentGoods).quantity} />
           <DetailRow
             label={t('shippingMode')}
-            value={(details as SharedShipmentGoods).shippingMode}
+            value={getShippingModeLabel((details as SharedShipmentGoods).shippingMode, t)}
             icon={<ShippingModeIcon mode={(details as SharedShipmentGoods).shippingMode} className="w-4 h-4 text-[var(--text-muted)]" />}
           />
           {(details as SharedShipmentGoods).container?.virtualContainerNumber && (
@@ -355,7 +420,7 @@ function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: stri
           />
           <DetailRow
             label={t('shippingMode')}
-            value={(details as SharedShipmentContainer).shippingMode}
+            value={getShippingModeLabel((details as SharedShipmentContainer).shippingMode, t)}
             icon={<ShippingModeIcon mode={(details as SharedShipmentContainer).shippingMode} className="w-4 h-4 text-[var(--text-muted)]" />}
           />
           <DetailRow label={t('origin')} value={(details as SharedShipmentContainer).origin} />
@@ -375,7 +440,7 @@ function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: stri
           <DetailRow label={t('orderId')} value={(details as SharedShipmentOrder).orderId} />
           <DetailRow
             label={t('shippingMode')}
-            value={(details as SharedShipmentOrder).shippingMode}
+            value={getShippingModeLabel((details as SharedShipmentOrder).shippingMode, t)}
             icon={<ShippingModeIcon mode={(details as SharedShipmentOrder).shippingMode} className="w-4 h-4 text-[var(--text-muted)]" />}
           />
           <DetailRow
@@ -392,7 +457,7 @@ function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: stri
         </>
       )}
 
-      {estimatedDelivery && (
+      {estimatedDelivery && formatDate(estimatedDelivery) !== '-' && (
         <div className="mt-4 flex items-center gap-3 p-3 rounded-xl bg-[#EFF8FF]">
           <Clock className="w-5 h-5 text-[#0277BD] shrink-0" />
           <div>
@@ -407,6 +472,8 @@ function DetailCard({ data, locale }: { data: SharedShipmentResult; locale: stri
 
 function AppCTA({ token, platform }: { token: string; platform: PlatformInfo }) {
   const t = useTranslations('sharedShipment');
+  const reducedMotion = useReducedMotion();
+  const activeItemVariants = reducedMotion ? reducedMotionItemVariants : itemVariants;
   const [qrUrl, setQrUrl] = useState<string>('');
 
   useEffect(() => {
@@ -419,20 +486,20 @@ function AppCTA({ token, platform }: { token: string; platform: PlatformInfo }) 
   }, []);
 
   return (
-    <motion.div variants={itemVariants} className="rounded-2xl card-surface p-5 space-y-4">
+    <motion.div variants={activeItemVariants} className="rounded-2xl card-surface p-5 space-y-4">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-[#0277BD]/10 flex items-center justify-center">
           <Smartphone className="w-5 h-5 text-[#0277BD]" />
         </div>
         <div>
-          <h3 className="text-base font-bold text-[var(--text-primary)]">{t('downloadApp')}</h3>
-          <p className="text-xs text-[var(--text-secondary)]">{t('appDescription')}</p>
+          <h3 className="text-base font-bold text-[var(--text-primary)]">{t('getApp')}</h3>
+          <p className="text-xs text-[var(--text-secondary)]">{t('getAppDescription')}</p>
         </div>
       </div>
 
       {(platform.isIOS || platform.isAndroid) && (
         <div className="space-y-2">
-          <OpenInAppButton token={token} />
+          <OpenInAppButton token={token} className="focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2" />
           <p className="text-xs text-[var(--text-muted)] text-center">
             {platform.isIOS ? t('iosDetected') : t('androidDetected')}
           </p>
@@ -444,12 +511,12 @@ function AppCTA({ token, platform }: { token: string; platform: PlatformInfo }) 
           <div className="inline-block p-3 bg-white rounded-xl border border-[var(--border)] mb-3">
             <img src={qrUrl} alt="QR Code" className="w-32 h-32" />
           </div>
-          <p className="text-xs text-[var(--text-muted)] mb-4">{t('qrCodeHint')}</p>
+          <p className="text-xs text-[var(--text-muted)] mb-4">{t('qrCodeLabel')}</p>
         </div>
       )}
 
       <div className="pt-3 border-t border-[var(--border)]">
-        <p className="text-xs text-[var(--text-muted)] text-center mb-3">{t('noApp')}</p>
+        <p className="text-xs text-[var(--text-muted)] text-center mb-3">{t('noAppQuestion')}</p>
         <AppStoreButtons token={token} className="justify-center" />
       </div>
     </motion.div>
@@ -467,15 +534,18 @@ function ErrorView({
   description: string;
   actions?: React.ReactNode;
 }) {
+  const t = useTranslations('sharedShipment');
+  const reducedMotion = useReducedMotion();
+  const activeErrorVariants = reducedMotion ? reducedMotionErrorContainerVariants : errorContainerVariants;
   return (
     <motion.div
-      variants={errorContainerVariants}
+      variants={activeErrorVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
       className="min-h-screen flex flex-col"
     >
-      <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)]">
+      <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)] supports-[padding:max(0px,env(safe-area-inset-top))]:pt-[env(safe-area-inset-top)]">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center">
           <Logo />
         </div>
@@ -490,9 +560,9 @@ function ErrorView({
           {actions || (
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
             >
-              {title}
+              {t('backHome')}
               <ChevronRight className="w-4 h-4" />
             </Link>
           )}
@@ -508,10 +578,15 @@ function ErrorView({
 
 function LoadingSpinner() {
   const t = useTranslations('sharedShipment');
+  const reducedMotion = useReducedMotion();
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-white">
       <div className="text-center">
-        <div className="w-10 h-10 border-3 border-[var(--border)] border-t-[#0277BD] rounded-full animate-spin mx-auto mb-4" />
+        {reducedMotion ? (
+          <Clock className="w-10 h-10 mx-auto mb-4 text-[#0277BD]" />
+        ) : (
+          <div className="w-10 h-10 border-[3px] border-[var(--border)] border-t-[#0277BD] rounded-full animate-spin mx-auto mb-4" />
+        )}
         <p className="text-sm text-[var(--text-secondary)]">{t('loading')}</p>
       </div>
     </div>
@@ -537,6 +612,9 @@ function SharePageContent({
 }) {
   const t = useTranslations('sharedShipment');
   const { formatDate } = useFormatters(locale);
+  const reducedMotion = useReducedMotion();
+  const activeContainerVariants = reducedMotion ? reducedMotionContainerVariants : containerVariants;
+  const activeItemVariants = reducedMotion ? reducedMotionItemVariants : itemVariants;
   const [data, setData] = useState(initialData);
   const [error, setError] = useState<ShareError | undefined>(initialError);
   const [loading, setLoading] = useState(false);
@@ -545,7 +623,11 @@ function SharePageContent({
     setLoading(true);
     setError(undefined);
     try {
-      const res = await fetch(`/api/v2/public/share/${token}`);
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.chinalinkexpress.com';
+      const res = await fetch(`${API_BASE_URL}/api/v2/public/share/${encodeURIComponent(token)}`, {
+        method: 'GET',
+        cache: 'no-store',
+      });
       if (res.status === 404) {
         setError('not_found');
         setData(undefined);
@@ -592,7 +674,7 @@ function SharePageContent({
         actions={
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
           >
             {t('backHome')}
             <ChevronRight className="w-4 h-4" />
@@ -611,7 +693,7 @@ function SharePageContent({
         actions={
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
           >
             {t('backHome')}
             <ChevronRight className="w-4 h-4" />
@@ -632,14 +714,14 @@ function SharePageContent({
             <button
               onClick={handleRetry}
               disabled={loading}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
               {t('retry')}
             </button>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] rounded-xl text-sm font-semibold hover:bg-[var(--surface)] transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] rounded-xl text-sm font-semibold hover:bg-[var(--surface)] transition-colors focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
             >
               {t('backHome')}
             </Link>
@@ -660,14 +742,14 @@ function SharePageContent({
             <button
               onClick={handleRetry}
               disabled={loading}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
               {t('retry')}
             </button>
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] rounded-xl text-sm font-semibold hover:bg-[var(--surface)] transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] rounded-xl text-sm font-semibold hover:bg-[var(--surface)] transition-colors focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
             >
               {t('backHome')}
             </Link>
@@ -687,7 +769,7 @@ function SharePageContent({
           <button
             onClick={handleRetry}
             disabled={loading}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors disabled:opacity-50 focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             {t('retry')}
@@ -705,16 +787,17 @@ function SharePageContent({
   if (type === 'goods') reference = (details as SharedShipmentGoods).goodsId || '';
   else if (type === 'container') reference = (details as SharedShipmentContainer).containerNumber || '';
   else if (type === 'order') reference = (details as SharedShipmentOrder).orderId || '';
+  if (!reference) reference = t('shipmentId', { id: token.slice(0, 8) });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)]">
+      <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)] supports-[padding:max(0px,env(safe-area-inset-top))]:pt-[env(safe-area-inset-top)]">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
           <Logo />
           <Link
             href="/"
-            className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1"
+            className="text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2 rounded-sm"
           >
             {t('home')}
             <ChevronRight className="w-3 h-3" />
@@ -725,13 +808,13 @@ function SharePageContent({
       {/* Main Content */}
       <motion.main
         className="max-w-lg mx-auto px-4 py-6 space-y-5"
-        variants={containerVariants}
+        variants={activeContainerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Status Card */}
         <motion.div
-          variants={itemVariants}
+          variants={activeItemVariants}
           className="rounded-2xl card-surface p-5 text-center relative overflow-hidden"
         >
           <div
@@ -758,7 +841,7 @@ function SharePageContent({
         <DetailCard data={data} locale={locale} />
 
         {/* Timeline */}
-        <motion.div variants={itemVariants} className="rounded-2xl card-surface p-5">
+        <motion.div variants={activeItemVariants} className="rounded-2xl card-surface p-5">
           <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">{t('history')}</h2>
           <Timeline events={timeline} currentStatus={currentStatus} locale={locale} />
         </motion.div>
@@ -768,10 +851,10 @@ function SharePageContent({
 
         {/* Footer */}
         <motion.p
-          variants={itemVariants}
+          variants={activeItemVariants}
           className="text-center text-xs text-[var(--text-muted)] pb-4"
         >
-          {t('footer')}
+          {t('disclaimer')}
         </motion.p>
       </motion.main>
     </div>

@@ -1255,6 +1255,25 @@
     "androidDetected": "تم اكتشاف Android. إذا كان التطبيق مثبتاً، سيفتح تلقائياً.",
     "retry": "إعادة المحاولة",
     "backHome": "العودة للرئيسية",
-    "disclaimer": "البيانات مقدمة من ChinaLink Express. أوقات التسليم تقريبية."
+    "disclaimer": "البيانات مقدمة من ChinaLink Express. أوقات التسليم تقريبية.",
+    "noTimeline": "لا يوجد سجل",
+    "description": "الوصف",
+    "category": "الفئة",
+    "volume": "الحجم",
+    "container": "الحاوية",
+    "awb": "AWB",
+    "containerNumber": "رقم الحاوية",
+    "shippingLine": "خط الشحن",
+    "origin": "المنشأ",
+    "destination": "الوجهة",
+    "goods": "البضائع",
+    "items": "عنصر/عناصر",
+    "orderId": "الطلب",
+    "line": "الخط",
+    "revokedTitle": "الرابط ملغى",
+    "revokedDescription": "قام المرسل بإلغاء رابط المشاركة هذا.",
+    "unknownErrorTitle": "خطأ غير معروف",
+    "unknownErrorDescription": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "home": "الرئيسية"
   }
 }

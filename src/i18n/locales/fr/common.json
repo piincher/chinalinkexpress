@@ -1406,6 +1406,25 @@
     "androidDetected": "Android détecté. Si l'app est installée, elle s'ouvrira automatiquement.",
     "retry": "Réessayer",
     "backHome": "Retour à l'accueil",
-    "disclaimer": "Données fournies par ChinaLink Express. Les délais sont indicatifs."
+    "disclaimer": "Données fournies par ChinaLink Express. Les délais sont indicatifs.",
+    "noTimeline": "Aucun historique disponible",
+    "description": "Description",
+    "category": "Catégorie",
+    "volume": "Volume",
+    "container": "Container",
+    "awb": "AWB",
+    "containerNumber": "N° Container",
+    "shippingLine": "Compagnie",
+    "origin": "Origine",
+    "destination": "Destination",
+    "goods": "Marchandises",
+    "items": "article(s)",
+    "orderId": "Commande",
+    "line": "Ligne",
+    "revokedTitle": "Lien révoqué",
+    "revokedDescription": "L'expéditeur a révoqué ce lien de partage.",
+    "unknownErrorTitle": "Erreur inconnue",
+    "unknownErrorDescription": "Une erreur est survenue. Veuillez réessayer.",
+    "home": "Accueil"
   }
 }

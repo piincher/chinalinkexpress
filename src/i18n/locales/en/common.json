@@ -1434,6 +1434,25 @@
     "androidDetected": "Android detected. If the app is installed, it will open automatically.",
     "retry": "Retry",
     "backHome": "Back to home",
-    "disclaimer": "Data provided by ChinaLink Express. Delivery times are indicative."
+    "disclaimer": "Data provided by ChinaLink Express. Delivery times are indicative.",
+    "noTimeline": "No history available",
+    "description": "Description",
+    "category": "Category",
+    "volume": "Volume",
+    "container": "Container",
+    "awb": "AWB",
+    "containerNumber": "Container No.",
+    "shippingLine": "Shipping Line",
+    "origin": "Origin",
+    "destination": "Destination",
+    "goods": "Goods",
+    "items": "item(s)",
+    "orderId": "Order",
+    "line": "Line",
+    "revokedTitle": "Link revoked",
+    "revokedDescription": "The sender has revoked this share link.",
+    "unknownErrorTitle": "Unknown error",
+    "unknownErrorDescription": "An error occurred. Please try again.",
+    "home": "Home"
   }
 }
