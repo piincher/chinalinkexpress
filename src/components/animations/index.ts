@@ -93,11 +93,7 @@ export { SpotlightGroup } from './SpotlightGroup';
 // ============================================================================
 // Scrolling/Marquee components
 // ============================================================================
-export {
-  Marquee,
-  LogoMarquee,
-  TestimonialMarquee,
-} from './Marquee';
+export { Marquee } from './Marquee';
 
 // ============================================================================
 // Interactive wrapper components
@@ -113,7 +109,7 @@ export { Counter } from './Counter';
 // Type re-exports for convenience
 // ============================================================================
 export type { GradientMeshProps } from './GradientMesh';
-export type { MarqueeProps, LogoMarqueeProps } from './Marquee';
+export type { MarqueeProps } from './Marquee';
 export type { SpotlightBorderProps } from './SpotlightBorder';
 export type { GridPatternProps, CSSGridPatternProps } from './GridPattern';
 export type { SpotlightCardProps } from './SpotlightCard';

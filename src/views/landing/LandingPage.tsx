@@ -26,9 +26,44 @@ import { VerifiedReviewsSection } from '@/features/reviews/components/VerifiedRe
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { PartnersSection } from './components/PartnersSection';
+import { AppPreviewSection } from './components/AppPreviewSection';
+import { Marquee } from '@/components/animations/Marquee';
 
 interface LandingPageProps {
   locale?: Locale;
+}
+
+function TrustMarquee() {
+  const items = [
+    'Fret Maritime',
+    'Fret Aérien',
+    'Sourcing',
+    'Paiement Fournisseur',
+    'Suivi 24/7',
+    'Livraison Porte à Porte',
+  ];
+
+  return (
+    <div
+      className="py-6"
+      style={{
+        backgroundColor: 'var(--color-paper-2)',
+        borderBottom: '1px solid var(--color-rule)',
+      }}
+    >
+      <Marquee speed={32} pauseOnHover>
+        {items.map((item) => (
+          <span
+            key={item}
+            className="text-sm font-medium uppercase tracking-widest whitespace-nowrap"
+            style={{ color: 'var(--color-neutral)' }}
+          >
+            {item}
+          </span>
+        ))}
+      </Marquee>
+    </div>
+  );
 }
 
 export function LandingPage({ locale = 'fr' }: LandingPageProps) {
@@ -38,10 +73,12 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
       <div className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
         <main>
           <HeroSection />
+          <TrustMarquee />
           <StatsSection />
           <ServicesSection />
           <AboutSection />
           <WhyUsSection />
+          <AppPreviewSection />
           <TrustFlowSection />
           <ComparisonSection />
           <QuizSection />

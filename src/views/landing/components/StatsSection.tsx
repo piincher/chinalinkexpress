@@ -1,8 +1,8 @@
 /**
- * Stats Section — Minimal Stat Strip
+ * Stats Section — Minimal Stat Strip with Counter Reveal
  *
- * Clean horizontal strip of key metrics.
- * No gradients, no counters, no spotlight cards.
+ * Numbers tick up from zero on viewport entry.
+ * No gradients, no spotlight cards.
  */
 
 'use client';
@@ -10,6 +10,8 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Star } from 'lucide-react';
+import { Counter } from '@/components/animations/Counter';
+import { STATS } from '@/constants/appConstants';
 import { SECTION_IDS } from '../constants';
 
 export function StatsSection() {
@@ -17,15 +19,19 @@ export function StatsSection() {
 
   const stats = [
     {
-      value: t('activeClientsCount', { defaultValue: '1,247' }),
+      value: STATS.CLIENTS.value,
+      suffix: STATS.CLIENTS.suffix,
       label: t('satisfiedClients', { defaultValue: 'Clients satisfaits' }),
     },
     {
-      value: '7+',
-      label: t('experienceYears', { defaultValue: "Années d'expérience" }),
+      value: STATS.SHIPMENTS.value,
+      suffix: STATS.SHIPMENTS.suffix,
+      label: t('shipments', { defaultValue: 'Expéditions' }),
     },
     {
-      value: t('ratingValue', { defaultValue: '4.8' }),
+      value: STATS.RATING.value,
+      suffix: STATS.RATING.suffix,
+      decimals: STATS.RATING.decimals,
       label: t('rating', { defaultValue: 'Note moyenne' }),
       icon: Star,
     },
@@ -58,7 +64,12 @@ export function StatsSection() {
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
-                {stat.value}
+                <Counter
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals || 0}
+                  duration={1.6}
+                />
                 {stat.icon && (
                   <stat.icon
                     className="w-6 h-6"

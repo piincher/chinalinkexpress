@@ -9,7 +9,6 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
 import {
   Zap,
   Shield,
@@ -26,60 +25,41 @@ function WhyUsCard({
   title,
   description,
   icon: Icon,
-  index,
 }: {
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
-  index: number;
 }) {
-  const reduced =
-    typeof window !== 'undefined'
-      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      : false;
-
   return (
-    <motion.div
-      className="flex flex-col h-full"
-      initial={reduced ? {} : { opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.4,
-        delay: index * 0.08,
-        ease: [0.16, 1, 0.3, 1],
+    <div
+      className="flex flex-col h-full rounded-lg p-6"
+      style={{
+        backgroundColor: 'var(--color-paper)',
+        border: '1px solid var(--color-rule)',
       }}
     >
+      {/* Icon */}
       <div
-        className="flex flex-col h-full rounded-lg p-6"
-        style={{
-          backgroundColor: 'var(--color-paper)',
-          border: '1px solid var(--color-rule)',
-        }}
+        className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
+        style={{ backgroundColor: 'var(--color-paper-2)' }}
       >
-        {/* Icon */}
-        <div
-          className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
-          style={{ backgroundColor: 'var(--color-paper-2)' }}
-        >
-          <Icon className="w-5 h-5" style={{ color: 'var(--color-accent)' }} />
-        </div>
-
-        {/* Content */}
-        <h3
-          className="text-lg font-semibold mb-2"
-          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}
-        >
-          {title}
-        </h3>
-        <p
-          className="text-sm leading-relaxed"
-          style={{ color: 'var(--color-ink-2)' }}
-        >
-          {description}
-        </p>
+        <Icon className="w-5 h-5" style={{ color: 'var(--color-accent)' }} />
       </div>
-    </motion.div>
+
+      {/* Content */}
+      <h3
+        className="text-lg font-semibold mb-2"
+        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}
+      >
+        {title}
+      </h3>
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: 'var(--color-ink-2)' }}
+      >
+        {description}
+      </p>
+    </div>
   );
 }
 
@@ -121,7 +101,6 @@ export function WhyUsSection() {
               title={t(`items.${key}.title`)}
               description={t(`items.${key}.description`)}
               icon={WHY_US_ICONS[index]}
-              index={index}
             />
           ))}
         </div>

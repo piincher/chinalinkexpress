@@ -9,7 +9,6 @@
 
 import React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
   Search,
@@ -101,10 +100,6 @@ function ServiceCard({
 
 export function ServicesSection() {
   const t = useTranslations('services');
-  const reduced =
-    typeof window !== 'undefined'
-      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      : false;
 
   return (
     <section
@@ -142,19 +137,7 @@ export function ServicesSection() {
           }}
         >
           {SERVICE_KEYS.map((key, index) => (
-            <motion.div
-              key={key}
-              initial={reduced ? {} : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.08,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <ServiceCard serviceKey={key} index={index} />
-            </motion.div>
+            <ServiceCard key={key} serviceKey={key} index={index} />
           ))}
         </div>
       </div>
