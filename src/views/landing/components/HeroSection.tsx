@@ -1,427 +1,302 @@
 /**
- * Hero Section Component
+ * Hero Section — Marquee Hero Redesign
  *
- * Animated hero section with premium visual effects:
- * - GradientMesh background with flowing organic motion
- * - GridPattern overlay for texture and depth
- * - AnimatedGradientText with shimmer effect for headlines
- * - TextReveal, MagneticButton, Counter, and scroll indicator
- * - HeroAnimation as animated background layer
- *
- * Respects reduced motion preferences for accessibility.
- * Part of the landing page feature.
+ * A single bold statement fills the fold.
+ * No gradients, no glassmorphism, no floating orbs.
+ * Solid typography, solid colours, confident spacing.
  */
 
-"use client";
+'use client';
 
-import React, { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { useScrollTo } from "@/hooks/useScrollTo";
-import { 
-  TextReveal, 
-  MagneticButton, 
-  GradientMesh,
-  GridPattern,
-  ShimmerHeading,
-} from "@/components/animations";
-// Temporarily disabled due to Three.js dependency issues
-// import { HeroAnimation } from "@/features/hero-animation/components";
-import { SECTION_IDS } from "../constants";
-import { ChevronDown, Lock, Star } from "lucide-react";
+import React, { useRef } from 'react';
+import { motion, useInView, Variants } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { useScrollTo } from '@/hooks/useScrollTo';
+import { ChevronDown, Star, ArrowRight, MessageCircle } from 'lucide-react';
+import { SECTION_IDS } from '../constants';
 
-// Check if user prefers reduced motion
+/* ── reduced-motion hook ─────────────────────────────────────────────── */
 function useReducedMotion(): boolean {
-  const [reducedMotion, setReducedMotion] = React.useState(false);
-
+  const [reduced, setReduced] = React.useState(false);
   React.useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
   }, []);
-
-  return reducedMotion;
+  return reduced;
 }
 
-// Scroll indicator with bounce animation
+/* ── scroll indicator ────────────────────────────────────────────────── */
 function ScrollIndicator() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.5 });
-  const prefersReducedMotion = useReducedMotion();
+  const reduced = useReducedMotion();
 
   const handleClick = () => {
-    const element = document.getElementById(SECTION_IDS.SERVICES);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    const el = document.getElementById(SECTION_IDS.STATS);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <motion.div
       ref={ref}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
       onClick={handleClick}
-      initial={{ opacity: 0, y: -20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-      transition={{ delay: 1.5, duration: 0.6 }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ delay: 1.2, duration: 0.5 }}
     >
-      <span className="text-sm text-blue-200/70 uppercase tracking-widest">
+      <span className="text-xs font-medium uppercase tracking-widest" style={{ color: 'var(--color-muted)' }}>
         Scroll
       </span>
       <motion.div
-        animate={prefersReducedMotion ? {} : {
-          y: [0, 8, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={reduced ? {} : { y: [0, 6, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <ChevronDown className="w-6 h-6 text-blue-200/70" />
+        <ChevronDown className="w-5 h-5" style={{ color: 'var(--color-muted)' }} />
       </motion.div>
     </motion.div>
   );
 }
 
+/* ── hero section ────────────────────────────────────────────────────── */
 export function HeroSection() {
   const t = useTranslations();
   const { scrollToElement } = useScrollTo();
-  const prefersReducedMotion = useReducedMotion();
+  const reduced = useReducedMotion();
 
-  const handleScrollToServices = () => {
-    scrollToElement(SECTION_IDS.SERVICES);
-  };
-
-  // Animation variants for fade-in elements
-  const fadeInVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
+  const fadeIn: Variants = {
+    hidden: { opacity: 0, y: 16 },
     visible: (delay: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        delay,
-        ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
-      },
+      transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
     }),
   };
 
-  // Custom colors for GradientMesh: blue-600, purple-600, cyan-500
-  const meshColors = [
-    'rgba(37, 99, 235, 0.8)',    // blue-600
-    'rgba(147, 51, 234, 0.7)',   // purple-600
-    'rgba(6, 182, 212, 0.6)',    // cyan-500
-    'rgba(59, 130, 246, 0.7)',   // blue-500 (accent)
-  ];
+  const steps = (t.raw('hero.journeySteps') as Array<{ icon: string; label: string }>) || [];
 
   return (
     <section
       id={SECTION_IDS.HERO}
-      className="relative min-h-screen bg-slate-950 text-white overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style={{
+        backgroundColor: 'var(--color-paper)',
+        color: 'var(--color-ink)',
+      }}
     >
-      {/* Layer 1: GradientMesh Background (z-0) */}
-      <div className="absolute inset-0 z-0">
-        <GradientMesh
-          colors={meshColors}
-          intensity="medium"
-          blobCount={4}
-        />
-      </div>
-
-      {/* Layer 2: HeroAnimation (z-[1]) - behind content but above mesh */}
-      {/* Temporarily disabled due to Three.js dependency issues
-      <div className="absolute inset-0 z-[1]">
-        <HeroAnimation className="opacity-60" />
-      </div>
-      */}
-
-      {/* Layer 3: Gradient overlays for readability (z-[2]) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-blue-950/70 to-transparent z-[2]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-blue-950/50 z-[2]" />
-
-      {/* Layer 4: GridPattern overlay (z-10) */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <GridPattern
-          type="dots"
-          size={24}
-          opacity={0.08}
-          color="white"
-        />
-      </div>
-
-      {/* Content (z-10) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left Content */}
-          <div className="space-y-8">
-            {/* Badge */}
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
-            >
-              <motion.span 
-                className="w-2 h-2 bg-green-400 rounded-full"
-                animate={prefersReducedMotion ? {} : {
-                  scale: [1, 1.2, 1],
-                  opacity: [1, 0.7, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+      {/* ── main content ─────────────────────────────────────────────── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-32">
+        <div className="max-w-4xl">
+          {/* Badge */}
+          <motion.div
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-8"
+            style={{
+              backgroundColor: 'var(--color-paper-2)',
+              color: 'var(--color-accent)',
+              border: '1px solid var(--color-rule)',
+            }}
+            initial={reduced ? {} : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                style={{ backgroundColor: 'var(--color-accent)' }}
               />
-              <span className="text-sm font-medium text-blue-100">
-                {t("hero.badge") || "Opérationnel 24/7 • Livraison garantie"}
-              </span>
-            </motion.div>
+              <span
+                className="relative inline-flex rounded-full h-2 w-2"
+                style={{ backgroundColor: 'var(--color-accent)' }}
+              />
+            </span>
+            <span>{t('hero.badge') || 'Opérationnel 24/7 · Livraison garantie'}</span>
+          </motion.div>
 
-            {/* Brand Name - de-emphasized */}
+          {/* Marquee headline */}
+          <motion.h1
+            className="font-bold leading-[1.05] tracking-tight"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-display)',
+              letterSpacing: '-0.03em',
+            }}
+            initial={reduced ? {} : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {t('hero.headline')}
+          </motion.h1>
+        </div>
+      </div>
+
+      {/* ── thick rule divider ───────────────────────────────────────── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div
+          className="h-1 w-24"
+          style={{ backgroundColor: 'var(--color-accent)' }}
+        />
+      </div>
+
+      {/* ── below-fold content ───────────────────────────────────────── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
+          {/* Left: subtitle + steps */}
+          <div className="space-y-8">
             <motion.p
-              className="text-sm font-medium text-blue-300/60 uppercase tracking-widest"
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+              className="leading-relaxed max-w-xl"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-lg)',
+                color: 'var(--color-ink-2)',
+                lineHeight: 1.6,
+              }}
+              initial={reduced ? {} : 'hidden'}
+              animate="visible"
+              custom={0.4}
+              variants={fadeIn}
             >
-              CHINALINK EXPRESS
+              {t('hero.subtitle')}
             </motion.p>
 
-            {/* Main Headline with TextReveal */}
-            <div>
-              {prefersReducedMotion ? (
-                <motion.h1 
-                  className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {t("hero.headline")}
-                </motion.h1>
-              ) : (
-                <TextReveal
-                  type="words"
-                  stagger={0.06}
-                  duration={0.5}
-                  delay={0.2}
-                  className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
-                  as="h1"
-                >
-                  {t("hero.headline")}
-                </TextReveal>
-              )}
-            </div>
-
-            {/* Subheadline with ShimmerHeading */}
-            <motion.div
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
-            >
-              <ShimmerHeading
-                level={2}
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold"
-                colors={['#2563eb', '#9333ea', '#06b6d4', '#9333ea', '#2563eb']} // blue → purple → cyan → purple → blue
-                duration={4}
+            {/* Journey steps — text only, no emoji */}
+            {steps.length > 0 && (
+              <motion.div
+                className="flex flex-wrap gap-3"
+                initial={reduced ? {} : 'hidden'}
+                animate="visible"
+                custom={0.55}
+                variants={fadeIn}
               >
-                {t("hero.subheadline")}
-              </ShimmerHeading>
-            </motion.div>
+                {steps.map((step, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium"
+                    style={{
+                      backgroundColor: 'var(--color-paper-2)',
+                      color: 'var(--color-ink-2)',
+                      border: '1px solid var(--color-rule)',
+                    }}
+                  >
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: 'var(--color-accent)' }}
+                    />
+                    {step.label}
+                  </span>
+                ))}
+              </motion.div>
+            )}
 
-            {/* Subtitle with fade-in */}
-            <motion.p
-              className="text-xl md:text-2xl text-blue-100 max-w-xl leading-relaxed"
-              initial={prefersReducedMotion ? {} : "hidden"}
-              animate="visible"
-              custom={1.1}
-              variants={fadeInVariants}
-            >
-              {t("hero.subtitle")}
-            </motion.p>
-
-            {/* Journey Steps */}
-            <motion.div
-              className="flex flex-wrap gap-3"
-              initial={prefersReducedMotion ? {} : "hidden"}
-              animate="visible"
-              custom={1.3}
-              variants={fadeInVariants}
-            >
-              {(t.raw("hero.journeySteps") as Array<{icon: string; label: string}>).map((step, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 px-3 py-2 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10"
-                >
-                  <span className="text-lg">{step.icon}</span>
-                  <span className="text-sm font-medium text-blue-100">{step.label}</span>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* CTA Buttons with MagneticButton */}
+            {/* CTAs */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
-              initial={prefersReducedMotion ? {} : "hidden"}
+              initial={reduced ? {} : 'hidden'}
               animate="visible"
-              custom={1.5}
-              variants={fadeInVariants}
+              custom={0.7}
+              variants={fadeIn}
             >
-              <MagneticButton strength={25}>
-                <a
-                  href="https://wa.me/8618851725957"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all shadow-2xl hover:shadow-green-500/25 inline-flex items-center gap-3 hover:scale-105"
-                >
-                  <span>📱</span>
-                  <span>{t("cta.getQuote")}</span>
-                </a>
-              </MagneticButton>
+              <a
+                href="https://wa.me/8618851725957"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
+                style={{
+                  backgroundColor: 'var(--color-accent)',
+                  color: 'var(--color-accent-ink)',
+                }}
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>{t('cta.getQuote')}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
 
               <button
-                onClick={handleScrollToServices}
-                className="group border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:bg-white/10 inline-flex items-center gap-3"
+                onClick={() => scrollToElement(SECTION_IDS.SERVICES)}
+                className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
+                style={{
+                  backgroundColor: 'transparent',
+                  color: 'var(--color-ink)',
+                  border: '1.5px solid var(--color-rule)',
+                }}
               >
-                <span>{t("cta.discoverServices")}</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span>{t('cta.discoverServices')}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </button>
-            </motion.div>
-
-            {/* Stats Row with animated counters */}
-            <motion.div
-              className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10"
-              initial={prefersReducedMotion ? {} : "hidden"}
-              animate="visible"
-              custom={1.7}
-              variants={fadeInVariants}
-            >
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">7+</div>
-                <div className="text-blue-200 text-sm uppercase tracking-wider">
-                  {t("stats.experienceYears") || "Années d'expérience"}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  {t('stats.activeClientsCount', { defaultValue: '1,247' })}
-                </div>
-                <div className="text-blue-200 text-sm uppercase tracking-wider">
-                  {t('stats.satisfiedClients', { defaultValue: 'Clients satisfaits' })}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2 flex items-center justify-center gap-1">
-                  <span>{t('stats.ratingValue', { defaultValue: '4.8' })}</span>
-                  <Star className="w-8 h-8 text-amber-400 fill-amber-400" />
-                </div>
-                <div className="text-blue-200 text-sm uppercase tracking-wider">
-                  {t('stats.rating', { defaultValue: 'Note moyenne' })}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Pay on Delivery trust pill */}
-            <motion.div
-              className="flex items-center justify-center pt-4"
-              initial={prefersReducedMotion ? {} : "hidden"}
-              animate="visible"
-              custom={1.9}
-              variants={fadeInVariants}
-            >
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl text-white border border-white/10">
-                <Lock className="w-5 h-5 text-green-300" />
-                <span className="font-semibold text-sm">
-                  {t('hero.stats.payOnDelivery', { defaultValue: 'Pay on Delivery' })}
-                </span>
-              </div>
             </motion.div>
           </div>
 
-          {/* Right Side - Visual placeholder with animated rings */}
+          {/* Right: stats */}
           <motion.div
-            className="hidden lg:flex items-center justify-center"
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+            className="grid grid-cols-3 gap-6"
+            initial={reduced ? {} : 'hidden'}
+            animate="visible"
+            custom={0.6}
+            variants={fadeIn}
           >
-            <div className="relative w-96 h-96">
-              {/* Animated rings */}
-              <motion.div
-                className="absolute inset-0 border-2 border-blue-500/30 rounded-full"
-                animate={prefersReducedMotion ? {} : {
-                  scale: [1, 1.05, 1],
-                  opacity: [0.3, 0.5, 0.3],
+            <div className="text-left">
+              <div
+                className="font-bold tracking-tight"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-3xl)',
+                  color: 'var(--color-ink)',
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute inset-8 border-2 border-cyan-500/30 rounded-full"
-                animate={prefersReducedMotion ? {} : {
-                  scale: [1, 1.08, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              />
-              <motion.div
-                className="absolute inset-16 border-2 border-purple-500/30 rounded-full"
-                animate={prefersReducedMotion ? {} : {
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-
-              {/* Center content */}
-              <div className="absolute inset-24 flex items-center justify-center text-8xl">
-                🌏
+              >
+                7+
               </div>
-
-              {/* Animated icons */}
-              <motion.div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl shadow-lg"
-                animate={prefersReducedMotion ? {} : {
-                  y: [0, -8, 0],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              <div
+                className="text-sm font-medium uppercase tracking-wider mt-1"
+                style={{ color: 'var(--color-neutral)' }}
               >
-                📦
-              </motion.div>
-              <motion.div
-                className="absolute bottom-8 left-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl shadow-lg"
-                animate={prefersReducedMotion ? {} : {
-                  y: [0, 8, 0],
+                {t('stats.experienceYears') || "Années d'expérience"}
+              </div>
+            </div>
+            <div className="text-left">
+              <div
+                className="font-bold tracking-tight"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-3xl)',
+                  color: 'var(--color-ink)',
                 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
               >
-                ✈️
-              </motion.div>
-              <motion.div
-                className="absolute bottom-8 right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-2xl shadow-lg"
-                animate={prefersReducedMotion ? {} : {
-                  y: [0, 8, 0],
+                {t('stats.activeClientsCount', { defaultValue: '1,247' })}
+              </div>
+              <div
+                className="text-sm font-medium uppercase tracking-wider mt-1"
+                style={{ color: 'var(--color-neutral)' }}
+              >
+                {t('stats.satisfiedClients', { defaultValue: 'Clients satisfaits' })}
+              </div>
+            </div>
+            <div className="text-left">
+              <div
+                className="font-bold tracking-tight inline-flex items-center gap-1"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-3xl)',
+                  color: 'var(--color-ink)',
                 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
               >
-                🚢
-              </motion.div>
+                <span>{t('stats.ratingValue', { defaultValue: '4.8' })}</span>
+                <Star className="w-6 h-6 fill-current" style={{ color: 'var(--color-accent)' }} />
+              </div>
+              <div
+                className="text-sm font-medium uppercase tracking-wider mt-1"
+                style={{ color: 'var(--color-neutral)' }}
+              >
+                {t('stats.rating', { defaultValue: 'Note moyenne' })}
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <ScrollIndicator />
-
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white dark:from-slate-950 to-transparent z-10" />
     </section>
   );
 }

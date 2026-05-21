@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../../tokens.css";
 
 /* ============================================================================
    CSS Variables - Light Mode (Default)
@@ -169,6 +170,11 @@
    ============================================================================ */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 html.dark {

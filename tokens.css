@@ -1,0 +1,107 @@
+/* Hallmark · pre-emit critique: P5 H4 E4 S4 R5 V4
+ * macrostructure: Marquee Hero · tone: confident · anchor hue: 250 (cool blue)
+ * genre: modern-minimal · theme: custom (restrained blue-neutral)
+ * font: Geist Sans (display + body) · Geist Mono (outlier)
+ * nav: N5 Floating pill (preserved existing) · footer: Ft2 Inline single line (preserved existing)
+ */
+
+/* ============================================================================
+   Hallmark Token System — ChinaLink Express
+   ============================================================================ */
+
+:root {
+  /* --- Color: light mode --- */
+  --color-paper:      oklch(98%  0.005 250);
+  --color-paper-2:    oklch(94%  0.008 250);
+  --color-ink:        oklch(18%  0.010 250);
+  --color-ink-2:      oklch(42%  0.012 250);
+  --color-rule:       oklch(85%  0.010 250);
+  --color-neutral:    oklch(56%  0.008 250);
+  --color-muted:      oklch(72%  0.008 250);
+  --color-accent:     oklch(55%  0.160 250);
+  --color-accent-ink: oklch(98%  0.005 250);
+  --color-focus:      oklch(55%  0.180 250);
+
+  /* --- Fonts --- */
+  --font-display: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+
+  /* --- Spacing: 4-point scale --- */
+  --space-3xs: 0.125rem;  /*  2px */
+  --space-2xs: 0.25rem;   /*  4px */
+  --space-xs:  0.5rem;    /*  8px */
+  --space-sm:  0.75rem;   /* 12px */
+  --space-md:  1rem;      /* 16px */
+  --space-lg:  1.5rem;    /* 24px */
+  --space-xl:  2.5rem;    /* 40px */
+  --space-2xl: 4rem;      /* 64px */
+  --space-3xl: 6rem;      /* 96px */
+  --space-4xl: 9rem;      /* 144px */
+
+  /* --- Type scale: major third (1.25) --- */
+  --text-xs:   0.64rem;   /* 10.24px */
+  --text-sm:   0.8rem;    /* 12.8px  */
+  --text-base: 1rem;      /* 16px    */
+  --text-md:   1.25rem;   /* 20px    */
+  --text-lg:   1.5625rem; /* 25px    */
+  --text-xl:   1.9531rem; /* 31.25px */
+  --text-2xl:  2.4414rem; /* 39.06px */
+  --text-3xl:  3.0518rem; /* 48.83px */
+  --text-4xl:  3.8147rem; /* 61.03px */
+  --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-display-s: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+
+  /* --- Motion --- */
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:      cubic-bezier(0.7,  0, 0.84, 0);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro:    120ms;
+  --dur-short:    220ms;
+  --dur-long:     420ms;
+
+  /* --- Radius --- */
+  --radius-card:  8px;
+  --radius-pill:  9999px;
+  --radius-input: 6px;
+
+  /* --- Shadow --- */
+  --shadow-whisper: 0 1px 2px oklch(20% 0.01 250 / 0.05);
+  --shadow-hairline: 0 0 0 1px oklch(30% 0.01 250 / 0.06);
+
+  /* --- Z-index --- */
+  --z-base:     1;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+}
+
+/* ============================================================================
+   Dark mode
+   ============================================================================ */
+.dark {
+  --color-paper:      oklch(14%  0.008 250);
+  --color-paper-2:    oklch(18%  0.010 250);
+  --color-ink:        oklch(96%  0.005 250);
+  --color-ink-2:      oklch(72%  0.008 250);
+  --color-rule:       oklch(30%  0.008 250);
+  --color-neutral:    oklch(58%  0.008 250);
+  --color-muted:      oklch(45%  0.008 250);
+  --color-accent:     oklch(65%  0.140 250);
+  --color-accent-ink: oklch(14%  0.008 250);
+  --color-focus:      oklch(70%  0.160 250);
+}
+
+/* ============================================================================
+   Reduced motion
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 150ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+  }
+}

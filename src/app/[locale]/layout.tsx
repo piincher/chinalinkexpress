@@ -247,17 +247,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
       
       {/* PWA Icons */}
-      <link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
-      <link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
-      <link rel="apple-touch-icon" sizes="128x128" href="/icons/icon-128x128.png" />
-      <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
-      <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
-      <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
-      <link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png" />
-      <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
-      <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2563eb" />
+      <link rel="apple-touch-icon" sizes="72x72" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="96x96" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="128x128" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="144x144" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="152x152" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="192x192" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="384x384" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="apple-touch-icon" sizes="512x512" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
+      <link rel="mask-icon" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" color="#2563eb" />
       
       <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
