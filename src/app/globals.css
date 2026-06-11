@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "../../tokens.css";
 
+/* Make Tailwind's `dark:` utilities follow the `.dark` class that the theme
+   toggle sets on <html> (ThemeInitScript), instead of the OS `prefers-color-scheme`.
+   Without this, `dark:` styles and the CSS-variable theme (`.dark { … }`) disagree
+   whenever the user's toggle differs from their system setting — producing
+   white-on-white text. This aligns every `dark:` utility site-wide with the toggle. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================================
    CSS Variables - Light Mode (Default)
    ============================================================================ */

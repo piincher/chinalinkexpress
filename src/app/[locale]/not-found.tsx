@@ -122,7 +122,7 @@ export default function LocaleNotFound() {
   return (
     <div
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
-      className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-white"
+      className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0a0a] dark:to-[#171717]"
     >
       <header className="border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center">

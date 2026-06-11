@@ -580,7 +580,7 @@ function LoadingSpinner() {
   const t = useTranslations('sharedShipment');
   const reducedMotion = useReducedMotion();
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0a0a] dark:to-[#171717]">
       <div className="text-center">
         {reducedMotion ? (
           <Clock className="w-10 h-10 mx-auto mb-4 text-[#0277BD]" />
@@ -790,7 +790,7 @@ function SharePageContent({
   if (!reference) reference = t('shipmentId', { id: token.slice(0, 8) });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0a0a] dark:to-[#171717]">
       {/* Header */}
       <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)] supports-[padding:max(0px,env(safe-area-inset-top))]:pt-[env(safe-area-inset-top)]">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
