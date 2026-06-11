@@ -28,10 +28,14 @@ export function AppStoreButton({ className }: { className?: string }) {
       href={APP_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 px-4 py-3 bg-black text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity ${className || ''}`}
+      aria-label="Download on the App Store"
+      className={`group inline-flex items-center gap-3 px-5 py-2.5 bg-black text-white rounded-xl border border-white/10 hover:opacity-90 transition-opacity ${className || ''}`}
     >
-      <AppleLogo className="w-5 h-5" />
-      App Store
+      <AppleLogo className="w-7 h-7 shrink-0" />
+      <span className="flex flex-col text-left leading-none">
+        <span className="text-[10px] font-medium opacity-80">Download on the</span>
+        <span className="text-lg font-semibold -mt-0.5">App Store</span>
+      </span>
     </a>
   );
 }
@@ -42,10 +46,14 @@ export function PlayStoreButton({ className }: { className?: string }) {
       href={PLAY_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 px-4 py-3 bg-black text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity ${className || ''}`}
+      aria-label="Get it on Google Play"
+      className={`group inline-flex items-center gap-3 px-5 py-2.5 bg-black text-white rounded-xl border border-white/10 hover:opacity-90 transition-opacity ${className || ''}`}
     >
-      <PlayLogo className="w-5 h-5" />
-      Google Play
+      <PlayLogo className="w-7 h-7 shrink-0" />
+      <span className="flex flex-col text-left leading-none">
+        <span className="text-[10px] font-medium opacity-80">Get it on</span>
+        <span className="text-lg font-semibold -mt-0.5">Google Play</span>
+      </span>
     </a>
   );
 }

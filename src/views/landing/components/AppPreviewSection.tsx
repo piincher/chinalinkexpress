@@ -10,8 +10,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Smartphone } from 'lucide-react';
+import { Smartphone } from 'lucide-react';
 import { SECTION_IDS } from '../constants';
+import { AppStoreButton, PlayStoreButton } from '@/components/shared/AppStoreButtons';
 
 const SCREENSHOTS = [
   {
@@ -69,16 +70,10 @@ export function AppPreviewSection() {
               {t('appSection.previewDescription')}
             </p>
 
-            <a
-              href="https://wa.me/8618851725957"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-sm font-semibold transition-colors"
-              style={{ color: 'var(--color-accent)' }}
-            >
-              {t('cta.downloadApp') || "Télécharger l'application"}
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <AppStoreButton />
+              <PlayStoreButton />
+            </div>
           </div>
 
           {/* Right: screenshots */}
