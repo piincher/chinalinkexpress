@@ -181,6 +181,7 @@ export default async function FAQPage({ params }: Props) {
   setRequestLocale(locale);
 
   const isEn = locale === 'en';
+  const pageFaqs = isEn ? faqsEn : faqsFr;
 
   const breadcrumbItems = [
     { label: isEn ? 'Home' : 'Accueil', href: `/${locale}/` },
