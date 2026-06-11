@@ -4,6 +4,7 @@ import { Locale } from '@/i18n/config';
 import { generatePageMetadata } from '@/config/seo-advanced';
 import { RouteStructuredData } from '@/components/seo';
 import { RoutePage } from '@/features/routes/RoutePage';
+import { getRouteSeo } from '@/features/routes/route-seo';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -11,10 +12,11 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const seo = getRouteSeo('china-to-cote-divoire', locale as Locale);
   return generatePageMetadata({
-    title: 'Expédition Chine Côte d’Ivoire | Fret vers Abidjan',
-    description: 'Fret aérien et maritime de la Chine vers la Côte d’Ivoire. Routes vers Abidjan, sourcing, paiement fournisseur, consolidation et devis.',
-    keywords: 'fret Chine Côte d’Ivoire, expédition Chine Abidjan, transitaire Chine Côte d’Ivoire, cargo Chine Abidjan',
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     path: '/routes/china-to-cote-divoire',
     locale: locale as Locale,
   });
@@ -23,11 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ChinaToCoteDIvoireRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const seo = getRouteSeo('china-to-cote-divoire', locale as Locale);
 
   const breadcrumbs = [
-    { name: 'Accueil', url: `/${locale}/` },
+    { name: locale === 'en' ? 'Home' : 'Accueil', url: `/${locale}/` },
     { name: 'Routes', url: `/${locale}/routes/china-to-cote-divoire` },
-    { name: 'Chine vers Côte d’Ivoire', url: `/${locale}/routes/china-to-cote-divoire` },
+    { name: seo.breadcrumb, url: `/${locale}/routes/china-to-cote-divoire` },
   ];
 
   return (
@@ -38,7 +41,7 @@ export default async function ChinaToCoteDIvoireRoute({ params }: Props) {
         locale={locale as Locale}
         breadcrumbs={breadcrumbs}
       />
-      <RoutePage locale={locale} routeKey="china-to-cote-divoire" country="Côte d’Ivoire" capital="Abidjan" />
+      <RoutePage locale={locale} routeKey="china-to-cote-divoire" country={seo.country} capital={seo.capital} />
     </>
   );
 }

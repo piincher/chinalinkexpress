@@ -8,36 +8,14 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { SECTION_IDS } from '../constants';
 import type { Testimonial } from '@/types';
+import { SECTION_IDS } from '../constants';
 
-// Testimonials data
-const TESTIMONIALS: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Amadou Diallo',
-    company: 'Diallo Electronics, Bamako',
-    text: 'ChinaLink Express a transformé mon business. La livraison en 14 jours est réelle et le service client est exceptionnel.',
-    rating: 5,
-    image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/team-member-1.jpg',
-  },
-  {
-    id: '2',
-    name: 'Fatou Coulibaly',
-    company: 'Mode Africaine, Abidjan',
-    text: 'Je recommande vivement pour le fret maritime. Mes conteneurs arrivent toujours à temps et en parfait état.',
-    rating: 5,
-    image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/team-member-2.jpg',
-  },
-  {
-    id: '3',
-    name: 'Oumar Touré',
-    company: 'Touré Import-Export, Dakar',
-    text: 'Le service de sourcing est incroyable. Ils ont négocié des prix 20% plus bas que ce que j\'obtenais seul.',
-    rating: 5,
-    image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/team-member-3.jpg',
-  },
-];
+const TESTIMONIAL_IMAGES = [
+  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/tech.jpg',
+  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/retails.jpg',
+  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/auto%20part.jpg',
+] as const;
 
 // Simple star rating without animations
 function StarRating({ rating }: { rating: number }) {
@@ -142,6 +120,14 @@ function IndustryCard({
 
 export function TestimonialsSection() {
   const t = useTranslations();
+  const testimonials = (t.raw('testimonials.cards') as Omit<Testimonial, 'id' | 'rating' | 'image'>[]).map(
+    (testimonial, index) => ({
+      ...testimonial,
+      id: String(index + 1),
+      rating: 5,
+      image: TESTIMONIAL_IMAGES[index] || TESTIMONIAL_IMAGES[0],
+    })
+  );
 
   const industries = [
     { image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/retails.jpg', title: t('testimonials.industries.retail') },
@@ -170,7 +156,7 @@ export function TestimonialsSection() {
 
         {/* Testimonials Grid - Static, no rotation */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {TESTIMONIALS.map((testimonial) => (
+          {testimonials.map((testimonial) => (
             <TestimonialCard 
               key={testimonial.id} 
               testimonial={testimonial}

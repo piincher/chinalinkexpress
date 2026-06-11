@@ -3,111 +3,75 @@ import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { Locale } from '@/i18n/config';
 import { generatePageMetadata } from '@/config/seo-advanced';
+import { getBlogPosts } from '@/features/seo-content/blog-content';
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const posts = [
-  {
-    slug: 'comment-importer-chine-mali-2026',
-    title: 'Comment Importer de la Chine vers le Mali en 2026 (Guide Complet)',
-    excerpt: 'Guide étape par étape pour importer du Mali depuis la Chine. Documents, douanes, tarifs, délais. Tout ce qu\'il faut savoir.',
-    date: '2026-04-21',
-    readTime: '8 min',
-    category: 'Guide',
-  },
-  {
-    slug: 'cargo-chine-mali-guide-complet',
-    title: 'Cargo Chine Mali : Le Guide Complet du Fret Aérien et Maritime',
-    excerpt: 'Tout savoir sur le cargo Chine-Mali. Fret aérien vs maritime, tarifs, délais, douanes. Guide pratique avec devis gratuit.',
-    date: '2026-04-18',
-    readTime: '6 min',
-    category: 'Fret',
-  },
-  {
-    slug: 'acheter-alibaba-mali-sans-arnaque',
-    title: 'Comment Acheter sur Alibaba depuis le Mali Sans Se Faire Arnaquer',
-    excerpt: 'Guide étape par étape pour acheter sur Alibaba depuis le Mali. Vérification, paiement, expédition. Évitez les arnaques !',
-    date: '2026-04-15',
-    readTime: '7 min',
-    category: 'Sourcing',
-  },
-  {
-    slug: 'paiement-fournisseur-chine-guide',
-    title: 'Paiement Fournisseur Chinois : Alipay, Virement — Guide Mali',
-    excerpt: 'Comparez les méthodes de paiement fournisseur en Chine. Sécurité, frais, délais. Guide pour les importateurs au Mali.',
-    date: '2026-04-10',
-    readTime: '5 min',
-    category: 'Paiement',
-  },
-  {
-    slug: 'douane-mali-import-chine',
-    title: 'Douane Mali : Tout Ce Qu\'il Faut Savoir pour Importer de Chine',
-    excerpt: 'Documents requis, droits de douane, TVA, procédures DGD Mali. Guide complet pour un dédouanement sans encombre.',
-    date: '2026-04-05',
-    readTime: '6 min',
-    category: 'Douane',
-  },
-  {
-    slug: 'conteneur-chine-mali-prix-2026',
-    title: 'Conteneur Chine Mali : Prix, Délais et Démarches en 2026',
-    excerpt: 'FCL 20ft, FCL 40ft, LCL groupage. Tarifs indicatifs, délais, ports de départ et arrivée. Tout pour votre conteneur.',
-    date: '2026-04-01',
-    readTime: '5 min',
-    category: 'Fret',
-  },
-];
-
-const quickLinks = [
-  { href: '/fr/cargo-chine-mali', label: 'Cargo Chine-Mali' },
-  { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
-  { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
-  { href: '/fr/services/paiement-fournisseur-chine', label: 'Paiement fournisseur' },
-  { href: '/fr/calculateur', label: 'Calculateur de fret' },
-];
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const isEn = locale === 'en';
+
   return generatePageMetadata({
-    title: 'Blog Import Chine Mali | Guides & Conseils',
-    description:
-      'Retrouvez nos guides pratiques pour importer de la Chine vers le Mali. Fret, douanes, sourcing, paiement fournisseur et conseils d\'experts.',
-    keywords:
-      'blog import Chine Mali, guide import Chine, conseils importation Mali, fret Chine Mali, sourcing Chine, douane Mali',
+    title: isEn ? 'China-Africa Import Blog | Freight, Sourcing & Customs Guides' : 'Blog Import Chine Mali | Guides & Conseils',
+    description: isEn
+      ? 'Practical guides for importing from China to Mali and West Africa. Freight, customs, sourcing, supplier payment and expert logistics advice.'
+      : 'Retrouvez nos guides pratiques pour importer de la Chine vers le Mali. Fret, douanes, sourcing, paiement fournisseur et conseils d’experts.',
+    keywords: isEn
+      ? 'China Africa import blog, import from China to Mali, China freight guide, sourcing China Africa, Mali customs guide'
+      : 'blog import Chine Mali, guide import Chine, conseils importation Mali, fret Chine Mali, sourcing Chine, douane Mali',
     path: '/blog',
     locale: locale as Locale,
+    supportedLocales: ['fr', 'en'],
     ogType: 'website',
   });
 }
 
 export default async function BlogIndexPage({ params }: Props) {
   const { locale } = await params;
+  const isEn = locale === 'en';
   setRequestLocale(locale);
+
+  const posts = getBlogPosts(locale as Locale);
+  const quickLinks = isEn
+    ? [
+        { href: '/en/cargo-chine-mali', label: 'China to Mali cargo' },
+        { href: '/en/routes/china-to-africa', label: 'China to Africa routes' },
+        { href: '/en/services/sourcing', label: 'China sourcing agent' },
+        { href: '/en/services/paiement-fournisseur-chine', label: 'Supplier payment' },
+        { href: '/en/calculateur', label: 'Freight calculator' },
+      ]
+    : [
+        { href: '/fr/cargo-chine-mali', label: 'Cargo Chine-Mali' },
+        { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
+        { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
+        { href: '/fr/services/paiement-fournisseur-chine', label: 'Paiement fournisseur' },
+        { href: '/fr/calculateur', label: 'Calculateur de fret' },
+      ];
 
   return (
     <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
-      {/* Hero */}
       <section className="bg-slate-950 pt-28 pb-16 text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-200">
-            Blog ChinaLink Express
+            {isEn ? 'ChinaLink Express Blog' : 'Blog ChinaLink Express'}
           </p>
           <h1 className="text-4xl font-black leading-tight md:text-6xl">
-            Blog Import Chine Mali — Guides & Conseils
+            {isEn ? 'China-Africa Import Guides' : 'Blog Import Chine Mali — Guides & Conseils'}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200 md:text-xl">
-            Tous nos conseils pour importer de la Chine vers le Mali en toute sécurité.
-            Fret, douanes, sourcing, paiement et logistique expliqués simplement.
+            {isEn
+              ? 'Practical advice for importing from China to Mali and West Africa: freight, customs, sourcing, supplier payment and logistics explained clearly.'
+              : 'Tous nos conseils pour importer de la Chine vers le Mali en toute sécurité. Fret, douanes, sourcing, paiement et logistique expliqués simplement.'}
           </p>
         </div>
       </section>
 
-      {/* Priority Links */}
       <section className="border-b border-slate-200 bg-slate-50 py-8 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-            Pages utiles pour importer de Chine au Mali
+            {isEn ? 'Useful pages for importing from China to Africa' : 'Pages utiles pour importer de Chine au Mali'}
           </h2>
           <div className="mt-4 flex flex-wrap gap-3">
             {quickLinks.map((link) => (
@@ -123,7 +87,6 @@ export default async function BlogIndexPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Posts Grid */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
@@ -146,11 +109,11 @@ export default async function BlogIndexPage({ params }: Props) {
                 </Link>
               </h2>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                {post.excerpt}
+                {post.description}
               </p>
               <div className="mt-6">
                 <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                  Lire l&apos;article →
+                  {isEn ? 'Read article' : 'Lire l’article'} →
                 </span>
               </div>
             </article>
@@ -162,7 +125,7 @@ export default async function BlogIndexPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }];
+  return [{ locale: 'fr' }, { locale: 'en' }];
 }
 
 export const dynamic = 'force-static';

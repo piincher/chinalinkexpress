@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { type Locale } from '@/i18n/config';
+import { useTranslations } from 'next-intl';
 import StructuredData from '@/app/components/StructuredData';
 import {
   HeroSection,
@@ -34,14 +35,8 @@ interface LandingPageProps {
 }
 
 function TrustMarquee() {
-  const items = [
-    'Fret Maritime',
-    'Fret Aérien',
-    'Sourcing',
-    'Paiement Fournisseur',
-    'Suivi 24/7',
-    'Livraison Porte à Porte',
-  ];
+  const t = useTranslations();
+  const items = t.raw('landing.marquee') as string[];
 
   return (
     <div
@@ -81,7 +76,7 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           <AppPreviewSection />
           <TrustFlowSection />
           <ComparisonSection />
-          <QuizSection />
+          <QuizSection locale={locale} />
           <VerifiedReviewsSection />
           <VideoTestimonialsSection />
           <TestimonialsSection />

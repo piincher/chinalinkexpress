@@ -10,6 +10,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { Play, Mic, Film } from 'lucide-react';
 import type { VideoTestimonial } from '../data/videoTestimonials';
 
@@ -19,6 +20,7 @@ interface VideoTestimonialCardProps {
 }
 
 export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonialCardProps) {
+  const t = useTranslations('videoTestimonials');
   const [isHovered, setIsHovered] = useState(false);
   const hasVideo = Boolean(testimonial.videoUrl);
 
@@ -61,7 +63,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
               transition={{ delay: 0.3 + index * 0.1 }}
             >
               <Film className="w-3 h-3" />
-              VIDÉO RÉELLE
+              {t('realVideoBadge', { defaultValue: 'REAL VIDEO' })}
             </motion.div>
           )}
 

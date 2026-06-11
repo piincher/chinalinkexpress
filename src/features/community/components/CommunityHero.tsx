@@ -9,6 +9,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import { Users, Activity, Globe, ShieldCheck, MessageCircle, Star, Phone } from 'lucide-react';
 import { communityStats } from '../data';
 
@@ -54,6 +55,12 @@ function FloatingBubble({
 }
 
 export function CommunityHero() {
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const whatsappLink = isEn
+    ? 'https://wa.me/22376696177?text=Hello%2C%20I%20want%20to%20join%20the%20ChinaLink%20community'
+    : WHATSAPP_LINK;
+
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
       {/* Animated background bubbles */}
@@ -93,22 +100,23 @@ export function CommunityHero() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 text-amber-300 rounded-full text-sm font-semibold mb-6 border border-amber-500/20"
           >
             <Users className="w-4 h-4" />
-            Communauté privée
+            {isEn ? 'Private community' : 'Communauté privée'}
           </motion.div>
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Rejoignez{' '}
+            {isEn ? 'Join' : 'Rejoignez'}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
               2,400+
             </span>{' '}
-            importateurs africains
+            {isEn ? 'African importers' : 'importateurs africains'}
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">
-            Échangez conseils, découvrez des fournisseurs vérifiés, recevez des alertes
-            arnaques et bénéficiez de la force de l&apos;achat groupé. Chaque jour sur WhatsApp.
+            {isEn
+              ? 'Exchange tips, discover verified suppliers, receive scam alerts and use the power of group buying. Every day on WhatsApp.'
+              : "Échangez conseils, découvrez des fournisseurs vérifiés, recevez des alertes arnaques et bénéficiez de la force de l'achat groupé. Chaque jour sur WhatsApp."}
           </p>
 
           {/* WhatsApp CTA */}
@@ -119,13 +127,13 @@ export function CommunityHero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
-              href={WHATSAPP_LINK}
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-emerald-500 text-white rounded-2xl font-bold text-lg hover:from-[#128C7E] hover:to-emerald-600 transition-all duration-300 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105"
             >
               <WhatsAppIcon className="w-6 h-6" />
-              Rejoindre sur WhatsApp
+              {isEn ? 'Join on WhatsApp' : 'Rejoindre sur WhatsApp'}
             </a>
 
             <a
@@ -145,9 +153,9 @@ export function CommunityHero() {
             className="mt-8 flex flex-wrap justify-center gap-3"
           >
             {[
-              { icon: ShieldCheck, text: 'Membres vérifiés' },
-              { icon: Star, text: 'Conseils quotidiens' },
-              { icon: MessageCircle, text: 'Alertes arnaques' },
+              { icon: ShieldCheck, text: isEn ? 'Verified members' : 'Membres vérifiés' },
+              { icon: Star, text: isEn ? 'Daily tips' : 'Conseils quotidiens' },
+              { icon: MessageCircle, text: isEn ? 'Scam alerts' : 'Alertes arnaques' },
             ].map((badge) => (
               <div
                 key={badge.text}
@@ -171,7 +179,7 @@ export function CommunityHero() {
                 <Users className="w-5 h-5 text-amber-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.memberCount.toLocaleString()}+</div>
-              <div className="text-xs text-slate-400">Membres</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Members' : 'Membres'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -179,7 +187,7 @@ export function CommunityHero() {
                 <Activity className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.activeTopics}</div>
-              <div className="text-xs text-slate-400">Sujets actifs</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Active topics' : 'Sujets actifs'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -187,7 +195,7 @@ export function CommunityHero() {
                 <MessageCircle className="w-5 h-5 text-blue-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.dailyMessages}+</div>
-              <div className="text-xs text-slate-400">Messages/jour</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Messages/day' : 'Messages/jour'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -195,7 +203,7 @@ export function CommunityHero() {
                 <Globe className="w-5 h-5 text-violet-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.countriesRepresented}</div>
-              <div className="text-xs text-slate-400">Pays représentés</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Countries represented' : 'Pays représentés'}</div>
             </div>
           </motion.div>
         </motion.div>

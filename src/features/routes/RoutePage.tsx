@@ -20,24 +20,31 @@ interface Props {
 
 export function RoutePage({ locale, routeKey, country, capital }: Props) {
   const isEn = locale === 'en';
-  const route = getRouteData(routeKey);
+  const route = getRouteData(routeKey, isEn ? 'en' : 'fr');
   
   if (!route) {
     return <div>Route not found</div>;
   }
 
-  const maliProof = [
-    isEn ? 'Bamako office support for importers' : 'Support bureau Bamako pour les importateurs',
+  const routeLabel = isEn ? `${route.origin.country} to ${route.destination.country}` : `${route.origin.country} vers ${route.destination.country}`;
+  const isMaliRoute = routeKey === 'china-to-mali';
+
+  const importProof = [
+    isEn
+      ? 'Bamako office support anchors our West Africa network'
+      : 'Le bureau de Bamako ancre notre réseau Afrique de l’Ouest',
     isEn ? 'China-side supplier payment and consolidation' : 'Paiement fournisseur et consolidation côté Chine',
     isEn ? 'WhatsApp updates with shipment milestones' : 'Suivi WhatsApp aux étapes clés',
-    isEn ? 'Air and sea options based on margin and urgency' : 'Aérien ou maritime selon marge et urgence',
+    isEn ? 'Air and sea options based on destination, margin, and urgency' : 'Aérien ou maritime selon destination, marge et urgence',
   ];
 
   const customsPoints = [
     isEn ? 'Commercial invoice with clear product description' : 'Facture commerciale avec description produit claire',
     isEn ? 'Packing list with carton count, weight, and volume' : 'Packing list avec nombre de colis, poids et volume',
     isEn ? 'Validation of restricted products before departure' : 'Validation des produits sensibles avant départ',
-    isEn ? 'Recipient details for Bamako delivery or pickup' : 'Coordonnées de réception pour livraison ou retrait à Bamako',
+    isEn
+      ? `Recipient details for ${route.destination.city} delivery or pickup`
+      : `Coordonnées de réception pour livraison ou retrait à ${route.destination.city}`,
   ];
 
   return (
@@ -222,16 +229,22 @@ export function RoutePage({ locale, routeKey, country, capital }: Props) {
               <div className="flex items-center gap-3 mb-5">
                 <ShieldCheck className="w-7 h-7 text-blue-600" />
                 <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">
-                  {isEn ? 'Complete China to Mali Import Support' : 'Support complet pour importer de Chine au Mali'}
+                  {isEn
+                    ? isMaliRoute
+                      ? 'Complete China to Mali Import Support'
+                      : `Complete ${routeLabel} Import Support`
+                    : isMaliRoute
+                      ? 'Support complet pour importer de Chine au Mali'
+                      : `Support complet ${routeLabel}`}
                 </h2>
               </div>
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
                 {isEn
-                  ? 'ChinaLink Express is not only a freight contact. We help Mali importers source products, verify suppliers, pay in China, inspect goods, consolidate parcels, and choose the right freight mode to Bamako.'
-                  : 'ChinaLink Express n’est pas seulement un contact transport. Nous aidons les importateurs maliens à sourcer les produits, vérifier les fournisseurs, payer en Chine, contrôler la marchandise, consolider les colis et choisir le bon mode de fret vers Bamako.'}
+                  ? 'ChinaLink Express is not only a freight contact. We help African importers source products, verify suppliers, pay in China, inspect goods, consolidate parcels, and choose the right freight mode, with Mali as our strongest operating hub.'
+                  : 'ChinaLink Express n’est pas seulement un contact transport. Nous aidons les importateurs africains à sourcer les produits, vérifier les fournisseurs, payer en Chine, contrôler la marchandise, consolider les colis et choisir le bon mode de fret, avec le Mali comme hub opérationnel principal.'}
               </p>
               <ul className="grid gap-3">
-                {maliProof.map((item) => (
+                {importProof.map((item) => (
                   <li key={item} className="rounded-xl bg-[var(--surface)] border border-[var(--border)] px-4 py-3 text-[var(--text-secondary)]">
                     {item}
                   </li>
@@ -243,7 +256,7 @@ export function RoutePage({ locale, routeKey, country, capital }: Props) {
               <div className="flex items-center gap-3 mb-5">
                 <FileText className="w-7 h-7 text-cyan-600" />
                 <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">
-                  {isEn ? 'Documents and Customs Preparation' : 'Documents et préparation douane Mali'}
+                  {isEn ? 'Documents and Customs Preparation' : 'Documents et préparation douane'}
                 </h2>
               </div>
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
@@ -259,10 +272,10 @@ export function RoutePage({ locale, routeKey, country, capital }: Props) {
                 ))}
               </ul>
               <Link
-                href="/fr/guides/douane-mali-import-chine"
+                href={`/${locale}/guides/douane-mali-import-chine`}
                 className="mt-6 inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium"
               >
-                {isEn ? 'Read customs guide' : 'Lire le guide douane Mali'}
+                {isEn ? 'Read customs guide' : 'Lire le guide douane'}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>

@@ -11,7 +11,7 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const faqs = [
+const faqsFr = [
   {
     question: 'Combien de temps prend une expédition de Chine vers le Mali ?',
     answer: 'Le fret aérien prend généralement 14 à 21 jours vers Bamako. Le fret maritime prend généralement 60 à 75 jours via un port d\u2019Afrique de l\u2019Ouest puis transport terrestre.',
@@ -86,9 +86,85 @@ const faqs = [
   },
 ];
 
+const faqsEn = [
+  {
+    question: 'How long does shipping from China to Mali take?',
+    answer: 'Air freight usually takes 14 to 21 days to Bamako. Sea freight usually takes 60 to 75 days through a West African port followed by inland transport.',
+  },
+  {
+    question: 'Can ChinaLink buy from a Chinese supplier for me?',
+    answer: 'Yes. We can manage sourcing, purchasing, negotiation, supplier payment, verification and consolidation before shipping.',
+  },
+  {
+    question: 'How can I pay a Chinese supplier from Africa?',
+    answer: 'You can use ChinaLink to facilitate payment through China-side channels, depending on the supplier and the verification level required.',
+  },
+  {
+    question: 'Which products are prohibited or sensitive?',
+    answer: 'Batteries, liquids, dangerous goods, drones, weapons, flammable products and some regulated goods need validation before shipping or may be prohibited by mode.',
+  },
+  {
+    question: 'Is customs coordination in Mali included?',
+    answer: 'Standard customs coordination is included in current offers, but some products may require additional documents, fees or procedures.',
+  },
+  {
+    question: 'Can I track my parcels?',
+    answer: 'Yes. ChinaLink shares key milestones and can provide WhatsApp updates, photos and tracking information depending on the selected service.',
+  },
+  {
+    question: 'What is the China to Mali cargo timeline?',
+    answer: 'Air freight takes 14 to 21 days from China to Bamako. Sea freight takes 60 to 75 days through West African ports. Exact timing depends on mode, season and customs procedures.',
+  },
+  {
+    question: 'How much does a container from China to Mali cost?',
+    answer: 'A 20ft container often ranges from 2,000 to 3,500 USD, and a 40ft from 3,500 to 5,500 USD depending on season, departure port and destination charges. Contact us for a precise quote.',
+  },
+  {
+    question: 'How do I buy on Alibaba from Mali or West Africa?',
+    answer: 'Create an Alibaba account, choose your products, then contact ChinaLink for supplier verification, secure payment and shipping coordination. We can manage the full chain for you.',
+  },
+  {
+    question: 'Which documents are needed for importing to Mali?',
+    answer: 'You usually need a commercial invoice, bill of lading, certificate of origin, customs declaration and sometimes a certificate of conformity. Our team helps prepare the documents.',
+  },
+  {
+    question: 'Can I track my cargo in real time?',
+    answer: 'Yes. We provide tracking references where available and WhatsApp updates with photos at key stages such as warehouse receiving, packing, customs and delivery.',
+  },
+  {
+    question: 'Which products are prohibited for Mali imports?',
+    answer: 'Weapons, narcotics, counterfeit products, pornographic material and dangerous chemicals without authorization are prohibited. Contact us to verify your product category.',
+  },
+  {
+    question: 'What is the difference between FCL and LCL?',
+    answer: 'FCL means Full Container Load: you use the whole container. LCL means Less than Container Load: your goods share container space with other shipments. LCL is useful for smaller volumes.',
+  },
+  {
+    question: 'Do you deliver to homes or businesses in Bamako?',
+    answer: 'Yes, we offer door-to-door support in Bamako and other Malian cities depending on the final destination and transport mode.',
+  },
+  {
+    question: 'How do I avoid Alibaba scams?',
+    answer: 'Verify supplier identity, request real proof, avoid prices that look too low, use traceable payment and involve ChinaLink for supplier verification and secure payment support.',
+  },
+  {
+    question: 'Can you pay my Chinese supplier?',
+    answer: 'Yes. We can facilitate payment to Chinese suppliers through Alipay or bank transfer, with proof of payment and order follow-up.',
+  },
+  {
+    question: 'Do you ship to other African countries?',
+    answer: 'Yes. We support routes to Senegal, Ivory Coast, Burkina Faso, Nigeria, Ghana, Niger, Benin, Togo and other African destinations, with Mali as our strongest hub.',
+  },
+  {
+    question: 'Do you inspect product quality in China?',
+    answer: 'Yes. We inspect products before shipping and send photos so importers can avoid surprises before goods leave China.',
+  },
+];
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const pageFaqs = isEn ? faqsEn : faqsFr;
   const seo = isEn ? PAGE_SEO.faq.en : PAGE_SEO.faq.fr;
 
   return generatePageMetadata({
@@ -113,22 +189,26 @@ export default async function FAQPage({ params }: Props) {
 
   return (
     <>
-      <StructuredData schemas={[generateFAQPageSchema(faqs, locale as Locale)]} />
+      <StructuredData schemas={[generateFAQPageSchema(pageFaqs, locale as Locale)]} />
       <main className="min-h-screen bg-white pt-28 text-slate-950 dark:bg-slate-950 dark:text-white">
         <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-6">
             <Breadcrumb items={breadcrumbItems} locale={locale as Locale} />
           </div>
           <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-600">
-            FAQ Chine-Mali
+            {isEn ? 'China to Africa FAQ' : 'FAQ Chine-Mali'}
           </p>
-          <h1 className="text-4xl font-black md:text-6xl">Questions Fréquentes — Cargo Chine Mali</h1>
+          <h1 className="text-4xl font-black md:text-6xl">
+            {isEn ? 'Frequently Asked Questions — China to Africa Cargo' : 'Questions Fréquentes — Cargo Chine Mali'}
+          </h1>
           <p className="mt-6 text-lg leading-8 text-slate-700 dark:text-slate-300">
-            Les réponses essentielles avant de sourcer, payer un fournisseur ou expédier vos marchandises de Chine vers Bamako. Tout sur le cargo Chine Mali.
+            {isEn
+              ? 'Essential answers before sourcing, paying suppliers or shipping goods from China to Mali, West Africa and beyond.'
+              : 'Les réponses essentielles avant de sourcer, payer un fournisseur ou expédier vos marchandises de Chine vers Bamako. Tout sur le cargo Chine Mali.'}
           </p>
 
           <div className="mt-10 space-y-4">
-            {faqs.map((faq) => (
+            {pageFaqs.map((faq) => (
               <section key={faq.question} className="rounded-lg border border-slate-200 p-6 dark:border-slate-800">
                 <h2 className="text-xl font-bold">{faq.question}</h2>
                 <p className="mt-3 leading-7 text-slate-700 dark:text-slate-300">{faq.answer}</p>
@@ -137,8 +217,12 @@ export default async function FAQPage({ params }: Props) {
           </div>
 
           <div className="mt-10 rounded-lg bg-blue-600 p-6 text-white">
-            <h2 className="text-2xl font-bold">Vous avez un cas précis ?</h2>
-            <p className="mt-2 text-blue-50">Envoyez vos liens fournisseur, poids, volume et destination à notre équipe.</p>
+            <h2 className="text-2xl font-bold">{isEn ? 'Have a specific case?' : 'Vous avez un cas précis ?'}</h2>
+            <p className="mt-2 text-blue-50">
+              {isEn
+                ? 'Send your supplier links, weight, volume and destination to our team.'
+                : 'Envoyez vos liens fournisseur, poids, volume et destination à notre équipe.'}
+            </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
                 href="https://wa.me/8618851725957"
@@ -146,10 +230,10 @@ export default async function FAQPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="rounded-lg bg-white px-5 py-3 text-center font-bold text-blue-700"
               >
-                WhatsApp Chine
+                {isEn ? 'WhatsApp China team' : 'WhatsApp Chine'}
               </a>
               <Link href={`/${locale}/calculateur`} className="rounded-lg border border-white/30 px-5 py-3 text-center font-bold">
-                Calculer un fret
+                {isEn ? 'Calculate freight' : 'Calculer un fret'}
               </Link>
             </div>
           </div>

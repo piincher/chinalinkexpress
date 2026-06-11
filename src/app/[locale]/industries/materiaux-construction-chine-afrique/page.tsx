@@ -241,6 +241,7 @@ export default async function ConstructionPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
+        locale={isEn ? 'en' : 'fr'}
         badge={page.badge}
         title={page.title}
         intro={page.intro}

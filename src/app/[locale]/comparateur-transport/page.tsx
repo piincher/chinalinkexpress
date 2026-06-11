@@ -36,7 +36,7 @@ export async function generateMetadata({
       ? 'Compare shipping costs from China to West Africa. ChinaLink Sea ($3-5/kg, 60-75 days) vs Air ($8-15/kg, 14-21 days) vs DHL ($25-45/kg). See how much you save. Instant comparison for Mali, Senegal, Ivory Coast, Ghana, Nigeria.'
       : 'Comparez les coûts d\'expédition de la Chine vers l\'Afrique de l\'Ouest. ChinaLink Maritime (3-5$/kg, 60-75 jours) vs Aérien (8-15$/kg, 14-21 jours) vs DHL (25-45$/kg). Découvrez vos économies. Comparaison instantanée.',
     keywords: isEn
-      ? 'shipping cost comparison china africa, compare freight rates china to africa, DHL vs freight forwarder china, cheap shipping china west africa, air freight vs sea freight cost, cargo rates china mali, transitaire chine afrique prix, compare DHL Aramex ChinaLink, shipping calculator china africa, freight quote comparison'
+      ? 'shipping cost comparison china africa, compare freight rates china to africa, DHL vs freight forwarder china, cheap shipping china west africa, air freight vs sea freight cost, cargo rates china mali, compare DHL Aramex ChinaLink, shipping calculator china africa, freight quote comparison, west africa freight quote'
       : 'comparer fret chine afrique, comparateur transport chine afrique, dhl vs transitaire chine, fret aerien vs maritime cout, tarifs cargo chine mali, comparateur prix expedition chine, chinalink vs dhl prix, devis fret chine afrique, transport chine afrique pas cher, comparateur transitaire',
     path: '/comparateur-transport',
     locale: locale as Locale,

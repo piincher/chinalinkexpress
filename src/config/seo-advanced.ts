@@ -895,7 +895,7 @@ export function generatePageMetadata({
       ? (['fr'] as Locale[])
       : undefined);
   
-  const defaultOgImage = 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg';
+  const defaultOgImage = 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg';
   
   return {
     title,

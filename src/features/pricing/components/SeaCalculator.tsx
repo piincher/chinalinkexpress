@@ -11,7 +11,7 @@
 
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Ruler, Weight, Info, AlertCircle, ArrowRight, Ship, MessageCircle, TrendingDown, ShieldCheck, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePricingStore } from '../store/usePricingStore';
@@ -21,6 +21,18 @@ import { Input } from '@/components/common/form/FormField';
 
 export function SeaCalculator() {
   const t = useTranslations('pricing');
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const formatDuration = (value: string) =>
+    isEn
+      ? value
+          .replace(/jours/g, 'days')
+          .replace(/dédouanement inclus/g, 'customs coordination included')
+      : value;
+  const averageUnit = isEn ? 'days' : 'j';
+  const seaStandardItems = isEn
+    ? ['Furniture', 'Appliances', 'Construction materials', 'Bulk goods', 'Large-volume cargo']
+    : SEA_STANDARD_ITEMS;
   const {
     seaState,
     setSeaField,
@@ -92,7 +104,7 @@ export function SeaCalculator() {
             {t('seaCalculator.dimensions')}
             <span className="text-red-500">*</span>
             <span className="text-xs text-amber-600 dark:text-amber-400 font-normal ml-auto bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full">
-              {t('seaCalculator.unitMeters', { defaultValue: 'en mètres' })}
+              {t('seaCalculator.unitMeters', { defaultValue: isEn ? 'in meters' : 'en mètres' })}
             </span>
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -113,7 +125,7 @@ export function SeaCalculator() {
             ))}
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            {t('seaCalculator.dimensionsHint', { defaultValue: 'Ex: 1.2m × 0.8m × 0.9m = 0.86 CBM' })}
+            {t('seaCalculator.dimensionsHint', { defaultValue: 'Ex: 1.2m x 0.8m x 0.9m = 0.86 CBM' })}
           </p>
         </div>
 
@@ -150,7 +162,7 @@ export function SeaCalculator() {
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {SEA_STANDARD_ITEMS.map((item) => (
+            {seaStandardItems.map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200"
@@ -190,10 +202,10 @@ export function SeaCalculator() {
               </p>
               <div className="mt-2 flex items-center gap-3 text-xs text-emerald-600 dark:text-emerald-500">
                 <span>
-                  {t('deliveryPerformance.quoted')}: {seaPerf.quoted}
+                  {t('deliveryPerformance.quoted')}: {formatDuration(seaPerf.quoted)}
                 </span>
                 <span className="font-medium">
-                  {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage}j
+                  {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage} {averageUnit}
                 </span>
               </div>
             </div>
@@ -214,8 +226,8 @@ export function SeaCalculator() {
                 })}
               </p>
               <ul className="text-xs text-amber-600 dark:text-amber-500 mt-2 space-y-1">
-                <li>• {t('seaCalculator.densityInfo.standardRule', { defaultValue: 'Règle standard 1:200 (densité ≤ 200)' })}</li>
-                <li>• {t('seaCalculator.densityInfo.coscoRule', { defaultValue: 'Règle COSCO/MAERSK 1:250 (densité > 250)' })}</li>
+                <li>• {t('seaCalculator.densityInfo.standardRule', { defaultValue: isEn ? 'Standard 1:200 rule (density <= 200)' : 'Règle standard 1:200 (densité ≤ 200)' })}</li>
+                <li>• {t('seaCalculator.densityInfo.coscoRule', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule (density > 250)' : 'Règle COSCO/MAERSK 1:250 (densité > 250)' })}</li>
               </ul>
             </div>
           </div>
@@ -272,7 +284,7 @@ export function SeaCalculator() {
                   {formatPriceFCFA(seaResult.totalPrice)}
                 </div>
                 <div className="text-white/80 text-sm mt-2">
-                  {t('result.deliveryTime')}: {seaResult.deliveryTime}
+                  {t('result.deliveryTime')}: {formatDuration(seaResult.deliveryTime)}
                 </div>
               </div>
 
@@ -289,7 +301,7 @@ export function SeaCalculator() {
                     {t('deliveryPerformance.earlyDelivery')}
                   </span>
                   <span className="text-xs text-white/70 ml-auto">
-                    {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage}j
+                    {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage} {averageUnit}
                   </span>
                 </div>
               </motion.div>
@@ -314,7 +326,7 @@ export function SeaCalculator() {
                       <span>{t('result.densityAdjustment')}</span>
                     </div>
                     <div className="text-xs text-white/70 pl-6">
-                      {t('result.densityRuleApplied', { defaultValue: 'Règle COSCO/MAERSK 1:250 appliquée' })}
+                      {t('result.densityRuleApplied', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule applied' : 'Règle COSCO/MAERSK 1:250 appliquée' })}
                     </div>
                   </>
                 )}
@@ -379,10 +391,14 @@ export function SeaCalculator() {
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  {t('result.contactWhatsApp', { defaultValue: 'Demander un devis sur WhatsApp' })}
+                  {t('result.contactWhatsApp', {
+                    defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                  })}
                 </a>
                 <p className="text-center text-xs text-white/80 mt-2 italic">
-                  {t('result.estimateDisclaimer', { defaultValue: 'Ces prix sont des estimations uniquement' })}
+                  {t('result.estimateDisclaimer', {
+                    defaultValue: isEn ? 'These prices are estimates only' : 'Ces prix sont des estimations uniquement',
+                  })}
                 </p>
               </motion.div>
             </motion.div>

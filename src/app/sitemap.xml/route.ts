@@ -60,18 +60,18 @@ const SERVICE_PAGES: PageConfig[] = [
   { path: 'services/achat-alibaba-mali', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
 ];
 
-const FR_LANDING_PAGES = [
-  { path: 'cargo-chine-mali', priority: 1.0, changeFrequency: 'weekly' as const },
-  { path: 'blog', priority: 0.8, changeFrequency: 'weekly' as const },
+const LANDING_PAGES: PageConfig[] = [
+  { path: 'cargo-chine-mali', priority: 1.0, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'blog', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
 ];
 
-const BLOG_POSTS = [
-  { path: 'blog/comment-importer-chine-mali-2026', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/cargo-chine-mali-guide-complet', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/acheter-alibaba-mali-sans-arnaque', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/paiement-fournisseur-chine-guide', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/conteneur-chine-mali-prix-2026', priority: 0.8, changeFrequency: 'monthly' as const },
+const BLOG_POSTS: PageConfig[] = [
+  { path: 'blog/comment-importer-chine-mali-2026', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/cargo-chine-mali-guide-complet', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/acheter-alibaba-mali-sans-arnaque', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/paiement-fournisseur-chine-guide', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/conteneur-chine-mali-prix-2026', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
 ];
 
 const ROUTE_PAGES = [
@@ -93,10 +93,10 @@ const GUIDE_PAGES = [
   { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/acheter-sur-1688-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/fret-aerien-vs-maritime-chine-mali', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
 ];
 
 const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
+  { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
   { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
 ];
 
@@ -238,29 +238,29 @@ export async function GET() {
     });
   });
 
-  FR_LANDING_PAGES.forEach((page) => {
-    entries.push({
-      url: `${BASE_URL}/fr/${page.path}`,
-      lastModified: currentDate,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      alternates: {
-        'fr-FR': `${BASE_URL}/fr/${page.path}`,
-        'x-default': `${BASE_URL}/fr/${page.path}`,
-      },
+  LANDING_PAGES.forEach((page) => {
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
     });
   });
 
   BLOG_POSTS.forEach((page) => {
-    entries.push({
-      url: `${BASE_URL}/fr/${page.path}`,
-      lastModified: currentDate,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      alternates: {
-        'fr-FR': `${BASE_URL}/fr/${page.path}`,
-        'x-default': `${BASE_URL}/fr/${page.path}`,
-      },
+    const locales = page.locales || i18nConfig.locales;
+    locales.forEach((locale) => {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${page.path}`,
+        lastModified: currentDate,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: generateAlternates(page.path, locales),
+      });
     });
   });
 

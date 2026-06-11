@@ -9,7 +9,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Video,
@@ -24,10 +24,12 @@ import {
 } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { VideoTestimonialCard } from './VideoTestimonialCard';
-import { VIDEO_TESTIMONIALS, REAL_VIDEO_COUNT } from '../data/videoTestimonials';
+import { EN_VIDEO_TESTIMONIALS, VIDEO_TESTIMONIALS, REAL_VIDEO_COUNT } from '../data/videoTestimonials';
 
 export function VideoTestimonialsSection() {
   const t = useTranslations('videoTestimonials');
+  const locale = useLocale();
+  const testimonials = locale === 'en' ? EN_VIDEO_TESTIMONIALS : VIDEO_TESTIMONIALS;
   const { ref, isActive } = useAnimationActivation({
     threshold: 0.1,
     delay: 100,
@@ -37,7 +39,7 @@ export function VideoTestimonialsSection() {
     'loading' | 'playing' | 'error'
   >('loading');
 
-  const selectedTestimonial = VIDEO_TESTIMONIALS.find(
+  const selectedTestimonial = testimonials.find(
     (v) => v.id === selectedVideo
   );
   const hasRealVideo = Boolean(selectedTestimonial?.videoUrl);
@@ -157,7 +159,7 @@ export function VideoTestimonialsSection() {
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
-            {VIDEO_TESTIMONIALS.map((testimonial, i) => (
+            {testimonials.map((testimonial, i) => (
               <button
                 key={testimonial.id}
                 onClick={() => handleOpen(testimonial.id)}

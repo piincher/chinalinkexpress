@@ -156,7 +156,7 @@ export function Footer() {
           <AnimatedSection animation="fadeUp" delay={0.3}>
             <h4 className="font-bold mb-6 text-lg border-b border-gray-700 dark:border-gray-600 pb-2">{t('footer.newsletter')}</h4>
             <p className="text-gray-400 mb-4">
-              Restez informé de nos dernières offres et actualités.
+              {t('footer.newsletterDescription')}
             </p>
             
             <motion.div 

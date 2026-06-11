@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts",
+    "qa:seo-images": "node scripts/seo-image-locale-qa.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.1",

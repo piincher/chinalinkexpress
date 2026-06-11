@@ -235,6 +235,7 @@ export default async function TextilesPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
+        locale={isEn ? 'en' : 'fr'}
         badge={page.badge}
         title={page.title}
         intro={page.intro}

@@ -41,6 +41,9 @@ const TOOL_LINKS = [
 ] as const;
 
 export function SharedNavbar({ locale }: SharedNavbarProps) {
+  if (typeof window !== 'undefined') {
+    (window as any).__SHARED_NAVBAR_LOCALE__ = locale;
+  }
   const t = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,8 +77,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
   };
 
   const getNavHref = (link: (typeof NAV_LINKS)[number]) => {
-    const linkLocale = link.key === 'blog' ? 'fr' : locale;
-    return `/${linkLocale}${link.href}`;
+    return `/${locale}${link.href}`;
   };
 
   const getToolHref = (href: string) => {
@@ -107,6 +109,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                 src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png"
                 alt="ChinaLink Express"
                 fill
+                sizes="(min-width: 768px) 48px, 40px"
                 className="object-contain rounded-lg"
                 priority
               />
@@ -279,7 +282,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                 })}
 
                 <div className="flex items-center justify-between px-4 pt-2">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">Langue</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">{t('common.language')}</span>
                   <LanguageSelector locale={locale} variant="default" />
                 </div>
 

@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function TermsPage() {
-  return <TermsContent />;
+export default async function TermsPage({ params }: Props) {
+  const { locale } = await params;
+  return <TermsContent locale={locale} />;
 }

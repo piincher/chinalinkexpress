@@ -226,13 +226,21 @@ export default async function AlibabaVs1688Page({ params }: Props) {
   const isEn = locale === 'en';
   const page = isEn ? content.en : content.fr;
 
-  const howToSteps = [
-    { name: 'Définir votre besoin', text: 'Identifiez le produit, la quantité et votre budget avant de choisir une plateforme.' },
-    { name: 'Comparer les deux plateformes', text: 'Recherchez le même produit sur Alibaba et 1688 pour comparer prix et conditions.' },
-    { name: 'Vérifier le fournisseur', text: 'Audit de la licence, historique et avis clients avant tout paiement.' },
-    { name: 'Choisir le mode de paiement', text: 'Alipay pour 1688, Trade Assurance pour Alibaba, ou agent local pour sécuriser.' },
-    { name: 'Inspecter et expédier', text: 'Contrôle qualité sur place, consolidation et fret vers l\'Afrique.' },
-  ];
+  const howToSteps = isEn
+    ? [
+        { name: 'Define your need', text: 'Identify the product, quantity and budget before choosing a platform.' },
+        { name: 'Compare both platforms', text: 'Search the same product on Alibaba and 1688 to compare pricing and conditions.' },
+        { name: 'Verify the supplier', text: 'Check license, history and customer signals before any payment.' },
+        { name: 'Choose the payment method', text: 'Use Trade Assurance, China-side payment support or a local agent depending on the platform.' },
+        { name: 'Inspect and ship', text: 'Quality control, consolidation and freight to your African destination.' },
+      ]
+    : [
+        { name: 'Définir votre besoin', text: 'Identifiez le produit, la quantité et votre budget avant de choisir une plateforme.' },
+        { name: 'Comparer les deux plateformes', text: 'Recherchez le même produit sur Alibaba et 1688 pour comparer prix et conditions.' },
+        { name: 'Vérifier le fournisseur', text: 'Audit de la licence, historique et avis clients avant tout paiement.' },
+        { name: 'Choisir le mode de paiement', text: 'Alipay pour 1688, Trade Assurance pour Alibaba, ou agent local pour sécuriser.' },
+        { name: 'Inspecter et expédier', text: 'Contrôle qualité sur place, consolidation et fret vers l\'Afrique.' },
+      ];
 
   const schemas = [
     generateOrganizationSchema(),
@@ -254,6 +262,7 @@ export default async function AlibabaVs1688Page({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
+        locale={isEn ? 'en' : 'fr'}
         badge={page.badge}
         title={page.title}
         intro={page.intro}

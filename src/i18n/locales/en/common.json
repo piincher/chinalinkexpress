@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "ChinaLink Express | China-Africa Sourcing & Shipping",
-    "description": "ChinaLink Express - Your trusted logistics partner for sourcing, purchasing and shipping goods from China to Mali. Free quote.",
-    "keywords": "China Africa sourcing, China Mali shipping, freight forwarding China Africa, air freight China Bamako, international logistics"
+    "description": "ChinaLink Express - Your China-Africa logistics partner for sourcing, purchasing and shipping goods to Mali and West Africa. Free quote.",
+    "keywords": "China Africa sourcing, China Mali shipping, freight forwarding China Africa, air freight China Bamako, shipping China West Africa, international logistics"
   },
   "navigation": {
     "home": "Home",
@@ -33,9 +33,9 @@
   },
   "hero": {
     "title": "ChinaLink Express - Your Logistics Partner",
-    "headline": "Sourcing and shipping from China to Mali",
-    "subheadline": "Import to Bamako with one partner handling every step.",
-    "subtitle": "From supplier sourcing in China to final delivery in Mali, we guide you every step of the way. Purchasing, quality control, secure payment, air freight, sea freight, and WhatsApp tracking: one partner for your entire supply chain.",
+    "headline": "Sourcing and shipping from China to Africa",
+    "subheadline": "Import to Mali and West Africa with one partner handling every step.",
+    "subtitle": "From supplier sourcing in China to final delivery in Mali, Senegal, Ivory Coast, Ghana, Nigeria and West Africa, we guide you every step of the way. Purchasing, quality control, secure payment, air freight, sea freight, and WhatsApp tracking: one partner for your China-Africa supply chain.",
     "typingTexts": [
       "Complete Logistics Solutions",
       "International Shipping",
@@ -72,6 +72,16 @@
       "payOnDelivery": "Pay on Delivery"
     }
   },
+  "landing": {
+    "marquee": [
+      "Sea Freight",
+      "Air Freight",
+      "Sourcing",
+      "Supplier Payment",
+      "24/7 Tracking",
+      "Door-to-Door Delivery"
+    ]
+  },
   "stats": {
     "sectionLabel": "Our Numbers",
     "title": "Results That Speak",
@@ -92,8 +102,18 @@
   "about": {
     "sectionLabel": "About Us",
     "title": "About ChinaLink Express",
-    "description1": "Founded in 2019, ChinaLink Express has become a major player in international logistics, specializing in trade between China and Mali. We offer complete solutions for purchasing, shipping and delivery of goods.",
-    "description2": "Our mission is to simplify international trade by offering complete purchasing, shipping and payment solutions, allowing our clients to focus on their core business."
+    "description1": "Founded in 2019, ChinaLink Express has become a China-Africa logistics partner for importers shipping to Mali and across West Africa. We offer complete solutions for purchasing, supplier payment, consolidation, freight and delivery.",
+    "description2": "Our mission is to simplify international trade by giving African businesses one reliable operating bridge in China, with Bamako as our strongest local hub and support point.",
+    "tags": [
+      "Reliable",
+      "Fast",
+      "Secure",
+      "Africa-first"
+    ],
+    "gallery": {
+      "warehouseLabel": "Our Warehouse",
+      "warehouseLocation": "Foshan Lishui, China"
+    }
   },
   "comparison": {
     "metadata": {
@@ -386,6 +406,23 @@
     "title": "What Our Clients Say",
     "ctaTitle": "Join Our Satisfied Clients",
     "ctaDescription": "Over 100 companies trust us for their logistics needs",
+    "cards": [
+      {
+        "name": "Amadou Diallo",
+        "company": "Diallo Electronics, Bamako",
+        "text": "ChinaLink Express changed how we import. The 14-21 day air route is real, and the support team keeps us updated."
+      },
+      {
+        "name": "Fatou Coulibaly",
+        "company": "Mode Africaine, Abidjan",
+        "text": "I recommend them for sea freight. My containers arrive with clear tracking and fewer surprises."
+      },
+      {
+        "name": "Oumar Toure",
+        "company": "Toure Import-Export, Dakar",
+        "text": "Their sourcing service is excellent. They negotiated better supplier pricing than I could get alone."
+      }
+    ],
     "testimonials": {
       "sectionLabel": "Testimonials"
     },
@@ -439,6 +476,20 @@
       }
     }
   },
+  "quizSection": {
+    "badge": "Free 2-minute readiness check",
+    "title": "Are you ready to import",
+    "titleAccent": "from China?",
+    "descriptionBefore": "Answer a few simple questions and receive",
+    "descriptionStrong": "personalized import advice",
+    "descriptionAfter": "on WhatsApp for your product, budget and destination.",
+    "benefits": ["Free assessment", "Personalized advice", "Expert guidance"],
+    "englishCtaTitle": "Talk to an import advisor",
+    "englishCtaText": "Send your product link, estimated quantity and destination. Our team will guide you before you pay a supplier.",
+    "englishCtaButton": "Start on WhatsApp",
+    "trustImporters": "500+ importers supported",
+    "trustResponse": "Reply in 10 min"
+  },
   "contact": {
     "sectionLabel": "Contact Us",
     "title": "Contact Us",
@@ -483,10 +534,11 @@
     }
   },
   "footer": {
-    "description": "Your trusted partner for international trade with China. Complete logistics solutions to grow your business.",
+    "description": "Your trusted partner for China-Africa trade. Complete sourcing, payment, freight and delivery solutions for Mali and West Africa.",
     "services": "Services",
     "links": "Useful Links",
     "newsletter": "Newsletter",
+    "newsletterDescription": "Stay informed about our latest freight offers, route updates and sourcing insights.",
     "newsletterPlaceholder": "Your email",
     "scanToFollow": "Scan to follow us on facebook",
     "copyright": "All rights reserved.",
@@ -1318,6 +1370,7 @@
     "next": "Next"
   },
   "videoTestimonials": {
+    "realVideoBadge": "REAL VIDEO",
     "headline": "They talk about us. For real.",
     "subheadline": "No actors. No scripts. African importers sharing their experience in their own language.",
     "badge": "Unpaid video testimonials",
@@ -1454,5 +1507,9 @@
     "unknownErrorTitle": "Unknown error",
     "unknownErrorDescription": "An error occurred. Please try again.",
     "home": "Home"
+  },
+  "appSection": {
+    "title": "Your freight, in your pocket",
+    "previewDescription": "Track your shipments in real time, receive notifications at every step, and contact your agent directly from the app."
   }
 }

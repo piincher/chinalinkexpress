@@ -22,6 +22,7 @@ interface SeoFaq {
 }
 
 interface SeoServicePageProps {
+  locale?: 'fr' | 'en';
   badge: string;
   title: string;
   intro: string;
@@ -48,6 +49,7 @@ const whatsappHref =
   'https://wa.me/8618851725957?text=Bonjour%20ChinaLink%2C%20je%20veux%20un%20devis%20pour%20importer%20de%20Chine%20au%20Mali.';
 
 export function SeoServicePage({
+  locale = 'fr',
   badge,
   title,
   intro,
@@ -57,18 +59,37 @@ export function SeoServicePage({
   table,
   faqs,
   links,
-  ctaLabel = 'Demander un devis sur WhatsApp',
-  routeCtaLabel = 'Voir le fret Chine-Mali',
-  routeCtaHref = '/fr/routes/china-to-mali',
-  comparisonTitle = 'Comparaison rapide',
-  processTitle = 'Notre processus',
-  faqTitle = 'Questions fréquentes',
-  usefulLinksTitle = 'Liens utiles',
-  asideTitle = "Besoin d'un avis avant de payer ?",
-  asideText = 'Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.',
-  asideCtaLabel = 'Contacter ChinaLink',
-  stepLabel = 'Etape',
+  ctaLabel,
+  routeCtaLabel,
+  routeCtaHref,
+  comparisonTitle,
+  processTitle,
+  faqTitle,
+  usefulLinksTitle,
+  asideTitle,
+  asideText,
+  asideCtaLabel,
+  stepLabel,
 }: SeoServicePageProps) {
+  const isEn = locale === 'en';
+  const labels = {
+    ctaLabel: ctaLabel ?? (isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp'),
+    routeCtaLabel: routeCtaLabel ?? (isEn ? 'See China to Africa routes' : 'Voir le fret Chine-Mali'),
+    routeCtaHref: routeCtaHref ?? (isEn ? '/en/routes/china-to-africa' : '/fr/routes/china-to-mali'),
+    comparisonTitle: comparisonTitle ?? (isEn ? 'Quick comparison' : 'Comparaison rapide'),
+    processTitle: processTitle ?? (isEn ? 'Our process' : 'Notre processus'),
+    faqTitle: faqTitle ?? (isEn ? 'Frequently asked questions' : 'Questions fréquentes'),
+    usefulLinksTitle: usefulLinksTitle ?? (isEn ? 'Useful links' : 'Liens utiles'),
+    asideTitle: asideTitle ?? (isEn ? 'Need advice before paying?' : "Besoin d'un avis avant de payer ?"),
+    asideText:
+      asideText ??
+      (isEn
+        ? 'Send the supplier link, quantities and destination. Our team will reply on WhatsApp.'
+        : 'Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.'),
+    asideCtaLabel: asideCtaLabel ?? (isEn ? 'Contact ChinaLink' : 'Contacter ChinaLink'),
+    stepLabel: stepLabel ?? (isEn ? 'Step' : 'Etape'),
+  };
+
   return (
     <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
       <section className="bg-slate-950 pt-28 pb-16 text-white">
@@ -89,13 +110,13 @@ export function SeoServicePage({
               rel="noopener noreferrer"
               className="inline-flex justify-center rounded-lg bg-green-500 px-6 py-3 font-bold text-white transition hover:bg-green-400"
             >
-              {ctaLabel}
+              {labels.ctaLabel}
             </a>
             <Link
-              href={routeCtaHref}
+              href={labels.routeCtaHref}
               className="inline-flex justify-center rounded-lg border border-white/20 px-6 py-3 font-bold text-white transition hover:bg-white/10"
             >
-              {routeCtaLabel}
+              {labels.routeCtaLabel}
             </Link>
           </div>
         </div>
@@ -132,7 +153,7 @@ export function SeoServicePage({
 
             {table && (
               <section>
-                <h2 className="text-2xl font-bold md:text-3xl">{comparisonTitle}</h2>
+                <h2 className="text-2xl font-bold md:text-3xl">{labels.comparisonTitle}</h2>
                 <div className="mt-5 overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800">
                   <table className="w-full min-w-[640px] text-left text-sm">
                     <thead className="bg-slate-100 dark:bg-slate-900">
@@ -161,11 +182,11 @@ export function SeoServicePage({
             )}
 
             <section>
-              <h2 className="text-2xl font-bold md:text-3xl">{processTitle}</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{labels.processTitle}</h2>
               <ol className="mt-5 grid gap-4">
                 {process.map((step, index) => (
                   <li key={step} className="rounded-lg border border-slate-200 p-5 dark:border-slate-800">
-                    <span className="text-sm font-bold text-blue-600">{stepLabel} {index + 1}</span>
+                    <span className="text-sm font-bold text-blue-600">{labels.stepLabel} {index + 1}</span>
                     <p className="mt-2 text-slate-700 dark:text-slate-300">{step}</p>
                   </li>
                 ))}
@@ -173,7 +194,7 @@ export function SeoServicePage({
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold md:text-3xl">{faqTitle}</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{labels.faqTitle}</h2>
               <div className="mt-5 space-y-4">
                 {faqs.map((faq) => (
                   <div key={faq.question} className="rounded-lg border border-slate-200 p-5 dark:border-slate-800">
@@ -186,7 +207,7 @@ export function SeoServicePage({
           </article>
 
           <aside className="h-fit rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h2 className="text-lg font-bold">{usefulLinksTitle}</h2>
+            <h2 className="text-lg font-bold">{labels.usefulLinksTitle}</h2>
             <div className="mt-4 grid gap-3">
               {links.map((link) => (
                 <Link key={link.href} href={link.href} className="rounded-lg bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 dark:bg-slate-950 dark:text-blue-300 dark:hover:bg-slate-800">
@@ -195,9 +216,9 @@ export function SeoServicePage({
               ))}
             </div>
             <div className="mt-6 rounded-lg bg-blue-600 p-5 text-white">
-              <p className="font-bold">{asideTitle}</p>
+              <p className="font-bold">{labels.asideTitle}</p>
               <p className="mt-2 text-sm text-blue-50">
-                {asideText}
+                {labels.asideText}
               </p>
               <a
                 href={whatsappHref}
@@ -205,7 +226,7 @@ export function SeoServicePage({
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex rounded-lg bg-white px-4 py-2 text-sm font-bold text-blue-700"
               >
-                {asideCtaLabel}
+                {labels.asideCtaLabel}
               </a>
             </div>
           </aside>

@@ -1,0 +1,1041 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+      - button "Collapse issues badge" [ref=e17]:
+        - img [ref=e18]
+  - generic [ref=e20]:
+    - banner [ref=e21]:
+      - generic [ref=e23]:
+        - link "ChinaLink Express CHINALINK" [ref=e24] [cursor=pointer]:
+          - /url: /fr
+          - img "ChinaLink Express" [ref=e26]
+          - generic [ref=e27]: CHINALINK
+        - navigation [ref=e28]:
+          - link "Accueil" [ref=e29] [cursor=pointer]:
+            - /url: /fr
+          - link "Services" [ref=e30] [cursor=pointer]:
+            - /url: /fr#services
+          - link "À Propos" [ref=e31] [cursor=pointer]:
+            - /url: /fr#about
+          - link "Pourquoi Nous" [ref=e32] [cursor=pointer]:
+            - /url: /fr#why-us
+          - link "Communauté" [ref=e33] [cursor=pointer]:
+            - /url: /fr/communaute
+          - link "Blog" [ref=e34] [cursor=pointer]:
+            - /url: /fr/blog
+          - link "Contact" [ref=e35] [cursor=pointer]:
+            - /url: /fr#contact
+          - button "Outils" [ref=e37]:
+            - text: Outils
+            - img [ref=e38]
+        - generic [ref=e40]:
+          - button "Switch to dark mode" [ref=e41]:
+            - img [ref=e44]
+          - button "Select language" [ref=e51]:
+            - generic [ref=e52]: 🇫🇷
+            - img [ref=e53]
+          - link "WhatsApp" [ref=e55] [cursor=pointer]:
+            - /url: https://wa.me/22376696177
+            - img [ref=e56]
+            - generic [ref=e58]: WhatsApp
+    - main [ref=e59]:
+      - main [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - generic [ref=e69]: Opérationnel 24/7 • Livraison garantie
+            - heading "Sourcing et expédition Chine-Mali" [level=1] [ref=e70]
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - paragraph [ref=e76]: "De la recherche fournisseur en Chine à la livraison finale au Mali, nous vous accompagnons à chaque étape. Achats, contrôle qualité, paiement sécurisé, cargo, fret aérien, fret maritime et suivi WhatsApp : un seul partenaire pour toute votre chaîne d'approvisionnement."
+              - generic [ref=e77]:
+                - generic [ref=e78]: Fournisseur
+                - generic [ref=e80]: Achat
+                - generic [ref=e82]: Qualité
+                - generic [ref=e84]: Paiement
+                - generic [ref=e86]: Expédition
+                - generic [ref=e88]: Livraison
+              - generic [ref=e90]:
+                - link "Obtenir un Devis Gratuit" [ref=e91] [cursor=pointer]:
+                  - /url: https://wa.me/8618851725957
+                  - img [ref=e92]
+                  - generic [ref=e94]: Obtenir un Devis Gratuit
+                  - img [ref=e95]
+                - button "Découvrir Nos Services" [ref=e97]:
+                  - generic [ref=e98]: Découvrir Nos Services
+                  - img [ref=e99]
+            - generic [ref=e101]:
+              - generic [ref=e102]:
+                - generic [ref=e103]: 7+
+                - generic [ref=e104]: Années d'expérience
+              - generic [ref=e105]:
+                - generic [ref=e106]: 1,247
+                - generic [ref=e107]: Clients satisfaits
+              - generic [ref=e108]:
+                - generic [ref=e109]:
+                  - generic [ref=e110]: "4.8"
+                  - img [ref=e111]
+                - generic [ref=e113]: Note moyenne
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: Scroll
+            - img [ref=e117]
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - generic [ref=e123]: Fret Maritime
+            - generic [ref=e124]: Fret Aérien
+            - generic [ref=e125]: Sourcing
+            - generic [ref=e126]: Paiement Fournisseur
+            - generic [ref=e127]: Suivi 24/7
+            - generic [ref=e128]: Livraison Porte à Porte
+          - generic [ref=e129]:
+            - generic [ref=e130]: Fret Maritime
+            - generic [ref=e131]: Fret Aérien
+            - generic [ref=e132]: Sourcing
+            - generic [ref=e133]: Paiement Fournisseur
+            - generic [ref=e134]: Suivi 24/7
+            - generic [ref=e135]: Livraison Porte à Porte
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e141]: "0"
+            - generic [ref=e142]: Clients satisfaits
+          - generic [ref=e143]:
+            - generic [ref=e145]: 0+
+            - generic [ref=e146]: Expéditions
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - generic [ref=e149]: "0.0"
+              - img [ref=e150]
+            - generic [ref=e152]: Note moyenne
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - heading "Nos Services" [level=2] [ref=e156]
+            - paragraph [ref=e157]: Des solutions complètes pour simplifier votre commerce avec la Chine
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img [ref=e161]
+              - heading "ACHAT" [level=3] [ref=e164]
+              - paragraph [ref=e165]: Nous gérons vos achats auprès des fournisseurs chinois avec professionnalisme et transparence.
+              - link "En Savoir Plus" [ref=e166] [cursor=pointer]:
+                - /url: /fr/services/sourcing
+                - text: En Savoir Plus
+                - img [ref=e167]
+            - generic [ref=e169]:
+              - img [ref=e171]
+              - heading "EXPÉDITION AÉRIENNE" [level=3] [ref=e173]
+              - paragraph [ref=e174]: Livraison rapide par voie aérienne pour vos marchandises urgentes vers le Mali via nos partenaires.
+              - link "En Savoir Plus" [ref=e175] [cursor=pointer]:
+                - /url: /fr/services/air-freight
+                - text: En Savoir Plus
+                - img [ref=e176]
+            - generic [ref=e178]:
+              - img [ref=e180]
+              - heading "EXPÉDITION MARITIME" [level=3] [ref=e184]
+              - paragraph [ref=e185]: Solution économique pour le transport de gros volumes par voie maritime.
+              - link "En Savoir Plus" [ref=e186] [cursor=pointer]:
+                - /url: /fr/services/sea-freight
+                - text: En Savoir Plus
+                - img [ref=e187]
+            - generic [ref=e189]:
+              - img [ref=e191]
+              - heading "PAIEMENT FOURNISSEURS" [level=3] [ref=e193]
+              - paragraph [ref=e194]: Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay et autres méthodes.
+              - link "En Savoir Plus" [ref=e195] [cursor=pointer]:
+                - /url: /fr/services/paiement-fournisseur-chine
+                - text: En Savoir Plus
+                - img [ref=e196]
+            - generic [ref=e198]:
+              - img [ref=e200]
+              - heading "RECHARGE COMPTE" [level=3] [ref=e202]
+              - paragraph [ref=e203]: Rechargez votre compte ChinaLink Express facilement via Orange Money, Wave ou cash pour des transactions plus rapides.
+              - link "En Savoir Plus" [ref=e204] [cursor=pointer]:
+                - /url: /fr/tarifs
+                - text: En Savoir Plus
+                - img [ref=e205]
+        - generic [ref=e208]:
+          - heading "À Propos de ChinaLink Express" [level=2] [ref=e210]
+          - generic [ref=e211]:
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - img "ChinaLink Express Warehouse" [ref=e214]
+                - generic [ref=e215]:
+                  - generic [ref=e216]: Notre Entrepôt
+                  - generic [ref=e217]: Foshan Lishui, Chine
+              - generic [ref=e218]:
+                - img "Professional Team" [ref=e220]
+                - img "Advanced Technology" [ref=e222]
+            - generic [ref=e223]:
+              - paragraph [ref=e224]: Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine et le Mali. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.
+              - paragraph [ref=e225]: Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier.
+              - generic [ref=e226]:
+                - generic [ref=e227]:
+                  - img [ref=e228]
+                  - text: Fiable
+                - generic [ref=e230]:
+                  - img [ref=e231]
+                  - text: Rapide
+                - generic [ref=e233]:
+                  - img [ref=e234]
+                  - text: Sécurisé
+                - generic [ref=e236]:
+                  - img [ref=e237]
+                  - text: Compétitif
+        - generic [ref=e240]:
+          - heading "Pourquoi Choisir ChinaLink Express ?" [level=2] [ref=e242]
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - img [ref=e246]
+              - heading "Rapidité" [level=3] [ref=e248]
+              - paragraph [ref=e249]: Livraison express dans les délais les plus courts du marché.
+            - generic [ref=e250]:
+              - img [ref=e252]
+              - heading "Fiabilité" [level=3] [ref=e254]
+              - paragraph [ref=e255]: Suivi en temps réel et service client disponible 24/7.
+            - generic [ref=e256]:
+              - img [ref=e258]
+              - heading "Prix Compétitifs" [level=3] [ref=e261]
+              - paragraph [ref=e262]: Les meilleurs tarifs du marché avec aucune surprise de frais cachés.
+            - generic [ref=e263]:
+              - img [ref=e265]
+              - heading "Expertise" [level=3] [ref=e269]
+              - paragraph [ref=e270]: Plus de 7 ans d'expérience dans la logistique internationale.
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - generic [ref=e275]:
+              - img [ref=e276]
+              - text: Application Mobile
+            - heading "Votre fret, dans votre poche" [level=2] [ref=e278]
+            - paragraph [ref=e279]: Suivez vos expéditions en temps réel, recevez des notifications à chaque étape et contactez votre agent directement depuis l'application.
+            - link "Télécharger l'application" [ref=e280] [cursor=pointer]:
+              - /url: https://wa.me/8618851725957
+              - text: Télécharger l'application
+              - img [ref=e281]
+          - generic [ref=e283]:
+            - img "ChinaLink Express App — Tracking" [ref=e285]
+            - img "ChinaLink Express App — Notifications" [ref=e287]
+        - generic [ref=e291]:
+          - generic [ref=e292]:
+            - generic [ref=e293]:
+              - img [ref=e294]
+              - text: Service complet
+            - heading "De la commande à la livraison, on gère tout" [level=2] [ref=e297]
+            - paragraph [ref=e298]: Un seul partenaire pour les 6 étapes. Pas 4 fournisseurs différents.
+          - generic [ref=e300]:
+            - generic [ref=e301]:
+              - generic [ref=e303]:
+                - img [ref=e304]
+                - text: ChinaLink
+              - generic [ref=e308]:
+                - img [ref=e311]
+                - generic [ref=e313]: "1"
+                - heading "Dites-nous ce dont vous avez besoin" [level=3] [ref=e314]
+                - paragraph [ref=e315]: Produits, quantités, budget. Nous comprenons votre projet.
+            - img [ref=e317]
+            - generic [ref=e319]:
+              - generic [ref=e321]:
+                - img [ref=e322]
+                - text: ChinaLink
+              - generic [ref=e326]:
+                - img [ref=e329]
+                - generic [ref=e332]: "2"
+                - heading "On trouve et négocie" [level=3] [ref=e333]
+                - paragraph [ref=e334]: Sourcing, vérification fournisseurs, négociation des meilleurs prix.
+            - img [ref=e336]
+            - generic [ref=e338]:
+              - generic [ref=e340]:
+                - img [ref=e341]
+                - text: ChinaLink
+              - generic [ref=e345]:
+                - img [ref=e348]
+                - generic [ref=e351]: "3"
+                - heading "On inspecte et photographie" [level=3] [ref=e352]
+                - paragraph [ref=e353]: Contrôle qualité en usine. Photos et rapports avant expédition.
+            - img [ref=e355]
+            - generic [ref=e359]:
+              - img [ref=e362]
+              - generic [ref=e364]: "4"
+              - heading "On expédie (votre choix)" [level=3] [ref=e365]
+              - paragraph [ref=e366]: Air express 2-5j, standard 14-21j, ou maritime 60-75j.
+            - img [ref=e368]
+            - generic [ref=e372]:
+              - img [ref=e375]
+              - generic [ref=e378]: "5"
+              - heading "Suivi en temps réel" [level=3] [ref=e379]
+              - paragraph [ref=e380]: Localisez votre colis à chaque étape. Notifications automatiques.
+            - img [ref=e382]
+            - generic [ref=e386]:
+              - img [ref=e389]
+              - generic [ref=e394]: "6"
+              - heading "Réception à votre porte" [level=3] [ref=e395]
+              - paragraph [ref=e396]: Livraison domicile avec assistance dédouanement.
+          - generic [ref=e398]:
+            - paragraph [ref=e400]: Qui fait quoi ?
+            - generic [ref=e401]:
+              - generic [ref=e402]:
+                - generic [ref=e403]:
+                  - heading "ChinaLink" [level=4] [ref=e405]
+                  - generic [ref=e406]: 6 étapes
+                - generic [ref=e407]:
+                  - generic [ref=e408]: "1"
+                  - generic [ref=e409]: "2"
+                  - generic [ref=e410]: "3"
+                  - generic [ref=e411]: "4"
+                  - generic [ref=e412]: "5"
+                  - generic [ref=e413]: "6"
+                - paragraph [ref=e414]: Du sourcing à la livraison. Un seul contact.
+              - generic [ref=e415]:
+                - generic [ref=e416]:
+                  - heading "Les autres" [level=4] [ref=e418]
+                  - generic [ref=e419]: 3 étapes
+                - generic [ref=e420]:
+                  - img [ref=e422]
+                  - img [ref=e426]
+                  - img [ref=e430]
+                  - generic [ref=e433]: "4"
+                  - generic [ref=e434]: "5"
+                  - generic [ref=e435]: "6"
+                - paragraph [ref=e436]: Expédition uniquement. Vous gérez le reste seul.
+            - paragraph [ref=e438]: Leur processus commence à l'étape 4. Le nôtre commence à l'étape 1.
+        - generic [ref=e442]:
+          - generic [ref=e443]:
+            - generic [ref=e444]: La comparaison
+            - heading "ChinaLink vs Les autres" [level=2] [ref=e445]
+            - paragraph [ref=e446]: Ce que vous obtenez réellement avec un partenaire d'importation complet.
+          - generic [ref=e448]:
+            - generic [ref=e450]:
+              - generic [ref=e451]: 🚀
+              - generic [ref=e452]: ChinaLink
+            - generic [ref=e454]:
+              - generic [ref=e455]: 📦
+              - generic [ref=e456]: Les autres
+          - generic [ref=e457]:
+            - generic [ref=e459]:
+              - generic [ref=e462]:
+                - img [ref=e464]
+                - generic [ref=e466]:
+                  - heading "Recherche fournisseurs" [level=3] [ref=e467]
+                  - paragraph [ref=e468]: Nous trouvons et vérifions vos fournisseurs en Chine
+              - generic [ref=e470]:
+                - img [ref=e472]
+                - generic [ref=e474]:
+                  - heading "Recherche fournisseurs" [level=3] [ref=e475]
+                  - paragraph [ref=e476]: Vous devez trouver seul sur Alibaba
+            - generic [ref=e478]:
+              - generic [ref=e481]:
+                - img [ref=e483]
+                - generic [ref=e485]:
+                  - heading "Contrôle qualité" [level=3] [ref=e486]
+                  - paragraph [ref=e487]: Inspection photo et vidéo avant expédition
+              - generic [ref=e489]:
+                - img [ref=e491]
+                - generic [ref=e493]:
+                  - heading "Contrôle qualité" [level=3] [ref=e494]
+                  - paragraph [ref=e495]: Aucun contrôle, vous recevez ce qui part
+            - generic [ref=e497]:
+              - generic [ref=e500]:
+                - img [ref=e502]
+                - generic [ref=e504]:
+                  - heading "Paiement fournisseurs" [level=3] [ref=e505]
+                  - paragraph [ref=e506]: Nous payons pour vous en Chine
+              - generic [ref=e508]:
+                - img [ref=e510]
+                - generic [ref=e512]:
+                  - heading "Paiement fournisseurs" [level=3] [ref=e513]
+                  - paragraph [ref=e514]: Vous gérez Alipay/ seul
+            - generic [ref=e516]:
+              - generic [ref=e519]:
+                - img [ref=e521]
+                - generic [ref=e523]:
+                  - heading "Service Complet" [level=3] [ref=e524]
+                  - paragraph [ref=e525]: Sourcing en Chine + livraison au Mali
+              - generic [ref=e527]:
+                - img [ref=e529]
+                - generic [ref=e531]:
+                  - heading "Service Complet" [level=3] [ref=e532]
+                  - paragraph [ref=e533]: Seulement transport, pas de sourcing
+            - generic [ref=e535]:
+              - generic [ref=e538]:
+                - img [ref=e540]
+                - generic [ref=e542]:
+                  - heading "Consolidation" [level=3] [ref=e543]
+                  - paragraph [ref=e544]: Regroupement gratuit de vos colis
+              - generic [ref=e546]:
+                - img [ref=e548]
+                - generic [ref=e550]:
+                  - heading "Consolidation" [level=3] [ref=e551]
+                  - paragraph [ref=e552]: Fret payé pour chaque fournisseur
+            - generic [ref=e554]:
+              - generic [ref=e557]:
+                - img [ref=e559]
+                - generic [ref=e561]:
+                  - heading "Dédouanement" [level=3] [ref=e562]
+                  - paragraph [ref=e563]: Inclus et transparent, pas de surprise
+              - generic [ref=e565]:
+                - img [ref=e567]
+                - generic [ref=e569]:
+                  - heading "Dédouanement" [level=3] [ref=e570]
+                  - paragraph [ref=e571]: Frais cachés et paperasse complexe
+            - generic [ref=e573]:
+              - generic [ref=e576]:
+                - img [ref=e578]
+                - generic [ref=e580]:
+                  - heading "Livraison porte-à-porte" [level=3] [ref=e581]
+                  - paragraph [ref=e582]: De la Chine jusqu'à votre entrepôt
+              - generic [ref=e584]:
+                - img [ref=e586]
+                - generic [ref=e588]:
+                  - heading "Livraison porte-à-porte" [level=3] [ref=e589]
+                  - paragraph [ref=e590]: Déchargement en zone portuaire
+          - generic [ref=e592]:
+            - generic [ref=e593]: ✨
+            - generic [ref=e594]: Le choix est simple. Commencez avec ChinaLink.
+        - generic [ref=e596]:
+          - generic [ref=e597]:
+            - generic [ref=e598]:
+              - img [ref=e599]
+              - generic [ref=e602]: Test gratuit en 2 minutes
+            - generic [ref=e603]: Êtes-vous prêt à importer de Chine ?
+            - paragraph [ref=e604]: Répondez à 5 questions simples et recevez votre guide personnalisé sur WhatsApp avec des conseils adaptés à votre niveau.
+            - generic [ref=e605]:
+              - generic [ref=e608]: Évaluation gratuite
+              - generic [ref=e611]: Guide personnalisé
+              - generic [ref=e614]: Conseils d'experts
+          - generic [ref=e618]:
+            - generic [ref=e619]:
+              - img [ref=e621]
+              - generic [ref=e625]:
+                - heading "Quiz d'import" [level=2] [ref=e626]
+                - paragraph [ref=e627]: Testez votre readiness
+            - generic [ref=e629]:
+              - heading "Êtes-vous prêt à importer de Chine?" [level=3] [ref=e630]
+              - paragraph [ref=e631]: Faites ce quiz de 5 questions pour évaluer votre readiness et recevoir un guide personnalisé pour démarrer votre importation.
+              - button "Commencer le quiz" [ref=e633]
+              - paragraph [ref=e634]: "Durée: ~2 minutes • Résultat personnalisé"
+          - paragraph [ref=e636]:
+            - generic [ref=e637]:
+              - img [ref=e638]
+              - text: 500+ importateurs accompagnés
+            - generic [ref=e640]: "|"
+            - generic [ref=e641]:
+              - img [ref=e642]
+              - text: Réponse en 10 min
+        - generic [ref=e648]:
+          - generic [ref=e649]:
+            - generic [ref=e650]:
+              - img [ref=e651]
+              - text: Avis clients vérifiés
+            - generic [ref=e654]:
+              - generic [ref=e655]: "4.8"
+              - generic [ref=e656]:
+                - generic [ref=e658]:
+                  - generic [ref=e659]:
+                    - img [ref=e660]
+                    - img [ref=e663]
+                  - generic [ref=e665]:
+                    - img [ref=e666]
+                    - img [ref=e669]
+                  - generic [ref=e671]:
+                    - img [ref=e672]
+                    - img [ref=e675]
+                  - generic [ref=e677]:
+                    - img [ref=e678]
+                    - img [ref=e681]
+                  - generic [ref=e683]:
+                    - img [ref=e684]
+                    - img [ref=e687]
+                - generic [ref=e689]: Basé sur 312 avis clients vérifiés
+            - generic [ref=e690]:
+              - generic [ref=e691]:
+                - img [ref=e692]
+                - text: Google Reviews
+              - generic [ref=e694]:
+                - img [ref=e695]
+                - text: Trustpilot
+              - generic [ref=e697]:
+                - img [ref=e698]
+                - text: Direct
+            - heading "Ce que disent nos clients" [level=2] [ref=e700]
+            - paragraph [ref=e701]: Des importateurs africains partagent leur expérience avec ChinaLink
+          - generic [ref=e703]:
+            - button "Précédent" [ref=e704]:
+              - img [ref=e705]
+            - button "Suivant" [ref=e707]:
+              - img [ref=e708]
+            - generic [ref=e711]:
+              - generic [ref=e713]:
+                - generic [ref=e715]:
+                  - generic [ref=e716]: AT
+                  - generic [ref=e717]:
+                    - generic [ref=e718]:
+                      - heading "Amadou Traoré" [level=4] [ref=e719]
+                      - img "Mali" [ref=e720]: 🇲🇱
+                    - generic [ref=e721]:
+                      - generic [ref=e722]:
+                        - img [ref=e723]
+                        - text: Verified
+                      - generic [ref=e726]: il y a 2 semaines
+                - generic [ref=e729]:
+                  - generic [ref=e730]:
+                    - img [ref=e731]
+                    - img [ref=e734]
+                  - generic [ref=e736]:
+                    - img [ref=e737]
+                    - img [ref=e740]
+                  - generic [ref=e742]:
+                    - img [ref=e743]
+                    - img [ref=e746]
+                  - generic [ref=e748]:
+                    - img [ref=e749]
+                    - img [ref=e752]
+                  - generic [ref=e754]:
+                    - img [ref=e755]
+                    - img [ref=e758]
+                - paragraph [ref=e760]: “Ma 3ème expédition avec eux. Toujours aussi pro. 16 jours à Bamako comme promis. Le QC m'a évité une mauvaise surprise sur mes articles électroniques.”
+                - generic [ref=e762]: Air Express
+              - generic [ref=e764]:
+                - generic [ref=e766]:
+                  - generic [ref=e767]: FN
+                  - generic [ref=e768]:
+                    - generic [ref=e769]:
+                      - heading "Fatou Ndiaye" [level=4] [ref=e770]
+                      - img "Mali" [ref=e771]: 🇲🇱
+                    - generic [ref=e772]:
+                      - generic [ref=e773]:
+                        - img [ref=e774]
+                        - text: Verified
+                      - generic [ref=e777]: il y a 1 mois
+                - generic [ref=e780]:
+                  - generic [ref=e781]:
+                    - img [ref=e782]
+                    - img [ref=e785]
+                  - generic [ref=e787]:
+                    - img [ref=e788]
+                    - img [ref=e791]
+                  - generic [ref=e793]:
+                    - img [ref=e794]
+                    - img [ref=e797]
+                  - generic [ref=e799]:
+                    - img [ref=e800]
+                    - img [ref=e803]
+                  - generic [ref=e805]:
+                    - img [ref=e806]
+                    - img [ref=e809]
+                - paragraph [ref=e811]: “Les photos QC m'ont sauvé 2000€. Le fournisseur avait changé la qualité du tissu sans prévenir. ChinaLink a refusé la marchandise et trouvé un autre atelier en 48h.”
+                - generic [ref=e813]: Sourcing
+              - generic [ref=e815]:
+                - generic [ref=e817]:
+                  - generic [ref=e818]: KM
+                  - generic [ref=e819]:
+                    - generic [ref=e820]:
+                      - heading "Kofi Mensah" [level=4] [ref=e821]
+                      - img "Mali" [ref=e822]: 🇲🇱
+                    - generic [ref=e823]:
+                      - generic [ref=e824]:
+                        - img [ref=e825]
+                        - text: Verified
+                      - generic [ref=e828]: il y a 3 semaines
+                - generic [ref=e831]:
+                  - generic [ref=e832]:
+                    - img [ref=e833]
+                    - img [ref=e836]
+                  - generic [ref=e838]:
+                    - img [ref=e839]
+                    - img [ref=e842]
+                  - generic [ref=e844]:
+                    - img [ref=e845]
+                    - img [ref=e848]
+                  - generic [ref=e850]:
+                    - img [ref=e851]
+                    - img [ref=e854]
+                  - img [ref=e857]
+                - paragraph [ref=e859]: “Good service overall. Sea freight took 65 days to Bamako which is normal. Communication on WhatsApp was responsive. Will use again for my next container.”
+                - generic [ref=e861]: Sea Freight
+            - generic [ref=e862]:
+              - button "Aller à l'avis 1" [ref=e863]
+              - button "Aller à l'avis 2" [ref=e864]
+              - button "Aller à l'avis 3" [ref=e865]
+              - button "Aller à l'avis 4" [ref=e866]
+              - button "Aller à l'avis 5" [ref=e867]
+              - button "Aller à l'avis 6" [ref=e868]
+              - button "Aller à l'avis 7" [ref=e869]
+              - button "Aller à l'avis 8" [ref=e870]
+          - link "Voir tous les avis" [ref=e872] [cursor=pointer]:
+            - /url: "#contact"
+            - text: Voir tous les avis
+            - img [ref=e873]
+        - generic [ref=e881]:
+          - generic [ref=e882]:
+            - generic [ref=e883]:
+              - img [ref=e884]
+              - text: Avis vidéo non rémunérés
+            - heading "Ils parlent de nous. En vrai." [level=2] [ref=e887]
+            - paragraph [ref=e888]: Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience.
+          - generic [ref=e890]:
+            - generic [ref=e891]:
+              - img [ref=e892]
+              - text: Avis vidéo non rémunérés
+            - generic [ref=e895]:
+              - img [ref=e896]
+              - text: Tournés chez le client
+            - generic [ref=e899]:
+              - img [ref=e900]
+              - text: Dans leur langue
+          - paragraph [ref=e904]:
+            - img [ref=e905]
+            - text: Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.
+          - generic [ref=e907]:
+            - button "Regarder la vidéo" [ref=e908]:
+              - generic [ref=e910]:
+                - generic [ref=e911]:
+                  - generic [ref=e915]:
+                    - img [ref=e916]
+                    - text: VIDÉO RÉELLE
+                  - img [ref=e920]
+                  - generic [ref=e922]: 0:48
+                - generic [ref=e924]:
+                  - generic [ref=e926]:
+                    - generic [ref=e927]:
+                      - heading "Abdul Niang" [level=4] [ref=e928]
+                      - img "Mali" [ref=e929]: 🇲🇱
+                    - paragraph [ref=e930]: Importateur, Bamako
+                  - generic [ref=e932]:
+                    - img [ref=e933]
+                    - text: Français
+                  - paragraph [ref=e936]: “Avant ChinaLink, j'expédiait avec un autre cargo. Je ne recevais jamais mes marchandises en 2 mois — quand ça allait vite c'était 6 mois. Avec ChinaLink Express, mes 7 cartons sont arrivés en 2 mois et 12 jours. C'est au-delà de ce que j'imaginais possible.”
+                  - generic [ref=e937]:
+                    - generic [ref=e938]: 2 mois 12 jours
+                    - generic [ref=e939]: 7 cartons par mer
+            - button "Regarder la vidéo" [ref=e940]:
+              - generic [ref=e942]:
+                - generic [ref=e943]:
+                  - generic [ref=e947]:
+                    - img [ref=e948]
+                    - text: VIDÉO RÉELLE
+                  - img [ref=e952]
+                  - generic [ref=e954]: 1:15
+                - generic [ref=e956]:
+                  - generic [ref=e958]:
+                    - generic [ref=e959]:
+                      - heading "Client Batteuse Mali" [level=4] [ref=e960]
+                      - img "Mali" [ref=e961]: 🇲🇱
+                    - paragraph [ref=e962]: Équipement Agricole, Bamako
+                  - generic [ref=e964]:
+                    - img [ref=e965]
+                    - text: Français / Bambara
+                  - paragraph [ref=e968]: “Nous avons fait venir toute notre équipement agricole — batteuses et machines — avec ChinaLink Express. Le service a été impeccable du début à la fin. Nos machines sont arrivées en parfait état et dans les délais. On recommande à 100%.”
+                  - generic [ref=e969]:
+                    - generic [ref=e970]: Parfait état
+                    - generic [ref=e971]: équipement agricole
+            - button "Regarder la vidéo" [ref=e972]:
+              - generic [ref=e974]:
+                - generic [ref=e975]:
+                  - img [ref=e981]
+                  - generic [ref=e983]: 1:12
+                - generic [ref=e985]:
+                  - generic [ref=e987]:
+                    - generic [ref=e988]:
+                      - heading "Kofi Mensah" [level=4] [ref=e989]
+                      - img "Ghana" [ref=e990]: 🇬🇭
+                    - paragraph [ref=e991]: Mensah Mobile, Accra
+                  - generic [ref=e993]:
+                    - img [ref=e994]
+                    - text: English / Twi
+                  - paragraph [ref=e997]: “Third shipment now. First one I was scared, I won't lie. But they sent me photos before shipping. Everything checked. Now my customers trust me because I deliver quality.”
+                  - generic [ref=e998]:
+                    - generic [ref=e999]: 3rd shipment
+                    - generic [ref=e1000]: consistent quality
+            - button "Regarder la vidéo" [ref=e1001]:
+              - generic [ref=e1003]:
+                - generic [ref=e1004]:
+                  - img [ref=e1010]
+                  - generic [ref=e1012]: 1:45
+                - generic [ref=e1014]:
+                  - generic [ref=e1016]:
+                    - generic [ref=e1017]:
+                      - heading "Aminata Koné" [level=4] [ref=e1018]
+                      - img "Côte d'Ivoire" [ref=e1019]: 🇨🇮
+                    - paragraph [ref=e1020]: Beauty Queen CI, Abidjan
+                  - generic [ref=e1022]:
+                    - img [ref=e1023]
+                    - text: Français / Dioula
+                  - paragraph [ref=e1026]: “Les photos QC m'ont sauvé 2000€. Le fournisseur avait changé la qualité du produit. ChinaLink a refusé la marchandise et trouvé un autre en 48h. Sans eux, j'aurais tout perdu.”
+                  - generic [ref=e1027]:
+                    - generic [ref=e1028]: 2000€ sauvés
+                    - generic [ref=e1029]: grâce au QC
+            - button "Regarder la vidéo" [ref=e1030]:
+              - generic [ref=e1032]:
+                - generic [ref=e1033]:
+                  - img [ref=e1039]
+                  - generic [ref=e1041]: 2:03
+                - generic [ref=e1043]:
+                  - generic [ref=e1045]:
+                    - generic [ref=e1046]:
+                      - heading "Ousmane Barry" [level=4] [ref=e1047]
+                      - img "Burkina Faso" [ref=e1048]: 🇧🇫
+                    - paragraph [ref=e1049]: Barry BTP, Ouagadougou
+                  - generic [ref=e1051]:
+                    - img [ref=e1052]
+                    - text: Français / Mooré
+                  - paragraph [ref=e1055]: "“Premier conteneur de ma vie. J'étais perdu avec la paperasse. ChinaLink a tout géré : douane, transport, déchargement. Quand j'ai vu mon camion arriver, j'ai failli pleurer.”"
+                  - generic [ref=e1056]:
+                    - generic [ref=e1057]: 1er conteneur
+                    - generic [ref=e1058]: sans stress
+            - button "Regarder la vidéo" [ref=e1059]:
+              - generic [ref=e1061]:
+                - generic [ref=e1062]:
+                  - img [ref=e1068]
+                  - generic [ref=e1070]: 0:47
+                - generic [ref=e1072]:
+                  - generic [ref=e1074]:
+                    - generic [ref=e1075]:
+                      - heading "Mariam Houessou" [level=4] [ref=e1076]
+                      - img "Bénin" [ref=e1077]: 🇧🇯
+                    - paragraph [ref=e1078]: Houessou Commerce, Cotonou
+                  - generic [ref=e1080]:
+                    - img [ref=e1081]
+                    - text: Français / Fon
+                  - paragraph [ref=e1084]: “Service client 24/7 ce n'est pas du marketing. Une fois à 2h du matin, j'ai eu un problème avec mon colis. Ils ont répondu en 5 minutes sur WhatsApp. 5 minutes !”
+                  - generic [ref=e1085]:
+                    - generic [ref=e1086]: 24/7 réel
+                    - generic [ref=e1087]: support WhatsApp
+          - generic [ref=e1088]:
+            - paragraph [ref=e1089]: Vous aussi, partagez votre expérience
+            - link "Contacter l'équipe" [ref=e1090] [cursor=pointer]:
+              - /url: "#contact"
+              - img [ref=e1091]
+              - text: Contacter l'équipe
+        - generic [ref=e1095]:
+          - generic [ref=e1096]:
+            - generic [ref=e1097]: Témoignages
+            - heading "Ce Que Disent Nos Clients" [level=2] [ref=e1098]
+          - generic [ref=e1100]:
+            - generic [ref=e1101]:
+              - generic [ref=e1102]: “
+              - generic [ref=e1103]:
+                - img "Amadou Diallo" [ref=e1106]
+                - generic [ref=e1107]:
+                  - generic [ref=e1108]: Amadou Diallo
+                  - generic [ref=e1109]: Diallo Electronics, Bamako
+              - generic [ref=e1111]:
+                - generic [ref=e1112]: ★
+                - generic [ref=e1113]: ★
+                - generic [ref=e1114]: ★
+                - generic [ref=e1115]: ★
+                - generic [ref=e1116]: ★
+              - paragraph [ref=e1117]: “ChinaLink Express a transformé mon business. La livraison en 14 jours est réelle et le service client est exceptionnel.”
+            - generic [ref=e1119]:
+              - generic [ref=e1120]: “
+              - generic [ref=e1121]:
+                - img "Fatou Coulibaly" [ref=e1124]
+                - generic [ref=e1125]:
+                  - generic [ref=e1126]: Fatou Coulibaly
+                  - generic [ref=e1127]: Mode Africaine, Abidjan
+              - generic [ref=e1129]:
+                - generic [ref=e1130]: ★
+                - generic [ref=e1131]: ★
+                - generic [ref=e1132]: ★
+                - generic [ref=e1133]: ★
+                - generic [ref=e1134]: ★
+              - paragraph [ref=e1135]: “Je recommande vivement pour le fret maritime. Mes conteneurs arrivent toujours à temps et en parfait état.”
+            - generic [ref=e1137]:
+              - generic [ref=e1138]: “
+              - generic [ref=e1139]:
+                - img "Oumar Touré" [ref=e1142]
+                - generic [ref=e1143]:
+                  - generic [ref=e1144]: Oumar Touré
+                  - generic [ref=e1145]: Touré Import-Export, Dakar
+              - generic [ref=e1147]:
+                - generic [ref=e1148]: ★
+                - generic [ref=e1149]: ★
+                - generic [ref=e1150]: ★
+                - generic [ref=e1151]: ★
+                - generic [ref=e1152]: ★
+              - paragraph [ref=e1153]: “Le service de sourcing est incroyable. Ils ont négocié des prix 20% plus bas que ce que j'obtenais seul.”
+          - generic [ref=e1156]:
+            - heading "Rejoignez Nos Clients Satisfaits" [level=3] [ref=e1157]
+            - paragraph [ref=e1158]: Plus de 100 entreprises nous font confiance pour leurs besoins logistiques
+            - generic [ref=e1159]:
+              - generic [ref=e1160]:
+                - img "Secteur Retail" [ref=e1162]
+                - generic [ref=e1165]: Secteur Retail
+              - generic [ref=e1166]:
+                - img "Secteur Technologie" [ref=e1168]
+                - generic [ref=e1171]: Secteur Technologie
+              - generic [ref=e1172]:
+                - img "Secteur Automobile" [ref=e1174]
+                - generic [ref=e1177]: Secteur Automobile
+        - generic [ref=e1178]:
+          - generic [ref=e1181]:
+            - heading "Ils nous font confiance" [level=2] [ref=e1182]
+            - paragraph [ref=e1183]: Nous collaborons avec les meilleurs du secteur
+          - generic [ref=e1185]:
+            - generic "MAERSK" [ref=e1186]:
+              - img "MAERSK" [ref=e1187]
+            - generic "CMA-CGM" [ref=e1188]:
+              - img "CMA-CGM" [ref=e1189]
+            - generic "HAPAG-LLOYD" [ref=e1190]:
+              - img "HAPAG-LLOYD" [ref=e1191]
+            - generic "EVERGREEN" [ref=e1192]:
+              - img "EVERGREEN" [ref=e1193]
+            - generic "MSC" [ref=e1194]:
+              - img "MSC" [ref=e1195]
+            - generic "ETHIOPIAN" [ref=e1196]:
+              - img "ETHIOPIAN" [ref=e1197]
+            - generic "TURKISH AIRLINES" [ref=e1198]:
+              - img "TURKISH AIRLINES" [ref=e1199]
+            - generic "MAERSK" [ref=e1200]:
+              - img "MAERSK" [ref=e1201]
+            - generic "CMA-CGM" [ref=e1202]:
+              - img "CMA-CGM" [ref=e1203]
+            - generic "HAPAG-LLOYD" [ref=e1204]:
+              - img "HAPAG-LLOYD" [ref=e1205]
+            - generic "EVERGREEN" [ref=e1206]:
+              - img "EVERGREEN" [ref=e1207]
+            - generic "MSC" [ref=e1208]:
+              - img "MSC" [ref=e1209]
+            - generic "ETHIOPIAN" [ref=e1210]:
+              - img "ETHIOPIAN" [ref=e1211]
+            - generic "TURKISH AIRLINES" [ref=e1212]:
+              - img "TURKISH AIRLINES" [ref=e1213]
+            - generic "MAERSK" [ref=e1214]:
+              - img "MAERSK" [ref=e1215]
+            - generic "CMA-CGM" [ref=e1216]:
+              - img "CMA-CGM" [ref=e1217]
+            - generic "HAPAG-LLOYD" [ref=e1218]:
+              - img "HAPAG-LLOYD" [ref=e1219]
+            - generic "EVERGREEN" [ref=e1220]:
+              - img "EVERGREEN" [ref=e1221]
+            - generic "MSC" [ref=e1222]:
+              - img "MSC" [ref=e1223]
+            - generic "ETHIOPIAN" [ref=e1224]:
+              - img "ETHIOPIAN" [ref=e1225]
+            - generic "TURKISH AIRLINES" [ref=e1226]:
+              - img "TURKISH AIRLINES" [ref=e1227]
+        - generic [ref=e1231]:
+          - generic [ref=e1232]:
+            - generic [ref=e1233]: FAQ
+            - heading "Questions Fréquentes" [level=2] [ref=e1234]
+          - generic [ref=e1236]:
+            - img "Customer Support" [ref=e1240]
+            - generic [ref=e1241]:
+              - heading "Besoin d'aide ?" [level=3] [ref=e1242]
+              - paragraph [ref=e1243]: Notre équipe de support client est disponible 24/7 pour répondre à toutes vos questions.
+              - link "📞 Support via Whatsapp +86 188 5172 5957" [ref=e1244] [cursor=pointer]:
+                - /url: tel:+86 188 5172 5957
+                - generic [ref=e1245]: 📞
+                - generic [ref=e1246]:
+                  - generic [ref=e1247]: Support via Whatsapp
+                  - generic [ref=e1248]: +86 188 5172 5957
+          - generic [ref=e1249]:
+            - group [ref=e1250]:
+              - generic "Quels types de marchandises pouvez-vous expédier ?" [ref=e1251] [cursor=pointer]:
+                - generic [ref=e1252]: Quels types de marchandises pouvez-vous expédier ?
+                - img [ref=e1254]
+            - group [ref=e1256]:
+              - generic "Combien de temps prend une expédition aérienne ?" [ref=e1257] [cursor=pointer]:
+                - generic [ref=e1258]: Combien de temps prend une expédition aérienne ?
+                - img [ref=e1260]
+            - group [ref=e1262]:
+              - generic "Combien de temps prend une expédition maritime ?" [ref=e1263] [cursor=pointer]:
+                - generic [ref=e1264]: Combien de temps prend une expédition maritime ?
+                - img [ref=e1266]
+            - group [ref=e1268]:
+              - generic "Comment fonctionne le paiement des fournisseurs ?" [ref=e1269] [cursor=pointer]:
+                - generic [ref=e1270]: Comment fonctionne le paiement des fournisseurs ?
+                - img [ref=e1272]
+            - group [ref=e1274]:
+              - generic "Comment recharger mon compte ChinaLink Express ?" [ref=e1275] [cursor=pointer]:
+                - generic [ref=e1276]: Comment recharger mon compte ChinaLink Express ?
+                - img [ref=e1278]
+            - group [ref=e1280]:
+              - generic "Proposez-vous un suivi en temps réel ?" [ref=e1281] [cursor=pointer]:
+                - generic [ref=e1282]: Proposez-vous un suivi en temps réel ?
+                - img [ref=e1284]
+          - generic [ref=e1286]:
+            - paragraph [ref=e1287]: Vous ne trouvez pas votre réponse ?
+            - link "Contactez-nous sur WhatsApp →" [ref=e1288] [cursor=pointer]:
+              - /url: https://wa.me/8618851725957
+              - text: Contactez-nous sur WhatsApp
+              - generic [ref=e1289]: →
+        - generic [ref=e1291]:
+          - generic [ref=e1292]:
+            - heading "Contactez-Nous" [level=2] [ref=e1293]
+            - paragraph [ref=e1294]: Notre équipe est à votre disposition pour répondre à toutes vos questions
+          - generic [ref=e1295]:
+            - generic [ref=e1296]:
+              - heading "Envoyez-nous un message" [level=3] [ref=e1297]
+              - generic [ref=e1298]:
+                - generic [ref=e1299]:
+                  - generic [ref=e1300]: Nom complet*
+                  - textbox "Votre nom" [ref=e1301]
+                - generic [ref=e1302]:
+                  - generic [ref=e1303]: Email*
+                  - textbox "votre@email.com" [ref=e1304]
+                - generic [ref=e1305]:
+                  - generic [ref=e1306]: Message*
+                  - textbox "Décrivez votre besoin..." [ref=e1307]
+                - button "Envoyer le message" [ref=e1308]:
+                  - text: Envoyer le message
+                  - img [ref=e1309]
+            - generic [ref=e1311]:
+              - generic [ref=e1312]:
+                - img [ref=e1314]
+                - generic [ref=e1317]:
+                  - heading "Adresse" [level=4] [ref=e1318]
+                  - paragraph [ref=e1320]:
+                    - text: Kalaban Coura, près du lycée Birgo
+                    - text: Bamako, Mali
+              - generic [ref=e1321]:
+                - img [ref=e1323]
+                - generic [ref=e1325]:
+                  - heading "Téléphone" [level=4] [ref=e1326]
+                  - generic [ref=e1328]:
+                    - paragraph [ref=e1329]: +86 188 5172 5957
+                    - paragraph [ref=e1330]: +223 5100 50 42
+                    - paragraph [ref=e1331]: +223 7669 61 77
+              - generic [ref=e1332]:
+                - img [ref=e1334]
+                - generic [ref=e1337]:
+                  - heading "Email" [level=4] [ref=e1338]
+                  - paragraph [ref=e1340]: contact@chinalinkexpress.com
+              - generic [ref=e1341]:
+                - img [ref=e1343]
+                - generic [ref=e1345]:
+                  - heading "Contactez-nous sur WhatsApp" [level=4] [ref=e1346]
+                  - generic [ref=e1348]:
+                    - link "China" [ref=e1349] [cursor=pointer]:
+                      - /url: https://wa.me/+8618851725957
+                    - link "Mali" [ref=e1350] [cursor=pointer]:
+                      - /url: https://wa.me/+22376696177
+              - generic [ref=e1351]:
+                - heading "Heures d'ouverture" [level=4] [ref=e1352]:
+                  - img [ref=e1353]
+                  - text: Heures d'ouverture
+                - generic [ref=e1356]:
+                  - generic [ref=e1357]:
+                    - generic [ref=e1358]: Lundi - Vendredi
+                    - generic [ref=e1359]: 08:00 - 20:00
+                  - generic [ref=e1360]:
+                    - generic [ref=e1361]: Samedi
+                    - generic [ref=e1362]: 09:00 - 17:00
+                  - generic [ref=e1363]:
+                    - generic [ref=e1364]: Dimanche
+                    - generic [ref=e1365]: 10:00 - 15:00
+    - contentinfo [ref=e1366]:
+      - generic [ref=e1367]:
+        - generic [ref=e1368]:
+          - generic [ref=e1369]:
+            - link "CHINALINK" [ref=e1370] [cursor=pointer]:
+              - /url: /fr
+            - paragraph [ref=e1371]: Votre partenaire de confiance pour le commerce international avec la Chine. Des solutions logistiques complètes pour faire grandir votre business.
+            - generic [ref=e1372]:
+              - link "Facebook" [ref=e1373] [cursor=pointer]:
+                - /url: https://facebook.com/chinalinkexpress
+                - img [ref=e1374]
+              - link "Instagram" [ref=e1376] [cursor=pointer]:
+                - /url: https://instagram.com/chinalinkexpress
+                - img [ref=e1377]
+              - link "LinkedIn" [ref=e1380] [cursor=pointer]:
+                - /url: https://linkedin.com/company/chinalinkexpress
+                - img [ref=e1381]
+          - generic [ref=e1385]:
+            - heading "Services" [level=3] [ref=e1386]
+            - list [ref=e1387]:
+              - listitem [ref=e1388]:
+                - link "ACHAT" [ref=e1389] [cursor=pointer]:
+                  - /url: /fr/services/sourcing
+              - listitem [ref=e1390]:
+                - link "Agent sourcing Chine" [ref=e1391] [cursor=pointer]:
+                  - /url: /fr/services/agent-sourcing-chine
+              - listitem [ref=e1392]:
+                - link "Achat Alibaba Mali" [ref=e1393] [cursor=pointer]:
+                  - /url: /fr/services/achat-alibaba-mali
+              - listitem [ref=e1394]:
+                - link "EXPÉDITION AÉRIENNE" [ref=e1395] [cursor=pointer]:
+                  - /url: /fr/services/air-freight
+              - listitem [ref=e1396]:
+                - link "EXPÉDITION MARITIME" [ref=e1397] [cursor=pointer]:
+                  - /url: /fr/services/sea-freight
+              - listitem [ref=e1398]:
+                - link "PAIEMENT FOURNISSEURS" [ref=e1399] [cursor=pointer]:
+                  - /url: /fr/services/paiement-fournisseur-chine
+              - listitem [ref=e1400]:
+                - link "Vérification fournisseurs" [ref=e1401] [cursor=pointer]:
+                  - /url: /fr/services/verification-fournisseur-chine
+              - listitem [ref=e1402]:
+                - link "Cargo Chine Mali" [ref=e1403] [cursor=pointer]:
+                  - /url: /fr/cargo-chine-mali
+              - listitem [ref=e1404]:
+                - link "Calculateur" [ref=e1405] [cursor=pointer]:
+                  - /url: /fr/calculateur
+          - generic [ref=e1406]:
+            - heading "Liens Utiles" [level=3] [ref=e1407]
+            - list [ref=e1408]:
+              - listitem [ref=e1409]:
+                - link "À Propos" [ref=e1410] [cursor=pointer]:
+                  - /url: /fr#about
+              - listitem [ref=e1411]:
+                - link "Blog" [ref=e1412] [cursor=pointer]:
+                  - /url: /fr/blog
+              - listitem [ref=e1413]:
+                - link "FAQ" [ref=e1414] [cursor=pointer]:
+                  - /url: /fr/faq
+              - listitem [ref=e1415]:
+                - link "Contact" [ref=e1416] [cursor=pointer]:
+                  - /url: /fr#contact
+              - listitem [ref=e1417]:
+                - link "Confidentialité" [ref=e1418] [cursor=pointer]:
+                  - /url: /fr/privacy
+              - listitem [ref=e1419]:
+                - link "CGV" [ref=e1420] [cursor=pointer]:
+                  - /url: /fr/terms
+          - generic [ref=e1421]:
+            - heading "Outils" [level=3] [ref=e1422]
+            - list [ref=e1423]:
+              - listitem [ref=e1424]:
+                - link "Calculateur" [ref=e1425] [cursor=pointer]:
+                  - /url: /fr/calculateur
+              - listitem [ref=e1426]:
+                - link "Comparateur" [ref=e1427] [cursor=pointer]:
+                  - /url: /fr/comparateur-transport
+              - listitem [ref=e1428]:
+                - link "Vérifier Produit" [ref=e1429] [cursor=pointer]:
+                  - /url: /fr/verifier-produit
+          - generic [ref=e1430]:
+            - heading "Informations de contact" [level=3] [ref=e1431]
+            - generic [ref=e1432]:
+              - generic [ref=e1433]:
+                - img [ref=e1434]
+                - generic [ref=e1437]: Kalaban Coura, Bamako, Mali
+              - generic [ref=e1438]:
+                - img [ref=e1439]
+                - generic [ref=e1441]:
+                  - link "+86 188 5172 5957" [ref=e1442] [cursor=pointer]:
+                    - /url: tel:+8618851725957
+                  - link "+223 76 69 61 77" [ref=e1443] [cursor=pointer]:
+                    - /url: tel:+22376696177
+              - generic [ref=e1444]:
+                - img [ref=e1445]
+                - link "contact@chinalinkexpress.com" [ref=e1448] [cursor=pointer]:
+                  - /url: mailto:contact@chinalinkexpress.com
+              - generic [ref=e1449]:
+                - img [ref=e1450]
+                - generic [ref=e1453]:
+                  - paragraph [ref=e1454]: "Lundi - Vendredi: 8h00 - 20h00"
+                  - paragraph [ref=e1455]: "Samedi: 9h00 - 17h00"
+                  - paragraph [ref=e1456]: "Dimanche: 10h00 - 15h00"
+        - generic [ref=e1458]:
+          - paragraph [ref=e1459]: © 2026 ChinaLink Express. Tous droits réservés.
+          - paragraph [ref=e1460]:
+            - text: Made with ❤ by
+            - link "nuvotech.tech" [ref=e1461] [cursor=pointer]:
+              - /url: https://nuvotech.tech
+            - text: team
+            - link "+86 178 6567 3053" [ref=e1462] [cursor=pointer]:
+              - /url: https://wa.me/8617865673053
+  - alert [ref=e1463]

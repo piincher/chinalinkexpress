@@ -24,9 +24,16 @@ interface SeoGuidePageProps {
   sections: GuideSection[];
   faqs: GuideFaq[];
   links: GuideLink[];
+  kicker?: string;
+  updatedLabel?: string;
+  reviewedBy?: string;
+  faqTitle?: string;
+  continueTitle?: string;
+  advisorCtaLabel?: string;
+  whatsappHref?: string;
 }
 
-const whatsappHref =
+const defaultWhatsappHref =
   'https://wa.me/8618851725957?text=Bonjour%20ChinaLink%2C%20j%27ai%20lu%20votre%20guide%20et%20je%20veux%20importer%20de%20Chine%20au%20Mali.';
 
 export function SeoGuidePage({
@@ -37,6 +44,13 @@ export function SeoGuidePage({
   sections,
   faqs,
   links,
+  kicker = 'Guide import Chine-Mali',
+  updatedLabel = 'Mis a jour',
+  reviewedBy = "Relu par l'equipe operations Chine/Bamako",
+  faqTitle = 'FAQ',
+  continueTitle = 'Continuer',
+  advisorCtaLabel = 'Parler a un conseiller',
+  whatsappHref = defaultWhatsappHref,
 }: SeoGuidePageProps) {
   return (
     <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
@@ -44,14 +58,14 @@ export function SeoGuidePage({
         <header className="bg-slate-950 pt-28 pb-16 text-white">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-200">
-              Guide import Chine-Mali
+              {kicker}
             </p>
             <h1 className="text-4xl font-black leading-tight md:text-6xl">{title}</h1>
             <p className="mt-6 text-lg leading-8 text-slate-200 md:text-xl">{description}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
-              <span>Mis à jour : {updatedAt}</span>
+              <span>{updatedLabel}: {updatedAt}</span>
               <span>{readTime}</span>
-              <span>Relu par l'équipe opérations Chine/Bamako</span>
+              <span>{reviewedBy}</span>
             </div>
           </div>
         </header>
@@ -75,7 +89,7 @@ export function SeoGuidePage({
             ))}
 
             <section>
-              <h2 className="text-2xl font-bold md:text-3xl">FAQ</h2>
+              <h2 className="text-2xl font-bold md:text-3xl">{faqTitle}</h2>
               <div className="mt-5 space-y-4">
                 {faqs.map((faq) => (
                   <div key={faq.question} className="rounded-lg border border-slate-200 p-5 dark:border-slate-800">
@@ -88,7 +102,7 @@ export function SeoGuidePage({
           </div>
 
           <aside className="h-fit rounded-lg border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
-            <h2 className="text-lg font-bold">Continuer</h2>
+            <h2 className="text-lg font-bold">{continueTitle}</h2>
             <div className="mt-4 grid gap-3">
               {links.map((link) => (
                 <Link key={link.href} href={link.href} className="rounded-lg bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 dark:bg-slate-950 dark:text-blue-300 dark:hover:bg-slate-800">
@@ -102,7 +116,7 @@ export function SeoGuidePage({
               rel="noopener noreferrer"
               className="mt-6 inline-flex w-full justify-center rounded-lg bg-green-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-400"
             >
-              Parler à un conseiller
+              {advisorCtaLabel}
             </a>
           </aside>
         </div>

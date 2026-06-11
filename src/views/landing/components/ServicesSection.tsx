@@ -52,7 +52,7 @@ function ServiceCard({
   const title = t(`items.${serviceKey}.title`);
   const description = t(`items.${serviceKey}.description`);
   const href = SERVICE_HREFS[serviceKey] || '/services/sourcing';
-  const targetLocale = serviceKey === 'payment' ? 'fr' : locale;
+  const targetLocale = locale;
   const Icon = SERVICE_ICONS[index];
 
   return (

@@ -146,7 +146,586 @@ function InfoBox({
    );
 }
 
-export function TermsContent() {
+export function TermsContent({ locale = "fr" }: { locale?: string }) {
+   const isEn = locale === "en";
+
+   if (isEn) {
+      return (
+         <main className="min-h-screen bg-[var(--surface)]">
+            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-16 md:py-24">
+               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <motion.div
+                     initial={{ opacity: 0, y: 20 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     className="text-center"
+                  >
+                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 mb-6">
+                        <FileText className="w-5 h-5" />
+                        <span>Terms and Conditions</span>
+                     </div>
+                     <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        Terms and Conditions of Sale and Transport
+                     </h1>
+                     <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                        Service scope, rates, CBM rules, restricted items, insurance, and customer responsibilities for China to Africa logistics.
+                     </p>
+                     <p className="text-sm text-blue-200 mt-4">
+                        Last updated:{" "}
+                        {new Date().toLocaleDateString("en-US", {
+                           year: "numeric",
+                           month: "long",
+                           day: "numeric",
+                        })}
+                     </p>
+                  </motion.div>
+               </div>
+            </section>
+
+            <div className="sticky top-16 z-40 bg-[var(--surface)] border-b border-[var(--border)] shadow-sm">
+               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 overflow-x-auto">
+                  <nav className="flex gap-4 text-sm whitespace-nowrap">
+                     {[
+                        ["services", "Services"],
+                        ["pricing", "Rates"],
+                        ["cbm", "CBM"],
+                        ["air", "Air"],
+                        ["sea", "Sea"],
+                        ["prohibited", "Restrictions"],
+                        ["responsibilities", "Responsibilities"],
+                        ["insurance", "Insurance"],
+                        ["legal", "Legal"],
+                     ].map(([href, label]) => (
+                        <a
+                           key={href}
+                           href={`#${href}`}
+                           className="text-[var(--text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                        >
+                           {label}
+                        </a>
+                     ))}
+                  </nav>
+               </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+               <Section icon={Info} title="1. Introduction and Definitions" id="intro">
+                  <p className="text-[var(--text-secondary)] mb-4">
+                     These terms govern the relationship between ChinaLink Express ("we", "our")
+                     and each customer ("you", "your") for sourcing, purchasing, forwarding,
+                     warehousing, transport, and related logistics services between China and
+                     Africa. Mali and Bamako are our primary operational hub, with service
+                     coverage extending across West Africa and selected African destinations.
+                  </p>
+                  <p className="text-[var(--text-secondary)] mb-4">
+                     By using our services, requesting a quote, delivering goods to our warehouse,
+                     or asking us to pay or coordinate with a supplier, you accept these terms.
+                     The version published on this website is the current version.
+                  </p>
+                  <InfoBox type="info" title="Support contacts">
+                     WhatsApp: +86 188 5172 5957 (China desk) / +223 76 69 61 77 (Mali desk)
+                  </InfoBox>
+               </Section>
+
+               <Section icon={Package} title="2. Services" id="services">
+                  <SubSection title="2.1 Sourcing and Purchasing">
+                     <List
+                        items={[
+                           "Supplier verification, order coordination, and purchase follow-up",
+                           "Price and payment-term negotiation when requested",
+                           "Payment coordination through available China payment channels",
+                           "Basic pre-shipment visual checks for selected orders",
+                           "Service fee generally ranges from 5% to 10% depending on volume and complexity",
+                        ]}
+                     />
+                  </SubSection>
+
+                  <SubSection title="2.2 Air Freight">
+                     <List
+                        items={[
+                           "Fast air cargo from China to Mali and other African destinations",
+                           "Typical transit estimate: 14-21 working days depending on route and destination",
+                           "Charged by actual or volumetric weight, whichever is higher",
+                           "Tracking and status updates through WhatsApp when available",
+                           "Best for electronics, samples, fashion items, and urgent goods",
+                        ]}
+                     />
+                  </SubSection>
+
+                  <SubSection title="2.3 Sea Freight">
+                     <List
+                        items={[
+                           "Economical container and consolidated shipping for bulk goods",
+                           "Typical transit estimate: 60-75 working days from China to West Africa",
+                           "Charged by CBM with minimum billable volume rules",
+                           "Consolidation is available for smaller shipments",
+                           "Best for furniture, machines, household goods, and heavy stock",
+                        ]}
+                     />
+                  </SubSection>
+
+                  <SubSection title="2.4 Supplier Payment Service">
+                     <List
+                        items={[
+                           "Payment support for approved suppliers through available payment channels",
+                           "Payment proof can be shared when the transaction is completed",
+                           "Fraud-risk review is available, but no supplier can be guaranteed without due diligence",
+                           "You remain responsible for product selection, technical specifications, and final order approval",
+                        ]}
+                     />
+                  </SubSection>
+
+                  <SubSection title="2.5 Express Handling">
+                     <List
+                        items={[
+                           "Priority handling for documents, samples, and urgent packages",
+                           "Transit and pricing depend on destination, weight, airline rules, and product category",
+                           "Some urgent or sensitive shipments may require a custom quote",
+                        ]}
+                     />
+                  </SubSection>
+               </Section>
+
+               <Section icon={DollarSign} title="3. Rates and Chargeable Weight" id="pricing">
+                  <SubSection title="3.1 Air Freight Calculation">
+                     <p className="text-[var(--text-secondary)] mb-3">
+                        Air freight is charged using the higher value between actual weight and
+                        volumetric weight.
+                     </p>
+                     <List
+                        items={[
+                           "Actual weight is the measured weight in kilograms",
+                           "Volumetric weight = length x width x height in centimeters / 5000",
+                           "The final chargeable weight is rounded according to route and carrier rules",
+                        ]}
+                     />
+                     <CalculationExample
+                        title="Air freight example"
+                        steps={[
+                           "Package: L=50cm x W=40cm x H=30cm, actual weight = 8kg",
+                           "Volumetric weight = (50 x 40 x 30) / 5000 = 12kg",
+                           "Chargeable weight = max(8kg, 12kg) = 12kg",
+                           "Example rate: 12,000 XOF/kg",
+                           "12kg x 12,000 XOF = 144,000 XOF",
+                        ]}
+                        result="Estimated air freight: 144,000 XOF"
+                     />
+                  </SubSection>
+
+                  <SubSection title="3.2 Indicative Air Categories">
+                     <div className="overflow-x-auto mt-4">
+                        <table className="w-full text-sm border border-[var(--border)] rounded-lg">
+                           <thead className="bg-[var(--surface-elevated)]">
+                              <tr>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Category</th>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Description</th>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Indicative rate</th>
+                              </tr>
+                           </thead>
+                           <tbody className="divide-y divide-[var(--border)]">
+                              <tr>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">General goods</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Standard merchandise</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">From 10,000 XOF/kg</td>
+                              </tr>
+                              <tr>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Sensitive electronics</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Computers, screens, and fragile electronics</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">From 12,000 XOF/kg</td>
+                              </tr>
+                              <tr>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Phones</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Unit pricing may apply</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Custom quote</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </SubSection>
+               </Section>
+
+               <Section icon={Ruler} title="4. Sea Freight and CBM" id="cbm">
+                  <SubSection title="4.1 CBM Formula">
+                     <p className="text-[var(--text-secondary)] mb-3">
+                        Sea freight is generally calculated by cubic meter. Very dense cargo may
+                        be adjusted under carrier weight-to-volume rules.
+                     </p>
+                     <List
+                        items={[
+                           "CBM = length x width x height in meters",
+                           "Minimum billable volume may apply even when volume is lower",
+                           "Dense cargo may be converted using carrier density rules",
+                           "Final cost depends on route, volume, product category, and destination handling",
+                        ]}
+                     />
+                     <CalculationExample
+                        title="Standard CBM example"
+                        steps={[
+                           "Furniture: L=1.2m x W=0.8m x H=1.0m, weight = 80kg",
+                           "CBM = 1.2 x 0.8 x 1.0 = 0.96 CBM",
+                           "Density = 80 / 0.96 = 83 kg/m3",
+                           "Final volume may be rounded to 1.0 CBM",
+                           "Example: 1.0 CBM x 350,000 XOF = 350,000 XOF",
+                        ]}
+                        result="Estimated sea freight: 350,000 XOF"
+                     />
+                  </SubSection>
+
+                  <SubSection title="4.2 High-Density Cargo">
+                     <CalculationExample
+                        title="High-density example"
+                        steps={[
+                           "Motors: L=0.8m x W=0.6m x H=0.5m, weight = 350kg",
+                           "Original CBM = 0.8 x 0.6 x 0.5 = 0.24 CBM",
+                           "Density = 350 / 0.24 = 1458 kg/m3",
+                           "Adjusted CBM may be required under carrier rules",
+                           "Example adjusted CBM = 1.75 CBM",
+                        ]}
+                        result="High-density shipments require route confirmation"
+                     />
+                  </SubSection>
+               </Section>
+
+               <Section icon={Plane} title="5. Phones and Sensitive Electronics" id="air">
+                  <InfoBox type="warning" title="Air-only handling for many electronics">
+                     Phones, laptops, batteries, and sensitive electronics are often restricted by
+                     sea carriers or require special documentation. We review these items before
+                     accepting them.
+                  </InfoBox>
+                  <List
+                     items={[
+                        "Smartphones may be billed per unit or by special category",
+                        "Accessories can often move under standard air cargo rates",
+                        "Battery rules depend on airline acceptance and packaging",
+                        "Incorrect declaration may cause delay, seizure, fines, or shipment rejection",
+                     ]}
+                  />
+               </Section>
+
+               <Section icon={Ship} title="6. Sea Operations, Documents, and Routes" id="sea">
+                  <SubSection title="6.1 FCL and LCL">
+                     <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-lg p-4">
+                           <h4 className="font-semibold text-[var(--text-primary)] mb-2">FCL</h4>
+                           <List
+                              items={[
+                                 "Dedicated container for high-volume shipments",
+                                 "20ft and 40ft containers depending on availability",
+                                 "Better economics for larger volumes",
+                                 "Stronger control over container handling",
+                              ]}
+                           />
+                        </div>
+                        <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-lg p-4">
+                           <h4 className="font-semibold text-[var(--text-primary)] mb-2">LCL</h4>
+                           <List
+                              items={[
+                                 "Shared container consolidation",
+                                 "Pay only for your billable volume",
+                                 "Useful for smaller commercial shipments",
+                                 "May require additional consolidation time",
+                              ]}
+                           />
+                        </div>
+                     </div>
+                  </SubSection>
+
+                  <SubSection title="6.2 Required Documents">
+                     <List
+                        items={[
+                           "Commercial invoice",
+                           "Packing list",
+                           "Bill of lading or airway bill",
+                           "Certificate of origin when required",
+                           "Import permits, conformity certificates, or product-specific documents when applicable",
+                        ]}
+                     />
+                  </SubSection>
+
+                  <SubSection title="6.3 Common Route Estimates">
+                     <div className="overflow-x-auto">
+                        <table className="w-full text-sm border border-[var(--border)] rounded-lg">
+                           <thead className="bg-[var(--surface-elevated)]">
+                              <tr>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Destination</th>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Main gateways</th>
+                                 <th className="px-4 py-3 text-left text-[var(--text-primary)]">Estimate</th>
+                              </tr>
+                           </thead>
+                           <tbody className="divide-y divide-[var(--border)]">
+                              <tr>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Mali and Bamako</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Lome, Dakar, or Abidjan plus inland transit</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">60-75 days</td>
+                              </tr>
+                              <tr>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Senegal, Ivory Coast, Ghana, Nigeria</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Regional sea and inland gateways</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">Route-specific estimate</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </SubSection>
+               </Section>
+
+               <Section icon={Ban} title="7. Prohibited and Restricted Items" id="prohibited">
+                  <InfoBox type="danger" title="Do not ship restricted goods without approval">
+                     If an item is restricted, sensitive, branded, battery-powered, liquid,
+                     chemical, medical, military, or food-related, contact us before sending it.
+                  </InfoBox>
+                  <SubSection title="7.1 Commonly Restricted for Sea Freight">
+                     <ProhibitedList
+                        items={[
+                           "Phones, laptops, tablets, and battery-powered devices when sea rules prohibit them",
+                           "Loose lithium batteries and power banks",
+                           "Drones and surveillance equipment",
+                           "Sensitive electronics with removable batteries",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="7.2 Prohibited Across Modes">
+                     <ProhibitedList
+                        items={[
+                           "Weapons, ammunition, explosives, and military goods",
+                           "Dangerous chemicals, corrosive products, toxic products, and flammables",
+                           "Illegal narcotics and controlled substances",
+                           "Counterfeit branded goods without authorization",
+                           "Goods forbidden by origin, transit, or destination law",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="7.3 Restricted with Documentation">
+                     <List
+                        items={[
+                           "Medicines and medical items",
+                           "Food, cosmetics, and health-related products",
+                           "Automotive parts and regulated spare parts",
+                           "Liquids, chemicals, and industrial products requiring MSDS documents",
+                        ]}
+                     />
+                  </SubSection>
+               </Section>
+
+               <Section icon={Shield} title="8. Customer Responsibilities" id="responsibilities">
+                  <SubSection title="8.1 Product Declaration">
+                     <List
+                        items={[
+                           "Provide complete product names, quantity, value, dimensions, and weight",
+                           "Declare fragile, sensitive, battery-powered, branded, or regulated goods",
+                           "Provide truthful values for insurance, customs, and compliance checks",
+                           "Do not hide restricted goods inside another shipment",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="8.2 Packaging and Labeling">
+                     <List
+                        items={[
+                           "Use packaging suitable for the transport mode selected",
+                           "Protect fragile goods before handing them to the supplier or warehouse",
+                           "Add clear receiver details, phone numbers, package marks, and handling notes",
+                           "Mark fragile or upright-only packages when required",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="8.3 Documents and Payment">
+                     <List
+                        items={[
+                           "Provide required documents before departure or customs processing",
+                           "Pay confirmed service charges according to the agreed payment schedule",
+                           "Maintain valid import authorizations when required by destination law",
+                           "Present identification when collecting goods if requested",
+                        ]}
+                     />
+                  </SubSection>
+               </Section>
+
+               <Section icon={Globe} title="9. Customs and Insurance" id="insurance">
+                  <SubSection title="9.1 Customs Handling">
+                     <p className="text-[var(--text-secondary)] mb-3">
+                        Customs treatment depends on destination country, product type, declared
+                        value, documentation, and current border requirements.
+                     </p>
+                     <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-lg p-4">
+                           <h4 className="font-semibold text-[var(--text-primary)] mb-2">Included handling</h4>
+                           <List
+                              items={[
+                                 "We coordinate standard clearance when it is part of the confirmed offer",
+                                 "We provide status updates as documents move through the process",
+                                 "Additional steps may apply for regulated goods",
+                              ]}
+                           />
+                        </div>
+                        <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-lg p-4">
+                           <h4 className="font-semibold text-[var(--text-primary)] mb-2">Separate handling</h4>
+                           <List
+                              items={[
+                                 "You may handle destination duties directly when agreed",
+                                 "Unexpected taxes or compliance checks can change final timing",
+                                 "Incorrect paperwork may create extra cost or delay",
+                              ]}
+                           />
+                        </div>
+                     </div>
+                  </SubSection>
+                  <SubSection title="9.2 Insurance">
+                     <InfoBox type="info" title="Optional coverage">
+                        Insurance may be available for declared value, proven loss, theft, or
+                        transport damage. Coverage does not apply to poor packaging, hidden
+                        restricted goods, false declaration, or excluded categories.
+                     </InfoBox>
+                     <List
+                        items={[
+                           "Claims should be submitted promptly after delivery or loss confirmation",
+                           "Photos, invoice, packing details, and tracking references may be required",
+                           "Coverage terms depend on product category and declared value",
+                        ]}
+                     />
+                  </SubSection>
+               </Section>
+
+               <Section icon={DollarSign} title="10. Payment Terms" id="payment">
+                  <SubSection title="10.1 Payment Methods">
+                     <List
+                        items={[
+                           "Payment may be accepted by bank transfer, available money-transfer services, or approved mobile money channels",
+                           "Supplier payments generally require funds before purchase execution",
+                           "Freight payment timing depends on customer profile, shipment value, and product category",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="10.2 Refunds and Cancellation">
+                     <InfoBox type="warning" title="Refund policy">
+                        Once goods are purchased, collected, booked, or shipped, cancellation may
+                        be limited. Supplier charges, warehouse costs, carrier charges, and
+                        processing fees may be deducted when cancellation is possible.
+                     </InfoBox>
+                  </SubSection>
+               </Section>
+
+               <Section icon={Gavel} title="11. Liability, Disputes, and Data" id="legal">
+                  <SubSection title="11.1 Limitation of Liability">
+                     <List
+                        items={[
+                           "Our liability is limited to the declared value and the confirmed service terms",
+                           "We are not liable for delays caused by carriers, ports, airlines, weather, strikes, inspections, or public authorities",
+                           "We are not liable for seizure or penalties caused by incorrect documents, false declaration, or restricted goods",
+                           "Damage caused by insufficient packaging remains the responsibility of the sender or shipment owner",
+                           "Lost profit, indirect loss, and business interruption are excluded",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="11.2 Force Majeure">
+                     <p className="text-[var(--text-secondary)] mb-3">
+                        We are not responsible for delay or damage caused by events beyond our
+                        reasonable control, including:
+                     </p>
+                     <List
+                        items={[
+                           "Strikes, riots, civil unrest, war, terrorism, and piracy",
+                           "Natural disasters, floods, earthquakes, and severe weather",
+                           "Health restrictions, epidemics, border closures, and port congestion",
+                           "Carrier failure, customs holds, system outages, and government action",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="11.3 Claims and Disputes">
+                     <List
+                        items={[
+                           "Claims should be submitted in writing within 7 days after delivery or issue confirmation",
+                           "Photos, invoices, inspection notes, and tracking references should support each claim",
+                           "We aim to investigate valid claims within 14 working days",
+                           "Friendly mediation is preferred before formal legal action",
+                           "Competent jurisdiction: Bamako, Mali, unless mandatory law requires otherwise",
+                        ]}
+                     />
+                  </SubSection>
+                  <SubSection title="11.4 Data Protection">
+                     <p className="text-[var(--text-secondary)] mb-3">
+                        We collect personal and shipment data only to process orders, communicate
+                        with customers, coordinate suppliers, arrange transport, and meet legal
+                        requirements. We do not sell customer data.
+                     </p>
+                     <p className="text-[var(--text-secondary)]">
+                        For more information, review our{" "}
+                        <Link href={`/${locale}/privacy`} className="text-blue-600 hover:underline">
+                           Privacy Policy
+                        </Link>
+                        .
+                     </p>
+                  </SubSection>
+               </Section>
+
+               <Section icon={HeadphonesIcon} title="12. Contact and Assistance" id="contact">
+                  <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-xl p-6">
+                     <h4 className="font-semibold text-[var(--text-primary)] mb-4">
+                        ChinaLink Express - Customer Support
+                     </h4>
+                     <div className="space-y-3 text-[var(--text-secondary)]">
+                        <p className="flex items-center gap-2">
+                           <MapPin className="w-4 h-4 text-blue-500" />
+                           Kalaban Coura, near Birgo high school, Bamako, Mali
+                        </p>
+                        <p className="flex items-center gap-2">
+                           <Phone className="w-4 h-4 text-green-500" />
+                           China desk WhatsApp: +86 188 5172 5957
+                        </p>
+                        <p className="flex items-center gap-2">
+                           <Phone className="w-4 h-4 text-green-500" />
+                           Mali desk WhatsApp: +223 76 69 61 77 / +223 51 00 50 42
+                        </p>
+                        <p className="flex items-center gap-2">
+                           <Clock className="w-4 h-4 text-amber-500" />
+                           Monday-Friday: 08:00-20:00 | Saturday: 09:00-17:00 | Sunday: 10:00-15:00
+                        </p>
+                     </div>
+                     <div className="mt-6 pt-4 border-t border-[var(--border)]">
+                        <a
+                           href="https://wa.me/8618851725957"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           className="inline-flex items-center gap-2 py-3 px-6 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors"
+                        >
+                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                           </svg>
+                           Contact us on WhatsApp
+                        </a>
+                     </div>
+                  </div>
+               </Section>
+
+               <Section icon={Scale} title="13. Final Provisions" id="final">
+                  <p className="text-[var(--text-secondary)] mb-4">
+                     These terms form the entire agreement between ChinaLink Express and the
+                     customer for the services described here. They replace prior informal
+                     statements unless a signed written agreement states otherwise.
+                  </p>
+                  <List
+                     items={[
+                        "Changes: these terms may be updated when services, routes, laws, or operating conditions change",
+                        "Notice: important changes may be communicated through the website or direct customer channels",
+                        "Applicable law: Mali law where legally permitted",
+                        "Jurisdiction: courts of Bamako, Mali, unless mandatory law requires otherwise",
+                        "Severability: if one clause is invalid, the remaining clauses continue to apply",
+                        "Language: when legally permitted, the French version remains the reference legal version",
+                     ]}
+                  />
+               </Section>
+
+               <div className="mt-12 pt-8 border-t border-[var(--border)] text-center">
+                  <Link
+                     href={`/${locale}`}
+                     className="inline-flex items-center gap-2 py-3 px-6 bg-[var(--color-primary)] text-white rounded-xl font-semibold hover:bg-[var(--color-primary-dark)] transition-colors"
+                  >
+                     Back to home
+                  </Link>
+               </div>
+            </div>
+         </main>
+      );
+   }
+
    return (
       <main className="min-h-screen bg-[var(--surface)]">
          {/* Hero Section */}

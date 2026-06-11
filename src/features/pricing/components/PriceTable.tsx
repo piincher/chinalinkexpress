@@ -8,7 +8,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Plane, Ship, Clock, Info, Lightbulb, TrendingDown, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AIR_RATES, SEA_RATES, DELIVERY_PERFORMANCE } from '../constants';
@@ -16,6 +16,15 @@ import { formatPriceFCFA } from '../lib/pricingEngine';
 
 export function PriceTable() {
   const t = useTranslations('pricing');
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const formatDuration = (value: string) =>
+    isEn
+      ? value
+          .replace(/jours/g, 'days')
+          .replace(/dédouanement inclus/g, 'customs coordination included')
+      : value;
+  const averageUnit = isEn ? 'days' : 'j';
 
   const expressRate = AIR_RATES.find((r) => r.category === 'express');
   const standardRate = AIR_RATES.find((r) => r.category === 'standard');
@@ -135,7 +144,7 @@ export function PriceTable() {
                                 : 'text-gray-500 dark:text-gray-400'
                           )}>
                             <Clock className="w-3 h-3" />
-                            {rate.deliveryTime}
+                            {formatDuration(rate.deliveryTime)}
                           </div>
                         </div>
                       </div>
@@ -226,10 +235,10 @@ export function PriceTable() {
                         </span>
                         <div className="flex items-center gap-3">
                           <span className="text-gray-500 dark:text-gray-400">
-                            {t('deliveryPerformance.quoted')}: {perf.quoted}
+                            {t('deliveryPerformance.quoted')}: {formatDuration(perf.quoted)}
                           </span>
                           <span className="text-green-600 dark:text-green-400 font-medium">
-                            {t('deliveryPerformance.actualAverage')}: {perf.actualAverage}j
+                            {t('deliveryPerformance.actualAverage')}: {perf.actualAverage} {averageUnit}
                           </span>
                         </div>
                       </div>
@@ -288,7 +297,7 @@ export function PriceTable() {
                 <div className="text-gray-600 dark:text-gray-400">/ CBM</div>
                 <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <Clock className="w-4 h-4" />
-                  {SEA_RATES.deliveryTime}
+                  {formatDuration(SEA_RATES.deliveryTime)}
                 </div>
               </motion.div>
 
@@ -327,10 +336,10 @@ export function PriceTable() {
                   </span>
                   <div className="flex items-center gap-3">
                     <span className="text-gray-500 dark:text-gray-400">
-                      {t('deliveryPerformance.quoted')}: {DELIVERY_PERFORMANCE.seaEconomy.quoted}
+                      {t('deliveryPerformance.quoted')}: {formatDuration(DELIVERY_PERFORMANCE.seaEconomy.quoted)}
                     </span>
                     <span className="text-green-600 dark:text-green-400 font-medium">
-                      {t('deliveryPerformance.actualAverage')}: {DELIVERY_PERFORMANCE.seaEconomy.actualAverage}j
+                      {t('deliveryPerformance.actualAverage')}: {DELIVERY_PERFORMANCE.seaEconomy.actualAverage} {averageUnit}
                     </span>
                   </div>
                 </div>

@@ -89,6 +89,7 @@ export function InstallPrompt() {
                   </button>
                   <button
                     onClick={handleDismiss}
+                    aria-label="Dismiss install prompt"
                     className="py-2 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     <X className="w-5 h-5" />

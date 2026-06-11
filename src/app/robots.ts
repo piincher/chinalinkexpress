@@ -17,18 +17,6 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Bingbot',
         allow: ['/'],
       },
-      {
-        userAgent: 'GPTBot',
-        disallow: ['/'],
-      },
-      {
-        userAgent: 'ChatGPT-User',
-        disallow: ['/'],
-      },
-      {
-        userAgent: 'Google-Extended',
-        disallow: ['/'],
-      },
     ],
     sitemap: 'https://www.chinalinkexpress.com/sitemap.xml',
     host: 'https://www.chinalinkexpress.com',

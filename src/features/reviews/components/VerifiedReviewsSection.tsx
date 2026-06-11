@@ -8,7 +8,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   ChevronLeft,
@@ -20,7 +20,7 @@ import {
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { StarRating } from './StarRating';
 import { ReviewCard } from './ReviewCard';
-import { REVIEWS, AGGREGATE_RATING } from '../data/reviews';
+import { EN_REVIEWS, REVIEWS, AGGREGATE_RATING } from '../data/reviews';
 
 const AUTO_ROTATE_INTERVAL = 6000;
 const CARDS_PER_VIEW = {
@@ -53,6 +53,8 @@ function useCardsPerView() {
 
 export function VerifiedReviewsSection() {
   const t = useTranslations('reviews');
+  const locale = useLocale();
+  const reviews = locale === 'en' ? EN_REVIEWS : REVIEWS;
   const { ref, isActive } = useAnimationActivation({
     threshold: 0.1,
     delay: 100,
@@ -61,7 +63,7 @@ export function VerifiedReviewsSection() {
   const cardsPerView = useCardsPerView();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const totalSlides = Math.max(1, REVIEWS.length - cardsPerView + 1);
+  const totalSlides = Math.max(1, reviews.length - cardsPerView + 1);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const nextSlide = useCallback(() => {
@@ -94,12 +96,12 @@ export function VerifiedReviewsSection() {
     };
   }, [isPaused, nextSlide]);
 
-  const visibleReviews = REVIEWS.slice(currentIndex, currentIndex + cardsPerView);
+  const visibleReviews = reviews.slice(currentIndex, currentIndex + cardsPerView);
 
   // If we're near the end and don't have enough cards, wrap around
   const wrappedReviews =
     visibleReviews.length < cardsPerView
-      ? [...visibleReviews, ...REVIEWS.slice(0, cardsPerView - visibleReviews.length)]
+      ? [...visibleReviews, ...reviews.slice(0, cardsPerView - visibleReviews.length)]
       : visibleReviews;
 
   return (
@@ -215,7 +217,7 @@ export function VerifiedReviewsSection() {
                 <ReviewCard
                   key={`${review.id}-${currentIndex}-${i}`}
                   review={review}
-                  index={review.id ? REVIEWS.findIndex((r) => r.id === review.id) : i}
+                  index={review.id ? reviews.findIndex((r) => r.id === review.id) : i}
                 />
               ))}
             </div>

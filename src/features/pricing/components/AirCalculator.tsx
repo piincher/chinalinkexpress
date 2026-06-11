@@ -10,7 +10,7 @@
 
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown, ShieldCheck, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePricingStore } from '../store/usePricingStore';
@@ -20,6 +20,14 @@ import { Input } from '@/components/common/form/FormField';
 
 export function AirCalculator() {
   const t = useTranslations('pricing');
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const formatDuration = (value: string) =>
+    isEn ? value.replace(/jours/g, 'days') : value;
+  const averageUnit = isEn ? 'days' : 'j';
+  const standardItems = isEn
+    ? ['Clothing', 'Shoes', 'Everyday goods', 'Accessories', 'Textiles']
+    : STANDARD_ITEMS;
   const {
     airState,
     setAirField,
@@ -179,7 +187,7 @@ export function AirCalculator() {
                 {category.id === 'express' && (
                   <div className="absolute -top-2 -right-1 px-1.5 py-0.5 bg-amber-500 text-white text-[10px] font-bold rounded-full flex items-center gap-0.5">
                     <Zap className="w-2.5 h-2.5 fill-current" />
-                    2-5j
+                    {isEn ? '2-5d' : '2-5j'}
                   </div>
                 )}
                 {category.id === 'standard' && airState.category === 'standard' && (
@@ -211,7 +219,7 @@ export function AirCalculator() {
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {STANDARD_ITEMS.map((item) => (
+            {standardItems.map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200"
@@ -267,7 +275,7 @@ export function AirCalculator() {
                   "text-sm mt-2",
                   isStandardSelected ? 'text-blue-100' : 'text-amber-100'
                 )}>
-                  {t('result.deliveryTime')}: {airResult.deliveryTime}
+                  {t('result.deliveryTime')}: {formatDuration(airResult.deliveryTime)}
                 </div>
               </div>
 
@@ -301,7 +309,7 @@ export function AirCalculator() {
                       {t('deliveryPerformance.earlyDelivery')}
                     </span>
                     <span className="text-xs text-white/70 ml-auto">
-                      {t('deliveryPerformance.actualAverage')}: {deliveryPerf.actualAverage}j
+                      {t('deliveryPerformance.actualAverage')}: {deliveryPerf.actualAverage} {averageUnit}
                     </span>
                   </div>
                 </motion.div>
@@ -378,10 +386,14 @@ export function AirCalculator() {
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  {t('result.contactWhatsApp', { defaultValue: 'Demander un devis sur WhatsApp' })}
+                  {t('result.contactWhatsApp', {
+                    defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                  })}
                 </a>
                 <p className="text-center text-xs text-white/70 mt-2 italic">
-                  {t('result.estimateDisclaimer', { defaultValue: 'Ces prix sont des estimations uniquement' })}
+                  {t('result.estimateDisclaimer', {
+                    defaultValue: isEn ? 'These prices are estimates only' : 'Ces prix sont des estimations uniquement',
+                  })}
                 </p>
               </motion.div>
             </motion.div>

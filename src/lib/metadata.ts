@@ -388,7 +388,7 @@ export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
       ? '#1 freight forwarder and sourcing agent from China to Africa. Air freight 14-21 days, sea freight 60-75 days. Alibaba & 1688 buying agent, supplier payment, verification. Free WhatsApp quote! Serving Mali, Senegal, Ivory Coast, Ghana, Nigeria & all West Africa.'
       : 'N°1 transitaire et agent sourcing de la Chine vers l\'Afrique. Fret aérien 14-21 jours, maritime 60-75 jours. Agent achat Alibaba & 1688, paiement fournisseur, vérification. Devis gratuit WhatsApp ! Livraison Mali, Sénégal, Côte d\'Ivoire, Ghana, Nigeria et Afrique de l\'Ouest.',
     keywords: isEn
-      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, China sourcing agent, buy from Alibaba Africa, supplier payment China, verify Chinese supplier, cargo chine mali, transitaire chine mali, import from China Mali, wholesale from China Africa, container shipping China Africa, door to door shipping China Africa, cheapest shipping China Africa, Alibaba agent Mali, 1688 sourcing agent, pay Chinese supplier, factory audit China, import textiles China, import electronics China, import machinery China, import cosmetics China, import auto parts China, building materials China Africa, cargo shipping Bamako, freight forwarder Bamako, China Mali trade, West Africa logistics'
+      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, China sourcing agent, buy from Alibaba Africa, supplier payment China, verify Chinese supplier, China to Mali cargo, freight forwarder China Mali, import from China Mali, wholesale from China Africa, container shipping China Africa, door to door shipping China Africa, cheapest shipping China Africa, Alibaba agent Mali, 1688 sourcing agent, pay Chinese supplier, factory audit China, import textiles China, import electronics China, import machinery China, import cosmetics China, import auto parts China, building materials China Africa, cargo shipping Bamako, freight forwarder Bamako, China Mali trade, West Africa logistics'
       : 'cargo chine mali, transitaire chine mali, fret chine bamako, envoi colis chine mali, fret aerien chine afrique, conteneur chine mali, expedition chine mali, achat alibaba mali, agent sourcing chine, chinalink express, fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, agent achat Alibaba, acheter sur 1688 Afrique, payer fournisseur chinois, vérifier fournisseur chinois, cargo aérien Chine Mali, conteneur maritime Chine Afrique, livraison porte à porte Chine Afrique, fret pas cher Chine Afrique, agent Alibaba Mali, agent sourcing 1688, paiement fournisseur Chine, audit usine Chine, importer textiles Chine, importer électronique Chine, importer machines Chine, importer cosmétiques Chine, importer pièces auto Chine, matériaux construction Chine Afrique, expédition Bamako, transitaire Bamako, commerce Chine Mali, logistique Afrique de l\'Ouest',
     path: '/',
     locale,
@@ -408,37 +408,37 @@ export async function generateServiceMetadata(
   const serviceConfig = {
     air: {
       title: isEn 
-        ? 'Air Freight China to Mali | Express Shipping'
+        ? 'Air Freight China to Africa | Mali & West Africa Hub'
         : 'Cargo Aérien Chine Mali | Fret Express Bamako | ChinaLink',
       description: isEn
-        ? 'Fast air freight from China to Bamako, Mali. Delivery in 14-21 days, sourcing support, supplier payment, consolidation, and WhatsApp tracking.'
+        ? 'Fast air freight from China to Mali and West Africa. Delivery in 14-21 days via Bamako hub, with sourcing, supplier payment, consolidation, and WhatsApp tracking.'
         : 'Fret aérien rapide de la Chine vers Bamako, Mali. Livraison en 14-21 jours, sourcing, paiement fournisseur, consolidation et suivi WhatsApp.',
       keywords: isEn
-        ? 'air freight China Mali, air cargo China Mali, express shipping China Mali, air freight Bamako, cargo from China to Mali'
+        ? 'air freight China Africa, air cargo China Mali, express shipping China West Africa, air freight Bamako, cargo from China to Mali'
         : 'fret aérien Chine Mali, cargo aérien Chine Mali, cargo aerien chine mali, express Chine Mali, fret aérien Bamako, cargo Chine Mali',
       path: '/services/air-freight',
     },
     sea: {
       title: isEn
-        ? 'Sea Freight China to Mali | FCL & LCL Shipping'
+        ? 'Sea Freight China to Africa | FCL & LCL via West Africa'
         : 'Conteneur Chine Mali | Fret Maritime Bamako | FCL & LCL',
       description: isEn
-        ? 'Economical sea freight from Foshan port to Dakar port, then land transit to Bamako. FCL and LCL shipping to Mali in 60-75 days.'
+        ? 'Economical sea freight from China to West Africa, then land transit to Bamako and nearby markets. FCL and LCL options in 60-75 days.'
         : 'Fret maritime économique du port de Foshan au port de Dakar, puis transit terrestre vers Bamako. Conteneur FCL et groupage LCL vers le Mali en 60-75 jours.',
       keywords: isEn
-        ? 'sea freight China Mali, FCL shipping Mali, LCL consolidation Mali, container shipping China Mali, sea freight Bamako'
+        ? 'sea freight China Africa, FCL shipping West Africa, LCL consolidation Mali, container shipping China Mali, sea freight Bamako'
         : 'fret maritime Chine Mali, conteneur Chine Mali, conteneur chine mali, groupage LCL Mali, transport maritime Chine Mali, fret maritime Chine Bamako',
       path: '/services/sea-freight',
     },
     sourcing: {
       title: isEn
-        ? 'China Sourcing Agent for Mali | Alibaba Procurement'
+        ? 'China Sourcing Agent for Africa | Alibaba & 1688 Procurement'
         : 'Agent Sourcing Chine | Achat Alibaba | Paiement Fournisseur',
       description: isEn
-        ? 'China sourcing agent for Mali importers. We buy from Alibaba, verify suppliers, inspect goods, process payment, and ship to Bamako.'
+        ? 'China sourcing agent for African importers. We buy from Alibaba and 1688, verify suppliers, inspect goods, process payment, and ship through our Mali hub and West Africa routes.'
         : 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
       keywords: isEn
-        ? 'China sourcing agent Mali, Alibaba agent Mali, China procurement services, supplier verification China'
+        ? 'China sourcing agent Africa, Alibaba agent Africa, China procurement services, supplier verification China, 1688 sourcing agent'
         : 'agent sourcing Chine Mali, agent Alibaba Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
       path: '/services/sourcing',
     },

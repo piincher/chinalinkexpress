@@ -4,6 +4,7 @@ import { Locale } from '@/i18n/config';
 import { generatePageMetadata } from '@/config/seo-advanced';
 import { RouteStructuredData } from '@/components/seo';
 import { RoutePage } from '@/features/routes/RoutePage';
+import { getRouteSeo } from '@/features/routes/route-seo';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -11,10 +12,11 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const seo = getRouteSeo('china-to-africa', locale as Locale);
   return generatePageMetadata({
-    title: 'Shipping from China to Africa | Fret Chine Afrique',
-    description: 'Routes Chine-Afrique pour le Mali, Sénégal et Côte d’Ivoire. Fret aérien, fret maritime, sourcing, paiement fournisseur et consolidation.',
-    keywords: 'shipping from China to Africa, fret Chine Afrique, transitaire Chine Afrique, fret Chine Afrique de l’Ouest',
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     path: '/routes/china-to-africa',
     locale: locale as Locale,
   });
@@ -23,11 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ChinaToAfricaRoute({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const seo = getRouteSeo('china-to-africa', locale as Locale);
 
   const breadcrumbs = [
-    { name: 'Accueil', url: `/${locale}/` },
+    { name: locale === 'en' ? 'Home' : 'Accueil', url: `/${locale}/` },
     { name: 'Routes', url: `/${locale}/routes/china-to-africa` },
-    { name: 'Chine vers Afrique', url: `/${locale}/routes/china-to-africa` },
+    { name: seo.breadcrumb, url: `/${locale}/routes/china-to-africa` },
   ];
 
   return (
@@ -38,7 +41,7 @@ export default async function ChinaToAfricaRoute({ params }: Props) {
         locale={locale as Locale}
         breadcrumbs={breadcrumbs}
       />
-      <RoutePage locale={locale} routeKey="china-to-africa" country="Afrique de l’Ouest" capital="Bamako, Dakar, Abidjan" />
+      <RoutePage locale={locale} routeKey="china-to-africa" country={seo.country} capital={seo.capital} />
     </>
   );
 }

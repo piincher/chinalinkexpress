@@ -239,6 +239,7 @@ export default async function ElectronicsPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
+        locale={isEn ? 'en' : 'fr'}
         badge={page.badge}
         title={page.title}
         intro={page.intro}

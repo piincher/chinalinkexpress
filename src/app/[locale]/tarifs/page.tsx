@@ -36,27 +36,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const pricingFaqs = [
-  {
-    question: 'Quels sont les tarifs de fret Chine-Mali ?',
-    answer: 'Les tarifs dépendent du poids, du volume, du type de produit, du mode aérien ou maritime et de la destination finale à Bamako. Le calculateur donne une estimation avant validation sur WhatsApp.',
-  },
-  {
-    question: 'Le dédouanement est-il inclus ?',
-    answer: 'Les tarifs courants incluent l’accompagnement de dédouanement standard. Les produits sensibles ou réglementés peuvent nécessiter des frais ou documents supplémentaires.',
-  },
-  {
-    question: 'Puis-je payer le fret à l’arrivée ?',
-    answer: 'Dans de nombreux cas, le paiement se fait à l’arrivée après inspection. Certains profils, produits ou montants peuvent demander une avance.',
-  },
-];
+const pricingFaqs = {
+  fr: [
+    {
+      question: 'Quels sont les tarifs de fret Chine-Mali ?',
+      answer: 'Les tarifs dépendent du poids, du volume, du type de produit, du mode aérien ou maritime et de la destination finale à Bamako. Le calculateur donne une estimation avant validation sur WhatsApp.',
+    },
+    {
+      question: 'Le dédouanement est-il inclus ?',
+      answer: 'Les tarifs courants incluent l’accompagnement de dédouanement standard. Les produits sensibles ou réglementés peuvent nécessiter des frais ou documents supplémentaires.',
+    },
+    {
+      question: 'Puis-je payer le fret à l’arrivée ?',
+      answer: 'Dans de nombreux cas, le paiement se fait à l’arrivée après inspection. Certains profils, produits ou montants peuvent demander une avance.',
+    },
+  ],
+  en: [
+    {
+      question: 'What are the freight rates from China to Africa?',
+      answer: 'Rates depend on weight, volume, product type, air or sea mode and final destination. The calculator gives an estimate before WhatsApp confirmation.',
+    },
+    {
+      question: 'Is customs coordination included?',
+      answer: 'Current rates include standard customs coordination. Sensitive or regulated products may require extra documents, fees or procedures.',
+    },
+    {
+      question: 'Can I pay freight on arrival?',
+      answer: 'In many cases, payment is made on arrival after inspection. Some profiles, products or shipment values may require an advance payment.',
+    },
+  ],
+};
 
 export default async function PricingRoute({ params }: Props) {
   const { locale } = await params;
+  const isEn = locale === 'en';
+  const faqs = isEn ? pricingFaqs.en : pricingFaqs.fr;
 
   return (
     <>
-      <FAQStructuredData faqs={pricingFaqs} locale={locale as 'fr' | 'en' | 'zh' | 'ar'} />
+      <FAQStructuredData faqs={faqs} locale={locale as 'fr' | 'en' | 'zh' | 'ar'} />
       <PricingPage />
     </>
   );

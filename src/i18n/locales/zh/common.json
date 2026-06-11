@@ -72,6 +72,16 @@
       }
     ]
   },
+  "landing": {
+    "marquee": [
+      "海运",
+      "空运",
+      "采购",
+      "供应商付款",
+      "24/7追踪",
+      "门到门配送"
+    ]
+  },
   "stats": {
     "sectionLabel": "我们的数据",
     "title": "实力见证",
@@ -93,7 +103,17 @@
     "sectionLabel": "关于我们",
     "title": "关于 ChinaLink Express",
     "description1": "成立于2019年，ChinaLink Express 已成为国际物流领域的重要参与者，专注于中国和马里之间的贸易。我们提供采购、运输和货物交付的完整解决方案。",
-    "description2": "我们的使命是通过提供完整的采购、运输和支付解决方案来简化国际贸易，让我们的客户能够专注于他们的核心业务。"
+    "description2": "我们的使命是通过提供完整的采购、运输和支付解决方案来简化国际贸易，让我们的客户能够专注于他们的核心业务。",
+    "tags": [
+      "可靠",
+      "快速",
+      "安全",
+      "覆盖非洲"
+    ],
+    "gallery": {
+      "warehouseLabel": "我们的仓库",
+      "warehouseLocation": "中国佛山里水"
+    }
   },
   "services": {
     "sectionLabel": "我们的服务",
@@ -230,6 +250,23 @@
     "title": "客户评价",
     "ctaTitle": "加入我们的满意客户",
     "ctaDescription": "超过100家企业信赖我们的物流服务",
+    "cards": [
+      {
+        "name": "Amadou Diallo",
+        "company": "Diallo Electronics, Bamako",
+        "text": "ChinaLink Express 改变了我们的进口流程。空运时效稳定，客服团队会持续更新进度。"
+      },
+      {
+        "name": "Fatou Coulibaly",
+        "company": "Mode Africaine, Abidjan",
+        "text": "我推荐他们的海运服务。集装箱运输跟踪清晰，意外情况更少。"
+      },
+      {
+        "name": "Oumar Toure",
+        "company": "Toure Import-Export, Dakar",
+        "text": "他们的采购服务很专业，帮助我们拿到了更好的供应商价格。"
+      }
+    ],
     "testimonials": {
       "sectionLabel": "客户评价"
     },
@@ -283,6 +320,20 @@
       }
     }
   },
+  "quizSection": {
+    "badge": "免费2分钟准备度检查",
+    "title": "您准备好",
+    "titleAccent": "从中国进口了吗？",
+    "descriptionBefore": "回答几个简单问题并获得",
+    "descriptionStrong": "个性化进口建议",
+    "descriptionAfter": "通过 WhatsApp 获取适合您产品、预算和目的地的建议。",
+    "benefits": ["免费评估", "个性化建议", "专家指导"],
+    "englishCtaTitle": "联系进口顾问",
+    "englishCtaText": "发送产品链接、预计数量和目的地。我们的团队会在您付款前提供指导。",
+    "englishCtaButton": "在 WhatsApp 开始",
+    "trustImporters": "已服务500+进口商",
+    "trustResponse": "10分钟内回复"
+  },
   "contact": {
     "sectionLabel": "联系我们",
     "title": "联系我们",
@@ -331,6 +382,7 @@
     "services": "服务",
     "links": "有用链接",
     "newsletter": "订阅通讯",
+    "newsletterDescription": "及时了解最新运价、路线更新和采购建议。",
     "newsletterPlaceholder": "您的电子邮箱",
     "scanToFollow": "扫描二维码关注我们的Facebook",
     "copyright": "版权所有。",
@@ -1094,6 +1146,7 @@
     "next": "下一个"
   },
   "videoTestimonials": {
+    "realVideoBadge": "真实视频",
     "headline": "他们真实地讲述我们的故事。",
     "subheadline": "没有演员。没有剧本。非洲进口商用他们自己的语言分享真实体验。",
     "badge": "无偿视频评价",
@@ -1275,5 +1328,9 @@
     "unknownErrorTitle": "未知错误",
     "unknownErrorDescription": "发生错误，请重试。",
     "home": "首页"
+  },
+  "appSection": {
+    "title": "您的货物，尽在掌握",
+    "previewDescription": "实时追踪您的货物，每一步都收到通知，并直接从应用程序联系您的代理。"
   }
 }

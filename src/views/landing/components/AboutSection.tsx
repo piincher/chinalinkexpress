@@ -13,10 +13,9 @@ import { useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
 import { SECTION_IDS } from '../constants';
 
-const TAGS = ['Fiable', 'Rapide', 'Sécurisé', 'Compétitif'];
-
 export function AboutSection() {
   const t = useTranslations();
+  const tags = t.raw('about.tags') as string[];
 
   return (
     <section
@@ -63,10 +62,10 @@ export function AboutSection() {
                 }}
               >
                 <div className="text-xs font-medium text-white/80 uppercase tracking-wider">
-                  Notre Entrepôt
+                  {t('about.gallery.warehouseLabel')}
                 </div>
                 <div className="text-base font-semibold text-white">
-                  Foshan lishui, Chine
+                  {t('about.gallery.warehouseLocation')}
                 </div>
               </div>
             </div>
@@ -117,7 +116,7 @@ export function AboutSection() {
 
             {/* Feature tags */}
             <div className="flex flex-wrap gap-3 pt-4">
-              {TAGS.map((tag) => (
+              {tags.map((tag) => (
                 <span
                   key={tag}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium"

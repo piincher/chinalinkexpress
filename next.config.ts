@@ -123,16 +123,18 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        // Cache static assets
-        source: '/:all*(svg|jpg|png|webp|avif|gif|ico|css|js|woff|woff2|ttf)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
+      ...(process.env.NODE_ENV === 'production' ? [
+        {
+          // Cache static assets (production only - avoid stale dev chunks)
+          source: '/:all*(svg|jpg|png|webp|avif|gif|ico|css|js|woff|woff2|ttf)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+      ] : []),
       {
         // Cache sitemap and robots
         source: '/(sitemap.xml|robots.txt)',

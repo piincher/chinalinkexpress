@@ -70,7 +70,10 @@ export function PWAProvider({ children }: PWAProviderProps) {
       // Capture install prompt
       captureInstallPrompt();
 
-      // Register service worker
+      // Register service worker (skip in development to avoid stale cache issues)
+      if (process.env.NODE_ENV === 'development') {
+        return;
+      }
       const result = await registerServiceWorker();
       
       if (result.registration) {

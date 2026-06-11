@@ -8,6 +8,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import { Heart, Ban, ShieldCheck, Flag, HandHeart } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 
@@ -75,6 +76,8 @@ const guidelines = [
 ];
 
 export function CommunityGuidelines() {
+  const locale = useLocale();
+  const isEn = locale === 'en';
   const { ref, isActive } = useAnimationActivation({ threshold: 0.15, delay: 100 });
 
   return (
@@ -88,11 +91,12 @@ export function CommunityGuidelines() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Règles de la communauté
+            {isEn ? 'Community guidelines' : 'Règles de la communauté'}
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Quelques lignes directrices simples pour garder cet espace utile,
-            respectueux et collaboratif pour tous les importateurs.
+            {isEn
+              ? 'Simple guidelines to keep this space useful, respectful and collaborative for every importer.'
+              : 'Quelques lignes directrices simples pour garder cet espace utile, respectueux et collaboratif pour tous les importateurs.'}
           </p>
           <div className="w-24 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mt-6 rounded-full" />
         </motion.div>
@@ -115,11 +119,11 @@ export function CommunityGuidelines() {
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-2">
-                  {guideline.title}
+                  {isEn ? guideline.titleEn : guideline.title}
                 </h3>
 
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  {guideline.description}
+                  {isEn ? guideline.descriptionEn : guideline.description}
                 </p>
               </div>
             </motion.div>

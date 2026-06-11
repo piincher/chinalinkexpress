@@ -143,7 +143,7 @@ export async function generateMetadata({
       siteName: 'ChinaLink Express',
       images: [
         {
-          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg',
+          url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg',
           width: 1200,
           height: 630,
           alt: isEn ? 'ChinaLink Express - Freight Forwarding China to Africa' : 'ChinaLink Express - Fret Chine Afrique',
@@ -156,7 +156,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: messages.metadata?.title || 'ChinaLink Express',
       description: messages.metadata?.description || '',
-      images: ['https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/og-image.jpg'],
+      images: ['https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg'],
       creator: '@chinalinkexpress',
       site: '@chinalinkexpress',
     },

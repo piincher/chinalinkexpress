@@ -59,15 +59,14 @@ export function AppPreviewSection() {
                 lineHeight: 1.1,
               }}
             >
-              {t('appSection.title') || 'Votre fret, dans votre poche'}
+              {t('appSection.title')}
             </h2>
 
             <p
               className="text-lg leading-relaxed"
               style={{ color: 'var(--color-ink-2)' }}
             >
-              {t('appSection.previewDescription') ||
-                'Suivez vos expéditions en temps réel, recevez des notifications à chaque étape et contactez votre agent directement depuis l\'application.'}
+              {t('appSection.previewDescription')}
             </p>
 
             <a

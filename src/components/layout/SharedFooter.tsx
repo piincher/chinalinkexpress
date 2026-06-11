@@ -27,13 +27,25 @@ const SOCIAL_LINKS = [
 
 const SERVICE_LINKS = [
   { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
-  { label: 'Agent sourcing Chine', href: '/services/agent-sourcing-chine', locales: ['fr', 'en'] },
-  { label: 'Achat Alibaba Mali', href: '/services/achat-alibaba-mali', locales: ['fr', 'en'] },
+  {
+    labels: { fr: 'Agent sourcing Chine', en: 'China sourcing agent' },
+    href: '/services/agent-sourcing-chine',
+    locales: ['fr', 'en'],
+  },
+  {
+    labels: { fr: 'Achat Alibaba Mali', en: 'Alibaba buying agent' },
+    href: '/services/achat-alibaba-mali',
+    locales: ['fr', 'en'],
+  },
   { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
   { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
   { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', locales: ['fr', 'en'] },
   { labelKey: 'services.features.sourcing.supplierVerification', href: '/services/verification-fournisseur-chine', locales: ['fr', 'en'] },
-  { label: 'Cargo Chine Mali', href: '/cargo-chine-mali', frOnly: true },
+  {
+    labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo' },
+    href: '/cargo-chine-mali',
+    locales: ['fr', 'en'],
+  },
 ] as const;
 
 export function SharedFooter({ locale, className }: SharedFooterProps) {
@@ -89,7 +101,7 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
                     : 'locales' in link && !(link.locales as readonly string[]).includes(locale)
                       ? 'fr'
                       : locale;
-                const label = 'labelKey' in link ? t(link.labelKey) : link.label;
+                const label = 'labelKey' in link ? t(link.labelKey) : link.labels[locale as 'fr' | 'en'] || link.labels.fr;
 
                 return (
                   <li key={link.href}>
@@ -128,12 +140,10 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
                   if (key === 'navigation.terms') return 'terms';
                   return 'faq';
                 };
-                const linkLocale = key === 'navigation.blog' ? 'fr' : locale;
-
                 return (
                   <li key={key}>
                     <Link
-                      href={`/${linkLocale}/${getHref()}`}
+                      href={`/${locale}/${getHref()}`}
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
                     >
                       {t(key)}

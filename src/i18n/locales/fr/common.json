@@ -72,6 +72,16 @@
       "payOnDelivery": "Payez à la livraison"
     }
   },
+  "landing": {
+    "marquee": [
+      "Fret Maritime",
+      "Fret Aérien",
+      "Sourcing",
+      "Paiement Fournisseur",
+      "Suivi 24/7",
+      "Livraison Porte à Porte"
+    ]
+  },
   "stats": {
     "sectionLabel": "Nos Chiffres",
     "title": "Des Résultats qui Parlent",
@@ -93,7 +103,17 @@
     "sectionLabel": "À Propos de Nous",
     "title": "À Propos de ChinaLink Express",
     "description1": "Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine et le Mali. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.",
-    "description2": "Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier."
+    "description2": "Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier.",
+    "tags": [
+      "Fiable",
+      "Rapide",
+      "Sécurisé",
+      "Compétitif"
+    ],
+    "gallery": {
+      "warehouseLabel": "Notre Entrepôt",
+      "warehouseLocation": "Foshan Lishui, Chine"
+    }
   },
   "comparison": {
     "metadata": {
@@ -386,6 +406,23 @@
     "title": "Ce Que Disent Nos Clients",
     "ctaTitle": "Rejoignez Nos Clients Satisfaits",
     "ctaDescription": "Plus de 100 entreprises nous font confiance pour leurs besoins logistiques",
+    "cards": [
+      {
+        "name": "Amadou Diallo",
+        "company": "Diallo Electronics, Bamako",
+        "text": "ChinaLink Express a transformé mon business. La livraison en 14 jours est réelle et le service client est exceptionnel."
+      },
+      {
+        "name": "Fatou Coulibaly",
+        "company": "Mode Africaine, Abidjan",
+        "text": "Je recommande vivement pour le fret maritime. Mes conteneurs arrivent toujours à temps et en parfait état."
+      },
+      {
+        "name": "Oumar Touré",
+        "company": "Touré Import-Export, Dakar",
+        "text": "Le service de sourcing est incroyable. Ils ont négocié des prix 20% plus bas que ce que j'obtenais seul."
+      }
+    ],
     "testimonials": {
       "sectionLabel": "Témoignages"
     },
@@ -439,6 +476,20 @@
       }
     }
   },
+  "quizSection": {
+    "badge": "Test gratuit en 2 minutes",
+    "title": "Êtes-vous prêt à importer",
+    "titleAccent": "de Chine ?",
+    "descriptionBefore": "Répondez à 5 questions simples et recevez",
+    "descriptionStrong": "votre guide personnalisé",
+    "descriptionAfter": "sur WhatsApp avec des conseils adaptés à votre niveau.",
+    "benefits": ["Évaluation gratuite", "Guide personnalisé", "Conseils d'experts"],
+    "englishCtaTitle": "Parlez à un conseiller import",
+    "englishCtaText": "Envoyez votre lien produit, la quantité estimée et la destination. Notre équipe vous oriente avant le paiement fournisseur.",
+    "englishCtaButton": "Commencer sur WhatsApp",
+    "trustImporters": "500+ importateurs accompagnés",
+    "trustResponse": "Réponse en 10 min"
+  },
   "contact": {
     "sectionLabel": "Contactez-nous",
     "title": "Contactez-Nous",
@@ -487,6 +538,7 @@
     "services": "Services",
     "links": "Liens Utiles",
     "newsletter": "Newsletter",
+    "newsletterDescription": "Restez informé de nos dernières offres, actualités de routes et conseils sourcing.",
     "newsletterPlaceholder": "Votre email",
     "scanToFollow": "Scannez pour nous suivre sur facebook",
     "copyright": "Tous droits réservés.",
@@ -1290,6 +1342,7 @@
     "next": "Suivant"
   },
   "videoTestimonials": {
+    "realVideoBadge": "VIDÉO RÉELLE",
     "headline": "Ils parlent de nous. En vrai.",
     "subheadline": "Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience dans leur langue.",
     "badge": "Avis vidéo non rémunérés",
@@ -1426,5 +1479,9 @@
     "unknownErrorTitle": "Erreur inconnue",
     "unknownErrorDescription": "Une erreur est survenue. Veuillez réessayer.",
     "home": "Accueil"
+  },
+  "appSection": {
+    "title": "Votre fret, dans votre poche",
+    "previewDescription": "Suivez vos expéditions en temps réel, recevez des notifications à chaque étape et contactez votre agent directement depuis l'application."
   }
 }

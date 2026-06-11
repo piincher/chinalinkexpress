@@ -107,6 +107,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   
+  // Skip caching in development (localhost)
+  if (self.location.hostname === 'localhost') {
+    return;
+  }
+  
   // Skip Chrome extensions and external analytics
   if (url.origin !== self.location.origin && 
       !url.hostname.includes('chinalinkexpress') &&

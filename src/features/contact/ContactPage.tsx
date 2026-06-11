@@ -9,7 +9,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { 
   MapPin, 
   Phone, 
@@ -40,6 +40,8 @@ interface FormErrors {
 
 export function ContactPage() {
   const t = useTranslations('contact');
+  const locale = useLocale();
+  const isEn = locale === 'en';
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -170,7 +172,7 @@ export function ContactPage() {
                   </h3>
                   <div className="space-y-1">
                     <a href="tel:+8618851725957" className="block text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400">
-                      +86 188 5172 5957 (Chine)
+                      +86 188 5172 5957 ({isEn ? 'China' : 'Chine'})
                     </a>
                     <a href="tel:+22376696177" className="block text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400">
                       +223 76 69 61 77 (Mali)
@@ -245,11 +247,13 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Bureau et réseau Chine
+                    {isEn ? 'China office and network' : 'Bureau et réseau Chine'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Guangzhou / Shenzhen / Yiwu<br />
-                    Réception fournisseur, contrôle photo, consolidation et départ fret.
+                    {isEn
+                      ? 'Supplier receiving, photo checks, consolidation and freight departure.'
+                      : 'Réception fournisseur, contrôle photo, consolidation et départ fret.'}
                   </p>
                 </div>
               </div>
@@ -268,11 +272,13 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    Informations entreprise
+                    {isEn ? 'Company information' : 'Informations entreprise'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Adresse Bamako : Kalaban Coura, près du lycée Birgo.<br />
-                    Support Mali et Chine, reçus de paiement, suivi WhatsApp et contrôle avant expédition.
+                    {isEn ? 'Bamako address' : 'Adresse Bamako'} : Kalaban Coura, près du lycée Birgo.<br />
+                    {isEn
+                      ? 'Mali and China support, payment receipts, WhatsApp tracking and checks before shipping.'
+                      : 'Support Mali et Chine, reçus de paiement, suivi WhatsApp et contrôle avant expédition.'}
                   </p>
                 </div>
               </div>

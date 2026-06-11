@@ -9,26 +9,27 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocale } from 'next-intl';
 import { MessageCircle, Heart, Pin } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { CommunityTopic, categoryColors } from '../data';
+import { CommunityTopic, categories, categoryColors } from '../data';
 
-function timeAgo(dateString: string): string {
+function timeAgo(dateString: string, isEn: boolean): string {
   const date = new Date(dateString);
   const now = new Date();
   const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (seconds < 60) return "À l'instant";
+  if (seconds < 60) return isEn ? 'just now' : "À l'instant";
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `Il y a ${minutes} min`;
+  if (minutes < 60) return isEn ? `${minutes} min ago` : `Il y a ${minutes} min`;
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `Il y a ${hours}h`;
+  if (hours < 24) return isEn ? `${hours}h ago` : `Il y a ${hours}h`;
   const days = Math.floor(hours / 24);
-  if (days < 7) return `Il y a ${days}j`;
+  if (days < 7) return isEn ? `${days}d ago` : `Il y a ${days}j`;
   const weeks = Math.floor(days / 7);
-  if (weeks < 4) return `Il y a ${weeks} sem.`;
+  if (weeks < 4) return isEn ? `${weeks} wk ago` : `Il y a ${weeks} sem.`;
   const months = Math.floor(days / 30);
-  return `Il y a ${months} mois`;
+  return isEn ? `${months} mo ago` : `Il y a ${months} mois`;
 }
 
 interface TopicCardProps {
@@ -37,6 +38,10 @@ interface TopicCardProps {
 }
 
 export function TopicCard({ topic, index = 0 }: TopicCardProps) {
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const category = categories.find((item) => item.id === topic.category);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -56,7 +61,7 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
           {topic.isPinned && (
             <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 bg-amber-500/10 text-amber-400 rounded-full text-xs font-semibold border border-amber-500/20">
               <Pin className="w-3 h-3" />
-              Épinglé
+              {isEn ? 'Pinned' : 'Épinglé'}
             </div>
           )}
 
@@ -74,7 +79,7 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
 
             <div className="flex-1 min-w-0">
               <p className="text-white font-semibold text-sm truncate">{topic.author}</p>
-              <p className="text-slate-500 text-xs">{timeAgo(topic.createdAt)}</p>
+              <p className="text-slate-500 text-xs">{timeAgo(topic.createdAt, isEn)}</p>
             </div>
 
             {/* Category badge */}
@@ -84,18 +89,18 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
                 categoryColors[topic.category] || categoryColors.general
               )}
             >
-              {topic.categoryFr}
+              {isEn ? category?.label ?? topic.category : topic.categoryFr}
             </span>
           </div>
 
           {/* Title */}
           <h3 className="text-white font-bold text-base md:text-lg mb-2 group-hover:text-amber-300 transition-colors line-clamp-2">
-            {topic.titleFr}
+            {isEn ? topic.title : topic.titleFr}
           </h3>
 
           {/* Content preview */}
           <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
-            {topic.contentFr}
+            {isEn ? topic.content : topic.contentFr}
           </p>
 
           {/* Stats row */}

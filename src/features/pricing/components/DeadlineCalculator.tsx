@@ -10,7 +10,7 @@
 
 import { useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   Package,
   Ruler,
@@ -51,6 +51,14 @@ interface TierRecommendation {
 
 export function DeadlineCalculator() {
   const t = useTranslations('pricing');
+  const locale = useLocale();
+  const isEn = locale === 'en';
+  const daysLabel = t('deadlineCalculator.days', { defaultValue: isEn ? 'days' : 'jours' });
+  const dayLabel = t('deadlineCalculator.day', { defaultValue: isEn ? 'day' : 'jour' });
+  const shortDayUnit = isEn ? 'd' : 'j';
+  const tierName = (tier: (typeof DELIVERY_TIERS)[number]) => (isEn ? tier.name : tier.nameFr);
+  const tierPositioning = (tier: (typeof DELIVERY_TIERS)[number]) =>
+    isEn ? tier.positioning : tier.positioningFr;
   const {
     deadlineState,
     setDeadlineField,
@@ -206,7 +214,7 @@ export function DeadlineCalculator() {
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Package className="w-4 h-4 text-blue-500" />
-            {t('deadlineCalculator.weight', { defaultValue: 'Poids estimé' })}
+            {t('deadlineCalculator.weight', { defaultValue: isEn ? 'Estimated weight' : 'Poids estimé' })}
             <span className="text-red-500">*</span>
           </label>
           <div className="relative">
@@ -228,7 +236,7 @@ export function DeadlineCalculator() {
             <Ruler className="w-4 h-4 text-green-500" />
             {t('deadlineCalculator.dimensions', { defaultValue: 'Dimensions (cm)' })}
             <span className="text-xs text-gray-400 font-normal ml-auto">
-              {t('deadlineCalculator.optional', { defaultValue: 'optionnel' })}
+              {t('deadlineCalculator.optional', { defaultValue: isEn ? 'optional' : 'optionnel' })}
             </span>
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -247,7 +255,9 @@ export function DeadlineCalculator() {
             ))}
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            {t('deadlineCalculator.dimensionsHint', { defaultValue: 'Pour calculer le poids volumétrique et le CBM' })}
+            {t('deadlineCalculator.dimensionsHint', {
+              defaultValue: isEn ? 'To calculate volumetric weight and CBM' : 'Pour calculer le poids volumétrique et le CBM',
+            })}
           </p>
         </div>
 
@@ -255,7 +265,7 @@ export function DeadlineCalculator() {
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Tag className="w-4 h-4 text-purple-500" />
-            {t('deadlineCalculator.category', { defaultValue: 'Catégorie' })}
+            {t('deadlineCalculator.category', { defaultValue: isEn ? 'Category' : 'Catégorie' })}
           </label>
           <div className="grid grid-cols-2 gap-2">
             {ITEM_CATEGORIES.filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
@@ -284,15 +294,15 @@ export function DeadlineCalculator() {
         <div className="space-y-3">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <CalendarClock className="w-4 h-4 text-amber-500" />
-            {t('deadlineCalculator.whenDoYouNeedIt', { defaultValue: 'Quand en avez-vous besoin ?' })}
+            {t('deadlineCalculator.whenDoYouNeedIt', {
+              defaultValue: isEn ? 'When do you need it?' : 'Quand en avez-vous besoin ?',
+            })}
           </label>
           <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-2xl font-bold text-gray-900 dark:text-white">{deadlineDays}</span>
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {deadlineDays === 1
-                  ? t('deadlineCalculator.day', { defaultValue: 'jour' })
-                  : t('deadlineCalculator.days', { defaultValue: 'jours' })}
+                {deadlineDays === 1 ? dayLabel : daysLabel}
               </span>
             </div>
             <input
@@ -305,9 +315,9 @@ export function DeadlineCalculator() {
               className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
             <div className="flex justify-between text-xs text-gray-400">
-              <span>3 {t('deadlineCalculator.days', { defaultValue: 'jours' })}</span>
+              <span>3 {daysLabel}</span>
               <span className="font-medium text-blue-500">{deadlineLabel}</span>
-              <span>90 {t('deadlineCalculator.days', { defaultValue: 'jours' })}</span>
+              <span>90 {daysLabel}</span>
             </div>
           </div>
         </div>
@@ -369,17 +379,19 @@ export function DeadlineCalculator() {
                   <div className="flex items-center gap-2 mb-4">
                     <Sparkles className="w-5 h-5" />
                     <span className="font-semibold text-sm uppercase tracking-wide opacity-90">
-                      {t('deadlineCalculator.recommended', { defaultValue: 'Recommandé pour votre deadline' })}
+                      {t('deadlineCalculator.recommended', {
+                        defaultValue: isEn ? 'Recommended for your deadline' : 'Recommandé pour votre deadline',
+                      })}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-3xl">{recommendedTier.tier.icon}</span>
                     <div>
-                      <h3 className="text-2xl font-bold">{recommendedTier.tier.nameFr}</h3>
+                      <h3 className="text-2xl font-bold">{tierName(recommendedTier.tier)}</h3>
                       <p className="text-sm opacity-90">
                         {t(`deadlineCalculator.positioning.${recommendedTier.tier.id}`, {
-                          defaultValue: recommendedTier.tier.positioningFr,
+                          defaultValue: tierPositioning(recommendedTier.tier),
                         })}
                       </p>
                     </div>
@@ -391,21 +403,21 @@ export function DeadlineCalculator() {
                     </div>
                     {recommendedTier.price > 0 && (
                       <div className="text-sm opacity-80 mt-1">
-                        {t('deadlineCalculator.forYourShipment', { defaultValue: 'pour votre envoi' })}
+                        {t('deadlineCalculator.forYourShipment', { defaultValue: isEn ? 'for your shipment' : 'pour votre envoi' })}
                       </div>
                     )}
                   </div>
 
                   <div className="space-y-2 bg-white/10 rounded-xl p-4">
                     <div className="flex justify-between text-sm">
-                      <span className="opacity-80">{t('result.deliveryTime', { defaultValue: 'Délai' })}</span>
+                      <span className="opacity-80">{t('result.deliveryTime', { defaultValue: isEn ? 'Delivery time' : 'Délai' })}</span>
                       <span className="font-medium">
                         {recommendedTier.tier.minDays}-{recommendedTier.tier.maxDays}{' '}
-                        {t('deadlineCalculator.days', { defaultValue: 'jours' })}
+                        {daysLabel}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="opacity-80">{t('result.rate', { defaultValue: 'Tarif' })}</span>
+                      <span className="opacity-80">{t('result.rate', { defaultValue: isEn ? 'Rate' : 'Tarif' })}</span>
                       <span className="font-medium">
                         {formatPriceFCFA(recommendedTier.tier.rateFCFA)}/{recommendedTier.tier.unit}
                       </span>
@@ -422,11 +434,15 @@ export function DeadlineCalculator() {
                       <AlertTriangle className="w-5 h-5 flex-shrink-0" />
                       <div>
                         <p className="text-sm font-medium">
-                          {t('deadlineCalculator.tooLate', { defaultValue: 'Aucune option ne garantit cette deadline' })}
+                          {t('deadlineCalculator.tooLate', {
+                            defaultValue: isEn ? 'No option guarantees this deadline' : 'Aucune option ne garantit cette deadline',
+                          })}
                         </p>
                         <p className="text-xs opacity-80 mt-1">
                           {t('deadlineCalculator.tooLateDescription', {
-                            defaultValue: 'Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.',
+                            defaultValue: isEn
+                              ? 'Even our fastest option (Flash Express) needs 2-5 days. Contact us for a custom solution.'
+                              : 'Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.',
                           })}
                         </p>
                       </div>
@@ -447,7 +463,9 @@ export function DeadlineCalculator() {
                       className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"
                     >
                       <MessageCircle className="w-5 h-5" />
-                      {t('result.contactWhatsApp', { defaultValue: 'Demander un devis sur WhatsApp' })}
+                      {t('result.contactWhatsApp', {
+                        defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                      })}
                     </a>
                   </motion.div>
                 </div>
@@ -465,12 +483,16 @@ export function DeadlineCalculator() {
                     <TrendingDown className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
-                        {t('deadlineCalculator.cheaperOption', { defaultValue: 'Option moins chère disponible' })}
+                        {t('deadlineCalculator.cheaperOption', {
+                          defaultValue: isEn ? 'Cheaper option available' : 'Option moins chère disponible',
+                        })}
                       </p>
                       <p className="text-sm text-emerald-700 dark:text-emerald-400 mt-1">
                         {t('deadlineCalculator.cheaperOptionDescription', {
-                          defaultValue: '{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.',
-                          tier: cheaperAlternative.tier.nameFr,
+                          defaultValue: isEn
+                            ? '{{tier}} arrives in {{min}}-{{max}} days for {{price}} - save {{savings}} if you have time.'
+                            : '{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.',
+                          tier: tierName(cheaperAlternative.tier),
                           min: cheaperAlternative.tier.minDays,
                           max: cheaperAlternative.tier.maxDays,
                           price: cheaperAlternative.priceLabel,
@@ -494,12 +516,16 @@ export function DeadlineCalculator() {
                     <Zap className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
-                        {t('deadlineCalculator.fasterOption', { defaultValue: 'Besoin de plus de vitesse ?' })}
+                        {t('deadlineCalculator.fasterOption', {
+                          defaultValue: isEn ? 'Need more speed?' : 'Besoin de plus de vitesse ?',
+                        })}
                       </p>
                       <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
                         {t('deadlineCalculator.fasterOptionDescription', {
-                          defaultValue: '{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.',
-                          tier: fasterAlternative.tier.nameFr,
+                          defaultValue: isEn
+                            ? '{{tier}} delivers in {{min}}-{{max}} days for {{price}}.'
+                            : '{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.',
+                          tier: tierName(fasterAlternative.tier),
                           min: fasterAlternative.tier.minDays,
                           max: fasterAlternative.tier.maxDays,
                           price: fasterAlternative.priceLabel,
@@ -514,7 +540,9 @@ export function DeadlineCalculator() {
               <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
                 <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-gray-500" />
-                  {t('deadlineCalculator.timelineLabel', { defaultValue: 'Comparatif des délais' })}
+                  {t('deadlineCalculator.timelineLabel', {
+                    defaultValue: isEn ? 'Delivery time comparison' : 'Comparatif des délais',
+                  })}
                 </h4>
                 <div className="space-y-3">
                   {recommendations.map((rec) => {
@@ -536,7 +564,7 @@ export function DeadlineCalculator() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="font-medium text-sm text-gray-900 dark:text-white">
-                              {rec.tier.nameFr}
+                              {tierName(rec.tier)}
                             </span>
                             {meets && (
                               <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-300">
@@ -545,18 +573,18 @@ export function DeadlineCalculator() {
                             )}
                             {isRec && (
                               <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300">
-                                {t('deadlineCalculator.bestChoice', { defaultValue: 'Meilleur choix' })}
+                                {t('deadlineCalculator.bestChoice', { defaultValue: isEn ? 'Best choice' : 'Meilleur choix' })}
                               </span>
                             )}
                           </div>
                           <div className="text-xs text-gray-500 dark:text-gray-400">
                             {rec.tier.minDays}-{rec.tier.maxDays}{' '}
-                            {t('deadlineCalculator.days', { defaultValue: 'jours' })} • {rec.priceLabel}
+                            {daysLabel} • {rec.priceLabel}
                           </div>
                         </div>
                         {!meets && (
                           <span className="text-xs text-red-500 dark:text-red-400 font-medium">
-                            {t('deadlineCalculator.tooLateShort', { defaultValue: 'Trop tard' })}
+                            {t('deadlineCalculator.tooLateShort', { defaultValue: isEn ? 'Too late' : 'Trop tard' })}
                           </span>
                         )}
                         {isRec && <ChevronRight className="w-4 h-4 text-blue-500" />}
@@ -569,13 +597,13 @@ export function DeadlineCalculator() {
                 <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-500 dark:text-gray-400">
-                      {t('deadlineCalculator.yourDeadline', { defaultValue: 'Votre deadline' })}:
+                      {t('deadlineCalculator.yourDeadline', { defaultValue: isEn ? 'Your deadline' : 'Votre deadline' })}:
                     </span>
                     <span className="font-bold text-gray-900 dark:text-white">
                       {deadlineDays}{' '}
                       {deadlineDays === 1
-                        ? t('deadlineCalculator.day', { defaultValue: 'jour' })
-                        : t('deadlineCalculator.days', { defaultValue: 'jours' })}
+                        ? dayLabel
+                        : daysLabel}
                     </span>
                   </div>
                   <div className="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
@@ -593,11 +621,11 @@ export function DeadlineCalculator() {
                     />
                   </div>
                   <div className="flex justify-between text-[10px] text-gray-400 mt-1">
-                    <span>0j</span>
-                    <span className="text-red-400">5j</span>
-                    <span className="text-blue-400">21j</span>
-                    <span className="text-emerald-400">75j</span>
-                    <span>90j</span>
+                    <span>0{shortDayUnit}</span>
+                    <span className="text-red-400">5{shortDayUnit}</span>
+                    <span className="text-blue-400">21{shortDayUnit}</span>
+                    <span className="text-emerald-400">75{shortDayUnit}</span>
+                    <span>90{shortDayUnit}</span>
                   </div>
                 </div>
               </div>
@@ -612,11 +640,15 @@ export function DeadlineCalculator() {
             >
               <CalendarClock className="w-12 h-12 text-gray-300 dark:text-gray-600 mb-4" />
               <p className="text-gray-500 dark:text-gray-400 text-center font-medium">
-                {t('deadlineCalculator.enterWeight', { defaultValue: 'Entrez un poids pour voir les options' })}
+                {t('deadlineCalculator.enterWeight', {
+                  defaultValue: isEn ? 'Enter a weight to see options' : 'Entrez un poids pour voir les options',
+                })}
               </p>
               <p className="text-gray-400 dark:text-gray-500 text-center text-sm mt-2">
                 {t('deadlineCalculator.enterWeightHint', {
-                  defaultValue: 'Choisissez votre deadline et nous trouvons la meilleure option',
+                  defaultValue: isEn
+                    ? "Choose your deadline and we'll find the best option"
+                    : 'Choisissez votre deadline et nous trouvons la meilleure option',
                 })}
               </p>
             </motion.div>

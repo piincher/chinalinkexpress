@@ -114,6 +114,97 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
   },
 ];
 
+export const EN_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
+  {
+    id: 'vid-en-001',
+    name: 'Abdul Niang',
+    business: 'Importer, Bamako',
+    country: 'Mali',
+    countryFlag: '🇲🇱',
+    language: 'French',
+    thumbnailColor: 'from-amber-600 to-orange-700',
+    duration: '0:48',
+    quote:
+      'Before ChinaLink, I shipped with another cargo provider and delays were unpredictable. With ChinaLink Express, my cartons arrived with clear updates and a realistic timeline.',
+    result: 'Reliable timeline',
+    resultLabel: 'sea shipment',
+    videoUrl:
+      'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/niang.mp4',
+  },
+  {
+    id: 'vid-en-002',
+    name: 'Mali Agriculture Client',
+    business: 'Agricultural Equipment, Bamako',
+    country: 'Mali',
+    countryFlag: '🇲🇱',
+    language: 'French / Bambara',
+    thumbnailColor: 'from-emerald-600 to-teal-700',
+    duration: '1:15',
+    quote:
+      'We imported agricultural machines with ChinaLink Express. The service was organized from supplier coordination to arrival, and the equipment reached us in good condition.',
+    result: 'Good condition',
+    resultLabel: 'agricultural equipment',
+    videoUrl:
+      'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/batteuse.mp4',
+  },
+  {
+    id: 'vid-en-003',
+    name: 'Kofi Mensah',
+    business: 'Mensah Mobile, Accra',
+    country: 'Ghana',
+    countryFlag: '🇬🇭',
+    language: 'English / Twi',
+    thumbnailColor: 'from-red-700 to-rose-800',
+    duration: '1:12',
+    quote:
+      "Third shipment now. First one I was scared, I won't lie. But they sent me photos before shipping. Everything checked.",
+    result: '3rd shipment',
+    resultLabel: 'consistent quality',
+  },
+  {
+    id: 'vid-en-004',
+    name: 'Aminata Kone',
+    business: 'Beauty Queen CI, Abidjan',
+    country: 'Ivory Coast',
+    countryFlag: '🇨🇮',
+    language: 'French / Dioula',
+    thumbnailColor: 'from-orange-600 to-red-700',
+    duration: '1:45',
+    quote:
+      'The QC photos saved my order. The supplier changed the product quality, and ChinaLink rejected the goods before shipping.',
+    result: 'QC protection',
+    resultLabel: 'supplier issue avoided',
+  },
+  {
+    id: 'vid-en-005',
+    name: 'Ousmane Barry',
+    business: 'Barry Construction, Ouagadougou',
+    country: 'Burkina Faso',
+    countryFlag: '🇧🇫',
+    language: 'French / Moore',
+    thumbnailColor: 'from-sky-700 to-indigo-800',
+    duration: '2:03',
+    quote:
+      'It was my first container. ChinaLink handled the documents, transport coordination and unloading support, which made the process less stressful.',
+    result: 'First container',
+    resultLabel: 'less stress',
+  },
+  {
+    id: 'vid-en-006',
+    name: 'Mariam Houessou',
+    business: 'Houessou Commerce, Cotonou',
+    country: 'Benin',
+    countryFlag: '🇧🇯',
+    language: 'French / Fon',
+    thumbnailColor: 'from-violet-700 to-purple-800',
+    duration: '0:47',
+    quote:
+      'Customer support is responsive. When I had a package issue, they replied quickly on WhatsApp and helped me understand the next step.',
+    result: 'Responsive support',
+    resultLabel: 'WhatsApp updates',
+  },
+];
+
 /** Count of testimonials that have an actual video file */
 export const REAL_VIDEO_COUNT = VIDEO_TESTIMONIALS.filter((t) => t.videoUrl)
   .length;
