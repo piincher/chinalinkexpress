@@ -1,0 +1,84 @@
+[     296ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[    1736ms] [LOG] [Fast Refresh] done in 1548ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[    1773ms] [LOG] %c[Vercel Speed Insights]%c [vitals] color: rgb(120, 120, 120) color: inherit {speed: 4g, metrics: Array(5), scriptVersion: 0.1.3, sdkName: @vercel/speed-insights/next, sdkVersion: 1.2.0} /_vercel/speed-insights/vitals @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    1773ms] [LOG] %c[Vercel Speed Insights]%c [vitals] color: rgb(120, 120, 120) color: inherit {speed: 4g, metrics: Array(1), scriptVersion: 0.1.3, sdkName: @vercel/speed-insights/next, sdkVersion: 1.2.0} /_vercel/speed-insights/vitals @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    2040ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:14537
+[    2922ms] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <section ref={{current:null}} className="relative p...">
+      <div>
+      <div>
+      <div>
+      <div className="relative m...">
+        <motion.div>
+        <motion.div>
+        <motion.div>
+        <motion.div className="grid grid-..." initial={{opacity:0,y:30}} animate={{}} transition={{duration:0.6, ...}}>
+          <div className="grid grid-..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+            <button onClick={function onClick} className="text-left ..." aria-label="Regarder l...">
+              <VideoTestimonialCard testimonial={{id:"vid-001", ...}} index={0}>
+                <motion.div className="group h-full" initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} ...>
+                  <div className="group h-full" onMouseEnter={function onMouseEnter} onMouseLeave={function onMouseLeave} ...>
+                    <div className="relative h...">
+                      <div className="relative a...">
+                        <motion.div>
+                        <div>
+                        <motion.div className="absolute t..." initial={{opacity:0, ...}} animate={{opacity:1,scale:1}} ...>
+                          <div className="absolute t..." style={{opacity:0, ...}} ref={function useMotionRef.useCallback}>
+                            <Film>
++                           VIDÉO RÉELLE
+-                           REAL VIDEO
+                        ...
+                      ...
+            ...
+        ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:2892:56)
+    at completeWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:6427:36)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:886:74)
+    at completeUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8363:23)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8300:28)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8294:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8276:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:7908:176)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_5150ccfd._.js:2601:64)
+[    3106ms] [WARNING] Image with src "https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b0daae9a._.js:968
+[    3223ms] [LOG] %c[Vercel Speed Insights]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    3224ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    3224ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /fr} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    3225ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /fr} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    3226ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/fr color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/fr, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780685638414} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    3226ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/fr color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/fr, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780685638415} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    3230ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/fr:0
+[    3330ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[    4813ms] [LOG] [Fast Refresh] done in 1596ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[    5117ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[    6735ms] [LOG] [Fast Refresh] done in 1854ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[    6859ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[    6884ms] [LOG] [Fast Refresh] done in 127ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[    6987ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[    8459ms] [LOG] [Fast Refresh] done in 1575ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[    8759ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   13178ms] [LOG] [Fast Refresh] done in 4519ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   13281ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   13580ms] [LOG] [Fast Refresh] done in 402ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   16654ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   17810ms] [LOG] [Fast Refresh] done in 1268ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   17917ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   18116ms] [LOG] [Fast Refresh] done in 305ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   30528ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   31240ms] [LOG] APP_SECTION_TITLE: Votre fret, dans votre poche (client) @ http://localhost:3000/_next/static/chunks/src_f5c437ca._.js?id=%255Bproject%255D%252Fsrc%252Fviews%252Flanding%252Fcomponents%252FAppPreviewSection.tsx+%255Bapp-client%255D+%2528ecmascript%2529:40
+[   31241ms] [LOG] APP_SECTION_TITLE: Votre fret, dans votre poche (client) @ http://localhost:3000/_next/static/chunks/src_f5c437ca._.js?id=%255Bproject%255D%252Fsrc%252Fviews%252Flanding%252Fcomponents%252FAppPreviewSection.tsx+%255Bapp-client%255D+%2528ecmascript%2529:40
+[   31301ms] [LOG] [Fast Refresh] done in 812ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809

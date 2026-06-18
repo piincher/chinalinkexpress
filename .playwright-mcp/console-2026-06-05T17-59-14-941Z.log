@@ -1,0 +1,263 @@
+[     701ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:14537
+[    2168ms] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AnimationProvider>
+      <AnimationOrchestrator initialActiveSection={undefined}>
+        <SmoothScroll>
+          <OfflineIndicator>
+          <UpdateNotification>
+          <SharedNavbar locale="en">
+            <motion.header className="fixed top-..." initial={{y:-100}} animate={{y:0}} transition={{duration:0.6}}>
+              <header className="fixed top-..." style={{...}} ref={function useMotionRef.useCallback}>
+                <div className="max-w-7xl ...">
+                  <div className="flex items...">
+                    <LinkComponent>
+                    <nav className="hidden lg:...">
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent href="/fr/blog" className="relative p...">
+                        <a
+                          className="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors text-gray-700..."
+                          ref={function}
+                          onClick={function onClick}
+                          onMouseEnter={function onMouseEnter}
+                          onTouchStart={function onTouchStart}
++                         href="/fr/blog"
+-                         href="/en/blog"
+                        >
+                      ...
+                      ...
+                    ...
+                ...
+          ...
+            <SegmentViewNode type="page" pagePath="[locale]/p...">
+              <SegmentTrieNode>
+              <Home>
+                <script>
+                <LandingPage locale="en">
+                  <StructuredData>
+                  <div className="min-h-screen" style={{...}}>
+                    <main>
+                      <HeroSection>
+                      <TrustMarquee>
+                      <StatsSection>
+                      ...
+                        <div className="grid gap-6" style={{...}}>
+                          <ServiceCard>
+                          <ServiceCard>
+                          <ServiceCard>
+                          <ServiceCard serviceKey="payment" index={3}>
+                            <div className="group rela..." style={{...}}>
+                              <div>
+                              <h3>
+                              <p>
+                              <LinkComponent href="/fr/servic..." className="inline-fle..." style={{color:"var..."}}>
+                                <a
+                                  className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ..."
+                                  style={{color:"var(--colo..."}}
+                                  ref={function}
+                                  onClick={function onClick}
+                                  onMouseEnter={function onMouseEnter}
+                                  onTouchStart={function onTouchStart}
++                                 href="/fr/services/paiement-fournisseur-chine"
+-                                 href="/en/services/paiement-fournisseur-chine"
+                                >
+                          ...
+                      <AboutSection>
+                      <WhyUsSection>
+                      <AppPreviewSection>
+                        <section id="about-app" className="relative p..." style={{...}}>
+                          <div className="max-w-7xl ...">
+                            <div className="grid grid-...">
+                              <div className="space-y-6">
+                                <div>
+                                <h2
+                                  className="font-bold tracking-tight"
+                                  style={{fontFamily:"var(--font...",fontSize:"var(--text...",color:"var(--colo...",letterSpacing:"...", ...}}
+                                >
++                                 Your freight, in your pocket
+-                                 Download the App
+                                ...
+                              ...
+                      ...
+            ...
+          ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:2892:56)
+    at prepareToHydrateHostInstance (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:2946:23)
+    at completeWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:6330:60)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:886:74)
+    at completeUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8363:23)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8300:28)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8294:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8276:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:7908:176)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_5150ccfd._.js:2601:64)
+[    2343ms] [WARNING] Image with src "https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b0daae9a._.js:968
+[    2552ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/en:0
+[    2552ms] [LOG] %c[Vercel Speed Insights]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[    2554ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    2554ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /en} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    2555ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /en} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    2555ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/en color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/en, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780682357495} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[    2556ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/en color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/en, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780682357496} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   12052ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   12424ms] [LOG] [Fast Refresh] done in 478ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   33321ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   34756ms] [LOG] [Fast Refresh] done in 1541ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   34861ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   35816ms] [LOG] [Fast Refresh] done in 1049ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   39158ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/en:0
+[   45398ms] [LOG] %c[Vercel Speed Insights]%c [vitals] color: rgb(120, 120, 120) color: inherit {speed: 3g, metrics: Array(3), scriptVersion: 0.1.3, sdkName: @vercel/speed-insights/next, sdkVersion: 1.2.0} /_vercel/speed-insights/vitals @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   45399ms] [LOG] %c[Vercel Speed Insights]%c [vitals] color: rgb(120, 120, 120) color: inherit {speed: 3g, metrics: Array(1), scriptVersion: 0.1.3, sdkName: @vercel/speed-insights/next, sdkVersion: 1.2.0} /_vercel/speed-insights/vitals @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   45605ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:14537
+[   46563ms] Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AnimationProvider>
+      <AnimationOrchestrator initialActiveSection={undefined}>
+        <SmoothScroll>
+          <OfflineIndicator>
+          <UpdateNotification>
+          <SharedNavbar locale="en">
+            <motion.header className="fixed top-..." initial={{y:-100}} animate={{y:0}} transition={{duration:0.6}}>
+              <header className="fixed top-..." style={{...}} ref={function useMotionRef.useCallback}>
+                <div className="max-w-7xl ...">
+                  <div className="flex items...">
+                    <LinkComponent>
+                    <nav className="hidden lg:...">
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent>
+                      <LinkComponent href="/fr/blog" className="relative p...">
+                        <a
+                          className="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors text-gray-700..."
+                          ref={function}
+                          onClick={function onClick}
+                          onMouseEnter={function onMouseEnter}
+                          onTouchStart={function onTouchStart}
++                         href="/fr/blog"
+-                         href="/en/blog"
+                        >
+                      ...
+                      ...
+                    ...
+                ...
+          ...
+            <SegmentViewNode type="page" pagePath="[locale]/p...">
+              <SegmentTrieNode>
+              <Home>
+                <script>
+                <LandingPage locale="en">
+                  <StructuredData>
+                  <div className="min-h-screen" style={{...}}>
+                    <main>
+                      <HeroSection>
+                      <TrustMarquee>
+                      <StatsSection>
+                      ...
+                        <div className="grid gap-6" style={{...}}>
+                          <ServiceCard>
+                          <ServiceCard>
+                          <ServiceCard>
+                          <ServiceCard serviceKey="payment" index={3}>
+                            <div className="group rela..." style={{...}}>
+                              <div>
+                              <h3>
+                              <p>
+                              <LinkComponent href="/fr/servic..." className="inline-fle..." style={{color:"var..."}}>
+                                <a
+                                  className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ..."
+                                  style={{color:"var(--colo..."}}
+                                  ref={function}
+                                  onClick={function onClick}
+                                  onMouseEnter={function onMouseEnter}
+                                  onTouchStart={function onTouchStart}
++                                 href="/fr/services/paiement-fournisseur-chine"
+-                                 href="/en/services/paiement-fournisseur-chine"
+                                >
+                          ...
+                      <AboutSection>
+                      <WhyUsSection>
+                      <AppPreviewSection>
+                        <section id="about-app" className="relative p..." style={{...}}>
+                          <div className="max-w-7xl ...">
+                            <div className="grid grid-...">
+                              <div className="space-y-6">
+                                <div>
+                                <h2
+                                  className="font-bold tracking-tight"
+                                  style={{fontFamily:"var(--font...",fontSize:"var(--text...",color:"var(--colo...",letterSpacing:"...", ...}}
+                                >
++                                 Your freight, in your pocket
+-                                 Download the App
+                                ...
+                              ...
+                      ...
+            ...
+          ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:2892:56)
+    at prepareToHydrateHostInstance (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:2946:23)
+    at completeWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:6330:60)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:886:74)
+    at completeUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8363:23)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8300:28)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8294:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8276:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:7908:176)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js:8882:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_5150ccfd._.js:2601:64)
+[   46733ms] [WARNING] Image with src "https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_b0daae9a._.js:968
+[   46749ms] [LOG] %c[Vercel Speed Insights]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/speed-insights/script.debug.js:0
+[   46750ms] [LOG] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   46752ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /en} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   46752ms] [LOG] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /[locale], path: /en} @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   46753ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/en color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/en, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780682401692} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   46753ms] [LOG] %c[Vercel Web Analytics]%c [view] http://localhost:3000/en color: rgb(120, 120, 120) color: inherit {o: http://localhost:3000/en, sv: 0.1.3, sdkn: @vercel/analytics/next, sdkv: 1.5.0, ts: 1780682401693} /_vercel/insights/view @ https://va.vercel-scripts.com/v1/script.debug.js:0
+[   46849ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/en:0
+[   56848ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   57854ms] [LOG] [Fast Refresh] done in 1058ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[   58301ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/en:0
+[   88126ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[   89127ms] [LOG] [Fast Refresh] done in 1105ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  113830ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  115005ms] [LOG] [Fast Refresh] done in 1281ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  138345ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  139540ms] [LOG] [Fast Refresh] done in 1296ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  153783ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  154257ms] [LOG] [Fast Refresh] done in 579ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  206847ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  207330ms] [LOG] [Fast Refresh] done in 584ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  216683ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  217886ms] [LOG] [Fast Refresh] done in 1310ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  282229ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5949
+[  282254ms] [LOG] [Fast Refresh] done in 137ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js:5809
+[  568066ms] [ERROR] Failed to load resource: the server responded with a status of 500 () @ chrome-error://chromewebdata/:0
