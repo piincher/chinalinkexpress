@@ -1483,5 +1483,8 @@
   "appSection": {
     "title": "Votre fret, dans votre poche",
     "previewDescription": "Suivez vos expéditions en temps réel, recevez des notifications à chaque étape et contactez votre agent directement depuis l'application."
+  },
+  "promoCampaign": {
+    "close": "Fermer"
   }
 }

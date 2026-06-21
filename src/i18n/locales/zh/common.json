@@ -1332,5 +1332,8 @@
   "appSection": {
     "title": "您的货物，尽在掌握",
     "previewDescription": "实时追踪您的货物，每一步都收到通知，并直接从应用程序联系您的代理。"
+  },
+  "promoCampaign": {
+    "close": "关闭"
   }
 }

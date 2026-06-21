@@ -1511,5 +1511,8 @@
   "appSection": {
     "title": "Your freight, in your pocket",
     "previewDescription": "Track your shipments in real time, receive notifications at every step, and contact your agent directly from the app."
+  },
+  "promoCampaign": {
+    "close": "Close"
   }
 }
