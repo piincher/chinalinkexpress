@@ -123,6 +123,35 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Apple App Site Association is extensionless — it must be served as
+        // application/json or iOS Universal Links verification fails
+        source: '/.well-known/apple-app-site-association',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
+      {
+        // Android App Links verification file
+        source: '/.well-known/assetlinks.json',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600',
+          },
+        ],
+      },
       ...(process.env.NODE_ENV === 'production' ? [
         {
           // Cache static assets (production only - avoid stale dev chunks)

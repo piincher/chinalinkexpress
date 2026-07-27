@@ -58,7 +58,21 @@ export function PlayStoreButton({ className }: { className?: string }) {
   );
 }
 
-export function OpenInAppButton({ token, className }: { token: string; className?: string }) {
+export function OpenInAppButton({
+  token,
+  className,
+  label = 'Ouvrir dans l\'app',
+  fallbackTitle = 'L\'app ne s\'est pas ouverte ?',
+  fallbackDescription = 'Si l\'application n\'est pas installée, téléchargez-la depuis votre store préféré.',
+  closeAriaLabel = 'Fermer',
+}: {
+  token: string;
+  className?: string;
+  label?: string;
+  fallbackTitle?: string;
+  fallbackDescription?: string;
+  closeAriaLabel?: string;
+}) {
   const [showFallback, setShowFallback] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -83,20 +97,20 @@ export function OpenInAppButton({ token, className }: { token: string; className
         className={`inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0277BD] text-white rounded-xl text-sm font-semibold hover:bg-[#01579B] transition-colors ${className || ''}`}
       >
         <Smartphone className="w-5 h-5" />
-        Ouvrir dans l'app
+        {label}
       </button>
 
       {showFallback && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-4">
           <div className="bg-[var(--surface)] rounded-2xl p-6 w-full max-w-sm shadow-2xl">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-[var(--text-primary)]">L'app ne s'est pas ouverte ?</h3>
-              <button onClick={() => setShowFallback(false)} className="p-2.5 rounded-lg hover:bg-[var(--surface-elevated)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Fermer">
+              <h3 className="text-lg font-bold text-[var(--text-primary)]">{fallbackTitle}</h3>
+              <button onClick={() => setShowFallback(false)} className="p-2.5 rounded-lg hover:bg-[var(--surface-elevated)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label={closeAriaLabel}>
                 <X className="w-5 h-5 text-[var(--text-secondary)]" />
               </button>
             </div>
             <p className="text-sm text-[var(--text-secondary)] mb-4">
-              Si l'application n'est pas installée, téléchargez-la depuis votre store préféré.
+              {fallbackDescription}
             </p>
             <div className="flex flex-col gap-2">
               <AppStoreButton />
@@ -109,12 +123,35 @@ export function OpenInAppButton({ token, className }: { token: string; className
   );
 }
 
-export function AppStoreButtons({ token, className }: { token?: string; className?: string }) {
+export function AppStoreButtons({
+  token,
+  className,
+  label,
+  fallbackTitle,
+  fallbackDescription,
+  closeAriaLabel,
+}: {
+  token?: string;
+  className?: string;
+  label?: string;
+  fallbackTitle?: string;
+  fallbackDescription?: string;
+  closeAriaLabel?: string;
+}) {
   return (
     <div className={`flex flex-col sm:flex-row gap-2 ${className || ''}`}>
       <AppStoreButton className="flex-1" />
       <PlayStoreButton className="flex-1" />
-      {token && <OpenInAppButton token={token} className="flex-1 sm:hidden" />}
+      {token && (
+        <OpenInAppButton
+          token={token}
+          className="flex-1 sm:hidden"
+          label={label}
+          fallbackTitle={fallbackTitle}
+          fallbackDescription={fallbackDescription}
+          closeAriaLabel={closeAriaLabel}
+        />
+      )}
     </div>
   );
 }

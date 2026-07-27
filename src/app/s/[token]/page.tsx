@@ -17,7 +17,7 @@ export const dynamic = 'force-dynamic';
 // Config
 // ============================================================================
 
-const WEB_BASE_URL = process.env.NEXT_PUBLIC_WEB_URL || 'https://chinalinkexpress.com';
+const WEB_BASE_URL = process.env.NEXT_PUBLIC_WEB_URL || 'https://www.chinalinkexpress.com';
 const OG_IMAGE_URL = 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg';
 const SUPPORTED_LOCALES = ['fr', 'en', 'zh', 'ar'];
 

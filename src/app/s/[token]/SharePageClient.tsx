@@ -499,7 +499,14 @@ function AppCTA({ token, platform }: { token: string; platform: PlatformInfo }) 
 
       {(platform.isIOS || platform.isAndroid) && (
         <div className="space-y-2">
-          <OpenInAppButton token={token} className="focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2" />
+          <OpenInAppButton
+            token={token}
+            className="focus-visible:ring-2 focus-visible:ring-[#0277BD] focus-visible:ring-offset-2"
+            label={t('openInApp')}
+            fallbackTitle={t('appNotOpenedTitle')}
+            fallbackDescription={t('appNotOpenedDescription')}
+            closeAriaLabel={t('closeModal')}
+          />
           <p className="text-xs text-[var(--text-muted)] text-center">
             {platform.isIOS ? t('iosDetected') : t('androidDetected')}
           </p>
@@ -517,7 +524,14 @@ function AppCTA({ token, platform }: { token: string; platform: PlatformInfo }) 
 
       <div className="pt-3 border-t border-[var(--border)]">
         <p className="text-xs text-[var(--text-muted)] text-center mb-3">{t('noAppQuestion')}</p>
-        <AppStoreButtons token={token} className="justify-center" />
+        <AppStoreButtons
+          token={token}
+          className="justify-center"
+          label={t('openInApp')}
+          fallbackTitle={t('appNotOpenedTitle')}
+          fallbackDescription={t('appNotOpenedDescription')}
+          closeAriaLabel={t('closeModal')}
+        />
       </div>
     </motion.div>
   );
@@ -528,11 +542,13 @@ function ErrorView({
   title,
   description,
   actions,
+  locale,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   actions?: React.ReactNode;
+  locale: string;
 }) {
   const t = useTranslations('sharedShipment');
   const reducedMotion = useReducedMotion();
@@ -543,6 +559,8 @@ function ErrorView({
       initial="hidden"
       animate="visible"
       exit="exit"
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      lang={locale}
       className="min-h-screen flex flex-col"
     >
       <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)] supports-[padding:max(0px,env(safe-area-inset-top))]:pt-[env(safe-area-inset-top)]">
@@ -668,6 +686,7 @@ function SharePageContent({
   if (error === 'not_found' || (!data && !loading && !error)) {
     return (
       <ErrorView
+        locale={locale}
         icon={Link2Off}
         title={t('notFoundTitle')}
         description={t('notFoundDescription')}
@@ -687,6 +706,7 @@ function SharePageContent({
   if (error === 'revoked') {
     return (
       <ErrorView
+        locale={locale}
         icon={AlertTriangle}
         title={t('revokedTitle')}
         description={t('revokedDescription')}
@@ -706,6 +726,7 @@ function SharePageContent({
   if (error === 'rate_limited') {
     return (
       <ErrorView
+        locale={locale}
         icon={Clock}
         title={t('rateLimitedTitle')}
         description={t('rateLimitedDescription')}
@@ -734,6 +755,7 @@ function SharePageContent({
   if (error === 'api_error') {
     return (
       <ErrorView
+        locale={locale}
         icon={AlertTriangle}
         title={t('apiErrorTitle')}
         description={t('apiErrorDescription')}
@@ -762,6 +784,7 @@ function SharePageContent({
   if (!data) {
     return (
       <ErrorView
+        locale={locale}
         icon={AlertTriangle}
         title={t('unknownErrorTitle')}
         description={t('unknownErrorDescription')}
@@ -790,7 +813,11 @@ function SharePageContent({
   if (!reference) reference = t('shipmentId', { id: token.slice(0, 8) });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0a0a] dark:to-[#171717]">
+    <div
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      lang={locale}
+      className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-[#0a0a0a] dark:to-[#171717]"
+    >
       {/* Header */}
       <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--surface)] supports-[padding:max(0px,env(safe-area-inset-top))]:pt-[env(safe-area-inset-top)]">
         <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">

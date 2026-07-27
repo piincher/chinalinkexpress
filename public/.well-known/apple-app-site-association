@@ -7,10 +7,6 @@
         ],
         "components": [
           {
-            "/": "/",
-            "comment": "App homepage"
-          },
-          {
             "/": "/home",
             "comment": "Home tab"
           },
@@ -97,10 +93,6 @@
           {
             "/": "/verify",
             "comment": "Verification"
-          },
-          {
-            "/": "/s/*",
-            "comment": "Shared shipment tokens"
           },
           {
             "/": "/batch/*",
