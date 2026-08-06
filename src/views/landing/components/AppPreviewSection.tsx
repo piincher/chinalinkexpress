@@ -60,8 +60,9 @@ export function AppPreviewSection() {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-3xl)',
+              fontWeight: 'var(--weight-display)',
                 color: 'var(--color-ink)',
-                letterSpacing: '-0.02em',
+                letterSpacing: 'var(--tracking-display)',
                 lineHeight: 1.1,
               }}
             >

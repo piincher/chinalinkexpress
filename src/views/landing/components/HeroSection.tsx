@@ -117,11 +117,15 @@ export function HeroSection() {
 
           {/* Marquee headline */}
           <motion.h1
-            className="font-bold leading-[1.05] tracking-tight"
+            className="leading-[0.98]"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-display)',
-              letterSpacing: '-0.03em',
+              fontWeight: 'var(--weight-display)',
+              letterSpacing: 'var(--tracking-display)',
+              // Long French compounds ("réceptionnez") must break rather than
+              // push the page sideways at 320px.
+              overflowWrap: 'anywhere',
             }}
             initial={reduced ? {} : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

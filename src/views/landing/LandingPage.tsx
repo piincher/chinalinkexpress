@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl';
 import StructuredData from '@/app/components/StructuredData';
 import {
   HeroSection,
+  SourcingSection,
   StatsSection,
   ServicesSection,
   AboutSection,
@@ -68,6 +69,8 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
       <div className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
         <main>
           <HeroSection />
+          {/* Explains the business in one graphic before the services list. */}
+          <SourcingSection />
           <TrustMarquee />
           <StatsSection />
           <ServicesSection />

@@ -327,7 +327,11 @@
     "descriptionBefore": "回答几个简单问题并获得",
     "descriptionStrong": "个性化进口建议",
     "descriptionAfter": "通过 WhatsApp 获取适合您产品、预算和目的地的建议。",
-    "benefits": ["免费评估", "个性化建议", "专家指导"],
+    "benefits": [
+      "免费评估",
+      "个性化建议",
+      "专家指导"
+    ],
     "englishCtaTitle": "联系进口顾问",
     "englishCtaText": "发送产品链接、预计数量和目的地。我们的团队会在您付款前提供指导。",
     "englishCtaButton": "在 WhatsApp 开始",
@@ -1338,5 +1342,9 @@
   },
   "promoCampaign": {
     "close": "关闭"
+  },
+  "sourcing": {
+    "title": "从中国市场直达您家门口",
+    "subtitle": "在1688、淘宝、阿里巴巴或工厂直接采购。您的订单先到达我们的中国仓库，再送到巴马科您的家门口。"
   }
 }

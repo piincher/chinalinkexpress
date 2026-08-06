@@ -483,7 +483,11 @@
     "descriptionBefore": "Answer a few simple questions and receive",
     "descriptionStrong": "personalized import advice",
     "descriptionAfter": "on WhatsApp for your product, budget and destination.",
-    "benefits": ["Free assessment", "Personalized advice", "Expert guidance"],
+    "benefits": [
+      "Free assessment",
+      "Personalized advice",
+      "Expert guidance"
+    ],
     "englishCtaTitle": "Talk to an import advisor",
     "englishCtaText": "Send your product link, estimated quantity and destination. Our team will guide you before you pay a supplier.",
     "englishCtaButton": "Start on WhatsApp",
@@ -1517,5 +1521,9 @@
   },
   "promoCampaign": {
     "close": "Close"
+  },
+  "sourcing": {
+    "title": "From the Chinese marketplace to your door",
+    "subtitle": "Buy on 1688, Taobao, Alibaba or straight from the factory. Your orders reach our warehouse in China, then your door in Bamako."
   }
 }
