@@ -126,6 +126,11 @@ export async function generateMetadata({
     authors: [{ name: 'ChinaLink Express' }],
     creator: 'ChinaLink Express',
     publisher: 'ChinaLink Express',
+    icons: {
+      icon: '/images/chinalink-logo-square.png',
+      shortcut: '/images/chinalink-logo-square.png',
+      apple: '/images/chinalink-logo-square.png',
+    },
     metadataBase: new URL('https://www.chinalinkexpress.com'),
     alternates: {
       canonical: `/${validLocale}/`,

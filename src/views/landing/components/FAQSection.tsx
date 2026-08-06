@@ -11,6 +11,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { AnimatedSection } from '@/components/animations';
 import { SECTION_IDS } from '../constants';
 import { CONTACT_CONFIG } from '@/config/app';
 
@@ -64,7 +65,7 @@ export function FAQSection() {
       
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
           <span className="inline-block px-4 py-1.5 bg-[var(--color-primary-50)] text-[var(--color-primary-700)] rounded-full text-sm font-semibold mb-4">
             {t('sectionLabel') || 'FAQ'}
           </span>
@@ -74,7 +75,7 @@ export function FAQSection() {
           </h2>
           
           <div className="w-24 h-1.5 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] mx-auto rounded-full" />
-        </div>
+        </AnimatedSection>
 
         {/* Support Info Card */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-dark)] rounded-3xl p-8 text-white overflow-hidden relative">

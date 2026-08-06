@@ -11,6 +11,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
+import { AnimatedSection } from '@/components/animations';
 import { SECTION_IDS } from '../constants';
 
 export function AboutSection() {
@@ -25,7 +26,7 @@ export function AboutSection() {
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="max-w-2xl mb-16">
+        <AnimatedSection animation="blurIn" className="max-w-2xl mb-16" threshold={0.5}>
           <h2
             className="font-bold tracking-tight mb-4"
             style={{
@@ -37,10 +38,14 @@ export function AboutSection() {
           >
             {t('about.title')}
           </h2>
-        </div>
+        </AnimatedSection>
 
-        {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        {/* Content grid — the two columns arrive from opposite sides. */}
+        <AnimatedSection
+          animation="fadeUp"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
+          threshold={0.1}
+        >
           {/* Image gallery */}
           <div className="order-2 lg:order-1 space-y-4">
             <div
@@ -132,7 +137,7 @@ export function AboutSection() {
               ))}
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -9,12 +9,14 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import {
   Zap,
   Shield,
   Gem,
   Target,
 } from 'lucide-react';
+import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/animations';
 import { SECTION_IDS } from '../constants';
 
 const WHY_US_KEYS = ['speed', 'reliability', 'price', 'expertise'] as const;
@@ -31,20 +33,24 @@ function WhyUsCard({
   icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
 }) {
   return (
-    <div
-      className="flex flex-col h-full rounded-lg p-6"
+    <motion.div
+      className="group flex flex-col h-full rounded-lg p-6"
       style={{
         backgroundColor: 'var(--color-paper)',
         border: '1px solid var(--color-rule)',
       }}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Icon */}
-      <div
+      {/* Icon — settles back level as the card lifts, so the two read as one move. */}
+      <motion.div
         className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
         style={{ backgroundColor: 'var(--color-paper-2)' }}
+        whileHover={{ rotate: -6, scale: 1.08 }}
+        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
       >
         <Icon className="w-5 h-5" style={{ color: 'var(--color-accent)' }} />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <h3
@@ -59,7 +65,7 @@ function WhyUsCard({
       >
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -74,7 +80,7 @@ export function WhyUsSection() {
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="max-w-2xl mb-16">
+        <AnimatedSection animation="blurIn" className="max-w-2xl mb-16" threshold={0.5}>
           <h2
             className="font-bold tracking-tight mb-4"
             style={{
@@ -86,24 +92,25 @@ export function WhyUsSection() {
           >
             {t('title')}
           </h2>
-        </div>
+        </AnimatedSection>
 
         {/* Cards */}
-        <div
+        <StaggerContainer
           className="grid gap-6"
-          style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          }}
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}
+          staggerDelay={0.08}
+          threshold={0.15}
         >
           {WHY_US_KEYS.map((key, index) => (
-            <WhyUsCard
-              key={key}
-              title={t(`items.${key}.title`)}
-              description={t(`items.${key}.description`)}
-              icon={WHY_US_ICONS[index]}
-            />
+            <StaggerItem key={key} animation="unfold" className="h-full">
+              <WhyUsCard
+                title={t(`items.${key}.title`)}
+                description={t(`items.${key}.description`)}
+                icon={WHY_US_ICONS[index]}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

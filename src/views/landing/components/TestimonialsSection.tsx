@@ -6,8 +6,11 @@
  * Part of the landing page feature.
  */
 
+'use client';
+
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/animations';
 import type { Testimonial } from '@/types';
 import { SECTION_IDS } from '../constants';
 
@@ -142,7 +145,7 @@ export function TestimonialsSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
           <span className="inline-block px-4 py-1.5 bg-[var(--color-accent-light)]/30 text-[var(--color-accent-dark)] rounded-full text-sm font-semibold mb-4">
             {t('testimonials.sectionLabel')}
           </span>
@@ -152,17 +155,20 @@ export function TestimonialsSection() {
           </h2>
           
           <div className="w-24 h-1.5 bg-gradient-to-r from-[var(--color-accent)] to-orange-500 mx-auto rounded-full" />
-        </div>
+        </AnimatedSection>
 
-        {/* Testimonials Grid - Static, no rotation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Testimonials Grid — cards hinge in one after another */}
+        <StaggerContainer
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          staggerDelay={0.1}
+          threshold={0.15}
+        >
           {testimonials.map((testimonial) => (
-            <TestimonialCard 
-              key={testimonial.id} 
-              testimonial={testimonial}
-            />
+            <StaggerItem key={testimonial.id} animation="unfold" className="h-full">
+              <TestimonialCard testimonial={testimonial} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* CTA Banner */}
         <div className="relative bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-primary-700)] to-[var(--color-primary-dark)] rounded-3xl p-8 md:p-12 text-white text-center overflow-hidden">

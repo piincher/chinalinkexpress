@@ -11,6 +11,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Smartphone } from 'lucide-react';
+import { AnimatedSection } from '@/components/animations';
 import { SECTION_IDS } from '../constants';
 import { AppStoreButton, PlayStoreButton } from '@/components/shared/AppStoreButtons';
 
@@ -35,7 +36,11 @@ export function AppPreviewSection() {
       style={{ backgroundColor: 'var(--color-paper)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <AnimatedSection
+          animation="blurIn"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          threshold={0.15}
+        >
           {/* Left: copy */}
           <div className="space-y-6">
             <div
@@ -98,7 +103,7 @@ export function AppPreviewSection() {
               </div>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

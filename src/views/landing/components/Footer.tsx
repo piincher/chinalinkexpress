@@ -90,7 +90,7 @@ export function Footer() {
                 transition={{ type: 'spring' }}
               >
                 <img
-                  src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png"
+                  src="/images/chinalink-logo-square.png"
                   alt="ChinaLink Express Logo"
                   className="h-16 w-16 rounded-xl"
                 />

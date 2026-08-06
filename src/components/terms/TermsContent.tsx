@@ -123,6 +123,23 @@ function CalculationExample({
    );
 }
 
+/**
+ * A numbered contractual clause (3.1.1, 3.1.2, …). Pricing rules that a client
+ * can be billed on are written as articles rather than bullets so each one can
+ * be cited on its own in case of a dispute.
+ */
+function Clause({ number, title, children }: { number: string; title?: string; children: React.ReactNode }) {
+   return (
+      <div className="mb-4 pl-4 border-l-2 border-[var(--border)]">
+         <p className="text-[var(--text-primary)] font-semibold mb-1">
+            {number}
+            {title ? ` — ${title}` : ""}
+         </p>
+         <div className="text-[var(--text-secondary)] text-sm leading-relaxed space-y-2">{children}</div>
+      </div>
+   );
+}
+
 function InfoBox({
    type,
    title,
@@ -287,27 +304,106 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
 
                <Section icon={DollarSign} title="3. Rates and Chargeable Weight" id="pricing">
                   <SubSection title="3.1 Air Freight Calculation">
-                     <p className="text-[var(--text-secondary)] mb-3">
-                        Air freight is charged using the higher value between actual weight and
-                        volumetric weight.
+                     <p className="text-[var(--text-secondary)] mb-4">
+                        Air freight is charged on the <strong>chargeable weight</strong>, determined
+                        and rounded in accordance with the articles below.
                      </p>
-                     <List
-                        items={[
-                           "Actual weight is the measured weight in kilograms",
-                           "Volumetric weight = length x width x height in centimeters / 5000",
-                           "The final chargeable weight is rounded according to route and carrier rules",
-                        ]}
-                     />
+
+                     <Clause number="3.1.1" title="Determination of chargeable weight">
+                        <p>Chargeable weight is the higher of the following two values:</p>
+                        <p>
+                           a) the <strong>gross weight</strong> of the package, including the goods
+                           together with their packaging, filling and protective materials;
+                        </p>
+                        <p>
+                           b) the <strong>volumetric weight</strong>, calculated as
+                           (Length × Width × Height, in centimetres) ÷ 5000.
+                        </p>
+                        <p>
+                           This rule follows international air freight practice, under which the
+                           carrier charges for the space occupied where that space exceeds the mass
+                           carried. The 5000 cm³/kg divisor is the one applied by the main express
+                           air freight operators; the IATA resolution uses a 6000 cm³/kg divisor for
+                           general air cargo.
+                        </p>
+                     </Clause>
+
+                     <Clause number="3.1.2" title="Rounding">
+                        <p>
+                           All weights are rounded <strong>up to the next tenth of a kilogram
+                           (0.1 kg)</strong>. By way of illustration, a weight of 1.21 kg, 1.23 kg or
+                           1.24 kg is rounded to 1.3 kg.
+                        </p>
+                        <p>
+                           This rounding is more favourable to the Client than the rounding up to the
+                           next half-kilogram (0.5 kg) customarily applied in international air
+                           freight.
+                        </p>
+                     </Clause>
+
+                     <Clause number="3.1.3" title="Handling, packing and transfer coefficient">
+                        <p>
+                           A flat coefficient of <strong>0.05 kg per kilogram, being five per cent
+                           (5%)</strong>, is applied to the chargeable weight.
+                        </p>
+                        <p>This coefficient covers exclusively:</p>
+                        <p>
+                           a) the supply and application of packaging, cartons, filling and
+                           protective film; b) the labour of packing, consolidation, weighing,
+                           marking and warehouse handling; c) funds transfer and collection charges.
+                        </p>
+                        <p>
+                           No standard packing charge is invoiced in addition to this coefficient.
+                           Specific packaging requested by the Client (palletising, double-casing,
+                           wooden crating) remains subject to a prior quotation.
+                        </p>
+                     </Clause>
+
+                     <Clause number="3.1.4" title="Order of operations">
+                        <p>
+                           The invoiced weight is established in the following order: 1° weighing and
+                           measurement of the packed parcel; 2° determination of chargeable weight
+                           (art. 3.1.1); 3° rounding (art. 3.1.2); 4° application of the coefficient
+                           (art. 3.1.3); 5° final rounding (art. 3.1.2); 6° multiplication by the
+                           rate of the applicable category.
+                        </p>
+                     </Clause>
+
+                     <Clause number="3.1.5" title="Enforceability">
+                        <p>
+                           These rules being published and accessible at all times, they are deemed
+                           known to and accepted by the Client upon delivery of the goods to the
+                           warehouse. Any dispute as to weight or dimensions must be raised{" "}
+                           <strong>before shipment</strong>; after that point the measurements
+                           recorded by ChinaLink Express shall prevail.
+                        </p>
+                     </Clause>
+
                      <CalculationExample
-                        title="Air freight example"
+                        title="Example 1 — Bulky package"
                         steps={[
-                           "Package: L=50cm x W=40cm x H=30cm, actual weight = 8kg",
-                           "Volumetric weight = (50 x 40 x 30) / 5000 = 12kg",
-                           "Chargeable weight = max(8kg, 12kg) = 12kg",
-                           "Example rate: 12,000 XOF/kg",
-                           "12kg x 12,000 XOF = 144,000 XOF",
+                           "Package: L=50cm x W=40cm x H=30cm, gross weight = 8 kg",
+                           "Volumetric weight = (50 x 40 x 30) / 5000 = 12 kg",
+                           "Chargeable weight = max(8 kg; 12 kg) = 12 kg",
+                           "Coefficient: 12 x 1.05 = 12.6 kg",
+                           "Rounded up to the next 0.1 kg = 12.6 kg",
+                           "Electronics category rate: 12,000 XOF/kg",
+                           "12.6 kg x 12,000 XOF = 151,200 XOF",
                         ]}
-                        result="Estimated air freight: 144,000 XOF"
+                        result="Estimated air freight: 151,200 XOF"
+                     />
+
+                     <CalculationExample
+                        title="Example 2 — Small parcel (rounding applied)"
+                        steps={[
+                           "Measured gross weight = 1.23 kg — volume not determinant",
+                           "Rounded up to the next 0.1 kg = 1.3 kg",
+                           "Coefficient: 1.3 x 1.05 = 1.365 kg",
+                           "Final rounding up to the next 0.1 kg = 1.4 kg",
+                           "General goods rate: 10,000 XOF/kg",
+                           "1.4 kg x 10,000 XOF = 14,000 XOF",
+                        ]}
+                        result="Estimated air freight: 14,000 XOF"
                      />
                   </SubSection>
 
@@ -907,27 +1003,108 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
             {/* Pricing */}
             <Section icon={DollarSign} title="3. Tarifs et Calculs de Prix" id="pricing">
                <SubSection title="3.1 Fret Aérien - Tarification">
-                  <p className="text-[var(--text-secondary)] mb-3">
-                     Le fret aérien est facturé selon le <strong>poids taxable</strong>, qui est le
-                     plus élevé entre :
+                  <p className="text-[var(--text-secondary)] mb-4">
+                     Le fret aérien est facturé au <strong>poids taxable</strong>, déterminé et
+                     arrondi selon les articles ci-après.
                   </p>
-                  <List
-                     items={[
-                        "Poids réel de la marchandise (en kg)",
-                        "Poids volumétrique = (Longueur × Largeur × Hauteur en cm) ÷ 5000",
+
+                  <Clause number="3.1.1" title="Détermination du poids taxable">
+                     <p>
+                        Le poids taxable est la plus élevée des deux valeurs suivantes :
+                     </p>
+                     <p>
+                        a) le <strong>poids brut</strong> du colis, comprenant la marchandise ainsi
+                        que son emballage, son calage et ses protections ;
+                     </p>
+                     <p>
+                        b) le <strong>poids volumétrique</strong>, obtenu par la formule
+                        (Longueur × Largeur × Hauteur, en centimètres) ÷ 5000.
+                     </p>
+                     <p>
+                        Cette règle est conforme aux usages du transport aérien international, selon
+                        lesquels le transporteur facture l&apos;espace occupé lorsque celui-ci excède
+                        la masse transportée. Le diviseur de 5000 cm³/kg est celui appliqué par les
+                        principaux opérateurs de fret aérien express ; la résolution IATA retient un
+                        diviseur de 6000 cm³/kg pour le fret aérien général.
+                     </p>
+                  </Clause>
+
+                  <Clause number="3.1.2" title="Arrondi">
+                     <p>
+                        Tout poids est arrondi au <strong>dixième de kilogramme (0,1 kg)
+                        supérieur</strong>. À titre d&apos;illustration, un poids de 1,21 kg,
+                        1,23 kg ou 1,24 kg est arrondi à 1,3 kg.
+                     </p>
+                     <p>
+                        Cet arrondi est plus favorable au Client que l&apos;arrondi au
+                        demi-kilogramme (0,5 kg) supérieur usuellement pratiqué en fret aérien
+                        international.
+                     </p>
+                  </Clause>
+
+                  <Clause number="3.1.3" title="Coefficient de manutention, d'emballage et de transfert">
+                     <p>
+                        Il est appliqué au poids taxable un coefficient forfaitaire de{" "}
+                        <strong>0,05 kg par kilogramme, soit cinq pour cent (5 %)</strong>.
+                     </p>
+                     <p>Ce coefficient couvre exclusivement :</p>
+                     <p>
+                        a) la fourniture et la pose des emballages, cartons, calages et films de
+                        protection ; b) la main-d&apos;œuvre de conditionnement, de regroupement, de
+                        pesée, de marquage et de manutention en entrepôt ; c) les frais de transfert
+                        et d&apos;encaissement des fonds.
+                     </p>
+                     <p>
+                        Aucun frais d&apos;emballage standard n&apos;est facturé en sus de ce
+                        coefficient. Les emballages spécifiques demandés par le Client (palettisation,
+                        double caisse, caisse bois) demeurent soumis à devis préalable.
+                     </p>
+                  </Clause>
+
+                  <Clause number="3.1.4" title="Ordre des opérations">
+                     <p>
+                        Le poids facturé est établi dans l&apos;ordre suivant : 1° pesée et mesure du
+                        colis emballé ; 2° détermination du poids taxable (art. 3.1.1) ; 3° arrondi
+                        (art. 3.1.2) ; 4° application du coefficient (art. 3.1.3) ; 5° arrondi final
+                        (art. 3.1.2) ; 6° multiplication par le tarif de la catégorie applicable.
+                     </p>
+                  </Clause>
+
+                  <Clause number="3.1.5" title="Opposabilité">
+                     <p>
+                        Les présentes règles étant publiées et accessibles à tout moment, elles sont
+                        réputées connues et acceptées du Client dès la remise de la marchandise à
+                        l&apos;entrepôt. Toute contestation relative au poids ou aux dimensions doit
+                        être formulée <strong>avant expédition</strong> ; passé ce délai, les
+                        mesures relevées par ChinaLink Express font foi.
+                     </p>
+                  </Clause>
+
+                  <CalculationExample
+                     title="Exemple 1 — Colis volumineux"
+                     steps={[
+                        "Colis : L=50cm × l=40cm × H=30cm, poids brut = 8 kg",
+                        "Poids volumétrique = (50 × 40 × 30) ÷ 5000 = 12 kg",
+                        "Poids taxable = max(8 kg ; 12 kg) = 12 kg",
+                        "Coefficient : 12 × 1,05 = 12,6 kg",
+                        "Arrondi au 0,1 kg supérieur = 12,6 kg",
+                        "Tarif catégorie Électronique : 12 000 FCFA/kg",
+                        "12,6 kg × 12 000 FCFA = 151 200 FCFA",
                      ]}
+                     result="Total fret aérien : 151 200 FCFA"
                   />
 
                   <CalculationExample
-                     title="Exemple de calcul - Fret Aérien"
+                     title="Exemple 2 — Petit colis (application de l'arrondi)"
                      steps={[
-                        "Colis : L=50cm × l=40cm × H=30cm, Poids réel = 8kg",
-                        "Poids volumétrique = (50 × 40 × 30) ÷ 5000 = 12kg",
-                        "Poids taxable = max(8kg, 12kg) = 12kg",
-                        "Tarif catégorie Standard : 12 000 FCFA/kg",
-                        "12kg × 12 000 FCFA = 144 000 FCFA",
+                        "Poids brut mesuré = 1,23 kg — volume non déterminant",
+                        "Arrondi au 0,1 kg supérieur = 1,3 kg",
+                        "Coefficient : 1,3 × 1,05 = 1,365 kg",
+                        "Arrondi final au 0,1 kg supérieur = 1,4 kg",
+                        "Tarif catégorie Standard : 10 000 FCFA/kg",
+                        "1,4 kg × 10 000 FCFA = 14 000 FCFA",
                      ]}
-                     result="Total fret aérien : 144 000 FCFA"
+                     result="Total fret aérien : 14 000 FCFA"
                   />
 
                   <div className="overflow-x-auto mt-4">
@@ -1083,11 +1260,22 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            </tr>
                            <tr>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
+                                 Emballage et manutention (aérien)
+                              </td>
+                              <td className="px-4 py-3 text-[var(--text-secondary)]">
+                                 Inclus — coefficient 5 %
+                              </td>
+                              <td className="px-4 py-3 text-[var(--text-secondary)]">
+                                 Voir art. 3.1.3
+                              </td>
+                           </tr>
+                           <tr>
+                              <td className="px-4 py-3 text-[var(--text-secondary)]">
                                  Emballage spécial
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">Sur devis</td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 Cartons, palettes
+                                 Palettes, caisse bois, double caisse
                               </td>
                            </tr>
                            <tr>

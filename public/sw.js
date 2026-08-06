@@ -5,7 +5,7 @@
  * Implements Cache-First strategy for static assets and Network-First for API calls.
  */
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `chinalink-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `chinalink-dynamic-${CACHE_VERSION}`;
 const IMAGE_CACHE = `chinalink-images-${CACHE_VERSION}`;
@@ -21,8 +21,8 @@ const PRECACHE_URLS = [
   '/fr/faq',
   '/offline',
   '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/images/chinalink-logo-square.png',
+  '/images/chinalink-wordmark.png'
 ];
 
 // Routes that should always try network first, then cache
@@ -264,7 +264,7 @@ self.addEventListener('push', (event) => {
   
   const options = {
     body: event.data?.text() || 'New update from ChinaLink Express',
-    icon: '/icons/icon-192x192.png',
+    icon: '/images/chinalink-logo-square.png',
     badge: '/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
     data: {

@@ -173,7 +173,7 @@ export function Header({ locale }: HeaderProps) {
               className="rounded-lg"
             >
               <Image
-                src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png"
+                src="/images/chinalink-logo-square.png"
                 alt="ChinaLink Express Logo"
                 className="h-12 w-12 rounded-lg"
                 width={1024}

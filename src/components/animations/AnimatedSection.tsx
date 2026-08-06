@@ -9,21 +9,33 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useInView, useScroll, useTransform, Variants } from 'framer-motion';
+import { motion, useInView, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
-  animation?: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'none';
+  animation?: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'blurIn' | 'unfold' | 'none';
   delay?: number;
   duration?: number;
   threshold?: number;
   once?: boolean;
 }
 
+/**
+ * Entering elements decelerate into place. This is the token easing from
+ * tokens.css (--ease-out); framer-motion needs the raw array, so the two must
+ * be kept in step. The browser-default curve reads as uncrafted.
+ */
+const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+
+/**
+ * Reveal travel: enough to read as movement, short enough that the content —
+ * not the animation — is what the eye lands on. `blurIn` and `unfold` carry the
+ * heavier, more cinematic entrances for hero-adjacent blocks.
+ */
 const animations: Record<string, Variants> = {
   fadeUp: {
-    hidden: { opacity: 0, y: 60 },
+    hidden: { opacity: 0, y: 32 },
     visible: { opacity: 1, y: 0 },
   },
   fadeIn: {
@@ -31,17 +43,33 @@ const animations: Record<string, Variants> = {
     visible: { opacity: 1 },
   },
   slideLeft: {
-    hidden: { opacity: 0, x: -100 },
+    hidden: { opacity: 0, x: -48 },
     visible: { opacity: 1, x: 0 },
   },
   slideRight: {
-    hidden: { opacity: 0, x: 100 },
+    hidden: { opacity: 0, x: 48 },
     visible: { opacity: 1, x: 0 },
   },
   scaleUp: {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0, scale: 0.94 },
     visible: { opacity: 1, scale: 1 },
   },
+  /** Rack-focus entrance — the block resolves as it settles. */
+  blurIn: {
+    hidden: { opacity: 0, y: 24, filter: 'blur(12px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  },
+  /** Perspective tilt, as if the panel were hinging into the page. */
+  unfold: {
+    hidden: { opacity: 0, rotateX: -12, y: 40, transformPerspective: 1200 },
+    visible: { opacity: 1, rotateX: 0, y: 0, transformPerspective: 1200 },
+  },
+};
+
+/** Spatial motion collapses to a plain crossfade when the OS asks for less. */
+const reducedVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 export function AnimatedSection({
@@ -55,6 +83,7 @@ export function AnimatedSection({
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once, amount: threshold });
+  const prefersReduced = useReducedMotion();
 
   if (animation === 'none') {
     return <div className={className}>{children}</div>;
@@ -66,11 +95,11 @@ export function AnimatedSection({
       className={className}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      variants={animations[animation]}
+      variants={prefersReduced ? reducedVariants : animations[animation]}
       transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        duration: prefersReduced ? 0.15 : duration,
+        delay: prefersReduced ? 0 : delay,
+        ease: EASE_OUT,
       }}
     >
       {children}
@@ -84,6 +113,8 @@ interface StaggerContainerProps {
   className?: string;
   staggerDelay?: number;
   threshold?: number;
+  /** Passed through so a wrapped grid keeps its own track definition. */
+  style?: React.CSSProperties;
 }
 
 export function StaggerContainer({
@@ -91,21 +122,26 @@ export function StaggerContainer({
   className = '',
   staggerDelay = 0.1,
   threshold = 0.2,
+  style,
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: threshold });
+  const prefersReduced = useReducedMotion();
 
   return (
     <motion.div
       ref={ref}
       className={className}
+      style={style}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       variants={{
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: staggerDelay,
+            // Total stagger stays under ~500ms or the section feels slow to
+            // settle — so the per-child delay shrinks as the list grows.
+            staggerChildren: prefersReduced ? 0 : staggerDelay,
           },
         },
       }}
@@ -119,16 +155,25 @@ export function StaggerContainer({
 interface StaggerItemProps {
   children: React.ReactNode;
   className?: string;
-  animation?: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scaleUp';
+  animation?: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scaleUp' | 'blurIn' | 'unfold';
+  /** Passed through so a wrapped element keeps its own borders/colours. */
+  style?: React.CSSProperties;
 }
 
 export function StaggerItem({
   children,
   className = '',
   animation = 'fadeUp',
+  style,
 }: StaggerItemProps) {
+  const prefersReduced = useReducedMotion();
   return (
-    <motion.div className={className} variants={animations[animation]}>
+    <motion.div
+      className={className}
+      style={style}
+      variants={prefersReduced ? reducedVariants : animations[animation]}
+      transition={{ duration: prefersReduced ? 0.15 : 0.5, ease: EASE_OUT }}
+    >
       {children}
     </motion.div>
   );

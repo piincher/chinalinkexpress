@@ -106,7 +106,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
               className="relative w-10 h-10 md:w-12 md:h-12"
             >
               <Image
-                src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png"
+                src="/images/chinalink-logo-square.png"
                 alt="ChinaLink Express"
                 fill
                 sizes="(min-width: 768px) 48px, 40px"

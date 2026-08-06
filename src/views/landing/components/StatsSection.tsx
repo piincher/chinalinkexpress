@@ -11,6 +11,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Star } from 'lucide-react';
 import { Counter } from '@/components/animations/Counter';
+import { StaggerContainer, StaggerItem } from '@/components/animations';
 import { STATS } from '@/constants/appConstants';
 import { SECTION_IDS } from '../constants';
 
@@ -48,10 +49,16 @@ export function StatsSection() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+        {/* The columns arrive one after another so the eye is led across the
+            strip, and each number then ticks up from zero in place. */}
+        <StaggerContainer
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
+          staggerDelay={0.12}
+        >
           {stats.map((stat, index) => (
-            <div
+            <StaggerItem
               key={index}
+              animation="blurIn"
               className={`flex flex-col ${index > 0 ? 'md:pl-12 md:border-l' : ''}`}
               style={index > 0 ? { borderColor: 'var(--color-rule)' } : undefined}
             >
@@ -84,9 +91,9 @@ export function StatsSection() {
               >
                 {stat.label}
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

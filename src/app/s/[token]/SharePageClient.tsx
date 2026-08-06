@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { NextIntlClientProvider } from 'next-intl';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
@@ -199,9 +200,13 @@ const reducedMotionErrorContainerVariants = {
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 group">
-      <div className="w-8 h-8 rounded-lg bg-[#0277BD] flex items-center justify-center transition-transform group-hover:scale-105">
-        <Package className="w-5 h-5 text-white" aria-hidden="true" />
-      </div>
+      <Image
+        src="/images/chinalink-logo-square.png"
+        alt="ChinaLink Express"
+        width={32}
+        height={32}
+        className="w-8 h-8 rounded-lg object-contain transition-transform group-hover:scale-105"
+      />
       <span className="font-bold text-[#0277BD] text-lg tracking-tight">ChinaLink Express</span>
     </Link>
   );

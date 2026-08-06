@@ -5,9 +5,12 @@
  * featuring partner logos with grayscale-to-color effect.
  */
 
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { AnimatedSection } from "@/components/animations";
 import { PARTNERS, SECTION_IDS } from "../constants";
 import "@/components/animations/Marquee.css";
 
@@ -28,14 +31,14 @@ export function PartnersSection() {
 
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
-				<div className="text-center mb-12">
+				<AnimatedSection animation="blurIn" className="text-center mb-12" threshold={0.5}>
 					<h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
 						{t("trustedBy")}
 					</h2>
 					<p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
 						{t("subtitle")}
 					</p>
-				</div>
+				</AnimatedSection>
 			</div>
 
 			{/* Marquee Container */}
