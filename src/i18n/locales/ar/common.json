@@ -249,25 +249,6 @@
   "testimonials": {
     "sectionLabel": "آراء العملاء",
     "title": "ماذا يقول عملاؤنا",
-    "ctaTitle": "انضم إلى عملائنا الراضين",
-    "ctaDescription": "أكثر من 100 شركة تثق بنا لاحتياجاتها اللوجستية",
-    "cards": [
-      {
-        "name": "Amadou Diallo",
-        "company": "Diallo Electronics, Bamako",
-        "text": "غيّرت ChinaLink Express طريقة استيرادنا. الشحن الجوي مستقر وفريق الدعم يرسل تحديثات واضحة."
-      },
-      {
-        "name": "Fatou Coulibaly",
-        "company": "Mode Africaine, Abidjan",
-        "text": "أوصي بخدمة الشحن البحري لديهم. تتبع الحاويات واضح والمفاجآت أقل."
-      },
-      {
-        "name": "Oumar Toure",
-        "company": "Toure Import-Export, Dakar",
-        "text": "خدمة التوريد ممتازة. ساعدونا في الحصول على أسعار أفضل من الموردين."
-      }
-    ],
     "testimonials": {
       "sectionLabel": "شهادات"
     },
@@ -1156,7 +1137,6 @@
     "subheadline": "لا ممثلين. لا سيناريو. مستوردون أفارقة يشاركون تجاربهم بلغتهم.",
     "badge": "شهادات فيديو غير مدفوعة",
     "badgeSub": "تم تصويرها في موقع العميل",
-    "comparison": "منافسونا لديهم 0 فيديو. لدينا 6. وهذا يغير كل شيء.",
     "watchVideo": "مشاهدة الفيديو",
     "language": "اللغة",
     "videos": [
@@ -1222,7 +1202,7 @@
       "filmedOnSite": "تم التصوير في موقع العميل",
       "localLanguage": "بلغتهم الخاصة"
     },
-    "comparisonStrip": "منافسونا لديهم 0 فيديو. لدينا 6. وهذا يغير كل شيء.",
+    "comparisonStrip": "نادرًا ما ينشر منافسونا أيًّا منها. لدينا {count}، صُوّرت لدى العميل.",
     "ctaText": "شارك تجربتك أيضاً",
     "ctaButton": "تواصل مع الفريق",
     "close": "إغلاق",

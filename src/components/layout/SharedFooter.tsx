@@ -1,17 +1,33 @@
 /**
- * Shared Footer Component
+ * Site footer.
  *
- * Site-wide footer with links, contact info, and social links.
- * Supports RTL layouts and dark mode.
- * Part of the layout components.
+ * The old one was the single most recognisable template shape on the web: five
+ * equal columns of links, a row of circular social buttons that each turned a
+ * different brand colour on hover (blue, pink, dark blue), a blue-to-cyan
+ * gradient wordmark, and a centred copyright line. Symmetric, evenly weighted,
+ * and identical to ten thousand other sites.
+ *
+ * This one is asymmetric on purpose. A statement block carries the left — the
+ * wordmark set large, the positioning line, and the one action worth taking.
+ * The links keep every destination the old footer had, because they are load
+ * bearing for SEO on a site with sixty routes, but they are set quietly at the
+ * right where a directory belongs rather than competing with the statement.
+ *
+ * It sits on the void band, which gives the page a deliberate close: the
+ * document opens dark on the warehouse and ends dark on the wordmark.
+ *
+ * Social links keep their icons and lose the coloured hover chips — a footer is
+ * not the place to reproduce three other companies' brand colours.
  */
 
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn, getCurrentYear } from '@/lib/utils';
+import { Cta } from '@/components/site/Cta';
+import { WHATSAPP_URL } from '@/constants/contact';
 import type { Locale } from '@/i18n/config';
 
 interface SharedFooterProps {
@@ -20,9 +36,9 @@ interface SharedFooterProps {
 }
 
 const SOCIAL_LINKS = [
-  { icon: Facebook, href: 'https://facebook.com/chinalinkexpress', label: 'Facebook', color: 'hover:bg-blue-500' },
-  { icon: Instagram, href: 'https://instagram.com/chinalinkexpress', label: 'Instagram', color: 'hover:bg-pink-500' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/chinalinkexpress', label: 'LinkedIn', color: 'hover:bg-blue-700' },
+  { icon: Facebook, href: 'https://facebook.com/chinalinkexpress', label: 'Facebook' },
+  { icon: Instagram, href: 'https://instagram.com/chinalinkexpress', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/chinalinkexpress', label: 'LinkedIn' },
 ] as const;
 
 const SERVICE_LINKS = [
@@ -40,7 +56,11 @@ const SERVICE_LINKS = [
   { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
   { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
   { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', locales: ['fr', 'en'] },
-  { labelKey: 'services.features.sourcing.supplierVerification', href: '/services/verification-fournisseur-chine', locales: ['fr', 'en'] },
+  {
+    labelKey: 'services.features.sourcing.supplierVerification',
+    href: '/services/verification-fournisseur-chine',
+    locales: ['fr', 'en'],
+  },
   {
     labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo' },
     href: '/cargo-chine-mali',
@@ -48,213 +68,156 @@ const SERVICE_LINKS = [
   },
 ] as const;
 
+const PAGE_LINKS = [
+  { key: 'navigation.about', href: '#about' },
+  { key: 'navigation.blog', href: 'blog' },
+  { key: 'navigation.faq', href: 'faq' },
+  { key: 'navigation.contact', href: '#contact' },
+  { key: 'navigation.privacy', href: 'privacy' },
+  { key: 'navigation.terms', href: 'terms' },
+] as const;
+
+const TOOL_LINKS = [
+  { key: 'navigation.calculator', href: 'calculateur' },
+  { key: 'navigation.compareShipping', href: 'comparateur-transport' },
+  { key: 'navigation.checkProduct', href: 'verifier-produit' },
+] as const;
+
 export function SharedFooter({ locale, className }: SharedFooterProps) {
   const t = useTranslations();
   const year = getCurrentYear();
 
   return (
-    <footer className={cn('bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800', className)}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link href={`/${locale}/`} className="inline-block mb-4">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                CHINALINK
-              </span>
-            </Link>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-              {t('footer.description')}
-            </p>
-            <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className={cn(
-                      'w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white transition-colors',
-                      social.color
-                    )}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
+    <footer className={cn('band-void ft', className)}>
+      <div className="ft-shell">
+        {/* ── statement ──────────────────────────────────────────────────── */}
+        <div className="ft-statement">
+          <Link href={`/${locale}/`} className="ft-wordmark">
+            CHINALINK
+          </Link>
 
-          {/* Services Column */}
+          <p className="ft-desc">{t('footer.description')}</p>
+
+          <Cta
+            href={WHATSAPP_URL}
+            external
+            variant="solid"
+            tone="void"
+            icon={<MessageCircle size={17} aria-hidden />}
+          >
+            {t('cta.getQuote')}
+          </Cta>
+
+          <ul className="ft-social">
+            {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+              <li key={label}>
+                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                  <Icon size={17} aria-hidden />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── directory ──────────────────────────────────────────────────── */}
+        <nav className="ft-dir" aria-label={t('footer.links')}>
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-              {t('footer.services')}
-            </h3>
-            <ul className="space-y-3">
+            <h2 className="ft-h">{t('footer.services')}</h2>
+            <ul className="ft-list">
               {SERVICE_LINKS.map((link) => {
-                const linkLocale =
-                  'frOnly' in link && link.frOnly
-                    ? 'fr'
-                    : 'locales' in link && !(link.locales as readonly string[]).includes(locale)
-                      ? 'fr'
-                      : locale;
-                const label = 'labelKey' in link ? t(link.labelKey) : link.labels[locale as 'fr' | 'en'] || link.labels.fr;
-
+                // `locales` is a readonly tuple of the locales a link is
+                // written for, so it is narrower than Locale. Widen for the
+                // membership test rather than narrowing `locale`.
+                const only = 'locales' in link ? (link.locales as readonly string[]) : null;
+                if (only && !only.includes(locale)) return null;
+                const label =
+                  'labelKey' in link && link.labelKey
+                    ? t(link.labelKey)
+                    : (link as { labels: Record<string, string> }).labels[locale] ?? '';
+                if (!label) return null;
                 return (
                   <li key={link.href}>
-                    <Link
-                      href={`/${linkLocale}${link.href}`}
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                );
-              })}
-              <li>
-                <Link
-                  href={`/${locale}/calculateur`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                >
-                  {t('navigation.calculator')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Links Column */}
-          <div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-              {t('footer.links')}
-            </h3>
-            <ul className="space-y-3">
-              {['navigation.about', 'navigation.blog', 'navigation.faq', 'navigation.contact', 'navigation.privacy', 'navigation.terms'].map((key) => {
-                const getHref = () => {
-                  if (key === 'navigation.about') return '#about';
-                  if (key === 'navigation.blog') return 'blog';
-                  if (key === 'navigation.contact') return '#contact';
-                  if (key === 'navigation.privacy') return 'privacy';
-                  if (key === 'navigation.terms') return 'terms';
-                  return 'faq';
-                };
-                return (
-                  <li key={key}>
-                    <Link
-                      href={`/${locale}/${getHref()}`}
-                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                    >
-                      {t(key)}
-                    </Link>
+                    <Link href={`/${locale}${link.href}`}>{label}</Link>
                   </li>
                 );
               })}
             </ul>
           </div>
 
-          {/* Tools Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-              {t('navigation.tools')}
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href={`/${locale}/calculateur`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                >
-                  {t('navigation.calculator')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/comparateur-transport`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                >
-                  {t('navigation.compareShipping')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${locale}/verifier-produit`}
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
-                >
-                  {t('navigation.checkProduct')}
-                </Link>
-              </li>
+            <h2 className="ft-h">{t('footer.links')}</h2>
+            <ul className="ft-list">
+              {PAGE_LINKS.map(({ key, href }) => (
+                <li key={key}>
+                  <Link href={`/${locale}/${href}`}>{t(key)}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Column */}
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-              {t('contact.info.title')}
-            </h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-600 dark:text-gray-400 text-sm">
-                  Kalaban Coura, Bamako, Mali
+            <h2 className="ft-h">{t('navigation.tools')}</h2>
+            <ul className="ft-list">
+              {TOOL_LINKS.map(({ key, href }) => (
+                <li key={key}>
+                  <Link href={`/${locale}/${href}`}>{t(key)}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="ft-h">{t('contact.info.title')}</h2>
+            <ul className="ft-list ft-list--contact">
+              <li>
+                <MapPin size={15} aria-hidden />
+                <span>Kalaban Coura, Bamako, Mali</span>
+              </li>
+              <li>
+                <Phone size={15} aria-hidden />
+                <span>
+                  <a href="tel:+8618851725957">+86 188 5172 5957</a>
+                  <a href="tel:+22376696177">+223 76 69 61 77</a>
                 </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <div className="text-gray-600 dark:text-gray-400 text-sm">
-                  <a href="tel:+8618851725957" className="hover:text-blue-600 dark:hover:text-blue-400 block">+86 188 5172 5957</a>
-                  <a href="tel:+22376696177" className="hover:text-blue-600 dark:hover:text-blue-400 block">+223 76 69 61 77</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                <a
-                  href="mailto:contact@chinalinkexpress.com"
-                  className="text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  contact@chinalinkexpress.com
-                </a>
-              </div>
-              <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                <div className="text-gray-600 dark:text-gray-400 text-sm">
-                  <p>{t('contact.info.hoursWeekday')}</p>
-                  <p>{t('contact.info.hoursSaturday')}</p>
-                  <p>{t('contact.info.hoursSunday')}</p>
-                </div>
-              </div>
-            </div>
+              </li>
+              <li>
+                <Mail size={15} aria-hidden />
+                <a href="mailto:contact@chinalinkexpress.com">contact@chinalinkexpress.com</a>
+              </li>
+              <li>
+                <Clock size={15} aria-hidden />
+                <span>
+                  <span>{t('contact.info.hoursWeekday')}</span>
+                  <span>{t('contact.info.hoursSaturday')}</span>
+                  <span>{t('contact.info.hoursSunday')}</span>
+                </span>
+              </li>
+            </ul>
           </div>
-        </div>
+        </nav>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-gray-500 dark:text-gray-500 text-sm text-center md:text-left">
-              &copy; {year} ChinaLink Express. {t('footer.copyright')}
-            </p>
-            <p className="text-gray-500 dark:text-gray-500 text-sm">
-              Made with <span className="text-rose-500">❤</span> by{' '}
-              <a
-                href="https://nuvotech.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-400 transition-colors"
-              >
-                nuvotech.tech
-              </a>{' '}
-              team{' '}
-              <a
-                href="https://wa.me/8618851725957"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-500 hover:text-green-400 transition-colors"
-              >
-                +86 178 6567 3053
-              </a>
-            </p>
-          </div>
-        </div>
+      {/* ── legal ────────────────────────────────────────────────────────── */}
+      <div className="ft-legal">
+        <p>
+          &copy; {year} ChinaLink Express. {t('footer.copyright')}
+        </p>
+        {/*
+          The agency credit. Its number is nuvotech's own, not ChinaLink's — an
+          earlier pass at consolidating phone numbers wrongly pointed this at the
+          sales line while the visible text still read the agency's, so the link
+          and its label disagreed. Both are the agency's again.
+        */}
+        <p>
+          Made by{' '}
+          <a href="https://nuvotech.tech" target="_blank" rel="noopener noreferrer">
+            nuvotech.tech
+          </a>{' '}
+          ·{' '}
+          <a href="https://wa.me/8617865673053" target="_blank" rel="noopener noreferrer">
+            +86 178 6567 3053
+          </a>
+        </p>
       </div>
     </footer>
   );

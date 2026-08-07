@@ -1,112 +1,154 @@
-/**
- * App Preview Section
- *
- * Two real app screenshots, no fake frames, no chrome.
- * Screenshots speak for themselves.
- */
-
 'use client';
+
+/**
+ * App preview — the product, on the dark band.
+ *
+ * Two fixes and one design change.
+ *
+ * The images were broken in production. They carried `unoptimized`, which makes
+ * Next emit the URL as-is; the `%20` in `app-screen%20(1).jpg` was then
+ * normalised back into a literal space and the request 404'd. Both screenshots
+ * rendered as empty grey boxes with alt text showing. Dropping `unoptimized`
+ * routes them through the image optimiser, which handles the encoding — and
+ * incidentally stops shipping two 477 KB JPEGs at full size.
+ *
+ * The design change: this sits on the void band now. Phone screenshots are
+ * bright rectangles, and on white paper they float as two pale slabs with
+ * nothing holding them. On the dark band they read as lit screens, which is
+ * what they are.
+ */
 
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Smartphone } from 'lucide-react';
-import { AnimatedSection } from '@/components/animations';
-import { SECTION_IDS } from '../constants';
-import { AppStoreButton, PlayStoreButton } from '@/components/shared/AppStoreButtons';
+import { Band, Shell, Cta, APP_SCREENS } from '@/components/site';
+import { Reveal, RevealGroup } from '@/components/motion';
+import { AppStoreButtons } from '@/components/shared/AppStoreButtons';
 
-const SCREENSHOTS = [
-  {
-    src: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/app-screen%20(1).jpg',
-    alt: 'ChinaLink Express App — Tracking',
-  },
-  {
-    src: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/app-screen%20(2).jpg',
-    alt: 'ChinaLink Express App — Notifications',
-  },
+const SHOTS = [
+  { key: 'tracking', src: APP_SCREENS.tracking, alt: 'ChinaLink Express — suivi de colis en temps réel' },
+  { key: 'shipments', src: APP_SCREENS.shipments, alt: 'ChinaLink Express — liste des expéditions et statuts' },
 ];
 
 export function AppPreviewSection() {
   const t = useTranslations();
 
   return (
-    <section
-      id={SECTION_IDS.ABOUT + '-app'}
-      className="relative py-24 md:py-32"
-      style={{ backgroundColor: 'var(--color-paper)' }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection
-          animation="blurIn"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-          threshold={0.15}
+    <Band id="app" tone="void">
+      <Shell>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 21rem), 1fr))',
+            gap: 'clamp(2.5rem, 6vw, 5rem)',
+            alignItems: 'center',
+          }}
         >
-          {/* Left: copy */}
-          <div className="space-y-6">
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium"
+          {/* ── the pitch ─────────────────────────────────────────────────── */}
+          <Reveal style={{ minWidth: 0 }}>
+            <p
               style={{
-                backgroundColor: 'var(--color-paper-2)',
-                color: 'var(--color-accent)',
-                border: '1px solid var(--color-rule)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 'var(--space-xs)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'var(--text-xs)',
+                letterSpacing: 'var(--tracking-label)',
+                textTransform: 'uppercase',
+                color: 'var(--color-accent-bright)',
+                margin: '0 0 var(--space-lg)',
               }}
             >
-              <Smartphone className="w-4 h-4" />
-              Application Mobile
-            </div>
+              <Smartphone size={14} aria-hidden />
+              {t('services.appSection.title')}
+            </p>
 
             <h2
-              className="font-bold tracking-tight"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-3xl)',
-              fontWeight: 'var(--weight-display)',
-                color: 'var(--color-ink)',
+                fontWeight: 'var(--weight-display)',
                 letterSpacing: 'var(--tracking-display)',
-                lineHeight: 1.1,
+                lineHeight: 'var(--leading-heading)',
+                color: 'var(--color-void-ink)',
+                margin: '0 0 var(--space-lg)',
+                maxWidth: '15ch',
               }}
             >
-              {t('appSection.title')}
+              {t('services.appSection.previewTitle')}
             </h2>
 
             <p
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--color-ink-2)' }}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-md)',
+                lineHeight: 'var(--leading-body)',
+                color: 'var(--color-void-ink-2)',
+                margin: '0 0 var(--space-xl)',
+                maxWidth: '44ch',
+              }}
             >
-              {t('appSection.previewDescription')}
+              {t('services.appSection.previewDescription')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <AppStoreButton />
-              <PlayStoreButton />
-            </div>
-          </div>
+            <AppStoreButtons />
 
-          {/* Right: screenshots */}
-          <div className="grid grid-cols-2 gap-4">
-            {SCREENSHOTS.map((shot, index) => (
+            {/* Registered clients only — worth saying here rather than letting
+                someone download it and hit a wall. */}
+            <p
+              style={{
+                fontSize: 'var(--text-sm)',
+                color: 'var(--color-void-ink-2)',
+                marginTop: 'var(--space-lg)',
+                marginBottom: 0,
+                maxWidth: '40ch',
+              }}
+            >
+              {t('services.appSection.note')}
+            </p>
+          </Reveal>
+
+          {/* ── the screens ──────────────────────────────────────────────── */}
+          <RevealGroup
+            stagger={0.12}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              gap: 'clamp(0.75rem, 2vw, 1.5rem)',
+              minWidth: 0,
+            }}
+          >
+            {SHOTS.map((shot, i) => (
               <div
-                key={index}
-                className="relative rounded-xl overflow-hidden"
+                key={shot.key}
                 style={{
-                  border: '1px solid var(--color-rule)',
-                  backgroundColor: 'var(--color-paper-2)',
+                  position: 'relative',
+                  aspectRatio: '9 / 19.5',
+                  minWidth: 0,
+                  borderRadius: 'var(--radius-panel)',
+                  overflow: 'hidden',
+                  backgroundColor: 'var(--color-void-2)',
+                  border: '1px solid var(--color-void-rule)',
+                  // A slight vertical offset between the two so they read as a
+                  // pair of objects rather than a two-column grid.
+                  transform: i === 1 ? 'translateY(clamp(1rem, 3vw, 2.5rem))' : undefined,
+                  boxShadow: 'var(--shadow-void)',
                 }}
               >
                 <Image
                   src={shot.src}
                   alt={shot.alt}
-                  width={400}
-                  height={850}
-                  className="w-full h-auto object-cover"
-                  unoptimized
+                  fill
+                  sizes="(max-width: 700px) 45vw, 22vw"
+                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
                 />
               </div>
             ))}
-          </div>
-        </AnimatedSection>
-      </div>
-    </section>
+          </RevealGroup>
+        </div>
+      </Shell>
+    </Band>
   );
 }
 

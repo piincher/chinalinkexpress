@@ -1,199 +1,141 @@
-/**
- * FAQ Section Component
- * 
- * Clean, accessible accordion using native HTML details/summary elements.
- * Lightweight implementation with basic CSS transitions.
- * Part of the landing page feature.
- */
-
 'use client';
+
+/**
+ * FAQ — a rule-separated list, not a stack of cards.
+ *
+ * Each question was a bordered, rounded, shadowed card with a circular chevron
+ * chip that filled solid blue when open. Six of those in a column is six boxes
+ * competing with each other; the reader is scanning for one question, and the
+ * chrome is louder than the questions are.
+ *
+ * Now: hairline rules, the question in the display face, a thin chevron that
+ * rotates. The whole affordance is that the row is clickable and the divider
+ * tells you where one ends.
+ *
+ * Still native `<details>`/`<summary>` — it is keyboard-accessible, it works
+ * without JavaScript, and crawlers read the answers. Nothing about a premium
+ * look required replacing that with state.
+ *
+ * The support panel above sits on the dark band rather than being a saturated
+ * blue slab with a white radial bloom, and the phone number is the call to
+ * action rather than a 📞 emoji on a white pill.
+ */
 
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Phone } from 'lucide-react';
-import { AnimatedSection } from '@/components/animations';
+import { Phone, ChevronDown } from 'lucide-react';
+import { Band, Shell } from '@/components/site';
+import { SectionHead } from '@/components/site/SectionHead';
+import { Reveal, RevealGroup } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
 import { CONTACT_CONFIG } from '@/config/app';
+import { PHOTOS } from '@/components/site/assets';
 
-interface FAQItemProps {
-  question: string;
-  answer: string;
-}
+const FAQ_KEYS = ['0', '1', '2', '3', '4', '5'] as const;
 
-// Clean FAQ item using native details/summary
-function FAQItem({ question, answer }: FAQItemProps) {
+function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
-    <details className="group bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-      <summary className="w-full px-6 py-5 text-left flex justify-between items-center cursor-pointer list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]">
-        <span className="font-bold text-lg text-[var(--text-primary)] group-open:text-[var(--color-primary)] transition-colors pr-4">
-          {question}
-        </span>
-        
-        <span className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 bg-[var(--surface-lowered)] text-[var(--text-secondary)] group-hover:bg-[var(--color-primary-50)] group-hover:text-[var(--color-primary)] group-open:bg-[var(--color-primary)] group-open:text-white">
-          <svg 
-            className="w-4 h-4 transition-transform duration-300 group-open:rotate-180" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </span>
+    <details className="faq-item">
+      <summary className="faq-q">
+        <span>{question}</span>
+        <ChevronDown size={18} aria-hidden className="faq-chevron" />
       </summary>
-      
-      <div className="px-6 pb-5 text-[var(--text-secondary)] leading-relaxed">
-        <div className="pt-2 border-t border-[var(--border)]">
-          {answer}
-        </div>
-      </div>
-      
-      {/* Active indicator line */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--color-primary)] to-[var(--color-primary-light)] opacity-0 group-open:opacity-100 transition-opacity duration-300" />
+      <div className="faq-a">{answer}</div>
     </details>
   );
 }
-
-const FAQ_KEYS = ['0', '1', '2', '3', '4', '5'] as const;
 
 export function FAQSection() {
   const t = useTranslations('faq');
 
   return (
-    <section id={SECTION_IDS.FAQ} className="relative py-24 md:py-32 overflow-hidden bg-[var(--surface)]">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface)] via-[var(--surface-elevated)] to-[var(--surface)]" />
-      
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
-          <span className="inline-block font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-accent)] mb-4">
-            {t('sectionLabel') || 'FAQ'}
-          </span>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">
-            {t('title')}
-          </h2>
-          
-        </AnimatedSection>
+    <Band id={SECTION_IDS.FAQ} tone="paper-2">
+      <Shell width="narrow">
+        <SectionHead label={t('sectionLabel')} title={t('title')} />
 
-        {/* Support panel.
-            Was a fully saturated blue slab with a white radial bloom washed
-            across it — the loudest object on the page, and shouting from a
-            support panel is the wrong register entirely. It now sits on the
-            page's dark band, which is where emphasis lives everywhere else on
-            this site, so it reads as considered rather than as an advert. */}
-        <div
-          className="band-void grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 rounded-xl p-8 overflow-hidden relative"
+        {/* ── support panel ────────────────────────────────────────────── */}
+        <Reveal
+          className="band-void"
           style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 15rem), 1fr))',
+            gap: 'clamp(1.5rem, 4vw, 2.5rem)',
+            alignItems: 'center',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+            marginBottom: 'var(--space-2xl)',
+            borderRadius: 'var(--radius-panel)',
             backgroundColor: 'var(--color-void)',
             color: 'var(--color-void-ink)',
           }}
         >
-          
-          <div className="relative z-10">
-            <div className="rounded-2xl overflow-hidden shadow-sm">
-              <Image
-                src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/customer-support.png"
-                alt="Customer Support"
-                width={400}
-                height={300}
-                className="w-full h-64 object-cover"
-              />
-            </div>
+          <div
+            style={{
+              position: 'relative',
+              aspectRatio: '4 / 3',
+              minWidth: 0,
+              borderRadius: 'var(--radius-card)',
+              overflow: 'hidden',
+              backgroundColor: 'var(--color-void-2)',
+            }}
+          >
+            <Image
+              src={PHOTOS.support}
+              alt="Équipe support client ChinaLink Express"
+              fill
+              sizes="(max-width: 700px) 100vw, 22vw"
+              style={{ objectFit: 'cover', filter: 'saturate(0.8) contrast(1.03)' }}
+            />
           </div>
-          
-          <div className="relative z-10 flex flex-col justify-center">
+
+          <div style={{ minWidth: 0 }}>
             <h3
-              className="mb-4"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-xl)',
                 fontWeight: 'var(--weight-display)',
                 letterSpacing: 'var(--tracking-heading)',
                 color: 'var(--color-void-ink)',
+                margin: '0 0 var(--space-sm)',
               }}
             >
               {t('helpTitle')}
             </h3>
             <p
-              className="mb-6"
               style={{
                 fontSize: 'var(--text-base)',
                 lineHeight: 'var(--leading-body)',
                 color: 'var(--color-void-ink-2)',
+                margin: '0 0 var(--space-lg)',
               }}
             >
               {t('helpDescription')}
             </p>
 
-            {/* The number itself is the call to action, so it is set in the mono
-                face at size rather than buried under a 📞 emoji on a white pill. */}
-            <a
-              href={`tel:${CONTACT_CONFIG.PHONE.CHINA}`}
-              className="inline-flex items-center gap-3 self-start px-5 py-4 rounded-lg transition-colors"
-              style={{
-                backgroundColor: 'color-mix(in oklch, var(--color-void-ink) 8%, transparent)',
-                border: '1px solid var(--color-void-rule)',
-                textDecoration: 'none',
-              }}
-            >
-              <Phone size={20} aria-hidden style={{ color: 'var(--color-accent-bright)', flexShrink: 0 }} />
+            <a href={`tel:${CONTACT_CONFIG.PHONE.CHINA}`} className="faq-phone">
+              <Phone size={18} aria-hidden style={{ color: 'var(--color-accent-bright)' }} />
               <span>
-                <span
-                  className="block"
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: 'var(--tracking-label)',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-void-ink-2)',
-                  }}
-                >
-                  {t('supportLabel')}
-                </span>
-                <span
-                  className="block"
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-md)',
-                    color: 'var(--color-void-ink)',
-                    marginTop: '0.15rem',
-                  }}
-                >
-                  {CONTACT_CONFIG.PHONE.CHINA}
-                </span>
+                <span className="faq-phone-label">{t('supportLabel')}</span>
+                <span className="faq-phone-number">{CONTACT_CONFIG.PHONE.CHINA}</span>
               </span>
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4 relative">
-          {FAQ_KEYS.map((key) => (
-            <FAQItem
-              key={key}
-              question={t(`items.${key}.question`)}
-              answer={t(`items.${key}.answer`)}
-            />
-          ))}
-        </div>
-        
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-[var(--text-secondary)] mb-4">{t('noAnswer') || 'Vous ne trouvez pas votre réponse ?'}</p>
-          <a
-            href="https://wa.me/8618851725957"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:text-[var(--color-primary-dark] transition-colors duration-300 hover:gap-3"
-          >
-            {t('contactWhatsApp') || 'Contactez-nous sur WhatsApp'}
-            <span>→</span>
-          </a>
-        </div>
-      </div>
-    </section>
+        {/* ── questions ────────────────────────────────────────────────── */}
+        <RevealGroup stagger={0.05} selector=".faq-item">
+          <div style={{ borderTop: '1px solid var(--color-rule)' }}>
+            {FAQ_KEYS.map((key) => (
+              <FAQItem
+                key={key}
+                question={t(`items.${key}.question`)}
+                answer={t(`items.${key}.answer`)}
+              />
+            ))}
+          </div>
+        </RevealGroup>
+      </Shell>
+    </Band>
   );
 }
 

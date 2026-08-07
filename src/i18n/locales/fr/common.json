@@ -405,25 +405,6 @@
   "testimonials": {
     "sectionLabel": "Témoignages",
     "title": "Ce Que Disent Nos Clients",
-    "ctaTitle": "Rejoignez Nos Clients Satisfaits",
-    "ctaDescription": "Plus de 100 entreprises nous font confiance pour leurs besoins logistiques",
-    "cards": [
-      {
-        "name": "Amadou Diallo",
-        "company": "Diallo Electronics, Bamako",
-        "text": "ChinaLink Express a transformé mon business. La livraison en 14 jours est réelle et le service client est exceptionnel."
-      },
-      {
-        "name": "Fatou Coulibaly",
-        "company": "Mode Africaine, Abidjan",
-        "text": "Je recommande vivement pour le fret maritime. Mes conteneurs arrivent toujours à temps et en parfait état."
-      },
-      {
-        "name": "Oumar Touré",
-        "company": "Touré Import-Export, Dakar",
-        "text": "Le service de sourcing est incroyable. Ils ont négocié des prix 20% plus bas que ce que j'obtenais seul."
-      }
-    ],
     "testimonials": {
       "sectionLabel": "Témoignages"
     },
@@ -1352,7 +1333,6 @@
     "subheadline": "Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience dans leur langue.",
     "badge": "Avis vidéo non rémunérés",
     "badgeSub": "Tournés chez le client",
-    "comparison": "Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.",
     "watchVideo": "Regarder la vidéo",
     "language": "Langue",
     "videos": [
@@ -1418,7 +1398,7 @@
       "filmedOnSite": "Tournés chez le client",
       "localLanguage": "Dans leur langue"
     },
-    "comparisonStrip": "Nos concurrents ont 0 vidéo. Nous avons 6. Et ça change tout.",
+    "comparisonStrip": "Nos concurrents en publient rarement. Nous en avons {count}, tournées chez le client.",
     "ctaText": "Vous aussi, partagez votre expérience",
     "ctaButton": "Contacter l'équipe",
     "close": "Fermer",

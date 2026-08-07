@@ -29,7 +29,23 @@ import { EN_VIDEO_TESTIMONIALS, VIDEO_TESTIMONIALS, REAL_VIDEO_COUNT } from '../
 export function VideoTestimonialsSection() {
   const t = useTranslations('videoTestimonials');
   const locale = useLocale();
-  const testimonials = locale === 'en' ? EN_VIDEO_TESTIMONIALS : VIDEO_TESTIMONIALS;
+  /*
+   * Only entries that actually have a video file are rendered here.
+   *
+   * The list held six people but only two videos. Every card was badged
+   * "VIDÉO RÉELLE" and the section header claimed "Nos concurrents ont 0 vidéo.
+   * Nous avons 6." under the line "Pas d'acteurs. Pas de scripts." — four of
+   * those six had no footage at all. A section whose entire argument is
+   * authenticity cannot be padded; the padding is the only thing a sceptical
+   * reader needs to find.
+   *
+   * Two real ones are the stronger pitch anyway: Abdul Niang's "mes 7 cartons
+   * sont arrivés en 2 mois et 12 jours" carries more than six generic quotes.
+   * The remaining entries stay in the data file and will appear here the moment
+   * they have a `videoUrl`.
+   */
+  const testimonials = (locale === 'en' ? EN_VIDEO_TESTIMONIALS : VIDEO_TESTIMONIALS)
+    .filter((testimonial) => Boolean(testimonial.videoUrl));
   const { ref, isActive } = useAnimationActivation({
     threshold: 0.1,
     delay: 100,
@@ -143,11 +159,20 @@ export function VideoTestimonialsSection() {
             animate={isActive ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 dark:text-gray-200 bg-gradient-to-r from-amber-100 dark:from-amber-900/20 to-orange-100 dark:to-orange-900/20 px-5 py-2.5 rounded-full border border-amber-200 dark:border-amber-800/30">
-              <ChevronRight className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-              {t('comparisonStrip', {
-                defaultValue: `Nos concurrents ont 0 vidéo. Nous avons déjà ${REAL_VIDEO_COUNT}. Et ça change tout.`,
-              })}
+            {/* The count comes from the data, not from copy. It previously read
+                a hard-coded "6" against two actual video files. */}
+            <p
+              className="inline-flex items-center gap-2"
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'var(--text-xs)',
+                letterSpacing: 'var(--tracking-label)',
+                textTransform: 'uppercase',
+                color: 'var(--color-neutral)',
+              }}
+            >
+              <ChevronRight size={14} style={{ color: 'var(--color-accent)' }} aria-hidden />
+              {t('comparisonStrip', { count: REAL_VIDEO_COUNT })}
             </p>
           </motion.div>
 

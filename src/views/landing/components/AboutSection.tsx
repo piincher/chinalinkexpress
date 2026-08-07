@@ -1,146 +1,207 @@
-/**
- * About Section — Clean Redesign
- *
- * Two-column layout with image gallery and text.
- * No gradients, no decorative patterns, no emoji.
- */
-
 'use client';
 
+/**
+ * About — the company, told through its warehouse.
+ *
+ * The previous version was close to right: two paragraphs beside a photo grid.
+ * Two things held it back. The photographs were raw — the same overhead
+ * fluorescent, the same washed grey concrete as everywhere else — so they read
+ * as phone snaps sitting in a layout rather than as part of one. And the four
+ * qualities ("Fiable · Rapide · Sécurisé · Compétitif") were rendered as ticked
+ * pills, which is the weakest possible form for an adjective: it looks like a
+ * feature checklist while promising nothing measurable.
+ *
+ * Now the images go through the house `Figure` treatment, so they are graded
+ * like the hero and the journey, and the founding year is set as a real figure
+ * rather than buried in prose. The adjectives are set as a plain rule-separated
+ * line — still there, no longer pretending to be evidence.
+ *
+ * The photo grid is deliberately asymmetric: one tall frame carrying the
+ * warehouse, two smaller ones under it. An even 2×2 of four equal photographs
+ * is a gallery; an uneven set is a composition.
+ */
+
 import React from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Check } from 'lucide-react';
-import { AnimatedSection } from '@/components/animations';
+import { Band, Shell, Figure, PHOTOS } from '@/components/site';
+import { Reveal } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
 
 export function AboutSection() {
-  const t = useTranslations();
-  const tags = t.raw('about.tags') as string[];
+  const t = useTranslations('about');
+  const tags = (t.raw('tags') as string[]) ?? [];
 
   return (
-    <section
-      id={SECTION_IDS.ABOUT}
-      className="relative py-24 md:py-32"
-      style={{ backgroundColor: 'var(--color-paper)' }}
-    >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <AnimatedSection animation="blurIn" className="max-w-2xl mb-16" threshold={0.5}>
-          <h2
-            className="font-bold tracking-tight mb-4"
+    <Band id={SECTION_IDS.ABOUT} tone="paper">
+      <Shell>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))',
+            gap: 'clamp(2rem, 5vw, 4.5rem)',
+            alignItems: 'center',
+          }}
+        >
+          {/* ── the photographs ──────────────────────────────────────────── */}
+          <Reveal
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-3xl)',
-              fontWeight: 'var(--weight-display)',
-              color: 'var(--color-ink)',
-              letterSpacing: 'var(--tracking-display)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              gap: 'clamp(0.6rem, 1.4vw, 1rem)',
+              minWidth: 0,
             }}
           >
-            {t('about.title')}
-          </h2>
-        </AnimatedSection>
-
-        {/* Content grid — the two columns arrive from opposite sides. */}
-        <AnimatedSection
-          animation="fadeUp"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start"
-          threshold={0.1}
-        >
-          {/* Image gallery */}
-          <div className="order-2 lg:order-1 space-y-4">
-            <div
-              className="relative rounded-xl overflow-hidden"
-              style={{ border: '1px solid var(--color-rule)' }}
+            <Figure
+              src={PHOTOS.warehouseWide}
+              alt={`${t('gallery.warehouseLabel')} — ${t('gallery.warehouseLocation')}`}
+              focal="42%"
+              scrim={0.55}
+              tint
+              sizes="(max-width: 760px) 100vw, 34vw"
+              style={{ gridColumn: '1 / -1', aspectRatio: '16 / 10' }}
             >
-              <Image
-                src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg"
-                alt="ChinaLink Express Warehouse"
-                width={600}
-                height={400}
-                className="w-full h-64 md:h-80 object-cover"
-              />
-              <div
-                className="absolute bottom-0 left-0 right-0 p-4"
+              <figcaption
                 style={{
-                  background:
-                    'linear-gradient(to top, oklch(14% 0.01 250 / 0.8), transparent)',
+                  position: 'absolute',
+                  left: 'var(--space-lg)',
+                  bottom: 'var(--space-lg)',
+                  right: 'var(--space-lg)',
                 }}
               >
-                <div className="text-xs font-medium text-white/80 uppercase tracking-wider">
-                  {t('about.gallery.warehouseLabel')}
-                </div>
-                <div className="text-base font-semibold text-white">
-                  {t('about.gallery.warehouseLocation')}
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div
-                className="relative rounded-xl overflow-hidden"
-                style={{ border: '1px solid var(--color-rule)' }}
-              >
-                <Image
-                  src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/view1.jpg"
-                  alt="Professional Team"
-                  width={300}
-                  height={200}
-                  className="w-full h-40 object-cover"
-                />
-              </div>
-              <div
-                className="relative rounded-xl overflow-hidden"
-                style={{ border: '1px solid var(--color-rule)' }}
-              >
-                <Image
-                  src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/view2.jpg"
-                  alt="Advanced Technology"
-                  width={300}
-                  height={200}
-                  className="w-full h-40 object-cover"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Text content */}
-          <div className="order-1 lg:order-2 space-y-6">
-            <p
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--color-ink-2)' }}
-            >
-              {t('about.description1')}
-            </p>
-
-            <p
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--color-ink-2)' }}
-            >
-              {t('about.description2')}
-            </p>
-
-            {/* Feature tags */}
-            <div className="flex flex-wrap gap-3 pt-4">
-              {tags.map((tag) => (
                 <span
-                  key={tag}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium"
                   style={{
-                    backgroundColor: 'var(--color-paper-2)',
-                    color: 'var(--color-ink-2)',
-                    border: '1px solid var(--color-rule)',
+                    display: 'block',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'var(--text-xs)',
+                    letterSpacing: 'var(--tracking-label)',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-accent-bright)',
                   }}
                 >
-                  <Check className="w-3.5 h-3.5" style={{ color: 'var(--color-accent)' }} />
-                  {tag}
+                  {t('gallery.warehouseLabel')}
                 </span>
-              ))}
+                <span
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'var(--text-md)',
+                    fontWeight: 'var(--weight-heading)',
+                    color: 'var(--color-void-ink)',
+                  }}
+                >
+                  {t('gallery.warehouseLocation')}
+                </span>
+              </figcaption>
+            </Figure>
+
+            <Figure
+              src={PHOTOS.warehouseAisle}
+              alt="Allée de stockage et marchandises consolidées"
+              focal="45%"
+              scrim={0.3}
+              tint
+              sizes="(max-width: 760px) 50vw, 17vw"
+              style={{ aspectRatio: '1 / 1' }}
+            />
+            <Figure
+              src={PHOTOS.readyToLoad}
+              alt="Colis emballés et étiquetés, prêts au départ"
+              focal="45%"
+              scrim={0.3}
+              tint
+              sizes="(max-width: 760px) 50vw, 17vw"
+              style={{ aspectRatio: '1 / 1' }}
+            />
+          </Reveal>
+
+          {/* ── the company ──────────────────────────────────────────────── */}
+          <Reveal delay={0.1} style={{ minWidth: 0 }}>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-3xl)',
+                fontWeight: 'var(--weight-display)',
+                letterSpacing: 'var(--tracking-display)',
+                lineHeight: 'var(--leading-heading)',
+                color: 'var(--color-ink)',
+                margin: '0 0 var(--space-xl)',
+                maxWidth: '16ch',
+              }}
+            >
+              {t('title')}
+            </h2>
+
+            {/* Founded 2019 — a fact worth setting as one, not buried mid-sentence. */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 'var(--space-md)',
+                paddingBottom: 'var(--space-lg)',
+                marginBottom: 'var(--space-lg)',
+                borderBottom: '1px solid var(--color-rule)',
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 'var(--weight-display)',
+                  letterSpacing: 'var(--tracking-display)',
+                  color: 'var(--color-ink)',
+                  lineHeight: 1,
+                }}
+              >
+                2019
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: 'var(--tracking-label)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral)',
+                }}
+              >
+                Chine · Mali
+              </span>
             </div>
-          </div>
-        </AnimatedSection>
-      </div>
-    </section>
+
+            {[t('description1'), t('description2')].map((para) => (
+              <p
+                key={para.slice(0, 24)}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--text-base)',
+                  lineHeight: 'var(--leading-body)',
+                  color: 'var(--color-ink-2)',
+                  margin: '0 0 var(--space-md)',
+                  maxWidth: 'var(--measure)',
+                }}
+              >
+                {para}
+              </p>
+            ))}
+
+            {tags.length > 0 && (
+              <p
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: 'var(--tracking-label)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral)',
+                  marginTop: 'var(--space-xl)',
+                  marginBottom: 0,
+                }}
+              >
+                {tags.join('  ·  ')}
+              </p>
+            )}
+          </Reveal>
+        </div>
+      </Shell>
+    </Band>
   );
 }
 

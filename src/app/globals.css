@@ -895,6 +895,333 @@ canvas {
 }
 
 /* ============================================================================
+   Footer — see src/components/layout/SharedFooter.tsx
+   ============================================================================ */
+.ft {
+  background-color: var(--color-void);
+  color: var(--color-void-ink);
+}
+
+.ft-shell {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: clamp(3rem, 7vw, 5.5rem) var(--band-x) clamp(2rem, 4vw, 3rem);
+  display: grid;
+  /* Statement first and wider than any single link column — the asymmetry is
+     what stops this reading as a five-column wall. */
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 2fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.ft-statement { min-width: 0; }
+
+.ft-wordmark {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-display);
+  letter-spacing: -0.03em;
+  color: var(--color-void-ink);
+  text-decoration: none;
+  margin-bottom: var(--space-lg);
+}
+
+.ft-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-void-ink-2);
+  max-width: 34ch;
+  margin: 0 0 var(--space-xl);
+}
+
+.ft-social {
+  display: flex;
+  gap: var(--space-sm);
+  list-style: none;
+  margin: var(--space-xl) 0 0;
+  padding: 0;
+}
+
+.ft-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--color-void-rule);
+  color: var(--color-void-ink-2);
+  transition: color var(--dur-short) var(--ease-out),
+              border-color var(--dur-short) var(--ease-out);
+}
+
+.ft-social a:hover {
+  color: var(--color-void-ink);
+  border-color: var(--color-void-ink-2);
+}
+
+.ft-dir {
+  display: grid;
+  /* Two up by default. `auto-fit` was letting the long service labels claim
+     wider tracks, which pushed the contact column onto a second row and left a
+     hole beside it — explicit counts keep the directory rectangular. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  min-width: 0;
+}
+
+@media (min-width: 1100px) {
+  .ft-dir { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .ft-dir { grid-template-columns: minmax(0, 1fr); }
+}
+
+.ft-h {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-void-ink-2);
+  margin: 0 0 var(--space-md);
+}
+
+.ft-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.ft-list a {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-void-ink-2);
+  text-decoration: none;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+.ft-list a:hover { color: var(--color-void-ink); }
+
+.ft-list--contact li {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  font-size: var(--text-sm);
+  color: var(--color-void-ink-2);
+}
+
+.ft-list--contact svg {
+  flex-shrink: 0;
+  margin-top: 0.15em;
+  color: var(--color-accent-bright);
+}
+
+.ft-list--contact a,
+.ft-list--contact span > span { display: block; }
+
+.ft-legal {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: var(--space-lg) var(--band-x) clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-void-rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.ft-legal p { margin: 0; }
+.ft-legal a { color: var(--color-void-ink-2); text-decoration: none; }
+.ft-legal a:hover { color: var(--color-void-ink); }
+
+@media (max-width: 820px) {
+  .ft-shell { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ============================================================================
+   FAQ — see src/views/landing/components/FAQSection.tsx
+   ============================================================================ */
+.faq-item {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  /* Comfortably above a 44px touch target. */
+  padding: var(--space-lg) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+/* Safari draws its own disclosure triangle without this. */
+.faq-q::-webkit-details-marker { display: none; }
+
+.faq-q:hover,
+.faq-item[open] .faq-q {
+  color: var(--color-accent);
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  color: var(--color-neutral);
+  transition: transform var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+  color: var(--color-accent);
+}
+
+.faq-a {
+  padding: 0 0 var(--space-xl);
+  /* Held short of the chevron column so the answer does not run the full
+     width and lose its measure. */
+  max-width: 62ch;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-ink-2);
+}
+
+.faq-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-input);
+  background-color: color-mix(in oklch, var(--color-void-ink) 8%, transparent);
+  border: 1px solid var(--color-void-rule);
+  text-decoration: none;
+  transition: background-color var(--dur-short) var(--ease-out);
+}
+
+.faq-phone:hover {
+  background-color: color-mix(in oklch, var(--color-void-ink) 14%, transparent);
+}
+
+.faq-phone-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-void-ink-2);
+}
+
+.faq-phone-number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  color: var(--color-void-ink);
+  margin-top: 0.15rem;
+}
+
+/* ============================================================================
+   Comparison table — see src/views/landing/components/ComparisonSection.tsx
+   ============================================================================ */
+.cmp {
+  width: 100%;
+}
+
+.cmp-head,
+.cmp-row {
+  display: grid;
+  grid-template-columns: minmax(9rem, 15rem) minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+}
+
+.cmp-head {
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-rule-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.cmp-head-us { color: var(--color-accent); }
+.cmp-head-them { color: var(--color-neutral); }
+
+.cmp-row {
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.cmp-label {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-ink);
+  min-width: 0;
+}
+
+.cmp-cell {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  min-width: 0;
+}
+
+.cmp-cell--us { color: var(--color-ink); }
+.cmp-cell--them { color: var(--color-neutral); }
+
+.cmp-icon { flex-shrink: 0; margin-top: 0.2em; }
+.cmp-icon--yes { color: var(--color-accent); }
+.cmp-icon--no { color: var(--color-muted); }
+
+/* Column name repeated inside each cell — shown only once the head row is
+   hidden, so the mobile layout stays self-labelling. */
+.cmp-cell-key { display: none; }
+
+@media (max-width: 720px) {
+  .cmp-head { display: none; }
+
+  .cmp-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+    padding-block: var(--space-xl);
+  }
+
+  .cmp-label {
+    font-size: var(--text-lg);
+  }
+
+  .cmp-cell-key {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-neutral);
+    margin-bottom: 0.15rem;
+  }
+}
+
+/* ============================================================================
    Service index rows — see src/views/landing/components/ServicesSection.tsx
    ============================================================================ */
 .service-row {

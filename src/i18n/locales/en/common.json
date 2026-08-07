@@ -405,25 +405,6 @@
   "testimonials": {
     "sectionLabel": "Testimonials",
     "title": "What Our Clients Say",
-    "ctaTitle": "Join Our Satisfied Clients",
-    "ctaDescription": "Over 100 companies trust us for their logistics needs",
-    "cards": [
-      {
-        "name": "Amadou Diallo",
-        "company": "Diallo Electronics, Bamako",
-        "text": "ChinaLink Express changed how we import. The 14-21 day air route is real, and the support team keeps us updated."
-      },
-      {
-        "name": "Fatou Coulibaly",
-        "company": "Mode Africaine, Abidjan",
-        "text": "I recommend them for sea freight. My containers arrive with clear tracking and fewer surprises."
-      },
-      {
-        "name": "Oumar Toure",
-        "company": "Toure Import-Export, Dakar",
-        "text": "Their sourcing service is excellent. They negotiated better supplier pricing than I could get alone."
-      }
-    ],
     "testimonials": {
       "sectionLabel": "Testimonials"
     },
@@ -1380,7 +1361,6 @@
     "subheadline": "No actors. No scripts. African importers sharing their experience in their own language.",
     "badge": "Unpaid video testimonials",
     "badgeSub": "Filmed at customer location",
-    "comparison": "Our competitors have 0 videos. We have 6. And it changes everything.",
     "watchVideo": "Watch video",
     "language": "Language",
     "videos": [
@@ -1446,7 +1426,7 @@
       "filmedOnSite": "Filmed at client location",
       "localLanguage": "In their own language"
     },
-    "comparisonStrip": "Our competitors have 0 videos. We have 6. And that changes everything.",
+    "comparisonStrip": "Our competitors rarely publish any. We have {count}, filmed at the client’s.",
     "ctaText": "Share your experience too",
     "ctaButton": "Contact the team",
     "close": "Close",

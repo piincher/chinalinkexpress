@@ -1,199 +1,154 @@
-/**
- * Testimonials Section Component
- * 
- * Simple static testimonial cards in a responsive grid layout.
- * No animations, no auto-rotation - clean and accessible.
- * Part of the landing page feature.
- */
-
 'use client';
+
+/**
+ * Testimonials — the real ones.
+ *
+ * What was here: three cards for "Amadou Diallo, Diallo Electronics", "Fatou
+ * Coulibaly, Mode Africaine" and "Oumar Touré, Touré Import-Export", each with a
+ * warehouse or product photograph cropped into a circle as their face, under a
+ * banner claiming "Plus de 100 entreprises" while the stats band two screens up
+ * said 1,247 clients. None of those three people appear anywhere in this
+ * codebase's data.
+ *
+ * Meanwhile TESTIMONIALS in ../constants.ts held three quotes that are
+ * obviously real — Dr Touré, Ousmane Diallo of AfricaDecor, and Maimouna Matel
+ * N'Diaye — and nothing rendered them.
+ *
+ * They are used here verbatim, including the imperfect French. That is the
+ * point: "Ça me fais plus de deux ans dans le système j'ai jamais travaillé
+ * avec une agence aussi organisée que la vôtre" reads like a person, and
+ * "ChinaLink Express a transformé mon business" reads like an agency wrote it.
+ * A prospect in Bamako can tell the difference instantly, and so can Google.
+ *
+ * No avatars. There are no photographs of these clients, and using a picture of
+ * cargo as someone's face is the same fabrication in a smaller font. Initials
+ * set in the mono face carry the same layout weight and claim nothing.
+ */
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/animations';
-import type { Testimonial } from '@/types';
-import { SECTION_IDS } from '../constants';
+import { Quote } from 'lucide-react';
+import { Band, Shell } from '@/components/site';
+import { SectionHead } from '@/components/site/SectionHead';
+import { RevealGroup } from '@/components/motion';
+import { TESTIMONIALS, SECTION_IDS } from '../constants';
 
-const TESTIMONIAL_IMAGES = [
-  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/tech.jpg',
-  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/retails.jpg',
-  'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/auto%20part.jpg',
-] as const;
-
-// Simple star rating without animations
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-1">
-      {[...Array(5)].map((_, i) => (
-        <span
-          key={i}
-          className={`text-xl ${i < rating ? 'text-yellow-500' : 'text-[var(--border-strong)]'}`}
-        >
-          ★
-        </span>
-      ))}
-    </div>
-  );
-}
-
-// Simple testimonial card without animations
-function TestimonialCard({ 
-  testimonial,
-}: { 
-  testimonial: Testimonial;
-}) {
-  return (
-    <div
-      className="relative bg-[var(--surface)] border border-[var(--border)] rounded-xl p-8 shadow-lg overflow-hidden"
-    >
-      {/* Quote mark decoration */}
-      <div
-        className="absolute -top-4 -left-4 text-8xl text-[var(--color-primary-100)] dark:text-[var(--color-primary-50)]/30 font-serif select-none"
-      >
-        &ldquo;
-      </div>
-      
-      {/* Header */}
-      <div className="flex items-center mb-6 relative z-10">
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full overflow-hidden ring-4 ring-[var(--color-primary-100)]">
-            <img
-              src={testimonial.image}
-              alt={testimonial.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-        
-        <div className="ml-4">
-          <div className="font-bold text-[var(--text-primary)] text-lg">
-            {testimonial.name}
-          </div>
-          <div className="text-[var(--text-tertiary)] text-sm">
-            {testimonial.company}
-          </div>
-        </div>
-      </div>
-
-      {/* Rating */}
-      <div className="mb-4">
-        <StarRating rating={testimonial.rating} />
-      </div>
-
-      {/* Quote */}
-      <p className="text-[var(--text-secondary)] italic text-lg leading-relaxed relative z-10">
-        &ldquo;{testimonial.text}&rdquo;
-      </p>
-      
-      {/* Bottom decoration */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)]"
-      />
-    </div>
-  );
-}
-
-// Simple industry card without animations
-function IndustryCard({ 
-  image, 
-  title, 
-}: { 
-  image: string; 
-  title: string; 
-}) {
-  return (
-    <div className="group relative rounded-2xl overflow-hidden">
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-      </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <div className="font-bold text-white text-lg drop-shadow-lg">
-          {title}
-        </div>
-      </div>
-    </div>
-  );
+function initialsOf(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');
 }
 
 export function TestimonialsSection() {
-  const t = useTranslations();
-  const testimonials = (t.raw('testimonials.cards') as Omit<Testimonial, 'id' | 'rating' | 'image'>[]).map(
-    (testimonial, index) => ({
-      ...testimonial,
-      id: String(index + 1),
-      rating: 5,
-      image: TESTIMONIAL_IMAGES[index] || TESTIMONIAL_IMAGES[0],
-    })
-  );
-
-  const industries = [
-    { image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/retails.jpg', title: t('testimonials.industries.retail') },
-    { image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/tech.jpg', title: t('testimonials.industries.tech') },
-    { image: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/auto%20part.jpg', title: t('testimonials.industries.automotive') },
-  ];
+  const t = useTranslations('testimonials');
 
   return (
-    <section id={SECTION_IDS.TESTIMONIALS} className="relative py-24 md:py-32 overflow-hidden bg-[var(--surface-elevated)]">
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--surface)] via-[var(--surface-elevated)] to-[var(--surface)]" />
+    <Band id={SECTION_IDS.TESTIMONIALS} tone="paper">
+      <Shell>
+        <SectionHead label={t('sectionLabel')} title={t('title')} />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
-          <span className="inline-block font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-accent)] mb-4">
-            {t('testimonials.sectionLabel')}
-          </span>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">
-            {t('testimonials.title')}
-          </h2>
-          
-        </AnimatedSection>
-
-        {/* Testimonials Grid — cards hinge in one after another */}
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-          staggerDelay={0.1}
-          threshold={0.15}
+        <RevealGroup
+          stagger={0.1}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 19rem), 1fr))',
+            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
+          }}
         >
-          {testimonials.map((testimonial) => (
-            <StaggerItem key={testimonial.id} animation="unfold" className="h-full">
-              <TestimonialCard testimonial={testimonial} />
-            </StaggerItem>
+          {TESTIMONIALS.map((testimonial) => (
+            <figure
+              key={testimonial.id}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-lg)',
+                margin: 0,
+                minWidth: 0,
+                paddingTop: 'var(--space-lg)',
+                // A rule above rather than a box around: the quotes are
+                // different lengths and boxing them forces either ragged
+                // heights or clamped text.
+                borderTop: '2px solid var(--color-ink)',
+              }}
+            >
+              <Quote
+                size={20}
+                aria-hidden
+                style={{ color: 'var(--color-accent)', flexShrink: 0 }}
+              />
+
+              <blockquote
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--text-md)',
+                  lineHeight: 1.55,
+                  color: 'var(--color-ink)',
+                  margin: 0,
+                  flex: 1,
+                }}
+              >
+                {testimonial.text}
+              </blockquote>
+
+              <figcaption
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-sm)',
+                  minWidth: 0,
+                }}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '2.25rem',
+                    height: '2.25rem',
+                    flexShrink: 0,
+                    borderRadius: 'var(--radius-pill)',
+                    border: '1px solid var(--color-rule)',
+                    backgroundColor: 'var(--color-paper-2)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'var(--text-xs)',
+                    letterSpacing: '0.04em',
+                    color: 'var(--color-ink-2)',
+                  }}
+                >
+                  {initialsOf(testimonial.name)}
+                </span>
+                <span style={{ minWidth: 0 }}>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'var(--text-base)',
+                      fontWeight: 'var(--weight-heading)',
+                      color: 'var(--color-ink)',
+                    }}
+                  >
+                    {testimonial.name}
+                  </span>
+                  <span
+                    style={{
+                      display: 'block',
+                      fontSize: 'var(--text-sm)',
+                      color: 'var(--color-neutral)',
+                    }}
+                  >
+                    {testimonial.company}
+                  </span>
+                </span>
+              </figcaption>
+            </figure>
           ))}
-        </StaggerContainer>
-
-        {/* CTA Banner */}
-        <div className="relative bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-primary-700)] to-[var(--color-primary-dark)] rounded-xl p-8 md:p-12 text-white text-center overflow-hidden">
-          <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              {t('testimonials.ctaTitle')}
-            </h3>
-            
-            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              {t('testimonials.ctaDescription')}
-            </p>
-
-            {/* Industry Examples */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              {industries.map((industry) => (
-                <IndustryCard
-                  key={industry.title}
-                  image={industry.image}
-                  title={industry.title}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </RevealGroup>
+      </Shell>
+    </Band>
   );
 }
 

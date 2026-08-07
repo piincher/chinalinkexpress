@@ -29,13 +29,48 @@ export function InstallPrompt() {
       }
     }
 
-    // Show prompt after a delay if not installed
-    if (!isInstalled && !isDismissed) {
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
+    if (isInstalled || isDismissed) return;
+
+    /*
+     * Wait for interest, not for a stopwatch.
+     *
+     * This fired on a five-second timer, so it slid over the lower-right corner
+     * of the hero while the first-time visitor was still reading the headline —
+     * asking someone to install an app before they know what the company does,
+     * and covering the proof bar to ask it.
+     *
+     * Now it needs both: the reader has gone past the first screen (so they are
+     * actually engaged) and twelve seconds have passed. Whichever lands later
+     * wins. Someone who bounces off the hero never sees it at all, which is the
+     * correct outcome for them and for the install-prompt conversion rate.
+     */
+    let scrolled = false;
+    let waited = false;
+
+    const maybeShow = () => {
+      if (scrolled && waited) setIsVisible(true);
+    };
+
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.9) {
+        scrolled = true;
+        window.removeEventListener('scroll', onScroll);
+        maybeShow();
+      }
+    };
+
+    const timer = setTimeout(() => {
+      waited = true;
+      maybeShow();
+    }, 12000);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [isInstalled, isDismissed]);
 
   const handleDismiss = () => {

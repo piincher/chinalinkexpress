@@ -12,9 +12,20 @@
  * most wants remembered: the opening statement, the journey, and the close.
  * Everything between them is quiet on purpose, so those three land.
  *
- * No section was removed — every feature the site had, it still has. Four of
- * them are arguably redundant (see the note in the README of this folder) but
- * cutting content is the owner's call, not the redesign's.
+ * Four sections were cut, because the page was telling one story four times:
+ *
+ *   TrustFlow            six numbered steps of "we handle everything", which is
+ *                        the Journey section's four stages plus the Comparison
+ *                        section's argument, in smaller type. It also embedded
+ *                        its own second "Qui fait quoi" comparison table.
+ *   Partners             a carrier logo wall, now the hero's proof bar.
+ *   VerifiedReviews      a third rotation of customer quotes.
+ *   SuccessStories       already unreferenced.
+ *
+ * Repetition is what actually reads as cheap here — more than any gradient did.
+ * A confident supplier states a thing once and moves on; restating it four ways
+ * is what a brochure does when it is not sure you believed it the first time.
+ * The components remain in the codebase and are re-mountable in one line.
  *
  * Server component: the hero is async so it can render its copy and its LCP
  * photograph on the server. Interactive sections below stay client components
@@ -35,13 +46,10 @@ import {
   FAQSection,
   ContactSection,
 } from './components';
-import { TrustFlowSection } from '@/features/trust/components/TrustFlowSection';
 import { ComparisonSection } from './components/ComparisonSection';
 import { QuizSection } from './components/QuizSection';
-import { VerifiedReviewsSection } from '@/features/reviews/components/VerifiedReviewsSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
-import { PartnersSection } from './components/PartnersSection';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
 
@@ -71,13 +79,10 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           <ComparisonSection />
           <AboutSection />
           <AppPreviewSection />
-          <TrustFlowSection />
 
           {/* ── V. other people's words ──────────────────────────────────── */}
-          <VerifiedReviewsSection />
           <TestimonialsSection />
           <VideoTestimonialsSection />
-          <PartnersSection />
 
           {/* ── VI. the close ────────────────────────────────────────────── */}
           <QuizSection locale={locale} />

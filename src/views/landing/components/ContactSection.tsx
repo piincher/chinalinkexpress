@@ -19,6 +19,8 @@ import {
   Loader2,
 } from 'lucide-react';
 import { CONTACT_CONFIG } from '@/config/app';
+import { Band, Shell } from '@/components/site';
+import { SectionHead } from '@/components/site/SectionHead';
 import { SECTION_IDS } from '../constants';
 
 function FormInput({
@@ -143,33 +145,13 @@ export function ContactSection() {
   };
 
   return (
-    <section
-      id={SECTION_IDS.CONTACT}
-      className="relative py-24 md:py-32"
-      style={{
-        backgroundColor: 'var(--color-paper-2)',
-        borderTop: '1px solid var(--color-rule)',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-2xl mb-16">
-          <h2
-            className="font-bold tracking-tight mb-4"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-3xl)',
-              fontWeight: 'var(--weight-display)',
-              color: 'var(--color-ink)',
-              letterSpacing: 'var(--tracking-display)',
-            }}
-          >
-            {t('title')}
-          </h2>
-          <p className="text-lg" style={{ color: 'var(--color-ink-2)' }}>
-            {t('subtitle')}
-          </p>
-        </div>
+    /* The form's own markup is left alone — it is accessible, it validates, and
+       none of that was the problem. Only its shell moves onto the shared Band /
+       Shell / SectionHead grammar so it sits on the same grid and the same
+       vertical rhythm as every other section. */
+    <Band id={SECTION_IDS.CONTACT} tone="paper" ruled>
+      <Shell>
+        <SectionHead title={t('title')} lede={t('subtitle')} />
 
         {/* Content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -356,8 +338,8 @@ export function ContactSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </Shell>
+    </Band>
   );
 }
 
