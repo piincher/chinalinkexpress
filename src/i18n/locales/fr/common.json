@@ -1022,6 +1022,39 @@
         "title": "Produits en spray",
         "description": "Aérosols interdits en avion."
       }
+    },
+    "weightPolicy": {
+      "title": "Comment le poids facturé est calculé",
+      "lede": "Deux règles s'appliquent à tout envoi aérien, publiées à l'article 3.1 de nos CGV. Elles ne sont pas incluses dans l'estimation ci-dessus : le calculateur affiche le poids taxable avant application.",
+      "roundingTitle": "Arrondi au dixième de kilogramme",
+      "rounding": "Tout poids est arrondi au dixième de kilogramme (0,1 kg) supérieur. Un poids de 1,21 kg, 1,23 kg ou 1,24 kg est arrondi à 1,3 kg. Cet arrondi est plus favorable au Client que l'arrondi au demi-kilogramme (0,5 kg) usuellement pratiqué en fret aérien international.",
+      "coefficientTitle": "Coefficient de conditionnement — 0,05 kg par kg (5 %)",
+      "coefficient": "Il est appliqué au poids taxable un coefficient forfaitaire de 0,05 kg par kilogramme, soit cinq pour cent (5 %).",
+      "coversLabel": "Ce coefficient couvre exclusivement",
+      "covers": [
+        "la fourniture et la pose des emballages, cartons, calages et films de protection",
+        "la main-d'œuvre de conditionnement, de regroupement, de pesée, de marquage et de manutention en entrepôt",
+        "les frais de transfert et d'encaissement des fonds"
+      ],
+      "noExtra": "Aucun frais d'emballage standard n'est facturé en sus. Les emballages spécifiques (palettisation, double caisse, caisse bois) demeurent soumis à devis préalable.",
+      "orderTitle": "Ordre d'application",
+      "order": [
+        "Pesée et mesure du colis emballé",
+        "Détermination du poids taxable",
+        "Arrondi au 0,1 kg supérieur",
+        "Application du coefficient (× 1,05)",
+        "Arrondi final au 0,1 kg supérieur",
+        "Multiplication par le tarif de la catégorie"
+      ],
+      "exampleTitle": "Exemple",
+      "example": [
+        "Poids brut mesuré = 1,23 kg",
+        "Arrondi = 1,3 kg",
+        "Coefficient : 1,3 × 1,05 = 1,365 kg",
+        "Arrondi final = 1,4 kg",
+        "Tarif Standard 10 000 FCFA/kg → 14 000 FCFA"
+      ],
+      "termsLink": "Lire l'article 3.1 des CGV"
     }
   },
   "damageGuarantee": {

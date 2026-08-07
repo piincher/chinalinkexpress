@@ -13,6 +13,7 @@ import { PriceTable } from './components/PriceTable';
 import { NavigationButton } from './components/NavigationButton';
 import { ProhibitedItems } from './components/ProhibitedItems';
 import { PricingFAQ } from './components/PricingFAQ';
+import { WeightPolicy } from './components/WeightPolicy';
 
 export function PricingPage() {
   return (
@@ -27,7 +28,12 @@ export function PricingPage() {
       </div>
       
       <PriceTable />
-      
+
+      {/* Directly under the rate table: the two rules that turn a rate into an
+          invoice. They were published only in the CGV, so a client could read a
+          price here and first meet the 5% coefficient on their invoice. */}
+      <WeightPolicy />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ProhibitedItems />
         <PricingFAQ />

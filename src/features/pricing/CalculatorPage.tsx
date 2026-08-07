@@ -7,12 +7,13 @@
 
 'use client';
 
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { PageHero } from '@/components/site';
 import { CalculatorCard } from './components/CalculatorCard';
 import { NavigationButton } from './components/NavigationButton';
 import { ProhibitedItems } from './components/ProhibitedItems';
 import { PricingFAQ } from './components/PricingFAQ';
+import { WeightPolicy } from './components/WeightPolicy';
 import { SplitPaymentBanner } from '@/features/trust/components/SplitPaymentBanner';
 import { DamageGuaranteeSection } from '@/features/trust/components';
 import { TrustFlowSection } from '@/features/trust/components/TrustFlowSection';
@@ -24,24 +25,8 @@ export function CalculatorPage() {
   const t = useTranslations('pricing');
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
-      <section className="pt-28 pb-12 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {t('calculatorPage.title')}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              {t('calculatorPage.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <main className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
+      <PageHero title={t('calculatorPage.title')} lede={t('calculatorPage.subtitle')} />
 
       <TrustFlowSection />
 
@@ -49,6 +34,10 @@ export function CalculatorPage() {
 
       {/* Calculator Card */}
       <CalculatorCard />
+
+      {/* Rounding + the 5% handling coefficient, stated right under the
+          estimate. Disclosure only — the estimate itself is unchanged. */}
+      <WeightPolicy />
 
       {/* Split Payment Banner */}
       <SplitPaymentBanner />

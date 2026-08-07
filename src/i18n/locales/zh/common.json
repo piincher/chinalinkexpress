@@ -826,6 +826,39 @@
       "onTimeRate": "on-time rate",
       "earlyDelivery": "Early delivery likely",
       "earlyDeliveryStat": "94% of our deliveries arrive earlier than promised"
+    },
+    "weightPolicy": {
+      "title": "计费重量如何计算",
+      "lede": "所有空运货物均适用两项规则，详见条款第 3.1 条。上方估算未包含这两项：计算器显示的是应用前的计费重量。",
+      "roundingTitle": "进位至 0.1 公斤",
+      "rounding": "所有重量向上进位至 0.1 公斤。1.21、1.23 或 1.24 公斤均计为 1.3 公斤。此规则较国际空运惯用的 0.5 公斤进位对客户更为有利。",
+      "coefficientTitle": "包装系数 — 每公斤 0.05 公斤（5%）",
+      "coefficient": "计费重量按每公斤 0.05 公斤（即百分之五）加收固定系数。",
+      "coversLabel": "该系数仅涵盖",
+      "covers": [
+        "包装材料、纸箱、填充物及保护膜的提供与使用",
+        "打包、集运、称重、标记及仓库操作的人工",
+        "资金转账与收款费用"
+      ],
+      "noExtra": "不另收标准包装费。特殊包装（打托、双层木箱、木箱）需另行报价。",
+      "orderTitle": "计算顺序",
+      "order": [
+        "对已包装货物称重与量尺",
+        "确定计费重量",
+        "进位至 0.1 公斤",
+        "应用系数（x 1.05）",
+        "最终进位至 0.1 公斤",
+        "乘以相应类别费率"
+      ],
+      "exampleTitle": "示例",
+      "example": [
+        "实测毛重 = 1.23 公斤",
+        "进位 = 1.3 公斤",
+        "系数：1.3 x 1.05 = 1.365 公斤",
+        "最终进位 = 1.4 公斤",
+        "标准费率 10,000 FCFA/公斤 -> 14,000 FCFA"
+      ],
+      "termsLink": "查看条款第 3.1 条"
     }
   },
   "damageGuarantee": {
