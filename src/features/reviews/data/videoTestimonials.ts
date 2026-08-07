@@ -2,7 +2,11 @@
  * Video Testimonials Data
  *
  * Real client video testimonials for ChinaLink Express.
- * 2 real videos + 4 authentic text testimonials awaiting video.
+ *
+ * Every entry has an actual video file. Four without footage were removed on
+ * 2026-08-07: the section badges each card "VIDÉO RÉELLE" under the line "Pas
+ * d'acteurs. Pas de scripts.", and a claim of authenticity cannot be padded
+ * with people who have no video. Add new entries only with a `videoUrl`.
  */
 
 export interface VideoTestimonial {
@@ -56,62 +60,6 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/batteuse.mp4',
   },
-  {
-    id: 'vid-003',
-    name: 'Kofi Mensah',
-    business: 'Mensah Mobile, Accra',
-    country: 'Ghana',
-    countryFlag: '🇬🇭',
-    language: 'English / Twi',
-    thumbnailColor: 'from-red-700 to-rose-800',
-    duration: '1:12',
-    quote:
-      "Third shipment now. First one I was scared, I won't lie. But they sent me photos before shipping. Everything checked. Now my customers trust me because I deliver quality.",
-    result: '3rd shipment',
-    resultLabel: 'consistent quality',
-  },
-  {
-    id: 'vid-004',
-    name: 'Aminata Koné',
-    business: 'Beauty Queen CI, Abidjan',
-    country: "Côte d'Ivoire",
-    countryFlag: '🇨🇮',
-    language: 'Français / Dioula',
-    thumbnailColor: 'from-orange-600 to-red-700',
-    duration: '1:45',
-    quote:
-      "Les photos QC m'ont sauvé 2000€. Le fournisseur avait changé la qualité du produit. ChinaLink a refusé la marchandise et trouvé un autre en 48h. Sans eux, j'aurais tout perdu.",
-    result: '2000€ sauvés',
-    resultLabel: 'grâce au QC',
-  },
-  {
-    id: 'vid-005',
-    name: 'Ousmane Barry',
-    business: 'Barry BTP, Ouagadougou',
-    country: 'Burkina Faso',
-    countryFlag: '🇧🇫',
-    language: 'Français / Mooré',
-    thumbnailColor: 'from-sky-700 to-indigo-800',
-    duration: '2:03',
-    quote:
-      "Premier conteneur de ma vie. J'étais perdu avec la paperasse. ChinaLink a tout géré : douane, transport, déchargement. Quand j'ai vu mon camion arriver, j'ai failli pleurer.",
-    result: '1er conteneur',
-    resultLabel: 'sans stress',
-  },
-  {
-    id: 'vid-006',
-    name: 'Mariam Houessou',
-    business: 'Houessou Commerce, Cotonou',
-    country: 'Bénin',
-    countryFlag: '🇧🇯',
-    language: 'Français / Fon',
-    thumbnailColor: 'from-violet-700 to-purple-800',
-    duration: '0:47',
-    quote:
-      "Service client 24/7 ce n'est pas du marketing. Une fois à 2h du matin, j'ai eu un problème avec mon colis. Ils ont répondu en 5 minutes sur WhatsApp. 5 minutes !",
-    result: '24/7 réel',
-    resultLabel: 'support WhatsApp',
-  },
 ];
 
 export const EN_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
@@ -146,62 +94,6 @@ export const EN_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     resultLabel: 'agricultural equipment',
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/batteuse.mp4',
-  },
-  {
-    id: 'vid-en-003',
-    name: 'Kofi Mensah',
-    business: 'Mensah Mobile, Accra',
-    country: 'Ghana',
-    countryFlag: '🇬🇭',
-    language: 'English / Twi',
-    thumbnailColor: 'from-red-700 to-rose-800',
-    duration: '1:12',
-    quote:
-      "Third shipment now. First one I was scared, I won't lie. But they sent me photos before shipping. Everything checked.",
-    result: '3rd shipment',
-    resultLabel: 'consistent quality',
-  },
-  {
-    id: 'vid-en-004',
-    name: 'Aminata Kone',
-    business: 'Beauty Queen CI, Abidjan',
-    country: 'Ivory Coast',
-    countryFlag: '🇨🇮',
-    language: 'French / Dioula',
-    thumbnailColor: 'from-orange-600 to-red-700',
-    duration: '1:45',
-    quote:
-      'The QC photos saved my order. The supplier changed the product quality, and ChinaLink rejected the goods before shipping.',
-    result: 'QC protection',
-    resultLabel: 'supplier issue avoided',
-  },
-  {
-    id: 'vid-en-005',
-    name: 'Ousmane Barry',
-    business: 'Barry Construction, Ouagadougou',
-    country: 'Burkina Faso',
-    countryFlag: '🇧🇫',
-    language: 'French / Moore',
-    thumbnailColor: 'from-sky-700 to-indigo-800',
-    duration: '2:03',
-    quote:
-      'It was my first container. ChinaLink handled the documents, transport coordination and unloading support, which made the process less stressful.',
-    result: 'First container',
-    resultLabel: 'less stress',
-  },
-  {
-    id: 'vid-en-006',
-    name: 'Mariam Houessou',
-    business: 'Houessou Commerce, Cotonou',
-    country: 'Benin',
-    countryFlag: '🇧🇯',
-    language: 'French / Fon',
-    thumbnailColor: 'from-violet-700 to-purple-800',
-    duration: '0:47',
-    quote:
-      'Customer support is responsive. When I had a package issue, they replied quickly on WhatsApp and helped me understand the next step.',
-    result: 'Responsive support',
-    resultLabel: 'WhatsApp updates',
   },
 ];
 
