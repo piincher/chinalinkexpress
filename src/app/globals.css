@@ -917,6 +917,109 @@ canvas {
 }
 
 /* ============================================================================
+   Hero: globe + lane ticker
+   see src/views/landing/components/HeroSection.tsx and LaneTicker.tsx
+   ============================================================================ */
+
+/* The globe bleeds off the right edge so it reads as a fragment of a larger
+   network rather than a contained illustration. Below 900px it sits behind the
+   text at low opacity — a 3D map competing with a headline on a 390px screen
+   wins, and the headline is what converts. */
+.hero-globe {
+  position: absolute;
+  inset-block: 0;
+  right: -18%;
+  width: 78%;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .hero-globe {
+    right: -10%;
+    width: 62%;
+    opacity: 0.9;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    /* The empty second column reserves the globe's space so the headline can
+       never run underneath it. */
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+}
+
+.lane-ticker {
+  overflow: hidden;
+  padding-block: var(--space-md);
+  border-bottom: 1px solid color-mix(in oklch, var(--color-void-ink) 10%, transparent);
+  /* Fade both ends so the loop has no visible seam. */
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.lane-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: lane-scroll 46s linear infinite;
+}
+
+.lane-ticker:hover .lane-ticker-track {
+  animation-play-state: paused;
+}
+
+.lane-ticker-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  list-style: none;
+  margin: 0;
+  padding: 0 clamp(0.75rem, 2vw, 1.5rem) 0 0;
+}
+
+.lane-ticker-list li {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--color-void-ink-2);
+}
+
+@keyframes lane-scroll {
+  from { transform: translateX(0); }
+  /* -50% because the list is rendered exactly twice. */
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lane-ticker {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .lane-ticker-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  /* One copy is enough once it is a static list. */
+  .lane-ticker-list[aria-hidden='true'] {
+    display: none;
+  }
+  .lane-ticker-list {
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-lg);
+  }
+}
+
+/* ============================================================================
    Footer — see src/components/layout/SharedFooter.tsx
    ============================================================================ */
 .ft {
