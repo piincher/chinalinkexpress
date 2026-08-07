@@ -7,8 +7,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Plane, Ship, Clock, MapPin, Phone, ArrowRight, FileText, ShieldCheck } from 'lucide-react';
+import { Plane, Ship, Clock, Phone, ArrowRight, FileText, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { PageHero, Band, Shell, Cta, PHOTOS } from '@/components/site';
+import { WHATSAPP_URL } from '@/constants/contact';
 import { getRouteData } from './route-data';
 
 interface Props {
@@ -48,77 +50,138 @@ export function RoutePage({ locale, routeKey, country, capital }: Props) {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--surface)]">
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 mb-6">
-              <MapPin className="w-5 h-5" />
-              <span>{isEn ? 'Shipping Route' : 'Route Maritime/Aérienne'}</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              {isEn 
-                ? `Shipping from ${route.origin.country} to ${route.destination.country}`
-                : `Expédition de ${route.origin.country} vers ${route.destination.country}`}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              {isEn 
-                ? `Reliable freight forwarding from ${route.origin.city} to ${route.destination.city}. Air and sea shipping options available.`
-                : `Transitaire fiable de ${route.origin.city} vers ${route.destination.city}. Options fret aérien et maritime disponibles.`}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`/${locale}/calculateur`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
-              >
-                {isEn ? 'Calculate Shipping Cost' : 'Calculer les Frais'}
-              </Link>
-              <a
-                href="https://wa.me/8618851725957"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                {isEn ? 'Get Quote on WhatsApp' : 'Devis sur WhatsApp'}
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    <main className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
+      {/* Hero. Was a blue→indigo→purple diagonal gradient with centred type, a
+          white button and a green button — three hues and two button voices on
+          the first screen of eleven country routes. */}
+      <PageHero
+        eyebrow={isEn ? 'Shipping route' : 'Route maritime / aérienne'}
+        title={
+          isEn
+            ? `Shipping from ${route.origin.country} to ${route.destination.country}`
+            : `Expédition de ${route.origin.country} vers ${route.destination.country}`
+        }
+        lede={
+          isEn
+            ? `Reliable freight forwarding from ${route.origin.city} to ${route.destination.city}. Air and sea shipping options available.`
+            : `Transitaire fiable de ${route.origin.city} vers ${route.destination.city}. Options fret aérien et maritime disponibles.`
+        }
+        photo={{
+          src: PHOTOS.warehouseWide,
+          alt: isEn
+            ? 'ChinaLink Express consolidation warehouse in China'
+            : 'Entrepôt de consolidation ChinaLink Express en Chine',
+        }}
+        actions={
+          <>
+            <Cta
+              href={WHATSAPP_URL}
+              external
+              variant="solid"
+              tone="void"
+              size="lg"
+              magnetic
+              icon={<Phone size={17} aria-hidden />}
+            >
+              {isEn ? 'Get quote on WhatsApp' : 'Devis sur WhatsApp'}
+            </Cta>
+            <Cta href={`/${locale}/calculateur`} variant="outline" tone="void" size="lg">
+              {isEn ? 'Calculate shipping cost' : 'Calculer les frais'}
+            </Cta>
+          </>
+        }
+      />
 
-      {/* Route Overview */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-2xl p-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="text-center md:text-left">
-                <div className="text-sm text-[var(--text-tertiary)] mb-1">{isEn ? 'Origin' : 'Origine'}</div>
-                <div className="text-2xl font-bold text-[var(--text-primary)]">{route.origin.city}</div>
-                <div className="text-[var(--text-secondary)]">{route.origin.country}</div>
+      {/* Origin → destination. The connector was two gradients running
+          blue→purple→green through a purple arrow between a blue dot and a
+          green dot: five colours to draw one line. It is now a hairline and the
+          two ends are type, which is what the reader is actually here for. */}
+      <Band tone="paper" ruled>
+        <Shell>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 'var(--space-xl)',
+            }}
+          >
+            <div style={{ minWidth: 0 }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: 'var(--tracking-label)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral)',
+                  marginBottom: 'var(--space-xs)',
+                }}
+              >
+                {isEn ? 'Origin' : 'Origine'}
               </div>
-              <div className="flex items-center gap-4">
-                <div className="w-3 h-3 bg-blue-500 rounded-full" />
-                <div className="w-32 md:w-48 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500" />
-                <ArrowRight className="w-6 h-6 text-purple-500" />
-                <div className="w-32 md:w-48 h-0.5 bg-gradient-to-r from-purple-500 to-green-500" />
-                <div className="w-3 h-3 bg-green-500 rounded-full" />
+              <div
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-xl)',
+                  fontWeight: 'var(--weight-display)',
+                  letterSpacing: 'var(--tracking-heading)',
+                  color: 'var(--color-ink)',
+                }}
+              >
+                {route.origin.city}
               </div>
-              <div className="text-center md:text-right">
-                <div className="text-sm text-[var(--text-tertiary)] mb-1">{isEn ? 'Destination' : 'Destination'}</div>
-                <div className="text-2xl font-bold text-[var(--text-primary)]">{route.destination.city}</div>
-                <div className="text-[var(--text-secondary)]">{route.destination.country}</div>
+              <div style={{ color: 'var(--color-ink-2)', fontSize: 'var(--text-sm)' }}>
+                {route.origin.country}
+              </div>
+            </div>
+
+            <div
+              aria-hidden
+              style={{
+                flex: '1 1 8rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-sm)',
+                minWidth: '4rem',
+              }}
+            >
+              <span style={{ flex: 1, height: 1, backgroundColor: 'var(--color-rule-2)' }} />
+              <ArrowRight size={18} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+              <span style={{ flex: 1, height: 1, backgroundColor: 'var(--color-rule-2)' }} />
+            </div>
+
+            <div style={{ minWidth: 0, textAlign: 'end' }}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: 'var(--tracking-label)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral)',
+                  marginBottom: 'var(--space-xs)',
+                }}
+              >
+                {isEn ? 'Destination' : 'Destination'}
+              </div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-xl)',
+                  fontWeight: 'var(--weight-display)',
+                  letterSpacing: 'var(--tracking-heading)',
+                  color: 'var(--color-ink)',
+                }}
+              >
+                {route.destination.city}
+              </div>
+              <div style={{ color: 'var(--color-ink-2)', fontSize: 'var(--text-sm)' }}>
+                {route.destination.country}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Shell>
+      </Band>
 
       {/* Shipping Options */}
       <section className="py-16 md:py-24 bg-[var(--surface-elevated)]">

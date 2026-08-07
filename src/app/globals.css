@@ -854,6 +854,28 @@ canvas {
   color: var(--color-ink);
 }
 
+/* The theme toggle and language selector carry their own hard-coded colours —
+   an amber sun, an indigo moon, gray-700 labels — set for a light bar. While
+   the bar floats over a dark hero those went nearly invisible, and the amber
+   sun was the only warm object in the entire chrome. Scoping them to the bar's
+   light state keeps both controls legible without touching either component,
+   which are also used outside the navbar. */
+.nav-shell[data-light='true'] svg,
+.nav-shell[data-light='true'] button span {
+  color: var(--color-void-ink-2);
+}
+
+.nav-shell[data-light='true'] button:hover svg,
+.nav-shell[data-light='true'] button:hover span {
+  color: var(--color-void-ink);
+}
+
+/* The CTA keeps its own fill, and the wordmark its own colour. */
+.nav-shell[data-light='true'] .cta svg,
+.nav-shell[data-light='true'] .cta span {
+  color: inherit;
+}
+
 .nav-icon-button {
   display: inline-flex;
   align-items: center;

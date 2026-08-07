@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PageHero, Cta, PHOTOS } from '@/components/site';
 
 interface SeoLink {
   href: string;
@@ -91,36 +92,29 @@ export function SeoServicePage({
   };
 
   return (
-    <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
-      <section className="bg-slate-950 pt-28 pb-16 text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 inline-flex rounded-full bg-blue-500/15 px-4 py-2 text-sm font-semibold text-blue-100 ring-1 ring-blue-300/20">
-            {badge}
-          </p>
-          <h1 className="max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-200 md:text-xl">
-            {intro}
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex justify-center rounded-lg bg-green-500 px-6 py-3 font-bold text-white transition hover:bg-green-400"
-            >
+    /* The page surface was hard-coded `bg-white … dark:bg-slate-950` rather
+       than following --color-paper, and the WhatsApp button was the only green
+       object on an otherwise single-accent site. */
+    <main className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)', color: 'var(--color-ink)' }}>
+      <PageHero
+        eyebrow={badge}
+        title={title}
+        lede={intro}
+        photo={{
+          src: PHOTOS.warehouseAisle,
+          alt: 'Entrepôt de consolidation ChinaLink Express en Chine',
+        }}
+        actions={
+          <>
+            <Cta href={whatsappHref} external variant="solid" tone="void" size="lg" magnetic>
               {labels.ctaLabel}
-            </a>
-            <Link
-              href={labels.routeCtaHref}
-              className="inline-flex justify-center rounded-lg border border-white/20 px-6 py-3 font-bold text-white transition hover:bg-white/10"
-            >
+            </Cta>
+            <Cta href={labels.routeCtaHref} variant="outline" tone="void" size="lg">
               {labels.routeCtaLabel}
-            </Link>
-          </div>
-        </div>
-      </section>
+            </Cta>
+          </>
+        }
+      />
 
       <section className="border-b border-slate-200 bg-slate-50 py-10 dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">

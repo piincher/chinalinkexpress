@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PageHero } from '@/components/site';
 
 interface GuideSection {
   title: string;
@@ -53,22 +54,20 @@ export function SeoGuidePage({
   whatsappHref = defaultWhatsappHref,
 }: SeoGuidePageProps) {
   return (
-    <main className="min-h-screen bg-white text-slate-950 dark:bg-slate-950 dark:text-white">
+    /* `bg-white … dark:bg-slate-950` hard-coded the page surface instead of
+       following --color-paper, so guides were the one place the theme did not
+       reach. */
+    <main className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)', color: 'var(--color-ink)' }}>
       <article>
-        <header className="bg-slate-950 pt-28 pb-16 text-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-200">
-              {kicker}
-            </p>
-            <h1 className="text-4xl font-black leading-tight md:text-6xl">{title}</h1>
-            <p className="mt-6 text-lg leading-8 text-slate-200 md:text-xl">{description}</p>
-            <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-300">
-              <span>{updatedLabel}: {updatedAt}</span>
-              <span>{readTime}</span>
-              <span>{reviewedBy}</span>
-            </div>
-          </div>
-        </header>
+        {/* Narrow: a guide is a document, and its title should sit on the same
+            measure as the prose underneath rather than running the full grid. */}
+        <PageHero
+          width="narrow"
+          eyebrow={kicker}
+          title={title}
+          lede={description}
+          meta={[`${updatedLabel}: ${updatedAt}`, readTime, reviewedBy]}
+        />
 
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_300px] lg:px-8">
           <div className="space-y-12">

@@ -110,9 +110,21 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
         });
       },
       {
-        // A shallow strip just below the bar. Elements crossing it are what the
-        // bar is currently overlapping.
-        rootMargin: '-64px 0px -80% 0px',
+        /*
+         * The observed strip must be the bar's own footprint — roughly the top
+         * 8% of the viewport — not the region below it.
+         *
+         * This was '-64px 0px -80% 0px', a band running from 64px down to a
+         * fifth of the viewport. On pages that put something above the hero
+         * (the route pages render a breadcrumb on white paper first) the dark
+         * hero still crossed that band while the bar itself sat over the white
+         * strip, so the bar switched to its light-on-dark treatment and the
+         * wordmark went white-on-white.
+         *
+         * Measuring 0 → ~8% instead means the bar only goes light when a dark
+         * band is genuinely behind it.
+         */
+        rootMargin: '0px 0px -92% 0px',
         threshold: 0,
       }
     );

@@ -12,6 +12,7 @@
  */
 
 export { Band, Shell, type BandTone } from './Band';
+export { PageHero } from './PageHero';
 export { SectionHead } from './SectionHead';
 export { Cta } from './Cta';
 export { Figure } from './Figure';
