@@ -49,7 +49,23 @@ export function useAnimationActivation(
     threshold = 0.1,
     rootMargin = '50px',
     delay = 100,
-    deactivateOnExit = true,
+    /*
+     * Default flipped from true.
+     *
+     * With `deactivateOnExit: true`, every section this hook drives faded back
+     * out the moment it left the viewport and re-animated on the way back — so
+     * scrolling up the page replayed the whole document, and any reader who
+     * scrolls past something and returns to check it watched it assemble
+     * itself again. Fourteen files used the default.
+     *
+     * An entrance is a first impression; playing it repeatedly is what makes a
+     * long page feel restless. This now matches the GSAP `Reveal` primitive in
+     * src/components/motion, which plays once and stays.
+     *
+     * Callers that genuinely want a re-triggering animation can still opt in by
+     * passing `deactivateOnExit: true` explicitly.
+     */
+    deactivateOnExit = false,
   } = options;
 
   const ref = useRef<HTMLDivElement>(null);

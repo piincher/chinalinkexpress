@@ -29,41 +29,42 @@ interface AnimatedSectionProps {
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Reveal travel: enough to read as movement, short enough that the content —
- * not the animation — is what the eye lands on. `blurIn` and `unfold` carry the
- * heavier, more cinematic entrances for hero-adjacent blocks.
+ * One entrance, for everything.
+ *
+ * This map used to hold seven distinct gestures — a rack-focus blur, a
+ * perspective hinge, two directional slides, a scale-up — and the site used
+ * eight variants across its sections counting the CSS ones. A page where every
+ * block arrives differently reads as generated, because the only thing driving
+ * the choice was which effect was available when that section was written. It
+ * also cost real performance: `blurIn` animated a `filter`, which cannot be
+ * composited, and `unfold` animated `rotateX` under a 1200px perspective.
+ *
+ * Every variant name is kept so no call site changes, and all of them now
+ * resolve to the same short rise and fade — matching the GSAP `Reveal`
+ * primitive in src/components/motion exactly, so the two systems that still
+ * coexist in this codebase are indistinguishable to the reader.
+ *
+ * `fadeIn` stays genuinely distinct: it is the no-movement variant, used where
+ * a block should appear without travel.
  */
+const RISE: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const FADE: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
 const animations: Record<string, Variants> = {
-  fadeUp: {
-    hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0 },
-  },
-  fadeIn: {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  },
-  slideLeft: {
-    hidden: { opacity: 0, x: -48 },
-    visible: { opacity: 1, x: 0 },
-  },
-  slideRight: {
-    hidden: { opacity: 0, x: 48 },
-    visible: { opacity: 1, x: 0 },
-  },
-  scaleUp: {
-    hidden: { opacity: 0, scale: 0.94 },
-    visible: { opacity: 1, scale: 1 },
-  },
-  /** Rack-focus entrance — the block resolves as it settles. */
-  blurIn: {
-    hidden: { opacity: 0, y: 24, filter: 'blur(12px)' },
-    visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  },
-  /** Perspective tilt, as if the panel were hinging into the page. */
-  unfold: {
-    hidden: { opacity: 0, rotateX: -12, y: 40, transformPerspective: 1200 },
-    visible: { opacity: 1, rotateX: 0, y: 0, transformPerspective: 1200 },
-  },
+  fadeUp: RISE,
+  fadeIn: FADE,
+  slideLeft: RISE,
+  slideRight: RISE,
+  scaleUp: RISE,
+  blurIn: RISE,
+  unfold: RISE,
 };
 
 /** Spatial motion collapses to a plain crossfade when the OS asks for less. */
@@ -77,7 +78,8 @@ export function AnimatedSection({
   className = '',
   animation = 'fadeUp',
   delay = 0,
-  duration = 0.6,
+  // 0.72s to match the GSAP Reveal primitive; the two systems share one timing.
+  duration = 0.72,
   threshold = 0.2,
   once = true,
 }: AnimatedSectionProps) {
@@ -172,7 +174,7 @@ export function StaggerItem({
       className={className}
       style={style}
       variants={prefersReduced ? reducedVariants : animations[animation]}
-      transition={{ duration: prefersReduced ? 0.15 : 0.5, ease: EASE_OUT }}
+      transition={{ duration: prefersReduced ? 0.15 : 0.72, ease: EASE_OUT }}
     >
       {children}
     </motion.div>

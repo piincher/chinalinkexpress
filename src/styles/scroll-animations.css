@@ -16,10 +16,20 @@
    Keyframes Definitions
    ========================================================================== */
 
+/* One entrance, for everything.
+ *
+ * These were four distinct gestures — a rise, a scale-up, and two directional
+ * slides. Together with the seven framer-motion variants in AnimatedSection
+ * that gave the site eight different ways for a block to arrive, chosen by
+ * whichever effect happened to be handy when each section was written.
+ *
+ * All four keyframe names are kept so no markup changes, and all of them now
+ * resolve to the same 18px rise and fade as the GSAP `Reveal` primitive and the
+ * framer variants. `fade-in` stays distinct as the no-travel variant. */
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -39,33 +49,33 @@
 @keyframes scale-in {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
 @keyframes slide-in-left {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes slide-in-right {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -78,7 +88,7 @@
   /* Base class for all scroll-driven animations */
   .scroll-animate {
     animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timing-function: var(--ease-out);
   }
 
   /* Fade In - Simple opacity transition */
@@ -195,16 +205,16 @@
 
 :root {
   /* Animation timing */
-  --scroll-animation-duration: 0.6s;
-  --scroll-animation-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --scroll-animation-duration: 0.72s;
+  --scroll-animation-easing: var(--ease-out);
   
   /* Entry threshold */
   --scroll-entry-start: 0%;
   --scroll-entry-end: 25%;
   
   /* Transform distances */
-  --scroll-fade-distance: 30px;
-  --scroll-scale-start: 0.95;
+  /* Matches the 18px rise shared by the framer and GSAP reveals. */
+  --scroll-fade-distance: 18px;
 }
 
 /* ==========================================================================
