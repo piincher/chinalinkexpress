@@ -80,7 +80,8 @@
       "Supplier Payment",
       "24/7 Tracking",
       "Door-to-Door Delivery"
-    ]
+    ],
+    "carriersLabel": "We ship with"
   },
   "stats": {
     "sectionLabel": "Our Numbers",
@@ -1525,5 +1526,32 @@
   "sourcing": {
     "title": "From the Chinese marketplace to your door",
     "subtitle": "Buy on 1688, Taobao, Alibaba or straight from the factory. Your orders reach our warehouse in China, then your door in Bamako."
+  },
+  "journey": {
+    "label": "The journey",
+    "title": "From order to your door",
+    "lede": "Four stages, one point of contact. You follow every one of them from the app.",
+    "steps": [
+      {
+        "key": "01",
+        "title": "You order",
+        "description": "On 1688, Taobao, Alibaba or straight from the factory. We can also buy on your behalf."
+      },
+      {
+        "key": "02",
+        "title": "China warehouse",
+        "description": "Received at our Guangzhou warehouse, quality checked, then consolidated."
+      },
+      {
+        "key": "03",
+        "title": "In transit",
+        "description": "Air in 14 to 21 days, or sea in 60 to 75 days. You choose on volume and urgency."
+      },
+      {
+        "key": "04",
+        "title": "Bamako",
+        "description": "Customs clearance, then delivery. You are notified at every status change."
+      }
+    ]
   }
 }

@@ -1,307 +1,184 @@
 /**
- * Hero Section — Marquee Hero Redesign
+ * Hero — dark industrial, photo-led.
  *
- * A single bold statement fills the fold.
- * No gradients, no glassmorphism, no floating orbs.
- * Solid typography, solid colours, confident spacing.
+ * The previous hero was typography on white with a badge, a bouncing scroll
+ * chevron, a pinging dot and three self-reported statistics. It read as a
+ * template because everything in it was assertion: the page claimed to be a
+ * freight company without showing one.
+ *
+ * This one shows the warehouse. The photograph is the company's own — real
+ * forklifts, real containers, real cargo — under a two-stop scrim with the
+ * headline sitting in the dark half. Below the fold line sits the carrier bar:
+ * Maersk, MSC, CMA CGM, Hapag-Lloyd, Evergreen, Ethiopian, Turkish. Those seven
+ * marks answer "is this a real operation" faster than any headline can.
+ *
+ * Motion is three gestures, in sequence: the photograph settles (scale-down),
+ * the headline uncovers line by line, the supporting column rises. Then it
+ * stops. The scroll chevron and the ping are gone — a hero that fidgets reads
+ * as anxious, and the fold already implies scrolling.
+ *
+ * Server component. Only the three motion primitives are client-side, which
+ * keeps the LCP element (the H1 and the photo) in the server-rendered HTML.
  */
 
-'use client';
-
-import React, { useRef } from 'react';
-import { motion, useInView, Variants } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { useScrollTo } from '@/hooks/useScrollTo';
-import { ChevronDown, Star, ArrowRight, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { getTranslations } from 'next-intl/server';
+import { MessageCircle } from 'lucide-react';
+import { Band, Shell, Cta, Figure, CarrierBar, PHOTOS } from '@/components/site';
+import { LineReveal, Reveal } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
+import { WHATSAPP_URL } from '../constants';
 
-/* ── reduced-motion hook ─────────────────────────────────────────────── */
-function useReducedMotion(): boolean {
-  const [reduced, setReduced] = React.useState(false);
-  React.useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-  return reduced;
-}
-
-/* ── scroll indicator ────────────────────────────────────────────────── */
-function ScrollIndicator() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { amount: 0.5 });
-  const reduced = useReducedMotion();
-
-  const handleClick = () => {
-    const el = document.getElementById(SECTION_IDS.STATS);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+export async function HeroSection() {
+  const t = await getTranslations();
 
   return (
-    <motion.div
-      ref={ref}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer"
-      onClick={handleClick}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ delay: 1.2, duration: 0.5 }}
-    >
-      <span className="text-xs font-medium uppercase tracking-widest" style={{ color: 'var(--color-muted)' }}>
-        Scroll
-      </span>
-      <motion.div
-        animate={reduced ? {} : { y: [0, 6, 0] }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <ChevronDown className="w-5 h-5" style={{ color: 'var(--color-muted)' }} />
-      </motion.div>
-    </motion.div>
-  );
-}
-
-/* ── hero section ────────────────────────────────────────────────────── */
-export function HeroSection() {
-  const t = useTranslations();
-  const { scrollToElement } = useScrollTo();
-  const reduced = useReducedMotion();
-
-  const fadeIn: Variants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: (delay: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-    }),
-  };
-
-  const steps = (t.raw('hero.journeySteps') as Array<{ icon: string; label: string }>) || [];
-
-  return (
-    <section
+    <Band
       id={SECTION_IDS.HERO}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      tone="void"
+      flush
+      // Tells the fixed navbar to switch to its light-on-dark treatment while
+      // it overlaps this band.
+      data-nav-overlay="void"
       style={{
-        backgroundColor: 'var(--color-paper)',
-        color: 'var(--color-ink)',
+        position: 'relative',
+        // svh, not vh: on mobile Safari `100vh` is the height *without* the URL
+        // bar, so a 100vh hero is cropped on load and only fits once the bar
+        // retracts. svh measures the smallest viewport and always fits.
+        minHeight: 'min(100svh, 62rem)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        overflow: 'hidden',
       }}
     >
-      {/* ── main content ─────────────────────────────────────────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-32">
-        <div className="max-w-4xl">
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-8"
-            style={{
-              backgroundColor: 'var(--color-paper-2)',
-              color: 'var(--color-accent)',
-              border: '1px solid var(--color-rule)',
-            }}
-            initial={reduced ? {} : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span
-                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                style={{ backgroundColor: 'var(--color-accent)' }}
-              />
-              <span
-                className="relative inline-flex rounded-full h-2 w-2"
-                style={{ backgroundColor: 'var(--color-accent)' }}
-              />
-            </span>
-            <span>{t('hero.badge') || 'Opérationnel 24/7 · Livraison garantie'}</span>
-          </motion.div>
+      {/* ── the warehouse ─────────────────────────────────────────────────── */}
+      <Figure
+        src={PHOTOS.warehouseWide}
+        alt="Entrepôt de consolidation ChinaLink Express à Guangzhou : chariots élévateurs, conteneurs et marchandises palettisées"
+        focal="42%"
+        scrim={1}
+        tint
+        parallax
+        rounded={false}
+        priority
+        sizes="100vw"
+        style={{ position: 'absolute', inset: 0, borderRadius: 0 }}
+      />
 
-          {/* Marquee headline */}
-          <motion.h1
-            className="leading-[0.98]"
+      {/* ── statement ─────────────────────────────────────────────────────── */}
+      <Shell
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          paddingTop: 'calc(var(--band-y) + 3rem)',
+          paddingBottom: 'var(--space-2xl)',
+        }}
+      >
+        <Reveal delay={0.1} distance={12}>
+          <p
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-display)',
-              fontWeight: 'var(--weight-display)',
-              letterSpacing: 'var(--tracking-display)',
-              // Long French compounds ("réceptionnez") must break rather than
-              // push the page sideways at 320px.
-              overflowWrap: 'anywhere',
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent-bright)',
+              margin: '0 0 var(--space-lg)',
             }}
-            initial={reduced ? {} : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            {t('hero.headline')}
-          </motion.h1>
-        </div>
-      </div>
+            {t('hero.badge')}
+          </p>
+        </Reveal>
 
-      {/* ── thick rule divider ───────────────────────────────────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <LineReveal
+          as="h1"
+          immediate
+          delay={0.18}
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'var(--text-display)',
+            fontWeight: 'var(--weight-display)',
+            letterSpacing: 'var(--tracking-display)',
+            lineHeight: 'var(--leading-display)',
+            color: 'var(--color-void-ink)',
+            // Held short so the headline breaks into two or three deliberate
+            // lines rather than one long ribbon on a wide monitor.
+            maxWidth: '17ch',
+            margin: 0,
+            textWrap: 'balance',
+          }}
+        >
+          {t('hero.headline')}
+        </LineReveal>
+
         <div
-          className="h-1 w-24"
-          style={{ backgroundColor: 'var(--color-accent)' }}
-        />
-      </div>
-
-      {/* ── below-fold content ───────────────────────────────────────── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
-          {/* Left: subtitle + steps */}
-          <div className="space-y-8">
-            <motion.p
-              className="leading-relaxed max-w-xl"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))',
+            gap: 'var(--space-xl)',
+            alignItems: 'end',
+            marginTop: 'var(--space-xl)',
+          }}
+        >
+          <Reveal delay={0.5}>
+            <p
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 'var(--text-lg)',
-                color: 'var(--color-ink-2)',
-                lineHeight: 1.6,
+                fontSize: 'var(--text-md)',
+                lineHeight: 'var(--leading-body)',
+                color: 'var(--color-void-ink-2)',
+                maxWidth: '46ch',
+                margin: 0,
               }}
-              initial={reduced ? {} : 'hidden'}
-              animate="visible"
-              custom={0.4}
-              variants={fadeIn}
             >
-              {t('hero.subtitle')}
-            </motion.p>
+              {t('hero.subheadline')}
+            </p>
+          </Reveal>
 
-            {/* Journey steps — text only, no emoji */}
-            {steps.length > 0 && (
-              <motion.div
-                className="flex flex-wrap gap-3"
-                initial={reduced ? {} : 'hidden'}
-                animate="visible"
-                custom={0.55}
-                variants={fadeIn}
-              >
-                {steps.map((step, index) => (
-                  <span
-                    key={index}
-                    className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium"
-                    style={{
-                      backgroundColor: 'var(--color-paper-2)',
-                      color: 'var(--color-ink-2)',
-                      border: '1px solid var(--color-rule)',
-                    }}
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full"
-                      style={{ backgroundColor: 'var(--color-accent)' }}
-                    />
-                    {step.label}
-                  </span>
-                ))}
-              </motion.div>
-            )}
-
-            {/* CTAs */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              initial={reduced ? {} : 'hidden'}
-              animate="visible"
-              custom={0.7}
-              variants={fadeIn}
-            >
-              <a
-                href="https://wa.me/8618851725957"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
-                style={{
-                  backgroundColor: 'var(--color-accent)',
-                  color: 'var(--color-accent-ink)',
-                }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>{t('cta.getQuote')}</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
-
-              <button
-                onClick={() => scrollToElement(SECTION_IDS.SERVICES)}
-                className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-base transition-colors"
-                style={{
-                  backgroundColor: 'transparent',
-                  color: 'var(--color-ink)',
-                  border: '1.5px solid var(--color-rule)',
-                }}
-              >
-                <span>{t('cta.discoverServices')}</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Right: stats */}
-          <motion.div
-            className="grid grid-cols-3 gap-6"
-            initial={reduced ? {} : 'hidden'}
-            animate="visible"
-            custom={0.6}
-            variants={fadeIn}
+          <Reveal
+            delay={0.62}
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 'var(--space-md)',
+              justifyContent: 'flex-start',
+            }}
           >
-            <div className="text-left">
-              <div
-                className="font-bold tracking-tight"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-3xl)',
-                  color: 'var(--color-ink)',
-                }}
-              >
-                7+
-              </div>
-              <div
-                className="text-sm font-medium uppercase tracking-wider mt-1"
-                style={{ color: 'var(--color-neutral)' }}
-              >
-                {t('stats.experienceYears') || "Années d'expérience"}
-              </div>
-            </div>
-            <div className="text-left">
-              <div
-                className="font-bold tracking-tight"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-3xl)',
-                  color: 'var(--color-ink)',
-                }}
-              >
-                {t('stats.activeClientsCount', { defaultValue: '1,247' })}
-              </div>
-              <div
-                className="text-sm font-medium uppercase tracking-wider mt-1"
-                style={{ color: 'var(--color-neutral)' }}
-              >
-                {t('stats.satisfiedClients', { defaultValue: 'Clients satisfaits' })}
-              </div>
-            </div>
-            <div className="text-left">
-              <div
-                className="font-bold tracking-tight inline-flex items-center gap-1"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-3xl)',
-                  color: 'var(--color-ink)',
-                }}
-              >
-                <span>{t('stats.ratingValue', { defaultValue: '4.8' })}</span>
-                <Star className="w-6 h-6 fill-current" style={{ color: 'var(--color-accent)' }} />
-              </div>
-              <div
-                className="text-sm font-medium uppercase tracking-wider mt-1"
-                style={{ color: 'var(--color-neutral)' }}
-              >
-                {t('stats.rating', { defaultValue: 'Note moyenne' })}
-              </div>
-            </div>
-          </motion.div>
+            <Cta
+              href={WHATSAPP_URL}
+              external
+              variant="solid"
+              tone="void"
+              size="lg"
+              magnetic
+              icon={<MessageCircle size={18} aria-hidden />}
+            >
+              {t('cta.getQuote')}
+            </Cta>
+            <Cta href={`#${SECTION_IDS.SERVICES}`} variant="outline" tone="void" size="lg">
+              {t('cta.discoverServices')}
+            </Cta>
+          </Reveal>
         </div>
-      </div>
+      </Shell>
 
-      {/* Scroll indicator */}
-      <ScrollIndicator />
-    </section>
+      {/* ── proof ─────────────────────────────────────────────────────────── */}
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          borderTop: '1px solid color-mix(in oklch, var(--color-void-ink) 14%, transparent)',
+          backgroundColor: 'color-mix(in oklch, var(--color-void) 55%, transparent)',
+          backdropFilter: 'blur(6px)',
+        }}
+      >
+        <Shell style={{ paddingBlock: 'var(--space-lg)' }}>
+          <Reveal delay={0.8} distance={10}>
+            <CarrierBar tone="void" label={t('landing.carriersLabel')} />
+          </Reveal>
+        </Shell>
+      </div>
+    </Band>
   );
 }
 

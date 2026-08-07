@@ -120,7 +120,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
         
         // Interactive states
         'hover:shadow-lg hover:border-border/80',
-        isExpanded && 'shadow-xl border-border z-10',
+        isExpanded && 'shadow-sm border-border z-10',
         
         // Conditional: dim other cards when one is expanded
         isAnyCardExpanded && !isExpanded && 'opacity-60 scale-[0.98]',

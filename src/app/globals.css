@@ -9,167 +9,402 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ============================================================================
-   CSS Variables - Light Mode (Default)
-   ============================================================================ */
-:root {
-  /* Base colors */
-  --background: #ffffff;
-  --foreground: #171717;
-  
-  /* Surface colors */
-  --surface: #ffffff;
-  --surface-elevated: #fafafa;
-  --surface-lowered: #f5f5f5;
-  --surface-overlay: rgba(255, 255, 255, 0.95);
-  
-  /* Border colors */
-  --border: #e5e5e5;
-  --border-subtle: #f0f0f0;
-  --border-strong: #d4d4d4;
-  
-  /* Text colors */
-  --text-primary: #171717;
-  --text-secondary: #525252;
-  --text-tertiary: #737373;
-  --text-muted: #a3a3a3;
-  --text-inverse: #ffffff;
-  
-  /* Brand colors */
-  --color-primary: #3b82f6;
-  --color-primary-light: #60a5fa;
-  --color-primary-dark: #1d4ed8;
-  --color-primary-50: #eff8ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  
-  --color-secondary: #ef4444;
-  --color-secondary-light: #f87171;
-  --color-secondary-dark: #dc2626;
-  
-  --color-accent: #f59e0b;
-  --color-accent-light: #fbbf24;
-  --color-accent-dark: #d97706;
-  
-  /* Semantic colors */
-  --color-success: #22c55e;
-  --color-success-light: #86efac;
-  --color-success-dark: #16a34a;
-  --color-warning: #f59e0b;
-  --color-warning-light: #fcd34d;
-  --color-warning-dark: #d97706;
-  --color-error: #ef4444;
-  --color-error-light: #fca5a5;
-  --color-error-dark: #dc2626;
-  --color-info: #3b82f6;
-  --color-info-light: #93c5fd;
-  --color-info-dark: #2563eb;
-  
-  /* Gradient backgrounds */
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-  --gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
-  --gradient-surface: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
-  
-  /* Shadow colors */
-  --shadow-color: 0 0 0;
-  --shadow-sm: 0 1px 2px 0 rgba(var(--shadow-color), 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(var(--shadow-color), 0.1), 0 2px 4px -2px rgba(var(--shadow-color), 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(var(--shadow-color), 0.1), 0 4px 6px -4px rgba(var(--shadow-color), 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(var(--shadow-color), 0.1), 0 8px 10px -6px rgba(var(--shadow-color), 0.1);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
-  --shadow-glow-strong: 0 0 40px rgba(59, 130, 246, 0.5);
-  
-  /* Animation timing */
-  --animation-duration-fast: 150ms;
-  --animation-duration-normal: 300ms;
-  --animation-duration-slow: 500ms;
-  --animation-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  
-  /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-backdrop: blur(10px);
+   Tailwind palette remap
+   ============================================================================
+
+   ~3,250 places in this codebase style themselves with raw Tailwind palette
+   utilities -- `text-gray-700`, `bg-emerald-50`, `from-blue-600` -- rather than
+   with design tokens. Those bypass tokens.css entirely, which is why pages that
+   were never touched by the redesign still looked like a different product.
+
+   Editing 3,250 call sites is the wrong fix. Tailwind v4 builds its utilities
+   from `@theme`, so redefining the palette here re-points every one of those
+   call sites at the brand ramp at once, with no component changes and nothing
+   left to drift.
+
+   Structure: one shared lightness ladder across all families, so a `-700` is
+   the same darkness whatever its hue. That preserves every existing
+   light/dark pairing (`text-gray-700 dark:text-gray-300`) and every existing
+   contrast relationship -- only the hue and saturation change.
+
+   Cool and brand-ish hues all collapse onto the single accent, because a page
+   with one accent reads as designed and a page with six reads as assembled.
+   Green, red and amber survive as semantics only -- ticks, crosses, warnings --
+   retuned toward the brand's cool cast so they stop reading as stock Tailwind.
+   ========================================================================= */
+@theme {
+
+  /* Neutrals -> the brand cool-grey. 1,306 usages. */
+  --color-slate-50: oklch(97.5% 0.001 250);
+  --color-slate-100: oklch(95.0% 0.003 250);
+  --color-slate-200: oklch(90.0% 0.005 250);
+  --color-slate-300: oklch(83.0% 0.008 250);
+  --color-slate-400: oklch(72.0% 0.011 250);
+  --color-slate-500: oklch(62.0% 0.014 250);
+  --color-slate-600: oklch(54.0% 0.014 250);
+  --color-slate-700: oklch(45.0% 0.013 250);
+  --color-slate-800: oklch(36.0% 0.011 250);
+  --color-slate-900: oklch(27.0% 0.009 250);
+  --color-slate-950: oklch(19.0% 0.006 250);
+  --color-gray-50: oklch(97.5% 0.001 250);
+  --color-gray-100: oklch(95.0% 0.003 250);
+  --color-gray-200: oklch(90.0% 0.005 250);
+  --color-gray-300: oklch(83.0% 0.008 250);
+  --color-gray-400: oklch(72.0% 0.011 250);
+  --color-gray-500: oklch(62.0% 0.014 250);
+  --color-gray-600: oklch(54.0% 0.014 250);
+  --color-gray-700: oklch(45.0% 0.013 250);
+  --color-gray-800: oklch(36.0% 0.011 250);
+  --color-gray-900: oklch(27.0% 0.009 250);
+  --color-gray-950: oklch(19.0% 0.006 250);
+  --color-zinc-50: oklch(97.5% 0.001 250);
+  --color-zinc-100: oklch(95.0% 0.003 250);
+  --color-zinc-200: oklch(90.0% 0.005 250);
+  --color-zinc-300: oklch(83.0% 0.008 250);
+  --color-zinc-400: oklch(72.0% 0.011 250);
+  --color-zinc-500: oklch(62.0% 0.014 250);
+  --color-zinc-600: oklch(54.0% 0.014 250);
+  --color-zinc-700: oklch(45.0% 0.013 250);
+  --color-zinc-800: oklch(36.0% 0.011 250);
+  --color-zinc-900: oklch(27.0% 0.009 250);
+  --color-zinc-950: oklch(19.0% 0.006 250);
+  --color-neutral-50: oklch(97.5% 0.001 250);
+  --color-neutral-100: oklch(95.0% 0.003 250);
+  --color-neutral-200: oklch(90.0% 0.005 250);
+  --color-neutral-300: oklch(83.0% 0.008 250);
+  --color-neutral-400: oklch(72.0% 0.011 250);
+  --color-neutral-500: oklch(62.0% 0.014 250);
+  --color-neutral-600: oklch(54.0% 0.014 250);
+  --color-neutral-700: oklch(45.0% 0.013 250);
+  --color-neutral-800: oklch(36.0% 0.011 250);
+  --color-neutral-900: oklch(27.0% 0.009 250);
+  --color-neutral-950: oklch(19.0% 0.006 250);
+  --color-stone-50: oklch(97.5% 0.001 250);
+  --color-stone-100: oklch(95.0% 0.003 250);
+  --color-stone-200: oklch(90.0% 0.005 250);
+  --color-stone-300: oklch(83.0% 0.008 250);
+  --color-stone-400: oklch(72.0% 0.011 250);
+  --color-stone-500: oklch(62.0% 0.014 250);
+  --color-stone-600: oklch(54.0% 0.014 250);
+  --color-stone-700: oklch(45.0% 0.013 250);
+  --color-stone-800: oklch(36.0% 0.011 250);
+  --color-stone-900: oklch(27.0% 0.009 250);
+  --color-stone-950: oklch(19.0% 0.006 250);
+
+  /* Every cool/brand-ish hue -> the one accent. 804 usages. */
+  --color-blue-50: oklch(97.5% 0.018 250);
+  --color-blue-100: oklch(95.0% 0.036 250);
+  --color-blue-200: oklch(90.0% 0.068 250);
+  --color-blue-300: oklch(83.0% 0.110 250);
+  --color-blue-400: oklch(72.0% 0.160 250);
+  --color-blue-500: oklch(62.0% 0.194 250);
+  --color-blue-600: oklch(54.0% 0.200 250);
+  --color-blue-700: oklch(45.0% 0.190 250);
+  --color-blue-800: oklch(36.0% 0.160 250);
+  --color-blue-900: oklch(27.0% 0.124 250);
+  --color-blue-950: oklch(19.0% 0.090 250);
+  --color-sky-50: oklch(97.5% 0.018 250);
+  --color-sky-100: oklch(95.0% 0.036 250);
+  --color-sky-200: oklch(90.0% 0.068 250);
+  --color-sky-300: oklch(83.0% 0.110 250);
+  --color-sky-400: oklch(72.0% 0.160 250);
+  --color-sky-500: oklch(62.0% 0.194 250);
+  --color-sky-600: oklch(54.0% 0.200 250);
+  --color-sky-700: oklch(45.0% 0.190 250);
+  --color-sky-800: oklch(36.0% 0.160 250);
+  --color-sky-900: oklch(27.0% 0.124 250);
+  --color-sky-950: oklch(19.0% 0.090 250);
+  --color-cyan-50: oklch(97.5% 0.018 250);
+  --color-cyan-100: oklch(95.0% 0.036 250);
+  --color-cyan-200: oklch(90.0% 0.068 250);
+  --color-cyan-300: oklch(83.0% 0.110 250);
+  --color-cyan-400: oklch(72.0% 0.160 250);
+  --color-cyan-500: oklch(62.0% 0.194 250);
+  --color-cyan-600: oklch(54.0% 0.200 250);
+  --color-cyan-700: oklch(45.0% 0.190 250);
+  --color-cyan-800: oklch(36.0% 0.160 250);
+  --color-cyan-900: oklch(27.0% 0.124 250);
+  --color-cyan-950: oklch(19.0% 0.090 250);
+  --color-indigo-50: oklch(97.5% 0.018 250);
+  --color-indigo-100: oklch(95.0% 0.036 250);
+  --color-indigo-200: oklch(90.0% 0.068 250);
+  --color-indigo-300: oklch(83.0% 0.110 250);
+  --color-indigo-400: oklch(72.0% 0.160 250);
+  --color-indigo-500: oklch(62.0% 0.194 250);
+  --color-indigo-600: oklch(54.0% 0.200 250);
+  --color-indigo-700: oklch(45.0% 0.190 250);
+  --color-indigo-800: oklch(36.0% 0.160 250);
+  --color-indigo-900: oklch(27.0% 0.124 250);
+  --color-indigo-950: oklch(19.0% 0.090 250);
+  --color-violet-50: oklch(97.5% 0.018 250);
+  --color-violet-100: oklch(95.0% 0.036 250);
+  --color-violet-200: oklch(90.0% 0.068 250);
+  --color-violet-300: oklch(83.0% 0.110 250);
+  --color-violet-400: oklch(72.0% 0.160 250);
+  --color-violet-500: oklch(62.0% 0.194 250);
+  --color-violet-600: oklch(54.0% 0.200 250);
+  --color-violet-700: oklch(45.0% 0.190 250);
+  --color-violet-800: oklch(36.0% 0.160 250);
+  --color-violet-900: oklch(27.0% 0.124 250);
+  --color-violet-950: oklch(19.0% 0.090 250);
+  --color-purple-50: oklch(97.5% 0.018 250);
+  --color-purple-100: oklch(95.0% 0.036 250);
+  --color-purple-200: oklch(90.0% 0.068 250);
+  --color-purple-300: oklch(83.0% 0.110 250);
+  --color-purple-400: oklch(72.0% 0.160 250);
+  --color-purple-500: oklch(62.0% 0.194 250);
+  --color-purple-600: oklch(54.0% 0.200 250);
+  --color-purple-700: oklch(45.0% 0.190 250);
+  --color-purple-800: oklch(36.0% 0.160 250);
+  --color-purple-900: oklch(27.0% 0.124 250);
+  --color-purple-950: oklch(19.0% 0.090 250);
+
+  /* Positive / "we do this" ticks. 552 usages. */
+  --color-emerald-50: oklch(97.5% 0.012 160);
+  --color-emerald-100: oklch(95.0% 0.023 160);
+  --color-emerald-200: oklch(90.0% 0.044 160);
+  --color-emerald-300: oklch(83.0% 0.072 160);
+  --color-emerald-400: oklch(72.0% 0.104 160);
+  --color-emerald-500: oklch(62.0% 0.126 160);
+  --color-emerald-600: oklch(54.0% 0.130 160);
+  --color-emerald-700: oklch(45.0% 0.123 160);
+  --color-emerald-800: oklch(36.0% 0.104 160);
+  --color-emerald-900: oklch(27.0% 0.081 160);
+  --color-emerald-950: oklch(19.0% 0.059 160);
+  --color-green-50: oklch(97.5% 0.012 160);
+  --color-green-100: oklch(95.0% 0.023 160);
+  --color-green-200: oklch(90.0% 0.044 160);
+  --color-green-300: oklch(83.0% 0.072 160);
+  --color-green-400: oklch(72.0% 0.104 160);
+  --color-green-500: oklch(62.0% 0.126 160);
+  --color-green-600: oklch(54.0% 0.130 160);
+  --color-green-700: oklch(45.0% 0.123 160);
+  --color-green-800: oklch(36.0% 0.104 160);
+  --color-green-900: oklch(27.0% 0.081 160);
+  --color-green-950: oklch(19.0% 0.059 160);
+  --color-teal-50: oklch(97.5% 0.012 160);
+  --color-teal-100: oklch(95.0% 0.023 160);
+  --color-teal-200: oklch(90.0% 0.044 160);
+  --color-teal-300: oklch(83.0% 0.072 160);
+  --color-teal-400: oklch(72.0% 0.104 160);
+  --color-teal-500: oklch(62.0% 0.126 160);
+  --color-teal-600: oklch(54.0% 0.130 160);
+  --color-teal-700: oklch(45.0% 0.123 160);
+  --color-teal-800: oklch(36.0% 0.104 160);
+  --color-teal-900: oklch(27.0% 0.081 160);
+  --color-teal-950: oklch(19.0% 0.059 160);
+  --color-lime-50: oklch(97.5% 0.012 160);
+  --color-lime-100: oklch(95.0% 0.023 160);
+  --color-lime-200: oklch(90.0% 0.044 160);
+  --color-lime-300: oklch(83.0% 0.072 160);
+  --color-lime-400: oklch(72.0% 0.104 160);
+  --color-lime-500: oklch(62.0% 0.126 160);
+  --color-lime-600: oklch(54.0% 0.130 160);
+  --color-lime-700: oklch(45.0% 0.123 160);
+  --color-lime-800: oklch(36.0% 0.104 160);
+  --color-lime-900: oklch(27.0% 0.081 160);
+  --color-lime-950: oklch(19.0% 0.059 160);
+
+  /* Negative / "they do not" crosses. 206 usages. */
+  --color-red-50: oklch(97.5% 0.016 25);
+  --color-red-100: oklch(95.0% 0.032 25);
+  --color-red-200: oklch(90.0% 0.061 25);
+  --color-red-300: oklch(83.0% 0.099 25);
+  --color-red-400: oklch(72.0% 0.144 25);
+  --color-red-500: oklch(62.0% 0.175 25);
+  --color-red-600: oklch(54.0% 0.180 25);
+  --color-red-700: oklch(45.0% 0.171 25);
+  --color-red-800: oklch(36.0% 0.144 25);
+  --color-red-900: oklch(27.0% 0.112 25);
+  --color-red-950: oklch(19.0% 0.081 25);
+  --color-rose-50: oklch(97.5% 0.016 25);
+  --color-rose-100: oklch(95.0% 0.032 25);
+  --color-rose-200: oklch(90.0% 0.061 25);
+  --color-rose-300: oklch(83.0% 0.099 25);
+  --color-rose-400: oklch(72.0% 0.144 25);
+  --color-rose-500: oklch(62.0% 0.175 25);
+  --color-rose-600: oklch(54.0% 0.180 25);
+  --color-rose-700: oklch(45.0% 0.171 25);
+  --color-rose-800: oklch(36.0% 0.144 25);
+  --color-rose-900: oklch(27.0% 0.112 25);
+  --color-rose-950: oklch(19.0% 0.081 25);
+  --color-pink-50: oklch(97.5% 0.016 25);
+  --color-pink-100: oklch(95.0% 0.032 25);
+  --color-pink-200: oklch(90.0% 0.061 25);
+  --color-pink-300: oklch(83.0% 0.099 25);
+  --color-pink-400: oklch(72.0% 0.144 25);
+  --color-pink-500: oklch(62.0% 0.175 25);
+  --color-pink-600: oklch(54.0% 0.180 25);
+  --color-pink-700: oklch(45.0% 0.171 25);
+  --color-pink-800: oklch(36.0% 0.144 25);
+  --color-pink-900: oklch(27.0% 0.112 25);
+  --color-pink-950: oklch(19.0% 0.081 25);
+  --color-fuchsia-50: oklch(97.5% 0.016 25);
+  --color-fuchsia-100: oklch(95.0% 0.032 25);
+  --color-fuchsia-200: oklch(90.0% 0.061 25);
+  --color-fuchsia-300: oklch(83.0% 0.099 25);
+  --color-fuchsia-400: oklch(72.0% 0.144 25);
+  --color-fuchsia-500: oklch(62.0% 0.175 25);
+  --color-fuchsia-600: oklch(54.0% 0.180 25);
+  --color-fuchsia-700: oklch(45.0% 0.171 25);
+  --color-fuchsia-800: oklch(36.0% 0.144 25);
+  --color-fuchsia-900: oklch(27.0% 0.112 25);
+  --color-fuchsia-950: oklch(19.0% 0.081 25);
+
+  /* Warning + the legacy secondary accent. 381 usages. */
+  --color-amber-50: oklch(97.5% 0.013 70);
+  --color-amber-100: oklch(95.0% 0.027 70);
+  --color-amber-200: oklch(90.0% 0.051 70);
+  --color-amber-300: oklch(83.0% 0.083 70);
+  --color-amber-400: oklch(72.0% 0.120 70);
+  --color-amber-500: oklch(62.0% 0.145 70);
+  --color-amber-600: oklch(54.0% 0.150 70);
+  --color-amber-700: oklch(45.0% 0.142 70);
+  --color-amber-800: oklch(36.0% 0.120 70);
+  --color-amber-900: oklch(27.0% 0.093 70);
+  --color-amber-950: oklch(19.0% 0.068 70);
+  --color-orange-50: oklch(97.5% 0.013 70);
+  --color-orange-100: oklch(95.0% 0.027 70);
+  --color-orange-200: oklch(90.0% 0.051 70);
+  --color-orange-300: oklch(83.0% 0.083 70);
+  --color-orange-400: oklch(72.0% 0.120 70);
+  --color-orange-500: oklch(62.0% 0.145 70);
+  --color-orange-600: oklch(54.0% 0.150 70);
+  --color-orange-700: oklch(45.0% 0.142 70);
+  --color-orange-800: oklch(36.0% 0.120 70);
+  --color-orange-900: oklch(27.0% 0.093 70);
+  --color-orange-950: oklch(19.0% 0.068 70);
+  --color-yellow-50: oklch(97.5% 0.013 70);
+  --color-yellow-100: oklch(95.0% 0.027 70);
+  --color-yellow-200: oklch(90.0% 0.051 70);
+  --color-yellow-300: oklch(83.0% 0.083 70);
+  --color-yellow-400: oklch(72.0% 0.120 70);
+  --color-yellow-500: oklch(62.0% 0.145 70);
+  --color-yellow-600: oklch(54.0% 0.150 70);
+  --color-yellow-700: oklch(45.0% 0.142 70);
+  --color-yellow-800: oklch(36.0% 0.120 70);
+  --color-yellow-900: oklch(27.0% 0.093 70);
+  --color-yellow-950: oklch(19.0% 0.068 70);
 }
 
+
 /* ============================================================================
-   Dark Mode CSS Variables
-   ============================================================================ */
-.dark {
-  /* Base colors */
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  
-  /* Surface colors */
-  --surface: #171717;
-  --surface-elevated: #262626;
-  --surface-lowered: #0a0a0a;
-  --surface-overlay: rgba(23, 23, 23, 0.95);
-  
-  /* Border colors */
-  --border: #404040;
-  --border-subtle: #262626;
-  --border-strong: #525252;
-  
-  /* Text colors */
-  --text-primary: #fafafa;
-  --text-secondary: #a3a3a3;
-  --text-tertiary: #737373;
-  --text-muted: #525252;
-  --text-inverse: #171717;
-  
-  /* Brand colors - adjusted for dark mode */
-  --color-primary: #60a5fa;
-  --color-primary-light: #93c5fd;
-  --color-primary-dark: #1e3a8a;
-  --color-primary-50: #1e3a5f;
-  --color-primary-100: #1e40af;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #60a5fa;
-  --color-primary-700: #93c5fd;
-  
-  --color-secondary: #f87171;
-  --color-secondary-light: #fca5a5;
-  --color-secondary-dark: #991b1b;
-  
-  --color-accent: #fbbf24;
-  --color-accent-light: #fcd34d;
-  --color-accent-dark: #92400e;
-  
-  /* Semantic colors - adjusted for dark mode */
-  --color-success: #4ade80;
-  --color-success-light: #86efac;
-  --color-success-dark: #166534;
-  --color-warning: #fbbf24;
-  --color-warning-light: #fcd34d;
-  --color-warning-dark: #92400e;
-  --color-error: #f87171;
-  --color-error-light: #fca5a5;
-  --color-error-dark: #991b1b;
-  --color-info: #60a5fa;
-  --color-info-light: #93c5fd;
-  --color-info-dark: #1e40af;
-  
-  /* Gradient backgrounds - dark mode */
-  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0ea5e9 100%);
-  --gradient-surface: linear-gradient(180deg, #171717 0%, #0a0a0a 100%);
-  --gradient-card: linear-gradient(145deg, #262626 0%, #171717 100%);
-  
-  /* Shadow colors - dark mode */
+   Legacy variable bridge
+   ============================================================================
+
+   Roughly half this site was written against an older variable vocabulary
+   (--surface, --text-primary, --border, --color-primary…) whose values were
+   raw Tailwind default hexes. The other half is written against the OKLCH
+   tokens in tokens.css. Both were live at once, so the palette visibly changed
+   halfway down the page.
+
+   Rather than rewrite ~30 components, the old names are re-pointed at the new
+   tokens here. One system, two vocabularies. New work should use the
+   tokens.css names directly; these aliases exist so the old work inherits the
+   redesign for free.
+
+   NOTE: --color-accent is deliberately NOT redefined below. It is owned by
+   tokens.css (blue). Previously this block redefined it as amber #f59e0b and,
+   being the later declaration, won — which is why "accent" elements rendered
+   amber while --color-primary rendered blue. Two accents, one page.
+   ========================================================================== */
+:root {
+  /* Base */
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+
+  /* Surfaces */
+  --surface: var(--color-paper);
+  --surface-elevated: var(--color-paper-2);
+  --surface-lowered: var(--color-paper-3);
+  --surface-overlay: color-mix(in oklch, var(--color-paper) 88%, transparent);
+
+  /* Borders */
+  --border: var(--color-rule);
+  --border-subtle: color-mix(in oklch, var(--color-rule) 55%, var(--color-paper));
+  --border-strong: var(--color-rule-2);
+
+  /* Text */
+  --text-primary: var(--color-ink);
+  --text-secondary: var(--color-ink-2);
+  --text-tertiary: var(--color-neutral);
+  --text-muted: var(--color-muted);
+  --text-inverse: var(--color-void-ink);
+
+  /* Brand — the whole primary ramp collapses onto the single accent.
+     A seven-step brand ramp used at seven different strengths is what made the
+     old page read as generic; one accent used sparingly is what reads as
+     considered. */
+  --color-primary: var(--color-accent);
+  --color-primary-light: var(--color-accent-bright);
+  --color-primary-dark: var(--color-accent-deep);
+  --color-primary-50: color-mix(in oklch, var(--color-accent) 7%, var(--color-paper));
+  --color-primary-100: color-mix(in oklch, var(--color-accent) 14%, var(--color-paper));
+  --color-primary-500: var(--color-accent);
+  --color-primary-600: var(--color-accent);
+  --color-primary-700: var(--color-accent-deep);
+
+  --color-secondary: var(--color-negative);
+  --color-secondary-light: color-mix(in oklch, var(--color-negative) 70%, var(--color-paper));
+  --color-secondary-dark: color-mix(in oklch, var(--color-negative) 80%, var(--color-ink));
+
+  /* Accent aliases only — --color-accent itself belongs to tokens.css. */
+  --color-accent-light: var(--color-accent-bright);
+  --color-accent-dark: var(--color-accent-deep);
+
+  /* Semantic */
+  --color-success: var(--color-positive);
+  --color-success-light: var(--color-positive-soft);
+  --color-success-dark: color-mix(in oklch, var(--color-positive) 80%, var(--color-ink));
+  --color-warning-light: color-mix(in oklch, var(--color-warning) 35%, var(--color-paper));
+  --color-warning-dark: color-mix(in oklch, var(--color-warning) 80%, var(--color-ink));
+  --color-error: var(--color-negative);
+  --color-error-light: var(--color-negative-soft);
+  --color-error-dark: color-mix(in oklch, var(--color-negative) 80%, var(--color-ink));
+  --color-info: var(--color-accent);
+  --color-info-light: color-mix(in oklch, var(--color-accent) 20%, var(--color-paper));
+  --color-info-dark: var(--color-accent-deep);
+
+  /* Gradients.
+     These used to be 135° two-hue ramps (blue→cyan, navy→blue→cyan). A
+     multi-hue diagonal gradient behind content is the loudest template signal
+     there is, so each is reduced to a single-hue tonal shift — still usable by
+     the components that reference them, no longer decorative. */
+  --gradient-primary: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+  --gradient-hero: linear-gradient(180deg, var(--color-void-2) 0%, var(--color-void) 100%);
+  --gradient-surface: linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-2) 100%);
+  --gradient-card: linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-2) 100%);
+
+  /* Elevation. The old ramp topped out at a 25px-blur drop shadow; premium
+     surfaces separate with a hairline and a wide, faint shadow instead. */
   --shadow-color: 0 0 0;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.4);
-  --shadow-glow-strong: 0 0 40px rgba(59, 130, 246, 0.6);
-  
-  /* Glassmorphism - dark mode */
-  --glass-bg: rgba(38, 38, 38, 0.5);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-sm: var(--shadow-whisper);
+  --shadow-md: var(--shadow-whisper);
+  --shadow-lg: var(--shadow-lift);
+  --shadow-xl: var(--shadow-lift);
+  --shadow-glow: 0 0 0 1px color-mix(in oklch, var(--color-accent) 30%, transparent);
+  --shadow-glow-strong: 0 0 0 1px color-mix(in oklch, var(--color-accent) 55%, transparent);
+
+  /* Animation timing — re-pointed at the token easings so legacy components
+     share the motion signature of the new ones. */
+  --animation-duration-fast: var(--dur-micro);
+  --animation-duration-normal: var(--dur-short);
+  --animation-duration-slow: var(--dur-mid);
+  --animation-easing-default: var(--ease-out);
+  --animation-easing-bounce: var(--ease-out);
+
+  /* Glass */
+  --glass-bg: color-mix(in oklch, var(--color-paper) 72%, transparent);
+  --glass-border: color-mix(in oklch, var(--color-rule) 70%, transparent);
+  --glass-backdrop: blur(14px);
+}
+
+/* Dark mode needs no second bridge: every alias above resolves through a
+   tokens.css variable, and tokens.css already redefines those under `.dark`.
+   Only the two values that are not simple pass-throughs are restated. */
+.dark {
+  --glass-bg: color-mix(in oklch, var(--color-paper-2) 68%, transparent);
+  --glass-border: color-mix(in oklch, var(--color-rule-2) 60%, transparent);
 }
 
 /* ============================================================================
@@ -191,21 +426,43 @@ html.dark {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  transition: background-color var(--animation-duration-normal) var(--animation-easing-default),
-              color var(--animation-duration-normal) var(--animation-easing-default);
+  /* `clip`, never `hidden`. `overflow-x: hidden` silently turns <body> into a
+     scroll container, which breaks every `position: sticky` descendant — and
+     the scroll-pinned sections below depend on sticky. `clip` truncates the
+     overflow without creating the container. */
+  overflow-x: clip;
+  transition: background-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
 }
 
-/* Smooth transitions for theme changes */
-*,
-*::before,
-*::after {
+/* Headings take the display face by default so individual components stop
+   having to restate font-family/weight/tracking on every <h2>. */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-heading);
+  /* Long French compounds ("réceptionnez", "approvisionnement") must break
+     rather than push the page sideways at 320px. */
+  overflow-wrap: anywhere;
+}
+
+/* Theme-change crossfade, scoped to colour properties.
+   This used to run on `*` at 150ms, which also delayed every hover response on
+   every element — the page felt soft rather than crisp. Transitions are now
+   opt-out during theme switch only, and hover feedback is left to components. */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
   transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: var(--animation-easing-default);
-  transition-duration: var(--animation-duration-fast);
+  transition-timing-function: var(--ease-out);
+  transition-duration: var(--dur-short);
 }
 
 /* Exclude certain elements from theme transitions */
@@ -256,10 +513,18 @@ body {
   border: 0;
 }
 
-/* Focus visible styles */
+/* Focus visible styles.
+   Never transitioned — a focus ring that fades in reads as lag to keyboard
+   users and fails the "instant feedback" bar. */
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+  transition: none !important;
+}
+
+/* On the dark bands the ring has to lift off a near-black surface. */
+.band-void :focus-visible {
+  outline-color: var(--color-accent-bright);
 }
 
 /* ============================================================================
@@ -336,12 +601,8 @@ canvas {
    Selection Styles
    ============================================================================ */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: color-mix(in oklch, var(--color-accent) 26%, transparent);
   color: inherit;
-}
-
-.dark ::selection {
-  background: rgba(96, 165, 250, 0.4);
 }
 
 /* ============================================================================
@@ -383,9 +644,16 @@ canvas {
   background: rgba(38, 38, 38, 0.6);
 }
 
-/* Gradient text utility */
+/* Gradient text utility.
+   Kept for the components that reference it, but reduced to a single-hue tonal
+   shift. Two-hue gradient headlines are the most recognisable AI-generated
+   tell on the web; a tonal one still reads as deliberate typography. */
 .gradient-text {
-  background: var(--gradient-primary);
+  background: linear-gradient(
+    180deg,
+    var(--color-ink) 0%,
+    color-mix(in oklch, var(--color-ink) 62%, var(--color-neutral)) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -399,7 +667,287 @@ canvas {
 }
 
 .card-surface:hover {
-  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* ============================================================================
+   Cta — see src/components/site/Cta.tsx
+   ============================================================================ */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1;
+  /* Buttons and nav links must never wrap to two lines on a 320px screen —
+     a two-line tap target reads as broken layout. */
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-input);
+  background-color: var(--cta-bg);
+  color: var(--cta-fg);
+  border: 1px solid var(--cta-border);
+  /* Colour only. Never size — growing on hover moves the label out from under
+     the cursor that is already aiming at it. */
+  transition: background-color var(--dur-short) var(--ease-out),
+              border-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out);
+}
+
+.cta:hover:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--cta-bg-hover);
+}
+
+.cta:active:not(:disabled):not([aria-disabled='true']) {
+  /* Pressed into the page, not popped off it. */
+  transform: translateY(1px);
+}
+
+.cta:disabled,
+.cta[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cta .cta-arrow {
+  transition: transform var(--dur-short) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.cta:hover:not(:disabled) .cta-arrow {
+  transform: translateX(2px);
+}
+
+/* Quiet variant: a rule that draws itself in from the left on hover. The
+   underline is a pseudo-element rather than text-decoration so it can animate
+   and so it sits clear of the descenders. */
+.cta--quiet {
+  position: relative;
+  font-weight: 600;
+}
+
+.cta--quiet::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-short) var(--ease-out);
+}
+
+.cta--quiet:hover::after {
+  transform: scaleX(1);
+}
+
+.cta--loading {
+  cursor: progress;
+}
+
+.cta--success {
+  --cta-bg: var(--color-positive);
+  --cta-fg: var(--color-accent-ink);
+}
+
+.cta--error {
+  --cta-bg: var(--color-negative);
+  --cta-fg: var(--color-accent-ink);
+}
+
+.cta-spin {
+  animation: spin 900ms linear infinite;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta .cta-arrow,
+  .cta--quiet::after {
+    transition-duration: 120ms;
+  }
+  .cta-spin {
+    animation-duration: 1800ms;
+  }
+}
+
+/* ============================================================================
+   Navbar — see src/components/layout/SharedNavbar.tsx
+   ============================================================================ */
+.nav-shell {
+  background-color: transparent;
+  transition: background-color var(--dur-mid) var(--ease-out),
+              border-color var(--dur-mid) var(--ease-out),
+              backdrop-filter var(--dur-mid) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.nav-shell--solid {
+  /* A hairline and a blur, not a drop shadow. `shadow-lg` under a fixed bar is
+     the most common way a site announces it was assembled from a starter. */
+  /* 82% read as a muddy grey wash where the bar crossed the dark bands. At 93%
+     it reads as a solid surface with just enough translucency to feel light. */
+  background-color: color-mix(in oklch, var(--color-paper) 93%, transparent);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom-color: var(--color-rule);
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--nav-link, var(--color-ink-2));
+  text-decoration: none;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--nav-link-hover, var(--color-ink));
+}
+
+/* A hairline that draws in from the centre. Replaces the floating dot
+   indicator, which pointed at whichever link you were not on: its `isActive`
+   test returned `isScrolled`, so every link lit up at once past 50px. */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.15rem;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transition: transform var(--dur-short) var(--ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.tool-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.625rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  text-decoration: none;
+  transition: background-color var(--dur-micro) var(--ease-out),
+              color var(--dur-micro) var(--ease-out);
+}
+
+.tool-link:hover,
+.tool-link:focus-visible {
+  background-color: var(--color-paper-2);
+  color: var(--color-ink);
+}
+
+.nav-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* 44px minimum touch target. */
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-input);
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+
+.nav-icon-button:hover {
+  background-color: color-mix(in oklch, currentColor 10%, transparent);
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  /* Comfortably above the 44px minimum, and never two lines. */
+  min-height: 48px;
+  padding: 0.75rem 0;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-rule);
+  transition: color var(--dur-micro) var(--ease-out);
+}
+
+.mobile-link:last-of-type {
+  border-bottom: none;
+}
+
+.mobile-link:hover,
+.mobile-link:focus-visible {
+  color: var(--color-accent);
+}
+
+/* ============================================================================
+   Service index rows — see src/views/landing/components/ServicesSection.tsx
+   ============================================================================ */
+.service-row {
+  /* One property, one direction. The whole row moves toward the reader; nothing
+     inside it scales, tilts or glows. */
+  transition: transform var(--dur-short) var(--ease-out),
+              background-color var(--dur-short) var(--ease-out);
+}
+
+.service-row:hover,
+.service-row:focus-visible {
+  transform: translateX(6px);
+}
+
+.service-row .service-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--dur-short) var(--ease-out),
+              transform var(--dur-short) var(--ease-out);
+}
+
+.service-row:hover .service-arrow,
+.service-row:focus-visible .service-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Below 860px the five-column row cannot hold a readable measure, so it
+   becomes a stacked block: number + icon on one line, then name, then copy. */
+@media (max-width: 860px) {
+  .service-row {
+    grid-template-columns: auto auto 1fr !important;
+    grid-template-areas:
+      'num icon arrow'
+      'name name name'
+      'desc desc desc';
+    row-gap: var(--space-sm) !important;
+    align-items: start !important;
+  }
+  .service-row > :nth-child(1) { grid-area: num; }
+  .service-row > :nth-child(2) { grid-area: icon; }
+  .service-row > :nth-child(3) { grid-area: name; }
+  .service-row > :nth-child(4) { grid-area: desc; }
+  .service-row > :nth-child(5) { grid-area: arrow; justify-self: end; }
+
+  /* On touch there is no hover to reveal it, so the arrow is always shown. */
+  .service-row .service-arrow {
+    opacity: 1;
+    transform: none;
+  }
+  .service-row:hover {
+    transform: none;
+  }
 }
 
 /* ============================================================================

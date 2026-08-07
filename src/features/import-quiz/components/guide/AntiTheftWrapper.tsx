@@ -230,7 +230,7 @@ export const AntiTheftWrapper: React.FC<AntiTheftWrapperProps> = ({
       {showDevToolsWarning && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
           {devToolsDetectedContent || (
-            <div className="max-w-md rounded-lg bg-white p-6 text-center shadow-2xl">
+            <div className="max-w-md rounded-lg bg-white p-6 text-center shadow-sm">
               <div className="mb-4 text-5xl">🔒</div>
               <h2 className="mb-2 text-xl font-bold text-gray-900">
                 Developer Tools Detected
@@ -247,7 +247,7 @@ export const AntiTheftWrapper: React.FC<AntiTheftWrapperProps> = ({
 
       {/* Print warning overlay */}
       {showPrintWarning && !showDevToolsWarning && (
-        <div className="pointer-events-none fixed left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-red-600 px-6 py-4 text-center text-white shadow-2xl">
+        <div className="pointer-events-none fixed left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-red-600 px-6 py-4 text-center text-white shadow-sm">
           {printDetectedContent || (
             <>
               <div className="mb-2 text-3xl">🚫</div>

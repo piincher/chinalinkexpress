@@ -98,7 +98,6 @@ export function CommunityGuidelines() {
               ? 'Simple guidelines to keep this space useful, respectful and collaborative for every importer.'
               : 'Quelques lignes directrices simples pour garder cet espace utile, respectueux et collaboratif pour tous les importateurs.'}
           </p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Guidelines grid */}

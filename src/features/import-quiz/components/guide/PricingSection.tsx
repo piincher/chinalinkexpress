@@ -191,7 +191,7 @@ function PriceCard({ mode, price, index }: PriceCardProps) {
         'relative overflow-hidden rounded-2xl border-2 p-6',
         'transition-all duration-300',
         mode.highlighted 
-          ? 'border-amber-300 dark:border-amber-700 shadow-xl shadow-amber-500/10 scale-105 z-10'
+          ? 'border-amber-300 dark:border-amber-700 shadow-sm shadow-amber-500/10 scale-105 z-10'
           : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600',
         'bg-white dark:bg-gray-800'
       )}
@@ -519,7 +519,7 @@ export function PricingSection({ prices: initialPrices, lastUpdated: initialLast
                 className={cn(
                   'shadow-lg shadow-blue-500/25',
                   'transition-all duration-300',
-                  'hover:shadow-xl hover:shadow-blue-500/30'
+                  'hover:shadow-sm hover:shadow-blue-500/30'
                 )}
               >
                 {isLocking ? 'Verrouillage...' : '🔒 Verrouiller ce tarif'}

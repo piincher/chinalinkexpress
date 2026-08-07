@@ -62,7 +62,6 @@ export function SuccessStories() {
             Des histoires réelles d&apos;importateurs africains qui ont bénéficié
             de la communauté ChinaLink.
           </p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Stories grid */}

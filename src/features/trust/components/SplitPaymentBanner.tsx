@@ -111,7 +111,7 @@ export function SplitPaymentBanner({
             'rounded-2xl overflow-hidden',
             isBanner
               ? 'bg-white/10 backdrop-blur-sm border border-white/20'
-              : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-emerald-100 dark:border-emerald-900/30 shadow-xl shadow-emerald-100/50 dark:shadow-emerald-900/20'
+              : 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-emerald-100 dark:border-emerald-900/30 shadow-sm shadow-emerald-100/50 dark:shadow-emerald-900/20'
           )}
         >
           <div className="p-6 md:p-8 lg:p-10">

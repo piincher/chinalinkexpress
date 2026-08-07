@@ -1,129 +1,217 @@
-/* Hallmark · pre-emit critique: P5 H4 E4 S4 R5 V4
- * macrostructure: Marquee Hero · tone: confident · anchor hue: 250 (cool blue)
- * genre: modern-minimal · theme: custom (restrained blue-neutral)
- * font: Geist Sans (display + body) · Geist Mono (outlier)
- * nav: N5 Floating pill (preserved existing) · footer: Ft2 Inline single line (preserved existing)
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5
+ * macrostructure: Marquee Hero → Stat-Led hybrid (banded) · tone: industrial-confident
+ * genre: modern-minimal · theme: custom "dark industrial, photo-led"
+ * theme axes: dark / geometric-sans / cool
+ * anchor hue: 250 · display: Archivo · body: Geist Sans · outlier: Geist Mono
+ * nav: N5 Floating pill · footer: Ft5 Statement
+ *
+ * ============================================================================
+ * ChinaLink Express — unified token system
+ * ============================================================================
+ *
+ * This file is the ONLY place colour, type, space and motion are defined.
+ * `globals.css` maps the legacy variable names (--color-primary, --surface,
+ * --text-primary, --border …) onto these tokens so that the ~half of the site
+ * still written against the old names inherits this palette instead of raw
+ * Tailwind hexes. Nothing downstream should declare a raw colour.
  */
 
-/* ============================================================================
-   Hallmark Token System — ChinaLink Express
-   ============================================================================ */
-
 :root {
-  /* --- Color: light mode --- */
-  --color-paper:      oklch(98%  0.005 250);
-  --color-paper-2:    oklch(94%  0.008 250);
-  --color-ink:        oklch(18%  0.010 250);
+  /* ==========================================================================
+     Colour — light band
+     ========================================================================== */
+  --color-paper:      oklch(98%  0.004 250);
+  --color-paper-2:    oklch(95.5% 0.006 250);
+  --color-paper-3:    oklch(92%  0.008 250);
+  --color-ink:        oklch(16%  0.012 250);
   --color-ink-2:      oklch(42%  0.012 250);
-  --color-rule:       oklch(85%  0.010 250);
-  --color-neutral:    oklch(56%  0.008 250);
-  --color-muted:      oklch(72%  0.008 250);
-  /* The accent was restrained to the point of reading grey-blue on a phone in
-     daylight — which is exactly how these clients browse. Pushed to the sRGB
-     gamut edge for this hue so a CTA is unmistakably a CTA. The hue is
-     unchanged: this is the brand blue working harder, not a new colour. */
-  --color-accent:     oklch(55%  0.200 250);
-  --color-accent-ink: oklch(99%  0.004 250);
-  /* Pressed / hovered CTA — darker rather than lighter, so the button reads as
-     being pushed into the page. */
-  --color-accent-deep: oklch(46% 0.190 250);
-  --color-focus:      oklch(55%  0.200 250);
+  --color-rule:       oklch(88%  0.008 250);
+  --color-rule-2:     oklch(80%  0.010 250);
+  --color-neutral:    oklch(54%  0.008 250);
+  --color-muted:      oklch(70%  0.008 250);
 
-  /* --- Fonts --- */
-  --font-display: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  /* --- Colour: the dark band ---
+     These are *band* colours, not theme colours: the hero and the two feature
+     bands stay dark in light mode as well as dark mode. Naming them separately
+     from --color-paper is what lets a section be deliberately dark rather than
+     accidentally inverted. Cool cast (hue 250, low chroma) so warehouse
+     photography sits on them without a colour clash. */
+  --color-void:       oklch(15%  0.018 250);
+  --color-void-2:     oklch(20%  0.020 250);
+  --color-void-3:     oklch(26%  0.020 250);
+  --color-void-ink:   oklch(97%  0.004 250);
+  --color-void-ink-2: oklch(74%  0.010 250);
+  --color-void-rule:  oklch(32%  0.016 250);
+
+  /* Photo scrim.
+     Four stops, not one flat wash. A uniform overlay greys the whole frame and
+     makes real photography look like a stock image behind a filter; a graded
+     one keeps the cargo legible up top and hands the lower half to the type.
+
+     The stops are weighted for where things actually sit: dark at 0% so the
+     fixed navbar has something to read against, lightest around a quarter down
+     where the containers and forklifts are, then closing hard through the
+     bottom third where the headline and CTAs live. The first pass was far too
+     transparent through the middle — the headline was competing with a lit
+     warehouse roof. */
+  --scrim-0:  oklch(12% 0.020 250 / 0.78);
+  --scrim-25: oklch(12% 0.020 250 / 0.46);
+  --scrim-55: oklch(11% 0.020 250 / 0.66);
+  --scrim-85: oklch(10% 0.020 250 / 0.93);
+  --scrim-100:oklch(10% 0.020 250 / 0.97);
+
+  /* --- Accent ---
+     One accent, used as a signal, not as decoration. Sits at the sRGB gamut
+     edge for this hue so a CTA on a phone in Bamako daylight is unmistakably a
+     CTA. --color-accent-bright is the dark-band variant: on the void surfaces
+     the same chroma reads muddy, so it lifts. */
+  --color-accent:        oklch(55%  0.200 250);
+  --color-accent-deep:   oklch(46%  0.190 250);
+  --color-accent-bright: oklch(70%  0.180 250);
+  --color-accent-ink:    oklch(99%  0.004 250);
+  --color-focus:         oklch(60%  0.200 250);
+
+  /* Semantic. Desaturated toward the brand's cool cast so a success tick does
+     not read as a different product's green. */
+  --color-positive:      oklch(58%  0.130 160);
+  --color-positive-soft: oklch(94%  0.030 160);
+  --color-negative:      oklch(58%  0.170  25);
+  --color-negative-soft: oklch(94%  0.030  25);
+  --color-warning:       oklch(72%  0.150  70);
+
+  /* ==========================================================================
+     Type
+     ========================================================================== */
+  --font-display: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-body:    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono:    var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
 
-  /* --- Spacing: 4-point scale --- */
-  --space-3xs: 0.125rem;  /*  2px */
-  --space-2xs: 0.25rem;   /*  4px */
-  --space-xs:  0.5rem;    /*  8px */
-  --space-sm:  0.75rem;   /* 12px */
-  --space-md:  1rem;      /* 16px */
-  --space-lg:  1.5rem;    /* 24px */
-  --space-xl:  2.5rem;    /* 40px */
-  --space-2xl: 4rem;      /* 64px */
-  --space-3xl: 6rem;      /* 96px */
-  --space-4xl: 9rem;      /* 144px */
+  /* Major third (1.25). The three display steps are fluid because a fixed 4rem
+     headline has to wrap three times on a 320px phone and reads timid at 1600px. */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  clamp(2.125rem, 2.6vw + 1.35rem, 3.25rem);
+  --text-4xl:  clamp(2.5rem,  3.8vw + 1.4rem,  4.25rem);
+  --text-display:   clamp(2.75rem, 6.4vw + 0.6rem, 6.5rem);
+  --text-display-s: clamp(2.25rem, 4.4vw + 0.6rem, 4rem);
 
-  /* --- Type scale: major third (1.25) --- */
-  --text-xs:   0.64rem;   /* 10.24px */
-  --text-sm:   0.8rem;    /* 12.8px  */
-  --text-base: 1rem;      /* 16px    */
-  --text-md:   1.25rem;   /* 20px    */
-  --text-lg:   1.5625rem; /* 25px    */
-  --text-xl:   1.9531rem; /* 31.25px */
-  --text-2xl:  2.4414rem; /* 39.06px */
-  /* Section headings scale with the viewport rather than sitting at a fixed
-     48px: on a 390px phone a fixed 3rem heading has to wrap awkwardly, and on a
-     wide desktop it reads timid next to the hero. */
-  --text-3xl:  clamp(2.25rem, 3.2vw + 1.25rem, 3.5rem);
-  --text-4xl:  clamp(2.75rem, 4vw + 1.5rem, 4.25rem);
-  --text-display: clamp(3rem, 6.5vw + 1rem, 6rem);
-  --text-display-s: clamp(2.25rem, 4.5vw + 0.5rem, 4rem);
-
-  /* --- Display voice ---
-     Geist is a variable font, so the display weight is a real 800 rather than a
-     synthesised bold. Headings set at 700 read polite; the statement voice this
-     page needs starts at 800, with tracking pulled in as the size grows. */
+  /* Archivo is a variable grotesque, so 800 is a drawn weight rather than a
+     synthesised bold. Tracking tightens as size grows — the optical rule that
+     makes large type read as set rather than scaled. */
   --weight-display: 800;
   --weight-heading: 700;
-  --tracking-display: -0.035em;
-  --tracking-heading: -0.02em;
+  --weight-medium:  500;
+  --tracking-display: -0.038em;
+  --tracking-heading: -0.022em;
+  --tracking-label:    0.14em;
+  --leading-display:  0.94;
+  --leading-heading:  1.06;
+  --leading-body:     1.62;
 
-  /* --- Motion --- */
-  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:      cubic-bezier(0.7,  0, 0.84, 0);
-  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro:    120ms;
-  --dur-short:    220ms;
-  --dur-long:     420ms;
+  /* ==========================================================================
+     Space — 4pt scale
+     ========================================================================== */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
 
-  /* --- Radius --- */
-  --radius-card:  8px;
+  /* Band padding. Sections breathe more on desktop than the old fixed 5rem. */
+  --band-y: clamp(4rem, 9vw, 8.5rem);
+  --band-x: clamp(1.25rem, 4vw, 2.5rem);
+  --measure: 62ch;
+  --shell: 80rem;
+
+  /* ==========================================================================
+     Motion
+     ========================================================================== */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-mid:   380ms;
+  --dur-long:  620ms;
+
+  /* ==========================================================================
+     Radius / elevation
+     ========================================================================== */
+  --radius-card:  10px;
+  --radius-panel: 14px;
+  --radius-input: 8px;
   --radius-pill:  9999px;
-  --radius-input: 6px;
 
-  /* --- Shadow --- */
+  /* Elevation is carried by a hairline plus a very low, very wide shadow.
+     Large blurred drop-shadows are the single loudest "template" signal. */
   --shadow-whisper: 0 1px 2px oklch(20% 0.01 250 / 0.05);
-  --shadow-hairline: 0 0 0 1px oklch(30% 0.01 250 / 0.06);
+  --shadow-lift:    0 12px 32px -12px oklch(20% 0.02 250 / 0.18);
+  --shadow-void:    0 20px 60px -24px oklch(5% 0.02 250 / 0.7);
 
-  /* --- Z-index --- */
-  --z-base:     1;
-  --z-raised:   10;
+  /* ==========================================================================
+     Z-index
+     ========================================================================== */
+  --z-base: 1;
+  --z-raised: 10;
   --z-dropdown: 100;
-  --z-sticky:   200;
-  --z-modal:    400;
-  --z-toast:    500;
-  --z-tooltip:  600;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
 }
 
 /* ============================================================================
-   Dark mode
+   Dark mode — the light band darkens; the void band stays put
    ============================================================================ */
 .dark {
-  --color-paper:      oklch(14%  0.008 250);
-  --color-paper-2:    oklch(18%  0.010 250);
-  --color-ink:        oklch(96%  0.005 250);
-  --color-ink-2:      oklch(72%  0.008 250);
-  --color-rule:       oklch(30%  0.008 250);
-  --color-neutral:    oklch(58%  0.008 250);
-  --color-muted:      oklch(45%  0.008 250);
-  /* Lifted in step with the light-mode accent. On a dark paper the same chroma
-     reads weaker, so this sits a little lighter to hold its weight. */
-  --color-accent:     oklch(68%  0.175 250);
-  --color-accent-ink: oklch(14%  0.008 250);
-  --color-accent-deep: oklch(58% 0.170 250);
-  --color-focus:      oklch(72%  0.180 250);
+  --color-paper:      oklch(13%  0.012 250);
+  --color-paper-2:    oklch(17%  0.014 250);
+  --color-paper-3:    oklch(22%  0.016 250);
+  --color-ink:        oklch(97%  0.004 250);
+  --color-ink-2:      oklch(74%  0.010 250);
+  --color-rule:       oklch(28%  0.014 250);
+  --color-rule-2:     oklch(36%  0.014 250);
+  --color-neutral:    oklch(60%  0.010 250);
+  --color-muted:      oklch(46%  0.010 250);
+
+  /* In dark mode the void bands must still separate from the page, so they go
+     *lighter* than the paper rather than darker — the band reads as a raised
+     plate instead of a hole. */
+  --color-void:       oklch(18%  0.020 250);
+  --color-void-2:     oklch(23%  0.020 250);
+  --color-void-3:     oklch(29%  0.020 250);
+  --color-void-rule:  oklch(35%  0.016 250);
+
+  --color-accent:        oklch(70%  0.180 250);
+  --color-accent-deep:   oklch(60%  0.175 250);
+  --color-accent-bright: oklch(76%  0.165 250);
+  --color-accent-ink:    oklch(13%  0.012 250);
+  --color-focus:         oklch(74%  0.180 250);
+
+  --color-positive-soft: oklch(26% 0.050 160);
+  --color-negative-soft: oklch(26% 0.050  25);
+
+  --shadow-lift: 0 12px 32px -12px oklch(0% 0 0 / 0.55);
 }
 
 /* ============================================================================
    Reduced motion
    ============================================================================ */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 150ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 150ms !important;
+  :root {
+    --dur-micro: 0ms;
+    --dur-short: 120ms;
+    --dur-mid:   140ms;
+    --dur-long:  150ms;
   }
 }

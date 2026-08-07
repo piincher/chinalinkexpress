@@ -100,7 +100,7 @@ export function WhatsAppButton({
           sizeClasses[size],
           // Hover states
           'hover:from-green-700 hover:to-green-600',
-          'hover:shadow-xl hover:shadow-green-200',
+          'hover:shadow-sm hover:shadow-green-200',
           // Active state
           'active:from-green-800 active:to-green-700',
           className
@@ -131,14 +131,14 @@ export function WhatsAppButton({
         'font-semibold text-white',
         'rounded-full',
         'bg-gradient-to-r from-green-600 to-green-500',
-        'shadow-xl shadow-green-300',
+        'shadow-sm shadow-green-300',
         'transition-all duration-200',
         'focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2',
         // Size (floating uses fixed dimensions)
         'px-5 py-4',
         // Hover states
         'hover:from-green-700 hover:to-green-600',
-        'hover:shadow-2xl hover:shadow-green-300',
+        'hover:shadow-sm hover:shadow-green-300',
         // Pulse animation ring
         'before:absolute before:inset-0 before:rounded-full',
         'before:bg-green-500 before:animate-ping before:opacity-20',

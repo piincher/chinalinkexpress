@@ -94,7 +94,7 @@ export function PrivacyPolicyPage() {
 
       {/* Content Sections */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
           {SECTIONS.map((section, index) => {
             const Icon = section.icon;
             const items = section.itemsKey ? t.raw(section.itemsKey) as string[] : null;

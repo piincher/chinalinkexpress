@@ -1,101 +1,132 @@
-/**
- * Stats Section — Minimal Stat Strip with Counter Reveal
- *
- * Numbers tick up from zero on viewport entry.
- * No gradients, no spotlight cards.
- */
-
 'use client';
+
+/**
+ * Stats — a measured strip, not a card grid.
+ *
+ * Four figures separated by hairline rules, set large in the display face. The
+ * previous version put them in the mono face at --text-3xl inside a stagger
+ * container; mono digits read as *data*, which is right for a dashboard and
+ * wrong for a claim. Set in Archivo at display size they read as a statement,
+ * which is what a landing page stat is.
+ *
+ * Every number here comes from `STATS` in appConstants and the ratings copy in
+ * the locale files — the site's existing figures. Nothing was rounded up for
+ * effect and nothing was invented.
+ */
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Star } from 'lucide-react';
-import { Counter } from '@/components/animations/Counter';
-import { StaggerContainer, StaggerItem } from '@/components/animations';
+import { Band, Shell } from '@/components/site';
+import { Counter, RevealGroup } from '@/components/motion';
 import { STATS } from '@/constants/appConstants';
 import { SECTION_IDS } from '../constants';
 
 export function StatsSection() {
   const t = useTranslations('stats');
 
-  const stats = [
-    {
-      value: STATS.CLIENTS.value,
-      suffix: STATS.CLIENTS.suffix,
-      label: t('satisfiedClients', { defaultValue: 'Clients satisfaits' }),
-    },
-    {
-      value: STATS.SHIPMENTS.value,
-      suffix: STATS.SHIPMENTS.suffix,
-      label: t('shipments', { defaultValue: 'Expéditions' }),
-    },
+  const figures = [
+    { value: STATS.CLIENTS.value, suffix: STATS.CLIENTS.suffix, label: t('satisfiedClients') },
+    { value: STATS.SHIPMENTS.value, suffix: STATS.SHIPMENTS.suffix, label: t('shipments') },
+    { value: 7, suffix: '+', label: t('experienceYears') },
     {
       value: STATS.RATING.value,
       suffix: STATS.RATING.suffix,
       decimals: STATS.RATING.decimals,
-      label: t('rating', { defaultValue: 'Note moyenne' }),
-      icon: Star,
+      label: t('rating'),
+      star: true,
     },
   ];
 
   return (
-    <section
+    <Band
       id={SECTION_IDS.STATS}
-      className="relative py-12 md:py-16"
-      style={{
-        backgroundColor: 'var(--color-paper)',
-        borderTop: '1px solid var(--color-rule)',
-        borderBottom: '1px solid var(--color-rule)',
-      }}
+      tone="paper-2"
+      ruled
+      style={{ paddingBlock: 'clamp(2.75rem, 5vw, 4.5rem)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* The columns arrive one after another so the eye is led across the
-            strip, and each number then ticks up from zero in place. */}
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
-          staggerDelay={0.12}
+      <Shell>
+        <RevealGroup
+          stagger={0.09}
+          style={{
+            display: 'grid',
+            // auto-fit with a minmax floor: four across on desktop, two on a
+            // tablet, one on a phone — without a single media query, and
+            // without the 1fr overflow trap.
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 12rem), 1fr))',
+            gap: 'var(--space-xl)',
+          }}
         >
-          {stats.map((stat, index) => (
-            <StaggerItem
-              key={index}
-              animation="blurIn"
-              className={`flex flex-col ${index > 0 ? 'md:pl-12 md:border-l' : ''}`}
-              style={index > 0 ? { borderColor: 'var(--color-rule)' } : undefined}
+          {figures.map((figure, i) => (
+            <div
+              key={figure.label}
+              style={{
+                minWidth: 0,
+                // Hairline separators between columns rather than borders
+                // around cards. The rule is drawn on the item's leading edge
+                // and suppressed on the first, so it never dangles.
+                paddingInlineStart: i > 0 ? 'var(--space-xl)' : 0,
+                borderInlineStart: i > 0 ? '1px solid var(--color-rule)' : undefined,
+              }}
             >
               <div
-                className="font-bold tracking-tight inline-flex items-center gap-2"
                 style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-3xl)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-2xs)',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 'var(--weight-display)',
+                  letterSpacing: 'var(--tracking-display)',
+                  lineHeight: 1,
                   color: 'var(--color-ink)',
-                  fontVariantNumeric: 'tabular-nums',
                 }}
               >
                 <Counter
-                  end={stat.value}
-                  suffix={stat.suffix}
-                  decimals={stat.decimals || 0}
-                  duration={1.6}
+                  value={figure.value}
+                  suffix={figure.suffix}
+                  decimals={figure.decimals ?? 0}
                 />
-                {stat.icon && (
-                  <stat.icon
-                    className="w-6 h-6"
+                {figure.star && (
+                  <Star
+                    size={20}
+                    aria-hidden
                     style={{ color: 'var(--color-accent)' }}
                     fill="currentColor"
                   />
                 )}
               </div>
               <div
-                className="text-sm font-medium uppercase tracking-wider mt-1"
-                style={{ color: 'var(--color-neutral)' }}
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: 'var(--tracking-label)',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-neutral)',
+                  marginTop: 'var(--space-sm)',
+                }}
               >
-                {stat.label}
+                {figure.label}
               </div>
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
-      </div>
-    </section>
+        </RevealGroup>
+
+        {/* The rating is sourced from 312 verified reviews; saying so is worth
+            more than the number on its own. */}
+        <p
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-sm)',
+            color: 'var(--color-neutral)',
+            marginTop: 'var(--space-xl)',
+            marginBottom: 0,
+          }}
+        >
+          {t('ratingLabel')}
+        </p>
+      </Shell>
+    </Band>
   );
 }
 

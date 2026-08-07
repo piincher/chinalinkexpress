@@ -115,7 +115,7 @@ export function WhatsAppCTA() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-emerald-700 rounded-2xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-2xl shadow-black/20 hover:shadow-black/30 hover:scale-105"
+                className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-emerald-700 rounded-2xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-sm shadow-black/20 hover:shadow-black/30 hover:scale-105"
               >
                 <WhatsAppIcon className="w-6 h-6" />
                 {isEn ? 'Join the group' : 'Rejoindre le groupe'}
@@ -130,7 +130,7 @@ export function WhatsAppCTA() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
+            <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 shadow-sm">
               {/* QR Code Placeholder */}
               <div className="flex flex-col items-center mb-8">
                 <div className="w-48 h-48 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-4">

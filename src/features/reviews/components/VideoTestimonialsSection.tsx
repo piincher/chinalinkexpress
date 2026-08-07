@@ -107,7 +107,6 @@ export function VideoTestimonialsSection() {
               })}
             </p>
 
-            <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto mt-6 rounded-full" />
           </motion.div>
 
           {/* Trust badge */}
@@ -192,7 +191,7 @@ export function VideoTestimonialsSection() {
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-sm transition-all duration-300"
             >
               <Play className="w-4 h-4" />
               {t('ctaButton', {
@@ -221,7 +220,7 @@ export function VideoTestimonialsSection() {
 
             {/* Modal */}
             <motion.div
-              className="relative w-full max-w-3xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-3xl bg-white dark:bg-gray-900 rounded-2xl shadow-sm overflow-hidden"
               initial={{ scale: 0.92, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 16 }}

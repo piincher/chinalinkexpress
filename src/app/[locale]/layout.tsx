@@ -13,7 +13,7 @@
 
 import { ReactNode } from 'react';
 import { cookies } from 'next/headers';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Archivo } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -54,6 +54,23 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
   preload: false, // Monospace is less critical
+});
+
+/**
+ * Display face.
+ *
+ * Geist is a fine UI face but it is also the default of every AI-built site of
+ * the last two years, and a page set entirely in it reads as untouched. Archivo
+ * is a variable grotesque drawn from industrial signage — it holds a real 800
+ * weight at display sizes and gives the headlines a voice distinct from the
+ * body copy, which is what the 2+1 pairing is for. Body and UI stay on Geist.
+ */
+const archivo = Archivo({
+  variable: '--font-archivo',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  axes: ['wdth'],
 });
 
 // ============================================================================
@@ -265,7 +282,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <link rel="icon" type="image/png" sizes="16x16" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
       <link rel="mask-icon" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" color="#2563eb" />
       
-      <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      <div className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <PWAProvider>
             <NextIntlClientProvider locale={validLocale} messages={messages}>

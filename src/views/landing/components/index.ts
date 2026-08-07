@@ -15,6 +15,6 @@ export { PartnersSection } from './PartnersSection';
 export { FAQSection } from './FAQSection';
 export { ContactSection } from './ContactSection';
 export { QuizSection } from './QuizSection';
-export { SuccessStoriesSection } from './SuccessStoriesSection';
 export { ComparisonSection } from './ComparisonSection';
 export { AppPreviewSection } from './AppPreviewSection';
+export { JourneySection } from './JourneySection';

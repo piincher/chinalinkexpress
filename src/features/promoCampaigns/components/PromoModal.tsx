@@ -67,7 +67,7 @@ export function PromoModal({ campaign, onClose, onEvent }: PromoModalProps) {
         </button>
 
         <div className="w-full max-w-md mx-4 flex flex-col">
-          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-sm">
             <Image
               src={slide.imageUrl}
               alt={slide.title || campaign.title}

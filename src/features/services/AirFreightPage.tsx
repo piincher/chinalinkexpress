@@ -78,7 +78,7 @@ export function AirFreightPage({ locale }: Props) {
                 {isEn ? 'Calculate Shipping Cost' : 'Calculer les Frais'}
               </Link>
               <a
-                href="https://wa.me/+8618851725957"
+                href="https://wa.me/8618851725957"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
@@ -174,7 +174,7 @@ export function AirFreightPage({ locale }: Props) {
       {/* CTA Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 md:p-12 text-center">
+          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {isEn ? 'Ready to Ship by Air?' : 'Prêt à Expédier par Avion?'}
             </h2>

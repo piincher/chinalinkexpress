@@ -85,7 +85,7 @@ export function LanguageSelector({
               exit={{ opacity: 0, y: 8, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-50 min-w-[160px]',
+                'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 z-50 min-w-[160px]',
                 align === 'right' ? 'right-0' : 'left-0'
               )}
             >
@@ -138,7 +138,7 @@ export function LanguageSelector({
               exit={{ opacity: 0, y: 8, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-50 min-w-[180px]',
+                'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 z-50 min-w-[180px]',
                 align === 'right' ? 'right-0' : 'left-0'
               )}
             >
@@ -196,7 +196,7 @@ export function LanguageSelector({
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             className={cn(
-              'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-50 min-w-[220px]',
+              'absolute top-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 z-50 min-w-[220px]',
               align === 'right' ? 'right-0' : 'left-0'
             )}
           >

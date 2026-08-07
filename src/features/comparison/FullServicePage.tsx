@@ -355,7 +355,7 @@ export function FullServicePage({ locale }: Props) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+            className="bg-gradient-to-br from-emerald-600 to-teal-700 rounded-xl p-8 md:p-12 text-center relative overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />

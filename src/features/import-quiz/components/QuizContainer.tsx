@@ -305,7 +305,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
         className={cn(
           'w-full max-w-2xl mx-auto',
           'bg-white dark:bg-gray-800',
-          'rounded-2xl shadow-xl',
+          'rounded-2xl shadow-sm',
           'overflow-hidden'
         )}
       >

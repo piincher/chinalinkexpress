@@ -187,7 +187,7 @@ export function DamageGuaranteeSection() {
             href="https://wa.me/8618851725957"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-700 font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-700 font-bold rounded-full shadow-sm hover:shadow-sm hover:scale-105 transition-all duration-300"
           >
             <MessageCircle className="w-5 h-5" />
             <span>{t('cta')}</span>

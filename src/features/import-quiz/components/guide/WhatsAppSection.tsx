@@ -210,8 +210,8 @@ export function WhatsAppSection({
                 className={cn(
                   'bg-white text-green-600',
                   'hover:bg-green-50',
-                  'shadow-xl shadow-green-900/20',
-                  'hover:shadow-2xl hover:shadow-green-900/30',
+                  'shadow-sm shadow-green-900/20',
+                  'hover:shadow-sm hover:shadow-green-900/30',
                   'focus:ring-white'
                 )}
               />
@@ -240,7 +240,7 @@ export function WhatsAppSection({
             >
               <div
                 className={cn(
-                  'bg-white rounded-2xl p-6 shadow-2xl',
+                  'bg-white rounded-2xl p-6 shadow-sm',
                   'w-64 sm:w-72'
                 )}
               >

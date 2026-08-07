@@ -244,7 +244,7 @@ export function GuideLayout({
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               {/* WhatsApp Contact */}
               <a
-                href="https://wa.me/22300000000?text=Bonjour%20ChinaLink%2C%20j'ai%20une%20question%20sur%20mon%20guide%20personnalisé"
+                href="https://wa.me/8618851725957?text=Bonjour%20ChinaLink%2C%20j'ai%20une%20question%20sur%20mon%20guide%20personnalisé"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(

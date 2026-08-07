@@ -183,7 +183,6 @@ export function VerifiedReviewsSection() {
             })}
           </p>
 
-          <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Carousel Container */}
@@ -284,7 +283,7 @@ export function VerifiedReviewsSection() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-sm transition-all duration-300"
           >
             {t('cta', { defaultValue: 'Voir tous les avis' })}
             <ExternalLink className="w-4 h-4" />

@@ -141,7 +141,7 @@ function TrustStep({
       {/* Card */}
       <div className="relative w-full">
         <div
-          className={`group relative bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border h-full ${
+          className={`group relative bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg hover:shadow-sm transition-all duration-300 border h-full ${
             config.advantage
               ? 'border-blue-200 dark:border-blue-800 ring-2 ring-transparent hover:ring-blue-500/20'
               : 'border-gray-100 dark:border-gray-700'
@@ -149,7 +149,7 @@ function TrustStep({
         >
           {/* Top gradient border */}
           <div
-            className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${config.gradient} rounded-t-2xl`}
+            className="absolute top-0 left-0 right-0 h-px bg-[var(--color-accent)] rounded-t-2xl"
           />
 
           {/* Icon container */}
@@ -253,7 +253,6 @@ export function TrustFlowSection() {
             {t('subheadline', { defaultValue: 'Un seul partenaire pour les 6 étapes. Pas 4 fournisseurs différents.' })}
           </p>
 
-          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-emerald-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Steps Flow */}

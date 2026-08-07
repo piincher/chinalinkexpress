@@ -11,6 +11,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Phone } from 'lucide-react';
 import { AnimatedSection } from '@/components/animations';
 import { SECTION_IDS } from '../constants';
 import { CONTACT_CONFIG } from '@/config/app';
@@ -66,7 +67,7 @@ export function FAQSection() {
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
-          <span className="inline-block px-4 py-1.5 bg-[var(--color-primary-50)] text-[var(--color-primary-700)] rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-accent)] mb-4">
             {t('sectionLabel') || 'FAQ'}
           </span>
           
@@ -74,21 +75,24 @@ export function FAQSection() {
             {t('title')}
           </h2>
           
-          <div className="w-24 h-1.5 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] mx-auto rounded-full" />
         </AnimatedSection>
 
-        {/* Support Info Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-dark)] rounded-3xl p-8 text-white overflow-hidden relative">
-          {/* Background decoration */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 50%)',
-            }}
-          />
+        {/* Support panel.
+            Was a fully saturated blue slab with a white radial bloom washed
+            across it — the loudest object on the page, and shouting from a
+            support panel is the wrong register entirely. It now sits on the
+            page's dark band, which is where emphasis lives everywhere else on
+            this site, so it reads as considered rather than as an advert. */}
+        <div
+          className="band-void grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 rounded-xl p-8 overflow-hidden relative"
+          style={{
+            backgroundColor: 'var(--color-void)',
+            color: 'var(--color-void-ink)',
+          }}
+        >
           
           <div className="relative z-10">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div className="rounded-2xl overflow-hidden shadow-sm">
               <Image
                 src="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/customer-support.png"
                 alt="Customer Support"
@@ -100,21 +104,66 @@ export function FAQSection() {
           </div>
           
           <div className="relative z-10 flex flex-col justify-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">{t('helpTitle')}</h3>
-            <p className="text-white/90 mb-6 leading-relaxed">
+            <h3
+              className="mb-4"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-xl)',
+                fontWeight: 'var(--weight-display)',
+                letterSpacing: 'var(--tracking-heading)',
+                color: 'var(--color-void-ink)',
+              }}
+            >
+              {t('helpTitle')}
+            </h3>
+            <p
+              className="mb-6"
+              style={{
+                fontSize: 'var(--text-base)',
+                lineHeight: 'var(--leading-body)',
+                color: 'var(--color-void-ink-2)',
+              }}
+            >
               {t('helpDescription')}
             </p>
-            
-            {/* CTA button */}
+
+            {/* The number itself is the call to action, so it is set in the mono
+                face at size rather than buried under a 📞 emoji on a white pill. */}
             <a
               href={`tel:${CONTACT_CONFIG.PHONE.CHINA}`}
-              className="inline-flex items-center gap-3 bg-white text-[var(--color-primary-700)] px-6 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="inline-flex items-center gap-3 self-start px-5 py-4 rounded-lg transition-colors"
+              style={{
+                backgroundColor: 'color-mix(in oklch, var(--color-void-ink) 8%, transparent)',
+                border: '1px solid var(--color-void-rule)',
+                textDecoration: 'none',
+              }}
             >
-              <span className="text-2xl">📞</span>
-              <div>
-                <div className="text-xs text-[var(--color-primary)] font-medium uppercase tracking-wider">{t('supportLabel')}</div>
-                <div className="text-lg text-[var(--text-primary)]">{CONTACT_CONFIG.PHONE.CHINA}</div>
-              </div>
+              <Phone size={20} aria-hidden style={{ color: 'var(--color-accent-bright)', flexShrink: 0 }} />
+              <span>
+                <span
+                  className="block"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'var(--text-xs)',
+                    letterSpacing: 'var(--tracking-label)',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-void-ink-2)',
+                  }}
+                >
+                  {t('supportLabel')}
+                </span>
+                <span
+                  className="block"
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'var(--text-md)',
+                    color: 'var(--color-void-ink)',
+                    marginTop: '0.15rem',
+                  }}
+                >
+                  {CONTACT_CONFIG.PHONE.CHINA}
+                </span>
+              </span>
             </a>
           </div>
         </div>

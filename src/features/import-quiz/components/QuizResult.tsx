@@ -162,7 +162,7 @@ export function QuizResult({
       transition={{ duration: 0.5 }}
       className="flex min-h-full items-center justify-center p-4"
     >
-      <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl">
+      <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-sm">
         {/* Header with score */}
         <div className="relative bg-gradient-to-br from-slate-50 to-slate-100 px-8 py-10">
           <div className="relative mx-auto flex h-[200px] w-[200px] items-center justify-center">
@@ -219,7 +219,7 @@ export function QuizResult({
               href={guideUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-red-500 px-6 py-4 font-semibold text-white shadow-lg shadow-red-200 transition-all hover:from-red-700 hover:to-red-600 hover:shadow-xl hover:shadow-red-200"
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-red-500 px-6 py-4 font-semibold text-white shadow-lg shadow-red-200 transition-all hover:from-red-700 hover:to-red-600 hover:shadow-sm hover:shadow-red-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
@@ -235,7 +235,7 @@ export function QuizResult({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-4 font-semibold text-white shadow-lg shadow-emerald-200 transition-all hover:from-emerald-700 hover:to-emerald-600 hover:shadow-xl hover:shadow-emerald-200"
+              className="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-4 font-semibold text-white shadow-lg shadow-emerald-200 transition-all hover:from-emerald-700 hover:to-emerald-600 hover:shadow-sm hover:shadow-emerald-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.75 }}

@@ -245,7 +245,7 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               </a>{' '}
               team{' '}
               <a
-                href="https://wa.me/8617865673053"
+                href="https://wa.me/8618851725957"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-green-500 hover:text-green-400 transition-colors"

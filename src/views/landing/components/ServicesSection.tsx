@@ -1,206 +1,136 @@
-/**
- * Services Section — Clean Redesign
- *
- * No bento grid, no spotlight borders, no gradient text.
- * Clean typographic cards with a single Lucide icon each.
- */
-
 'use client';
 
-import React, { useRef } from 'react';
+/**
+ * Services — an index, not a card grid.
+ *
+ * What was here before: five equal cards, each with a rounded icon chip, each
+ * tracking the pointer with a 3D tilt and a radial glare that followed the
+ * cursor. The tilt is the reason this section read as cheap. Pointer-tilt on a
+ * text card was a 2020 CodePen trick; it shimmers the type edges, it fights the
+ * reader's aim, and it signals "effects were available" rather than "this was
+ * designed". It is gone.
+ *
+ * What replaces it borrows from a printed index: full-width rows separated by
+ * hairlines, the service number set in mono at the left margin, the name large
+ * in the display face, and the description held to a readable measure. Hovering
+ * a row shifts the whole row 6px toward the reader and reveals the arrow. One
+ * property, one direction, no shimmer.
+ *
+ * Rows beat cards here for a second reason: five items do not divide into a
+ * three-column grid, so the old layout always ended with two orphans and a gap.
+ */
+
+import React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 import Link from 'next/link';
-import {
-  Search,
-  Plane,
-  Ship,
-  CreditCard,
-  Smartphone,
-  ArrowRight,
-} from 'lucide-react';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/components/animations';
+import { Search, Plane, Ship, CreditCard, Smartphone, ArrowRight } from 'lucide-react';
+import { Band, Shell } from '@/components/site';
+import { SectionHead } from '@/components/site/SectionHead';
+import { RevealGroup } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
 
-const SERVICE_HREFS: Record<string, string> = {
-  sourcing: '/services/sourcing',
-  airFreight: '/services/air-freight',
-  seaFreight: '/services/sea-freight',
-  payment: '/services/paiement-fournisseur-chine',
-  recharge: '/tarifs',
-};
-
-const SERVICE_ICONS = [
-  Search,
-  Plane,
-  Ship,
-  CreditCard,
-  Smartphone,
-];
-
-const SERVICE_KEYS = ['sourcing', 'airFreight', 'seaFreight', 'payment', 'recharge'] as const;
-
-function ServiceCard({
-  serviceKey,
-  index,
-}: {
-  serviceKey: string;
-  index: number;
-}) {
-  const t = useTranslations('services');
-  const ctaT = useTranslations('cta');
-  const locale = useLocale();
-
-  const title = t(`items.${serviceKey}.title`);
-  const description = t(`items.${serviceKey}.description`);
-  const href = SERVICE_HREFS[serviceKey] || '/services/sourcing';
-  const targetLocale = locale;
-  const Icon = SERVICE_ICONS[index];
-
-  // Pointer-tracked tilt + spotlight. The raw pointer position drives both, so
-  // the highlight and the tilt share one origin and the card reads as a single
-  // physical surface rather than two effects layered on top of each other.
-  const cardRef = useRef<HTMLDivElement>(null);
-  const prefersReduced = useReducedMotion();
-  const pointerX = useMotionValue(0.5);
-  const pointerY = useMotionValue(0.5);
-  const spring = { stiffness: 220, damping: 22, mass: 0.4 };
-  const rotateX = useSpring(useMotionValue(0), spring);
-  const rotateY = useSpring(useMotionValue(0), spring);
-  // Hooks must stay at the top level — the glare gradient is built here and
-  // only its rendering is conditional further down.
-  const smoothX = useSpring(pointerX, spring);
-  const smoothY = useSpring(pointerY, spring);
-  const glare = useMotionTemplate`radial-gradient(420px circle at calc(${smoothX} * 100%) calc(${smoothY} * 100%), color-mix(in oklch, var(--color-accent) 14%, transparent), transparent 60%)`;
-
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (prefersReduced || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width;
-    const py = (event.clientY - rect.top) / rect.height;
-    pointerX.set(px);
-    pointerY.set(py);
-    // Small angles only — past ~7° the text edges start to shimmer.
-    rotateY.set((px - 0.5) * 10);
-    rotateX.set((0.5 - py) * 8);
-  };
-
-  const handlePointerLeave = () => {
-    rotateX.set(0);
-    rotateY.set(0);
-    pointerX.set(0.5);
-    pointerY.set(0.5);
-  };
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
-      className="group relative flex flex-col h-full rounded-lg p-6 overflow-hidden"
-      style={{
-        backgroundColor: 'var(--color-paper)',
-        border: '1px solid var(--color-rule)',
-        rotateX,
-        rotateY,
-        transformPerspective: 900,
-        transformStyle: 'preserve-3d',
-      }}
-      whileHover={prefersReduced ? undefined : { y: -6 }}
-      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-    >
-      {/* Cursor-following glare. Sits under the content, clipped by the card. */}
-      {!prefersReduced && (
-        <motion.span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ background: glare }}
-        />
-      )}
-
-      {/* Icon */}
-      <div
-        className="relative w-10 h-10 rounded-lg flex items-center justify-center mb-5"
-        style={{ backgroundColor: 'var(--color-paper-2)' }}
-      >
-        <Icon className="w-5 h-5" style={{ color: 'var(--color-accent)' }} />
-      </div>
-
-      {/* Content */}
-      <h3
-        className="relative text-lg font-semibold mb-2"
-        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}
-      >
-        {title}
-      </h3>
-      <p
-        className="relative text-sm leading-relaxed mb-6 flex-1"
-        style={{ color: 'var(--color-ink-2)' }}
-      >
-        {description}
-      </p>
-
-      {/* CTA */}
-      <Link
-        href={`/${targetLocale}${href}`}
-        className="relative inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:gap-2"
-        style={{ color: 'var(--color-accent)' }}
-      >
-        {ctaT('learnMore')}
-        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-      </Link>
-    </motion.div>
-  );
-}
+const SERVICES = [
+  { key: 'sourcing', href: '/services/sourcing', Icon: Search },
+  { key: 'airFreight', href: '/services/air-freight', Icon: Plane },
+  { key: 'seaFreight', href: '/services/sea-freight', Icon: Ship },
+  { key: 'payment', href: '/services/paiement-fournisseur-chine', Icon: CreditCard },
+  { key: 'recharge', href: '/tarifs', Icon: Smartphone },
+] as const;
 
 export function ServicesSection() {
   const t = useTranslations('services');
+  const locale = useLocale();
 
   return (
-    <section
-      id={SECTION_IDS.SERVICES}
-      className="relative py-24 md:py-32"
-      style={{ backgroundColor: 'var(--color-paper-2)' }}
-    >
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <AnimatedSection animation="blurIn" className="max-w-2xl mb-16" threshold={0.4}>
-          <h2
-            className="font-bold tracking-tight mb-4"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-3xl)',
-              fontWeight: 'var(--weight-display)',
-              color: 'var(--color-ink)',
-              letterSpacing: 'var(--tracking-display)',
-            }}
-          >
-            {t('title')}
-          </h2>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: 'var(--color-ink-2)' }}
-          >
-            {t('subtitle')}
-          </p>
-        </AnimatedSection>
+    <Band id={SECTION_IDS.SERVICES} tone="paper">
+      <Shell>
+        <SectionHead title={t('title')} lede={t('subtitle')} />
 
-        {/* Cards — asymmetric grid. They hinge in one after another, then each
-            responds independently to the pointer. */}
-        <StaggerContainer
-          className="grid gap-6"
-          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}
-          staggerDelay={0.08}
-          threshold={0.15}
-        >
-          {SERVICE_KEYS.map((key, index) => (
-            <StaggerItem key={key} animation="unfold" className="h-full">
-              <ServiceCard serviceKey={key} index={index} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </div>
-    </section>
+        <RevealGroup stagger={0.07} selector="[data-service-row]">
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            {SERVICES.map(({ key, href, Icon }, index) => (
+              <li key={key} data-service-row>
+                <Link
+                  href={`/${locale}${href}`}
+                  className="service-row"
+                  style={{
+                    display: 'grid',
+                    // Number · icon · name · description · arrow. Collapses to
+                    // a single column below 860px via the stylesheet below.
+                    gridTemplateColumns: 'auto auto minmax(0, 15rem) minmax(0, 1fr) auto',
+                    alignItems: 'center',
+                    gap: 'clamp(1rem, 2.5vw, 2.25rem)',
+                    padding: 'var(--space-xl) 0',
+                    borderTop: index === 0 ? '1px solid var(--color-rule)' : undefined,
+                    borderBottom: '1px solid var(--color-rule)',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 'var(--text-xs)',
+                      letterSpacing: 'var(--tracking-label)',
+                      color: 'var(--color-muted)',
+                    }}
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <Icon
+                    size={20}
+                    aria-hidden
+                    className="service-icon"
+                    style={{ color: 'var(--color-accent)', flexShrink: 0 }}
+                  />
+
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      // Titles are stored uppercase ("EXPÉDITION AÉRIENNE").
+                      // Rendered as small-caps-weight sentence text they read
+                      // as a name rather than as shouting.
+                      fontSize: 'var(--text-lg)',
+                      fontWeight: 'var(--weight-heading)',
+                      letterSpacing: 'var(--tracking-heading)',
+                      textTransform: 'none',
+                      color: 'var(--color-ink)',
+                      margin: 0,
+                      minWidth: 0,
+                    }}
+                  >
+                    {t(`items.${key}.title`)}
+                  </h3>
+
+                  <p
+                    className="service-desc"
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: 'var(--text-base)',
+                      lineHeight: 'var(--leading-body)',
+                      color: 'var(--color-ink-2)',
+                      margin: 0,
+                      minWidth: 0,
+                      maxWidth: '52ch',
+                    }}
+                  >
+                    {t(`items.${key}.description`)}
+                  </p>
+
+                  <ArrowRight
+                    size={18}
+                    aria-hidden
+                    className="service-arrow"
+                    style={{ color: 'var(--color-accent)', flexShrink: 0 }}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </RevealGroup>
+      </Shell>
+    </Band>
   );
 }
 

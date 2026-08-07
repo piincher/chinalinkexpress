@@ -80,7 +80,8 @@
       "Paiement Fournisseur",
       "Suivi 24/7",
       "Livraison Porte à Porte"
-    ]
+    ],
+    "carriersLabel": "Nous expédions avec"
   },
   "stats": {
     "sectionLabel": "Nos Chiffres",
@@ -1497,5 +1498,32 @@
   "sourcing": {
     "title": "De la marketplace chinoise à votre porte",
     "subtitle": "Achetez sur 1688, Taobao, Alibaba ou directement en usine. Vos commandes arrivent à notre entrepôt en Chine, puis chez vous à Bamako."
+  },
+  "journey": {
+    "label": "Le parcours",
+    "title": "De la commande à votre porte",
+    "lede": "Quatre étapes, un seul interlocuteur. Vous suivez chacune d'elles depuis l'application.",
+    "steps": [
+      {
+        "key": "01",
+        "title": "Vous commandez",
+        "description": "Sur 1688, Taobao, Alibaba ou directement en usine. Nous pouvons aussi acheter pour vous."
+      },
+      {
+        "key": "02",
+        "title": "Entrepôt Chine",
+        "description": "Réception à notre entrepôt de Guangzhou, contrôle qualité, puis consolidation de vos colis."
+      },
+      {
+        "key": "03",
+        "title": "Transit",
+        "description": "Aérien en 14 à 21 jours, ou maritime en 60 à 75 jours. Vous choisissez selon le volume et l'urgence."
+      },
+      {
+        "key": "04",
+        "title": "Bamako",
+        "description": "Dédouanement, puis livraison. Vous êtes prévenu à chaque changement de statut."
+      }
+    ]
   }
 }

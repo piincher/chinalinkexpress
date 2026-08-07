@@ -52,10 +52,10 @@ export function ReviewCard({ review, index = 0 }: ReviewCardProps) {
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      <div className="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-5 md:p-6 shadow-lg border border-gray-100/80 dark:border-gray-700/80 hover:shadow-xl transition-shadow duration-300">
+      <div className="relative h-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-5 md:p-6 shadow-lg border border-gray-100/80 dark:border-gray-700/80 hover:shadow-sm transition-shadow duration-300">
         {/* Top gradient accent */}
         <div
-          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${getAvatarGradient(index)} rounded-t-2xl`}
+          className="absolute top-0 left-0 right-0 h-px bg-[var(--color-accent)] rounded-t-2xl"
         />
 
         {/* Header: Avatar + Name + Verified */}

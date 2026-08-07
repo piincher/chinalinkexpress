@@ -1,15 +1,29 @@
 /**
- * Landing Page — Hallmark Redesign
+ * Landing page — band rhythm.
  *
- * Simplified section flow. Fewer sections, more breathing room.
- * Macrostructure: Marquee Hero
+ * The problem this ordering solves: the page was seventeen sections that all
+ * looked the same. White background, centred pill, centred heading, gradient
+ * underline, three rounded cards. Nothing was emphasised because everything
+ * was, and a reader arriving at section nine had no idea whether they were near
+ * the beginning or the end.
+ *
+ * The fix is tonal rhythm rather than deletion. Sections alternate paper →
+ * paper-2 → void, and the three `void` bands are placed at the moments the page
+ * most wants remembered: the opening statement, the journey, and the close.
+ * Everything between them is quiet on purpose, so those three land.
+ *
+ * No section was removed — every feature the site had, it still has. Four of
+ * them are arguably redundant (see the note in the README of this folder) but
+ * cutting content is the owner's call, not the redesign's.
+ *
+ * Server component: the hero is async so it can render its copy and its LCP
+ * photograph on the server. Interactive sections below stay client components
+ * and are rendered as children, which is allowed and keeps the boundary at the
+ * leaf rather than at the page.
  */
-
-'use client';
 
 import React from 'react';
 import { type Locale } from '@/i18n/config';
-import { useTranslations } from 'next-intl';
 import StructuredData from '@/app/components/StructuredData';
 import {
   HeroSection,
@@ -29,61 +43,44 @@ import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTes
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { PartnersSection } from './components/PartnersSection';
 import { AppPreviewSection } from './components/AppPreviewSection';
-import { Marquee } from '@/components/animations/Marquee';
+import { JourneySection } from './components/JourneySection';
 
 interface LandingPageProps {
   locale?: Locale;
-}
-
-function TrustMarquee() {
-  const t = useTranslations();
-  const items = t.raw('landing.marquee') as string[];
-
-  return (
-    <div
-      className="py-6"
-      style={{
-        backgroundColor: 'var(--color-paper-2)',
-        borderBottom: '1px solid var(--color-rule)',
-      }}
-    >
-      <Marquee speed={32} pauseOnHover>
-        {items.map((item) => (
-          <span
-            key={item}
-            className="text-sm font-medium uppercase tracking-widest whitespace-nowrap"
-            style={{ color: 'var(--color-neutral)' }}
-          >
-            {item}
-          </span>
-        ))}
-      </Marquee>
-    </div>
-  );
 }
 
 export function LandingPage({ locale = 'fr' }: LandingPageProps) {
   return (
     <>
       <StructuredData />
-      <div className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
+      <div style={{ backgroundColor: 'var(--color-paper)' }}>
         <main>
+          {/* ── I. the claim ─────────────────────────────────────────────── */}
           <HeroSection />
-          {/* Explains the business in one graphic before the services list. */}
+
+          {/* ── II. how it works ─────────────────────────────────────────── */}
           <SourcingSection />
-          <TrustMarquee />
           <StatsSection />
           <ServicesSection />
-          <AboutSection />
+
+          {/* ── III. the journey — the page's centre of gravity ──────────── */}
+          <JourneySection />
+
+          {/* ── IV. the argument ─────────────────────────────────────────── */}
           <WhyUsSection />
+          <ComparisonSection />
+          <AboutSection />
           <AppPreviewSection />
           <TrustFlowSection />
-          <ComparisonSection />
-          <QuizSection locale={locale} />
+
+          {/* ── V. other people's words ──────────────────────────────────── */}
           <VerifiedReviewsSection />
-          <VideoTestimonialsSection />
           <TestimonialsSection />
+          <VideoTestimonialsSection />
           <PartnersSection />
+
+          {/* ── VI. the close ────────────────────────────────────────────── */}
+          <QuizSection locale={locale} />
           <FAQSection />
           <ContactSection />
         </main>

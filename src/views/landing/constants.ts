@@ -83,6 +83,12 @@ export const FAQS: FAQ[] = [
   },
 ];
 
+/**
+ * Re-exported so landing components keep a local import path, while the number
+ * itself lives in one place for the whole site.
+ */
+export { WHATSAPP_SALES as WHATSAPP_NUMBER, WHATSAPP_URL } from '@/constants/contact';
+
 export const SECTION_IDS = {
   HERO: 'hero',
   STATS: 'stats',

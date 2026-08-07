@@ -102,7 +102,7 @@ export function OpenInAppButton({
 
       {showFallback && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-4">
-          <div className="bg-[var(--surface)] rounded-2xl p-6 w-full max-w-sm shadow-2xl">
+          <div className="bg-[var(--surface)] rounded-2xl p-6 w-full max-w-sm shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-[var(--text-primary)]">{fallbackTitle}</h3>
               <button onClick={() => setShowFallback(false)} className="p-2.5 rounded-lg hover:bg-[var(--surface-elevated)] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label={closeAriaLabel}>

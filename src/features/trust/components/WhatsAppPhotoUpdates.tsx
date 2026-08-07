@@ -116,7 +116,7 @@ function PhotoStageCard({
       transition={{ duration: 0.5, delay: 0.12 * index, ease: 'easeOut' }}
     >
       {/* WhatsApp-style message bubble */}
-      <div className="bg-white dark:bg-gray-800 rounded-2xl rounded-tl-sm shadow-lg border border-gray-100 dark:border-gray-700 p-5 hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl rounded-tl-sm shadow-lg border border-gray-100 dark:border-gray-700 p-5 hover:shadow-sm transition-shadow duration-300">
         {/* Header: icon + stage name */}
         <div className="flex items-center gap-3 mb-3">
           <div
@@ -222,7 +222,6 @@ export function WhatsAppPhotoUpdates() {
             })}
           </p>
 
-          <div className="w-24 h-1.5 bg-gradient-to-r from-emerald-500 to-green-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Photo stages grid */}
@@ -243,7 +242,7 @@ export function WhatsAppPhotoUpdates() {
           animate={isActive ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
             {/* Top label */}
             <div className="px-6 py-3 bg-gradient-to-r from-gray-50 dark:from-gray-800 to-gray-100 dark:to-gray-750 border-b border-gray-100 dark:border-gray-700">
               <p className="text-center text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">

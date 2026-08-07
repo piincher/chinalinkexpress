@@ -44,7 +44,7 @@ function TestimonialCard({
 }) {
   return (
     <div
-      className="relative bg-[var(--surface)] border border-[var(--border)] rounded-3xl p-8 shadow-lg overflow-hidden"
+      className="relative bg-[var(--surface)] border border-[var(--border)] rounded-xl p-8 shadow-lg overflow-hidden"
     >
       {/* Quote mark decoration */}
       <div
@@ -146,7 +146,7 @@ export function TestimonialsSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AnimatedSection animation="blurIn" className="text-center mb-16" threshold={0.4}>
-          <span className="inline-block px-4 py-1.5 bg-[var(--color-accent-light)]/30 text-[var(--color-accent-dark)] rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block font-mono text-xs uppercase tracking-[0.14em] text-[var(--color-accent)] mb-4">
             {t('testimonials.sectionLabel')}
           </span>
           
@@ -154,7 +154,6 @@ export function TestimonialsSection() {
             {t('testimonials.title')}
           </h2>
           
-          <div className="w-24 h-1.5 bg-gradient-to-r from-[var(--color-accent)] to-orange-500 mx-auto rounded-full" />
         </AnimatedSection>
 
         {/* Testimonials Grid — cards hinge in one after another */}
@@ -171,7 +170,7 @@ export function TestimonialsSection() {
         </StaggerContainer>
 
         {/* CTA Banner */}
-        <div className="relative bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-primary-700)] to-[var(--color-primary-dark)] rounded-3xl p-8 md:p-12 text-white text-center overflow-hidden">
+        <div className="relative bg-gradient-to-r from-[var(--color-primary-600)] via-[var(--color-primary-700)] to-[var(--color-primary-dark)] rounded-xl p-8 md:p-12 text-white text-center overflow-hidden">
           <div className="relative z-10">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               {t('testimonials.ctaTitle')}

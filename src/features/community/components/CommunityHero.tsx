@@ -130,7 +130,7 @@ export function CommunityHero() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-emerald-500 text-white rounded-2xl font-bold text-lg hover:from-[#128C7E] hover:to-emerald-600 transition-all duration-300 shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-emerald-500 text-white rounded-2xl font-bold text-lg hover:from-[#128C7E] hover:to-emerald-600 transition-all duration-300 shadow-sm shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105"
             >
               <WhatsAppIcon className="w-6 h-6" />
               {isEn ? 'Join on WhatsApp' : 'Rejoindre sur WhatsApp'}

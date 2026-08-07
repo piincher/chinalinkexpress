@@ -286,13 +286,13 @@ export function ContactPage() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/+8618851725957"
+              href="https://wa.me/8618851725957"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex items-center gap-4 bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-2xl shadow-lg text-white hover:shadow-xl transition-shadow"
+              className="flex items-center gap-4 bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-2xl shadow-lg text-white hover:shadow-sm transition-shadow"
             >
               <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
                 <MessageCircle className="w-6 h-6" />
@@ -310,7 +310,7 @@ export function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-6 md:p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 {t('form.title')}
               </h2>

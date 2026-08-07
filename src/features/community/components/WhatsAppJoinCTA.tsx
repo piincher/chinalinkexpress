@@ -13,7 +13,7 @@ import { Check, MessageCircle } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 
 const WHATSAPP_LINK =
-  'https://wa.me/8616621150801?text=Bonjour%2C%20je%20souhaite%20rejoindre%20la%20communaut%C3%A9%20ChinaLink';
+  'https://wa.me/22376696177?text=Bonjour%2C%20je%20souhaite%20rejoindre%20la%20communaut%C3%A9%20ChinaLink';
 
 function WhatsAppIcon({ className = 'w-5 h-5' }: { className?: string }) {
   return (
@@ -114,7 +114,7 @@ export function WhatsAppJoinCTA() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-emerald-700 rounded-2xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-2xl shadow-black/20 hover:shadow-black/30 hover:scale-105"
+              className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-emerald-700 rounded-2xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-sm shadow-black/20 hover:shadow-black/30 hover:scale-105"
             >
               <WhatsAppIcon className="w-6 h-6" />
               {t('cta.button', { defaultValue: 'Rejoindre sur WhatsApp' })}

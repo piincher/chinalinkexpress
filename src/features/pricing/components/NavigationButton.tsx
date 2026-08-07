@@ -50,7 +50,7 @@ export function NavigationButton({ variant, className }: NavigationButtonProps) 
       <Link
         href={href}
         className={cn(
-          'group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105',
+          'group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-sm hover:scale-105',
           bgColor
         )}
       >

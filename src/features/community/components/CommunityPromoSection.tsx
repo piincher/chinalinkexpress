@@ -43,7 +43,7 @@ export function CommunityPromoSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className={cn(
-            'relative rounded-3xl overflow-hidden border shadow-xl',
+            'relative rounded-xl overflow-hidden border shadow-sm',
             'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm',
             'border-amber-200 dark:border-amber-900/30',
             'shadow-amber-100/50 dark:shadow-amber-900/20'
@@ -54,7 +54,7 @@ export function CommunityPromoSection() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           {/* Inner gradient accent strip at top */}
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-[var(--color-accent)]" />
 
           <div className="p-8 md:p-12 lg:p-14">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">

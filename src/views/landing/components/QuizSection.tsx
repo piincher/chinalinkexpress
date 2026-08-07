@@ -68,7 +68,7 @@ export function QuizSection({ locale = 'fr' }: QuizSectionProps) {
 
         {/* Quiz Container */}
         <AnimatedSection animation="scaleUp" className="max-w-2xl mx-auto" threshold={0.15}>
-          <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-blue-500/10 dark:shadow-none border border-slate-100 dark:border-slate-700 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm shadow-blue-500/10 dark:shadow-none border border-slate-100 dark:border-slate-700 overflow-hidden">
             {isFrenchQuizAvailable ? (
               <QuizContainer />
             ) : (

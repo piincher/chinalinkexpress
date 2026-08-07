@@ -89,7 +89,7 @@ function TestimonialCard({
         className={`absolute -inset-0.5 bg-gradient-to-r ${config.borderGradient} rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
       />
 
-      <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-sm transition-shadow duration-300">
         {/* Quote icon */}
         <Quote className="w-8 h-8 text-gray-200 dark:text-gray-700 mb-4" />
 

@@ -101,10 +101,10 @@ function BenefitCard({
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="group"
     >
-      <div className="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
+      <div className="relative h-full bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-sm transition-shadow duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden">
         {/* Top gradient border */}
         <div
-          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${config.gradient}`}
+          className="absolute top-0 left-0 right-0 h-px bg-[var(--color-accent)]"
         />
 
         {/* Hover glow effect */}
@@ -168,7 +168,6 @@ export function CommunityBenefits() {
             })}
           </h2>
 
-          <div className="w-24 h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Benefits Grid */}

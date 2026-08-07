@@ -183,7 +183,6 @@ export function CommunityTopics() {
             })}
           </h2>
 
-          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mt-6 rounded-full" />
         </motion.div>
 
         {/* Topics Grid */}

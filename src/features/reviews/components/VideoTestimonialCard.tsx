@@ -33,7 +33,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/80 dark:border-gray-700/80 hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+      <div className="relative h-full bg-white dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/80 dark:border-gray-700/80 hover:shadow-sm transition-shadow duration-300 overflow-hidden">
         {/* Thumbnail */}
         <div className="relative aspect-video overflow-hidden">
           <motion.div
@@ -88,7 +88,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
           </div>
 
           {/* Top gradient line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-white/40 to-transparent" />
+          
         </div>
 
         {/* Content */}
