@@ -123,6 +123,20 @@ const INDUSTRY_PAGES: PageConfig[] = [
 // ============================================================================
 
 /**
+ * Build an absolute URL for a locale + path.
+ *
+ * The home page has an empty `path`, and it used to be emitted as
+ * `${BASE_URL}/${locale}/`. next.config.ts sets `trailingSlash: false`, so that
+ * form 308-redirects to `/${locale}` — and a sitemap <loc>, hreflang or
+ * canonical that points at a redirect is discarded by Google, which then picks
+ * its own canonical ("Duplicate, Google chose different canonical than user").
+ * Every URL here must be the exact one the server returns 200 for.
+ */
+function localeUrl(locale: Locale | string, path: string): string {
+  return path ? `${BASE_URL}/${locale}/${path}` : `${BASE_URL}/${locale}`;
+}
+
+/**
  * Generate hreflang alternates for a given path
  */
 function generateAlternates(path: string, locales: readonly Locale[] = i18nConfig.locales): Record<string, string> {
@@ -130,18 +144,12 @@ function generateAlternates(path: string, locales: readonly Locale[] = i18nConfi
   
   locales.forEach((locale) => {
     const seoLocale = getSeoLocale(locale);
-    const url = path 
-      ? `${BASE_URL}/${locale}/${path}`
-      : `${BASE_URL}/${locale}/`;
-    alternates[seoLocale] = url;
+    alternates[seoLocale] = localeUrl(locale, path);
   });
-  
+
   // Add x-default
   const defaultLocale = locales.includes('fr') ? 'fr' : locales[0];
-  const defaultUrl = path 
-    ? `${BASE_URL}/${defaultLocale}/${path}`
-    : `${BASE_URL}/${defaultLocale}/`;
-  alternates['x-default'] = defaultUrl;
+  alternates['x-default'] = localeUrl(defaultLocale, path);
   
   return alternates;
 }
@@ -197,12 +205,8 @@ export async function GET() {
   // Generate entries for static pages
   STATIC_PAGES.forEach((page) => {
     i18nConfig.locales.forEach((locale) => {
-      const url = page.path 
-        ? `${BASE_URL}/${locale}/${page.path}`
-        : `${BASE_URL}/${locale}/`;
-      
       entries.push({
-        url,
+        url: localeUrl(locale, page.path),
         lastModified: currentDate,
         changeFrequency: page.changeFrequency,
         priority: page.priority,

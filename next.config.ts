@@ -38,8 +38,10 @@ const nextConfig: NextConfig = {
     return [
       // Redirect old URLs to new structure
       {
+        // `/fr` not `/fr/` — with trailingSlash:false the slashed form would
+        // redirect again, making this a two-hop chain.
         source: '/home',
-        destination: '/fr/',
+        destination: '/fr',
         permanent: true,
       },
       {
@@ -202,13 +204,11 @@ const nextConfig: NextConfig = {
       use: ['raw-loader', 'glslify-loader'],
     });
 
-    // Optimize three.js imports for client only
-    if (!isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        'three$': 'three/build/three.module.js',
-      };
-    }
+    // three's package.json `exports` map only exposes ".", so aliasing the deep
+    // path "three/build/three.module.js" makes webpack reject it as a
+    // non-exported subpath and every page importing three fails to build.
+    // Bare "three" already resolves to that same ESM build via the "." export,
+    // so no alias is needed.
 
     // Tree-shake unused locales from moment.js (if used)
     config.plugins.push(

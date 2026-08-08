@@ -840,23 +840,38 @@ export function generateArticleSchema(
 /**
  * Generate hreflang alternates for a page
  */
+/**
+ * Compose the locale-prefixed path for a page.
+ *
+ * A locale home page is declared as `path: '/'`, which naively composes to
+ * `/fr/`. next.config.ts sets `trailingSlash: false`, so `/fr/` 308-redirects to
+ * `/fr` — and Google discards a canonical or hreflang that points at a redirect,
+ * substituting its own choice. That surfaces in Search Console as "Duplicate,
+ * Google chose different canonical than user". Every URL we declare must be the
+ * one the server answers 200 for.
+ */
+function localePath(locale: Locale | string, path: string): string {
+  const normalized = path === '/' ? '' : path.replace(/\/+$/, '');
+  return `/${locale}${normalized}`;
+}
+
 export function generateHreflangAlternates(
   path: string = '',
   excludeLocales?: Locale[],
   supportedLocales: Locale[] = [...i18nConfig.locales]
 ): Record<string, string> {
   const alternates: Record<string, string> = {};
-  
+
   supportedLocales.forEach(locale => {
     if (excludeLocales?.includes(locale)) return;
-    
+
     const seoLocale = getSeoLocale(locale);
-    alternates[seoLocale] = `/${locale}${path}`;
+    alternates[seoLocale] = localePath(locale, path);
   });
-  
+
   const defaultLocale = supportedLocales.includes('fr') ? 'fr' : supportedLocales[0];
-  alternates['x-default'] = `/${defaultLocale}${path}`;
-  
+  alternates['x-default'] = localePath(defaultLocale, path);
+
   return alternates;
 }
 
@@ -885,7 +900,7 @@ export function generatePageMetadata({
   supportedLocales?: Locale[];
 }): Metadata {
   const baseUrl = BUSINESS_INFO.url;
-  const canonicalUrl = `/${locale}${path}`;
+  const canonicalUrl = localePath(locale, path);
   const fullUrl = `${baseUrl}${canonicalUrl}`;
   const seoLocale = getSeoLocale(locale);
   const frenchOnlyPathPrefixes = ['/blog', '/guides', '/cargo-chine-mali', '/communaute'];

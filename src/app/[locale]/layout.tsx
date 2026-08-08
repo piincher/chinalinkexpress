@@ -150,19 +150,23 @@ export async function generateMetadata({
     },
     metadataBase: new URL('https://www.chinalinkexpress.com'),
     alternates: {
-      canonical: `/${validLocale}/`,
+      // No trailing slash: next.config.ts sets `trailingSlash: false`, so `/fr/`
+      // 308-redirects to `/fr`. A canonical (or hreflang) pointing at a redirect
+      // is discarded by Google, which then picks its own — reported in Search
+      // Console as "Duplicate, Google chose different canonical than user".
+      canonical: `/${validLocale}`,
       languages: {
-        'fr-FR': '/fr/',
-        'en-US': '/en/',
-        'zh-CN': '/zh/',
-        'ar-SA': '/ar/',
-        'x-default': '/fr/',
+        'fr-FR': '/fr',
+        'en-US': '/en',
+        'zh-CN': '/zh',
+        'ar-SA': '/ar',
+        'x-default': '/fr',
       },
     },
     openGraph: {
       title: messages.metadata?.title || 'ChinaLink Express',
       description: messages.metadata?.description || '',
-      url: `https://www.chinalinkexpress.com/${validLocale}/`,
+      url: `https://www.chinalinkexpress.com/${validLocale}`,
       siteName: 'ChinaLink Express',
       images: [
         {
