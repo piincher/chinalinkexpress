@@ -343,8 +343,8 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
 
                      <Clause number="3.1.3" title="Handling, packing and transfer coefficient">
                         <p>
-                           A flat coefficient of <strong>0.05 kg per kilogram, being five per cent
-                           (5%)</strong>, is applied to the chargeable weight.
+                           A flat coefficient of <strong>0.075 kg per kilogram, being seven point
+                           five per cent (7.5%)</strong>, is applied to the chargeable weight.
                         </p>
                         <p>This coefficient covers exclusively:</p>
                         <p>
@@ -385,12 +385,12 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            "Package: L=50cm x W=40cm x H=30cm, gross weight = 8 kg",
                            "Volumetric weight = (50 x 40 x 30) / 5000 = 12 kg",
                            "Chargeable weight = max(8 kg; 12 kg) = 12 kg",
-                           "Coefficient: 12 x 1.05 = 12.6 kg",
-                           "Rounded up to the next 0.1 kg = 12.6 kg",
+                           "Coefficient: 12 x 1.075 = 12.9 kg",
+                           "Rounded up to the next 0.1 kg = 12.9 kg",
                            "Electronics category rate: 12,000 XOF/kg",
-                           "12.6 kg x 12,000 XOF = 151,200 XOF",
+                           "12.9 kg x 12,000 XOF = 154,800 XOF",
                         ]}
-                        result="Estimated air freight: 151,200 XOF"
+                        result="Estimated air freight: 154,800 XOF"
                      />
 
                      <CalculationExample
@@ -398,7 +398,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                         steps={[
                            "Measured gross weight = 1.23 kg — volume not determinant",
                            "Rounded up to the next 0.1 kg = 1.3 kg",
-                           "Coefficient: 1.3 x 1.05 = 1.365 kg",
+                           "Coefficient: 1.3 x 1.075 = 1.3975 kg",
                            "Final rounding up to the next 0.1 kg = 1.4 kg",
                            "General goods rate: 10,000 XOF/kg",
                            "1.4 kg x 10,000 XOF = 14,000 XOF",
@@ -1045,7 +1045,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   <Clause number="3.1.3" title="Coefficient de manutention, d'emballage et de transfert">
                      <p>
                         Il est appliqué au poids taxable un coefficient forfaitaire de{" "}
-                        <strong>0,05 kg par kilogramme, soit cinq pour cent (5 %)</strong>.
+                        <strong>0,075 kg par kilogramme, soit sept virgule cinq pour cent (7,5 %)</strong>.
                      </p>
                      <p>Ce coefficient couvre exclusivement :</p>
                      <p>
@@ -1086,12 +1086,12 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                         "Colis : L=50cm × l=40cm × H=30cm, poids brut = 8 kg",
                         "Poids volumétrique = (50 × 40 × 30) ÷ 5000 = 12 kg",
                         "Poids taxable = max(8 kg ; 12 kg) = 12 kg",
-                        "Coefficient : 12 × 1,05 = 12,6 kg",
-                        "Arrondi au 0,1 kg supérieur = 12,6 kg",
+                        "Coefficient : 12 × 1,075 = 12,9 kg",
+                        "Arrondi au 0,1 kg supérieur = 12,9 kg",
                         "Tarif catégorie Électronique : 12 000 FCFA/kg",
-                        "12,6 kg × 12 000 FCFA = 151 200 FCFA",
+                        "12,9 kg × 12 000 FCFA = 154 800 FCFA",
                      ]}
-                     result="Total fret aérien : 151 200 FCFA"
+                     result="Total fret aérien : 154 800 FCFA"
                   />
 
                   <CalculationExample
@@ -1099,7 +1099,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                      steps={[
                         "Poids brut mesuré = 1,23 kg — volume non déterminant",
                         "Arrondi au 0,1 kg supérieur = 1,3 kg",
-                        "Coefficient : 1,3 × 1,05 = 1,365 kg",
+                        "Coefficient : 1,3 × 1,075 = 1,3975 kg",
                         "Arrondi final au 0,1 kg supérieur = 1,4 kg",
                         "Tarif catégorie Standard : 10 000 FCFA/kg",
                         "1,4 kg × 10 000 FCFA = 14 000 FCFA",
@@ -1263,7 +1263,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                                  Emballage et manutention (aérien)
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 Inclus — coefficient 5 %
+                                 Inclus — coefficient 7,5 %
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
                                  Voir art. 3.1.3
