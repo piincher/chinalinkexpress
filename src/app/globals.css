@@ -1436,6 +1436,19 @@ canvas {
   }
 }
 
+/* One row of the live-feed board arriving. Rows are staggered by index, so a
+   rotation reads as the board settling line by line rather than a hard cut. */
+@keyframes live-feed-row-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes live-feed-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }

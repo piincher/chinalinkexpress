@@ -10,30 +10,30 @@
  * events, arriving while you watch.
  *
  * It used to grow: a sentinel below the list pulled the next page whenever it
- * scrolled into view, so the band swallowed the page and a visitor scrolling
- * toward the rest of the pitch never reached it. A marketing page is read top
- * to bottom; a section that lengthens as you scroll is a trap, not evidence.
+ * scrolled into view, so the band lengthened as the visitor scrolled and the
+ * rest of the pitch kept receding. A marketing page is read top to bottom; a
+ * section that grows while you scroll past it is a trap, not evidence.
  *
- * So the feed is now a BOARD, not a list. A fixed window of rows advances one
- * row at a time on a timer, the way a departures board does. The section keeps
- * a constant height, the evidence still moves, and the page below it stays
- * reachable.
+ * So the feed is a BOARD, not a list. It shows five records, holds a constant
+ * height, and swaps the whole group for the next five on a timer — 1–5, then
+ * 6–10, then 11–15 — looping back to the start at the end of the data.
  *
- * Three behaviours, all deliberately boring:
+ *   allItems      every record already in memory (one fetch of page 1)
+ *   currentIndex  which group of five is showing
+ *   visibleItems  allItems.slice(start, start + GROUP_SIZE)
  *
- *   Poll      Page 1 is refetched every 30min and merged by identity
- *             (ref + status + timestamp), so a parcel reaching a new milestone
- *             joins the rotation instead of duplicating.
- *   Rotate    The window slides by one row every few seconds and loops
- *             seamlessly. It pauses whenever nobody can act on it — tab
- *             hidden, section off-screen — and whenever the visitor hovers,
- *             so a row cannot slide away mid-read.
- *   Failure   A failed first load shows a quiet message and a retry button
- *             inside the section — the band stays mounted, so the page's
- *             rhythm does not collapse because one endpoint had a bad minute.
+ * Data: rotation is entirely client-side. One request returns 20 records,
+ * which is four groups; paging further just to animate would be network spent
+ * on something the visitor never asked for. The existing 30-minute poll of
+ * page 1 still refreshes the pool and merges by identity, so a parcel reaching
+ * a new milestone joins the rotation instead of duplicating.
+ *
+ * Rotation pauses whenever nobody can act on it — tab hidden, band off-screen
+ * — and whenever the visitor is reading it, on hover or keyboard focus, so a
+ * group cannot swap out from under them.
  *
  * Reduced motion is not a slower rotation, it is no rotation: the board holds
- * the newest rows still. Swapping content on a timer without animating it is
+ * the newest five still. Swapping content on a timer without animating it is
  * more disorienting than the animation it replaces, not less.
  */
 
@@ -53,14 +53,14 @@ import { LiveFeedRetryButton } from './LiveFeedRetryButton';
 import { LiveFeedSkeleton } from './LiveFeedSkeleton';
 
 const POLL_INTERVAL_MS = 30 * 60_000;
-/** Rows visible at once. */
-const WINDOW_ROWS = 5;
-/** Every row occupies exactly this, so the transform cannot jitter. */
+/** Records shown at once. */
+const GROUP_SIZE = 5;
+/** Every row occupies exactly this, so a group swap cannot shift the layout. */
 const ROW_HEIGHT = '5.25rem';
-/** Dwell time on each position — long enough to read a row before it moves. */
-const ROTATE_INTERVAL_MS = 3_600;
-/** Must match the transition below. */
-const SLIDE_MS = 700;
+/** Dwell time on a group — long enough to read five rows before they change. */
+const ROTATE_INTERVAL_MS = 6_500;
+/** Per-row entrance delay, so a group settles line by line. */
+const ROW_STAGGER_MS = 70;
 
 type FeedStatus = 'loading' | 'error' | 'ready';
 
@@ -76,27 +76,46 @@ const usePrefersReducedMotion = () => {
   return reduced;
 };
 
+/**
+ * Start offsets for each group of five.
+ *
+ * The final group is END-ALIGNED rather than short: with 12 records the starts
+ * are 0, 5, 7 — so the last group shows records 8–12 instead of 11–12 plus
+ * three empty rows. Groups may therefore overlap each other, but no record
+ * appears twice WITHIN a group, and the board never renders a hole.
+ */
+const buildGroupStarts = (total: number): number[] => {
+  if (total <= 0) return [];
+  if (total <= GROUP_SIZE) return [0];
+  const starts: number[] = [];
+  for (let start = 0; start < total; start += GROUP_SIZE) {
+    starts.push(Math.min(start, total - GROUP_SIZE));
+  }
+  // A tail shorter than GROUP_SIZE clamps onto the previous start; drop it.
+  return Array.from(new Set(starts));
+};
+
 export function LiveFeedSection() {
   const t = useTranslations('liveFeed');
   const reducedMotion = usePrefersReducedMotion();
 
   const [status, setStatus] = useState<FeedStatus>('loading');
-  const [events, setEvents] = useState<LiveFeedEvent[]>([]);
+  const [allItems, setAllItems] = useState<LiveFeedEvent[]>([]);
   const [counters, setCounters] = useState<LiveFeedCountersData | null>(null);
 
-  // Rotation state. `offset` counts rows, not pixels.
-  const [offset, setOffset] = useState(0);
-  const [animating, setAnimating] = useState(true);
-  const [paused, setPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
   const [onScreen, setOnScreen] = useState(false);
 
   const busyRef = useRef(false);
+  const firstLoadStartedRef = useRef(false);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   const applyPageOne = useCallback(
     (payloadEvents: LiveFeedEvent[], nextCounters: LiveFeedCountersData | null) => {
       if (nextCounters) setCounters(nextCounters);
-      setEvents((prev) => {
+      setAllItems((prev) => {
         const freshKeys = new Set(payloadEvents.map(liveFeedEventKey));
         return [...payloadEvents, ...prev.filter((event) => !freshKeys.has(liveFeedEventKey(event)))];
       });
@@ -104,7 +123,11 @@ export function LiveFeedSection() {
     []
   );
 
-  const loadFirstPage = useCallback(async () => {
+  const loadFirstPage = useCallback(async (isRetry = false) => {
+    // StrictMode double-invokes effects in development; without this the first
+    // paint fires two identical requests.
+    if (!isRetry && firstLoadStartedRef.current) return;
+    firstLoadStartedRef.current = true;
     busyRef.current = true;
     const result = await fetchLiveFeed(1);
     busyRef.current = false;
@@ -150,51 +173,42 @@ export function LiveFeedSection() {
   // ...and while the tab is visible. A board rotating in a background tab is
   // pure battery cost for something nobody is looking at.
   useEffect(() => {
-    const onVisibility = () => setPaused(document.hidden);
+    const onVisibility = () => setTabHidden(document.hidden);
     document.addEventListener('visibilitychange', onVisibility);
     onVisibility();
     return () => document.removeEventListener('visibilitychange', onVisibility);
   }, []);
 
-  const canRotate =
-    status === 'ready' && !reducedMotion && events.length > WINDOW_ROWS && onScreen && !paused;
+  const groupStarts = useMemo(() => buildGroupStarts(allItems.length), [allItems.length]);
+  const groupCount = groupStarts.length;
 
+  // Derived, never stored: a poll that shrinks the pool cannot leave the index
+  // pointing past the end, so there is no out-of-range slice and no effect
+  // needed to clamp it.
+  const safeIndex = groupCount > 0 ? currentIndex % groupCount : 0;
+  const visibleItems = useMemo(() => {
+    if (groupCount === 0) return [];
+    const start = groupStarts[safeIndex] ?? 0;
+    return allItems.slice(start, start + GROUP_SIZE);
+  }, [allItems, groupStarts, safeIndex, groupCount]);
+
+  // Constant across rotations (groups are end-aligned), so reserving it keeps
+  // the band's height fixed even while a poll is in flight.
+  const reservedRows = Math.max(1, Math.min(GROUP_SIZE, allItems.length));
+
+  const canRotate =
+    status === 'ready' && !reducedMotion && groupCount > 1 && onScreen && !tabHidden && !hovered;
+
+  // Deps are primitives that change only when the answer genuinely changes, so
+  // an unrelated re-render never restarts the interval mid-dwell. The updater
+  // is functional, so the callback cannot capture a stale index.
   useEffect(() => {
     if (!canRotate) return;
-    const timer = setInterval(() => setOffset((current) => current + 1), ROTATE_INTERVAL_MS);
+    const timer = setInterval(() => {
+      setCurrentIndex((index) => (index + 1) % groupCount);
+    }, ROTATE_INTERVAL_MS);
     return () => clearInterval(timer);
-  }, [canRotate]);
-
-  // Seamless loop: the list is rendered with its first WINDOW_ROWS repeated at
-  // the end, so position `events.length` looks identical to position 0. When we
-  // land there, snap back with the transition switched off — the visitor sees
-  // one continuous scroll rather than a rewind.
-  useEffect(() => {
-    if (offset === 0 || offset < events.length) return;
-    const timer = setTimeout(() => {
-      setAnimating(false);
-      setOffset(0);
-    }, SLIDE_MS);
-    return () => clearTimeout(timer);
-  }, [offset, events.length]);
-
-  useEffect(() => {
-    if (animating) return;
-    // Two frames: one to paint at the snapped position, one to re-arm.
-    const frame = requestAnimationFrame(() => requestAnimationFrame(() => setAnimating(true)));
-    return () => cancelAnimationFrame(frame);
-  }, [animating]);
-
-  // Reset the rotation when the pool shrinks under us (a poll can drop rows).
-  useEffect(() => {
-    if (offset > events.length) setOffset(0);
-  }, [events.length, offset]);
-
-  const rendered = useMemo(() => {
-    if (events.length === 0) return [];
-    if (reducedMotion || events.length <= WINDOW_ROWS) return events.slice(0, WINDOW_ROWS);
-    return [...events, ...events.slice(0, WINDOW_ROWS)];
-  }, [events, reducedMotion]);
+  }, [canRotate, groupCount]);
 
   return (
     <Band id={SECTION_IDS.LIVE_FEED} tone="paper" ruled>
@@ -231,7 +245,7 @@ export function LiveFeedSection() {
           }
         />
 
-        {status === 'loading' && <LiveFeedSkeleton rows={WINDOW_ROWS} />}
+        {status === 'loading' && <LiveFeedSkeleton rows={GROUP_SIZE} rowHeight={ROW_HEIGHT} />}
 
         {status === 'error' && (
           <div style={{ paddingBlock: 'var(--space-xl)' }}>
@@ -249,7 +263,7 @@ export function LiveFeedSection() {
               <LiveFeedRetryButton
                 onRetry={() => {
                   setStatus('loading');
-                  void loadFirstPage();
+                  void loadFirstPage(true);
                 }}
               />
             </div>
@@ -262,37 +276,29 @@ export function LiveFeedSection() {
 
             <div
               ref={viewportRef}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(document.hidden)}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              onFocus={() => setHovered(true)}
+              onBlur={() => setHovered(false)}
               style={{
-                position: 'relative',
-                height: `calc(${ROW_HEIGHT} * ${WINDOW_ROWS})`,
-                overflow: 'hidden',
-                // Rows dissolve at the boundaries instead of being guillotined
-                // by the container edge.
-                maskImage:
-                  'linear-gradient(to bottom, transparent 0, black 6%, black 94%, transparent 100%)',
-                WebkitMaskImage:
-                  'linear-gradient(to bottom, transparent 0, black 6%, black 94%, transparent 100%)',
+                // Reserved whether or not the data fills it, so a short group
+                // or a slow poll can never shift the page.
+                minHeight: `calc(${ROW_HEIGHT} * ${reservedRows})`,
               }}
             >
               <ul
-                style={{
-                  margin: 0,
-                  padding: 0,
-                  listStyle: 'none',
-                  transform: `translate3d(0, calc(${ROW_HEIGHT} * -${offset}), 0)`,
-                  transition: animating ? `transform ${SLIDE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)` : 'none',
-                  willChange: 'transform',
-                }}
+                // Remounting on the group index is what runs the entrance
+                // animation; five nodes every 6.5s is cheaper than tracking
+                // enter/exit state by hand.
+                key={safeIndex}
+                style={{ margin: 0, padding: 0, listStyle: 'none' }}
               >
-                {rendered.map((event, index) => (
+                {visibleItems.map((event, index) => (
                   <LiveFeedEventRow
-                    // The tail repeats the head, so the key must carry the
-                    // position too or React sees duplicates.
-                    key={`${liveFeedEventKey(event)}-${index}`}
+                    key={liveFeedEventKey(event)}
                     event={event}
                     fixedHeight={ROW_HEIGHT}
+                    enterDelayMs={reducedMotion ? undefined : index * ROW_STAGGER_MS}
                   />
                 ))}
               </ul>

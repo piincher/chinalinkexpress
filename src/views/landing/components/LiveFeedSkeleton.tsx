@@ -39,7 +39,13 @@ function Block({ width, height }: { width: string; height: string }) {
   );
 }
 
-export function LiveFeedSkeleton({ rows = 6 }: { rows?: number }) {
+export function LiveFeedSkeleton({
+  rows = 6,
+  rowHeight,
+}: {
+  rows?: number;
+  rowHeight?: string;
+}) {
   return (
     <ul aria-hidden style={{ margin: 0, padding: 0 }}>
       {Array.from({ length: rows }).map((_, i) => (
@@ -52,6 +58,9 @@ export function LiveFeedSkeleton({ rows = 6 }: { rows?: number }) {
             paddingBlock: 'var(--space-md)',
             borderTop: '1px solid var(--color-rule)',
             listStyle: 'none',
+            // Matches the board's fixed row box so the first paint of real
+            // events does not shift the layout.
+            ...(rowHeight ? { height: rowHeight, boxSizing: 'border-box' as const } : null),
           }}
         >
           <Block width="2.25rem" height="2.25rem" />

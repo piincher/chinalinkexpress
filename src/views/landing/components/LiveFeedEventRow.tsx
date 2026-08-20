@@ -42,9 +42,15 @@ function statusColor(status: LiveFeedStatus): string {
 export function LiveFeedEventRow({
   event,
   fixedHeight,
+  enterDelayMs,
 }: {
   event: LiveFeedEvent;
   fixedHeight?: string;
+  /**
+   * Set on the board to stagger this row's entrance. The animation lives on
+   * the <li> itself — a wrapper element would be invalid inside a <ul>.
+   */
+  enterDelayMs?: number;
 }) {
   const t = useTranslations('liveFeed');
   const locale = useLocale();
@@ -66,6 +72,12 @@ export function LiveFeedEventRow({
         ...(fixedHeight
           ? { height: fixedHeight, boxSizing: 'border-box', overflow: 'hidden' }
           : null),
+        ...(enterDelayMs === undefined
+          ? null
+          : {
+              animation: 'live-feed-row-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both',
+              animationDelay: `${enterDelayMs}ms`,
+            }),
       }}
     >
       <span
