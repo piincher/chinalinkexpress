@@ -45,6 +45,7 @@ import {
   WhyUsSection,
   FAQSection,
   ContactSection,
+  LiveFeedSection,
 } from './components';
 import { ComparisonSection } from './components/ComparisonSection';
 import { QuizSection } from './components/QuizSection';
@@ -74,17 +75,20 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           {/* ── III. the journey — the page's centre of gravity ──────────── */}
           <JourneySection />
 
-          {/* ── IV. the argument ─────────────────────────────────────────── */}
+          {/* ── IV. the proof — the network, live ────────────────────────── */}
+          <LiveFeedSection />
+
+          {/* ── V. the argument ──────────────────────────────────────────── */}
           <WhyUsSection />
           <ComparisonSection />
           <AboutSection />
           <AppPreviewSection />
 
-          {/* ── V. other people's words ──────────────────────────────────── */}
+          {/* ── VI. other people's words ─────────────────────────────────── */}
           <TestimonialsSection />
           <VideoTestimonialsSection />
 
-          {/* ── VI. the close ────────────────────────────────────────────── */}
+          {/* ── VII. the close ───────────────────────────────────────────── */}
           <QuizSection locale={locale} />
           <FAQSection />
           <ContactSection />

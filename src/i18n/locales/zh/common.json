@@ -1387,5 +1387,36 @@
         "description": "清关后配送。每次状态更新都会通知您。"
       }
     ]
+  },
+  "liveFeed": {
+    "label": "实时动态",
+    "title": "网络实时运行情况",
+    "lede": "每一件收货、装柜或交付的包裹,都会在发生的那一刻出现在这里。单号已做脱敏处理:网络是真实的,隐私同样重要。",
+    "liveBadge": "实时",
+    "counters": {
+      "onTheWay": "在途包裹",
+      "airSeaSplit": "其中空运 {air} · 海运 {sea}",
+      "containersAtSea": "在途集装箱",
+      "receivedLast30d": "近 30 天收货",
+      "delivered": "已交付包裹"
+    },
+    "modes": {
+      "air": "空运",
+      "sea": "海运"
+    },
+    "status": {
+      "RECEIVED_AT_WAREHOUSE": "已到仓库",
+      "PACKED": "已打包",
+      "ASSIGNED_TO_CONTAINER": "已分配集装箱",
+      "LOADED_IN_CONTAINER": "已装柜",
+      "IN_TRANSIT": "运输中",
+      "ARRIVED_DESTINATION": "已到达目的地",
+      "READY_FOR_PICKUP": "可提货",
+      "DELIVERED": "已送达"
+    },
+    "anonymousClient": "匿名客户",
+    "loadError": "实时动态暂时无法加载。",
+    "retry": "重试",
+    "endOfFeed": "您已查看全部近期动态。"
   }
 }

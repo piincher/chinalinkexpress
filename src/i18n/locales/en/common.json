@@ -1566,5 +1566,36 @@
         "description": "Customs clearance, then delivery. You are notified at every status change."
       }
     ]
+  },
+  "liveFeed": {
+    "label": "Live",
+    "title": "The network's activity in real time",
+    "lede": "Every parcel received, loaded or delivered appears here the moment it happens. References are masked: the network is real, and so is confidentiality.",
+    "liveBadge": "Live",
+    "counters": {
+      "onTheWay": "Parcels on the way",
+      "airSeaSplit": "including {air} by air · {sea} by sea",
+      "containersAtSea": "Containers at sea",
+      "receivedLast30d": "Received in the last 30 days",
+      "delivered": "Parcels delivered"
+    },
+    "modes": {
+      "air": "Air",
+      "sea": "Sea"
+    },
+    "status": {
+      "RECEIVED_AT_WAREHOUSE": "Received at warehouse",
+      "PACKED": "Packed",
+      "ASSIGNED_TO_CONTAINER": "Assigned to container",
+      "LOADED_IN_CONTAINER": "Loaded in container",
+      "IN_TRANSIT": "In transit",
+      "ARRIVED_DESTINATION": "Arrived at destination",
+      "READY_FOR_PICKUP": "Ready for pickup",
+      "DELIVERED": "Delivered"
+    },
+    "anonymousClient": "Anonymous client",
+    "loadError": "The live feed is temporarily unavailable.",
+    "retry": "Try again",
+    "endOfFeed": "You've seen all recent activity."
   }
 }

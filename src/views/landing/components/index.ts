@@ -18,3 +18,4 @@ export { QuizSection } from './QuizSection';
 export { ComparisonSection } from './ComparisonSection';
 export { AppPreviewSection } from './AppPreviewSection';
 export { JourneySection } from './JourneySection';
+export { LiveFeedSection } from './LiveFeedSection';

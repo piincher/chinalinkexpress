@@ -1436,6 +1436,11 @@ canvas {
   }
 }
 
+@keyframes live-feed-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);

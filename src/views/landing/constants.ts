@@ -92,6 +92,7 @@ export { WHATSAPP_SALES as WHATSAPP_NUMBER, WHATSAPP_URL } from '@/constants/con
 export const SECTION_IDS = {
   HERO: 'hero',
   STATS: 'stats',
+  LIVE_FEED: 'live-feed',
   ABOUT: 'about',
   COMPARISON: 'comparison',
   SERVICES: 'services',

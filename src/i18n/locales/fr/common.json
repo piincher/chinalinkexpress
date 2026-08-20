@@ -1538,5 +1538,36 @@
         "description": "Dédouanement, puis livraison. Vous êtes prévenu à chaque changement de statut."
       }
     ]
+  },
+  "liveFeed": {
+    "label": "En direct",
+    "title": "L'activité du réseau en temps réel",
+    "lede": "Chaque colis reçu, chargé ou livré apparaît ici au moment où cela se produit. Les références sont masquées : le réseau est réel, la confidentialité aussi.",
+    "liveBadge": "En direct",
+    "counters": {
+      "onTheWay": "Colis en route",
+      "airSeaSplit": "dont {air} par avion · {sea} par mer",
+      "containersAtSea": "Conteneurs en mer",
+      "receivedLast30d": "Reçus ces 30 derniers jours",
+      "delivered": "Colis livrés"
+    },
+    "modes": {
+      "air": "Air",
+      "sea": "Mer"
+    },
+    "status": {
+      "RECEIVED_AT_WAREHOUSE": "Reçu à l'entrepôt",
+      "PACKED": "Emballé",
+      "ASSIGNED_TO_CONTAINER": "Assigné au conteneur",
+      "LOADED_IN_CONTAINER": "Chargé dans le conteneur",
+      "IN_TRANSIT": "En transit",
+      "ARRIVED_DESTINATION": "Arrivé à destination",
+      "READY_FOR_PICKUP": "Prêt à retirer",
+      "DELIVERED": "Livré"
+    },
+    "anonymousClient": "Client anonyme",
+    "loadError": "Le flux en direct est momentanément indisponible.",
+    "retry": "Réessayer",
+    "endOfFeed": "Vous avez vu toute l'activité récente."
   }
 }
