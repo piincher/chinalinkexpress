@@ -33,7 +33,19 @@ function statusColor(status: LiveFeedStatus): string {
   return 'var(--color-ink-2)';
 }
 
-export function LiveFeedEventRow({ event }: { event: LiveFeedEvent }) {
+/**
+ * `fixedHeight` is set when the row sits inside the rotating window: every row
+ * must occupy exactly the same box or the marquee transform jitters as taller
+ * rows (a two-line SEA route) scroll past. Outside that context the row keeps
+ * its natural height and wraps freely.
+ */
+export function LiveFeedEventRow({
+  event,
+  fixedHeight,
+}: {
+  event: LiveFeedEvent;
+  fixedHeight?: string;
+}) {
   const t = useTranslations('liveFeed');
   const locale = useLocale();
 
@@ -51,6 +63,9 @@ export function LiveFeedEventRow({ event }: { event: LiveFeedEvent }) {
         paddingBlock: 'var(--space-md)',
         borderTop: '1px solid var(--color-rule)',
         listStyle: 'none',
+        ...(fixedHeight
+          ? { height: fixedHeight, boxSizing: 'border-box', overflow: 'hidden' }
+          : null),
       }}
     >
       <span
@@ -98,7 +113,9 @@ export function LiveFeedEventRow({ event }: { event: LiveFeedEvent }) {
             fontSize: 'var(--text-sm)',
             fontWeight: 'var(--weight-medium)',
             color: 'var(--color-ink)',
-            overflowWrap: 'anywhere',
+            ...(fixedHeight
+              ? { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }
+              : { overflowWrap: 'anywhere' }),
           }}
         >
           {event.route}
@@ -110,6 +127,9 @@ export function LiveFeedEventRow({ event }: { event: LiveFeedEvent }) {
             fontFamily: 'var(--font-mono)',
             fontSize: 'var(--text-xs)',
             color: 'var(--color-neutral)',
+            ...(fixedHeight
+              ? { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }
+              : null),
           }}
         >
           {event.ref}
