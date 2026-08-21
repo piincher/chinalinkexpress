@@ -104,7 +104,7 @@ export default async function ServicesHub({ params }: Props) {
   return (
     <>
       <StructuredData type="organization" />
-      <main className="min-h-screen bg-white pt-28 text-slate-950 dark:bg-slate-950 dark:text-white">
+      <div className="min-h-screen bg-white pt-28 text-slate-950 dark:bg-slate-950 dark:text-white">
         <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
           <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-blue-600">
             {isEn ? 'ChinaLink Express Services' : 'Services ChinaLink Express'}
@@ -140,7 +140,7 @@ export default async function ServicesHub({ params }: Props) {
             })}
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

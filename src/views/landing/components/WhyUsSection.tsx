@@ -20,15 +20,33 @@
  */
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { ArrowRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { Band, Shell } from '@/components/site';
 import { Reveal, RevealGroup } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
 
-const WHY_US_KEYS = ['speed', 'reliability', 'price', 'expertise'] as const;
+/*
+ * These four keys replace `speed / reliability / price / expertise`.
+ *
+ * The old set was four adjectives — Rapidité, Fiabilité, Prix Compétitifs,
+ * Expertise — under sentences claiming "les délais les plus courts du marché"
+ * and "les meilleurs tarifs du marché". Nothing in either is checkable, both
+ * appear verbatim on competitors' sites, and a reader who has been let down
+ * before reads them as the noise they are.
+ *
+ * Each replacement is a specific operational fact: which warehouse takes which
+ * mode, who deals with the supplier, what consolidation actually saves, and
+ * what the client is told and when. Apply the test the whole page is built
+ * around — swap "ChinaLink" for any other forwarder's name and see whether the
+ * paragraph still makes sense. It does not, and that is the point.
+ */
+const WHY_US_KEYS = ['warehouses', 'oneContact', 'consolidation', 'updates'] as const;
 
 export function WhyUsSection() {
   const t = useTranslations('whyUs');
+  const locale = useLocale();
 
   return (
     <Band id={SECTION_IDS.WHY_US} tone="paper-2">
@@ -128,6 +146,33 @@ export function WhyUsSection() {
                 </div>
               </div>
             ))}
+
+            {/*
+              The full "complete partner vs plain forwarder" argument lives at
+              /pourquoi-nous, which had no inbound link from anywhere on the
+              site — a complete page with its own metadata and Service schema
+              that no reader and no crawler could reach. The home page carried a
+              condensed copy of the same argument instead. The copy is gone; the
+              link is here, where a reader who wants the long version is.
+            */}
+            <Reveal>
+              <Link
+                href={`/${locale}/pourquoi-nous`}
+                className="cta cta--quiet"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-xs)',
+                  marginTop: 'var(--space-xl)',
+                  fontSize: 'var(--text-base)',
+                  color: 'var(--color-accent)',
+                  textDecoration: 'none',
+                }}
+              >
+                {t('moreLink')}
+                <ArrowRight className="cta-arrow" size={16} aria-hidden />
+              </Link>
+            </Reveal>
           </RevealGroup>
         </div>
       </Shell>

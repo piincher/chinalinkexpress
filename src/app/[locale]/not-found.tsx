@@ -135,7 +135,7 @@ export default function LocaleNotFound() {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center justify-center p-4">
+      <div className="flex-1 flex items-center justify-center p-4">
         <div className="text-center max-w-sm w-full">
           <div className="w-16 h-16 rounded-full bg-[#EFF8FF] flex items-center justify-center mx-auto mb-4">
             {isAppRoute ? (
@@ -176,7 +176,7 @@ export default function LocaleNotFound() {
             {t.backHome}
           </Link>
         </div>
-      </main>
+      </div>
 
       {showStoreFallback && (
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-4">

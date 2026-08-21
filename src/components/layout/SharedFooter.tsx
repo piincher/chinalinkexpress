@@ -92,7 +92,7 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
       <div className="ft-shell">
         {/* ── statement ──────────────────────────────────────────────────── */}
         <div className="ft-statement">
-          <Link href={`/${locale}/`} className="ft-wordmark">
+          <Link href={`/${locale}`} className="ft-wordmark">
             CHINALINK
           </Link>
 

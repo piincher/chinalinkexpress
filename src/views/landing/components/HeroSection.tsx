@@ -27,7 +27,7 @@ import { Band, Shell, Cta, CarrierBar } from '@/components/site';
 import { LineReveal, Reveal } from '@/components/motion';
 import { RouteGlobe } from '@/features/route-globe';
 import { LaneTicker } from './LaneTicker';
-import { SECTION_IDS, WHATSAPP_URL } from '../constants';
+import { SECTION_IDS, HERO_WHATSAPP_URL } from '../constants';
 
 export async function HeroSection() {
   const t = await getTranslations();
@@ -80,18 +80,27 @@ export async function HeroSection() {
               </p>
             </Reveal>
 
+            {/*
+              Set at --text-display-s (max 4rem) rather than --text-display
+              (max 6.5rem). The headline is two sentences now, and at the larger
+              step it filled the entire fold on a laptop — the visitor would have
+              had to scroll before learning anything beyond the slogan, which is
+              the specific failure a hero is supposed to avoid. Two sentences at
+              4rem still dominate the screen and leave room for the sub-line and
+              both buttons above the fold.
+            */}
             <LineReveal
               as="h1"
               immediate
               delay={0.18}
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-display)',
+                fontSize: 'var(--text-display-s)',
                 fontWeight: 'var(--weight-display)',
                 letterSpacing: 'var(--tracking-display)',
                 lineHeight: 'var(--leading-display)',
                 color: 'var(--color-void-ink)',
-                maxWidth: '14ch',
+                maxWidth: '19ch',
                 margin: 0,
                 textWrap: 'balance',
               }}
@@ -123,19 +132,36 @@ export async function HeroSection() {
                 marginTop: 'var(--space-xl)',
               }}
             >
+              {/*
+                Two actions, not four. "Obtenir un devis gratuit" is what every
+                forwarder's hero says and it asks the visitor to commit to a
+                transaction they cannot yet price; "Expédier avec ChinaLink"
+                names the company and the act.
+                The message is pre-filled so the conversation starts with
+                context instead of "Bonjour" — see HERO_WHATSAPP_URL.
+              */}
               <Cta
-                href={WHATSAPP_URL}
+                href={HERO_WHATSAPP_URL}
                 external
                 variant="solid"
                 tone="void"
                 size="lg"
                 magnetic
+                data-cta="hero-whatsapp"
                 icon={<MessageCircle size={18} aria-hidden />}
               >
-                {t('cta.getQuote')}
+                {t('cta.startShipping')}
               </Cta>
-              <Cta href={`#${SECTION_IDS.SERVICES}`} variant="outline" tone="void" size="lg">
-                {t('cta.discoverServices')}
+              {/*
+                The secondary path used to point at #services — a list of what
+                we sell, to a visitor who does not yet know how any of it works.
+                It points at the journey instead, which is the section that
+                answers the question the headline just raised. It is also a real
+                anchor on this page: there is no public tracking page on the
+                web, so a "track my parcel" button here would lead nowhere.
+              */}
+              <Cta href="#parcours" variant="outline" tone="void" size="lg" data-cta="hero-journey">
+                {t('cta.seeHowItWorks')}
               </Cta>
             </Reveal>
           </div>

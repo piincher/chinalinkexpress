@@ -8,27 +8,29 @@
 // App Info
 export const APP_NAME = 'ChinaLink Express';
 export const APP_SHORT_NAME = 'CLEXPRESS';
-export const APP_TAGLINE = 'Votre Partenaire Logistique Chine-Afrique';
+/**
+ * "Votre partenaire logistique Chine-Afrique" said nothing: it is the sentence
+ * on every freight forwarder's homepage, and it describes the category rather
+ * than this company. The tagline now names the route and the promise.
+ */
+export const APP_TAGLINE = 'De votre fournisseur en Chine jusqu\'à Bamako';
 
-// Business Info
-export const FOUNDING_YEAR = 2019;
-export const YEARS_OF_EXPERIENCE = new Date().getFullYear() - FOUNDING_YEAR;
-
-// Stats (numeric values for Counter animation)
-export const STATS = {
-  SHIPMENTS: { value: 12847, suffix: '+' },
-  CLIENTS: { value: 1247, suffix: '' },
-  RATING: { value: 4.8, suffix: '', decimals: 1 },
-  REVENUE: { value: 2.4, suffix: 'M+', prefix: '$' },
-} as const;
-
-// Legacy stats (for backward compatibility)
-export const LEGACY_STATS = {
-  SATISFIED_CLIENTS: '1000+',
-  COUNTRIES_SERVED: '5+',
-  SUCCESS_RATE: '89.8%',
-  SUPPORT_HOURS: '24/7',
-} as const;
+/**
+ * Business figures live in `companyFacts.ts`, where each one carries the
+ * production query that produced it and a verification date.
+ *
+ * What used to be here — `STATS` (12,847 shipments / 1,247 clients / 4.8 rating
+ * / $2.4M revenue) and `LEGACY_STATS` (1000+ clients / 89.8% success rate) —
+ * was fabricated. Two of those figures contradicted each other on the same page.
+ * Do not reintroduce a number in this file; import it from companyFacts.
+ */
+export {
+  FOUNDING_YEAR,
+  SHIPMENTS_HANDLED,
+  CLIENTS_SERVED,
+  CLIENTS_ACTIVE_12M,
+  yearsOperating,
+} from './companyFacts';
 
 // Shipping Times
 export const SHIPPING_TIMES = {

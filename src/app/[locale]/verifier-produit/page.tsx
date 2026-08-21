@@ -90,7 +90,7 @@ export default async function VerifierProduitPage({ params }: Props) {
   return (
     <>
       <StructuredData schemas={schemas} />
-      <main className="min-h-screen bg-slate-950 text-white">
+      <div className="min-h-screen bg-slate-950 text-white">
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 pt-28 pb-16">
           <div className="absolute inset-0 overflow-hidden">
@@ -200,7 +200,7 @@ export default async function VerifierProduitPage({ params }: Props) {
             </a>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

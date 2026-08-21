@@ -378,18 +378,74 @@ export async function generateLocalizedMetadata({
  * Home page metadata
  */
 export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
-  const isEn = locale === 'en';
-  
+  /*
+   * The homepage title used to read "N°1 Transitaire Chine Afrique". Two
+   * problems, and the second is the expensive one.
+   *
+   * "N°1" is an unverifiable superlative — the kind of claim that reads as
+   * noise to a reader and carries no weight with a search engine, because
+   * every competitor makes it too.
+   *
+   * More importantly it positioned the brand as pan-African. The business runs
+   * one corridor: Guangzhou and Foshan to Bamako. Spreading the homepage's
+   * strongest signal across "Afrique", Senegal, Ivory Coast, Ghana and Nigeria
+   * meant the highest-authority URL on the site never said plainly what this
+   * company is, which is precisely the ambiguity that lets similarly-named
+   * forwarders occupy the brand's own search results. The route pages still
+   * cover the other corridors; the homepage now claims one thing.
+   *
+   * The keyword list is trimmed from ~40 terms to the handful that describe
+   * the business. `keywords` carries no ranking weight, and a 40-term list is
+   * a stuffing signal — the terms live in the page copy, where they count.
+   */
+  /*
+   * All four locales, not the usual `isEn ? english : french`.
+   *
+   * Every generator in this file branches on English alone, so the Chinese and
+   * Arabic pages have always carried French titles and French descriptions.
+   * For most pages that is a cosmetic problem; for the four home pages it is
+   * the highest-authority URL on the site telling a Chinese-language searcher
+   * nothing it can read — and the Chinese page is the one a *supplier* in
+   * Guangzhou lands on when a client sends them the link. Translating the whole
+   * metadata layer is a larger job; the home pages are worth doing now.
+   */
+  const byLocale = {
+    fr: {
+      title: 'ChinaLink Express | Transport Chine–Mali, Fret Aérien & Maritime',
+      description:
+        "Expédition de marchandises de Chine vers le Mali : recherche de fournisseurs, achat et paiement en Chine, réception à nos entrepôts de Guangzhou et Foshan, fret aérien en 14 à 21 jours ou maritime en 60 à 75 jours, et suivi de vos colis jusqu'à Bamako.",
+      keywords:
+        'ChinaLink Express, transport chine mali, cargo chine mali, transitaire chine mali, fret aérien chine mali, fret maritime chine mali, expédition chine bamako, fournisseur chine mali, paiement fournisseur chine',
+    },
+    en: {
+      title: 'ChinaLink Express | China–Mali Shipping, Air & Sea Freight to Bamako',
+      description:
+        'Ship goods from China to Mali: supplier sourcing, purchase and payment in China, receiving at our Guangzhou and Foshan warehouses, air freight in 14–21 days or sea freight in 60–75 days, and shipment tracking through to Bamako.',
+      keywords:
+        'ChinaLink Express, China Mali shipping, freight forwarder China Mali, air freight China Bamako, sea freight China Mali, China sourcing agent Mali, pay Chinese supplier, import from China to Mali',
+    },
+    zh: {
+      title: 'ChinaLink Express | 中国至马里货运，空运与海运',
+      description:
+        '从中国发货到马里：寻找供应商、在中国采购与代付货款、货物入广州和佛山仓库、空运14至21天或海运60至75天，全程可查询状态，直至巴马科。',
+      keywords:
+        'ChinaLink Express, 中国到马里, 马里货运, 中国马里空运, 中国马里海运, 巴马科货运, 中国采购代理, 代付供应商货款',
+    },
+    ar: {
+      title: 'ChinaLink Express | الشحن من الصين إلى مالي، جوًا وبحرًا',
+      description:
+        'شحن البضائع من الصين إلى مالي: البحث عن الموردين، والشراء والدفع في الصين، والاستلام في مستودعينا بقوانغتشو وفوشان، وشحن جوي خلال 14 إلى 21 يومًا أو بحري خلال 60 إلى 75 يومًا، مع متابعة شحنتك حتى باماكو.',
+      keywords:
+        'ChinaLink Express, الشحن من الصين إلى مالي, شحن جوي الصين مالي, شحن بحري الصين مالي, باماكو شحن, وكيل شراء من الصين, دفع للموردين الصينيين',
+    },
+  } as const;
+
+  const copy = byLocale[locale] ?? byLocale.fr;
+
   return generatePageMetadata({
-    title: isEn 
-      ? 'ChinaLink Express | #1 Freight Forwarder China to Africa | Shipping & Sourcing'
-      : 'ChinaLink Express | N°1 Transitaire Chine Afrique | Fret & Sourcing',
-    description: isEn
-      ? '#1 freight forwarder and sourcing agent from China to Africa. Air freight 14-21 days, sea freight 60-75 days. Alibaba & 1688 buying agent, supplier payment, verification. Free WhatsApp quote! Serving Mali, Senegal, Ivory Coast, Ghana, Nigeria & all West Africa.'
-      : 'N°1 transitaire et agent sourcing de la Chine vers l\'Afrique. Fret aérien 14-21 jours, maritime 60-75 jours. Agent achat Alibaba & 1688, paiement fournisseur, vérification. Devis gratuit WhatsApp ! Livraison Mali, Sénégal, Côte d\'Ivoire, Ghana, Nigeria et Afrique de l\'Ouest.',
-    keywords: isEn
-      ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Africa shipping, shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, shipping from China to Senegal, China to Ivory Coast freight, Alibaba shipping agent, China sourcing agent, buy from Alibaba Africa, supplier payment China, verify Chinese supplier, China to Mali cargo, freight forwarder China Mali, import from China Mali, wholesale from China Africa, container shipping China Africa, door to door shipping China Africa, cheapest shipping China Africa, Alibaba agent Mali, 1688 sourcing agent, pay Chinese supplier, factory audit China, import textiles China, import electronics China, import machinery China, import cosmetics China, import auto parts China, building materials China Africa, cargo shipping Bamako, freight forwarder Bamako, China Mali trade, West Africa logistics'
-      : 'cargo chine mali, transitaire chine mali, fret chine bamako, envoi colis chine mali, fret aerien chine afrique, conteneur chine mali, expedition chine mali, achat alibaba mali, agent sourcing chine, chinalink express, fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, agent achat Alibaba, acheter sur 1688 Afrique, payer fournisseur chinois, vérifier fournisseur chinois, cargo aérien Chine Mali, conteneur maritime Chine Afrique, livraison porte à porte Chine Afrique, fret pas cher Chine Afrique, agent Alibaba Mali, agent sourcing 1688, paiement fournisseur Chine, audit usine Chine, importer textiles Chine, importer électronique Chine, importer machines Chine, importer cosmétiques Chine, importer pièces auto Chine, matériaux construction Chine Afrique, expédition Bamako, transitaire Bamako, commerce Chine Mali, logistique Afrique de l\'Ouest',
+    title: copy.title,
+    description: copy.description,
+    keywords: copy.keywords,
     path: '/',
     locale,
     ogType: 'website',

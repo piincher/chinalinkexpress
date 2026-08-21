@@ -19,3 +19,5 @@ export { ComparisonSection } from './ComparisonSection';
 export { AppPreviewSection } from './AppPreviewSection';
 export { JourneySection } from './JourneySection';
 export { LiveFeedSection } from './LiveFeedSection';
+export { FinalCtaSection } from './FinalCtaSection';
+export { TrackingPreview } from './TrackingPreview';

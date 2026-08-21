@@ -18,7 +18,6 @@ import { SplitPaymentBanner } from '@/features/trust/components/SplitPaymentBann
 import { DamageGuaranteeSection } from '@/features/trust/components';
 import { TrustFlowSection } from '@/features/trust/components/TrustFlowSection';
 import { WhatsAppPhotoUpdates } from '@/features/trust/components/WhatsAppPhotoUpdates';
-import { VerifiedReviewsSection } from '@/features/reviews/components/VerifiedReviewsSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 
 export function CalculatorPage() {
@@ -42,7 +41,21 @@ export function CalculatorPage() {
       {/* Split Payment Banner */}
       <SplitPaymentBanner />
 
-      <VerifiedReviewsSection />
+      {/*
+        `VerifiedReviewsSection` is no longer mounted here.
+        It rendered a 4.8 average "Basé sur 312 avis clients vérifiés", source
+        badges, and a rotating carousel of eight reviews from
+        features/reviews/data/reviews.ts — every one of them invented, each
+        flagged `verified: true`, each with a relative date ("il y a 2
+        semaines") that made them look freshly collected, and two of them
+        carrying specific loss-avoided figures (2 000 € of fabric, a 16-day
+        delivery). The production database holds two reviews.
+        The real ones are on the home page, and the video section below shows
+        the two clients who genuinely filmed something. The component and its
+        data file are left in the tree so that whoever wires this up to the
+        `reviews` collection has the UI ready — it needs a data source, not a
+        rewrite.
+      */}
       <VideoTestimonialsSection />
 
       {/* Navigation to Pricing */}

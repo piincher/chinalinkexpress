@@ -29,22 +29,24 @@
     "learnMore": "了解更多",
     "discoverServices": "了解我们的服务",
     "sendMessage": "发送消息",
-    "downloadApp": "下载应用"
+    "downloadApp": "下载应用",
+    "startShipping": "开始发货",
+    "seeHowItWorks": "了解流程"
   },
   "hero": {
-    "title": "ChinaLink Express - 您的物流合作伙伴",
-    "subtitle": "从供应商搜索到最终交付，我们在每一步都为您提供支持。采购、质量控制、安全支付和运输：一个合作伙伴覆盖您的整个供应链。",
+    "title": "ChinaLink Express — 中国至马里货运",
+    "subtitle": "寻找供应商、在中国采购与付款、仓库收货与拼箱、空运或海运、清关及巴马科交付。",
     "typingTexts": [
       "完整物流解决方案",
       "国际货运服务",
       "您信赖的合作伙伴"
     ],
-    "badge": "全天候运营 • 保证送达",
+    "badge": "中国 → 巴马科 · 空运与海运",
     "stats": {
       "payOnDelivery": "货到付款"
     },
-    "headline": "从下单到送货，我们全程搞定。",
-    "subheadline": "从中国轻松进口——无需烦恼。",
+    "headline": "货物离开中国，您始终掌握它的去向。",
+    "subheadline": "代您向供应商采购，货物入我们广州和佛山的仓库，空运或海运发出，每一个环节都通知到您，直至巴马科。",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -81,65 +83,84 @@
       "24/7追踪",
       "门到门配送"
     ],
-    "carriersLabel": "我们的承运伙伴"
+    "carriersLabel": "我们的承运伙伴",
+    "finalCta": {
+      "title": "货已经在中国了？",
+      "lede": "把产品链接、数量和您想走的运输方式发给我们，我们告诉您价格和时效。"
+    }
   },
   "stats": {
-    "sectionLabel": "我们的数据",
-    "title": "实力见证",
-    "shipments": "货运量",
+    "sectionLabel": "网络数据",
+    "title": "我们实际发出的货量",
+    "shipments": "已处理货运",
     "countries": "覆盖国家",
-    "rating": "平均评分",
     "satisfiedClients": "满意客户",
     "countriesServed": "服务国家",
-    "successRate": "成功率",
     "support": "客户支持",
     "experienceYears": "年经验",
-    "deliveryRate": "交付率",
     "activeClients": "活跃客户",
-    "ratingLabel": "基于 312 条已验证客户评价",
-    "ratingValue": "4.8",
-    "activeClientsCount": "1,247"
+    "clientsServed": "服务过的客户",
+    "clientsActive": "近12个月活跃客户",
+    "warehouses": "中国仓库",
+    "provenance": "数据于 {date} 取自我们自己的系统。我们不公布平均评分：迄今仅收到 {reviews} 条评价，不足以构成平均值。"
   },
   "about": {
     "sectionLabel": "关于我们",
-    "title": "关于 ChinaLink Express",
-    "description1": "成立于2019年，ChinaLink Express 已成为国际物流领域的重要参与者，专注于中国和马里之间的贸易。我们提供采购、运输和货物交付的完整解决方案。",
-    "description2": "我们的使命是通过提供完整的采购、运输和支付解决方案来简化国际贸易，让我们的客户能够专注于他们的核心业务。",
+    "title": "关于我们",
+    "description1": "ChinaLink Express 只做一条线路：中国与马里。巴马科设有办公室，中国有两个仓库——广州收空运货，佛山收海运货，供应商把您的货送到这里。",
+    "description2": "我们不止是运输。我们可以帮您找供应商、验货、在中国付款、拼箱，并全程通知您——让您在一万两千公里外采购，不等于盲买。",
     "tags": [
-      "可靠",
-      "快速",
-      "安全",
-      "覆盖非洲"
+      "成立于 2019",
+      "巴马科办公室",
+      "中国两个仓库",
+      "空运与海运"
     ],
     "gallery": {
       "warehouseLabel": "我们的仓库",
       "warehouseLocation": "中国佛山里水"
-    }
+    },
+    "foundedLabel": "成立于"
   },
   "services": {
     "sectionLabel": "我们的服务",
-    "title": "我们的服务",
-    "subtitle": "简化您与中国贸易的完整解决方案",
+    "title": "我们负责的环节",
+    "subtitle": "三个阶段：发货前、在中国、运往巴马科。三段全交给我们，或只交运输，都可以。",
     "items": {
       "sourcing": {
-        "title": "采购服务",
-        "description": "我们以专业和透明的方式为您管理中国供应商的采购。"
+        "title": "寻找供应商",
+        "description": "您告诉我们要什么，我们在中国找供应商、谈价，并在发货前验货。"
       },
       "airFreight": {
-        "title": "空运服务",
-        "description": "通过空运快速交付您的紧急货物到世界各地。"
+        "title": "空运",
+        "description": "从广州出港，14至21天抵达巴马科。适合小体积、高货值和等不起的货。"
       },
       "seaFreight": {
-        "title": "海运服务",
-        "description": "通过海运运输大批量货物的经济解决方案。"
+        "title": "海运",
+        "description": "从佛山出运，60至75天。整柜或拼箱：货量一大就更划算。"
       },
       "payment": {
-        "title": "供应商付款",
-        "description": "我们通过支付宝、等方式为您安全地向中国供应商付款。"
+        "title": "代付供应商货款",
+        "description": "您按当日汇率用西非法郎在我们这里结算，我们在中国用支付宝或电汇付给供应商，您无需开设中国账户。"
       },
-      "recharge": {
-        "title": "账户充值",
-        "description": "通过橙色货币、Wave或现金轻松为您的ChinaLink Express账户充值，实现更快的交易。"
+      "verification": {
+        "title": "供应商核实",
+        "description": "已经在阿里巴巴或1688上找到人了？在您付款之前，我们先实地核实对方。"
+      },
+      "reception": {
+        "title": "仓库收货",
+        "description": "供应商按运输方式送至广州或佛山。货物过磅、量方、拍照，并登记在您名下。"
+      },
+      "consolidation": {
+        "title": "拼箱合并",
+        "description": "发运前，把来自多个供应商的订单合并为一票。"
+      },
+      "registration": {
+        "title": "登记与状态更新",
+        "description": "每件货都有编号、体积和状态。每次状态变更都会发送给您，并可在应用中随时查看。"
+      },
+      "delivery": {
+        "title": "清关与交付",
+        "description": "到港后办理清关，然后在巴马科提货或送货。货一到位就通知您。"
       }
     },
     "features": {
@@ -178,29 +199,35 @@
       "note": "该应用仅对注册客户开放。",
       "previewTitle": "探索我们的移动应用",
       "previewDescription": "追踪您货物的每一步旅程。"
+    },
+    "groups": {
+      "before": "发货前",
+      "inChina": "在中国",
+      "toBamako": "运往巴马科"
     }
   },
   "whyUs": {
-    "sectionLabel": "为什么选择我们",
-    "title": "为什么选择 ChinaLink Express？",
+    "sectionLabel": "具体而言",
+    "title": "通过我们发货，有什么不同",
     "items": {
-      "speed": {
-        "title": "快速",
-        "description": "以市场上最短的时间提供快递服务。"
+      "warehouses": {
+        "title": "两个仓库，分运输方式",
+        "description": "广州收空运，佛山收海运。供应商按您的运输方式送到对应仓库，外箱写明您的客户编号。"
       },
-      "reliability": {
-        "title": "可靠",
-        "description": "实时追踪和24/7客户服务。"
+      "oneContact": {
+        "title": "从采购到巴马科，只对接一个人",
+        "description": "我们可以代您向供应商采购、在中国付款、收货、拼箱并发运。您不必在四家服务商之间来回协调、互相推诿。"
       },
-      "price": {
-        "title": "价格竞争力",
-        "description": "市场上最优惠的价格，无隐藏费用。"
+      "consolidation": {
+        "title": "多个供应商，一票发出",
+        "description": "各家订单分别到仓，合并成一票发出。运费按一票计算，而不是每个卖家各付一次。"
       },
-      "expertise": {
-        "title": "专业",
-        "description": "超过7年的国际物流经验。"
+      "updates": {
+        "title": "主动通知，不让您猜",
+        "description": "入仓、打包、装柜、在途、到港：每一次状态变更都会被记录，并通过 WhatsApp 和应用推送给您。"
       }
-    }
+    },
+    "moreLink": "详细对比：全流程伙伴还是单纯的货代"
   },
   "successStories": {
     "sectionLabel": "Success Stories",
@@ -317,15 +344,15 @@
     "englishCtaTitle": "联系进口顾问",
     "englishCtaText": "发送产品链接、预计数量和目的地。我们的团队会在您付款前提供指导。",
     "englishCtaButton": "在 WhatsApp 开始",
-    "trustImporters": "已服务500+进口商",
-    "trustResponse": "10分钟内回复"
+    "trustImporters": "已服务 253 位客户",
+    "trustResponse": "通过 WhatsApp 回复"
   },
   "contact": {
     "sectionLabel": "联系我们",
-    "title": "联系我们",
-    "subtitle": "我们的团队随时为您提供帮助，解答您的所有问题",
+    "title": "聊聊您的这批货",
+    "subtitle": "告诉我们您想从中国进什么货。我们在 WhatsApp 上回复，日常沟通都在那里。",
     "form": {
-      "title": "给我们发送消息",
+      "title": "编写您的消息",
       "name": "姓名",
       "email": "电子邮箱",
       "phone": "电话",
@@ -348,7 +375,12 @@
         "phoneInvalid": "请输入有效的电话号码",
         "messageRequired": "请输入留言",
         "messageMin": "留言至少需要10个字符"
-      }
+      },
+      "intro": "填写这三项，我们会打开 WhatsApp 并预填好消息，您确认后再发送。",
+      "goodsLabel": "您要运的货",
+      "goodsPlaceholder": "例如：从广州发 200 双鞋，走海运",
+      "openWhatsApp": "打开 WhatsApp",
+      "emailInstead": "更想用邮件？"
     },
     "info": {
       "title": "联系信息",
@@ -360,7 +392,8 @@
       "available24_7": "24/7紧急服务",
       "hoursWeekday": "周一至周五：上午8:00 - 晚上8:00",
       "hoursSaturday": "周六：上午9:00 - 下午5:00",
-      "hoursSunday": "周日：上午10:00 - 下午3:00"
+      "hoursSunday": "周日：上午10:00 - 下午3:00",
+      "responseNote": "WhatsApp 是我们在中国和马里的主要沟通方式。"
     }
   },
   "footer": {
@@ -518,7 +551,7 @@
         "express": "闪送快递: 2-5天",
         "standard": "空运标准: 14-21天",
         "sea": "海运经济: 60-75天",
-        "reviews": "4.8 ★ — 312 条评价"
+        "shipments": "已处理 {count} 票货运"
       }
     },
     "navigation": {
@@ -1140,8 +1173,6 @@
     }
   },
   "reviews": {
-    "aggregateRating": "4.8",
-    "reviewCount": "312",
     "basedOn": "基于 {count} 条已验证客户评价",
     "verified": "已验证评价",
     "sourceLabel": "来源：Google Reviews 与 Trustpilot",
@@ -1172,62 +1203,6 @@
     "badgeSub": "在客户现场拍摄",
     "watchVideo": "观看视频",
     "language": "语言",
-    "videos": [
-      {
-        "name": "Amadou Diallo",
-        "business": "Diallo Electronics, 巴马科",
-        "country": "马里",
-        "language": "法语 / 班巴拉语",
-        "quote": "以前我要付给4个不同的供应商。现在只需要一个。ChinaLink从头到尾全程处理。",
-        "result": "16天",
-        "resultLabel": "巴马科 → 工厂发货"
-      },
-      {
-        "name": "Fatou Ndiaye",
-        "business": "非洲时尚, 达喀尔",
-        "country": "塞内加尔",
-        "language": "法语 / 沃洛夫语",
-        "quote": "在中国的质量控制帮我避免了40,000西非法郎的损失。质检照片真是救星。",
-        "result": "+40%",
-        "resultLabel": "净利润"
-      },
-      {
-        "name": "Kofi Mensah",
-        "business": "Mensah Phones, 阿克拉",
-        "country": "加纳",
-        "language": "英语 / 特威语",
-        "quote": "第三次使用ChinaLink发货。每一次都比上一次更快。WhatsApp上的照片更新改变了游戏规则。",
-        "result": "第3次",
-        "resultLabel": "发货"
-      },
-      {
-        "name": "Aminata Koné",
-        "business": "Pure Beauty, 阿比让",
-        "country": "科特迪瓦",
-        "language": "法语 / 迪乌拉语",
-        "quote": "质检照片帮我节省了2000欧元。我在货物离开中国之前就拒绝了一批有缺陷的产品。",
-        "result": "2000欧元",
-        "resultLabel": "节省"
-      },
-      {
-        "name": "Ousmane Sawadogo",
-        "business": "Sawadogo建筑, 瓦加杜古",
-        "country": "布基纳法索",
-        "language": "法语 / 莫西语",
-        "quote": "我的第一个集装箱。我很害怕。但他们在每一步都指导我。从开始到交付。",
-        "result": "第1个",
-        "resultLabel": "集装箱"
-      },
-      {
-        "name": "Mariam Houessou",
-        "business": "Houessou贸易, 科托努",
-        "country": "贝宁",
-        "language": "法语 / 丰语",
-        "quote": "客服凌晨2点还在回复。当我有问题时，我在WhatsApp上给他们发消息，问题就解决了。",
-        "result": "24/7",
-        "resultLabel": "WhatsApp支持"
-      }
-    ],
     "title": "真实的人。真实的故事。真实的结果。",
     "subtitle": "没有演员。没有剧本。非洲进口商讲述他们的真实经历。",
     "trustBadge": {
@@ -1351,20 +1326,28 @@
     "home": "首页"
   },
   "appSection": {
-    "title": "您的货物，尽在掌握",
-    "previewDescription": "实时追踪您的货物，每一步都收到通知，并直接从应用程序联系您的代理。"
+    "title": "货在路上时，您看到的是这些",
+    "previewDescription": "仓库记录的每一步都会出现在您的账户里：日期、状态、体积、运输方式。不用问，也不用催。",
+    "label": "货物追踪",
+    "demoLabel": "界面示例 — 示意数据",
+    "demoNote": "仅作示意：以上编号与时间为示例，并非真实客户数据。"
   },
   "promoCampaign": {
     "close": "关闭"
   },
   "sourcing": {
     "title": "从中国市场直达您家门口",
-    "subtitle": "在1688、淘宝、阿里巴巴或工厂直接采购。您的订单先到达我们的中国仓库，再送到巴马科您的家门口。"
+    "subtitle": "在1688、淘宝、阿里巴巴或工厂直接采购。您的订单先到达我们的中国仓库，再送到巴马科您的家门口。",
+    "steps": {
+      "buy": "您下单",
+      "consolidate": "我们收货",
+      "receive": "您收货"
+    }
   },
   "journey": {
     "label": "运输流程",
     "title": "从下单到送达",
-    "lede": "四个阶段，一位专属对接人。您可在应用中跟踪每一步。",
+    "lede": "四个阶段，一个对接人。每个阶段都记录在系统里，也都会通知到您。",
     "steps": [
       {
         "key": "01",

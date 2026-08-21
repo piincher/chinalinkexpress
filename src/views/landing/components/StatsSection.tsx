@@ -1,41 +1,66 @@
 'use client';
 
 /**
- * Stats — a measured strip, not a card grid.
+ * Stats — a measured strip, and now a true one.
  *
- * Four figures separated by hairline rules, set large in the display face. The
- * previous version put them in the mono face at --text-3xl inside a stagger
- * container; mono digits read as *data*, which is right for a dashboard and
- * wrong for a claim. Set in Archivo at display size they read as a statement,
- * which is what a landing page stat is.
+ * The layout is unchanged and was never the problem: four figures separated by
+ * hairline rules, set large in the display face rather than in mono, so they
+ * read as a statement rather than as a dashboard.
  *
- * Every number here comes from `STATS` in appConstants and the ratings copy in
- * the locale files — the site's existing figures. Nothing was rounded up for
- * effect and nothing was invented.
+ * The numbers were the problem. This band rendered `1,247` satisfied clients,
+ * `12,847` shipments, `7+` years and a `4.8` rating, under the line "Basé sur
+ * 312 avis clients vérifiés". None of those four came from anywhere. The
+ * production database holds 890 shipments, 253 clients who have actually
+ * shipped, and **two** reviews. The site's own LocalBusiness markup meanwhile
+ * declared the same 4.8 from 127 reviews — two different invented denominators
+ * for one invented average, on one page.
+ *
+ * Every figure now comes from `constants/companyFacts.ts`, where each carries
+ * the query that produced it and the date it was last recomputed. The rating is
+ * gone entirely and the line underneath says why: a company that explains where
+ * its numbers come from is making a claim its competitors cannot copy, which is
+ * worth more than a fifth digit nobody believes.
+ *
+ * The fourth column is the two Chinese warehouses rather than a years count.
+ * "7+ ans d'expérience" is the single most replaceable line in freight
+ * marketing; "2 entrepôts en Chine" is a fact about this company specifically,
+ * and it sets up the sections below it.
  */
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
-import { Star } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell } from '@/components/site';
-import { Counter, RevealGroup } from '@/components/motion';
-import { STATS } from '@/constants/appConstants';
+import { Counter, Reveal, RevealGroup } from '@/components/motion';
+import {
+  SHIPMENTS_HANDLED,
+  CLIENTS_SERVED,
+  CLIENTS_ACTIVE_12M,
+  WAREHOUSES,
+  REVIEWS_COLLECTED,
+  VERIFIED_ON,
+} from '@/constants/companyFacts';
 import { SECTION_IDS } from '../constants';
+
+/** dd/mm/yyyy — the form a Bamako reader expects. */
+function formatVerifiedOn(iso: string, locale: string): string {
+  const date = new Date(`${iso}T00:00:00Z`);
+  return new Intl.DateTimeFormat(locale, {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
+}
 
 export function StatsSection() {
   const t = useTranslations('stats');
+  const locale = useLocale();
 
   const figures = [
-    { value: STATS.CLIENTS.value, suffix: STATS.CLIENTS.suffix, label: t('satisfiedClients') },
-    { value: STATS.SHIPMENTS.value, suffix: STATS.SHIPMENTS.suffix, label: t('shipments') },
-    { value: 7, suffix: '+', label: t('experienceYears') },
-    {
-      value: STATS.RATING.value,
-      suffix: STATS.RATING.suffix,
-      decimals: STATS.RATING.decimals,
-      label: t('rating'),
-      star: true,
-    },
+    { value: SHIPMENTS_HANDLED, label: t('shipments') },
+    { value: CLIENTS_SERVED, label: t('clientsServed') },
+    { value: CLIENTS_ACTIVE_12M, label: t('clientsActive') },
+    { value: WAREHOUSES.length, label: t('warehouses') },
   ];
 
   return (
@@ -46,6 +71,42 @@ export function StatsSection() {
       style={{ paddingBlock: 'clamp(2.75rem, 5vw, 4.5rem)' }}
     >
       <Shell>
+        {/*
+          This band had no heading at all — four numbers floating between two
+          headed sections. That left a gap in the document outline, gave the
+          figures no subject, and wasted the one line on the page that says
+          plainly these are real: "Ce que nous avons réellement expédié".
+          Compact rather than the full SectionHead, because the strip is short
+          and a full heading block would outweigh what it introduces.
+        */}
+        <Reveal style={{ marginBottom: 'var(--space-xl)' }}>
+          <p
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent)',
+              margin: '0 0 var(--space-sm)',
+            }}
+          >
+            {t('sectionLabel')}
+          </p>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-xl)',
+              fontWeight: 'var(--weight-heading)',
+              letterSpacing: 'var(--tracking-heading)',
+              color: 'var(--color-ink)',
+              margin: 0,
+              maxWidth: '22ch',
+            }}
+          >
+            {t('title')}
+          </h2>
+        </Reveal>
+
         <RevealGroup
           stagger={0.09}
           style={{
@@ -82,19 +143,11 @@ export function StatsSection() {
                   color: 'var(--color-ink)',
                 }}
               >
-                <Counter
-                  value={figure.value}
-                  suffix={figure.suffix}
-                  decimals={figure.decimals ?? 0}
-                />
-                {figure.star && (
-                  <Star
-                    size={20}
-                    aria-hidden
-                    style={{ color: 'var(--color-accent)' }}
-                    fill="currentColor"
-                  />
-                )}
+                {/*
+                  No "+" suffix on any of these. A plus sign is how a rounded
+                  number hides that it was rounded; 890 is 890.
+                */}
+                <Counter value={figure.value} decimals={0} />
               </div>
               <div
                 style={{
@@ -112,18 +165,21 @@ export function StatsSection() {
           ))}
         </RevealGroup>
 
-        {/* The rating is sourced from 312 verified reviews; saying so is worth
-            more than the number on its own. */}
         <p
           style={{
             fontFamily: 'var(--font-body)',
             fontSize: 'var(--text-sm)',
+            lineHeight: 'var(--leading-body)',
             color: 'var(--color-neutral)',
             marginTop: 'var(--space-xl)',
             marginBottom: 0,
+            maxWidth: 'var(--measure)',
           }}
         >
-          {t('ratingLabel')}
+          {t('provenance', {
+            date: formatVerifiedOn(VERIFIED_ON, locale),
+            reviews: REVIEWS_COLLECTED,
+          })}
         </p>
       </Shell>
     </Band>

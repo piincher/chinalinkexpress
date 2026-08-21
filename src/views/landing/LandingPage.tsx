@@ -1,41 +1,47 @@
 /**
- * Landing page — band rhythm.
+ * Landing page — one argument, told in order.
  *
- * The problem this ordering solves: the page was seventeen sections that all
- * looked the same. White background, centred pill, centred heading, gradient
- * underline, three rounded cards. Nothing was emphasised because everything
- * was, and a reader arriving at section nine had no idea whether they were near
- * the beginning or the end.
+ * The previous ordering solved a real problem (seventeen identical white
+ * sections with no rhythm) by alternating tone — paper → paper-2 → void — and
+ * cutting four duplicated sections. That work stands: the bands still
+ * alternate, the three `void` bands still mark the opening, the centre and the
+ * close, and TrustFlow / Partners / VerifiedReviews / SuccessStories are still
+ * unmounted as restatements of Journey, the services index and the hero's
+ * carrier bar. Comparison joins them, for the same reason — see section VIII.
  *
- * The fix is tonal rhythm rather than deletion. Sections alternate paper →
- * paper-2 → void, and the three `void` bands are placed at the moments the page
- * most wants remembered: the opening statement, the journey, and the close.
- * Everything between them is quiet on purpose, so those three land.
+ * What it did not solve is the *sequence of the argument*. The page opened with
+ * a claim, then made that claim four more ways — sourcing strip, figures,
+ * services index, journey, live feed, "why us", comparison table, about — and
+ * only then, tenth, showed the product that makes the claim true. A reader
+ * deciding whether to trust a company with goods sitting in a Guangzhou
+ * warehouse does not need the fifth argument; they need the first piece of
+ * evidence, early.
  *
- * Four sections were cut, because the page was telling one story four times:
+ * So the spine is now: promise → what we are → proof → how it works → the
+ * network live → what we handle → the figures → the argument → other people →
+ * the close.
  *
- *   TrustFlow            six numbered steps of "we handle everything", which is
- *                        the Journey section's four stages plus the Comparison
- *                        section's argument, in smaller type. It also embedded
- *                        its own second "Qui fait quoi" comparison table.
- *   Partners             a carrier logo wall, now the hero's proof bar.
- *   VerifiedReviews      a third rotation of customer quotes.
- *   SuccessStories       already unreferenced.
+ * The one structural move that matters: AppPreview goes from tenth to third.
+ * The hero promises "vous ne perdez pas leur trace"; three screens later the
+ * page shows the status sequence, in the operation's own vocabulary, and links
+ * to the app in the stores. Everything after that is elaboration on something
+ * already demonstrated rather than a claim still waiting to be paid for.
  *
- * Repetition is what actually reads as cheap here — more than any gradient did.
- * A confident supplier states a thing once and moves on; restating it four ways
- * is what a brochure does when it is not sure you believed it the first time.
- * The components remain in the codebase and are re-mountable in one line.
+ * Two smaller changes:
  *
- * Server component: the hero is async so it can render its copy and its LCP
- * photograph on the server. Interactive sections below stay client components
- * and are rendered as children, which is allowed and keeps the boundary at the
- * leaf rather than at the page.
+ *   · The stats band moved down, from third to seventh. Numbers are an argument
+ *     for someone already interested, and they mean more after the reader has
+ *     seen what is being counted than before.
+ *   · A FinalCtaSection now precedes the contact form, so the page ends on a
+ *     reason and an action rather than on a text field.
+ *
+ * Server component. The hero is async so its copy renders on the server;
+ * interactive sections below stay client components and are passed as children,
+ * which keeps the boundary at the leaf rather than at the page.
  */
 
 import React from 'react';
 import { type Locale } from '@/i18n/config';
-import StructuredData from '@/app/components/StructuredData';
 import {
   HeroSection,
   SourcingSection,
@@ -46,8 +52,8 @@ import {
   FAQSection,
   ContactSection,
   LiveFeedSection,
+  FinalCtaSection,
 } from './components';
-import { ComparisonSection } from './components/ComparisonSection';
 import { QuizSection } from './components/QuizSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
@@ -60,41 +66,71 @@ interface LandingPageProps {
 
 export function LandingPage({ locale = 'fr' }: LandingPageProps) {
   return (
-    <>
-      <StructuredData />
-      <div style={{ backgroundColor: 'var(--color-paper)' }}>
-        <main>
-          {/* ── I. the claim ─────────────────────────────────────────────── */}
-          <HeroSection />
+    /*
+     * No <main> and no <StructuredData> here. Both were duplicates:
+     *
+     *   <main>   [locale]/layout.tsx already wraps every page's children in
+     *            one, so this produced two `main` landmarks in the document.
+     *            A screen reader offers "skip to main content" twice and
+     *            neither is authoritative.
+     *
+     *   schema   page.tsx renders <HomeStructuredData>, which emits
+     *            Organization + LocalBusiness + WebSite + Service as one graph.
+     *            This component additionally rendered the older
+     *            app/components/StructuredData with type="all", emitting a
+     *            *second* Organization and a *second* LocalBusiness from a
+     *            different config file, disagreeing on @id and address. For a
+     *            brand already being confused with similarly-named companies in
+     *            search results, publishing two versions of itself was the last
+     *            thing the page could afford.
+     */
+    <div style={{ backgroundColor: 'var(--color-paper)' }}>
+      {/* ── I. the promise ───────────────────────────────────────────────── */}
+      <HeroSection />
 
-          {/* ── II. how it works ─────────────────────────────────────────── */}
-          <SourcingSection />
-          <StatsSection />
-          <ServicesSection />
+      {/* ── II. what this company is, in one screen ──────────────────────── */}
+      <SourcingSection />
 
-          {/* ── III. the journey — the page's centre of gravity ──────────── */}
-          <JourneySection />
+      {/* ── III. the proof, immediately ──────────────────────────────────── */}
+      <AppPreviewSection />
 
-          {/* ── IV. the proof — the network, live ────────────────────────── */}
-          <LiveFeedSection />
+      {/* ── IV. how it actually works — the page's centre of gravity ─────── */}
+      <JourneySection />
 
-          {/* ── V. the argument ──────────────────────────────────────────── */}
-          <WhyUsSection />
-          <ComparisonSection />
-          <AboutSection />
-          <AppPreviewSection />
+      {/* ── V. the network, live ─────────────────────────────────────────── */}
+      <LiveFeedSection />
 
-          {/* ── VI. other people's words ─────────────────────────────────── */}
-          <TestimonialsSection />
-          <VideoTestimonialsSection />
+      {/* ── VI. what we take on ──────────────────────────────────────────── */}
+      <ServicesSection />
 
-          {/* ── VII. the close ───────────────────────────────────────────── */}
-          <QuizSection locale={locale} />
-          <FAQSection />
-          <ContactSection />
-        </main>
-      </div>
-    </>
+      {/* ── VII. the figures, once there is something to count ───────────── */}
+      <StatsSection />
+
+      {/* ── VIII. the argument ─────────────────────────────────────────────
+          ComparisonSection is no longer mounted. Its seven-row "ChinaLink vs
+          les autres" table restated the services index directly above it —
+          which now covers the same before / in-China / to-Bamako span in nine
+          rows — and then restated the four points beside it in WhyUs. Three
+          tellings of one argument is what actually reads as unconvincing, and
+          it cost ~1,800px on a phone.
+
+          Nothing is lost: /pourquoi-nous renders the full comparison from the
+          same `comparison` message namespace, and WhyUs now links to it. That
+          page previously had no inbound link from anywhere on the site. The
+          component is still in the tree and re-mounts in one line. */}
+      <WhyUsSection />
+      <AboutSection />
+
+      {/* ── IX. other people's words ─────────────────────────────────────── */}
+      <TestimonialsSection />
+      <VideoTestimonialsSection />
+
+      {/* ── X. the close ─────────────────────────────────────────────────── */}
+      <QuizSection locale={locale} />
+      <FAQSection />
+      <FinalCtaSection />
+      <ContactSection />
+    </div>
   );
 }
 

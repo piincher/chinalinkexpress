@@ -1,113 +1,179 @@
-/**
- * Quiz Section
- * 
- * Import Readiness Quiz section for the landing page.
- * Helps visitors assess if they're ready to import from China.
- */
-
 'use client';
 
+/**
+ * The readiness quiz — brought onto the site's design system.
+ *
+ * This was the last section on the home page still speaking the old visual
+ * vocabulary, and it showed: a `bg-gradient-to-b from-blue-50` band, a pill
+ * eyebrow on a tinted chip, a centred `text-6xl font-extrabold` heading with a
+ * blue accent span, three green dots as a benefits row, a hardcoded
+ * `bg-green-500` WhatsApp button, and two inline check SVGs. Every one of those
+ * is a pattern that was deliberately swept out of the other forty-odd sections
+ * of this site; leaving one behind is worse than never having done the sweep,
+ * because the reader registers the inconsistency without being able to name it.
+ *
+ * It now composes Band / Shell / SectionHead / Cta like everything else. The
+ * quiz itself — `QuizContainer`, the submission flow, the WhatsApp guide
+ * delivery — is untouched; only its frame changed.
+ *
+ * Two content fixes while here:
+ *
+ *   · "500+ importateurs accompagnés" contradicted the real client count three
+ *     sections above it on the same page. It reads 253 now, from the same
+ *     verified source as the figures band.
+ *   · "Réponse en 10 min" promised a response time nobody measures. It now
+ *     says where the answer arrives, which is true and is the useful part.
+ *
+ *   · The English-locale fallback CTA had the sales number hardcoded into a
+ *     wa.me URL — the fifth copy of that number in the codebase before the
+ *     numbers were consolidated. It goes through `whatsappUrl` now.
+ */
+
 import React from 'react';
-import { QuizContainer } from '@/features/import-quiz';
-import { HelpCircle, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { AnimatedSection } from '@/components/animations';
+import { MessageCircle, Check } from 'lucide-react';
+import { QuizContainer } from '@/features/import-quiz';
+import { Band, Shell, Cta } from '@/components/site';
+import { SectionHead } from '@/components/site/SectionHead';
+import { Reveal } from '@/components/motion';
+import { whatsappUrl, WHATSAPP_SALES } from '@/constants/contact';
 import type { Locale } from '@/i18n/config';
 
 interface QuizSectionProps {
   locale?: Locale;
 }
 
+const EN_QUIZ_WHATSAPP = whatsappUrl(
+  WHATSAPP_SALES,
+  'Hello ChinaLink, I would like advice before importing from China.'
+);
+
 export function QuizSection({ locale = 'fr' }: QuizSectionProps) {
   const t = useTranslations('quizSection');
+  // The quiz content itself only exists in French.
   const isFrenchQuizAvailable = locale === 'fr';
 
+  const benefits = (t.raw('benefits') as string[]) ?? [];
+
   return (
-    <section 
-      id="quiz"
-      className="py-20 lg:py-28 bg-gradient-to-b from-blue-50 via-white to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <AnimatedSection
-          animation="blurIn"
-          className="text-center max-w-3xl mx-auto mb-12 lg:mb-16"
-          threshold={0.4}
+    <Band id="quiz" tone="paper" ruled>
+      <Shell>
+        <SectionHead
+          label={t('badge')}
+          title={
+            <>
+              {t('title')} {t('titleAccent')}
+            </>
+          }
+          lede={
+            <>
+              {t('descriptionBefore')}{' '}
+              <strong style={{ color: 'var(--color-ink)', fontWeight: 'var(--weight-heading)' }}>
+                {t('descriptionStrong')}
+              </strong>{' '}
+              {t('descriptionAfter')}
+            </>
+          }
+        />
+
+        {/* ── what you get, as a plain rule-separated line ────────────────── */}
+        <Reveal
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'var(--space-lg)',
+            marginBottom: 'var(--space-2xl)',
+          }}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium mb-6">
-            <HelpCircle className="w-4 h-4" />
-            <span>{t('badge')}</span>
-          </div>
-
-          {/* Title */}
-            <span className="block text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mt-2 mb-6">
-            {t('title')}
-            <span className="text-blue-600 dark:text-blue-400"> {t('titleAccent')}</span>
-          </span>
-
-          {/* Description */}
-          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            {t('descriptionBefore')}{' '}
-            <span className="font-semibold text-slate-900 dark:text-white">
-              {t('descriptionStrong')}
-            </span>{' '}
-            {t('descriptionAfter')}
-          </p>
-
-          {/* Benefits */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8 text-sm text-slate-600 dark:text-slate-400">
-            {(t.raw('benefits') as string[]).map((benefit) => (
-              <div key={benefit} className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
-                <span>{benefit}</span>
-              </div>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Quiz Container */}
-        <AnimatedSection animation="scaleUp" className="max-w-2xl mx-auto" threshold={0.15}>
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm shadow-blue-500/10 dark:shadow-none border border-slate-100 dark:border-slate-700 overflow-hidden">
-            {isFrenchQuizAvailable ? (
-              <QuizContainer />
-            ) : (
-              <div className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{t('englishCtaTitle')}</h3>
-                <p className="mt-4 text-slate-600 dark:text-slate-300">{t('englishCtaText')}</p>
-                <a
-                  href="https://wa.me/8618851725957?text=Hello%20ChinaLink%2C%20I%20want%20advice%20before%20importing%20from%20China%20to%20Africa."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-green-400"
-                >
-                  {t('englishCtaButton')}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-            )}
-          </div>
-        </AnimatedSection>
-
-        {/* Trust Indicators */}
-        <AnimatedSection animation="fadeUp" className="mt-12 text-center" threshold={0.5}>
-          <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center justify-center gap-2">
-            <span className="inline-flex items-center gap-1">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              {t('trustImporters')}
+          {benefits.map((benefit) => (
+            <span
+              key={benefit}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 'var(--space-xs)',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-sm)',
+                color: 'var(--color-ink-2)',
+              }}
+            >
+              <Check size={15} aria-hidden style={{ color: 'var(--color-accent)' }} />
+              {benefit}
             </span>
-            <span className="text-slate-300">|</span>
-            <span className="inline-flex items-center gap-1">
-              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              {t('trustResponse')}
-            </span>
+          ))}
+        </Reveal>
+
+        {/* ── the quiz ────────────────────────────────────────────────────── */}
+        <Reveal
+          style={{
+            maxWidth: '44rem',
+            borderRadius: 'var(--radius-panel)',
+            border: '1px solid var(--color-rule)',
+            backgroundColor: 'var(--color-paper)',
+            overflow: 'hidden',
+          }}
+        >
+          {isFrenchQuizAvailable ? (
+            <QuizContainer />
+          ) : (
+            <div style={{ padding: 'var(--space-2xl)' }}>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'var(--text-xl)',
+                  fontWeight: 'var(--weight-heading)',
+                  letterSpacing: 'var(--tracking-heading)',
+                  color: 'var(--color-ink)',
+                  margin: 0,
+                }}
+              >
+                {t('englishCtaTitle')}
+              </h3>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'var(--text-base)',
+                  lineHeight: 'var(--leading-body)',
+                  color: 'var(--color-ink-2)',
+                  margin: 'var(--space-md) 0 var(--space-xl)',
+                  maxWidth: 'var(--measure)',
+                }}
+              >
+                {t('englishCtaText')}
+              </p>
+              <Cta
+                href={EN_QUIZ_WHATSAPP}
+                external
+                variant="solid"
+                arrow={false}
+                data-cta="quiz-whatsapp"
+                icon={<MessageCircle size={18} aria-hidden />}
+              >
+                {t('englishCtaButton')}
+              </Cta>
+            </div>
+          )}
+        </Reveal>
+
+        {/* ── the two facts underneath ────────────────────────────────────── */}
+        <Reveal>
+          <p
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: 'var(--tracking-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-neutral)',
+              marginTop: 'var(--space-xl)',
+              marginBottom: 0,
+            }}
+          >
+            {t('trustImporters')} · {t('trustResponse')}
           </p>
-        </AnimatedSection>
-      </div>
-    </section>
+        </Reveal>
+      </Shell>
+    </Band>
   );
 }
+
+export default QuizSection;

@@ -29,19 +29,21 @@
     "learnMore": "En Savoir Plus",
     "discoverServices": "Découvrir Nos Services",
     "sendMessage": "Envoyer le Message",
-    "downloadApp": "Télécharger l'application"
+    "downloadApp": "Télécharger l'application",
+    "startShipping": "Expédier avec ChinaLink",
+    "seeHowItWorks": "Voir comment ça marche"
   },
   "hero": {
-    "title": "ChinaLink Express - Votre Partenaire Logistique",
-    "headline": "Sourcing et expédition Chine-Mali",
-    "subheadline": "Importez à Bamako avec un partenaire qui gère tout.",
-    "subtitle": "De la recherche fournisseur en Chine à la livraison finale au Mali, nous vous accompagnons à chaque étape. Achats, contrôle qualité, paiement sécurisé, cargo, fret aérien, fret maritime et suivi WhatsApp : un seul partenaire pour toute votre chaîne d'approvisionnement.",
+    "title": "ChinaLink Express — Transport Chine-Mali",
+    "headline": "Vos marchandises quittent la Chine. Vous ne perdez pas leur trace.",
+    "subheadline": "Achat chez votre fournisseur, réception à nos entrepôts de Guangzhou et Foshan, expédition aérienne ou maritime, et information à chaque étape jusqu’à Bamako.",
+    "subtitle": "Recherche de fournisseurs, achat et paiement en Chine, réception et consolidation en entrepôt, fret aérien ou maritime, dédouanement et livraison à Bamako.",
     "typingTexts": [
       "Solutions Logistiques Complètes",
       "Expéditions Internationales",
       "Votre Partenaire de Confiance"
     ],
-    "badge": "Opérationnel 24/7 • Livraison garantie",
+    "badge": "Chine → Bamako · Fret aérien & maritime",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -81,40 +83,43 @@
       "Suivi 24/7",
       "Livraison Porte à Porte"
     ],
-    "carriersLabel": "Nous expédions avec"
+    "carriersLabel": "Nous expédions avec",
+    "finalCta": {
+      "title": "Vous avez des marchandises en Chine ?",
+      "lede": "Envoyez-nous le lien du produit, la quantité et le mode qui vous arrange. Nous vous disons ce que ça coûte et combien de temps ça prend."
+    }
   },
   "stats": {
-    "sectionLabel": "Nos Chiffres",
-    "title": "Des Résultats qui Parlent",
-    "shipments": "Expéditions",
+    "sectionLabel": "Le réseau en chiffres",
+    "title": "Ce que nous avons réellement expédié",
+    "shipments": "Expéditions traitées",
     "countries": "Pays desservis",
-    "rating": "Note moyenne",
     "satisfiedClients": "Clients satisfaits",
     "countriesServed": "Pays desservis",
-    "successRate": "Taux de réussite",
     "support": "Support client",
     "experienceYears": "Années d'expérience",
-    "deliveryRate": "Taux de livraison",
     "activeClients": "Clients actifs",
-    "ratingLabel": "Basé sur 312 avis clients vérifiés",
-    "ratingValue": "4.8",
-    "activeClientsCount": "1,247"
+    "clientsServed": "Clients servis",
+    "clientsActive": "Clients actifs sur 12 mois",
+    "warehouses": "Entrepôts en Chine",
+    "provenance": "Chiffres relevés dans notre système le {date}. Nous ne publions pas de note moyenne : {reviews} avis collectés à ce jour, ce qui ne fait pas une moyenne."
   },
   "about": {
     "sectionLabel": "À Propos de Nous",
-    "title": "À Propos de ChinaLink Express",
-    "description1": "Fondée en 2019, ChinaLink Express est devenue un acteur majeur de la logistique internationale, spécialisée dans les échanges entre la Chine et le Mali. Nous offrons des solutions complètes pour l'achat, l'expédition et la livraison de marchandises.",
-    "description2": "Notre mission est de simplifier le commerce international en offrant des solutions complètes d'achat, d'expédition et de paiement, permettant à nos clients de se concentrer sur leur cœur de métier.",
+    "title": "Qui nous sommes",
+    "description1": "ChinaLink Express opère sur un seul corridor : la Chine et le Mali. Bureau à Bamako, deux entrepôts en Chine — Guangzhou pour le fret aérien, Foshan pour le fret maritime — où vos fournisseurs livrent vos marchandises.",
+    "description2": "Nous ne faisons pas que transporter. Nous pouvons trouver le fournisseur, vérifier la marchandise, la payer en Chine, la regrouper et vous tenir informé jusqu’à la livraison — pour que le fait d’acheter à 12 000 km ne veuille pas dire acheter à l’aveugle.",
     "tags": [
-      "Fiable",
-      "Rapide",
-      "Sécurisé",
-      "Compétitif"
+      "Depuis 2019",
+      "Bureau à Bamako",
+      "2 entrepôts en Chine",
+      "Aérien & maritime"
     ],
     "gallery": {
       "warehouseLabel": "Notre Entrepôt",
       "warehouseLocation": "Foshan Lishui, Chine"
-    }
+    },
+    "foundedLabel": "Depuis"
   },
   "comparison": {
     "metadata": {
@@ -274,28 +279,44 @@
   },
   "services": {
     "sectionLabel": "Nos Services",
-    "title": "Nos Services",
-    "subtitle": "Des solutions complètes pour simplifier votre commerce avec la Chine",
+    "title": "Ce que nous prenons en charge",
+    "subtitle": "Trois moments : avant l’expédition, en Chine, puis vers Bamako. Vous pouvez nous confier les trois ou seulement le transport.",
     "items": {
       "sourcing": {
-        "title": "ACHAT",
-        "description": "Nous gérons vos achats auprès des fournisseurs chinois avec professionnalisme et transparence."
+        "title": "Recherche de fournisseurs",
+        "description": "Vous nous dites ce que vous cherchez ; nous trouvons le fournisseur en Chine, négocions et vérifions la marchandise avant qu’elle parte."
       },
       "airFreight": {
-        "title": "EXPÉDITION AÉRIENNE",
-        "description": "Livraison rapide par voie aérienne pour vos marchandises urgentes vers le Mali via nos partenaires."
+        "title": "Fret aérien",
+        "description": "Départ de Guangzhou, 14 à 21 jours jusqu’à Bamako. Pour les volumes réduits, la valeur élevée et ce qui ne peut pas attendre."
       },
       "seaFreight": {
-        "title": "EXPÉDITION MARITIME",
-        "description": "Solution économique pour le transport de gros volumes par voie maritime."
+        "title": "Fret maritime",
+        "description": "Départ de Foshan, 60 à 75 jours. Conteneur complet ou groupage : l’option économique dès que le volume monte."
       },
       "payment": {
-        "title": "PAIEMENT FOURNISSEURS",
-        "description": "Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay et autres méthodes."
+        "title": "Paiement du fournisseur",
+        "description": "Vous réglez chez nous au taux du jour, en franc CFA. Nous payons le fournisseur en Chine par Alipay ou virement, sans que vous ayez à ouvrir un compte chinois."
       },
-      "recharge": {
-        "title": "RECHARGE COMPTE",
-        "description": "Rechargez votre compte ChinaLink Express facilement via Orange Money, Wave ou cash pour des transactions plus rapides."
+      "verification": {
+        "title": "Vérification fournisseur",
+        "description": "Vous avez déjà un contact sur Alibaba ou 1688 ? Nous le vérifions sur place avant que vous envoyiez le moindre franc."
+      },
+      "reception": {
+        "title": "Réception à l’entrepôt",
+        "description": "Votre fournisseur livre à Guangzhou ou à Foshan selon le mode. Le colis est pesé, mesuré, photographié et enregistré à votre nom."
+      },
+      "consolidation": {
+        "title": "Consolidation des colis",
+        "description": "Les commandes de plusieurs fournisseurs sont regroupées en un seul envoi avant le départ."
+      },
+      "registration": {
+        "title": "Enregistrement et suivi",
+        "description": "Chaque colis reçoit une référence, un volume et un statut. Chaque changement de statut vous est envoyé et reste consultable dans l’application."
+      },
+      "delivery": {
+        "title": "Dédouanement et livraison",
+        "description": "Formalités douanières à l’arrivée, puis mise à disposition ou livraison à Bamako. Vous êtes prévenu dès que la marchandise est disponible."
       }
     },
     "features": {
@@ -334,29 +355,35 @@
       "note": "L'application est disponible uniquement pour les clients enregistrés.",
       "previewTitle": "Découvrez notre application mobile",
       "previewDescription": "Suivez vos marchandises à chaque étape de leur voyage."
+    },
+    "groups": {
+      "before": "Avant l’expédition",
+      "inChina": "En Chine",
+      "toBamako": "Vers Bamako"
     }
   },
   "whyUs": {
-    "sectionLabel": "Pourquoi Nous Choisir",
-    "title": "Pourquoi Choisir ChinaLink Express ?",
+    "sectionLabel": "Concrètement",
+    "title": "Ce qui change quand vous passez par nous",
     "items": {
-      "speed": {
-        "title": "Rapidité",
-        "description": "Livraison express dans les délais les plus courts du marché."
+      "warehouses": {
+        "title": "Deux entrepôts, un par mode",
+        "description": "Guangzhou pour l’aérien, Foshan pour le maritime. Votre fournisseur livre à l’adresse qui correspond à votre mode d’expédition, avec votre code client sur le colis."
       },
-      "reliability": {
-        "title": "Fiabilité",
-        "description": "Suivi en temps réel et service client disponible 24/7."
+      "oneContact": {
+        "title": "Un seul interlocuteur, de l’achat à Bamako",
+        "description": "Nous pouvons acheter chez votre fournisseur, le payer en Chine, réceptionner, consolider et expédier. Vous ne coordonnez pas quatre prestataires qui se renvoient la responsabilité."
       },
-      "price": {
-        "title": "Prix Compétitifs",
-        "description": "Les meilleurs tarifs du marché avec aucune surprise de frais cachés."
+      "consolidation": {
+        "title": "Plusieurs fournisseurs, un seul envoi",
+        "description": "Vos commandes arrivent séparément à l’entrepôt et repartent regroupées. Vous payez le fret sur un envoi, pas sur chaque vendeur."
       },
-      "expertise": {
-        "title": "Expertise",
-        "description": "Plus de 7 ans d'expérience dans la logistique internationale."
+      "updates": {
+        "title": "Vous êtes prévenu, pas laissé dans le flou",
+        "description": "Réception, emballage, chargement, transit, arrivée : chaque changement de statut est enregistré et vous est envoyé, sur WhatsApp et dans l’application."
       }
-    }
+    },
+    "moreLink": "Le détail : partenaire complet ou simple transitaire"
   },
   "successStories": {
     "sectionLabel": "Histoires de Réussite",
@@ -473,15 +500,15 @@
     "englishCtaTitle": "Parlez à un conseiller import",
     "englishCtaText": "Envoyez votre lien produit, la quantité estimée et la destination. Notre équipe vous oriente avant le paiement fournisseur.",
     "englishCtaButton": "Commencer sur WhatsApp",
-    "trustImporters": "500+ importateurs accompagnés",
-    "trustResponse": "Réponse en 10 min"
+    "trustImporters": "253 clients accompagnés",
+    "trustResponse": "Réponse sur WhatsApp"
   },
   "contact": {
     "sectionLabel": "Contactez-nous",
-    "title": "Contactez-Nous",
-    "subtitle": "Notre équipe est à votre disposition pour répondre à toutes vos questions",
+    "title": "Parlons de votre expédition",
+    "subtitle": "Dites-nous ce que vous voulez faire venir de Chine. Nous répondons sur WhatsApp, c’est là que tout se passe.",
     "form": {
-      "title": "Envoyez-nous un message",
+      "title": "Préparer votre message",
       "name": "Nom complet",
       "email": "Email",
       "phone": "Téléphone",
@@ -504,7 +531,12 @@
         "phoneInvalid": "Veuillez entrer un numéro de téléphone valide",
         "messageRequired": "Le message est requis",
         "messageMin": "Le message doit contenir au moins 10 caractères"
-      }
+      },
+      "intro": "Remplissez les trois champs : nous ouvrons WhatsApp avec votre message déjà rédigé. Vous relisez avant d’envoyer.",
+      "goodsLabel": "Ce que vous voulez expédier",
+      "goodsPlaceholder": "Ex. 200 paires de chaussures depuis Guangzhou, par bateau",
+      "openWhatsApp": "Ouvrir WhatsApp",
+      "emailInstead": "Vous préférez l’e-mail ?"
     },
     "info": {
       "title": "Informations de contact",
@@ -516,7 +548,8 @@
       "available24_7": "Disponible 24/7 pour vos urgences",
       "hoursWeekday": "Lundi - Vendredi: 8h00 - 20h00",
       "hoursSaturday": "Samedi: 9h00 - 17h00",
-      "hoursSunday": "Dimanche: 10h00 - 15h00"
+      "hoursSunday": "Dimanche: 10h00 - 15h00",
+      "responseNote": "WhatsApp est notre canal principal, en Chine comme au Mali."
     }
   },
   "footer": {
@@ -674,7 +707,7 @@
         "express": "Flash Express: 2-5 jours",
         "standard": "Air Standard: 14-21 jours",
         "sea": "Économique Maritime: 60-75 jours",
-        "reviews": "4.8 ★ — 312 avis"
+        "shipments": "{count} expéditions traitées"
       }
     },
     "navigation": {
@@ -1336,8 +1369,6 @@
     }
   },
   "reviews": {
-    "aggregateRating": "4.8",
-    "reviewCount": "312",
     "basedOn": "Basé sur {count} avis clients vérifiés",
     "verified": "Avis vérifié",
     "sourceLabel": "Source : Google Reviews & Trustpilot",
@@ -1368,62 +1399,6 @@
     "badgeSub": "Tournés chez le client",
     "watchVideo": "Regarder la vidéo",
     "language": "Langue",
-    "videos": [
-      {
-        "name": "Amadou Diallo",
-        "business": "Diallo Electronics, Bamako",
-        "country": "Mali",
-        "language": "Français / Bambara",
-        "quote": "Avant je payais 4 fournisseurs différents. Maintenant j'en ai qu'un seul. ChinaLink gère tout de A à Z.",
-        "result": "16 jours",
-        "resultLabel": "Bamako → départ usine"
-      },
-      {
-        "name": "Fatou Ndiaye",
-        "business": "Mode Africaine, Dakar",
-        "country": "Sénégal",
-        "language": "Français / Wolof",
-        "quote": "La qualité contrôlée en Chine m'a évité une perte de 40 000 FCFA. Les photos QC sont une bénédiction.",
-        "result": "+40%",
-        "resultLabel": "Marge nette"
-      },
-      {
-        "name": "Kofi Mensah",
-        "business": "Mensah Phones, Accra",
-        "country": "Ghana",
-        "language": "English / Twi",
-        "quote": "Third shipment with ChinaLink. Each one arrived faster than the last. The WhatsApp updates with photos are game-changing.",
-        "result": "3ème",
-        "resultLabel": "Expédition"
-      },
-      {
-        "name": "Aminata Koné",
-        "business": "Beauté Pure, Abidjan",
-        "country": "Côte d'Ivoire",
-        "language": "Français / Dioula",
-        "quote": "Les photos de contrôle qualité m'ont sauvé 2000€. J'ai refusé un lot défectueux avant qu'il parte de Chine.",
-        "result": "2000€",
-        "resultLabel": "Economisés"
-      },
-      {
-        "name": "Ousmane Sawadogo",
-        "business": "Sawadogo BTP, Ouagadougou",
-        "country": "Burkina Faso",
-        "language": "Français / Mooré",
-        "quote": "Mon premier conteneur. J'avais peur. Mais ils m'ont guidé à chaque étape. Du début jusqu'à la livraison.",
-        "result": "1er",
-        "resultLabel": "Conteneur"
-      },
-      {
-        "name": "Mariam Houessou",
-        "business": "Houessou Commerce, Cotonou",
-        "country": "Bénin",
-        "language": "Français / Fon",
-        "quote": "Le service client répond à 2h du matin. Quand j'ai un problème, je leur écris sur WhatsApp et c'est réglé.",
-        "result": "24/7",
-        "resultLabel": "Support WhatsApp"
-      }
-    ],
     "title": "Ils parlent de nous. En vrai.",
     "subtitle": "Pas d'acteurs. Pas de scripts. Des importateurs africains qui racontent leur expérience.",
     "trustBadge": {
@@ -1502,20 +1477,28 @@
     "home": "Accueil"
   },
   "appSection": {
-    "title": "Votre fret, dans votre poche",
-    "previewDescription": "Suivez vos expéditions en temps réel, recevez des notifications à chaque étape et contactez votre agent directement depuis l'application."
+    "title": "Voilà ce que vous voyez pendant que votre colis voyage",
+    "previewDescription": "Chaque étape enregistrée à l’entrepôt apparaît dans votre espace : la date, le statut, le volume, le mode d’expédition. Rien à demander, rien à relancer.",
+    "label": "Le suivi",
+    "demoLabel": "Exemple d’affichage — expédition fictive",
+    "demoNote": "Écran d’illustration : les références et les horaires ci-dessus sont des exemples, pas ceux d’un client."
   },
   "promoCampaign": {
     "close": "Fermer"
   },
   "sourcing": {
     "title": "De la marketplace chinoise à votre porte",
-    "subtitle": "Achetez sur 1688, Taobao, Alibaba ou directement en usine. Vos commandes arrivent à notre entrepôt en Chine, puis chez vous à Bamako."
+    "subtitle": "Achetez sur 1688, Taobao, Alibaba ou directement en usine. Vos commandes arrivent à notre entrepôt en Chine, puis chez vous à Bamako.",
+    "steps": {
+      "buy": "Vous achetez",
+      "consolidate": "Nous réceptionnons",
+      "receive": "Vous recevez"
+    }
   },
   "journey": {
     "label": "Le parcours",
     "title": "De la commande à votre porte",
-    "lede": "Quatre étapes, un seul interlocuteur. Vous suivez chacune d'elles depuis l'application.",
+    "lede": "Quatre étapes, un seul interlocuteur. Chacune est enregistrée dans notre système, et chacune vous est notifiée.",
     "steps": [
       {
         "key": "01",

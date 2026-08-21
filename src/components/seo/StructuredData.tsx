@@ -33,6 +33,7 @@ import {
   generateFAQPageSchema,
   generateReviewSchema,
   generateWebsiteSchema,
+  generateHomeServiceSchema,
   generateShippingDeliveryTimeSchema,
 } from '@/config/seo-advanced';
 import type { Locale } from '@/i18n/config';
@@ -157,11 +158,13 @@ export function StructuredData({
       }
       break;
 
-    case 'review':
-      if (reviews && reviews.length > 0) {
-        data.push(generateReviewSchema(reviews));
-      }
+    case 'review': {
+      // generateReviewSchema returns null when there is nothing genuine to
+      // publish; it no longer falls back to invented reviews.
+      const reviewSchema = reviews && reviews.length > 0 ? generateReviewSchema(reviews) : null;
+      if (reviewSchema) data.push(reviewSchema);
       break;
+    }
 
     case 'website':
       data.push(generateWebsiteSchema(locale));
@@ -200,14 +203,25 @@ export function StructuredData({
 // ============================================================================
 
 /**
- * Complete homepage structured data
- * Includes Organization, LocalBusiness, and Website schemas
+ * Complete homepage structured data — Organization, LocalBusiness, WebSite and
+ * the China–Mali Service, emitted as one `@graph`.
+ *
+ * One graph matters here. The homepage previously rendered this component *and*
+ * a second, older `StructuredData` component from `app/components/`, which
+ * emitted its own Organization, LocalBusiness and Service from a different
+ * config file. The result was two Organization nodes and two LocalBusiness
+ * nodes on the same document, disagreeing about `@id`, `alternateName` and
+ * address — a search engine asked to decide which of two entities named
+ * "ChinaLink Express" this page is about. Given the brand is already being
+ * confused with unrelated companies of a similar name, that was the last thing
+ * the page could afford. The older component is no longer mounted.
  */
 export function HomeStructuredData({ locale = 'fr' }: { locale?: Locale }) {
   const schemas = [
     generateOrganizationSchema(),
     generateLocalBusinessSchema(),
     generateWebsiteSchema(locale),
+    generateHomeServiceSchema(locale),
   ];
 
   return <StructuredData schemas={schemas} />;

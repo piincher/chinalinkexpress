@@ -82,8 +82,29 @@ export function Magnetic({ children, className, style, pull = 7 }: MagneticProps
     };
   }, [pull]);
 
+  /*
+   * Both spans take `gap: inherit`, and the outer one is the fix.
+   *
+   * The inner span already asked to inherit the gap, but `gap` is not an
+   * inherited property, so `inherit` copies the *parent element's computed
+   * value* — and the parent was this outer shell, which set no gap at all. The
+   * chain broke on the first link and resolved to 0.
+   *
+   * The visible consequence: any `<Cta magnetic>` lost the space between its
+   * icon and its label, so the primary button in the hero — the single most
+   * important control on the site — rendered as "⬤Expédier avec ChinaLink".
+   * Non-magnetic CTAs were fine, which is what kept it from being noticed.
+   *
+   * With `gap: inherit` on the shell too, the outer span copies `.cta`'s
+   * resolved gap and the inner one copies the outer's. No token is hardcoded
+   * here, so this stays a generic motion primitive.
+   */
   return (
-    <span ref={shellRef} className={className} style={{ display: 'inline-flex', ...style }}>
+    <span
+      ref={shellRef}
+      className={className}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: 'inherit', ...style }}
+    >
       <span ref={labelRef} style={{ display: 'inline-flex', alignItems: 'center', gap: 'inherit' }}>
         {children}
       </span>

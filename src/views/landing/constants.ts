@@ -6,6 +6,7 @@
  */
 
 import type { Partner, FAQ, Testimonial } from '@/types';
+import { WHATSAPP_SALES, whatsappUrl } from '@/constants/contact';
 
 export const TESTIMONIALS: Testimonial[] = [
   {
@@ -88,6 +89,23 @@ export const FAQS: FAQ[] = [
  * itself lives in one place for the whole site.
  */
 export { WHATSAPP_SALES as WHATSAPP_NUMBER, WHATSAPP_URL } from '@/constants/contact';
+
+/**
+ * The hero's WhatsApp link, with the opening message already written.
+ *
+ * A bare wa.me link drops the visitor into an empty thread, where the most
+ * common first message is "Bonjour" followed by silence while they work out
+ * what to ask. Pre-filling costs nothing and starts the conversation with the
+ * one fact the agent needs: this person has goods in China.
+ *
+ * Kept deliberately plain — no marketing voice, no emoji. It is going to appear
+ * as though the visitor typed it, so it has to sound like something a person
+ * would type.
+ */
+export const HERO_WHATSAPP_URL = whatsappUrl(
+  WHATSAPP_SALES,
+  "Bonjour ChinaLink Express, j'aimerais avoir des informations pour une expédition depuis la Chine."
+);
 
 export const SECTION_IDS = {
   HERO: 'hero',

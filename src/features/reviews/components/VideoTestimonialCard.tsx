@@ -97,9 +97,11 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
           <div className="flex items-start gap-2 mb-3">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+                {/* h3, not h4: this sits directly under the section's h2, and h2→h4
+                    was the only heading-order jump left on the home page. */}
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white">
                   {testimonial.name}
-                </h4>
+                </h3>
                 <span className="text-base leading-none" role="img" aria-label={testimonial.country}>
                   {testimonial.countryFlag}
                 </span>

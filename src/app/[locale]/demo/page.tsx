@@ -34,7 +34,7 @@ export default async function DemoPage({ params }: DemoPageProps) {
   const { locale } = await params;
   
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
       <div className="text-center p-8">
         <h1 className="text-3xl font-bold mb-4">Demo Page</h1>
         <p className="text-gray-600 mb-6">This demo page is under construction.</p>
@@ -42,6 +42,6 @@ export default async function DemoPage({ params }: DemoPageProps) {
           Return to Home
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

@@ -16,17 +16,25 @@
  */
 
 import { useTranslations } from 'next-intl';
-import { Zap, Clock, TrendingUp, Star } from 'lucide-react';
+import { Zap, Clock, TrendingUp, Package } from 'lucide-react';
 import { PageHero, PHOTOS } from '@/components/site';
+import { SHIPMENTS_HANDLED } from '@/constants/companyFacts';
 
 export function PricingHero() {
   const t = useTranslations('pricing');
 
+  /*
+   * The fourth fact was `4.8 ★ — 312 avis`, hard-coded as a default value so it
+   * rendered even with the message key missing. There are two reviews. It is
+   * replaced by the number of shipments actually handled, which comes from
+   * companyFacts.ts and is the kind of figure a pricing page should carry
+   * anyway — a rating says people liked it, a shipment count says it runs.
+   */
   const facts = [
     { Icon: Zap, label: t('hero.stats.express') },
     { Icon: Clock, label: t('hero.stats.standard') },
     { Icon: TrendingUp, label: t('hero.stats.sea') },
-    { Icon: Star, label: t('hero.stats.reviews', { defaultValue: '4.8 ★ — 312 avis' }) },
+    { Icon: Package, label: t('hero.stats.shipments', { count: SHIPMENTS_HANDLED }) },
   ];
 
   return (

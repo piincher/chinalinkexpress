@@ -173,7 +173,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
       >
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* ── wordmark ─────────────────────────────────────────────────── */}
-          <Link href={`/${locale}/`} className="flex items-center gap-2.5 shrink-0">
+          <Link href={`/${locale}`} className="flex items-center gap-2.5 shrink-0">
             <span className="relative w-9 h-9 md:w-10 md:h-10 block">
               <Image
                 src="/images/chinalink-logo-square.png"

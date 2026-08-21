@@ -1,14 +1,34 @@
 /**
- * The actual lanes ChinaLink runs, as real coordinates.
+ * The lanes, as real coordinates.
  *
  * The existing `hero-animation/constants.ts` stores cities as normalised x/y
  * for a flat map, which cannot be projected onto a sphere. These are true
  * lat/lng so the arcs follow real great circles — the geography has to be right
  * or the thing reads as decoration rather than as a network map.
  *
- * Only lanes the company actually serves are here. A globe covered in arcs to
- * cities you do not ship to is the same fabrication problem as an invented
- * testimonial, just harder to fact-check.
+ * ── ⚠ NEEDS BUSINESS CONFIRMATION ─────────────────────────────────────────
+ *
+ * This file's header used to assert "Only lanes the company actually serves
+ * are here". Checked against production (2026-08-22), that is confirmed for
+ * Mali and unconfirmed for everywhere else:
+ *
+ *   Bamako      857 v1 orders + 154 v2 goods — every shipment on record
+ *   everywhere   0 shipments on record
+ *   else
+ *
+ * That does not make the other nine lanes false. ChinaLink may well move
+ * freight to Dakar, Abidjan or Lagos through partners without those shipments
+ * ever entering this system, and the site has service pages targeting all of
+ * them. But it does mean nobody can currently verify them, and both the globe
+ * and the scrolling ticker state them to every visitor as fact.
+ *
+ * Each lane now carries a `verified` flag saying which of the two it is. The
+ * flag is not yet used to filter anything — that is the owner's call, not a
+ * decision to make silently — but it makes the distinction explicit, and
+ * `LANES.filter(l => l.verified)` is the one-line change if the answer is that
+ * the corridor really is Mali-only.
+ *
+ * Ordered Mali-first so the ticker opens on the lanes that are certain.
  */
 
 export interface Place {
@@ -51,20 +71,29 @@ export interface Lane {
   to: string;
   /** Primary lanes draw brighter and carry a travelling pulse. */
   primary?: boolean;
+  /**
+   * true  — shipments on this lane exist in the production database.
+   * false — plausible, advertised on the service pages, but unconfirmed.
+   * See the file header before rendering these differently.
+   */
+  verified: boolean;
 }
 
 export const LANES: Lane[] = [
-  { from: 'guangzhou', to: 'bamako', primary: true },
-  { from: 'guangzhou', to: 'dakar' },
-  { from: 'guangzhou', to: 'abidjan' },
-  { from: 'foshan', to: 'bamako', primary: true },
-  { from: 'foshan', to: 'conakry' },
-  { from: 'shenzhen', to: 'lagos' },
-  { from: 'shenzhen', to: 'lome' },
-  { from: 'yiwu', to: 'cotonou' },
-  { from: 'guangzhou', to: 'accra' },
-  { from: 'foshan', to: 'niamey' },
-  { from: 'shenzhen', to: 'ouaga' },
+  // Confirmed against production: every shipment on record lands in Bamako.
+  { from: 'guangzhou', to: 'bamako', primary: true, verified: true },
+  { from: 'foshan', to: 'bamako', primary: true, verified: true },
+
+  // Advertised on the service and route pages; no shipments on record.
+  { from: 'guangzhou', to: 'dakar', verified: false },
+  { from: 'guangzhou', to: 'abidjan', verified: false },
+  { from: 'foshan', to: 'conakry', verified: false },
+  { from: 'shenzhen', to: 'lagos', verified: false },
+  { from: 'shenzhen', to: 'lome', verified: false },
+  { from: 'yiwu', to: 'cotonou', verified: false },
+  { from: 'guangzhou', to: 'accra', verified: false },
+  { from: 'foshan', to: 'niamey', verified: false },
+  { from: 'shenzhen', to: 'ouaga', verified: false },
 ];
 
 const byId = new Map(PLACES.map((p) => [p.id, p]));

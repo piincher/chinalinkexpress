@@ -39,8 +39,7 @@ export const BUSINESS_INFO = {
   url: 'https://www.chinalinkexpress.com',
   logo: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png',
   founded: '2019',
-  employees: '50-200',
-  
+
   contact: {
     email: 'contact@chinalinkexpress.com',
     phones: {
@@ -64,26 +63,60 @@ export const BUSINESS_INFO = {
     addressCountry: 'ML',
   },
   
-  // China Office - NEW: Critical for E-E-A-T trust signals
+  /*
+   * China operation.
+   *
+   * This declared "Room 1805, Building 3, Yiwu International Trade City,
+   * Zhejiang" — an address that appears nowhere in the business's own data. The
+   * two warehouses clients' suppliers actually deliver to are both in
+   * Guangdong: Guangzhou (Zengcheng) for air and Foshan (Nanhai) for sea,
+   * per the `warehouseaddresses` collection, both flagged active.
+   *
+   * Telling Google the company sits in Zhejiang while it operates out of
+   * Guangdong is an entity signal pointing at the wrong place, which is the
+   * class of problem behind this brand being confused with similarly-named
+   * companies in search results.
+   *
+   * The street lines stay out of the public schema: they are given to
+   * registered clients with their warehouse code, and a warehouse address in
+   * open markup invites deliveries the operation has not agreed to receive.
+   */
   chinaAddress: {
     '@type': 'PostalAddress' as const,
-    streetAddress: 'Room 1805, Building 3, Yiwu International Trade City',
-    addressLocality: 'Yiwu',
-    addressRegion: 'Zhejiang Province',
-    postalCode: '322000',
+    addressLocality: 'Guangzhou',
+    addressRegion: 'Guangdong',
     addressCountry: 'CN',
   },
-  
+
+  chinaSeaAddress: {
+    '@type': 'PostalAddress' as const,
+    addressLocality: 'Foshan',
+    addressRegion: 'Guangdong',
+    addressCountry: 'CN',
+  },
+
+
   geo: {
     '@type': 'GeoCoordinates' as const,
     latitude: 12.6392,
     longitude: -8.0029,
   },
   
+  /*
+   * City-level coordinates only, matching the generalised addresses above.
+   * These were 29.3063 / 120.0754 — Yiwu, Zhejiang, ~1,200 km from where the
+   * warehouses are.
+   */
   chinaGeo: {
     '@type': 'GeoCoordinates' as const,
-    latitude: 29.3063,
-    longitude: 120.0754,
+    latitude: 23.1291,
+    longitude: 113.2644,
+  },
+
+  chinaSeaGeo: {
+    '@type': 'GeoCoordinates' as const,
+    latitude: 23.0219,
+    longitude: 113.1214,
   },
   
   hours: [
@@ -191,11 +224,12 @@ export function generateOrganizationSchema() {
     image: BUSINESS_INFO.logo,
     sameAs: BUSINESS_INFO.social,
     foundingDate: BUSINESS_INFO.founded,
-    numberOfEmployees: {
-      '@type': 'QuantitativeValue',
-      minValue: 50,
-      maxValue: 200,
-    },
+    /*
+     * `numberOfEmployees: 50–200` was declared here with nothing behind it. A
+     * headcount is trivially checkable and being caught inflating one is a
+     * worse outcome than not publishing it, so the property is omitted until
+     * the real figure is known.
+     */
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -222,20 +256,32 @@ export function generateOrganizationSchema() {
     address: [
       BUSINESS_INFO.address,
       BUSINESS_INFO.chinaAddress,
+      BUSINESS_INFO.chinaSeaAddress,
     ],
-    // NEW: Add China office location for E-E-A-T
+    /*
+     * Three real places: the Bamako office and the two Guangdong warehouses,
+     * one per shipping mode. Naming both is the strongest entity signal this
+     * company has — it is the specific, checkable fact that separates it from
+     * every similarly-named forwarder.
+     */
     location: [
       {
         '@type': 'Place',
-        name: 'ChinaLink Express Mali Office',
+        name: 'ChinaLink Express — Bamako',
         address: BUSINESS_INFO.address,
         geo: BUSINESS_INFO.geo,
       },
       {
         '@type': 'Place',
-        name: 'ChinaLink Express China Office',
+        name: 'ChinaLink Express — entrepôt fret aérien, Guangzhou',
         address: BUSINESS_INFO.chinaAddress,
         geo: BUSINESS_INFO.chinaGeo,
+      },
+      {
+        '@type': 'Place',
+        name: 'ChinaLink Express — entrepôt fret maritime, Foshan',
+        address: BUSINESS_INFO.chinaSeaAddress,
+        geo: BUSINESS_INFO.chinaSeaGeo,
       },
     ],
   };
@@ -284,13 +330,19 @@ export function generateLocalBusinessSchema() {
       { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 12.0, longitude: -5.0 }, geoRadius: '2000 km', description: 'West Africa' },
     ],
     hasMap: 'https://www.google.com/maps/search/?api=1&query=12.6392,-8.0029',
-    // NEW: Aggregate rating for trust signals
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: 127,
-      bestRating: 5,
-    },
+    /*
+     * No `aggregateRating`.
+     *
+     * This node used to declare 4.8 from 127 reviews, and the landing page's
+     * stats band declared 4.8 from 312 — two different invented denominators
+     * for the same invented average, on the same document. The reviews
+     * collection holds two ratings.
+     *
+     * Google requires the rating to be derived from reviews the site has
+     * actually collected and displays; a literal in a config file is exactly
+     * the case its policy names. Reinstate this only as a computed value over
+     * a real sample. See constants/companyFacts.ts.
+     */
   };
 }
 
@@ -667,61 +719,40 @@ export function generateFAQPageSchema(
 }
 
 /**
- * Generate Review/Rating schema with sample reviews
+ * Review schema — for genuine, collected reviews only.
+ *
+ * This function used to carry four invented reviews as its default payload:
+ * "Amadou Diallo", "Fatou Keita", "Moussa Traore" and "Aisha Cissé", with
+ * invented ratings, invented publication dates and an invented story about a
+ * €5,000 Alibaba scam. Any caller that omitted the argument published all four
+ * to Google as real customer testimony, along with an aggregateRating derived
+ * from them.
+ *
+ * Google's review-snippet policy treats fabricated review markup as spam and
+ * it carries a manual action against the whole site. The default is gone, and
+ * the function now returns `null` rather than inventing a fallback — a page
+ * with no reviews must emit no review markup.
+ *
+ * ChinaLink has collected two reviews to date (see REVIEWS_COLLECTED in
+ * constants/companyFacts.ts). Two ratings is not an average, so no
+ * aggregateRating is emitted here either; wire one up when the sample is real.
  */
 export function generateReviewSchema(
-  reviews?: {
+  reviews: {
     author: string;
     rating: number;
     reviewBody: string;
     datePublished: string;
   }[]
 ) {
-  // Default reviews if none provided
-  const defaultReviews = [
-    {
-      author: 'Amadou Diallo',
-      rating: 5,
-      reviewBody: 'ChinaLink Express a transformé mon business. Je reçois mes marchandises de Chine à Bamako en 18 jours maximum. Leur service de paiement fournisseur m\'a évité une arnaque de 5000€.',
-      datePublished: '2026-03-15',
-    },
-    {
-      author: 'Fatou Keita',
-      rating: 5,
-      reviewBody: 'J\'importe des textiles depuis la Chine pour ma boutique à Bamako. Le groupage LCL est économique et le suivi WhatsApp est parfait. Je recommande vivement!',
-      datePublished: '2026-02-20',
-    },
-    {
-      author: 'Moussa Traore',
-      rating: 4,
-      reviewBody: 'Service client réactif. Mon conteneur FCL est arrivé en 65 jours comme prévu. La vérification de mon fournisseur Alibaba avant paiement m\'a rassuré.',
-      datePublished: '2026-01-10',
-    },
-    {
-      author: 'Aisha Cissé',
-      rating: 5,
-      reviewBody: 'I buy electronics from Alibaba and ChinaLink handles everything - payment, inspection, and shipping to Mali. My customers are happy and so am I.',
-      datePublished: '2026-04-05',
-    },
-  ];
-  
-  const activeReviews = reviews && reviews.length > 0 ? reviews : defaultReviews;
-  
-  const aggregateRating = {
-    '@type': 'AggregateRating',
-    ratingValue: (activeReviews.reduce((acc, r) => acc + r.rating, 0) / activeReviews.length).toFixed(1),
-    reviewCount: activeReviews.length,
-    bestRating: 5,
-    worstRating: 1,
-  };
-  
+  if (!reviews || reviews.length === 0) return null;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${BUSINESS_INFO.url}/#localbusiness`,
     name: BUSINESS_INFO.name,
-    aggregateRating,
-    review: activeReviews.map(review => ({
+    review: reviews.map(review => ({
       '@type': 'Review',
       author: {
         '@type': 'Person',
@@ -750,17 +781,58 @@ export function generateWebsiteSchema(locale: Locale = 'fr') {
     '@id': `${BUSINESS_INFO.url}/#website`,
     name: BUSINESS_INFO.name,
     url: BUSINESS_INFO.url,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${BUSINESS_INFO.url}/${locale}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    /*
+     * No `potentialAction: SearchAction`.
+     *
+     * It declared `/{locale}/search?q={search_term_string}`. There is no
+     * `search` route on this site — the URL 404s. A sitelinks searchbox that
+     * points at a 404 is invalid markup, and declaring capabilities the site
+     * does not have is the same credibility problem as an invented statistic,
+     * just aimed at a crawler instead of a reader.
+     */
     inLanguage: getSeoLocale(locale),
     publisher: {
       '@id': `${BUSINESS_INFO.url}/#organization`,
+    },
+  };
+}
+
+/**
+ * The homepage's Service node.
+ *
+ * Deliberately separate from `generateServiceSchema`, which embeds a full
+ * Organization object as its `provider` — fine on a service page rendered
+ * alone, but on the homepage it would put a second Organization into a graph
+ * that already declares one, which is how an entity gets split in two.
+ *
+ * This node references the organization by `@id` instead, and describes the one
+ * corridor the business actually runs. No prices: air and sea rates move with
+ * volume and season, and a price in markup that disagrees with the quote a
+ * client is given is worse than no price at all.
+ */
+export function generateHomeServiceSchema(locale: Locale = 'fr') {
+  const isEn = locale === 'en';
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${BUSINESS_INFO.url}/#service-china-mali`,
+    name: isEn
+      ? 'China to Mali shipping, sourcing and supplier payment'
+      : 'Expédition, sourcing et paiement fournisseur Chine–Mali',
+    description: isEn
+      ? 'Supplier sourcing and purchasing in China, supplier payment, receiving and consolidation at the Guangzhou and Foshan warehouses, air freight in 14–21 days or sea freight in 60–75 days to Bamako, with shipment status updates throughout.'
+      : 'Recherche de fournisseurs et achat en Chine, paiement fournisseur, réception et consolidation aux entrepôts de Guangzhou et Foshan, fret aérien en 14 à 21 jours ou maritime en 60 à 75 jours vers Bamako, avec information du client à chaque étape.',
+    serviceType: 'FreightForwardingService',
+    provider: { '@id': `${BUSINESS_INFO.url}/#organization` },
+    areaServed: [
+      { '@type': 'Country', name: 'Mali' },
+      { '@type': 'Country', name: 'China' },
+    ],
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: BUSINESS_INFO.url,
+      servicePhone: BUSINESS_INFO.contact.phones.china,
     },
   };
 }

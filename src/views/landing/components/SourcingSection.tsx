@@ -23,18 +23,41 @@ import { useTranslations } from 'next-intl';
 import { ArrowRight, Store, Warehouse, MapPin } from 'lucide-react';
 import { Band, Shell } from '@/components/site';
 import { Reveal, RevealGroup } from '@/components/motion';
+import { WAREHOUSES } from '@/constants/companyFacts';
 
-/** Marketplaces and factory cities ChinaLink already receives orders from. */
+/** Marketplaces ChinaLink already receives orders from. */
 const MARKETPLACES = ['1688', 'Taobao', 'Alibaba', 'Pinduoduo'];
-const CITIES = ['Guangzhou', 'Yiwu', 'Shenzhen', 'Foshan'];
+
+/*
+ * The two cities where goods are actually received, from the warehouse records
+ * — not a list of Chinese trading hubs. This read `Guangzhou · Yiwu · Shenzhen
+ * · Foshan`, which implied four receiving points; there are two, and naming
+ * them precisely is the more useful and more checkable claim. Suffixed with the
+ * mode because that is the thing a supplier needs to get right.
+ */
+// Mode kept as the bare AIR / SEA code: it is set in the mono face, it is the
+// vocabulary used on the warehouse instructions clients already receive, and it
+// needs no translation across the four locales this line renders in.
+const WAREHOUSE_CITIES = WAREHOUSES.map((w) => `${w.city} ${w.mode}`);
 
 export function SourcingSection() {
   const t = useTranslations('sourcing');
 
+  /*
+   * These three labels were hard-coded French inside the component, so the
+   * English, Chinese and Arabic homepages rendered "Vous achetez / Nous
+   * consolidons / Vous recevez" in the middle of their own copy. They now come
+   * from the message catalogue like everything else.
+   *
+   * "Nous consolidons" also became "Nous réceptionnons": receiving is the step
+   * that actually happens here and the word a supplier and a client both use.
+   * Consolidation is one thing we do afterwards, and it has its own row in the
+   * services index.
+   */
   const steps = [
-    { Icon: Store, label: 'Vous achetez', items: MARKETPLACES },
-    { Icon: Warehouse, label: 'Nous consolidons', items: CITIES },
-    { Icon: MapPin, label: 'Vous recevez', items: ['Bamako'] },
+    { Icon: Store, label: t('steps.buy'), items: MARKETPLACES },
+    { Icon: Warehouse, label: t('steps.consolidate'), items: WAREHOUSE_CITIES },
+    { Icon: MapPin, label: t('steps.receive'), items: ['Bamako'] },
   ];
 
   return (

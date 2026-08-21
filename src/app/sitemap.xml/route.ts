@@ -103,6 +103,14 @@ const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
 const TOOL_PAGES: PageConfig[] = [
   { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
   { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  /*
+   * `/pourquoi-nous` was in neither the sitemap nor any internal link on the
+   * site — a fully rendered page (features/comparison/FullServicePage, with its
+   * own metadata and Service schema) that nothing pointed at, so nothing could
+   * find it. It now has both: this entry, and a link from the home page's
+   * "ce qui change" section, which is the argument it expands on.
+   */
+  { path: 'pourquoi-nous', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
 ];
 
 const COMMUNITY_PAGES: PageConfig[] = [

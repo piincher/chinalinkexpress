@@ -59,7 +59,7 @@ function CodeSnippet({ code }: { code: string }) {
 
 export default function AnimationsDemoPage() {
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Hero Section */}
       <HeroScrollReveal>
         <div className="py-20 px-6 text-center bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950">
@@ -537,6 +537,6 @@ export default function AnimationsDemoPage() {
         <p>Animation Components Demo — ChinaLink Express</p>
         <p className="text-sm mt-2">All animations respect prefers-reduced-motion</p>
       </footer>
-    </main>
+    </div>
   );
 }

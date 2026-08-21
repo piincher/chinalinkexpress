@@ -127,11 +127,28 @@ export function Cta({
   const body = magnetic ? <Magnetic pull={6}>{inner}</Magnetic> : inner;
 
   if (href) {
+    /*
+     * `rest` is forwarded here too.
+     *
+     * It was not, and the failure was silent: the anchor branch rendered only
+     * href/class/style, so every attribute a caller passed to a *link* Cta —
+     * `data-*` analytics markers, `aria-label`, `onClick`, `id` — was dropped
+     * with no error and no type complaint, because the props were accepted at
+     * the call site and discarded at render. The button branch spread them all
+     * along, so the same prop worked or vanished depending on whether `href`
+     * happened to be set.
+     *
+     * The cast is needed because CtaProps extends the *button* prop set; the
+     * intersection is what actually gets passed in practice (data-*, aria-*,
+     * handlers), and the two button-only props this component understands —
+     * `disabled` and `state` — are destructured out above.
+     */
     return (
       <a
         href={href}
         className={classes}
         style={shared}
+        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         aria-disabled={isDisabled || undefined}
       >

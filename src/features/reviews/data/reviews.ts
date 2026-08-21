@@ -1,9 +1,28 @@
 /**
- * Reviews Data
+ * ⚠️  NOT REAL REVIEWS. DO NOT RENDER THIS FILE ON A PUBLIC PAGE.
  *
- * Realistic, verified client reviews for ChinaLink Express.
- * Mix of French and English, authentic details, specific services.
- * Focused on Mali clients as shipping is China-to-Mali only.
+ * The header here used to read "Realistic, verified client reviews for
+ * ChinaLink Express" — and "realistic" was doing a great deal of work. Every
+ * entry below is invented: the names, the dates, the amounts saved, the transit
+ * times. Each carries `verified: true`. `AGGREGATE_RATING` states 4.8 from 312
+ * reviews. The production `reviews` collection contains **two** documents.
+ *
+ * This was rendering on /calculateur via `VerifiedReviewsSection`, under a
+ * heading that called the reviews verified and next to source badges implying
+ * third-party collection. That section is no longer mounted (see
+ * features/pricing/CalculatorPage.tsx).
+ *
+ * The file is kept because the UI around it is good and will be worth having
+ * the day reviews are actually collected. What it needs is a data source — the
+ * `reviews` collection, through an endpoint — not a rewrite.
+ *
+ * Until then: inventing customer reviews is a Google review-snippet policy
+ * violation carrying a site-wide manual action, and it is the one class of
+ * fabrication a prospect can disprove by asking a single question.
+ *
+ * The genuine quotes live in `src/views/landing/constants.ts` and render on the
+ * home page. The two clients who actually filmed a testimonial are in
+ * `videoTestimonials.ts`, which filters on the presence of a `videoUrl`.
  */
 
 export interface Review {

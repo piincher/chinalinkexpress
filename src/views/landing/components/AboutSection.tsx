@@ -25,6 +25,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Band, Shell, Figure, PHOTOS } from '@/components/site';
 import { Reveal } from '@/components/motion';
+import { FOUNDING_YEAR } from '@/constants/companyFacts';
 import { SECTION_IDS } from '../constants';
 
 export function AboutSection() {
@@ -131,7 +132,9 @@ export function AboutSection() {
               {t('title')}
             </h2>
 
-            {/* Founded 2019 — a fact worth setting as one, not buried mid-sentence. */}
+            {/* Founded 2019 — a fact worth setting as one, not buried
+                mid-sentence. Read from companyFacts so it cannot drift away
+                from the same year stated in the Organization schema. */}
             <div
               style={{
                 display: 'flex',
@@ -152,7 +155,7 @@ export function AboutSection() {
                   lineHeight: 1,
                 }}
               >
-                2019
+                {FOUNDING_YEAR}
               </span>
               <span
                 style={{

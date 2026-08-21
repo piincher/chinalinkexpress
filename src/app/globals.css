@@ -1347,6 +1347,43 @@ canvas {
 }
 
 /* ============================================================================
+   Product proof — see src/views/landing/components/AppPreviewSection.tsx
+   ============================================================================ */
+
+/* One column on a phone, two from 900px. The rendered timeline leads on every
+   width; the screenshots are supporting evidence and only appear where there is
+   room for them to be legible. */
+.app-proof {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.app-shots {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .app-proof {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+  }
+
+  /* Below this width the two 9:19.5 screenshots would either shrink to
+     illegibility side by side, or stack into most of a screen of scrolling to
+     repeat a point the timeline above has already made. `next/image` is told
+     `0px` at this breakpoint in the component, so nothing is downloaded on a
+     phone either — the images are not merely hidden, they are not fetched. */
+  .app-shots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    min-width: 0;
+  }
+}
+
+/* ============================================================================
    Service index rows — see src/views/landing/components/ServicesSection.tsx
    ============================================================================ */
 .service-row {
@@ -1359,6 +1396,15 @@ canvas {
 .service-row:hover,
 .service-row:focus-visible {
   transform: translateX(6px);
+}
+
+/* Rows for services that have no page behind them are rendered as a plain
+   element rather than a link. They keep the grid — so the mobile restack below
+   still applies and the names stay aligned with the linked rows — but they must
+   not move under the pointer, because moving implies clickable. */
+.service-row--static:hover,
+.service-row--static:focus-visible {
+  transform: none;
 }
 
 .service-row .service-arrow {

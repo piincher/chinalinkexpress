@@ -191,7 +191,7 @@ export default async function FAQPage({ params }: Props) {
   return (
     <>
       <StructuredData schemas={[generateFAQPageSchema(pageFaqs, locale as Locale)]} />
-      <main className="min-h-screen bg-white pt-28 text-slate-950 dark:bg-slate-950 dark:text-white">
+      <div className="min-h-screen bg-white pt-28 text-slate-950 dark:bg-slate-950 dark:text-white">
         <section className="mx-auto max-w-4xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-6">
             <Breadcrumb items={breadcrumbItems} locale={locale as Locale} />
@@ -239,7 +239,7 @@ export default async function FAQPage({ params }: Props) {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }
