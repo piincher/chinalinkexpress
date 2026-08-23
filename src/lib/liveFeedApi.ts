@@ -69,7 +69,7 @@ export type LiveFeedResult =
   | { ok: true; data: LiveFeedPayload }
   | { ok: false; error: LiveFeedError };
 
-export const LIVE_FEED_PAGE_SIZE = 20;
+export const LIVE_FEED_PAGE_SIZE = 50;
 const TIMEOUT_MS = 8000;
 
 export async function fetchLiveFeed(page: number): Promise<LiveFeedResult> {

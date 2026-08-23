@@ -203,6 +203,14 @@
             "comment": "Certificate detail"
           },
           {
+            "/": "/s/*",
+            "comment": "Public shared shipment — opens the app when installed, otherwise the web page handles it"
+          },
+          {
+            "/": "/r/*",
+            "comment": "Referral invitation — opens the app when installed, otherwise the web page handles it"
+          },
+          {
             "/": "/past-orders",
             "comment": "Past orders"
           },

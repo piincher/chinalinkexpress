@@ -22,8 +22,8 @@
  *   currentIndex  which group of five is showing
  *   visibleItems  allItems.slice(start, start + GROUP_SIZE)
  *
- * Data: rotation is entirely client-side. One request returns 20 records,
- * which is four groups; paging further just to animate would be network spent
+ * Data: rotation is entirely client-side. One request returns 50 records,
+ * which is ten groups; paging further just to animate would be network spent
  * on something the visitor never asked for. The existing 30-minute poll of
  * page 1 still refreshes the pool and merges by identity, so a parcel reaching
  * a new milestone joins the rotation instead of duplicating.
@@ -49,6 +49,7 @@ import {
 import { SECTION_IDS } from '../constants';
 import { LiveFeedCounters } from './LiveFeedCounters';
 import { LiveFeedEventRow } from './LiveFeedEventRow';
+import { LiveFeedBackdrop } from './LiveFeedBackdrop';
 import { LiveFeedRetryButton } from './LiveFeedRetryButton';
 import { LiveFeedSkeleton } from './LiveFeedSkeleton';
 
@@ -57,8 +58,8 @@ const POLL_INTERVAL_MS = 30 * 60_000;
 const GROUP_SIZE = 5;
 /** Every row occupies exactly this, so a group swap cannot shift the layout. */
 const ROW_HEIGHT = '5.25rem';
-/** Dwell time on a group — long enough to read five rows before they change. */
-const ROTATE_INTERVAL_MS = 6_500;
+/** Dwell time on a group — brisk enough that the board reads as moving. */
+const ROTATE_INTERVAL_MS = 3_000;
 /** Per-row entrance delay, so a group settles line by line. */
 const ROW_STAGGER_MS = 70;
 
@@ -281,17 +282,27 @@ export function LiveFeedSection() {
               onFocus={() => setHovered(true)}
               onBlur={() => setHovered(false)}
               style={{
+                position: 'relative',
                 // Reserved whether or not the data fills it, so a short group
                 // or a slow poll can never shift the page.
                 minHeight: `calc(${ROW_HEIGHT} * ${reservedRows})`,
               }}
             >
+              {/* The network, ambient, behind the records it produced. Runs
+                  only while the board is on screen and the tab visible. */}
+              <LiveFeedBackdrop active={!reducedMotion && onScreen && !tabHidden} />
               <ul
                 // Remounting on the group index is what runs the entrance
-                // animation; five nodes every 6.5s is cheaper than tracking
-                // enter/exit state by hand.
+                // animation; five nodes every few seconds is cheaper than
+                // tracking enter/exit state by hand.
                 key={safeIndex}
-                style={{ margin: 0, padding: 0, listStyle: 'none' }}
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  listStyle: 'none',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
               >
                 {visibleItems.map((event, index) => (
                   <LiveFeedEventRow
