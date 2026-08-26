@@ -9,7 +9,6 @@ export const API_CONFIG = {
   BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'https://api.chinalinkexpress.com',
   TIMEOUT: 30000,
   RETRY_ATTEMPTS: 3,
-  VERSION: 'v1',
 } as const;
 
 export const API_ENDPOINTS = {

@@ -25,7 +25,9 @@ class ApiClient {
   private defaultHeaders: Record<string, string>;
 
   constructor() {
-    this.baseURL = API_CONFIG.BASE_URL;
+    // v1 is retired on the backend; /api/v2 is the only API surface. The
+    // version prefix lives here so callers pass bare paths ('/live-feed').
+    this.baseURL = `${API_CONFIG.BASE_URL}/api/v2`;
     this.defaultHeaders = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
