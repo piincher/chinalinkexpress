@@ -43,7 +43,7 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     nameFr: 'Air Standard',
     minDays: 14,
     maxDays: 21,
-    rateFCFA: 10000,
+    rateFCFA: 10500,
     unit: 'kg',
     positioning: 'Smart choice for non-urgent',
     positioningFr: 'Le choix malin pour les non-urgents',
@@ -123,7 +123,7 @@ export const AIR_RATES: AirRate[] = [
   },
   {
     category: 'standard',
-    rateFCFA: 10000,
+    rateFCFA: 10500,
     unit: 'kg',
     deliveryTime: '14-21 jours',
     description: 'Vêtements, Chaussures, Articles quotidiens',
@@ -158,7 +158,7 @@ export const ITEM_CATEGORIES: ItemCategoryInfo[] = [
   { id: 'express', rate: 16000, unit: 'kg' },
   { id: 'phones', rate: 12000, unit: 'piece' },
   { id: 'electronics', rate: 12000, unit: 'kg' },
-  { id: 'standard', rate: 10000, unit: 'kg' },
+  { id: 'standard', rate: 10500, unit: 'kg' },
   { id: 'containers', rate: 300000, unit: 'm³' },
 ];
 

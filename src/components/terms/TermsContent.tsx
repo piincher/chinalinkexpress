@@ -400,10 +400,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            "Rounded up to the next 0.1 kg = 1.3 kg",
                            "Coefficient: 1.3 x 1.075 = 1.3975 kg",
                            "Final rounding up to the next 0.1 kg = 1.4 kg",
-                           "General goods rate: 10,000 XOF/kg",
-                           "1.4 kg x 10,000 XOF = 14,000 XOF",
+                           "General goods rate: 10,500 XOF/kg",
+                           "1.4 kg x 10,500 XOF = 14,700 XOF",
                         ]}
-                        result="Estimated air freight: 14,000 XOF"
+                        result="Estimated air freight: 14,700 XOF"
                      />
                   </SubSection>
 
@@ -421,7 +421,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                               <tr>
                                  <td className="px-4 py-3 text-[var(--text-secondary)]">General goods</td>
                                  <td className="px-4 py-3 text-[var(--text-secondary)]">Standard merchandise</td>
-                                 <td className="px-4 py-3 text-[var(--text-secondary)]">From 10,000 XOF/kg</td>
+                                 <td className="px-4 py-3 text-[var(--text-secondary)]">From 10,500 XOF/kg</td>
                               </tr>
                               <tr>
                                  <td className="px-4 py-3 text-[var(--text-secondary)]">Sensitive electronics</td>
@@ -1101,10 +1101,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                         "Arrondi au 0,1 kg supérieur = 1,3 kg",
                         "Coefficient : 1,3 × 1,075 = 1,3975 kg",
                         "Arrondi final au 0,1 kg supérieur = 1,4 kg",
-                        "Tarif catégorie Standard : 10 000 FCFA/kg",
-                        "1,4 kg × 10 000 FCFA = 14 000 FCFA",
+                        "Tarif catégorie Standard : 10 500 FCFA/kg",
+                        "1,4 kg × 10 500 FCFA = 14 700 FCFA",
                      ]}
-                     result="Total fret aérien : 14 000 FCFA"
+                     result="Total fret aérien : 14 700 FCFA"
                   />
 
                   <div className="overflow-x-auto mt-4">
@@ -1129,7 +1129,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                                  Marchandises générales
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 10 000 FCFA/kg
+                                 10 500 FCFA/kg
                               </td>
                            </tr>
                            <tr>

@@ -26,7 +26,7 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
     // In production, this could be fetched from a database
     const pricingData: PricingData = {
       express: 16000,      // 16,000 FCFA/kg
-      standard: 10000,     // 10,000 FCFA/kg
+      standard: 10500,     // 10,500 FCFA/kg
       electronics: 12000,  // 12,000 FCFA/kg
       phones: 12000,       // 12,000 FCFA/piece
       sea: 300000,         // 300,000 FCFA/CBM
