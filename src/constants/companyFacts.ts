@@ -101,6 +101,32 @@ export const TRANSIT_DAYS = {
 } as const;
 
 /**
+ * Free storage window at the Bamako warehouse, and what is charged after it.
+ *
+ * Unlike everything above, this is a policy rather than a measurement — but it
+ * lives here for the same reason: it is a number the site states publicly, and
+ * a customer will hold the company to whatever this page says.
+ *
+ * The authority is the API's `DEFAULT_PICKUP_POLICY`
+ * (`src/v2/services/paymentDueService.js`), which is what the app's reminder
+ * messages, the WhatsApp chase templates and the overdue calculations all read.
+ * These values mirror it exactly. **If the policy changes there, change it
+ * here in the same commit** — the site quoting 72h while the app bills from 48h
+ * is the kind of contradiction a client screenshots.
+ *
+ * Note `feePerDayScope`: the fee applies per day AND per shipment, not per
+ * client. A customer leaving three shipments uncollected accrues three times
+ * the daily fee, and the FAQ says so rather than letting them discover it on
+ * an invoice.
+ */
+export const PICKUP_POLICY = {
+  freeHours: 72,
+  feePerDay: 3000,
+  currency: 'FCFA',
+  feePerDayScope: 'PER_SHIPMENT',
+} as const;
+
+/**
  * Reviews collected in-app, to date: two.
  *
  *   db.reviews.countDocuments({}) → 2   (ratings 5 and 4)

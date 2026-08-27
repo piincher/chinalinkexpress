@@ -69,6 +69,10 @@ const faqsFr = [
     answer: 'Oui, nous proposons la livraison porte à porte à Bamako et dans d\u2019autres villes du Mali selon la destination finale et le mode de transport choisi.',
   },
   {
+    question: 'Combien de temps puis-je laisser ma marchandise dans votre entrepôt à Bamako ?',
+    answer: 'Votre marchandise vous est réservée gratuitement pendant 72 heures à compter de son arrivée dans notre entrepôt de Bamako, et nous vous prévenons dès qu’elle est disponible. Passé ce délai, des frais de stockage de 3 000 FCFA par jour et par expédition sont appliqués, afin de préserver la capacité de l’entrepôt pour l’ensemble de nos clients. Si vous ne pouvez pas venir dans les temps, contactez-nous avant l’échéance : nous trouverons une solution ensemble.',
+  },
+  {
     question: 'Comment éviter les arnaques sur Alibaba ?',
     answer: 'Vérifiez l\u2019identité du fournisseur, demandez des preuves réelles, évitez les prix trop bas, utilisez un paiement traçable et faites appel à ChinaLink pour la vérification et le paiement sécurisé.',
   },
@@ -142,6 +146,10 @@ const faqsEn = [
   {
     question: 'Do you deliver to homes or businesses in Bamako?',
     answer: 'Yes, we offer door-to-door support in Bamako and other Malian cities depending on the final destination and transport mode.',
+  },
+  {
+    question: 'How long can I leave my goods in your Bamako warehouse?',
+    answer: 'Your goods are held free of charge for 72 hours from the moment they arrive at our Bamako warehouse, and we notify you as soon as they are ready for collection. After that, a storage fee of 3,000 FCFA per day, per shipment applies, so warehouse capacity stays available for every client. If you cannot collect in time, contact us before the deadline and we will arrange something with you.',
   },
   {
     question: 'How do I avoid Alibaba scams?',

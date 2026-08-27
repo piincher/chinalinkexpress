@@ -482,6 +482,10 @@
       "5": {
         "question": "Proposez-vous un suivi en temps réel ?",
         "answer": "Oui, tous nos envois sont équipés d'un système de suivi en temps réel accessible depuis votre tableau de bord client dans notre application mobile 24/7."
+      },
+      "6": {
+        "question": "Combien de temps puis-je laisser ma marchandise dans votre entrepôt ?",
+        "answer": "Votre marchandise vous est réservée gratuitement pendant 72 heures à compter de son arrivée dans notre entrepôt de Bamako. Nous vous prévenons dès qu'elle est disponible. Passé ce délai, des frais de stockage de 3 000 FCFA par jour et par expédition sont appliqués, afin de préserver la capacité de l'entrepôt pour l'ensemble de nos clients. Si vous ne pouvez pas venir dans les temps, contactez-nous avant l'échéance : nous trouverons une solution ensemble."
       }
     }
   },

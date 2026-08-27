@@ -482,6 +482,10 @@
       "5": {
         "question": "Do you offer real-time tracking?",
         "answer": "Yes, all our shipments are equipped with a real-time tracking system accessible from your customer dashboard in our mobile app 24/7."
+      },
+      "6": {
+        "question": "How long can I leave my goods in your warehouse?",
+        "answer": "Your goods are held free of charge for 72 hours from the moment they arrive at our Bamako warehouse, and we notify you as soon as they are ready for collection. After that, a storage fee of 3,000 FCFA per day, per shipment applies, so that warehouse capacity stays available for every client. If you cannot collect in time, contact us before the deadline and we will arrange something with you."
       }
     }
   },
