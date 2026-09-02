@@ -11,6 +11,7 @@ export { AboutSection } from './AboutSection';
 export { ServicesSection } from './ServicesSection';
 export { WhyUsSection } from './WhyUsSection';
 export { TestimonialsSection } from './TestimonialsSection';
+export { TestimonialsBand } from './TestimonialsBand';
 export { PartnersSection } from './PartnersSection';
 export { FAQSection } from './FAQSection';
 export { ContactSection } from './ContactSection';

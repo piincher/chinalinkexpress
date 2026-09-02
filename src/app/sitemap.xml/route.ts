@@ -115,6 +115,12 @@ const TOOL_PAGES: PageConfig[] = [
 
 const COMMUNITY_PAGES: PageConfig[] = [
   { path: 'communaute', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  /*
+   * `/avis` renders the reviews collection, so it changes whenever a client
+   * writes one — weekly is the honest frequency, and the page is linked from
+   * the home page's testimonials band and the footer.
+   */
+  { path: 'avis', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
 ];
 
 const INDUSTRY_PAGES: PageConfig[] = [

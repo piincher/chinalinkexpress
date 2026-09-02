@@ -19,8 +19,19 @@ import { DamageGuaranteeSection } from '@/features/trust/components';
 import { TrustFlowSection } from '@/features/trust/components/TrustFlowSection';
 import { WhatsAppPhotoUpdates } from '@/features/trust/components/WhatsAppPhotoUpdates';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
+import { ClientReviewsBand } from '@/features/reviews/components/ClientReviewsBand';
+import type { PublicReview, PublicReviewStats } from '@/lib/publicReviewsApi';
 
-export function CalculatorPage() {
+interface CalculatorPageProps {
+  /**
+   * Real reviews, fetched by the route (a server component) and passed in.
+   * Absent means the API was unreachable — the band renders nothing.
+   */
+  reviews?: PublicReview[];
+  reviewStats?: PublicReviewStats;
+}
+
+export function CalculatorPage({ reviews = [], reviewStats }: CalculatorPageProps = {}) {
   const t = useTranslations('pricing');
 
   return (
@@ -42,20 +53,17 @@ export function CalculatorPage() {
       <SplitPaymentBanner />
 
       {/*
-        `VerifiedReviewsSection` is no longer mounted here.
-        It rendered a 4.8 average "Basé sur 312 avis clients vérifiés", source
-        badges, and a rotating carousel of eight reviews from
-        features/reviews/data/reviews.ts — every one of them invented, each
-        flagged `verified: true`, each with a relative date ("il y a 2
-        semaines") that made them look freshly collected, and two of them
-        carrying specific loss-avoided figures (2 000 € of fabric, a 16-day
-        delivery). The production database holds two reviews.
-        The real ones are on the home page, and the video section below shows
-        the two clients who genuinely filmed something. The component and its
-        data file are left in the tree so that whoever wires this up to the
-        `reviews` collection has the UI ready — it needs a data source, not a
-        rewrite.
+        Where `VerifiedReviewsSection` used to be. That component rendered a 4.8
+        average "Basé sur 312 avis clients vérifiés", Google/Trustpilot source
+        badges and a carousel of twelve invented reviews, each flagged
+        `verified: true` with a relative date that made them look freshly
+        collected. It was unmounted in 2026-08 and its data file has since been
+        deleted. What stands here now is the `reviews` collection itself, via
+        GET /api/v2/public/reviews — the data source that note was waiting for.
       */}
+      {reviewStats && (
+        <ClientReviewsBand reviews={reviews} stats={reviewStats} tone="paper-2" />
+      )}
       <VideoTestimonialsSection />
 
       {/* Navigation to Pricing */}

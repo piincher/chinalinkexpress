@@ -56,7 +56,7 @@ import {
 } from './components';
 import { QuizSection } from './components/QuizSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
+import { TestimonialsBand } from './components/TestimonialsBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
 
@@ -121,8 +121,11 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
       <WhyUsSection />
       <AboutSection />
 
-      {/* ── IX. other people's words ─────────────────────────────────────── */}
-      <TestimonialsSection />
+      {/* ── IX. other people's words ───────────────────────────────────────
+          TestimonialsBand is async: it fetches the real reviews clients wrote
+          in the app and renders them above the WhatsApp quotes, with the
+          rating from the collection stated beside the heading. */}
+      <TestimonialsBand />
       <VideoTestimonialsSection />
 
       {/* ── X. the close ─────────────────────────────────────────────────── */}

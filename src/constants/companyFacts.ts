@@ -127,16 +127,22 @@ export const PICKUP_POLICY = {
 } as const;
 
 /**
- * Reviews collected in-app, to date: two.
+ * Reviews collected in-app. Verified against prod 2026-09-01:
  *
- *   db.reviews.countDocuments({}) → 2   (ratings 5 and 4)
+ *   db.reviews.countDocuments({ status: 'ACTIVE' })                → 4
+ *   avg(rating)                                                    → 4.75
+ *   with a written comment                                         → 2
  *
- * Exported so that nothing can quietly reintroduce an `aggregateRating`. Two
- * ratings is not an average; publishing one as though it were is the same
- * fabrication as inventing the reviews outright. Google's review-snippet
- * guidelines require the rating to come from real, collected reviews.
+ * This constant is now a floor for copy, not a data source. The reviews
+ * themselves — and the average — are fetched live from
+ * `GET /api/v2/public/reviews` (see `lib/publicReviewsApi.ts`) and rendered on
+ * the home page, /calculateur and /avis. Nothing on the site hardcodes a
+ * rating.
  *
- * When this passes a defensible sample (say 25+), the LocalBusiness schema can
- * take an aggregateRating computed from the collection — never a literal.
+ * The rule it was written for still stands and is the reason no page emits
+ * `aggregateRating` markup: four ratings is not a defensible average to hand a
+ * search engine, and reviews a business collects about itself are not eligible
+ * for review rich results in the first place. Display them to readers; do not
+ * claim a star in the SERP for them.
  */
-export const REVIEWS_COLLECTED = 2;
+export const REVIEWS_COLLECTED = 4;

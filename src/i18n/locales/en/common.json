@@ -20,7 +20,8 @@
     "community": "Community",
     "tools": "Tools",
     "compareShipping": "Compare Shipping",
-    "checkProduct": "Check Product"
+    "checkProduct": "Check Product",
+    "reviews": "Client reviews"
   },
   "cta": {
     "getQuote": "Get Free Quote",
@@ -102,7 +103,7 @@
     "clientsServed": "Clients served",
     "clientsActive": "Clients active in 12 months",
     "warehouses": "Warehouses in China",
-    "provenance": "Figures taken from our own system on {date}. We publish no average rating: {reviews} reviews collected so far, which is not an average."
+    "provenance": "Figures taken from our own system on {date}. The rating shown is the real average of the {reviews} reviews clients have left in the app — still a small sample, which we would rather show as it is than quote an average without its count."
   },
   "about": {
     "sectionLabel": "About Us",
@@ -1403,7 +1404,6 @@
   "reviews": {
     "basedOn": "Based on {count} verified client reviews",
     "verified": "Verified review",
-    "sourceLabel": "Source: Google Reviews & Trustpilot",
     "seeAll": "See all reviews",
     "carousel": {
       "prev": "Previous",
@@ -1421,7 +1421,19 @@
     "title": "What Our Clients Say",
     "subtitle": "African importers share their experience with ChinaLink",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "countLabel": "from {count} client reviews",
+    "responseLabel": "ChinaLink's reply",
+    "provenanceAir": "App review · Air",
+    "provenanceSea": "App review · Sea",
+    "provenanceWhatsapp": "WhatsApp message",
+    "pageEyebrow": "Client reviews",
+    "pageTitle": "What our clients say",
+    "pageLede": "Every review below was written in the ChinaLink Express app by a client after a delivery. Surnames are reduced to an initial; nothing else is changed.",
+    "pageEmpty": "No review has been published in the app yet.",
+    "appSectionTitle": "Reviews published in the app",
+    "whatsappSectionTitle": "Messages received on WhatsApp",
+    "howTo": "Already a client? Rate your delivery from the app, under “Mes Avis”."
   },
   "videoTestimonials": {
     "realVideoBadge": "REAL VIDEO",

@@ -20,7 +20,8 @@
     "community": "المجتمع",
     "tools": "أدوات",
     "compareShipping": "مقارنة الشحن",
-    "checkProduct": "فحص المنتج"
+    "checkProduct": "فحص المنتج",
+    "reviews": "تقييمات العملاء"
   },
   "cta": {
     "getQuote": "احصل على عرض مجاني",
@@ -102,7 +103,7 @@
     "clientsServed": "عملاء تمت خدمتهم",
     "clientsActive": "عملاء نشطون خلال 12 شهرًا",
     "warehouses": "مستودعات في الصين",
-    "provenance": "أرقام مأخوذة من نظامنا بتاريخ {date}. لا ننشر تقييمًا متوسطًا: {reviews} تقييمات فقط حتى الآن، وهذا لا يشكّل متوسطًا."
+    "provenance": "أرقام مأخوذة من نظامنا بتاريخ {date}. التقييم المعروض هو المتوسط الفعلي لـ {reviews} تقييمات تركها عملاؤنا في التطبيق — عيّنة صغيرة نعرضها كما هي بدل ذكر متوسط دون عدده."
   },
   "about": {
     "sectionLabel": "من نحن",
@@ -1179,8 +1180,7 @@
   "reviews": {
     "basedOn": "بناءً على {count} تقييم مُصدَّق من العملاء",
     "verified": "تقييم مُصدَّق",
-    "sourceLabel": "المصدر: Google Reviews و Trustpilot",
-    "seeAll": "عرض جميع التقييمات",
+    "seeAll": "عرض كل التقييمات",
     "carousel": {
       "prev": "السابق",
       "next": "التالي"
@@ -1197,7 +1197,19 @@
     "title": "ماذا يقول عملاؤنا",
     "subtitle": "مستوردون أفارقة يشاركون تجربتهم مع ChinaLink",
     "prev": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "countLabel": "من {count} تقييمات العملاء",
+    "responseLabel": "رد ChinaLink",
+    "provenanceAir": "تقييم من التطبيق · جوي",
+    "provenanceSea": "تقييم من التطبيق · بحري",
+    "provenanceWhatsapp": "رسالة واتساب",
+    "pageEyebrow": "تقييمات العملاء",
+    "pageTitle": "ماذا يقول عملاؤنا",
+    "pageLede": "كل تقييم أدناه كتبه عميل في تطبيق ChinaLink Express بعد التسليم. يُختصر اسم العائلة إلى حرف واحد، ولا يُغيَّر أي شيء آخر.",
+    "pageEmpty": "لم يُنشر أي تقييم في التطبيق بعد.",
+    "appSectionTitle": "تقييمات منشورة في التطبيق",
+    "whatsappSectionTitle": "رسائل واردة عبر واتساب",
+    "howTo": "هل أنت عميل؟ قيّم شحنتك من التطبيق في قسم « Mes Avis »."
   },
   "videoTestimonials": {
     "realVideoBadge": "فيديو حقيقي",

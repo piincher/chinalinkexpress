@@ -20,7 +20,8 @@
     "community": "社区",
     "tools": "工具",
     "compareShipping": "运费对比",
-    "checkProduct": "产品检查"
+    "checkProduct": "产品检查",
+    "reviews": "客户评价"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -102,7 +103,7 @@
     "clientsServed": "服务过的客户",
     "clientsActive": "近12个月活跃客户",
     "warehouses": "中国仓库",
-    "provenance": "数据于 {date} 取自我们自己的系统。我们不公布平均评分：迄今仅收到 {reviews} 条评价，不足以构成平均值。"
+    "provenance": "数据于 {date} 取自我们自己的系统。所示评分是客户在应用内留下的 {reviews} 条评价的真实平均值——样本仍然很小，我们宁愿如实呈现，也不愿给出没有基数的平均分。"
   },
   "about": {
     "sectionLabel": "关于我们",
@@ -1179,8 +1180,7 @@
   "reviews": {
     "basedOn": "基于 {count} 条已验证客户评价",
     "verified": "已验证评价",
-    "sourceLabel": "来源：Google Reviews 与 Trustpilot",
-    "seeAll": "查看所有评价",
+    "seeAll": "查看全部评价",
     "carousel": {
       "prev": "上一个",
       "next": "下一个"
@@ -1197,7 +1197,19 @@
     "title": "客户怎么说",
     "subtitle": "非洲进口商分享他们与ChinaLink的经验",
     "prev": "上一个",
-    "next": "下一个"
+    "next": "下一个",
+    "countLabel": "基于 {count} 条客户评价",
+    "responseLabel": "ChinaLink 回复",
+    "provenanceAir": "应用评价 · 空运",
+    "provenanceSea": "应用评价 · 海运",
+    "provenanceWhatsapp": "WhatsApp 消息",
+    "pageEyebrow": "客户评价",
+    "pageTitle": "客户怎么说",
+    "pageLede": "以下每条评价均由客户在收货后于 ChinaLink Express 应用内撰写。姓氏仅保留首字母，其余内容未作改动。",
+    "pageEmpty": "应用内尚未发布任何评价。",
+    "appSectionTitle": "应用内发布的评价",
+    "whatsappSectionTitle": "通过 WhatsApp 收到的消息",
+    "howTo": "已是客户？在应用「Mes Avis」中为您的配送评分。"
   },
   "videoTestimonials": {
     "realVideoBadge": "真实视频",

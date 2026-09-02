@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import { PAGE_SEO } from '@/config/seo';
 import { FAQStructuredData } from '@/components/seo';
 import { CalculatorPage } from '@/features/pricing';
+import { fetchPublicReviews } from '@/lib/publicReviewsApi';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -71,11 +72,14 @@ export default async function CalculatorRoute({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
   const faqs = isEn ? calculatorFaqs.en : calculatorFaqs.fr;
+  // Fetched here rather than in the client page so the review text is in the
+  // HTML; returns an empty payload rather than throwing if the API is down.
+  const { reviews, stats } = await fetchPublicReviews();
 
   return (
     <>
       <FAQStructuredData faqs={faqs} locale={locale as 'fr' | 'en' | 'zh' | 'ar'} />
-      <CalculatorPage />
+      <CalculatorPage reviews={reviews} reviewStats={stats} />
     </>
   );
 }

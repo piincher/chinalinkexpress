@@ -1,54 +1,83 @@
 'use client';
 
 /**
- * Testimonials — the real ones.
+ * Testimonials — the real ones, now including the ones clients wrote in the app.
  *
- * What was here: three cards for "Amadou Diallo, Diallo Electronics", "Fatou
- * Coulibaly, Mode Africaine" and "Oumar Touré, Touré Import-Export", each with a
- * warehouse or product photograph cropped into a circle as their face, under a
- * banner claiming "Plus de 100 entreprises" while the stats band two screens up
- * said 1,247 clients. None of those three people appear anywhere in this
- * codebase's data.
+ * What was here before the 2026-08 pass: three cards for "Amadou Diallo, Diallo
+ * Electronics", "Fatou Coulibaly, Mode Africaine" and "Oumar Touré, Touré
+ * Import-Export", each with a warehouse photograph cropped into a circle as
+ * their face, under a banner claiming "Plus de 100 entreprises". None of those
+ * three people appear anywhere in this codebase's data. They were replaced by
+ * TESTIMONIALS from ../constants.ts — three WhatsApp messages that are
+ * obviously real, used verbatim, imperfect French included.
  *
- * Meanwhile TESTIMONIALS in ../constants.ts held three quotes that are
- * obviously real — Dr Touré, Ousmane Diallo of AfricaDecor, and Maimouna Matel
- * N'Diaye — and nothing rendered them.
+ * What changes now: the `reviews` collection has clients writing reviews inside
+ * the app, each already answered by the team, and none of it reached the site.
+ * They render here first, above the WhatsApp quotes, with the rating stated
+ * once beside the heading. Every one of them is a row in production, anonymised
+ * server-side to a first name and an initial before it leaves the API.
  *
- * They are used here verbatim, including the imperfect French. That is the
- * point: "Ça me fais plus de deux ans dans le système j'ai jamais travaillé
- * avec une agence aussi organisée que la vôtre" reads like a person, and
- * "ChinaLink Express a transformé mon business" reads like an agency wrote it.
- * A prospect in Bamako can tell the difference instantly, and so can Google.
+ * Two rules this section is under, both learned the expensive way:
  *
- * No avatars. There are no photographs of these clients, and using a picture of
- * cargo as someone's face is the same fabrication in a smaller font. Initials
- * set in the mono face carry the same layout weight and claim nothing.
+ *   · The rating comes from `stats`, over every ACTIVE review — including
+ *     ratings left with no comment. Never recompute it from the cards shown.
+ *   · No `aggregateRating` / `Review` JSON-LD is emitted from any of this.
+ *     Reviews a business collects about itself are not eligible for review
+ *     rich results, and inventing eligibility is what earns a manual action.
+ *     The reviews are for readers, not for a star in the SERP.
  */
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
-import { Quote } from 'lucide-react';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
 import { RevealGroup } from '@/components/motion';
+import { ReviewFigure } from '@/features/reviews/components/ReviewFigure';
+import { RatingSummary } from '@/features/reviews/components/RatingSummary';
+import {
+  formatReviewDate,
+  type PublicReview,
+  type PublicReviewStats,
+} from '@/lib/publicReviewsApi';
 import { TESTIMONIALS, SECTION_IDS } from '../constants';
 
-function initialsOf(name: string): string {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? '')
-    .join('');
+interface TestimonialsSectionProps {
+  /** Real app reviews, newest first. Empty when the API is unreachable. */
+  appReviews?: PublicReview[];
+  stats?: PublicReviewStats;
+  /** How many app reviews to show here; the rest live on /avis. */
+  max?: number;
 }
 
-export function TestimonialsSection() {
+export function TestimonialsSection({
+  appReviews = [],
+  stats,
+  max = 3,
+}: TestimonialsSectionProps) {
   const t = useTranslations('testimonials');
+  const tr = useTranslations('reviews');
+  const locale = useLocale();
+
+  const shown = appReviews.slice(0, max);
+  const hasMore = appReviews.length > shown.length;
 
   return (
     <Band id={SECTION_IDS.TESTIMONIALS} tone="paper">
       <Shell>
-        <SectionHead label={t('sectionLabel')} title={t('title')} />
+        <SectionHead
+          label={t('sectionLabel')}
+          title={t('title')}
+          aside={
+            stats && stats.totalReviews > 0 ? (
+              <RatingSummary
+                averageRating={stats.averageRating}
+                totalReviews={stats.totalReviews}
+                countLabel={tr('countLabel', { count: stats.totalReviews })}
+              />
+            ) : undefined
+          }
+        />
 
         <RevealGroup
           stagger={0.1}
@@ -58,95 +87,49 @@ export function TestimonialsSection() {
             gap: 'clamp(1.5rem, 3vw, 2.5rem)',
           }}
         >
+          {shown.map((review) => (
+            <ReviewFigure
+              key={review.id}
+              author={review.author}
+              text={review.comment}
+              rating={review.rating}
+              provenance={tr(review.mode === 'AIR' ? 'provenanceAir' : 'provenanceSea')}
+              meta={formatReviewDate(review.createdAt, locale)}
+              response={review.adminResponse}
+              responseLabel={tr('responseLabel')}
+            />
+          ))}
+
           {TESTIMONIALS.map((testimonial) => (
-            <figure
+            <ReviewFigure
               key={testimonial.id}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 'var(--space-lg)',
-                margin: 0,
-                minWidth: 0,
-                paddingTop: 'var(--space-lg)',
-                // A rule above rather than a box around: the quotes are
-                // different lengths and boxing them forces either ragged
-                // heights or clamped text.
-                borderTop: '2px solid var(--color-ink)',
-              }}
-            >
-              <Quote
-                size={20}
-                aria-hidden
-                style={{ color: 'var(--color-accent)', flexShrink: 0 }}
-              />
-
-              <blockquote
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'var(--text-md)',
-                  lineHeight: 1.55,
-                  color: 'var(--color-ink)',
-                  margin: 0,
-                  flex: 1,
-                }}
-              >
-                {testimonial.text}
-              </blockquote>
-
-              <figcaption
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--space-sm)',
-                  minWidth: 0,
-                }}
-              >
-                <span
-                  aria-hidden
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '2.25rem',
-                    height: '2.25rem',
-                    flexShrink: 0,
-                    borderRadius: 'var(--radius-pill)',
-                    border: '1px solid var(--color-rule)',
-                    backgroundColor: 'var(--color-paper-2)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: '0.04em',
-                    color: 'var(--color-ink-2)',
-                  }}
-                >
-                  {initialsOf(testimonial.name)}
-                </span>
-                <span style={{ minWidth: 0 }}>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 'var(--text-base)',
-                      fontWeight: 'var(--weight-heading)',
-                      color: 'var(--color-ink)',
-                    }}
-                  >
-                    {testimonial.name}
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: 'var(--text-sm)',
-                      color: 'var(--color-neutral)',
-                    }}
-                  >
-                    {testimonial.company}
-                  </span>
-                </span>
-              </figcaption>
-            </figure>
+              author={testimonial.name}
+              text={testimonial.text}
+              meta={testimonial.company}
+              provenance={tr('provenanceWhatsapp')}
+            />
           ))}
         </RevealGroup>
+
+        {hasMore && (
+          <div style={{ marginTop: 'var(--space-2xl)' }}>
+            <Link
+              href={`/${locale}/avis`}
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'var(--text-sm)',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                color: 'var(--color-accent)',
+                textDecoration: 'none',
+                borderBottom: '1px solid var(--color-accent)',
+                paddingBottom: '0.15rem',
+              }}
+            >
+              {tr('seeAll')}
+            </Link>
+          </div>
+        )}
       </Shell>
     </Band>
   );

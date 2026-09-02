@@ -733,9 +733,13 @@ export function generateFAQPageSchema(
  * the function now returns `null` rather than inventing a fallback — a page
  * with no reviews must emit no review markup.
  *
- * ChinaLink has collected two reviews to date (see REVIEWS_COLLECTED in
- * constants/companyFacts.ts). Two ratings is not an average, so no
- * aggregateRating is emitted here either; wire one up when the sample is real.
+ * ChinaLink has collected four reviews to date (see REVIEWS_COLLECTED in
+ * constants/companyFacts.ts). They are real, and since 2026-09 they render on
+ * the home page, /calculateur and /avis, fetched live from the API. They are
+ * still not emitted as markup: four ratings is not an average to hand a search
+ * engine, and reviews a business collects about itself are not eligible for
+ * review rich results whatever the sample size. Showing them to readers is the
+ * point; a star in the SERP is not on offer for first-party reviews.
  */
 export function generateReviewSchema(
   reviews: {

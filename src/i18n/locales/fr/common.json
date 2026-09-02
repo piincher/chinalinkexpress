@@ -20,7 +20,8 @@
     "community": "Communauté",
     "tools": "Outils",
     "compareShipping": "Comparateur",
-    "checkProduct": "Vérifier Produit"
+    "checkProduct": "Vérifier Produit",
+    "reviews": "Avis clients"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -102,7 +103,7 @@
     "clientsServed": "Clients servis",
     "clientsActive": "Clients actifs sur 12 mois",
     "warehouses": "Entrepôts en Chine",
-    "provenance": "Chiffres relevés dans notre système le {date}. Nous ne publions pas de note moyenne : {reviews} avis collectés à ce jour, ce qui ne fait pas une moyenne."
+    "provenance": "Chiffres relevés dans notre système le {date}. La note affichée est la moyenne réelle des {reviews} avis laissés par nos clients dans l'application — un échantillon encore petit, que nous préférons montrer tel quel plutôt que d'annoncer une moyenne sans son nombre."
   },
   "about": {
     "sectionLabel": "À Propos de Nous",
@@ -1375,7 +1376,6 @@
   "reviews": {
     "basedOn": "Basé sur {count} avis clients vérifiés",
     "verified": "Avis vérifié",
-    "sourceLabel": "Source : Google Reviews & Trustpilot",
     "seeAll": "Voir tous les avis",
     "carousel": {
       "prev": "Précédent",
@@ -1393,7 +1393,19 @@
     "title": "Ce que disent nos clients",
     "subtitle": "Des importateurs africains partagent leur expérience avec ChinaLink",
     "prev": "Précédent",
-    "next": "Suivant"
+    "next": "Suivant",
+    "countLabel": "sur {count} avis clients",
+    "responseLabel": "Réponse de ChinaLink",
+    "provenanceAir": "Avis app · Aérien",
+    "provenanceSea": "Avis app · Maritime",
+    "provenanceWhatsapp": "Message WhatsApp",
+    "pageEyebrow": "Avis clients",
+    "pageTitle": "Ce que disent nos clients",
+    "pageLede": "Chaque avis ci-dessous a été écrit dans l'application ChinaLink Express par un client après une livraison. Le nom de famille est réduit à une initiale ; rien d'autre n'est modifié.",
+    "pageEmpty": "Aucun avis n'a encore été publié dans l'application.",
+    "appSectionTitle": "Avis publiés dans l'application",
+    "whatsappSectionTitle": "Messages reçus sur WhatsApp",
+    "howTo": "Vous êtes client ? Notez votre livraison depuis l'application, rubrique « Mes Avis »."
   },
   "videoTestimonials": {
     "realVideoBadge": "VIDÉO RÉELLE",
