@@ -26,6 +26,7 @@ import {
   type PublicReview,
   type PublicReviewStats,
 } from '@/lib/publicReviewsApi';
+import { publicProfilePath } from '@/lib/publicProfileApi';
 import type { BandTone } from '@/components/site';
 
 interface ClientReviewsBandProps {
@@ -77,7 +78,11 @@ export function ClientReviewsBand({
             <ReviewFigure
               key={review.id}
               author={review.author}
+              authorHref={
+                review.authorHandle ? publicProfilePath(locale, review.authorHandle) : null
+              }
               text={review.comment}
+              silentLabel={t('silentReview')}
               rating={review.rating}
               provenance={t(review.mode === 'AIR' ? 'provenanceAir' : 'provenanceSea')}
               meta={formatReviewDate(review.createdAt, locale)}

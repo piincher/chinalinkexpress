@@ -8,15 +8,15 @@
  *
  * The contract, from `GET /api/v2/public/reviews`:
  *
- *   reviews   only the ACTIVE reviews carrying written text, newest first,
- *             anonymised server-side to "Sira T." — no goods reference, no
- *             phone number, no client id.
- *   stats     computed over *every* ACTIVE review, including those left as a
- *             bare rating with no comment. So the average can legitimately be
- *             "sur 4 avis" beside two cards. Never recompute the average from
- *             the cards to make those numbers agree: that inflates it, and an
- *             inflated rating is the one number on this site that would be
- *             both false and load-bearing.
+ *   reviews   every ACTIVE review, newest first, anonymised server-side to
+ *             "Sira T." — no goods reference, no phone number, no client id.
+ *             A rating left without words arrives with `comment: null`; those
+ *             used to be dropped, which is what made "sur 4 avis" sit beside
+ *             two cards. They are rendered as what they are instead.
+ *   stats     computed over every ACTIVE review, the silent ones included.
+ *             Never recompute the average from the cards: that inflates it,
+ *             and an inflated rating is the one number on this site that would
+ *             be both false and load-bearing.
  *
  * Same shape as liveFeedApi: a plain fetch, an abort timeout, and a result
  * union so callers never catch. Cached for an hour — reviews arrive a few
@@ -29,10 +29,17 @@ import { API_CONFIG } from '@/config/api';
 export interface PublicReview {
   id: string;
   rating: number;
-  comment: string;
+  /** Null when the client rated without writing anything. */
+  comment: string | null;
   adminResponse: string | null;
   /** First name plus a surname initial, built server-side. */
   author: string;
+  /**
+   * Opaque address of the author's public profile, or null when they have none
+   * (a staff account, a closed one). Never a user id — see the API's
+   * `publicProfileService` for why that distinction matters.
+   */
+  authorHandle: string | null;
   mode: 'AIR' | 'SEA';
   createdAt: string;
 }
@@ -46,8 +53,10 @@ export interface PublicReviewStats {
 
 export interface PublicReviewsPayload {
   reviews: PublicReview[];
-  /** How many carry text, i.e. how many can be shown as cards. */
+  /** Everything returned, silent ratings included. */
   displayed: number;
+  /** The subset carrying text, for a surface that wants to lead with those. */
+  withComment: number;
   stats: PublicReviewStats;
 }
 
@@ -58,6 +67,7 @@ const REVALIDATE_SECONDS = 3600;
 export const EMPTY_REVIEWS: PublicReviewsPayload = {
   reviews: [],
   displayed: 0,
+  withComment: 0,
   stats: { averageRating: 0, totalReviews: 0, distribution: {} },
 };
 
@@ -77,9 +87,17 @@ export async function fetchPublicReviews(limit = 24): Promise<PublicReviewsPaylo
     const reviews = Array.isArray(data.reviews) ? (data.reviews as PublicReview[]) : [];
     const stats = (data.stats ?? EMPTY_REVIEWS.stats) as PublicReviewStats;
 
+    const kept = reviews.filter(Boolean);
     return {
-      reviews: reviews.filter((review) => review && review.comment),
-      displayed: typeof data.displayed === 'number' ? data.displayed : reviews.length,
+      // No comment filter: a five-star rating with no words is still one of
+      // the reviews `stats` counts, and hiding it is what made the two
+      // numbers disagree on screen.
+      reviews: kept,
+      displayed: typeof data.displayed === 'number' ? data.displayed : kept.length,
+      withComment:
+        typeof data.withComment === 'number'
+          ? data.withComment
+          : kept.filter((review) => review.comment).length,
       stats: {
         averageRating: Number(stats.averageRating) || 0,
         totalReviews: Number(stats.totalReviews) || 0,

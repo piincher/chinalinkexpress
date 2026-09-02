@@ -10,9 +10,15 @@
  * "verified" checkmark badge and no invented country flag. The provenance line
  * is the claim, and it is one this codebase can substantiate — these rows exist
  * in the `reviews` collection, written by clients who had a delivery.
+ *
+ * Two later additions, both answering "who is this and did they really ship?":
+ * the name becomes a link to that client's public profile when they have one,
+ * and a review left as a bare rating renders as exactly that instead of being
+ * withheld from the page.
  */
 
 import React from 'react';
+import Link from 'next/link';
 import { Quote } from 'lucide-react';
 import { ReviewStars } from './ReviewStars';
 
@@ -27,7 +33,12 @@ function initialsOf(name: string): string {
 
 export interface ReviewFigureProps {
   author: string;
-  text: string;
+  /** Null when the client rated without writing anything. */
+  text: string | null;
+  /** Where the author's name points, when they have a public profile. */
+  authorHref?: string | null;
+  /** Shown in place of the quote for a rating left without words. */
+  silentLabel?: string;
   /** Shown under the name: mode + date, or the person's company. */
   meta?: string;
   rating?: number;
@@ -41,6 +52,8 @@ export interface ReviewFigureProps {
 export function ReviewFigure({
   author,
   text,
+  authorHref,
+  silentLabel,
   meta,
   rating,
   provenance,
@@ -84,18 +97,33 @@ export function ReviewFigure({
         )}
       </div>
 
-      <blockquote
-        style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--text-md)',
-          lineHeight: 1.55,
-          color: 'var(--color-ink)',
-          margin: 0,
-          flex: 1,
-        }}
-      >
-        {text}
-      </blockquote>
+      {text ? (
+        <blockquote
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-md)',
+            lineHeight: 1.55,
+            color: 'var(--color-ink)',
+            margin: 0,
+            flex: 1,
+          }}
+        >
+          {text}
+        </blockquote>
+      ) : (
+        <p
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-sm)',
+            fontStyle: 'italic',
+            color: 'var(--color-neutral)',
+            margin: 0,
+            flex: 1,
+          }}
+        >
+          {silentLabel}
+        </p>
+      )}
 
       {response && (
         <div
@@ -163,17 +191,35 @@ export function ReviewFigure({
           {initialsOf(author)}
         </span>
         <span style={{ minWidth: 0 }}>
-          <span
-            style={{
-              display: 'block',
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-base)',
-              fontWeight: 'var(--weight-heading)',
-              color: 'var(--color-ink)',
-            }}
-          >
-            {author}
-          </span>
+          {authorHref ? (
+            <Link
+              href={authorHref}
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-base)',
+                fontWeight: 'var(--weight-heading)',
+                color: 'var(--color-ink)',
+                textDecoration: 'underline',
+                textUnderlineOffset: '0.2em',
+                textDecorationColor: 'var(--color-rule)',
+              }}
+            >
+              {author}
+            </Link>
+          ) : (
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-base)',
+                fontWeight: 'var(--weight-heading)',
+                color: 'var(--color-ink)',
+              }}
+            >
+              {author}
+            </span>
+          )}
           {meta && (
             <span
               style={{

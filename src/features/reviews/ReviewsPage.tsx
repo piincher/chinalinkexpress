@@ -30,6 +30,7 @@ import {
   type PublicReview,
   type PublicReviewStats,
 } from '@/lib/publicReviewsApi';
+import { publicProfilePath } from '@/lib/publicProfileApi';
 import { TESTIMONIALS } from '@/views/landing/constants';
 
 const GRID: React.CSSProperties = {
@@ -88,7 +89,11 @@ export function ReviewsPage({ reviews, stats }: ReviewsPageProps) {
                 <ReviewFigure
                   key={review.id}
                   author={review.author}
+                  authorHref={
+                    review.authorHandle ? publicProfilePath(locale, review.authorHandle) : null
+                  }
                   text={review.comment}
+                  silentLabel={t('silentReview')}
                   rating={review.rating}
                   provenance={t(review.mode === 'AIR' ? 'provenanceAir' : 'provenanceSea')}
                   meta={formatReviewDate(review.createdAt, locale)}

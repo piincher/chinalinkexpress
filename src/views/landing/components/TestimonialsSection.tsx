@@ -34,6 +34,7 @@ import { Band, Shell } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
 import { RevealGroup } from '@/components/motion';
 import { ReviewFigure } from '@/features/reviews/components/ReviewFigure';
+import { publicProfilePath } from '@/lib/publicProfileApi';
 import { RatingSummary } from '@/features/reviews/components/RatingSummary';
 import {
   formatReviewDate,
@@ -59,7 +60,17 @@ export function TestimonialsSection({
   const tr = useTranslations('reviews');
   const locale = useLocale();
 
-  const shown = appReviews.slice(0, max);
+  /*
+   * Reviews with words first.
+   *
+   * Silent ratings are real and are shown everywhere they are counted — but
+   * the home page has three slots and a sentence is what persuades a stranger.
+   * Sorting rather than filtering keeps them reachable on /avis and on their
+   * author's profile.
+   */
+  const shown = [...appReviews]
+    .sort((a, b) => Number(Boolean(b.comment)) - Number(Boolean(a.comment)))
+    .slice(0, max);
   const hasMore = appReviews.length > shown.length;
 
   return (
@@ -91,7 +102,11 @@ export function TestimonialsSection({
             <ReviewFigure
               key={review.id}
               author={review.author}
+              authorHref={
+                review.authorHandle ? publicProfilePath(locale, review.authorHandle) : null
+              }
               text={review.comment}
+              silentLabel={tr('silentReview')}
               rating={review.rating}
               provenance={tr(review.mode === 'AIR' ? 'provenanceAir' : 'provenanceSea')}
               meta={formatReviewDate(review.createdAt, locale)}
