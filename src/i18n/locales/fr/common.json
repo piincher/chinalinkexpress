@@ -21,7 +21,8 @@
     "tools": "Outils",
     "compareShipping": "Comparateur",
     "checkProduct": "Vérifier Produit",
-    "reviews": "Avis clients"
+    "reviews": "Avis clients",
+    "shippingCalendar": "Calendrier d'expédition"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -1584,5 +1585,25 @@
     "loadError": "Le flux en direct est momentanément indisponible.",
     "retry": "Réessayer",
     "endOfFeed": "Vous avez vu toute l'activité récente."
+  },
+  "occasions": {
+    "sectionLabel": "Calendrier d'expédition",
+    "title": "À préparer",
+    "lede": "Les dates qui comptent au Mali, et le dernier jour pour expédier de Chine afin d'arriver à temps.",
+    "air": "Aérien",
+    "sea": "Maritime",
+    "shipBy": "Expédiez avant le {date}",
+    "daysLeft": "{days} j restants",
+    "closed": "Trop tard pour cette date",
+    "estimated": "date estimée",
+    "allClosed": "Les délais d'expédition sont passés pour cette date.",
+    "inDays": "dans {days} j",
+    "seeAll": "Voir le calendrier complet",
+    "pageEyebrow": "Calendrier d'expédition",
+    "pageTitle": "Quand expédier de Chine pour arriver à temps",
+    "pageLede": "Ramadan, rentrée scolaire, fêtes de fin d'année : pour chaque date, le dernier jour raisonnable pour expédier par avion ou par bateau. Les délais viennent de nos expéditions réelles, pas d'une moyenne du secteur.",
+    "pageEmpty": "Aucune échéance à préparer pour le moment.",
+    "howTitle": "Comment lire ces dates",
+    "howLede": "La date recommandée laisse une marge pour le dédouanement et le dernier kilomètre. Passé ce jour, l'arrivée avant l'événement ne peut plus être promise honnêtement."
   }
 }

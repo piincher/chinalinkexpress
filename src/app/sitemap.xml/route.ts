@@ -121,6 +121,13 @@ const COMMUNITY_PAGES: PageConfig[] = [
    * the home page's testimonials band and the footer.
    */
   { path: 'avis', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  /*
+   * `/calendrier` carries the shipping cutoffs for each commercial date. Its
+   * content changes as deadlines pass and the next occasion moves into range,
+   * which is genuinely weekly — and it answers a question people type
+   * ("quand expédier pour la rentrée") rather than one we invented.
+   */
+  { path: 'calendrier', priority: 0.85, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
 ];
 
 const INDUSTRY_PAGES: PageConfig[] = [

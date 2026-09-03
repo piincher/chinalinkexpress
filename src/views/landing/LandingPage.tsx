@@ -57,6 +57,7 @@ import {
 import { QuizSection } from './components/QuizSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsBand } from './components/TestimonialsBand';
+import { OccasionsHomeBand } from './components/OccasionsHomeBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
 
@@ -102,6 +103,14 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
 
       {/* ── VI. what we take on ──────────────────────────────────────────── */}
       <ServicesSection />
+
+      {/* ── VI.b what to prepare for ───────────────────────────────────────
+          The shipping calendar the app shows its clients: the dates that
+          matter in Mali with the last day to ship for each. Async, and it
+          renders nothing out of season. It sits after the services because it
+          is the first thing on the page that is about the reader's deadline
+          rather than about us. */}
+      <OccasionsHomeBand />
 
       {/* ── VII. the figures, once there is something to count ───────────── */}
       <StatsSection />

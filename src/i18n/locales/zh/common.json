@@ -21,7 +21,8 @@
     "tools": "工具",
     "compareShipping": "运费对比",
     "checkProduct": "产品检查",
-    "reviews": "客户评价"
+    "reviews": "客户评价",
+    "shippingCalendar": "Shipping calendar"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -1433,5 +1434,25 @@
     "loadError": "实时动态暂时无法加载。",
     "retry": "重试",
     "endOfFeed": "您已查看全部近期动态。"
+  },
+  "occasions": {
+    "sectionLabel": "Shipping calendar",
+    "title": "What to prepare for",
+    "lede": "The dates that matter in Mali, and the last day to ship from China to arrive in time.",
+    "air": "Air",
+    "sea": "Sea",
+    "shipBy": "Ship before {date}",
+    "daysLeft": "{days} days left",
+    "closed": "Too late for this date",
+    "estimated": "estimated date",
+    "allClosed": "Shipping deadlines have passed for this date.",
+    "inDays": "in {days} days",
+    "seeAll": "See the full calendar",
+    "pageEyebrow": "Shipping calendar",
+    "pageTitle": "When to ship from China to arrive in time",
+    "pageLede": "Ramadan, back to school, end-of-year holidays: for each date, the last reasonable day to ship by air or by sea. The transit times come from our own shipments, not from an industry average.",
+    "pageEmpty": "No upcoming deadlines right now.",
+    "howTitle": "How to read these dates",
+    "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
   }
 }

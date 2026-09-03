@@ -71,6 +71,7 @@ const SERVICE_LINKS = [
 const PAGE_LINKS = [
   { key: 'navigation.about', href: '#about' },
   { key: 'navigation.reviews', href: 'avis' },
+  { key: 'navigation.shippingCalendar', href: 'calendrier' },
   { key: 'navigation.blog', href: 'blog' },
   { key: 'navigation.faq', href: 'faq' },
   { key: 'navigation.contact', href: '#contact' },
