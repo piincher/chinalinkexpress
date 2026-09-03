@@ -9,14 +9,23 @@
  * last week is amber; a closed lane says so plainly instead of leaving someone
  * to work out that a cutoff in the past means no.
  *
- * Every date and every day-count is rendered exactly as the API sent it. The
- * cutoffs are the promise this business is held to, and a promise recomputed in
- * a browser is a promise with a different clock behind it.
+ * Every date and every day-count comes from the API. The cutoffs are the
+ * promise this business is held to, and a promise recomputed in a browser is a
+ * promise with a different clock behind it — so the *instant* is always the
+ * server's. Only its rendering is local, because the server formats in French
+ * and this page is read in four languages (see ../localizeOccasion).
  */
 
 import React from 'react';
+import { useLocale } from 'next-intl';
 import { Plane, Ship } from 'lucide-react';
 import type { CustomerOccasion, OccasionLane, OccasionLaneState } from '@/lib/publicOccasionsApi';
+import {
+  localizeGoodsSuggestion,
+  localizeLaneCutoff,
+  localizeOccasionName,
+  localizeTargetDate,
+} from '../localizeOccasion';
 
 /** Semantic, not decorative: the colour IS the answer to "am I too late?". */
 const LANE_TONE: Record<OccasionLaneState, { color: string; background: string }> = {
@@ -28,6 +37,8 @@ const LANE_TONE: Record<OccasionLaneState, { color: string; background: string }
 
 interface LaneRowProps {
   lane: OccasionLane;
+  /** Cutoff already rendered in the reader's locale. */
+  cutoffLabel: string | null;
   labels: {
     air: string;
     sea: string;
@@ -37,7 +48,7 @@ interface LaneRowProps {
   };
 }
 
-function LaneRow({ lane, labels }: LaneRowProps) {
+function LaneRow({ lane, cutoffLabel, labels }: LaneRowProps) {
   const tone = LANE_TONE[lane.state];
   const isClosed = lane.state === 'closed';
 
@@ -78,11 +89,7 @@ function LaneRow({ lane, labels }: LaneRowProps) {
           fontWeight: lane.state === 'urgency' ? 'var(--weight-heading)' : undefined,
         }}
       >
-        {isClosed
-          ? labels.closed
-          : lane.recommendedCutoffLabel
-            ? labels.shipBy(lane.recommendedCutoffLabel)
-            : ''}
+        {isClosed ? labels.closed : cutoffLabel ? labels.shipBy(cutoffLabel) : ''}
       </span>
 
       {!isClosed && typeof lane.daysRemaining === 'number' ? (
@@ -116,6 +123,18 @@ export interface OccasionCardProps {
 }
 
 export function OccasionCard({ occasion, labels }: OccasionCardProps) {
+  /*
+   * The API is French-first: it sends a pre-formatted French date, a French
+   * name and French goods terms. Under an English UI that produced "Ship
+   * before 13 septembre 2026" — chrome translated, content not. Dates are
+   * reformatted from the ISO instant the payload also carries; names fall back
+   * to the French content where we have no translation, never to a slug.
+   * See ../localizeOccasion.
+   */
+  const locale = useLocale();
+  const name = localizeOccasionName(occasion, locale);
+  const targetDate = localizeTargetDate(occasion, locale);
+
   return (
     <article
       style={{
@@ -141,7 +160,7 @@ export function OccasionCard({ occasion, labels }: OccasionCardProps) {
               color: 'var(--color-ink)',
             }}
           >
-            {occasion.name}
+            {name}
           </h3>
           <p
             style={{
@@ -151,7 +170,7 @@ export function OccasionCard({ occasion, labels }: OccasionCardProps) {
               color: 'var(--color-neutral)',
             }}
           >
-            {occasion.targetDateLabel}
+            {targetDate}
             {/* Islamic and school dates are projections until confirmed, and
                 saying so is the difference between a date and a guess. */}
             {occasion.dateConfidence === 'estimated' ? ` · ${labels.estimated}` : ''}
@@ -186,7 +205,12 @@ export function OccasionCard({ occasion, labels }: OccasionCardProps) {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
           {occasion.lanes.map((lane) => (
-            <LaneRow key={`${occasion.id}-${lane.mode}`} lane={lane} labels={labels} />
+            <LaneRow
+              key={`${occasion.id}-${lane.mode}`}
+              lane={lane}
+              cutoffLabel={localizeLaneCutoff(lane, locale)}
+              labels={labels}
+            />
           ))}
         </div>
       )}
@@ -201,7 +225,10 @@ export function OccasionCard({ occasion, labels }: OccasionCardProps) {
             color: 'var(--color-ink-2)',
           }}
         >
-          {occasion.goodsSuggestions.slice(0, 4).join(' · ')}
+          {occasion.goodsSuggestions
+            .slice(0, 4)
+            .map((term) => localizeGoodsSuggestion(term, locale))
+            .join(' · ')}
         </p>
       ) : null}
     </article>
