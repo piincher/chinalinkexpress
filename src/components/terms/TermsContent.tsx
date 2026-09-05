@@ -968,7 +968,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                      items={[
                         "Transport économique par conteneur (FCL) ou groupage (LCL)",
                         "Délai moyen : 60-75 jours ouvrables (Chine → Afrique de l'Ouest)",
-                        "Tarification au CBM (mètre cube) avec minimum 0.1 CBM",
+                        "Tarification au CBM (mètre cube), sans volume minimum",
                         "Compagnies partenaires : COSCO, MAERSK, CMA CGM",
                         "Groupage disponible pour petits volumes (consolidation)",
                         "Idéal pour : meubles, marchandises lourdes, volumes importants",
@@ -1163,7 +1163,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   <List
                      items={[
                         "CBM = Longueur(m) × Largeur(m) × Hauteur(m)",
-                        "Minimum facturable : 0.1 CBM (même si volume inférieur)",
+                        "Aucun volume minimum : le volume enregistré est le volume facturé",
                         "Si densité {`> 200`} kg/m³ : ajustement selon règle 1:200",
                         "Si densité {`> 250`} kg/m³ : règle COSCO/MAERSK (1:250)",
                         "Formule ajustement haute densité : Poids(kg) × 0.005 = CBM ajusté",
@@ -1176,10 +1176,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                         "Meubles : L=1.2m × l=0.8m × H=1.0m, Poids = 80kg",
                         "CBM = 1.2 × 0.8 × 1.0 = 0.96 CBM",
                         "Densité = 80 ÷ 0.96 = 83 kg/m³ (< 200, pas d'ajustement)",
-                        "CBM final = 0.96 (arrondi à 1.0 CBM)",
-                        "Tarif indicatif : 1.0 CBM × 350 000 FCFA = 350 000 FCFA",
+                        "CBM final = 0.96 (pas d'arrondi)",
+                        "Tarif indicatif : 0.96 CBM × 350 000 FCFA = 336 000 FCFA",
                      ]}
-                     result="Total fret maritime : 350 000 FCFA"
+                     result="Total fret maritime : 336 000 FCFA"
                   />
 
                   <CalculationExample
@@ -1308,20 +1308,21 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   </div>
                </SubSection>
 
-               <SubSection title="4.2 Minimum CBM">
+               <SubSection title="4.2 Pas de Volume Minimum">
                   <p className="text-[var(--text-secondary)] mb-3">
-                     Quel que soit le volume réel de votre marchandise, un minimum de{" "}
-                     <strong>0.1 CBM</strong> est facturé.
+                     Vous payez le volume exact enregistré à notre entrepôt. Il n'y a{" "}
+                     <strong>ni arrondi, ni volume minimum facturable</strong> : un colis mesuré à
+                     0.075 m³ est facturé 0.075 × le tarif au m³.
                   </p>
                   <CalculationExample
-                     title="Exemple - Minimum CBM"
+                     title="Exemple - Petit colis"
                      steps={[
                         "Petit colis : L=0.3m × l=0.2m × H=0.15m",
                         "CBM calculé = 0.3 × 0.2 × 0.15 = 0.009 CBM",
-                        "CBM facturable = max(0.009, 0.1) = 0.1 CBM",
-                        "0.1 CBM × 350 000 FCFA = 35 000 FCFA minimum",
+                        "CBM facturable = 0.009 CBM (le volume mesuré)",
+                        "0.009 CBM × 350 000 FCFA = 3 150 FCFA",
                      ]}
-                     result="Total minimum : 35 000 FCFA"
+                     result="Total : 3 150 FCFA"
                   />
                </SubSection>
 
