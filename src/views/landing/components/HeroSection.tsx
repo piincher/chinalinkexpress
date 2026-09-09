@@ -26,6 +26,7 @@ import { MessageCircle } from 'lucide-react';
 import { Band, Shell, Cta, CarrierBar } from '@/components/site';
 import { LineReveal, Reveal } from '@/components/motion';
 import { RouteGlobe } from '@/features/route-globe';
+import { SeasonalAtmosphere } from '@/components/seasonal';
 import { LaneTicker } from './LaneTicker';
 import { SECTION_IDS, HERO_WHATSAPP_URL } from '../constants';
 
@@ -54,6 +55,12 @@ export async function HeroSection() {
       <div className="hero-globe" aria-hidden>
         <RouteGlobe />
       </div>
+
+      {/* ── the season, ambient ───────────────────────────────────────────
+          Absolutely placed canvas band between the globe and the text
+          (z-index 1 under the Shell's 2), clipped by the band. Async server
+          gate: renders nothing when no live campaign asks for an effect. */}
+      <SeasonalAtmosphere />
 
       <Shell
         style={{

@@ -22,6 +22,7 @@ import { i18nConfig, type Locale, getLocaleDirection, getSeoLocale } from '@/i18
 import { SharedNavbar, SharedFooter } from '@/components/layout';
 import { GoogleAnalytics } from '@/components/seo';
 import { ThemeProvider, ThemeInitScript } from '@/components/theme';
+import { SeasonalStyleOverride } from '@/components/seasonal';
 import { PWAProvider, InstallPrompt, UpdateNotification, OfflineIndicator } from '@/components/pwa';
 import { PromoModalProvider } from '@/features/promoCampaigns';
 import { SmoothScroll } from '@/components/smooth-scroll';
@@ -253,6 +254,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <>
       {/* Theme Initialization Script - Prevents flash */}
       <ThemeInitScript />
+
+      {/* The live campaign's accent, from the same published record that
+          dresses the app. An async server component, so the HTML arrives
+          already in the right colours instead of repainting a beat later; it
+          renders nothing out of season, and nothing if the API is unreachable.
+          Sits in the layout so every page is dressed, not just the homepage. */}
+      <SeasonalStyleOverride />
       
       {/* Performance: Preconnect to Critical Domains */}
       <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />

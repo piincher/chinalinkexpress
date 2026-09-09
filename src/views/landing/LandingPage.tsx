@@ -86,6 +86,14 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
      *            thing the page could afford.
      */
     <div style={{ backgroundColor: 'var(--color-paper)' }}>
+      {/* ── 0. the season ──────────────────────────────────────────────────
+          The accent override now lives in the locale layout, so the campaign
+          dresses every page rather than the homepage alone — the app skins the
+          whole app, and a visitor who lands on a guide and clicks through to
+          here should not watch the brand colour change under them. The ambient
+          effect stays in the hero (SeasonalAtmosphere): it is a decoration for
+          one full-bleed photo, not for a blog post. */}
+
       {/* ── I. the promise ───────────────────────────────────────────────── */}
       <HeroSection />
 
