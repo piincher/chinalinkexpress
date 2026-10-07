@@ -103,6 +103,7 @@ const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
 const TOOL_PAGES: PageConfig[] = [
   { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
   { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'verifier', priority: 0.5, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
   /*
    * `/pourquoi-nous` was in neither the sitemap nor any internal link on the
    * site — a fully rendered page (features/comparison/FullServicePage, with its

@@ -31,36 +31,35 @@ import React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell } from '@/components/site';
 import { Counter, Reveal, RevealGroup } from '@/components/motion';
-import {
-  SHIPMENTS_HANDLED,
-  CLIENTS_SERVED,
-  CLIENTS_ACTIVE_12M,
-  WAREHOUSES,
-  REVIEWS_COLLECTED,
-  VERIFIED_ON,
-} from '@/constants/companyFacts';
+import type { CompanyStats } from '@/lib/publicStatsApi';
 import { SECTION_IDS } from '../constants';
 
-/** dd/mm/yyyy — the form a Bamako reader expects. */
-function formatVerifiedOn(iso: string, locale: string): string {
-  const date = new Date(`${iso}T00:00:00Z`);
+/**
+ * "08 octobre 2026" — the day of the reading (figures refresh daily), in Bamako
+ * time, the clock the business runs on.
+ */
+function formatAsOf(iso: string, locale: string): string {
   return new Intl.DateTimeFormat(locale, {
     day: '2-digit',
     month: 'long',
     year: 'numeric',
-    timeZone: 'UTC',
-  }).format(date);
+    timeZone: 'Africa/Bamako',
+  }).format(new Date(iso));
 }
 
-export function StatsSection() {
+/**
+ * Figures come in from the server (LiveStatsSection → lib/publicStatsApi),
+ * read live from production with the definitions in constants/companyFacts.
+ */
+export function StatsSection({ stats }: { stats: CompanyStats }) {
   const t = useTranslations('stats');
   const locale = useLocale();
 
   const figures = [
-    { value: SHIPMENTS_HANDLED, label: t('shipments') },
-    { value: CLIENTS_SERVED, label: t('clientsServed') },
-    { value: CLIENTS_ACTIVE_12M, label: t('clientsActive') },
-    { value: WAREHOUSES.length, label: t('warehouses') },
+    { value: stats.shipmentsHandled, label: t('shipments') },
+    { value: stats.clientsServed, label: t('clientsServed') },
+    { value: stats.clientsActive12m, label: t('clientsActive') },
+    { value: stats.warehousesInChina, label: t('warehouses') },
   ];
 
   return (
@@ -177,8 +176,8 @@ export function StatsSection() {
           }}
         >
           {t('provenance', {
-            date: formatVerifiedOn(VERIFIED_ON, locale),
-            reviews: REVIEWS_COLLECTED,
+            date: formatAsOf(stats.asOf, locale),
+            reviews: stats.reviewsCount,
           })}
         </p>
       </Shell>

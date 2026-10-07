@@ -91,15 +91,20 @@ export function validateQuizAnswers(
 }
 
 /**
- * Generate guide token from phone number
- * Uses simple encoding for URL-safe tokens
+ * Generate the guide link token.
+ *
+ * The token is the only thing standing between a stranger and someone's quiz
+ * results, so it is 96 bits from the platform CSPRNG. The old form embedded the
+ * first characters of the WhatsApp number (base64, reversible) and six
+ * `Math.random()` characters — guessable, and leaking the number's prefix.
+ * Existing tokens stay valid: lookups are by equality. `_phoneNumber` is kept
+ * so callers do not change.
  */
-export function generateGuideToken(phoneNumber: string): string {
-  const timestamp = Date.now().toString(36);
-  const random = Math.random().toString(36).substring(2, 8);
-  const phoneHash = Buffer.from(phoneNumber).toString('base64url').substring(0, 8);
-  
-  return `${timestamp}-${phoneHash}-${random}`;
+export function generateGuideToken(_phoneNumber: string): string {
+  const bytes = new Uint8Array(12);
+  globalThis.crypto.getRandomValues(bytes);
+  const random = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('');
+  return `${Date.now().toString(36)}-${random}`;
 }
 
 /**

@@ -22,7 +22,8 @@
     "compareShipping": "مقارنة الشحن",
     "checkProduct": "فحص المنتج",
     "reviews": "تقييمات العملاء",
-    "shippingCalendar": "Shipping calendar"
+    "shippingCalendar": "Shipping calendar",
+    "verifyPhoto": "التحقق من صورة"
   },
   "cta": {
     "getQuote": "احصل على عرض مجاني",
@@ -1454,5 +1455,35 @@
     "pageEmpty": "No upcoming deadlines right now.",
     "howTitle": "How to read these dates",
     "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
+  },
+  "photoVerify": {
+    "eyebrow": "الأصالة",
+    "title": "التحقق من صورة",
+    "lede": "كل صورة تُلتقط في مستودعاتنا تحمل شريط ChinaLink Express مع رمز تحقق. أدخل الرمز لرؤية النسخة الأصلية المسجلة لدينا.",
+    "label": "رمز التحقق",
+    "submit": "تحقق",
+    "checking": "جارٍ التحقق…",
+    "hint": "الرمز مطبوع باللون الأصفر أسفل الصورة، مثل 7F3A-92CD.",
+    "invalid": "هذا الرمز غير صالح. يتكون من 8 أحرف، مثل 7F3A-92CD.",
+    "notFound": "لا توجد صورة من ChinaLink Express تطابق هذا الرمز. إذا كانت صورة تحمل هذا الرمز فهي لم تصدر عنا أو تم تعديلها.",
+    "rateLimited": "عدد كبير من عمليات التحقق من هذا الاتصال. يرجى المحاولة بعد بضع دقائق.",
+    "error": "التحقق غير متاح مؤقتًا. يرجى المحاولة بعد قليل.",
+    "validTitle": "صورة أصلية",
+    "validBody": "التُقطت هذه الصورة وسُجلت بواسطة ChinaLink Express. هذه نسختنا.",
+    "imageAlt": "صورة مسجلة لدى ChinaLink Express — الرمز {code}",
+    "code": "الرمز",
+    "reference": "المرجع",
+    "stage": "المرحلة",
+    "date": "تاريخ التسجيل",
+    "compareNote": "قارنها بالصورة التي استلمتها: أي اختلاف يعني أنها عُدلت.",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "الاستلام في المستودع",
+      "INTAKE": "الاستلام في المستودع",
+      "LABELED": "وضع الملصق",
+      "ARRIVAL": "الوصول إلى باماكو",
+      "HANDOVER": "التسليم للعميل",
+      "PAYMENT_PROOF": "إثبات الدفع",
+      "other": "صورة"
+    }
   }
 }

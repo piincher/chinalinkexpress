@@ -126,6 +126,17 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Photo verification: the code rides in the query string. Never send
+        // the page URL to the image host (or anyone) as a Referer, and never
+        // let another site frame the page to dress up a fake result.
+        source: '/:locale(fr|en|zh|ar)/verifier',
+        headers: [
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+        ],
+      },
+      {
         // Apple App Site Association is extensionless — it must be served as
         // application/json or iOS Universal Links verification fails
         source: '/.well-known/apple-app-site-association',

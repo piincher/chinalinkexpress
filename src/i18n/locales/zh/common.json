@@ -22,7 +22,8 @@
     "compareShipping": "运费对比",
     "checkProduct": "产品检查",
     "reviews": "客户评价",
-    "shippingCalendar": "Shipping calendar"
+    "shippingCalendar": "Shipping calendar",
+    "verifyPhoto": "验证照片"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -1454,5 +1455,35 @@
     "pageEmpty": "No upcoming deadlines right now.",
     "howTitle": "How to read these dates",
     "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
+  },
+  "photoVerify": {
+    "eyebrow": "真实性",
+    "title": "验证照片",
+    "lede": "我们仓库拍摄的每张照片下方都有 ChinaLink Express 横幅和验证码。输入验证码即可查看我们存档的原图。",
+    "label": "验证码",
+    "submit": "验证",
+    "checking": "验证中…",
+    "hint": "验证码以黄色印在照片下方，例如 7F3A-92CD。",
+    "invalid": "验证码无效。验证码共 8 位，例如 7F3A-92CD。",
+    "notFound": "没有与此验证码匹配的 ChinaLink Express 照片。若照片上印有此验证码，则该照片并非我们发出或已被篡改。",
+    "rateLimited": "此网络的验证次数过多，请几分钟后再试。",
+    "error": "验证服务暂时不可用，请稍后再试。",
+    "validTitle": "照片真实",
+    "validBody": "此照片由 ChinaLink Express 拍摄并存档。以下是我们的存档副本。",
+    "imageAlt": "ChinaLink Express 存档照片 — 验证码 {code}",
+    "code": "验证码",
+    "reference": "参考编号",
+    "stage": "环节",
+    "date": "存档时间",
+    "compareNote": "请与您收到的照片对比：如有任何差异，说明照片已被修改。",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "仓库收货",
+      "INTAKE": "仓库收货",
+      "LABELED": "贴标",
+      "ARRIVAL": "到达巴马科",
+      "HANDOVER": "交付客户",
+      "PAYMENT_PROOF": "付款凭证",
+      "other": "照片"
+    }
   }
 }

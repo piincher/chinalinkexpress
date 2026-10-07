@@ -15,12 +15,13 @@ import { ProhibitedItems } from './components/ProhibitedItems';
 import { PricingFAQ } from './components/PricingFAQ';
 import { WeightPolicy } from './components/WeightPolicy';
 
-export function PricingPage() {
+/** `shipmentsHandled` is read live by the route (lib/publicStatsApi). */
+export function PricingPage({ shipmentsHandled }: { shipmentsHandled: number }) {
   return (
     /* `pt-20` cleared the fixed navbar; PageHero owns that spacing now, and the
        surface follows --color-paper instead of a hard-coded white/gray-900. */
     <main className="min-h-screen" style={{ backgroundColor: 'var(--color-paper)' }}>
-      <PricingHero />
+      <PricingHero shipmentsHandled={shipmentsHandled} />
       
       {/* Navigation to Calculator */}
       <div className="relative z-10">

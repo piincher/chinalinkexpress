@@ -80,6 +80,20 @@ const VALID_EVENTS: WasenderEventType[] = [
 // ============================================================================
 
 /**
+ * No secret configured. This used to accept the request anyway, which in
+ * production let anyone on the internet write rows into message_status_logs.
+ * It now fails closed in production; local development still works unsigned.
+ */
+function allowUnsignedOutsideProduction(): boolean {
+  if (process.env.NODE_ENV === 'production') {
+    console.error('[WasenderWebhook] WASENDER_WEBHOOK_SECRET not configured — rejecting unsigned webhook');
+    return false;
+  }
+  console.warn('[WasenderWebhook] WASENDER_WEBHOOK_SECRET not configured, accepting unsigned webhook (non-production)');
+  return true;
+}
+
+/**
  * Verify webhook signature using HMAC-SHA256
  * 
  * WasenderAPI should send a signature in the X-Wasender-Signature header
@@ -95,11 +109,7 @@ function verifyWebhookSignature(
   signature: string | null,
   timestamp: string | null
 ): boolean {
-  // If no secret is configured, skip verification (log warning)
-  if (!WASENDER_WEBHOOK_SECRET) {
-    console.warn('[WasenderWebhook] WASENDER_WEBHOOK_SECRET not configured, skipping signature verification');
-    return true;
-  }
+  if (!WASENDER_WEBHOOK_SECRET) return allowUnsignedOutsideProduction();
 
   // If signature or timestamp is missing, verification fails
   if (!signature || !timestamp) {
@@ -145,10 +155,7 @@ function verifyWebhookSignature(
  * @returns boolean indicating if token is valid
  */
 function verifyWebhookToken(token: string | null): boolean {
-  if (!WASENDER_WEBHOOK_SECRET) {
-    console.warn('[WasenderWebhook] WASENDER_WEBHOOK_SECRET not configured, skipping token verification');
-    return true;
-  }
+  if (!WASENDER_WEBHOOK_SECRET) return allowUnsignedOutsideProduction();
 
   if (!token) {
     console.error('[WasenderWebhook] Missing webhook token');

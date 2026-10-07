@@ -83,6 +83,7 @@ const TOOL_LINKS = [
   { key: 'navigation.calculator', href: 'calculateur' },
   { key: 'navigation.compareShipping', href: 'comparateur-transport' },
   { key: 'navigation.checkProduct', href: 'verifier-produit' },
+  { key: 'navigation.verifyPhoto', href: 'verifier' },
 ] as const;
 
 export function SharedFooter({ locale, className }: SharedFooterProps) {

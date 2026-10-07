@@ -11,6 +11,7 @@
  * Response: { processed: 10, sent: 8, failed: 2 }
  */
 
+import { timingSafeEqual } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { processFollowUps, ProcessStats } from '@/lib/wasender/scheduler';
 
@@ -55,8 +56,10 @@ function verifyCronSecret(request: NextRequest): boolean {
     return false;
   }
 
-  const providedSecret = parts[1];
-  return providedSecret === cronSecret;
+  // Constant-time: a plain === leaks how many leading characters matched.
+  const provided = Buffer.from(parts[1]);
+  const expected = Buffer.from(cronSecret);
+  return provided.length === expected.length && timingSafeEqual(provided, expected);
 }
 
 /**

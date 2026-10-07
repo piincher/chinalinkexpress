@@ -22,9 +22,15 @@
  * 253 clients from a company that opened its Bamako office in 2019 is a
  * believable, checkable operation. 12,847 is a number nobody believes.
  *
- * ── HOW TO REFRESH ─────────────────────────────────────────────────────────
- * Run the queries in the comments against production (read-only), then update
- * both the value and `VERIFIED_ON`. Do not update one without the other.
+ * ── LIVE SINCE 2026-10-08 ──────────────────────────────────────────────────
+ * The home and pricing pages now read these figures live from the API
+ * (GET /api/v2/public/stats → lib/publicStatsApi.ts), which computes them with
+ * the queries documented below — excluding staff and soft-deleted accounts
+ * from the client counts. The constants here are only the FALLBACK shown, with
+ * their own date, when the API cannot be reached.
+ *
+ * To refresh the fallback: run the queries against production (read-only),
+ * then update both the value and `VERIFIED_ON`. Never one without the other.
  */
 
 /** The date every figure below was last recomputed from production. */

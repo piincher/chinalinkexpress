@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import { PAGE_SEO } from '@/config/seo';
 import { FAQStructuredData } from '@/components/seo';
 import { PricingPage } from '@/features/pricing';
+import { fetchCompanyStats } from '@/lib/publicStatsApi';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -71,11 +72,12 @@ export default async function PricingRoute({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
   const faqs = isEn ? pricingFaqs.en : pricingFaqs.fr;
+  const stats = await fetchCompanyStats();
 
   return (
     <>
       <FAQStructuredData faqs={faqs} locale={locale as 'fr' | 'en' | 'zh' | 'ar'} />
-      <PricingPage />
+      <PricingPage shipmentsHandled={stats.shipmentsHandled} />
     </>
   );
 }

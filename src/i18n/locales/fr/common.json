@@ -22,7 +22,8 @@
     "compareShipping": "Comparateur",
     "checkProduct": "Vérifier Produit",
     "reviews": "Avis clients",
-    "shippingCalendar": "Calendrier d'expédition"
+    "shippingCalendar": "Calendrier d'expédition",
+    "verifyPhoto": "Vérifier une photo"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -1605,5 +1606,35 @@
     "pageEmpty": "Aucune échéance à préparer pour le moment.",
     "howTitle": "Comment lire ces dates",
     "howLede": "La date recommandée laisse une marge pour le dédouanement et le dernier kilomètre. Passé ce jour, l'arrivée avant l'événement ne peut plus être promise honnêtement."
+  },
+  "photoVerify": {
+    "eyebrow": "Authenticité",
+    "title": "Vérifier une photo",
+    "lede": "Chaque photo prise dans nos entrepôts porte un bandeau ChinaLink Express avec un code de vérification. Saisissez-le pour voir l'original que nous avons enregistré.",
+    "label": "Code de vérification",
+    "submit": "Vérifier",
+    "checking": "Vérification…",
+    "hint": "Le code est imprimé en jaune sous la photo, par exemple 7F3A-92CD.",
+    "invalid": "Ce code n’est pas valide. Il comporte 8 caractères, par exemple 7F3A-92CD.",
+    "notFound": "Aucune photo ChinaLink Express ne correspond à ce code. Si la photo porte ce code, elle n’a pas été émise par nous ou a été modifiée.",
+    "rateLimited": "Trop de vérifications depuis cette connexion. Réessayez dans quelques minutes.",
+    "error": "La vérification est momentanément indisponible. Réessayez dans un instant.",
+    "validTitle": "Photo authentique",
+    "validBody": "Cette photo a été prise et enregistrée par ChinaLink Express. Voici notre copie.",
+    "imageAlt": "Photo enregistrée par ChinaLink Express — code {code}",
+    "code": "Code",
+    "reference": "Référence",
+    "stage": "Étape",
+    "date": "Enregistrée le",
+    "compareNote": "Comparez avec la photo que vous avez reçue : toute différence signifie qu’elle a été modifiée.",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "Réception à l’entrepôt",
+      "INTAKE": "Réception à l’entrepôt",
+      "LABELED": "Étiquetage",
+      "ARRIVAL": "Arrivée à Bamako",
+      "HANDOVER": "Remise au client",
+      "PAYMENT_PROOF": "Preuve de paiement",
+      "other": "Photo"
+    }
   }
 }

@@ -71,7 +71,6 @@ export async function GET(
     const supabase = createServerClient();
 
     // Fetch submission by guide token
-    console.log('Fetching guide with token:', token);
     
     const { data: submission, error: fetchError } = await (supabase as any)
       .from('quiz_submissions')
@@ -80,14 +79,13 @@ export async function GET(
       .single();
 
     if (fetchError || !submission) {
-      console.error('Error fetching guide:', fetchError, 'Submission:', submission);
+      console.error('Error fetching guide:', fetchError?.message);
       return NextResponse.json(
         { valid: false, error: 'Guide non trouvé ou expiré' },
         { status: 404 }
       );
     }
     
-    console.log('Guide found:', submission.id, 'Created at:', submission.created_at);
 
     // Check if guide has expired (30 days from creation)
     const now = new Date();

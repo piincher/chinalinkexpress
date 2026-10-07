@@ -22,7 +22,8 @@
     "compareShipping": "Compare Shipping",
     "checkProduct": "Check Product",
     "reviews": "Client reviews",
-    "shippingCalendar": "Shipping calendar"
+    "shippingCalendar": "Shipping calendar",
+    "verifyPhoto": "Verify a photo"
   },
   "cta": {
     "getQuote": "Get Free Quote",
@@ -1633,5 +1634,35 @@
     "pageEmpty": "No upcoming deadlines right now.",
     "howTitle": "How to read these dates",
     "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
+  },
+  "photoVerify": {
+    "eyebrow": "Authenticity",
+    "title": "Verify a photo",
+    "lede": "Every photo taken in our warehouses carries a ChinaLink Express banner with a verification code. Enter it to see the original we recorded.",
+    "label": "Verification code",
+    "submit": "Verify",
+    "checking": "Checking…",
+    "hint": "The code is printed in yellow under the photo, for example 7F3A-92CD.",
+    "invalid": "This code is not valid. It has 8 characters, for example 7F3A-92CD.",
+    "notFound": "No ChinaLink Express photo matches this code. If a photo carries this code, it was not issued by us or it has been altered.",
+    "rateLimited": "Too many checks from this connection. Please try again in a few minutes.",
+    "error": "Verification is temporarily unavailable. Please try again shortly.",
+    "validTitle": "Genuine photo",
+    "validBody": "This photo was taken and recorded by ChinaLink Express. Here is our copy.",
+    "imageAlt": "Photo recorded by ChinaLink Express — code {code}",
+    "code": "Code",
+    "reference": "Reference",
+    "stage": "Stage",
+    "date": "Recorded on",
+    "compareNote": "Compare it with the photo you received: any difference means it has been altered.",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "Received at the warehouse",
+      "INTAKE": "Received at the warehouse",
+      "LABELED": "Labelling",
+      "ARRIVAL": "Arrival in Bamako",
+      "HANDOVER": "Handed to the client",
+      "PAYMENT_PROOF": "Proof of payment",
+      "other": "Photo"
+    }
   }
 }
