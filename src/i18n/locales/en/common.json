@@ -1670,7 +1670,7 @@
       "eyebrow": "Groupage",
       "title": "You only pay for the space your cartons take",
       "body": "Your cartons travel in the same container as other clients’. The container is shared, and so is its cost: you pay for your real volume in CBM, not for a whole container.",
-      "stage": "20-foot container",
+      "stage": "40-foot container",
       "caption": "illustration",
       "aria": "Container {pct}% full, with your cartons and other clients’",
       "filled": "container filled",

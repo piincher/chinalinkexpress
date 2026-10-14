@@ -3,9 +3,10 @@
 /**
  * ContainerFill — groupage, shown: cartons from several clients fill one box.
  *
- * Illustrative, and captioned as such. 60 slots, 48 filled (80 %), 7 of them
- * the reader's. The gauge reads the same ratio against a 20-foot container's
- * nominal 33 CBM. Cartons drop bottom row first, the way a container is loaded.
+ * Illustrative, and captioned as such. A 40-foot container: 100 slots, 80
+ * filled (80 %), 8 of them the reader's. The gauge reads the same ratio
+ * against a 40-foot container's nominal 67 CBM. Cartons drop bottom row first,
+ * the way a container is loaded.
  */
 
 import React from 'react';
@@ -13,11 +14,11 @@ import { useTranslations } from 'next-intl';
 import { MomentPanel } from './MomentPanel';
 import { useMomentInView, momentClass } from './useMomentInView';
 
-const COLS = 12;
+const COLS = 20;
 const ROWS = 5;
-const FILLED = 48;
-const MINE = new Set([3, 4, 15, 16, 27, 28, 39]);
-const CAPACITY_CBM = 33;
+const FILLED = 80;
+const MINE = new Set([6, 7, 26, 27, 46, 47, 66, 67]);
+const CAPACITY_CBM = 67;
 
 /** Load order index for each grid slot: bottom row first, left to right. */
 function loadIndex(slot: number): number {

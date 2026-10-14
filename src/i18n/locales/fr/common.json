@@ -1642,7 +1642,7 @@
       "eyebrow": "Groupage",
       "title": "Vous ne payez que la place de vos cartons",
       "body": "Vos cartons voyagent dans le même conteneur que ceux d’autres clients. Le conteneur est partagé, son coût aussi : vous payez au volume réel, en CBM, pas un conteneur entier.",
-      "stage": "Conteneur 20 pieds",
+      "stage": "Conteneur 40 pieds",
       "caption": "illustration",
       "aria": "Conteneur rempli à {pct} %, avec vos cartons et ceux d’autres clients",
       "filled": "conteneur rempli",
