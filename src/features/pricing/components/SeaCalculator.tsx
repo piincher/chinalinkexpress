@@ -18,6 +18,8 @@ import { usePricingStore } from '../store/usePricingStore';
 import { calculateSeaFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
 import { SEA_RATES, DENSITY_THRESHOLDS, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
 import { Input } from '@/components/common/form/FormField';
+import { CartonCube } from '@/components/moments/CartonCube';
+import { RollingFigure } from '@/components/moments/RollingFigure';
 
 export function SeaCalculator() {
   const t = useTranslations('pricing');
@@ -127,6 +129,7 @@ export function SeaCalculator() {
           <p className="text-xs text-gray-500 dark:text-gray-400">
             {t('seaCalculator.dimensionsHint', { defaultValue: 'Ex: 1.2m x 0.8m x 0.9m = 0.86 CBM' })}
           </p>
+          <CartonCube length={seaState.length} width={seaState.width} height={seaState.height} />
         </div>
 
         {/* Weight Input (for density calculation) */}
@@ -280,9 +283,10 @@ export function SeaCalculator() {
               {/* Price Display */}
               <div className="text-center mb-6">
                 <div className="text-white/80 text-sm mb-1">{t('result.estimatedPrice')}</div>
-                <div className="text-4xl md:text-5xl font-bold">
-                  {formatPriceFCFA(seaResult.totalPrice)}
-                </div>
+                <RollingFigure
+                  className="block text-4xl md:text-5xl font-bold"
+                  value={formatPriceFCFA(seaResult.totalPrice)}
+                />
                 <div className="text-white/80 text-sm mt-2">
                   {t('result.deliveryTime')}: {formatDuration(seaResult.deliveryTime)}
                 </div>

@@ -10,6 +10,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Ship, Clock, Package, DollarSign, Container, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { ContainerFill } from '@/components/moments/ContainerFill';
 
 interface Props {
   locale: string;
@@ -89,6 +90,9 @@ export function SeaFreightPage({ locale }: Props) {
           </motion.div>
         </div>
       </section>
+
+      {/* Groupage: why sharing a container costs less. */}
+      <ContainerFill />
 
       {/* Features Section */}
       <section className="py-16 md:py-24">

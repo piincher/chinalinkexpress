@@ -34,6 +34,8 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Check } from 'lucide-react';
+import { useMomentInView, momentClass } from '@/components/moments/useMomentInView';
+import '@/components/moments/moments.css';
 
 /**
  * The illustrative sequence. `time` values are plain strings rather than dates
@@ -50,9 +52,14 @@ const STEPS = [
 
 export function TrackingPreview() {
   const t = useTranslations();
+  // The statuses arrive one after another, as they do on a real shipment, and
+  // the live one pulses while the panel is on screen.
+  const [ref, motion] = useMomentInView<HTMLElement>();
 
   return (
     <figure
+      ref={ref}
+      className={momentClass('mo-track', motion)}
       style={{
         margin: 0,
         minWidth: 0,
@@ -135,14 +142,16 @@ export function TrackingPreview() {
             return (
               <li
                 key={step.statusKey}
+                data-mo-step
                 style={{
+                  '--i': i,
                   display: 'grid',
                   gridTemplateColumns: 'auto minmax(0, 1fr) auto',
                   alignItems: 'center',
                   gap: 'var(--space-md)',
                   paddingBottom: isLast ? 0 : 'var(--space-lg)',
                   position: 'relative',
-                }}
+                } as React.CSSProperties}
               >
                 {/* Marker, and the rail joining it to the next one. */}
                 <span
@@ -167,6 +176,7 @@ export function TrackingPreview() {
                   {step.done && (
                     <Check size={12} strokeWidth={3} style={{ color: 'var(--color-accent-ink)' }} />
                   )}
+                  {!step.done && <span className="mo-pip-ping" />}
                   {!isLast && (
                     <span
                       style={{

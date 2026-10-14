@@ -9,6 +9,7 @@
 import { motion } from 'framer-motion';
 import { ShoppingCart, Search, CheckCircle, CreditCard, Truck, Phone, Shield } from 'lucide-react';
 import Link from 'next/link';
+import { SupplierPayment } from '@/components/moments/SupplierPayment';
 
 interface Props {
   locale: string;
@@ -142,6 +143,9 @@ export function SourcingPage({ locale }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Paying a supplier in China, shown rather than described. */}
+      <SupplierPayment />
 
       {/* Platforms Section */}
       <section className="py-16 md:py-24">

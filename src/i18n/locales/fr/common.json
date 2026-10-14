@@ -1636,5 +1636,91 @@
       "PAYMENT_PROOF": "Preuve de paiement",
       "other": "Photo"
     }
+  },
+  "moments": {
+    "container": {
+      "eyebrow": "Groupage",
+      "title": "Vous ne payez que la place de vos cartons",
+      "body": "Vos cartons voyagent dans le même conteneur que ceux d’autres clients. Le conteneur est partagé, son coût aussi : vous payez au volume réel, en CBM, pas un conteneur entier.",
+      "stage": "Conteneur 20 pieds",
+      "caption": "illustration",
+      "aria": "Conteneur rempli à {pct} %, avec vos cartons et ceux d’autres clients",
+      "filled": "conteneur rempli",
+      "yours": "Vos cartons",
+      "others": "Autres clients"
+    },
+    "race": {
+      "eyebrow": "Aérien ou maritime",
+      "title": "Même départ, deux arrivées",
+      "body": "L’avion et le bateau quittent la Chine le même jour. L’avion arrive en 14 à 21 jours, le bateau en 60 à 75. Le maritime coûte moins cher pour les gros volumes : à vous de choisir entre le délai et le prix.",
+      "stage": "Délais Chine → Bamako",
+      "air": {
+        "name": "Fret aérien"
+      },
+      "sea": {
+        "name": "Fret maritime"
+      },
+      "arrived": "Arrivé · {min}–{max} jours",
+      "day": "Jour {day}",
+      "from": "Chine"
+    },
+    "label": {
+      "eyebrow": "Marque d’expédition",
+      "title": "Votre nom sur chaque carton",
+      "body": "Dans un conteneur partagé, chaque carton porte votre marque : votre nom, votre code et le numéro du carton. C’est ce qui permet de retrouver vos marchandises parmi celles des autres, de la Chine jusqu’à Bamako.",
+      "stage": "Étiquette",
+      "caption": "exemple",
+      "mode": "MER",
+      "carton": "Carton {n} / {of}"
+    },
+    "whatsapp": {
+      "eyebrow": "Après votre premier message",
+      "title": "Vous êtes prévenu à chaque étape",
+      "body": "Pas besoin d’appeler pour savoir où en sont vos marchandises. Vous recevez un message à la réception en Chine, au départ et à l’arrivée à Bamako.",
+      "stage": "WhatsApp",
+      "caption": "exemple",
+      "footer": "Ceci est un message automatique du système.",
+      "messages": [
+        {
+          "text": "Bonjour Awa, vos 8 cartons sont arrivés à notre entrepôt de Foshan. Les photos sont dans l’application.",
+          "time": "02/10 · 14:35"
+        },
+        {
+          "text": "Bonjour Awa, votre conteneur a quitté la Chine. Arrivée estimée à Bamako : mi-décembre.",
+          "time": "09/10 · 09:12"
+        },
+        {
+          "text": "Bonjour Awa, vos marchandises sont disponibles à Bamako. Le retrait est gratuit pendant 72 h.",
+          "time": "14/12 · 10:04"
+        }
+      ]
+    },
+    "payment": {
+      "eyebrow": "Paiement fournisseur",
+      "title": "Vous payez à Bamako, nous payons en Chine",
+      "body": "Votre fournisseur vous donne un prix en yuans. Vous nous payez en FCFA à Bamako, nous réglons le fournisseur en Chine et vous recevez la preuve du paiement.",
+      "stage": "Paiement",
+      "caption": "exemple",
+      "quote": "Devis fournisseur",
+      "youPay": "Vous payez",
+      "wePay": "à Bamako · nous réglons en ¥",
+      "you": "Vous",
+      "supplier": "Fournisseur",
+      "china": "Chine",
+      "done": "Fournisseur payé · preuve envoyée"
+    },
+    "scale": {
+      "aria": "Poids saisi : {kg} kg",
+      "note": "Le fret aérien est facturé au kilo"
+    },
+    "carton": {
+      "aria": "Volume du carton : {cbm} CBM",
+      "hint": "Saisissez les trois dimensions",
+      "note": "1 CBM = 1 m × 1 m × 1 m"
+    },
+    "proof": {
+      "loupeOn": "Loupe",
+      "loupeOff": "Fermer la loupe"
+    }
   }
 }

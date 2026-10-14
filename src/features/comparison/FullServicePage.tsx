@@ -25,6 +25,7 @@ import {
   Clock,
 } from 'lucide-react';
 import Link from 'next/link';
+import { LabelPrint } from '@/components/moments/LabelPrint';
 import {
   AnimatedSection,
   StaggerContainer,
@@ -158,6 +159,9 @@ export function FullServicePage({ locale }: Props) {
           </motion.div>
         </div>
       </section>
+
+      {/* The shipping mark: why nothing gets lost in a grouped container. */}
+      <LabelPrint />
 
       {/* Problem Section */}
       <section className="py-16 md:py-24">

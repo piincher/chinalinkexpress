@@ -23,6 +23,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { WhatsAppThread } from '@/components/moments/WhatsAppThread';
 
 interface FormData {
   name: string;
@@ -466,6 +467,9 @@ export function ContactPage() {
           </motion.div>
         </div>
       </div>
+
+      {/* What happens after the first message: the updates a client gets. */}
+      <WhatsAppThread />
     </main>
   );
 }

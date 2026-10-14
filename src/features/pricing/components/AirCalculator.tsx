@@ -17,6 +17,8 @@ import { usePricingStore } from '../store/usePricingStore';
 import { calculateAirFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
 import { AIR_RATES, ITEM_CATEGORIES, STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
 import { Input } from '@/components/common/form/FormField';
+import { RollingFigure } from '@/components/moments/RollingFigure';
+import { WeighScale } from '@/components/moments/WeighScale';
 
 export function AirCalculator() {
   const t = useTranslations('pricing');
@@ -129,6 +131,8 @@ export function AirCalculator() {
               {t('airCalculator.phoneHint')}
             </p>
           )}
+          {/* Phones are billed per piece, so the dial would mean nothing there. */}
+          {airState.category !== 'phones' && <WeighScale kg={parseFloat(airState.weight)} />}
         </div>
 
         {/* Dimensions Input */}
@@ -268,9 +272,10 @@ export function AirCalculator() {
                   "text-sm mb-1",
                   isStandardSelected ? 'text-blue-100' : 'text-amber-100'
                 )}>{t('result.estimatedPrice')}</div>
-                <div className="text-4xl md:text-5xl font-bold">
-                  {formatPriceFCFA(airResult.totalPrice)}
-                </div>
+                <RollingFigure
+                  className="block text-4xl md:text-5xl font-bold"
+                  value={formatPriceFCFA(airResult.totalPrice)}
+                />
                 <div className={cn(
                   "text-sm mt-2",
                   isStandardSelected ? 'text-blue-100' : 'text-amber-100'

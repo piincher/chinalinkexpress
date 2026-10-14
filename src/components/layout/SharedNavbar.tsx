@@ -33,6 +33,7 @@ import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { Cta } from '@/components/site/Cta';
+import { ScrollProgress } from '@/components/moments/ScrollProgress';
 import { WHATSAPP_URL } from '@/constants/contact';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
@@ -164,6 +165,8 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       data-light={light ? 'true' : undefined}
     >
+      {/* Reading progress on long pages (Tarifs, FAQ, guides). CSS-driven. */}
+      <ScrollProgress />
       <div
         style={{
           maxWidth: 'var(--shell)',

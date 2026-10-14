@@ -9,6 +9,7 @@
 
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
+import { TransitRace } from '@/components/moments/TransitRace';
 import { ComparisonForm } from './components/ComparisonForm';
 import { ComparisonResults } from './components/ComparisonResults';
 import { useComparison } from './hooks/useComparison';
@@ -151,6 +152,9 @@ export function ComparisonPage({ locale = 'fr' }: ComparisonPageProps) {
           </div>
         </div>
       </section>
+
+      {/* Air against sea at true proportion, from the quoted transit windows. */}
+      <TransitRace />
 
       {/* Comparison Tool */}
       <section className="py-16">

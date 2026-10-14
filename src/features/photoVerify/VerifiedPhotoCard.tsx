@@ -10,6 +10,8 @@ import React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ShieldCheck } from 'lucide-react';
 import type { VerifiedPhoto } from '@/lib/photoVerifyApi';
+import { PhotoProof } from '@/components/moments/PhotoProof';
+import '@/components/moments/moments.css';
 
 const KNOWN_STAGES = new Set([
   'RECEIVED_AT_WAREHOUSE',
@@ -107,13 +109,12 @@ export function VerifiedPhotoCard({ photo }: { photo: VerifiedPhoto }) {
       <p style={{ margin: 0, color: 'var(--color-ink-2)' }}>{t('validBody')}</p>
 
       {photo.imageUrl ? (
-        // A signed storage URL that expires in minutes: next/image would cache
-        // it under our domain, so a plain img is the right tool here.
-        <img
+        // Stamp + loupe; still a plain img inside (signed URL, see PhotoProof).
+        <PhotoProof
           src={photo.imageUrl}
           alt={t('imageAlt', { code: photo.code })}
-          referrerPolicy="no-referrer"
-          style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-panel)', border: '1px solid var(--color-rule)' }}
+          stamp={t('validTitle')}
+          stampDetail={stage}
         />
       ) : null}
 

@@ -35,6 +35,7 @@ import { useTranslations } from 'next-intl';
 import { Band, Shell, Figure, PHOTOS } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
 import { withGsap, prefersReducedMotion } from '@/lib/animation/gsapContext';
+import { RouteProgress } from '@/components/moments/RouteProgress';
 
 interface Step {
   key: string;
@@ -56,6 +57,9 @@ export function JourneySection() {
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  // True only while the desktop pin drives the sequence; the route line is
+  // drawn in full (every stop lit) whenever it is not.
+  const [driven, setDriven] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -86,6 +90,9 @@ export function JourneySection() {
             anticipatePin: 1,
             scrub: 1,
             onUpdate: (self) => {
+              // The route line reads this directly: one property write per
+              // frame, no re-render.
+              section.style.setProperty('--journey-p', self.progress.toFixed(4));
               const index = Math.min(
                 steps.length - 1,
                 Math.floor(self.progress * steps.length)
@@ -94,6 +101,9 @@ export function JourneySection() {
             },
           },
         });
+
+        section.style.setProperty('--journey-p', '0');
+        setDriven(true);
 
         gsap.set(photos, { autoAlpha: 0 });
         gsap.set(photos[0], { autoAlpha: 1 });
@@ -118,6 +128,8 @@ export function JourneySection() {
         return () => {
           timeline.scrollTrigger?.kill();
           timeline.kill();
+          section.style.removeProperty('--journey-p');
+          setDriven(false);
         };
       });
 
@@ -147,6 +159,8 @@ export function JourneySection() {
               title={t('title')}
               lede={t('lede')}
             />
+
+            <RouteProgress stops={steps.map((s) => s.title)} active={driven ? active : null} />
 
             <div
               style={{

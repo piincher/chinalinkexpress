@@ -1664,5 +1664,91 @@
       "PAYMENT_PROOF": "Proof of payment",
       "other": "Photo"
     }
+  },
+  "moments": {
+    "container": {
+      "eyebrow": "Groupage",
+      "title": "You only pay for the space your cartons take",
+      "body": "Your cartons travel in the same container as other clients’. The container is shared, and so is its cost: you pay for your real volume in CBM, not for a whole container.",
+      "stage": "20-foot container",
+      "caption": "illustration",
+      "aria": "Container {pct}% full, with your cartons and other clients’",
+      "filled": "container filled",
+      "yours": "Your cartons",
+      "others": "Other clients"
+    },
+    "race": {
+      "eyebrow": "Air or sea",
+      "title": "Same departure, two arrivals",
+      "body": "The plane and the ship leave China on the same day. The plane arrives in 14 to 21 days, the ship in 60 to 75. Sea is cheaper for large volumes: you choose between time and price.",
+      "stage": "China → Bamako transit",
+      "air": {
+        "name": "Air freight"
+      },
+      "sea": {
+        "name": "Sea freight"
+      },
+      "arrived": "Arrived · {min}–{max} days",
+      "day": "Day {day}",
+      "from": "China"
+    },
+    "label": {
+      "eyebrow": "Shipping mark",
+      "title": "Your name on every carton",
+      "body": "In a shared container, every carton carries your mark: your name, your code and the carton number. That is how your goods are told apart from everyone else’s, from China to Bamako.",
+      "stage": "Label",
+      "caption": "example",
+      "mode": "SEA",
+      "carton": "Carton {n} / {of}"
+    },
+    "whatsapp": {
+      "eyebrow": "After your first message",
+      "title": "You hear from us at every step",
+      "body": "No need to call to find out where your goods are. You get a message when they arrive at our warehouse in China, when they leave, and when they reach Bamako.",
+      "stage": "WhatsApp",
+      "caption": "example",
+      "footer": "This is an automatic system message.",
+      "messages": [
+        {
+          "text": "Hello Awa, your 8 cartons have arrived at our Foshan warehouse. The photos are in the app.",
+          "time": "02/10 · 14:35"
+        },
+        {
+          "text": "Hello Awa, your container has left China. Estimated arrival in Bamako: mid-December.",
+          "time": "09/10 · 09:12"
+        },
+        {
+          "text": "Hello Awa, your goods are ready in Bamako. Pickup is free for 72 hours.",
+          "time": "14/12 · 10:04"
+        }
+      ]
+    },
+    "payment": {
+      "eyebrow": "Supplier payment",
+      "title": "You pay in Bamako, we pay in China",
+      "body": "Your supplier quotes you in yuan. You pay us in FCFA in Bamako, we pay the supplier in China, and you receive the proof of payment.",
+      "stage": "Payment",
+      "caption": "example",
+      "quote": "Supplier quote",
+      "youPay": "You pay",
+      "wePay": "in Bamako · we settle in ¥",
+      "you": "You",
+      "supplier": "Supplier",
+      "china": "China",
+      "done": "Supplier paid · proof sent"
+    },
+    "scale": {
+      "aria": "Weight entered: {kg} kg",
+      "note": "Air freight is billed by the kilo"
+    },
+    "carton": {
+      "aria": "Carton volume: {cbm} CBM",
+      "hint": "Enter all three dimensions",
+      "note": "1 CBM = 1 m × 1 m × 1 m"
+    },
+    "proof": {
+      "loupeOn": "Magnifier",
+      "loupeOff": "Close magnifier"
+    }
   }
 }
