@@ -60,6 +60,7 @@ import { LiveStatsSection } from './components/LiveStatsSection';
 import { OccasionsHomeBand } from './components/OccasionsHomeBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
+import { ContainerFill } from '@/components/moments/ContainerFill';
 
 interface LandingPageProps {
   locale?: Locale;
@@ -105,6 +106,11 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
 
       {/* ── IV. how it actually works — the page's centre of gravity ─────── */}
       <JourneySection />
+
+      {/* ── IV.b why groupage costs less ───────────────────────────────────
+          The one thing the journey does not show: the container is shared, so
+          is its cost. Plays once on view; CSS only. */}
+      <ContainerFill />
 
       {/* ── V. the network, live ─────────────────────────────────────────── */}
       <LiveFeedSection />
