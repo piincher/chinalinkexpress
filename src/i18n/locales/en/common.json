@@ -1750,25 +1750,5 @@
       "loupeOn": "Magnifier",
       "loupeOff": "Close magnifier"
     }
-  },
-  "websiteRefresh": {
-    "headline": "From China to Bamako.",
-    "intro": "Sourcing, warehouse reception, air and sea freight. Our team guides you through every step.",
-    "quote": "Plan a shipment",
-    "app": "Already a customer?",
-    "photo": "Our warehouses in China",
-    "air": "Air freight",
-    "airText": "For urgent parcels and smaller shipments.",
-    "sea": "Sea freight",
-    "seaText": "Consolidation and containers for larger volumes.",
-    "sourcing": "Buying in China",
-    "sourcingText": "Supplier checks, purchasing and local payment.",
-    "install": "Add the ChinaLink website",
-    "installText": "Keep our services and calculator on your home screen.",
-    "installAction": "Add",
-    "dismiss": "Dismiss suggestion",
-    "menuOpen": "Open menu",
-    "menuClose": "Close menu",
-    "support": "Message our team on WhatsApp to prepare your shipment."
   }
 }

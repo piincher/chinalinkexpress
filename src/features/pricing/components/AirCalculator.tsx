@@ -1,6 +1,6 @@
 /**
  * Air Calculator
- *
+ * 
  * Interactive calculator for air freight pricing.
  * Handles weight, dimensions (in cm), and category selection.
  * Part of the pricing feature.
@@ -311,9 +311,11 @@ export function AirCalculator() {
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-emerald-300" />
                     <span className="text-sm text-emerald-100">
-                      {t('deliveryPerformance.quoted')}: {formatDuration(deliveryPerf.quoted)}
+                      {t('deliveryPerformance.earlyDelivery')}
                     </span>
-
+                    <span className="text-xs text-white/70 ml-auto">
+                      {t('deliveryPerformance.actualAverage')}: {deliveryPerf.actualAverage} {averageUnit}
+                    </span>
                   </div>
                 </motion.div>
               )}

@@ -5,7 +5,7 @@
  * Implements Cache-First strategy for static assets and Network-First for API calls.
  */
 
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `chinalink-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `chinalink-dynamic-${CACHE_VERSION}`;
 const IMAGE_CACHE = `chinalink-images-${CACHE_VERSION}`;

@@ -50,19 +50,20 @@ interface SharedNavbarProps {
 const WHATSAPP_HREF = WHATSAPP_URL;
 
 const NAV_LINKS = [
- { key: 'services', href: '/#services', label: 'navigation.services' },
- { key: 'pricing', href: '/tarifs', label: 'navigation.pricing' },
- { key: 'app', href: '/#app', label: 'websiteRefresh.app' },
- { key: 'contact', href: '/#contact', label: 'navigation.contact' },
+  { key: 'home', href: '/', label: 'navigation.home' },
+  { key: 'services', href: '/#services', label: 'navigation.services' },
+  { key: 'about', href: '/#about', label: 'navigation.about' },
+  { key: 'whyUs', href: '/#why-us', label: 'navigation.whyUs' },
+  { key: 'community', href: '/communaute', label: 'navigation.community' },
+  { key: 'blog', href: '/blog', label: 'navigation.blog' },
+  { key: 'contact', href: '/#contact', label: 'navigation.contact' },
 ] as const;
+
 const TOOL_LINKS = [
- { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
- { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
- { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },
- { key: 'about', href: '/#about', label: 'navigation.about', icon: null },
- { key: 'whyUs', href: '/#why-us', label: 'navigation.whyUs', icon: null },
- { key: 'community', href: '/communaute', label: 'navigation.community', icon: Users },
- { key: 'blog', href: '/blog', label: 'navigation.blog', icon: null },
+  { key: 'pricing', href: '/tarifs', label: 'navigation.pricing', icon: null },
+  { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
+  { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
+  { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },
 ] as const;
 
 export function SharedNavbar({ locale }: SharedNavbarProps) {
@@ -83,18 +84,6 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
    */
   const [hasOverlay, setHasOverlay] = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
-  const menuButton = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      if (isMobileMenuOpen) menuButton.current?.focus();
-      if (isToolsOpen) toolsRef.current?.querySelector('button')?.focus();
-      setIsMobileMenuOpen(false);
-      setIsToolsOpen(false);
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [isMobileMenuOpen, isToolsOpen]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -267,7 +256,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                       boxShadow: 'var(--shadow-lift)',
                     }}
                   >
-                    {TOOL_LINKS.filter(link => link.key !== 'blog' || ['fr','en'].includes(locale)).map((tool) => {
+                    {TOOL_LINKS.map((tool) => {
                       const Icon = tool.icon;
                       return (
                         <Link
@@ -310,9 +299,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden nav-icon-button"
-              ref={menuButton}
-              aria-controls="site-mobile-menu"
-              aria-label={t(isMobileMenuOpen ? 'websiteRefresh.menuClose' : 'websiteRefresh.menuOpen')}
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={isMobileMenuOpen}
               style={{ color: linkHover }}
             >
@@ -337,7 +324,6 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
             }}
           >
             <nav
-              id="site-mobile-menu"
               style={{
                 paddingInline: 'var(--band-x)',
                 paddingBlock: 'var(--space-md)',
@@ -354,7 +340,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mobile-link"
                 >
-
+                  {link.key === 'community' && <Users size={16} />}
                   {t(link.label)}
                 </Link>
               ))}
@@ -379,7 +365,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                   {t('navigation.tools')}
                 </div>
 
-                {TOOL_LINKS.filter(link => link.key !== 'blog' || ['fr','en'].includes(locale)).map((tool) => {
+                {TOOL_LINKS.map((tool) => {
                   const Icon = tool.icon;
                   return (
                     <Link

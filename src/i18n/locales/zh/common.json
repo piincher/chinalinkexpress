@@ -1571,25 +1571,5 @@
       "loupeOn": "放大镜",
       "loupeOff": "关闭放大镜"
     }
-  },
-  "websiteRefresh": {
-    "headline": "从中国到巴马科。",
-    "intro": "采购、仓库收货、空运与海运。我们的团队全程协助货物运输。",
-    "quote": "安排发货",
-    "app": "已是客户？",
-    "photo": "我们在中国的仓库",
-    "air": "航空货运",
-    "airText": "适合紧急包裹和小批量货物。",
-    "sea": "海上货运",
-    "seaText": "为大批量货物提供拼箱及整箱运输。",
-    "sourcing": "中国采购",
-    "sourcingText": "供应商核验、采购和本地付款。",
-    "install": "添加 ChinaLink 网站",
-    "installText": "在主屏幕快速查看服务和运费计算器。",
-    "installAction": "添加",
-    "dismiss": "关闭提示",
-    "menuOpen": "打开菜单",
-    "menuClose": "关闭菜单",
-    "support": "通过 WhatsApp 联系我们的团队，安排货物运输。"
   }
 }

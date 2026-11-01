@@ -1722,25 +1722,5 @@
       "loupeOn": "Loupe",
       "loupeOff": "Fermer la loupe"
     }
-  },
-  "websiteRefresh": {
-    "headline": "De la Chine à Bamako.",
-    "intro": "Achat, réception, fret aérien ou maritime : notre équipe vous accompagne à chaque étape.",
-    "quote": "Préparer un envoi",
-    "app": "Déjà client ?",
-    "photo": "Nos entrepôts en Chine",
-    "air": "Fret aérien",
-    "airText": "Pour vos colis urgents et petits volumes.",
-    "sea": "Fret maritime",
-    "seaText": "Groupage et conteneurs pour vos gros volumes.",
-    "sourcing": "Achat en Chine",
-    "sourcingText": "Fournisseurs, vérification et paiement sur place.",
-    "install": "Ajouter le site ChinaLink",
-    "installText": "Retrouvez nos services et le calculateur sur votre écran d’accueil.",
-    "installAction": "Ajouter",
-    "dismiss": "Fermer la proposition",
-    "menuOpen": "Ouvrir le menu",
-    "menuClose": "Fermer le menu",
-    "support": "Écrivez à notre équipe sur WhatsApp pour préparer votre expédition."
   }
 }

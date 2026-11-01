@@ -1,6 +1,6 @@
 /**
  * Sea Calculator
- *
+ * 
  * Interactive calculator for sea freight (CBM) pricing.
  * Handles volume calculations with density adjustments.
  * Dimensions are in meters.
@@ -198,16 +198,18 @@ export function SeaCalculator() {
             <ShieldCheck className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
             <div>
               <span className="font-medium text-sm text-emerald-800 dark:text-emerald-300">
-                {t('deliveryPerformance.quoted')}
+                {t('deliveryPerformance.title')}
               </span>
               <p className="text-sm text-emerald-700 dark:text-emerald-400 mt-1">
-                {formatDuration(seaPerf.quoted)}
+                {t('deliveryPerformance.subtitle')}
               </p>
               <div className="mt-2 flex items-center gap-3 text-xs text-emerald-600 dark:text-emerald-500">
                 <span>
                   {t('deliveryPerformance.quoted')}: {formatDuration(seaPerf.quoted)}
                 </span>
-
+                <span className="font-medium">
+                  {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage} {averageUnit}
+                </span>
               </div>
             </div>
           </div>
@@ -300,9 +302,11 @@ export function SeaCalculator() {
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-300" />
                   <span className="text-sm text-emerald-100">
-                    {t('deliveryPerformance.quoted')}: {formatDuration(seaPerf.quoted)}
+                    {t('deliveryPerformance.earlyDelivery')}
                   </span>
-
+                  <span className="text-xs text-white/70 ml-auto">
+                    {t('deliveryPerformance.actualAverage')}: {seaPerf.actualAverage} {averageUnit}
+                  </span>
                 </div>
               </motion.div>
 

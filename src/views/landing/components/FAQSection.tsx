@@ -47,7 +47,6 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export function FAQSection() {
-  const refresh = useTranslations('websiteRefresh');
   const t = useTranslations('faq');
 
   return (
@@ -110,10 +109,10 @@ export function FAQSection() {
                 margin: '0 0 var(--space-lg)',
               }}
             >
-              {refresh('support')}
+              {t('helpDescription')}
             </p>
 
-            <a href={"https://wa.me/" + CONTACT_CONFIG.PHONE.CHINA.replace(/\D/g, "")} target="_blank" rel="noopener noreferrer" className="faq-phone">
+            <a href={`tel:${CONTACT_CONFIG.PHONE.CHINA}`} className="faq-phone">
               <Phone size={18} aria-hidden style={{ color: 'var(--color-accent-bright)' }} />
               <span>
                 <span className="faq-phone-label">{t('supportLabel')}</span>
