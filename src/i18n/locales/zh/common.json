@@ -1571,5 +1571,21 @@
       "loupeOn": "放大镜",
       "loupeOff": "关闭放大镜"
     }
+  },
+  "shippingMarkExample": {
+    "navLabel": "唛头示例",
+    "label": "发货之前",
+    "title": "您的唛头是什么样的？",
+    "description": "这张标签帮助仓库识别您的包裹。下方为 ChinaLink 唛头示例，所有信息均为虚构。",
+    "getTitle": "获取您的唛头",
+    "getDescription": "在 ChinaLink Express 应用中查看您的专属唛头。",
+    "sendTitle": "发送给供应商",
+    "sendDescription": "请在供应商向仓库发货之前，将唛头图片发送给他们。",
+    "attachTitle": "每箱都要张贴",
+    "attachDescription": "请供应商打印唛头，并贴在每个外箱上。",
+    "enlarge": "查看完整示例",
+    "dummyLabel": "示例 · 虚构信息",
+    "dummyNote": "此图仅作演示。实际发货时，请使用您自己的专属唛头。",
+    "imageAlt": "虚构的 ChinaLink 唛头示例：入仓号 DEMO-0000，客户编号 CLX-ML-DEMO，CLIENT EXEMPLE，电话 +223 00 00 00 00。"
   }
 }

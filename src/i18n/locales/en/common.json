@@ -1750,5 +1750,21 @@
       "loupeOn": "Magnifier",
       "loupeOff": "Close magnifier"
     }
+  },
+  "shippingMarkExample": {
+    "navLabel": "Shipping mark",
+    "label": "BEFORE YOU SHIP",
+    "title": "What does your shipping mark look like?",
+    "description": "This label helps our warehouse identify your parcels. Here is an example of the ChinaLink format using entirely fictitious details.",
+    "getTitle": "Get your mark",
+    "getDescription": "Find your personal shipping mark in the ChinaLink Express app.",
+    "sendTitle": "Send it to your supplier",
+    "sendDescription": "Share the image with your supplier before they send goods to our warehouse.",
+    "attachTitle": "On every parcel",
+    "attachDescription": "Ask your supplier to print it and attach it to every carton.",
+    "enlarge": "View full-size example",
+    "dummyLabel": "EXAMPLE · FICTITIOUS DATA",
+    "dummyNote": "This is a demonstration. Always use your own personal shipping mark for shipments.",
+    "imageAlt": "Fictitious ChinaLink mark: warehouse DEMO-0000, client CLX-ML-DEMO, CLIENT EXEMPLE, phone +223 00 00 00 00."
   }
 }

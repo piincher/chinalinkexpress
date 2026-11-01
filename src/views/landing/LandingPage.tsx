@@ -61,6 +61,7 @@ import { OccasionsHomeBand } from './components/OccasionsHomeBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
 import { ContainerFill } from '@/components/moments/ContainerFill';
+import { ShippingMarkExampleSection } from './components/ShippingMarkExampleSection';
 
 interface LandingPageProps {
   locale?: Locale;
@@ -103,6 +104,7 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
 
       {/* ── III. the proof, immediately ──────────────────────────────────── */}
       <AppPreviewSection />
+      <ShippingMarkExampleSection />
 
       {/* ── IV. how it actually works — the page's centre of gravity ─────── */}
       <JourneySection />

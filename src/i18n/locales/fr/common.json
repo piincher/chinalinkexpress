@@ -1722,5 +1722,21 @@
       "loupeOn": "Loupe",
       "loupeOff": "Fermer la loupe"
     }
+  },
+  "shippingMarkExample": {
+    "navLabel": "Marque d’expédition",
+    "label": "AVANT D’EXPÉDIER",
+    "title": "À quoi ressemble votre marque d’expédition ?",
+    "description": "Cette étiquette permet à notre entrepôt d’identifier vos colis. Voici un exemple du format ChinaLink, avec des informations entièrement fictives.",
+    "getTitle": "Récupérez votre marque",
+    "getDescription": "Retrouvez votre marque personnelle dans l’application ChinaLink Express.",
+    "sendTitle": "Envoyez-la au fournisseur",
+    "sendDescription": "Transmettez l’image à votre fournisseur avant son envoi vers notre entrepôt.",
+    "attachTitle": "Sur chaque colis",
+    "attachDescription": "Demandez au fournisseur de l’imprimer et de la coller sur chaque carton.",
+    "enlarge": "Agrandir l’exemple",
+    "dummyLabel": "EXEMPLE · DONNÉES FICTIVES",
+    "dummyNote": "Ce modèle est une démonstration. Pour vos envois, utilisez uniquement votre marque personnelle.",
+    "imageAlt": "Exemple fictif de marque ChinaLink : entrepôt DEMO-0000, client CLX-ML-DEMO, CLIENT EXEMPLE, téléphone +223 00 00 00 00."
   }
 }

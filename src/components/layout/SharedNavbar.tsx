@@ -60,6 +60,7 @@ const NAV_LINKS = [
 ] as const;
 
 const TOOL_LINKS = [
+  { key: 'shippingMark', href: '/#shipping-mark', label: 'shippingMarkExample.navLabel', icon: null },
   { key: 'pricing', href: '/tarifs', label: 'navigation.pricing', icon: null },
   { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
   { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
