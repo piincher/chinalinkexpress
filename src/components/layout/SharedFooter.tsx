@@ -150,7 +150,7 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
           <div>
             <h2 className="ft-h">{t('footer.links')}</h2>
             <ul className="ft-list">
-              {PAGE_LINKS.map(({ key, href }) => (
+              {PAGE_LINKS.filter(link => link.href !== 'blog' || ['fr', 'en'].includes(locale)).map(({ key, href }) => (
                 <li key={key}>
                   <Link href={`/${locale}/${href}`}>{t(key)}</Link>
                 </li>

@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { SharedShipmentResult } from '@/app/s/[token]/types';
+import { SharedShipmentResult } from '@/app/(public)/s/[token]/types';
 
 export type ShareError = 'not_found' | 'revoked' | 'rate_limited' | 'api_error';
 

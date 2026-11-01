@@ -215,3 +215,15 @@
     --dur-long:  150ms;
   }
 }
+
+/* Website refresh: coherent brand actions and readable supporting text. */
+:root {
+ --color-accent:#166534; --color-accent-deep:#166534; --color-accent-bright:#15803d;
+ --color-accent-ink:#fff; --color-focus:#15803d; --color-neutral:#526174;
+ --color-muted:#526174; --color-ink-2:#526174;
+}
+.dark {
+ --color-accent:#4ade80; --color-accent-deep:#86efac; --color-accent-bright:#4ade80;
+ --color-accent-ink:#052e16; --color-focus:#86efac; --color-neutral:#cbd5e1;
+ --color-muted:#cbd5e1; --color-ink-2:#cbd5e1;
+}

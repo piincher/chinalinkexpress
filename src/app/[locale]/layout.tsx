@@ -251,7 +251,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { resolvedTheme } = await getServerTheme();
 
   return (
-    <>
+    <html lang={validLocale} dir={direction} suppressHydrationWarning>
+      <body>
       {/* Theme Initialization Script - Prevents flash */}
       <ThemeInitScript />
 
@@ -294,7 +295,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <link rel="icon" type="image/png" sizes="16x16" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
       <link rel="mask-icon" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" color="#2563eb" />
       
-      <div className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} antialiased min-h-screen flex flex-col`}>
+      <div className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} site-fonts antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <PWAProvider>
             <NextIntlClientProvider locale={validLocale} messages={messages}>
@@ -323,6 +324,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <Analytics />
         <GoogleAnalytics />
       </div>
-    </>
+      </body>
+    </html>
   );
 }

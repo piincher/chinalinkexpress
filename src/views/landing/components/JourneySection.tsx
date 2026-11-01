@@ -285,7 +285,7 @@ export function JourneySection() {
                             // Inactive stages recede rather than disappear —
                             // the reader can still see where they are in the
                             // sequence and what is coming.
-                            opacity: isActive ? 1 : 0.42,
+                            opacity: isActive ? 1 : 0.9,
                             transition: 'opacity var(--dur-mid) var(--ease-out)',
                           }}
                         >
@@ -300,7 +300,7 @@ export function JourneySection() {
                           color: 'var(--color-void-ink-2)',
                           margin: 0,
                           maxWidth: '44ch',
-                          opacity: isActive ? 1 : 0.42,
+                          opacity: isActive ? 1 : 0.9,
                           transition: 'opacity var(--dur-mid) var(--ease-out)',
                         }}
                       >
