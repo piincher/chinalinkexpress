@@ -27,6 +27,7 @@ import {
   AlertTriangle,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import {
   calculateAirFreight,
@@ -66,10 +67,10 @@ export function DeadlineCalculator() {
     setError,
   } = usePricingStore();
 
-  const weightNum = parseFloat(deadlineState.weight) || 0;
-  const lengthNum = parseFloat(deadlineState.length) || 0;
-  const widthNum = parseFloat(deadlineState.width) || 0;
-  const heightNum = parseFloat(deadlineState.height) || 0;
+  const weightNum = parseDecimalInput(deadlineState.weight) || 0;
+  const lengthNum = parseDecimalInput(deadlineState.length) || 0;
+  const widthNum = parseDecimalInput(deadlineState.width) || 0;
+  const heightNum = parseDecimalInput(deadlineState.height) || 0;
   const deadlineDays = deadlineState.deadlineDays;
 
   // Calculate recommendations whenever inputs change
@@ -193,7 +194,7 @@ export function DeadlineCalculator() {
 
   const handleInputChange = useCallback(
     (field: keyof typeof deadlineState, value: string) => {
-      if (value && !/^\d*\.?\d*$/.test(value)) return;
+      if (!isDecimalInput(value)) return;
       setDeadlineField(field, value);
     },
     [setDeadlineField]

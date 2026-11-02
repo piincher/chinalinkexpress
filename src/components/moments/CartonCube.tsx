@@ -11,10 +11,11 @@
 
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import { parseDecimalInput } from '@/lib/decimalInput';
 import './moments.css';
 
 const num = (v: string) => {
-  const n = parseFloat(v);
+  const n = parseDecimalInput(v);
   return Number.isFinite(n) && n > 0 ? n : 0;
 };
 

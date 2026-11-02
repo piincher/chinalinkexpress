@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown, ShieldCheck, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateAirFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
 import { AIR_RATES, ITEM_CATEGORIES, STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
@@ -44,7 +45,7 @@ export function AirCalculator() {
   // Auto-calculate when inputs change
   useEffect(() => {
     const calculate = async () => {
-      const weight = parseFloat(airState.weight);
+      const weight = parseDecimalInput(airState.weight);
       if (!weight || weight <= 0) {
         setAirResult(null);
         return;
@@ -58,9 +59,9 @@ export function AirCalculator() {
 
         const result = calculateAirFreight({
           weight,
-          length: airState.length ? parseFloat(airState.length) : undefined,
-          width: airState.width ? parseFloat(airState.width) : undefined,
-          height: airState.height ? parseFloat(airState.height) : undefined,
+          length: airState.length ? parseDecimalInput(airState.length) : undefined,
+          width: airState.width ? parseDecimalInput(airState.width) : undefined,
+          height: airState.height ? parseDecimalInput(airState.height) : undefined,
           category: airState.category as ItemCategory,
         });
 
@@ -79,8 +80,7 @@ export function AirCalculator() {
 
   const handleInputChange = useCallback(
     (field: keyof typeof airState, value: string) => {
-      // Only allow numbers and decimal points
-      if (value && !/^\d*\.?\d*$/.test(value)) return;
+      if (!isDecimalInput(value)) return;
       setAirField(field, value);
     },
     [setAirField]
@@ -132,7 +132,7 @@ export function AirCalculator() {
             </p>
           )}
           {/* Phones are billed per piece, so the dial would mean nothing there. */}
-          {airState.category !== 'phones' && <WeighScale kg={parseFloat(airState.weight)} />}
+          {airState.category !== 'phones' && <WeighScale kg={parseDecimalInput(airState.weight)} />}
         </div>
 
         {/* Dimensions Input */}

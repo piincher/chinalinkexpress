@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { Ruler, Weight, Info, AlertCircle, ArrowRight, Ship, MessageCircle, TrendingDown, ShieldCheck, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateSeaFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
 import { SEA_RATES, DENSITY_THRESHOLDS, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
@@ -49,10 +50,10 @@ export function SeaCalculator() {
   // Auto-calculate when inputs change
   useEffect(() => {
     const calculate = async () => {
-      const length = parseFloat(seaState.length);
-      const width = parseFloat(seaState.width);
-      const height = parseFloat(seaState.height);
-      const weight = parseFloat(seaState.weight) || 0;
+      const length = parseDecimalInput(seaState.length);
+      const width = parseDecimalInput(seaState.width);
+      const height = parseDecimalInput(seaState.height);
+      const weight = parseDecimalInput(seaState.weight) || 0;
 
       if (!length || !width || !height || length <= 0 || width <= 0 || height <= 0) {
         setSeaResult(null);
@@ -87,7 +88,7 @@ export function SeaCalculator() {
 
   const handleInputChange = useCallback(
     (field: keyof typeof seaState, value: string) => {
-      if (value && !/^\d*\.?\d*$/.test(value)) return;
+      if (!isDecimalInput(value)) return;
       setSeaField(field, value);
     },
     [setSeaField]
