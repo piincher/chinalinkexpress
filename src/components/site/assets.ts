@@ -31,7 +31,8 @@ export const PHOTOS = {
   customs: `${GOODS}/douane.jpg`,
   /** Consignment packed and labelled, ready to load. */
   readyToLoad: `${GOODS}/pret.jpg`,
-  loaded: `${GOODS}/ready.jpg`,
+  /** Open container, cropped above the worker whose face is masked with an emoji in the original. */
+  loaded: '/media/container-loaded.webp',
   support: `${AIR}/customer-support.png`,
 } as const;
 

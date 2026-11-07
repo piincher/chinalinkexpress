@@ -19,7 +19,7 @@ interface Step {
 }
 
 /** Each stage is illustrated by a real photograph of that stage. */
-const STAGE_PHOTOS = [PHOTOS.warehouseAisle, PHOTOS.depot, PHOTOS.customs, PHOTOS.readyToLoad];
+const STAGE_PHOTOS = [PHOTOS.warehouseAisle, PHOTOS.depot, PHOTOS.loaded, PHOTOS.customs];
 
 export function JourneySection() {
   const t = useTranslations('journey');
