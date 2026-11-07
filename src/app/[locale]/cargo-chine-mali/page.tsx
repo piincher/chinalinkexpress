@@ -44,8 +44,8 @@ const cargoContent = {
         items: ['Réception en Chine', 'Inspection photo ou vidéo', 'Consolidation multi-fournisseurs', 'Dédouanement et livraison au Mali'],
       },
       {
-        title: 'Mali d’abord, Afrique de l’Ouest ensuite',
-        body: 'Bamako reste notre hub principal, mais notre réseau permet aussi d’accompagner des importateurs vers le Sénégal, la Côte d’Ivoire, le Ghana, le Nigeria et d’autres destinations d’Afrique de l’Ouest.',
+        title: 'Bamako et Kampala',
+        body: 'Bamako est notre hub principal, avec un bureau sur place. Nous livrons aussi à Kampala, en Ouganda.',
       },
     ],
     table: {
@@ -104,8 +104,8 @@ const cargoContent = {
         items: ['Receiving in China', 'Photo or video inspection', 'Multi-supplier consolidation', 'Customs and delivery coordination'],
       },
       {
-        title: 'Mali first, West Africa next',
-        body: 'Bamako remains our primary operating hub, but our network also supports importers shipping to Senegal, Ivory Coast, Ghana, Nigeria and other West African destinations.',
+        title: 'Bamako and Kampala',
+        body: 'Bamako is our main hub, with an office on site. We also deliver to Kampala, Uganda.',
       },
     ],
     table: {
@@ -176,8 +176,8 @@ const cargoContent = {
         items: ['在中国收货', '照片或视频验货', '多供应商集运', '马里清关与交付'],
       },
       {
-        title: '马里优先，其次西非',
-        body: '巴马科仍是我们的主要枢纽，但我们的网络也能协助进口商前往塞内加尔、科特迪瓦、加纳、尼日利亚及其他西非目的地。',
+        title: '巴马科与坎帕拉',
+        body: '巴马科是我们的主要枢纽，设有本地办公室。我们也送达乌干达坎帕拉。',
       },
     ],
     table: {
@@ -236,8 +236,8 @@ const cargoContent = {
         items: ['الاستلام في الصين', 'فحص بالصور أو الفيديو', 'تجميع البضائع من عدة موردين', 'التخليص الجمركي والتسليم في مالي'],
       },
       {
-        title: 'مالي أولًا، ثم غرب أفريقيا',
-        body: 'تبقى باماكو مركزنا الرئيسي، لكن شبكتنا تتيح أيضًا مرافقة المستوردين إلى السنغال وساحل العاج وغانا ونيجيريا ووجهات أخرى في غرب أفريقيا.',
+        title: 'باماكو وكمبالا',
+        body: 'باماكو هي مركزنا الرئيسي، ولدينا مكتب فيها. ونوصل أيضًا إلى كمبالا في أوغندا.',
       },
     ],
     table: {

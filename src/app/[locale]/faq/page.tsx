@@ -83,7 +83,7 @@ const faqsFr = [
   },
   {
     question: 'Expédiez-vous vers d\u2019autres pays d\u2019Afrique ?',
-    answer: 'Oui, nous desservons le Sénégal, la Côte d\u2019Ivoire, le Burkina Faso, le Nigeria, le Ghana, le Niger, le Bénin et le Togo.',
+    answer: 'Nous livrons à deux destinations : Bamako (Mali) et Kampala (Ouganda).',
   },
   {
     question: 'Faites-vous l\u2019inspection qualité en Chine ?',
@@ -162,7 +162,7 @@ const faqsZh = [
   },
   {
     question: '你们发货到其他非洲国家吗？',
-    answer: '是的，我们服务塞内加尔、科特迪瓦、布基纳法索、尼日利亚、加纳、尼日尔、贝宁和多哥。',
+    answer: '我们送达两个目的地：巴马科（马里）和坎帕拉（乌干达）。',
   },
   {
     question: '你们在中国做质量检验吗？',
@@ -241,7 +241,7 @@ const faqsAr = [
   },
   {
     question: 'هل تشحنون إلى دول أفريقية أخرى؟',
-    answer: 'نعم، نخدم السنغال وساحل العاج وبوركينا فاسو ونيجيريا وغانا والنيجر وبنين وتوغو.',
+    answer: 'نوصل إلى وجهتين: باماكو (مالي) وكمبالا (أوغندا).',
   },
   {
     question: 'هل تجرون فحص الجودة في الصين؟',
@@ -320,7 +320,7 @@ const faqsEn = [
   },
   {
     question: 'Do you ship to other African countries?',
-    answer: 'Yes. We support routes to Senegal, Ivory Coast, Burkina Faso, Nigeria, Ghana, Niger, Benin, Togo and other African destinations, with Mali as our strongest hub.',
+    answer: 'We deliver to two destinations: Bamako (Mali) and Kampala (Uganda).',
   },
   {
     question: 'Do you inspect product quality in China?',

@@ -27,16 +27,7 @@ export interface RouteLane {
  * absent — see the note above.
  */
 export const ROUTE_LANES: Record<string, RouteLane> = {
-  'china-to-africa': { destination: 'West Africa', durationDays: { min: 12, max: 75 } },
-  'china-to-benin': { destination: 'Benin', durationDays: { min: 12, max: 60 } },
-  'china-to-burkina-faso': { destination: 'Burkina Faso', durationDays: { min: 14, max: 75 } },
-  'china-to-cote-divoire': { destination: 'Ivory Coast', durationDays: { min: 12, max: 60 } },
-  'china-to-ghana': { destination: 'Ghana', durationDays: { min: 12, max: 60 } },
-  'china-to-guinea': { destination: 'Guinea', durationDays: { min: 12, max: 60 } },
-  'china-to-niger': { destination: 'Niger', durationDays: { min: 14, max: 75 } },
-  'china-to-nigeria': { destination: 'Nigeria', durationDays: { min: 10, max: 60 } },
-  'china-to-senegal': { destination: 'Senegal', durationDays: { min: 12, max: 60 } },
-  'china-to-togo': { destination: 'Togo', durationDays: { min: 12, max: 60 } },
+  'china-to-africa': { destination: 'Mali', durationDays: { min: 14, max: 75 } },
 };
 
 export const ROUTE_SLUGS = Object.keys(ROUTE_LANES);

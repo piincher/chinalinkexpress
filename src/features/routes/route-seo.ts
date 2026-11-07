@@ -11,16 +11,7 @@ export interface RouteSeoCopy {
 
 const routeDestinations = {
   'china-to-mali': { en: 'Mali', fr: 'Mali', zh: '马里', ar: 'مالي', capital: 'Bamako', priority: true },
-  'china-to-africa': { en: 'West Africa', fr: 'Afrique de l’Ouest', capital: 'Bamako, Dakar, Abidjan, Lagos, Accra', priority: false, zh: '西非', ar: 'غرب أفريقيا' },
-  'china-to-senegal': { en: 'Senegal', fr: 'Sénégal', capital: 'Dakar', priority: false, zh: '塞内加尔', ar: 'السنغال' },
-  'china-to-cote-divoire': { en: 'Ivory Coast', fr: 'Côte d’Ivoire', capital: 'Abidjan', priority: false, zh: '科特迪瓦', ar: 'ساحل العاج' },
-  'china-to-nigeria': { en: 'Nigeria', fr: 'Nigeria', capital: 'Lagos', priority: false, zh: '尼日利亚', ar: 'نيجيريا' },
-  'china-to-ghana': { en: 'Ghana', fr: 'Ghana', capital: 'Accra', priority: false, zh: '加纳', ar: 'غانا' },
-  'china-to-burkina-faso': { en: 'Burkina Faso', fr: 'Burkina Faso', capital: 'Ouagadougou', priority: false, zh: '布基纳法索', ar: 'بوركينا فاسو' },
-  'china-to-niger': { en: 'Niger', fr: 'Niger', capital: 'Niamey', priority: false, zh: '尼日尔', ar: 'النيجر' },
-  'china-to-benin': { en: 'Benin', fr: 'Bénin', capital: 'Cotonou', priority: false, zh: '贝宁', ar: 'بنين' },
-  'china-to-togo': { en: 'Togo', fr: 'Togo', capital: 'Lomé', priority: false, zh: '多哥', ar: 'توغو' },
-  'china-to-guinea': { en: 'Guinea', fr: 'Guinée', capital: 'Conakry', priority: false, zh: '几内亚', ar: 'غينيا' },
+  'china-to-africa': { en: 'West Africa', fr: 'Afrique de l’Ouest', capital: 'Bamako', priority: false, zh: '西非', ar: 'غرب أفريقيا' },
 } as const;
 
 export type RouteSeoKey = keyof typeof routeDestinations;

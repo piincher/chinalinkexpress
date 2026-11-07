@@ -94,7 +94,7 @@ const content = {
       },
       {
         question: 'Livrez-vous dans d\'autres pays d\'Afrique de l\'Ouest ?',
-        answer: 'Oui, nous livrons des textiles au Sénégal, Côte d\'Ivoire, Ghana, Nigeria, Burkina Faso, Niger, Bénin, Togo, Guinée et bien d\'autres pays africains.',
+        answer: 'Nous livrons à Bamako (Mali) et à Kampala (Ouganda).',
       },
     ],
     links: [
@@ -183,7 +183,7 @@ const content = {
       },
       {
         question: 'Do you deliver to other West African countries?',
-        answer: 'Yes, we deliver textiles to Senegal, Ivory Coast, Ghana, Nigeria, Burkina Faso, Niger, Benin, Togo, Guinea, and many other African countries.',
+        answer: 'We deliver to Bamako (Mali) and Kampala (Uganda).',
       },
     ],
     links: [
@@ -272,7 +272,7 @@ const content = {
       },
       {
         question: '你们也送到其他西非国家吗？',
-        answer: '是的，我们把纺织品送到塞内加尔、科特迪瓦、加纳、尼日利亚、布基纳法索、尼日尔、贝宁、多哥、几内亚以及其他许多非洲国家。',
+        answer: '我们送达巴马科（马里）和坎帕拉（乌干达）。',
       },
     ],
     links: [
@@ -361,7 +361,7 @@ const content = {
       },
       {
         question: 'هل تسلمون في دول أخرى من غرب أفريقيا؟',
-        answer: 'نعم، نسلم المنسوجات في السنغال وساحل العاج وغانا ونيجيريا وبوركينا فاسو والنيجر وبنين وتوغو وغينيا ودول أفريقية أخرى كثيرة.',
+        answer: 'نوصل إلى باماكو (مالي) وكمبالا (أوغندا).',
       },
     ],
     links: [

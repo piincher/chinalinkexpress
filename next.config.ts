@@ -60,13 +60,9 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/:locale(fr|en|zh|ar)/routes/china-to-ivory-coast',
-        destination: '/:locale/routes/china-to-cote-divoire',
-        permanent: true,
-      },
-      {
-        source: '/:locale(fr|en|zh|ar)/routes/china-to-ivory-coast/',
-        destination: '/:locale/routes/china-to-cote-divoire',
+        // Destinations not served (only Bamako and Kampala are); old links land on the home page.
+        source: '/:locale(fr|en|zh|ar)/routes/:lane(china-to-senegal|china-to-cote-divoire|china-to-ivory-coast|china-to-nigeria|china-to-ghana|china-to-burkina-faso|china-to-niger|china-to-benin|china-to-togo|china-to-guinea){/}?',
+        destination: '/:locale',
         permanent: true,
       },
       // Force lowercase URLs

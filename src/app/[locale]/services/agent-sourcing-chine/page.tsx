@@ -97,7 +97,7 @@ const content = {
       },
       {
         question: 'Livrez-vous dans tous les pays d\'Afrique de l\'Ouest ?',
-        answer: 'Oui, nous livrons au Mali, Sénégal, Côte d\'Ivoire, Ghana, Nigeria, Burkina Faso, Niger, Bénin, Togo, Guinée, Cameroun et RDC. Le fret aérien arrive généralement à Bamako ou Dakar avec transit local.',
+        answer: 'Non. Nous livrons à Bamako (Mali) et à Kampala (Ouganda).',
       },
     ],
     links: [
@@ -189,7 +189,7 @@ const content = {
       },
       {
         question: 'Do you deliver to all West African countries?',
-        answer: 'Yes, we deliver to Mali, Senegal, Ivory Coast, Ghana, Nigeria, Burkina Faso, Niger, Benin, Togo, Guinea, Cameroon, and DRC. Air freight usually arrives in Bamako or Dakar with local transit.',
+        answer: 'No. We deliver to Bamako (Mali) and Kampala (Uganda).',
       },
     ],
     links: [
@@ -281,7 +281,7 @@ const content = {
       },
       {
         question: '你们送达所有西非国家吗？',
-        answer: '是的，我们送达马里、塞内加尔、科特迪瓦、加纳、尼日利亚、布基纳法索、尼日尔、贝宁、多哥、几内亚、喀麦隆和刚果（金）。空运通常到达巴马科或达喀尔，再本地转运。',
+        answer: '不是。我们送达巴马科（马里）和坎帕拉（乌干达）。',
       },
     ],
     links: [
@@ -373,7 +373,7 @@ const content = {
       },
       {
         question: 'هل تسلمون في كل دول غرب أفريقيا؟',
-        answer: 'نعم، نسلم في مالي والسنغال وساحل العاج وغانا ونيجيريا وبوركينا فاسو والنيجر وبنين وتوغو وغينيا والكاميرون وجمهورية الكونغو الديمقراطية. ويصل الشحن الجوي عادة إلى باماكو أو داكار مع عبور محلي.',
+        answer: 'لا. نوصل إلى باماكو (مالي) وكمبالا (أوغندا).',
       },
     ],
     links: [

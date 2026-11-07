@@ -134,22 +134,11 @@ export const BUSINESS_INFO = {
 } as const;
 
 // ============================================================================
-// Shipping Routes Data - EXPANDED to all African markets
+// Shipping Routes Data - destinations served
 // ============================================================================
 
 export const SHIPPING_ROUTES: ShippingRoute[] = [
   { origin: 'China', destination: 'Mali', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Senegal', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Ivory Coast', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Nigeria', durationDays: { min: 14, max: 65 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Ghana', durationDays: { min: 14, max: 65 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Burkina Faso', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Niger', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Benin', durationDays: { min: 14, max: 65 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Togo', durationDays: { min: 14, max: 65 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Guinea', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Cameroon', durationDays: { min: 14, max: 65 }, methods: ['air', 'sea'] },
-  { origin: 'China', destination: 'Democratic Republic of the Congo', durationDays: { min: 14, max: 70 }, methods: ['air', 'sea'] },
 ];
 
 // ============================================================================
@@ -311,23 +300,11 @@ export function generateLocalBusinessSchema() {
     priceRange: '$$$',
     paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer', 'Mobile Money', 'Alipay', 'WeChat Pay', 'PayPal'],
     currenciesAccepted: ['USD', 'EUR', 'CNY', 'XOF', 'XAF'],
-    // EXPANDED: All West and Central African countries
+    // Bamako and Kampala are the only destinations served.
     areaServed: [
       { '@type': 'Country', name: 'Mali' },
-      { '@type': 'Country', name: 'Senegal' },
-      { '@type': 'Country', name: 'Ivory Coast' },
-      { '@type': 'Country', name: 'Cote d\'Ivoire' },
-      { '@type': 'Country', name: 'Nigeria' },
-      { '@type': 'Country', name: 'Ghana' },
-      { '@type': 'Country', name: 'Burkina Faso' },
-      { '@type': 'Country', name: 'Niger' },
-      { '@type': 'Country', name: 'Benin' },
-      { '@type': 'Country', name: 'Togo' },
-      { '@type': 'Country', name: 'Guinea' },
-      { '@type': 'Country', name: 'Cameroon' },
-      { '@type': 'Country', name: 'Democratic Republic of the Congo' },
+      { '@type': 'Country', name: 'Uganda' },
       { '@type': 'Country', name: 'China' },
-      { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 12.0, longitude: -5.0 }, geoRadius: '2000 km', description: 'West Africa' },
     ],
     hasMap: 'https://www.google.com/maps/search/?api=1&query=12.6392,-8.0029',
     /*
@@ -837,6 +814,7 @@ export function generateHomeServiceSchema(locale: Locale = 'fr') {
     provider: { '@id': `${BUSINESS_INFO.url}/#organization` },
     areaServed: [
       { '@type': 'Country', name: 'Mali' },
+      { '@type': 'Country', name: 'Uganda' },
       { '@type': 'Country', name: 'China' },
     ],
     availableChannel: {
@@ -1059,10 +1037,6 @@ export const PAGE_PATHS = {
   },
   routes: {
     chinaToMali: '/routes/china-to-mali',
-    chinaToSenegal: '/routes/china-to-senegal',
-    chinaToCoteIvoire: '/routes/china-to-cote-divoire',
-    chinaToNigeria: '/routes/china-to-nigeria',
-    chinaToGhana: '/routes/china-to-ghana',
     chinaToAfrica: '/routes/china-to-africa',
   },
   tools: {

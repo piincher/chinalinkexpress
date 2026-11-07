@@ -57,12 +57,7 @@ export default async function PourquoiNous({ params }: Props) {
         serviceType: 'FreightForwardingService',
         areaServed: [
           { '@type': 'Country', name: 'Mali' },
-          { '@type': 'Country', name: 'Senegal' },
-          { '@type': 'Country', name: 'Ivory Coast' },
-          { '@type': 'Country', name: 'Nigeria' },
-          { '@type': 'Country', name: 'Ghana' },
-          { '@type': 'Country', name: 'Guinea' },
-          { '@type': 'Country', name: 'Burkina Faso' },
+          { '@type': 'Country', name: 'Uganda' },
         ],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',

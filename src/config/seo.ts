@@ -299,35 +299,7 @@ export const STRUCTURED_DATA = {
       },
       {
         '@type': 'Country',
-        name: 'Senegal',
-      },
-      {
-        '@type': 'Country',
-        name: 'Ivory Coast',
-      },
-      {
-        '@type': 'Country',
-        name: 'Nigeria',
-      },
-      {
-        '@type': 'Country',
-        name: 'Ghana',
-      },
-      {
-        '@type': 'Country',
-        name: 'Guinea',
-      },
-      {
-        '@type': 'Country',
-        name: 'Burkina Faso',
-      },
-      {
-        '@type': 'Country',
-        name: 'Benin',
-      },
-      {
-        '@type': 'Country',
-        name: 'Togo',
+        name: 'Uganda',
       },
     ],
     hasOfferCatalog: {

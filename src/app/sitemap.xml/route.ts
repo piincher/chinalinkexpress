@@ -78,15 +78,6 @@ const BLOG_POSTS: PageConfig[] = [
 const ROUTE_PAGES = [
   { path: 'routes/china-to-mali', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'routes/china-to-africa', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-senegal', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-cote-divoire', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-nigeria', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-ghana', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-burkina-faso', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-niger', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-benin', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-togo', priority: 0.8, changeFrequency: 'weekly' as const },
-  { path: 'routes/china-to-guinea', priority: 0.8, changeFrequency: 'weekly' as const },
 ];
 
 const GUIDE_PAGES = [
