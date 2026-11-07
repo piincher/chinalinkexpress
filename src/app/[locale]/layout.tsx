@@ -13,7 +13,7 @@
 
 import { ReactNode } from 'react';
 import { cookies } from 'next/headers';
-import { Geist, Geist_Mono, Archivo } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -22,7 +22,6 @@ import { i18nConfig, type Locale, getLocaleDirection, getSeoLocale } from '@/i18
 import { SharedNavbar, SharedFooter } from '@/components/layout';
 import { GoogleAnalytics } from '@/components/seo';
 import { ThemeProvider, ThemeInitScript } from '@/components/theme';
-import { SeasonalStyleOverride } from '@/components/seasonal';
 import { PWAProvider, InstallPrompt, UpdateNotification, OfflineIndicator } from '@/components/pwa';
 import { PromoModalProvider } from '@/features/promoCampaigns';
 import { SmoothScroll } from '@/components/smooth-scroll';
@@ -55,23 +54,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   display: 'swap',
   preload: false, // Monospace is less critical
-});
-
-/**
- * Display face.
- *
- * Geist is a fine UI face but it is also the default of every AI-built site of
- * the last two years, and a page set entirely in it reads as untouched. Archivo
- * is a variable grotesque drawn from industrial signage — it holds a real 800
- * weight at display sizes and gives the headlines a voice distinct from the
- * body copy, which is what the 2+1 pairing is for. Body and UI stay on Geist.
- */
-const archivo = Archivo({
-  variable: '--font-archivo',
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-  axes: ['wdth'],
 });
 
 // ============================================================================
@@ -128,11 +110,13 @@ export async function generateMetadata({
   const messages = (await import(`@/i18n/locales/${validLocale}/common.json`)).default;
   const seoLocale = getSeoLocale(validLocale as Locale);
   const isEn = validLocale === 'en';
+  const isZh = validLocale === 'zh';
+  const isAr = validLocale === 'ar';
   
   // Comprehensive SEO keywords by locale
   const keywords = isEn 
     ? 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, freight forwarder, China Mali shipping, shipping from China to Mali, freight forwarding China to Bamako, Alibaba shipping agent, China procurement services, door to door shipping China Mali, container shipping China Mali, FCL shipping, LCL consolidation, air cargo China to Mali, express shipping China Mali, shipping China Bamako, freight forwarder China Mali, import China Mali, customs clearance Mali, sourcing agent Mali'
-    : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Mali, expédition colis Chine Mali, fret Chine Bamako, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine Mali, conteneur Chine Mali, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Mali, express Chine Mali, expédition Chine Bamako, transitaire Bamako, import Chine Mali, sourcing Mali';
+    : isZh ? '海运, 空运, 中国发货, 货代, 国际物流, 国际运输, 运输代理, 中国马里货运, 中国马里寄包裹, 中国巴马科货运, 中国供应商采购, 中国采购代理, 中国供应商付款, 马里清关, 中国马里门到门, 中国马里集装箱, FCL 整箱, LCL 拼箱, 中国马里空运, 中国马里快递, 中国巴马科发货, 巴马科货代, 中国马里进口, 马里采购' : isAr ? 'الشحن البحري، الشحن الجوي، الشحن من الصين، وكيل شحن، الخدمات اللوجستية الدولية، النقل الدولي، وكيل نقل، الشحن من الصين إلى مالي، إرسال طرد من الصين إلى مالي، الشحن من الصين إلى باماكو، الشراء من مورد صيني، وكيل توريد في الصين، الدفع لمورد صيني، التخليص الجمركي في مالي، التسليم من الباب إلى الباب من الصين إلى مالي، حاوية من الصين إلى مالي، حاوية كاملة FCL، شحن مجمّع LCL، الشحن الجوي من الصين إلى مالي، الشحن السريع من الصين إلى مالي، وكيل شحن في باماكو، الاستيراد من الصين إلى مالي، التوريد إلى مالي' : 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport international, commissionnaire transport, fret Chine Mali, expédition colis Chine Mali, fret Chine Bamako, achat fournisseur Chine, agent sourcing Chine, paiement fournisseur chinois, dédouanement Mali, livraison porte à porte Chine Mali, conteneur Chine Mali, conteneur complet FCL, groupage maritime LCL, cargo aérien Chine Mali, express Chine Mali, expédition Chine Bamako, transitaire Bamako, import Chine Mali, sourcing Mali';
   
   return {
     title: {
@@ -157,10 +141,10 @@ export async function generateMetadata({
       // Console as "Duplicate, Google chose different canonical than user".
       canonical: `/${validLocale}`,
       languages: {
-        'fr-FR': '/fr',
-        'en-US': '/en',
-        'zh-CN': '/zh',
-        'ar-SA': '/ar',
+        'fr': '/fr',
+        'en': '/en',
+        'zh': '/zh',
+        'ar': '/ar',
         'x-default': '/fr',
       },
     },
@@ -174,7 +158,7 @@ export async function generateMetadata({
           url: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg',
           width: 1200,
           height: 630,
-          alt: isEn ? 'ChinaLink Express - Freight Forwarding China to Africa' : 'ChinaLink Express - Fret Chine Afrique',
+          alt: isEn ? 'ChinaLink Express - Freight Forwarding China to Africa' : isZh ? 'ChinaLink Express - 中国非洲货运' : isAr ? 'ChinaLink Express - الشحن من الصين إلى أفريقيا' : 'ChinaLink Express - Fret Chine Afrique',
         },
       ],
       locale: seoLocale,
@@ -252,15 +236,17 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <>
+      {/* The <html> tag lives in the locale-free root layout (share links and QR
+          routes also use it), so language and direction are set here, before paint. */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang=${JSON.stringify(validLocale)};document.documentElement.dir=${JSON.stringify(direction)};`,
+        }}
+      />
+
       {/* Theme Initialization Script - Prevents flash */}
       <ThemeInitScript />
 
-      {/* The live campaign's accent, from the same published record that
-          dresses the app. An async server component, so the HTML arrives
-          already in the right colours instead of repainting a beat later; it
-          renders nothing out of season, and nothing if the API is unreachable.
-          Sits in the layout so every page is dressed, not just the homepage. */}
-      <SeasonalStyleOverride />
       
       {/* Performance: Preconnect to Critical Domains */}
       <link rel="preconnect" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com" />
@@ -276,9 +262,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="ChinaLink" />
       <meta name="application-name" content="ChinaLink Express" />
-      <meta name="msapplication-TileColor" content="#2563eb" />
+      <meta name="msapplication-TileColor" content="#0b1f4b" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
+      <meta name="theme-color" content="#0b1f4b" media="(prefers-color-scheme: light)" />
       <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
       
       {/* PWA Icons */}
@@ -292,9 +278,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <link rel="apple-touch-icon" sizes="512x512" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" />
-      <link rel="mask-icon" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" color="#2563eb" />
+      <link rel="mask-icon" href="https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png" color="#0b1f4b" />
       
-      <div className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} antialiased min-h-screen flex flex-col`}>
+      <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           <PWAProvider>
             <NextIntlClientProvider locale={validLocale} messages={messages}>

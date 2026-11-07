@@ -32,16 +32,18 @@ export async function generateMetadata({
 }: PublicProfilePageProps): Promise<Metadata> {
   const { locale, handle } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const profile = await fetchPublicClientProfile(handle);
   const name = profile?.displayName ?? (isEn ? 'Client' : 'Client');
 
   return generatePageMetadata({
     title: isEn
       ? `${name} — client reviews | ChinaLink Express`
-      : `${name} — avis client | ChinaLink Express`,
+      : isZh ? `${name} — 客户评价 | ChinaLink Express` : isAr ? `${name} — رأي عميل | ChinaLink Express` : `${name} — avis client | ChinaLink Express`,
     description: isEn
       ? `Shipments and reviews published by ${name}, a ChinaLink Express client.`
-      : `Expéditions et avis publiés par ${name}, client ChinaLink Express.`,
+      : isZh ? `ChinaLink Express 客户 ${name} 发布的货运记录和评价。` : isAr ? `الشحنات والآراء التي نشرها ${name}، عميل ChinaLink Express.` : `Expéditions et avis publiés par ${name}, client ChinaLink Express.`,
     keywords: '',
     path: `/client/${handle}`,
     locale: locale as Locale,

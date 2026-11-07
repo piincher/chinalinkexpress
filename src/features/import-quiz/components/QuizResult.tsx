@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Share2, ExternalLink, MessageCircle } from 'lucide-react';
 import { QUIZ_CONFIG } from '../lib/constants';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 interface QuizResultProps {
   score: number;
@@ -123,11 +125,12 @@ export function QuizResult({
   guideUrl,
   whatsappNumber,
 }: QuizResultProps) {
+  const locale = useLocale();
   const animatedScore = useAnimatedCounter(score);
   const config = categoryConfig[category];
 
   const handleShare = async () => {
-    const shareText = `J'ai obtenu ${score}/100 au quiz d'import de ChinaLink Express! ${config.label}`;
+    const shareText = `J'ai obtenu ${score}/100 au quiz d'import de ChinaLink Express! ${phrase(locale, config.label)}`;
     const shareUrl = window.location.href;
 
     if (navigator.share) {
@@ -150,10 +153,10 @@ export function QuizResult({
     const fullText = `${text}\n${url}`;
     navigator.clipboard.writeText(fullText);
     // Could add toast notification here
-    alert('Résultat copié! Partagez-le avec vos contacts.');
+    alert(phrase(locale, 'Résultat copié! Partagez-le avec vos contacts.'));
   };
 
-  const whatsappUrl = `https://wa.me/${QUIZ_CONFIG.whatsappBusinessNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Bonjour! J'ai terminé le quiz d'import avec le numéro ${whatsappNumber} et j'ai obtenu ${score}/100 (${config.label}). Je souhaite en savoir plus!`)}`;
+  const whatsappUrl = `https://wa.me/${QUIZ_CONFIG.whatsappBusinessNumber.replace(/\D/g, '')}?text=${encodeURIComponent(`Bonjour! J'ai terminé le quiz d'import avec le numéro ${whatsappNumber} et j'ai obtenu ${score}/100 (${phrase(locale, config.label)}). Je souhaite en savoir plus!`)}`;
 
   return (
     <motion.div
@@ -195,7 +198,7 @@ export function QuizResult({
             <span
               className={`inline-flex items-center rounded-full ${config.bgColor} px-4 py-2 text-sm font-semibold ${config.textColor}`}
             >
-              {config.label}
+              {phrase(locale, config.label)}
             </span>
           </motion.div>
         </div>
@@ -226,7 +229,7 @@ export function QuizResult({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span>Voir mon guide personnalisé</span>
+              <span>{phrase(locale, "Voir mon guide personnalisé")}</span>
               <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </motion.a>
 
@@ -243,7 +246,7 @@ export function QuizResult({
               whileTap={{ scale: 0.98 }}
             >
               <MessageCircle className="h-5 w-5" />
-              <span>Discuter sur WhatsApp</span>
+              <span>{phrase(locale, "Discuter sur WhatsApp")}</span>
             </motion.a>
 
             {/* Share Button */}
@@ -257,7 +260,7 @@ export function QuizResult({
               whileTap={{ scale: 0.98 }}
             >
               <Share2 className="h-4 w-4 transition-transform group-hover:rotate-12" />
-              <span>Partager ce quiz</span>
+              <span>{phrase(locale, "Partager ce quiz")}</span>
             </motion.button>
           </div>
 

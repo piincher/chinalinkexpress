@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import { PAGE_SEO } from '@/config/seo';
 import { StructuredData } from '@/components/seo';
 import { ContactPage } from '@/features/contact';
+import type { Locale } from '@/i18n/config';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -17,7 +18,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.contact.en : PAGE_SEO.contact.fr;
+  const seo = PAGE_SEO.contact[locale as Locale];
   
   return {
     title: seo.title,
@@ -26,10 +27,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${locale}/contact`,
       languages: {
-        'en-US': '/en/contact',
-        'fr-FR': '/fr/contact',
-        'zh-CN': '/zh/contact',
-        'ar-SA': '/ar/contact',
+        'en': '/en/contact',
+        'fr': '/fr/contact',
+        'zh': '/zh/contact',
+        'ar': '/ar/contact',
         'x-default': '/fr/contact',
       },
     },

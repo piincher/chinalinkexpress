@@ -23,8 +23,12 @@ export function PriceTable() {
       ? value
           .replace(/jours/g, 'days')
           .replace(/dédouanement inclus/g, 'customs coordination included')
-      : value;
-  const averageUnit = isEn ? 'days' : 'j';
+      : locale === 'zh'
+        ? value.replace(/jours/g, '天').replace(/dédouanement inclus/g, '含清关')
+        : locale === 'ar'
+          ? value.replace(/jours/g, 'يومًا').replace(/dédouanement inclus/g, 'التخليص الجمركي مشمول')
+          : value;
+  const averageUnit = isEn ? 'days' : locale === 'zh' ? '天' : locale === 'ar' ? 'يوم' : 'j';
 
   const expressRate = AIR_RATES.find((r) => r.category === 'express');
   const standardRate = AIR_RATES.find((r) => r.category === 'standard');

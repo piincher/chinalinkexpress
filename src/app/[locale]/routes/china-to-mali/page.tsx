@@ -80,6 +80,42 @@ const routeFaqs = {
       answer: 'Sea freight works best for large volumes, furniture, machinery, heavy cartons and non-urgent goods.',
     },
   ],
+  zh: [
+    {
+      question: '中国到马里的货运需要多长时间？',
+      answer: '空运到巴马科通常需要 14 到 21 天。海运通常需要 60 到 75 天，从佛山港到达喀尔港，再经陆路运到巴马科。',
+    },
+    {
+      question: 'ChinaLink 能在发货前处理采购吗？',
+      answer: '可以。ChinaLink 可以寻找供应商、处理付款、检查货物、合并包裹并安排发往马里。',
+    },
+    {
+      question: '哪些产品适合中国到马里空运？',
+      answer: '空运适合紧急包裹、服装、配件、小零件、样品和高利润产品。电池、液体和危险品必须在发货前确认。',
+    },
+    {
+      question: '哪些产品适合中国到马里海运？',
+      answer: '海运适合大批量、家具、机器、重型纸箱和不紧急的货物。',
+    },
+  ],
+  ar: [
+    {
+      question: 'كم يستغرق الشحن من الصين إلى مالي؟',
+      answer: 'يستغرق الشحن الجوي عادة من 14 إلى 21 يومًا إلى باماكو. ويستغرق البحري عادة من 60 إلى 75 يومًا من ميناء فوشان إلى ميناء داكار، ثم برًا إلى باماكو.',
+    },
+    {
+      question: 'هل تستطيع ChinaLink تولي التوريد قبل الشحن؟',
+      answer: 'نعم. يمكن لـChinaLink البحث عن المورد وإدارة الدفع وفحص البضاعة وتجميع الطرود وتنظيم الشحن إلى مالي.',
+    },
+    {
+      question: 'ما المنتجات المناسبة للشحن الجوي من الصين إلى مالي؟',
+      answer: 'يناسب الشحن الجوي الطرود العاجلة والملابس والإكسسوارات والقطع الصغيرة والعينات والمنتجات عالية الهامش. ويجب التأكد من البطاريات والسوائل والمواد الخطرة قبل الشحن.',
+    },
+    {
+      question: 'ما المنتجات المناسبة للشحن البحري من الصين إلى مالي؟',
+      answer: 'يناسب الشحن البحري الكميات الكبيرة والأثاث والآلات والكراتين الثقيلة والبضائع غير العاجلة.',
+    },
+  ],
 };
 
 export default async function ChinaToMaliRoute({ params }: PageProps) {
@@ -89,12 +125,14 @@ export default async function ChinaToMaliRoute({ params }: PageProps) {
   setRequestLocale(locale);
   
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const seo = getRouteSeo('china-to-mali', locale as Locale);
-  const faqs = isEn ? routeFaqs.en : routeFaqs.fr;
+  const faqs = routeFaqs[locale as Locale];
   
   // Breadcrumb data
   const breadcrumbs = [
-    { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
     { name: isEn ? 'Routes' : 'Routes', url: `/${locale}/routes/` },
     { name: seo.breadcrumb, url: `/${locale}/routes/china-to-mali/` },
   ];

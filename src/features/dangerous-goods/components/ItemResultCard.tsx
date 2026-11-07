@@ -94,6 +94,7 @@ import {
 import { cn } from '@/lib/utils';
 import { STATUS_CONFIGS, SHIPPING_ADVICE } from '../data';
 import { DangerousGoodsItem } from '../types';
+import type { Locale } from '@/i18n/config';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Smartphone,
@@ -207,12 +208,14 @@ const statusIcons: Record<string, React.ReactNode> = {
 
 interface ItemResultCardProps {
   item: DangerousGoodsItem;
-  locale?: 'en' | 'fr';
+  locale?: 'fr' | 'en' | 'zh' | 'ar';
   index?: number;
 }
 
 export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCardProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const styles = statusConfigStyles[item.status];
   const statusConfig = STATUS_CONFIGS[item.status];
   const IconComponent = iconMap[item.icon] || Package;
@@ -248,10 +251,10 @@ export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCar
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h3 className="text-base font-semibold text-white leading-tight">
-                  {isEn ? item.name : item.nameFr}
+                  {isEn ? item.name : isZh ? item.nameZh : isAr ? item.nameAr : item.nameFr}
                 </h3>
                 <p className="text-sm text-slate-400 mt-0.5">
-                  {isEn ? item.nameFr : item.name}
+                  {isEn ? item.nameFr : isZh || isAr ? '' : item.name}
                 </p>
               </div>
 
@@ -262,14 +265,14 @@ export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCar
                 )}
               >
                 {statusIcons[item.status]}
-                {isEn ? statusConfig.label : statusConfig.labelFr}
+                {isEn ? statusConfig.label : isZh ? statusConfig.labelZh : isAr ? statusConfig.labelAr : statusConfig.labelFr}
               </span>
             </div>
 
             {/* Category tag */}
             <div className="mt-2">
               <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-slate-800 text-slate-400 border border-slate-700/50">
-                {isEn ? item.categoryFr : item.categoryFr}
+                {isEn ? item.category : isZh ? item.categoryZh : isAr ? item.categoryAr : item.categoryFr}
               </span>
             </div>
           </div>
@@ -278,7 +281,7 @@ export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCar
         {/* Description */}
         <div className="mt-4">
           <p className="text-sm text-slate-300 leading-relaxed">
-            {isEn ? item.description : item.descriptionFr}
+            {isEn ? item.description : isZh ? item.descriptionZh : isAr ? item.descriptionAr : item.descriptionFr}
           </p>
         </div>
 
@@ -288,7 +291,7 @@ export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCar
             <div className="flex items-start gap-2">
               <Info className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-slate-400 leading-relaxed">
-                {isEn ? item.notes : item.notesFr}
+                {isEn ? item.notes : isZh ? item.notesZh : isAr ? item.notesAr : item.notesFr}
               </p>
             </div>
           </div>
@@ -300,9 +303,9 @@ export function ItemResultCard({ item, locale = 'fr', index = 0 }: ItemResultCar
             <Package className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" />
             <p className="text-xs text-slate-500 leading-relaxed">
               <span className="font-medium text-slate-400">
-                {isEn ? 'Shipping tip: ' : 'Conseil d\'expédition : '}
+                {isEn ? 'Shipping tip: ' : isZh ? '发货建议：' : isAr ? 'نصيحة للشحن:' : 'Conseil d\'expédition : '}
               </span>
-              {isEn ? advice.en : advice.fr}
+              {advice[locale as Locale]}
             </p>
           </div>
         )}

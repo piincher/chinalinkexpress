@@ -28,17 +28,19 @@ interface CalendrierPageProps {
 export async function generateMetadata({ params }: CalendrierPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Shipping calendar: when to ship from China | ChinaLink Express'
-      : "Calendrier d'expédition : quand expédier de Chine | ChinaLink Express",
+      : isZh ? '发货日历：何时从中国发货 | ChinaLink Express' : isAr ? 'تقويم الشحن: متى تشحن من الصين | ChinaLink Express' : "Calendrier d'expédition : quand expédier de Chine | ChinaLink Express",
     description: isEn
       ? 'For Ramadan, back to school and the end-of-year holidays: the last day to ship from China by air or sea to reach Mali in time.'
-      : "Pour le Ramadan, la rentrée scolaire et les fêtes de fin d'année : le dernier jour pour expédier de Chine par avion ou par bateau et arriver à temps au Mali.",
+      : isZh ? '斋月、开学季和年末节日：从中国空运或海运并按时抵达马里的最后发货日期。' : isAr ? 'لرمضان والعودة إلى المدارس وأعياد نهاية العام: آخر موعد للشحن من الصين جوًا أو بحرًا للوصول إلى مالي في الوقت المناسب.' : "Pour le Ramadan, la rentrée scolaire et les fêtes de fin d'année : le dernier jour pour expédier de Chine par avion ou par bateau et arriver à temps au Mali.",
     keywords: isEn
       ? 'shipping calendar china mali, when to ship from china, ramadan shipping deadline, back to school shipping china'
-      : "calendrier expedition chine mali, quand expedier de chine, delai ramadan chine mali, rentree scolaire expedition chine, date limite expedition chine",
+      : isZh ? '中国马里发货日历, 何时从中国发货, 斋月中国马里时效, 开学季中国发货, 中国发货截止日期' : isAr ? 'تقويم الشحن من الصين إلى مالي، متى تشحن من الصين، مهلة رمضان من الصين إلى مالي، شحن العودة إلى المدارس من الصين، آخر موعد للشحن من الصين' : "calendrier expedition chine mali, quand expedier de chine, delai ramadan chine mali, rentree scolaire expedition chine, date limite expedition chine",
     path: '/calendrier',
     locale: locale as Locale,
     ogType: 'website',
@@ -54,6 +56,8 @@ export default async function CalendrierPage({ params }: CalendrierPageProps) {
 
   setRequestLocale(validLocale);
   const isEn = validLocale === 'en';
+  const isZh = validLocale === 'zh';
+  const isAr = validLocale === 'ar';
 
   // Everything visible: the page is the full calendar, not a teaser for it.
   const occasions = await fetchPublicOccasions(24);
@@ -65,9 +69,9 @@ export default async function CalendrierPage({ params }: CalendrierPageProps) {
           generateOrganizationSchema(),
           generateBreadcrumbSchema(
             [
-              { name: isEn ? 'Home' : 'Accueil', url: `/${validLocale}/` },
+              { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${validLocale}/` },
               {
-                name: isEn ? 'Shipping calendar' : "Calendrier d'expédition",
+                name: isEn ? 'Shipping calendar' : isZh ? '发货日历' : isAr ? 'تقويم الشحن' : "Calendrier d'expédition",
                 url: `/${validLocale}/calendrier/`,
               },
             ],

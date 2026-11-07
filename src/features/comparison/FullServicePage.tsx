@@ -16,7 +16,6 @@ import {
   Boxes,
   ClipboardCheck,
   Phone,
-  ArrowRight,
   X,
   Check,
   HeartHandshake,
@@ -24,8 +23,8 @@ import {
   PiggyBank,
   Clock,
 } from 'lucide-react';
-import Link from 'next/link';
 import { LabelPrint } from '@/components/moments/LabelPrint';
+import { PageHero, Cta } from '@/components/site';
 import {
   AnimatedSection,
   StaggerContainer,
@@ -117,48 +116,15 @@ export function FullServicePage({ locale }: Props) {
   return (
     <main className="min-h-screen bg-[var(--surface)]">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 mb-6 backdrop-blur-sm">
-              <HeartHandshake className="w-5 h-5" />
-              <span>{t('hero.badge')}</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl text-emerald-100 max-w-3xl mx-auto mb-8">
-              {t('hero.subtitle')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://wa.me/8618851725957"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors shadow-lg shadow-green-500/20"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                {t('hero.ctaWhatsApp')}
-              </a>
-              <Link
-                href={`/${locale}/tarifs`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 rounded-xl font-semibold hover:bg-emerald-50 transition-colors"
-              >
-                {t('hero.ctaRates')}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={t('hero.badge')}
+        title={t('hero.title')}
+        lede={t('hero.subtitle')}
+        actions={<>
+          <Cta href="https://wa.me/8618851725957" external arrow={false} tone="void" size="lg" icon={<Phone size={18} aria-hidden />}>{t('hero.ctaWhatsApp')}</Cta>
+          <Cta href={`/${locale}/tarifs`} variant="outline" tone="void" size="lg">{t('hero.ctaRates')}</Cta>
+        </>}
+      />
 
       {/* The shipping mark: why nothing gets lost in a grouped container. */}
       <LabelPrint />

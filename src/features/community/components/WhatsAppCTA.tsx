@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { Check, MessageCircle, QrCode, Users, Zap, ShieldCheck, Bell } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
+import { phrase } from '@/i18n/phrases';
 
 const WHATSAPP_LINK =
   'https://wa.me/22376696177?text=Bonjour%2C%20je%20souhaite%20rejoindre%20la%20communaut%C3%A9%20ChinaLink';
@@ -48,6 +49,8 @@ function WhatsAppIcon({ className = 'w-5 h-5' }: { className?: string }) {
 export function WhatsAppCTA() {
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const { ref, isActive } = useAnimationActivation({ threshold: 0.15, delay: 100 });
   const whatsappLink = isEn
     ? 'https://wa.me/22376696177?text=Hello%2C%20I%20want%20to%20join%20the%20ChinaLink%20community'
@@ -79,28 +82,28 @@ export function WhatsAppCTA() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-6 border border-white/10">
               <MessageCircle className="w-4 h-4" />
-              {isEn ? 'Official WhatsApp group' : 'Groupe WhatsApp officiel'}
+              {isEn ? 'Official WhatsApp group' : isZh ? '官方 WhatsApp 群' : isAr ? 'مجموعة WhatsApp الرسمية' : 'Groupe WhatsApp officiel'}
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              {isEn ? 'Join the group in' : 'Rejoignez le groupe en'}{' '}
-              <span className="text-emerald-200">{isEn ? '1 click' : '1 clic'}</span>
+              {isEn ? 'Join the group in' : isZh ? '加入群组，' : isAr ? 'انضم إلى المجموعة في' : 'Rejoignez le groupe en'}{' '}
+              <span className="text-emerald-200">{isEn ? '1 click' : phrase(locale, '1 clic')}</span>
             </h2>
 
             <p className="text-lg text-emerald-100 mb-8 max-w-lg">
               {isEn
                 ? 'Get instant access to 2,400+ importers. Ask questions, share experience and stay informed about the best opportunities.'
-                : 'Accédez instantanément à 2,400+ importateurs. Posez vos questions, partagez vos expériences et restez informé des meilleures opportunités.'}
+                : isZh ? '立即接触 2,400+ 进口商。提问、分享经验，及时了解最佳机会。' : isAr ? 'انضم فورًا إلى أكثر من 2,400 مستورد. اطرح أسئلتك وشارك تجاربك وابقَ على اطلاع بأفضل الفرص.' : 'Accédez instantanément à 2,400+ importateurs. Posez vos questions, partagez vos expériences et restez informé des meilleures opportunités.'}
             </p>
 
             {/* Benefits list */}
             <div className="space-y-4 mb-10">
               {benefits.map((benefit) => (
-                <div key={benefit.text} className="flex items-center gap-3">
+                <div key={phrase(locale, benefit.text)} className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
                     <benefit.icon className="w-4 h-4 text-emerald-200" />
                   </div>
-                  <span className="text-white/90 font-medium">{isEn ? benefit.textEn : benefit.text}</span>
+                  <span className="text-white/90 font-medium">{isEn ? benefit.textEn : phrase(locale, benefit.text)}</span>
                 </div>
               ))}
             </div>
@@ -118,7 +121,7 @@ export function WhatsAppCTA() {
                 className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-emerald-700 rounded-2xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 shadow-sm shadow-black/20 hover:shadow-black/30 hover:scale-105"
               >
                 <WhatsAppIcon className="w-6 h-6" />
-                {isEn ? 'Join the group' : 'Rejoindre le groupe'}
+                {isEn ? 'Join the group' : isZh ? '加入群组' : isAr ? 'انضم إلى المجموعة' : 'Rejoindre le groupe'}
               </a>
             </motion.div>
           </motion.div>
@@ -137,12 +140,12 @@ export function WhatsAppCTA() {
                   <div className="text-center">
                     <QrCode className="w-16 h-16 text-slate-800 mx-auto mb-2" />
                     <p className="text-xs text-slate-500 font-medium px-4">
-                      {isEn ? 'Scan to join' : 'Scanner pour rejoindre'}
+                      {isEn ? 'Scan to join' : isZh ? '扫码加入' : isAr ? 'امسح الرمز للانضمام' : 'Scanner pour rejoindre'}
                     </p>
                   </div>
                 </div>
                 <p className="text-sm text-white/70">
-                  {isEn ? 'Or click the green button' : 'Ou cliquez sur le bouton vert'}
+                  {isEn ? 'Or click the green button' : isZh ? '或点击绿色按钮' : isAr ? 'أو اضغط على الزر الأخضر' : 'Ou cliquez sur le bouton vert'}
                 </p>
               </div>
 
@@ -163,14 +166,14 @@ export function WhatsAppCTA() {
                     ))}
                   </div>
                   <div className="ml-3">
-                    <p className="text-white font-semibold text-sm">+2,400 {isEn ? 'members' : 'membres'}</p>
+                    <p className="text-white font-semibold text-sm">+2,400 {isEn ? 'members' : phrase(locale, 'membres')}</p>
                     <div className="flex items-center gap-1.5">
                       <span className="relative flex h-2.5 w-2.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
                       </span>
                       <span className="text-emerald-200 text-xs font-medium">
-                        {isEn ? 'Active now' : 'Actif maintenant'}
+                        {isEn ? 'Active now' : isZh ? '当前活跃' : isAr ? 'نشط الآن' : 'Actif maintenant'}
                       </span>
                     </div>
                   </div>
@@ -179,11 +182,11 @@ export function WhatsAppCTA() {
                 <div className="text-right">
                   <div className="flex items-center gap-1 text-emerald-200 text-sm font-medium">
                     <Check className="w-4 h-4" />
-                    {isEn ? 'Free' : 'Gratuit'}
+                    {isEn ? 'Free' : isZh ? '免费' : isAr ? 'مجاني' : 'Gratuit'}
                   </div>
                   <div className="flex items-center gap-1 text-emerald-200 text-sm font-medium">
                     <Check className="w-4 h-4" />
-                    {isEn ? 'No commitment' : 'Sans engagement'}
+                    {isEn ? 'No commitment' : isZh ? '无需承诺' : isAr ? 'دون التزام' : 'Sans engagement'}
                   </div>
                 </div>
               </div>

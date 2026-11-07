@@ -74,26 +74,8 @@ export function VideoTestimonialsSection() {
     <>
       <section
         ref={ref}
-        className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-amber-50/60 dark:from-amber-950/20 via-white dark:via-slate-950 to-white dark:to-slate-950"
+        className="relative overflow-hidden" style={{ paddingBlock: 'var(--band-y)', backgroundColor: 'var(--color-paper-2)' }}
       >
-        {/* Decorative top line */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-amber-300 dark:via-amber-800 to-transparent" />
-
-        {/* Background warm glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-amber-200/20 dark:bg-amber-900/10 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
-              backgroundSize: '32px 32px',
-            }}
-          />
-        </div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
@@ -103,7 +85,7 @@ export function VideoTestimonialsSection() {
             transition={{ duration: 0.6 }}
           >
             {/* Badge */}
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-100 dark:from-amber-900/30 to-orange-100 dark:to-orange-900/30 text-amber-700 dark:text-amber-400 rounded-full text-sm font-semibold mb-5">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-semibold mb-5">
               <Video className="w-4 h-4" />
               {t('badge', { defaultValue: 'Témoignages vidéo' })}
             </span>
@@ -139,7 +121,7 @@ export function VideoTestimonialsSection() {
               })}
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-gray-600 dark:text-gray-400 shadow-sm">
-              <Camera className="w-3.5 h-3.5 text-amber-500" />
+              <Camera className="w-3.5 h-3.5 text-blue-600" />
               {t('trustBadge.filmedOnSite', {
                 defaultValue: 'Tournés chez le client',
               })}
@@ -216,7 +198,7 @@ export function VideoTestimonialsSection() {
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-sm transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-sm transition-all duration-300"
             >
               <Play className="w-4 h-4" />
               {t('ctaButton', {

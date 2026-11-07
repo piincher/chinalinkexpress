@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ChinaLink Express | 中非采购与物流服务",
-    "description": "ChinaLink Express - 您值得信赖的中马物流合作伙伴，提供从中国到马里的采购、代购和货运服务。免费报价。",
-    "keywords": "中非采购, 中国到马里货运, 中非货运代理, 中国到巴马科空运, 国际物流"
+    "title": "中国到马里货运与货运代理 | ChinaLink Express",
+    "description": "为东非和西非进口商提供中国到马里的货运代理服务：采购、供应商付款、空运和海运到巴马科，并提供可验证的照片和货物跟踪。",
+    "keywords": "中国马里货运, 中国马里货运代理, 中非货运代理, 中国到西非货运, 中国到东非货运, 中国到巴马科空运, 中国到巴马科海运"
   },
   "navigation": {
     "home": "首页",
@@ -75,7 +75,8 @@
         "icon": "🚚",
         "label": "收货"
       }
-    ]
+    ],
+    "keywords": "中国马里货运 · 中国马里货运代理"
   },
   "landing": {
     "marquee": [
@@ -90,7 +91,16 @@
     "finalCta": {
       "title": "货已经在中国了？",
       "lede": "把产品链接、数量和您想走的运输方式发给我们，我们告诉您价格和时效。"
-    }
+    },
+    "lanesLabel": "服务航线",
+    "lanes": [
+      "广州 → 巴马科",
+      "佛山 → 巴马科",
+      "中国马里货运",
+      "中国马里货运代理",
+      "空运",
+      "海运"
+    ]
   },
   "stats": {
     "sectionLabel": "网络数据",
@@ -626,7 +636,9 @@
     },
     "calculator": {
       "title": "运费计算器",
-      "subtitle": "即时估算您的运输成本"
+      "subtitle": "即时估算您的运输成本",
+      "deadlineView": "按期限",
+      "classicView": "按方式"
     },
     "calculatorPage": {
       "title": "运费计算器",
@@ -701,8 +713,9 @@
         "title": "高密度物品",
         "description": "已根据中远和马士基的政策应用体积调整。"
       },
-      "smartChoice": "Good choice! You save {}% vs express.",
-      "patientImporter": "The patient importer's power move"
+      "smartChoice": "好选择！与特快相比节省 {percent}%。",
+      "patientImporter": "有耐心的进口商的明智之选",
+      "deliveryConfidence": "可能提前送达"
     },
     "prohibitedItems": {
       "badge": "重要",
@@ -806,6 +819,34 @@
         "payOnDelivery": {
           "question": "什么时候付款？",
           "answer": "您只需在收到并检查货物后付款。无需预付款。"
+        },
+        "whatIsCBM": {
+          "question": "什么是 CBM？",
+          "answer": "CBM（立方米）是海运使用的体积单位。1 CBM 等于 1 立方米。海运费用按 CBM 乘以单价计算。"
+        },
+        "volumetricWeight": {
+          "question": "体积重如何计算？",
+          "answer": "体积重的公式是（长 × 宽 × 高）÷ 5000，结果以公斤为单位。计费重量取实际重量和体积重中较大者。"
+        },
+        "chargeableWeight": {
+          "question": "什么是计费重量？",
+          "answer": "计费重量是用于计算运费的重量，取包裹实际重量和体积重中较大者。"
+        },
+        "deliveryTime": {
+          "question": "运输时间是多少？",
+          "answer": "空运：14-21 个工作日。海运：60-75 个工作日。时间可能因具体目的地和海关检查而异。"
+        },
+        "customsFees": {
+          "question": "是否包含清关费？",
+          "answer": "不包含，所示价格仅为运输费用。清关费和进口税由收货人承担，因国家和货物类型而异。"
+        },
+        "paymentMethods": {
+          "question": "接受哪些付款方式？",
+          "answer": "我们接受银行转账、Orange Money、Wave、现金和在线平台付款。老客户可享有带信用额度的客户账户。"
+        },
+        "tracking": {
+          "question": "如何跟踪我的货物？",
+          "answer": "货物发出后您会收到跟踪号。可通过我们的手机应用或网站的“跟踪”栏目实时查询。"
         }
       }
     },
@@ -853,19 +894,19 @@
     },
     "smartChoice": {
       "badge": "Smart Choice",
-      "description": "For planners. Same quality, better price."
+      "description": "适合提前规划的进口商。同样的质量，更好的价格。"
     },
     "savings": {
-      "vsExpress": "Save {}% vs Flash Express"
+      "vsExpress": "比特快节省 {percent}%"
     },
     "deliveryPerformance": {
-      "title": "Delivery Performance",
-      "subtitle": "We under-promise, we over-deliver",
+      "title": "交付表现",
+      "subtitle": "我们宁可少承诺，多兑现。",
       "quoted": "Quoted",
       "actualAverage": "Actual avg",
       "onTimeRate": "on-time rate",
-      "earlyDelivery": "Early delivery likely",
-      "earlyDeliveryStat": "94% of our deliveries arrive earlier than promised"
+      "earlyDelivery": "可能提前送达",
+      "earlyDeliveryStat": "94% 的货物在公布时间前送达。"
     },
     "weightPolicy": {
       "title": "计费重量如何计算",
@@ -899,6 +940,43 @@
         "标准费率 10,500 FCFA/公斤 -> 14,700 FCFA"
       ],
       "termsLink": "查看条款第 3.1 条"
+    },
+    "deadlineCalculator": {
+      "title": "按期限",
+      "subtitle": "您什么时候需要？我们为您找到最佳方案。",
+      "weight": "预估重量",
+      "dimensions": "尺寸（厘米）",
+      "optional": "可选",
+      "dimensionsHint": "用于计算体积重和立方米",
+      "category": "类别",
+      "whenDoYouNeedIt": "您什么时候需要？",
+      "day": "天",
+      "days": "天",
+      "destination": "目的地",
+      "recommended": "符合您期限的推荐方案",
+      "cheaperOption": "有更便宜的方案",
+      "cheaperOptionDescription": "{{tier}} 需 {{min}}-{{max}} 天，价格 {{price}}。如果时间充裕，可节省 {{savings}}。",
+      "fasterOption": "需要更快？",
+      "fasterOptionDescription": "{{tier}} 需 {{min}}-{{max}} 天，价格 {{price}}。",
+      "tooLate": "没有方案能保证此期限",
+      "tooLateDescription": "即使最快的特快空运也需要 2-5 天。请联系我们获取定制方案。",
+      "tooLateShort": "太晚",
+      "meetsDeadline": "符合",
+      "bestChoice": "最佳选择",
+      "timelineLabel": "时效对比",
+      "yourDeadline": "您的期限",
+      "forYourShipment": "您的货物",
+      "enterWeight": "输入重量以查看方案",
+      "enterWeightHint": "选择期限，我们为您找到最佳方案",
+      "urgent": "紧急",
+      "standard": "标准",
+      "relaxed": "宽松",
+      "economy": "经济",
+      "positioning": {
+        "flash": "适合紧急订单",
+        "air_standard": "不紧急时的明智选择",
+        "sea_economy": "大批量最便宜"
+      }
     }
   },
   "damageGuarantee": {
@@ -1212,19 +1290,19 @@
     "appSectionTitle": "应用内发布的评价",
     "whatsappSectionTitle": "通过 WhatsApp 收到的消息",
     "howTo": "已是客户？在应用「Mes Avis」中为您的配送评分。",
-    "silentReview": "Rating left without a comment",
+    "silentReview": "仅评分，无评论",
     "profileEyebrow": "Client profile",
-    "profileLede": "What this client has shipped with ChinaLink Express, and the reviews they published.",
+    "profileLede": "该客户通过 ChinaLink Express 发运的货物及其发表的评价。",
     "profileShipments": "Shipments",
     "profileShipmentsOne": "Shipment",
     "profileRating": "Average rating",
-    "profileReviewsCount": "{count} review(s) published",
+    "profileReviewsCount": "已发表 {count} 条评价",
     "profileModes": "Shipping modes",
-    "profileMemberSince": "Client since {date}",
-    "profileFirstShipment": "First shipment in {date}",
+    "profileMemberSince": "客户始于 {date}",
+    "profileFirstShipment": "首次发货：{date}",
     "profileReviews": "Their reviews",
-    "profileNotFound": "This profile does not exist or is no longer public.",
-    "profilePrivacy": "Limited public profile: no full name, phone number, address or amount. Only clients who published a review appear here.",
+    "profileNotFound": "此资料不存在或已不再公开。",
+    "profilePrivacy": "公开资料有限：不含全名、电话、地址或金额。只有发表评价的客户才会显示在此。",
     "profileBackToReviews": "See all reviews",
     "modeAir": "Air",
     "modeSea": "Sea"
@@ -1293,7 +1371,118 @@
         "them": "仅在港口区域卸货"
       }
     },
-    "ctaText": "选择很简单。从ChinaLink开始。"
+    "ctaText": "选择很简单。从ChinaLink开始。",
+    "metadata": {
+      "title": "为什么选择我们 | 全程服务与普通货运 | ChinaLink Express",
+      "description": "为什么要选择全程进口合作伙伴，而不只是普通货运代理。了解 ChinaLink Express 如何保障您在中国的采购。",
+      "keywords": "中非货运代理, 进口合作伙伴, 中国采购, 全程服务, 中国马里进口"
+    },
+    "hero": {
+      "badge": "全程进口合作伙伴",
+      "title": "不要只为运输付费，选择真正的进口合作伙伴。",
+      "subtitle": "不要满足于普通货运代理。选择 ChinaLink Express，您将拥有一个全程负责的合作伙伴：采购、付款、质量和运输。",
+      "ctaWhatsApp": "开始进口",
+      "ctaRates": "查看价格"
+    },
+    "problem": {
+      "sectionLabel": "问题",
+      "title": "只找普通货运代理时会遇到什么问题",
+      "subtitle": "货运代理只负责运输您的箱子。其他事情都要您自己处理。",
+      "items": {
+        "scam": {
+          "title": "诈骗风险",
+          "description": "您自己在阿里巴巴或 1688 上找供应商。没有本地核实，欺诈风险确实存在。"
+        },
+        "quality": {
+          "title": "没有质量检查",
+          "description": "您只能收到什么算什么。质量与照片不符时才发现问题。"
+        },
+        "payment": {
+          "title": "付款麻烦",
+          "description": "支付宝、中国银行转账……一切都要您自己处理，还要承担汇率和欺诈风险。"
+        },
+        "consolidation": {
+          "title": "多个卖家",
+          "description": "从多个卖家采购时无法合并包裹，您要多次支付运费。"
+        },
+        "customs": {
+          "title": "清关意外",
+          "description": "隐藏费用、复杂的清关和繁琐的文件。报价从来不是最终价格。"
+        }
+      }
+    },
+    "comparisonTable": {
+      "sectionLabel": "对比",
+      "title": "普通货运与全程服务",
+      "subtitle": "比较您实际得到的服务。",
+      "simpleTransit": "普通货运",
+      "fullService": "ChinaLink 全程服务",
+      "rows": {
+        "supplierFinding": {
+          "label": "寻找供应商",
+          "simple": "您自己找",
+          "full": "我们寻找并核实"
+        },
+        "qualityCheck": {
+          "label": "质量检查",
+          "simple": "没有",
+          "full": "发货前检查"
+        },
+        "payment": {
+          "label": "供应商付款",
+          "simple": "您自己处理支付宝和转账",
+          "full": "我们代您付款"
+        },
+        "consolidation": {
+          "label": "包裹合并",
+          "simple": "无法合并",
+          "full": "免费合并"
+        },
+        "customs": {
+          "label": "清关",
+          "simple": "隐藏费用",
+          "full": "包含且透明"
+        },
+        "tracking": {
+          "label": "跟踪",
+          "simple": "基本跟踪号",
+          "full": "实时跟踪和应用"
+        },
+        "support": {
+          "label": "客户支持",
+          "simple": "电子邮件，48 小时回复",
+          "full": "WhatsApp 全天候"
+        }
+      }
+    },
+    "result": {
+      "sectionLabel": "结果",
+      "title": "选择 ChinaLink Express，您将获得",
+      "subtitle": "一个为您工作的合作伙伴，而不只是承运人。",
+      "items": {
+        "peaceOfMind": {
+          "title": "安心",
+          "description": "我们核实供应商、控制质量并处理问题。您只需等待收货。"
+        },
+        "qualityGoods": {
+          "title": "优质货物",
+          "description": "发货前进行照片和视频检查。如果不符，我们不会发给您。"
+        },
+        "costSavings": {
+          "title": "实际节省",
+          "description": "合并采购、议价、没有隐藏清关费用。各方面都能节省。"
+        },
+        "timeSavings": {
+          "title": "节省时间",
+          "description": "不必再用中文与供应商彻夜谈判。一切由我们处理。"
+        }
+      }
+    },
+    "cta": {
+      "title": "准备好轻松进口了吗？",
+      "subtitle": "加入选择全程进口合作伙伴的非洲企业。",
+      "button": "在 WhatsApp 上联系"
+    }
   },
   "sharedShipment": {
     "title": "货物追踪",
@@ -1376,7 +1565,8 @@
       "buy": "您下单",
       "consolidate": "我们收货",
       "receive": "您收货"
-    }
+    },
+    "destination": "巴马科"
   },
   "journey": {
     "label": "运输流程",
@@ -1438,23 +1628,23 @@
   },
   "occasions": {
     "sectionLabel": "Shipping calendar",
-    "title": "What to prepare for",
-    "lede": "The dates that matter in Mali, and the last day to ship from China to arrive in time.",
+    "title": "需要准备的日期",
+    "lede": "马里的重要日期，以及为准时到达从中国发货的最后日期。",
     "air": "Air",
     "sea": "Sea",
     "shipBy": "Ship before {date}",
     "daysLeft": "{days} days left",
-    "closed": "Too late for this date",
+    "closed": "此日期已来不及",
     "estimated": "estimated date",
-    "allClosed": "Shipping deadlines have passed for this date.",
+    "allClosed": "此日期的发货期限已过。",
     "inDays": "in {days} days",
-    "seeAll": "See the full calendar",
+    "seeAll": "查看完整日历",
     "pageEyebrow": "Shipping calendar",
-    "pageTitle": "When to ship from China to arrive in time",
-    "pageLede": "Ramadan, back to school, end-of-year holidays: for each date, the last reasonable day to ship by air or by sea. The transit times come from our own shipments, not from an industry average.",
-    "pageEmpty": "No upcoming deadlines right now.",
-    "howTitle": "How to read these dates",
-    "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
+    "pageTitle": "何时从中国发货才能准时到达",
+    "pageLede": "斋月、开学季、年末节日：每个日期都列出空运或海运发货的最后合理日期。运输时间来自我们自己的货运记录，而不是行业平均值。",
+    "pageEmpty": "目前没有即将到来的期限。",
+    "howTitle": "如何理解这些日期",
+    "howLede": "建议日期为清关和最后一段运输留出了时间。超过此日期，就无法如实承诺在活动前送达。"
   },
   "photoVerify": {
     "eyebrow": "真实性",
@@ -1587,5 +1777,72 @@
     "dummyLabel": "示例 · 虚构信息",
     "dummyNote": "此图仅作演示。实际发货时，请使用您自己的专属唛头。",
     "imageAlt": "虚构的 ChinaLink 唛头示例：入仓号 DEMO-0000，客户编号 CLX-ML-DEMO，CLIENT EXEMPLE，电话 +223 00 00 00 00。"
+  },
+  "estimator": {
+    "title": "即时估价",
+    "publicRates": "公开价格",
+    "modeLabel": "运输方式",
+    "modes": {
+      "standard": "标准空运",
+      "express": "特快空运",
+      "electronics": "电子产品",
+      "phones": "手机",
+      "sea": "海运"
+    },
+    "quantity": {
+      "kg": "重量（公斤）",
+      "piece": "件数",
+      "cbm": "体积（立方米）"
+    },
+    "units": {
+      "kg": "公斤",
+      "piece": "件",
+      "cbm": "立方米"
+    },
+    "decrease": "减少",
+    "increase": "增加",
+    "announcedDelay": "公布时效",
+    "rate": "价格",
+    "days": "{days} 天",
+    "cta": "通过 WhatsApp 获取报价",
+    "whatsapp": "您好 ChinaLink，我想咨询报价：{mode}，{quantity} {unit}。网站估价：{price} 西非法郎。",
+    "notes": {
+      "standard": "仓库称重前的估价。体积重：（长 × 宽 × 高）÷ 5000。",
+      "express": "仓库称重前的估价。体积重：（长 × 宽 × 高）÷ 5000。",
+      "electronics": "电子产品、电池、液体。仓库称重前的估价。",
+      "phones": "手机按件计费，不按重量。",
+      "sea": "最低 0.1 立方米。密度超过 250 公斤/立方米时调整体积。"
+    },
+    "scope": "价格为到巴马科。"
+  },
+  "proof": {
+    "label": "凭证",
+    "title": "一张货物照片，一个验证码。",
+    "lede": "入库照片带有货物编号、日期、仓库和验证码。在我们的网站输入验证码，即可确认照片是否真实。",
+    "bannerLine": "收货日期 •• •• •••• · 佛山仓库 (SEA) · 海运 · • 箱",
+    "code": "验证码 ••••-••••",
+    "scan": "扫码或在 chinalinkexpress.com/verifier 输入验证码",
+    "note": "照片水印虚构示例",
+    "chain": "货物交接链",
+    "stages": [
+      "仓库收货",
+      "货物贴标",
+      "到达目的地",
+      "交付客户"
+    ],
+    "cta": "验证照片"
+  },
+  "tagline": "远隔万里采购，也不必盲目下单。",
+  "network": {
+    "air": "空运 · 14-21 天",
+    "sea": "海运 · 60-75 天",
+    "note": "示意路线",
+    "alt": "中国到巴马科的路线图"
+  },
+  "installPrompt": {
+    "title": "安装 ChinaLink Express",
+    "body": "添加到主屏幕，快速查看价格和货物跟踪。",
+    "install": "安装",
+    "dismiss": "关闭"
   }
 }

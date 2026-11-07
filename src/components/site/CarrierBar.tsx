@@ -75,8 +75,8 @@ export function CarrierBar({
             key={carrier.name}
             style={{
               position: 'relative',
-              height: 32,
-              width: 'clamp(58px, 9vw, 84px)',
+              height: 40,
+              width: 'clamp(84px, 11vw, 140px)',
               flex: '0 0 auto',
             }}
           >
@@ -84,7 +84,7 @@ export function CarrierBar({
               src={carrier.src}
               alt={carrier.name}
               fill
-              sizes="84px"
+              sizes="140px"
               style={{
                 objectFit: 'contain',
                 filter: onVoid
@@ -95,7 +95,7 @@ export function CarrierBar({
                     ? 'grayscale(1) brightness(1.7) contrast(0.85)'
                     : 'brightness(0) invert(1)'
                   : 'grayscale(1) brightness(0.4) contrast(1.2)',
-                opacity: onVoid ? 0.78 : 0.6,
+                opacity: onVoid ? 0.85 : 0.8,
               }}
             />
           </li>

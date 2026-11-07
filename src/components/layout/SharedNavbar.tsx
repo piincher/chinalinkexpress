@@ -1,25 +1,9 @@
 /**
  * Shared navbar.
  *
- * Behaviour is unchanged — same links, same tools dropdown, same mobile sheet,
- * same language and theme controls. What changed is that it now reads from the
- * token system instead of hard-coded Tailwind palette values, and that it knows
- * what it is sitting on top of.
- *
- * Two problems this solves:
- *
- * 1. Contrast over the hero. The bar is fixed and transparent at the top of the
- *    page, and the home page's hero is now a dark photograph. The old link
- *    colour (`text-gray-700`) would have been invisible against it. Rather than
- *    hard-code "the home page is dark", the bar observes any band marked
- *    `data-nav-overlay="void"` and flips to its light treatment only while that
- *    band is actually underneath it. Inner pages, which have no such band, keep
- *    the ink treatment automatically.
- *
- * 2. Three competing colours. The wordmark was a blue→cyan gradient, the CTA was
- *    WhatsApp green, the links were grey-blue. That is three accents in a strip
- *    56px tall. The wordmark is now solid, and the CTA takes the one page
- *    accent while keeping the WhatsApp glyph so the affordance survives.
+ * A floating pill, identical on every page and every band, which is what lets
+ * pages stop declaring what sits under the bar. Same links, same tools dropdown,
+ * same language and theme controls; the mobile menu opens as a full-height panel.
  */
 
 'use client';
@@ -70,70 +54,8 @@ const TOOL_LINKS = [
 export function SharedNavbar({ locale }: SharedNavbarProps) {
   const t = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
-  /** True while a dark band is passing under the bar. */
-  const [onVoid, setOnVoid] = useState(false);
-  /**
-   * Whether this page declares any band for the bar to float over.
-   *
-   * The bar may only be transparent when it knows what is underneath it.
-   * Several inner pages (community, pricing) open with their own dark hero that
-   * does not declare itself, and a transparent bar over those rendered its
-   * dark-ink links on a dark background — technically legible, practically not.
-   * Pages that declare nothing get the solid bar from the first pixel.
-   */
-  const [hasOverlay, setHasOverlay] = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Watch for dark bands passing beneath the bar.
-  useEffect(() => {
-    const targets = document.querySelectorAll('[data-nav-overlay="void"]');
-    setHasOverlay(targets.length > 0);
-    if (!targets.length) {
-      setOnVoid(false);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // `some` rather than per-entry state: a page could have more than one
-        // dark band, and the bar should be light while any of them is under it.
-        setOnVoid((prev) => {
-          const anyIntersecting = entries.some((e) => e.isIntersecting);
-          return entries.length ? anyIntersecting : prev;
-        });
-      },
-      {
-        /*
-         * The observed strip must be the bar's own footprint — roughly the top
-         * 8% of the viewport — not the region below it.
-         *
-         * This was '-64px 0px -80% 0px', a band running from 64px down to a
-         * fifth of the viewport. On pages that put something above the hero
-         * (the route pages render a breadcrumb on white paper first) the dark
-         * hero still crossed that band while the bar itself sat over the white
-         * strip, so the bar switched to its light-on-dark treatment and the
-         * wordmark went white-on-white.
-         *
-         * Measuring 0 → ~8% instead means the bar only goes light when a dark
-         * band is genuinely behind it.
-         */
-        rootMargin: '0px 0px -92% 0px',
-        threshold: 0,
-      }
-    );
-
-    targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -145,45 +67,27 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // The bar is solid once scrolled; while it is transparent it takes its
-  // contrast from whatever band is underneath.
-  const light = onVoid && !isScrolled;
-  const linkColor = light ? 'var(--color-void-ink-2)' : 'var(--color-ink-2)';
-  const linkHover = light ? 'var(--color-void-ink)' : 'var(--color-ink)';
-  const wordmark = light ? 'var(--color-void-ink)' : 'var(--color-ink)';
+  const linkColor = 'var(--color-ink-2)';
+  const linkHover = 'var(--color-ink)';
+  const wordmark = 'var(--color-ink)';
 
   const getNavHref = (link: (typeof NAV_LINKS)[number]) => `/${locale}${link.href}`;
   const getToolHref = (href: string) => `/${locale}${href}`;
 
   return (
-    <motion.header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 nav-shell',
-        (isScrolled || !hasOverlay) && 'nav-shell--solid'
-      )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      data-light={light ? 'true' : undefined}
-    >
+    <header className="nav-shell">
       {/* Reading progress on long pages (Tarifs, FAQ, guides). CSS-driven. */}
       <ScrollProgress />
-      <div
-        style={{
-          maxWidth: 'var(--shell)',
-          marginInline: 'auto',
-          paddingInline: 'var(--band-x)',
-        }}
-      >
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="nav-pill">
+        <div className="flex items-center" style={{ gap: 'var(--space-xs)' }}>
           {/* ── wordmark ─────────────────────────────────────────────────── */}
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 shrink-0">
-            <span className="relative w-9 h-9 md:w-10 md:h-10 block">
+          <Link href={`/${locale}`} className="flex items-center gap-2 shrink-0" style={{ marginInlineEnd: 'var(--space-sm)' }}>
+            <span className="relative w-8 h-8 block">
               <Image
                 src="/images/chinalink-logo-square.png"
                 alt="ChinaLink Express"
                 fill
-                sizes="(min-width: 768px) 40px, 36px"
+                sizes="32px"
                 className="object-contain"
                 priority
               />
@@ -203,7 +107,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
           </Link>
 
           {/* ── desktop nav ──────────────────────────────────────────────── */}
-          <nav className="hidden lg:flex items-center" style={{ gap: 'var(--space-2xs)' }}>
+          <nav className="hidden xl:flex items-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.key}
@@ -280,16 +184,15 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
           </nav>
 
           {/* ── right ────────────────────────────────────────────────────── */}
-          <div className="flex items-center" style={{ gap: 'var(--space-xs)' }}>
+          <div className="flex items-center" style={{ gap: 'var(--space-2xs)', marginInlineStart: 'var(--space-sm)' }}>
             <ThemeToggle />
             <LanguageSelector locale={locale} variant="minimal" />
 
-            <span className="hidden lg:inline-flex">
+            <span className="hidden sm:inline-flex">
               <Cta
                 href={WHATSAPP_HREF}
                 external
                 variant="solid"
-                tone={light ? 'void' : 'ink'}
                 arrow={false}
                 icon={<MessageCircle size={16} aria-hidden />}
               >
@@ -299,7 +202,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden nav-icon-button"
+              className="xl:hidden nav-icon-button"
               aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={isMobileMenuOpen}
               style={{ color: linkHover }}
@@ -314,23 +217,24 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden overflow-hidden"
+            className="xl:hidden fixed inset-0 overflow-hidden"
             style={{
+              zIndex: -1,
+              pointerEvents: 'auto',
               backgroundColor: 'var(--color-paper)',
-              borderTop: '1px solid var(--color-rule)',
             }}
           >
             <nav
               style={{
                 paddingInline: 'var(--band-x)',
-                paddingBlock: 'var(--space-md)',
+                paddingBlock: 'calc(5rem + var(--space-md)) var(--space-xl)',
                 // The sheet can exceed the viewport on a short phone once the
                 // tools list is included, so it scrolls rather than clipping.
-                maxHeight: 'calc(100svh - 4rem)',
+                height: '100svh',
                 overflowY: 'auto',
               }}
             >
@@ -408,7 +312,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
 

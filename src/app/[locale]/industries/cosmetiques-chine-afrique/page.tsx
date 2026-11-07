@@ -197,25 +197,209 @@ const content = {
       { href: '/en/calculateur', label: 'Cosmetics import quote' },
     ],
   },
+  zh: {
+    badge: '从中国进口化妆品',
+    title: '从中国进口化妆品和美容产品',
+    intro: '您想从中国向马里和西非进口化妆品、护肤品、护发产品或美容设备吗？ChinaLink Express 是您在中国化妆品中心广州的美容品类专业采购代理。我们从通过 ISO 认证的工厂和白云批发市场采购，并提供质量检查、合规标签和安全运输。',
+    highlights: [
+      '从广州白云和 ISO 认证工厂采购化妆品',
+      '面部护理、护发、彩妆、香水和美容设备',
+      '核验认证并检查产品质量',
+      '符合西非进口要求的标签',
+      '空运和海运，安全包装',
+    ],
+    sections: [
+      {
+        title: '从中国进口哪些化妆品？',
+        body: '广州是中国最大的化妆品生产中心。我们采购适合非洲市场的各类美容产品，配方和包装均可定制。',
+        items: [
+          '面部护理：面霜、精华、面膜、乳液',
+          '护发产品：洗发水、护发素、发油、护理产品',
+          '彩妆：粉底、口红、睫毛膏、眼影盘',
+          '香水和淡香水（经授权的大牌仿香）',
+          '美容设备：护理仪器、刷具、沙龙配件',
+          '手工皂和天然产品',
+        ],
+      },
+      {
+        title: '化妆品的认证与合规',
+        body: '进口化妆品需要注意法规要求。我们选择具有 ISO、GMP 认证的工厂，并核实成分是否符合非洲市场要求。',
+        items: [
+          '通过 ISO 22716（化妆品 GMP）认证的工厂',
+          '核验成分和配方符合 OAPI 标准',
+          '法语标签，附 INCI 成分表',
+          '皮肤测试和产品稳定性测试',
+          '马里化妆品清关文件',
+        ],
+      },
+      {
+        title: '定制包装和白牌',
+        body: '许多中国工厂提供定制包装和白牌（private label）。我们可以用您的标志和设计开发您自己的化妆品系列。',
+        items: [
+          '用您的标志和包装打造白牌',
+          '针对非洲肤质的定制配方',
+          '定制瓶、罐和标签设计',
+          '视产品而定，500 件起生产',
+          '在非洲注册品牌的法规建议',
+        ],
+      },
+    ],
+    tableHeaders: ['需求', '没有 ChinaLink', '使用 ChinaLink Express'],
+    tableRows: [
+      ['寻找化妆品工厂', '未经认证的供应商', '经核验的广州 ISO/GMP 工厂'],
+      ['产品质量', '未经测试的产品，存在健康风险', '质量检查 + 稳定性测试'],
+      ['合规标签', '不合规标签被拒收', '符合 OAPI 的法语标签'],
+      ['白牌', '自己无法完成', '包含包装和标志开发'],
+      ['安全运输', '经常漏液和破损', '双层包装 + 隔热保护'],
+    ],
+    process: [
+      '通过 WhatsApp 说明您的化妆品需求（类型、数量、预算）。',
+      '我们寻找 3-5 家认证工厂并比较配方。',
+      '您在收到样品和证书后确认。',
+      '我们监督生产，检查质量和标签。',
+      '安全运输 + 化妆品清关 + 交付。',
+    ],
+    faqs: [
+      {
+        question: '中国化妆品在马里允许进口吗？',
+        answer: '允许，但需要完备的文件：详细发票、成分表和工厂认证。我们为巴马科的化妆品清关准备所有必要文件。',
+      },
+      {
+        question: '我可以创建自己的化妆品品牌吗？',
+        answer: '可以，我们合作的工厂提供 private label，视产品而定 500-1000 件起。我们负责包装设计、标志和适合非洲市场的配方。',
+      },
+      {
+        question: '进口化妆品需要什么认证？',
+        answer: '我们建议选择通过 ISO 22716（化妆品 GMP）认证的工厂。部分产品需要皮肤测试。我们会核实成分是否符合非洲法规。',
+      },
+      {
+        question: '定制化妆品的生产周期是多久？',
+        answer: '标准生产需要 15-25 天。定制包装的 private label 需要 30-45 天。空运再加 14-21 天，海运再加 60-75 天。',
+      },
+      {
+        question: '你们提供适合非洲肤质的配方吗？',
+        answer: '提供，我们与专门研究黑色和混血肤质配方的中国实验室合作：乳木果油、蓖麻油、高滋养油和高倍防晒。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/air-freight', label: '化妆品空运' },
+      { href: '/zh/services/verification-fournisseur-chine', label: '工厂核验' },
+      { href: '/zh/calculateur', label: '化妆品进口报价' },
+    ],
+  },
+  ar: {
+    badge: 'استيراد مستحضرات التجميل من الصين',
+    title: 'استيراد مستحضرات التجميل ومنتجات الجمال من الصين',
+    intro: 'هل ترغب في استيراد مستحضرات التجميل أو منتجات العناية أو منتجات الشعر أو معدات التجميل من الصين إلى مالي وغرب أفريقيا؟ ChinaLink Express وكيل التوريد المتخصص في الجمال لديك في قوانغتشو، مركز مستحضرات التجميل في الصين. نورّد من مصانع حاصلة على شهادة ISO ومن أسواق الجملة في بايون، مع فحص الجودة والملصقات المطابقة والشحن الآمن.',
+    highlights: [
+      'توريد مستحضرات التجميل من بايون في قوانغتشو ومن مصانع حاصلة على ISO',
+      'العناية بالوجه والشعر والمكياج والعطور ومعدات التجميل',
+      'التحقق من الشهادات وفحص جودة المنتج',
+      'ملصقات مطابقة للاستيراد إلى غرب أفريقيا',
+      'شحن جوي وبحري مع تغليف آمن',
+    ],
+    sections: [
+      {
+        title: 'ما مستحضرات التجميل التي يمكن استيرادها من الصين؟',
+        body: 'قوانغتشو أكبر مركز لإنتاج مستحضرات التجميل في الصين. نورّد جميع منتجات الجمال المناسبة للسوق الأفريقية، مع إمكانية تخصيص التركيبة والتغليف.',
+        items: [
+          'العناية بالوجه: كريمات وسيروم وأقنعة ولوشن',
+          'منتجات الشعر: شامبو وبلسم وزيوت وعلاجات',
+          'المكياج: كريم أساس وأحمر شفاه وماسكارا ولوحات ألوان',
+          'العطور وماء التواليت (نسخ مرخصة من ماركات كبرى)',
+          'معدات التجميل: أجهزة العناية والفرش وإكسسوارات الصالونات',
+          'الصابون اليدوي والمنتجات الطبيعية',
+        ],
+      },
+      {
+        title: 'شهادات مستحضرات التجميل ومطابقتها',
+        body: 'يتطلب استيراد مستحضرات التجميل احتياطات تنظيمية. نختار مصانع حاصلة على شهادتي ISO وGMP، ونتحقق من مطابقة المكونات للسوق الأفريقية.',
+        items: [
+          'مصانع حاصلة على ISO 22716 (GMP لمستحضرات التجميل)',
+          'التحقق من المكونات والتركيبات وفق معايير OAPI',
+          'ملصقات بالفرنسية مع تركيبة INCI',
+          'اختبارات جلدية واختبارات ثبات المنتج',
+          'مستندات التخليص الجمركي لمستحضرات التجميل في مالي',
+        ],
+      },
+      {
+        title: 'تغليف مخصص وعلامة خاصة',
+        body: 'تقدم مصانع صينية كثيرة تغليفًا مخصصًا وعلامة خاصة (private label). يمكننا تطوير خط مستحضرات تجميل خاص بك بشعارك وتصميمك.',
+        items: [
+          'إنشاء علامة خاصة بشعارك وتغليفك',
+          'تركيبات مخصصة للبشرة الأفريقية',
+          'تصميم مخصص للزجاجات والعلب والملصقات',
+          'إنتاج ابتداءً من 500 وحدة حسب المنتج',
+          'نصائح تنظيمية لتسجيل العلامة في أفريقيا',
+        ],
+      },
+    ],
+    tableHeaders: ['الحاجة', 'بدون ChinaLink', 'مع ChinaLink Express'],
+    tableRows: [
+      ['العثور على مصنع مستحضرات تجميل', 'موردون غير معتمدين', 'مصانع ISO/GMP موثقة في قوانغتشو'],
+      ['جودة المنتج', 'منتجات غير مختبرة ومخاطر صحية', 'فحص الجودة + اختبارات الثبات'],
+      ['ملصقات مطابقة', 'رفض الملصقات غير المطابقة', 'ملصقات بالفرنسية مطابقة لـOAPI'],
+      ['علامة خاصة', 'مستحيل بمفردك', 'يشمل تطوير التغليف والشعار'],
+      ['شحن آمن', 'تسربات وكسور متكررة', 'تغليف مزدوج + حماية حرارية'],
+    ],
+    process: [
+      'صف احتياجاتك من مستحضرات التجميل (النوع والكمية والميزانية) عبر WhatsApp.',
+      'نبحث عن 3-5 مصانع معتمدة ونقارن التركيبات.',
+      'تؤكد بعد استلام العينات والشهادات.',
+      'نشرف على الإنتاج ونفحص الجودة والملصقات.',
+      'شحن آمن + تخليص جمركي لمستحضرات التجميل + تسليم.',
+    ],
+    faqs: [
+      {
+        question: 'هل يُسمح بمستحضرات التجميل الصينية في مالي؟',
+        answer: 'نعم، بشرط توفر المستندات المناسبة: فاتورة مفصلة وقائمة مكونات وشهادة المصنع. نجهز كل المستندات اللازمة للتخليص الجمركي لمستحضرات التجميل في باماكو.',
+      },
+      {
+        question: 'هل يمكنني إنشاء علامتي الخاصة لمستحضرات التجميل؟',
+        answer: 'نعم، نعمل مع مصانع تقدم private label ابتداءً من 500-1000 وحدة حسب المنتج. ونتولى تصميم التغليف والشعار وتركيبة مناسبة للسوق الأفريقية.',
+      },
+      {
+        question: 'ما الشهادة المطلوبة لاستيراد مستحضرات التجميل؟',
+        answer: 'نوصي بمصانع حاصلة على ISO 22716 (GMP لمستحضرات التجميل). وتحتاج بعض المنتجات إلى اختبارات جلدية. ونتحقق من مطابقة المكونات للوائح الأفريقية.',
+      },
+      {
+        question: 'ما مدة إنتاج مستحضرات التجميل حسب الطلب؟',
+        answer: 'يستغرق الإنتاج القياسي 15-25 يومًا. ولمنتجات private label ذات التغليف المخصص، احسب 30-45 يومًا. ويضيف الشحن الجوي 14-21 يومًا والبحري 60-75 يومًا.',
+      },
+      {
+        question: 'هل تقدمون تركيبات للبشرة الأفريقية؟',
+        answer: 'نعم، نتعاون مع مختبرات صينية متخصصة في تركيبات تناسب البشرة السمراء والمختلطة: زبدة الشيا وزيت الخروع والزيوت شديدة التغذية والحماية العالية من الأشعة فوق البنفسجية.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/air-freight', label: 'الشحن الجوي لمستحضرات التجميل' },
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المصنع' },
+      { href: '/ar/calculateur', label: 'عرض سعر لاستيراد مستحضرات التجميل' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Import Cosmetics from China to Africa | Beauty Products Wholesale | ChinaLink'
-      : 'Importer Cosmétiques Chine Afrique | Produits Beauté Gros | ChinaLink',
+      : isZh ? '从中国进口化妆品到非洲 | 美容产品批发 | ChinaLink' : isAr ? 'استيراد مستحضرات التجميل من الصين إلى أفريقيا | منتجات الجمال بالجملة | ChinaLink' : 'Importer Cosmétiques Chine Afrique | Produits Beauté Gros | ChinaLink',
     description: isEn
       ? 'Import beauty products, skincare, hair products & cosmetics from China to Africa. Guangzhou cosmetics market sourcing with FDA-compliant labeling. Air & sea freight available. WhatsApp: +86 188 5172 5957'
-      : 'Importez produits beauté, soins visage, cheveux et cosmétiques de Chine vers l\'Afrique. Sourcing marché cosmétiques Guangzhou avec étiquetage conforme. Fret aérien et maritime disponible. WhatsApp : +86 188 5172 5957',
+      : isZh ? '从中国向非洲进口美容产品、面部护理、护发和化妆品。在广州化妆品市场采购，标签合规。可选空运和海运。WhatsApp：+86 188 5172 5957' : isAr ? 'استورد منتجات الجمال والعناية بالوجه والشعر ومستحضرات التجميل من الصين إلى أفريقيا. توريد من سوق مستحضرات التجميل في قوانغتشو مع ملصقات مطابقة. شحن جوي وبحري متاح. WhatsApp: ‎+86 188 5172 5957' : 'Importez produits beauté, soins visage, cheveux et cosmétiques de Chine vers l\'Afrique. Sourcing marché cosmétiques Guangzhou avec étiquetage conforme. Fret aérien et maritime disponible. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'import cosmetics from China, wholesale beauty products China, buy skincare from China, cosmetics sourcing agent, Guangzhou cosmetics market, import hair products China Africa, beauty supplier China, cosmetics wholesale Africa, private label cosmetics China, freight forwarder China Mali'
-      : 'importer cosmétiques Chine, gros produits beauté Chine, acheter soins visage Chine, agent sourcing cosmétiques, marché cosmétiques Guangzhou, importer produits cheveux Chine Afrique, fournisseur beauté Chine, marque blanche cosmétiques Chine, cargo chine mali, transitaire chine mali',
+      : isZh ? '从中国进口化妆品, 中国美容产品批发, 从中国购买护肤品, 化妆品采购代理, 广州化妆品市场, 中国进口护发产品到非洲, 中国美容供应商, 中国化妆品白牌, 中国马里货运, 中国马里货代' : isAr ? 'استيراد مستحضرات التجميل من الصين، منتجات الجمال بالجملة من الصين، شراء منتجات العناية من الصين، وكيل توريد مستحضرات التجميل، سوق مستحضرات التجميل في قوانغتشو، استيراد منتجات الشعر من الصين إلى أفريقيا، مورد منتجات الجمال في الصين، علامة خاصة لمستحضرات التجميل، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'importer cosmétiques Chine, gros produits beauté Chine, acheter soins visage Chine, agent sourcing cosmétiques, marché cosmétiques Guangzhou, importer produits cheveux Chine Afrique, fournisseur beauté Chine, marque blanche cosmétiques Chine, cargo chine mali, transitaire chine mali',
     path: '/industries/cosmetiques-chine-afrique',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -223,14 +407,16 @@ export default async function CosmeticsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: isEn ? 'Industries' : 'Industries', url: `/${locale}/industries` },
-      { name: isEn ? 'Cosmetics China Africa' : 'Cosmétiques Chine Afrique', url: `/${locale}/industries/cosmetiques-chine-afrique` },
+      { name: isEn ? 'Cosmetics China Africa' : isZh ? '中国—非洲化妆品' : isAr ? 'مستحضرات التجميل من الصين إلى أفريقيا' : 'Cosmétiques Chine Afrique', url: `/${locale}/industries/cosmetiques-chine-afrique` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -239,7 +425,7 @@ export default async function CosmeticsPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -258,7 +444,7 @@ export default async function CosmeticsPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

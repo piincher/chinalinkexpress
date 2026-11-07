@@ -14,12 +14,15 @@ import { cn } from '@/lib/utils';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { communityTopics, categories } from '../data';
 import { TopicCard } from './TopicCard';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 type SortOption = 'recent' | 'popular';
 
 const ITEMS_PER_PAGE = 6;
 
 export function TopicList() {
+  const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortBy, setSortBy] = useState<SortOption>('recent');
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
@@ -68,11 +71,11 @@ export function TopicList() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-500/10 text-blue-400 rounded-full text-sm font-semibold mb-4 border border-blue-500/20">
             <MessageSquare className="w-4 h-4" />
-            Discussions récentes
+            {phrase(locale, "Discussions récentes")}
           </span>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            De quoi parle la communauté ?
+            {phrase(locale, "De quoi parle la communauté ?")}
           </h2>
 
         </motion.div>
@@ -100,7 +103,7 @@ export function TopicList() {
                     : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10 hover:text-white'
                 )}
               >
-                {cat.labelFr}
+                {phrase(locale, cat.labelFr)}
               </button>
             ))}
           </div>
@@ -117,7 +120,7 @@ export function TopicList() {
               )}
             >
               <Clock className="w-4 h-4" />
-              Récent
+              {phrase(locale, "Récent")}
             </button>
             <button
               onClick={() => setSortBy('popular')}
@@ -145,7 +148,7 @@ export function TopicList() {
         {visibleTopics.length === 0 && (
           <div className="text-center py-16">
             <MessageSquare className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-            <p className="text-slate-400 text-lg">Aucun sujet dans cette catégorie pour le moment.</p>
+            <p className="text-slate-400 text-lg">{phrase(locale, "Aucun sujet dans cette catégorie pour le moment.")}</p>
           </div>
         )}
 

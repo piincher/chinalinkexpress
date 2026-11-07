@@ -54,12 +54,14 @@ export function DeadlineCalculator() {
   const t = useTranslations('pricing');
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const daysLabel = t('deadlineCalculator.days', { defaultValue: isEn ? 'days' : 'jours' });
   const dayLabel = t('deadlineCalculator.day', { defaultValue: isEn ? 'day' : 'jour' });
   const shortDayUnit = isEn ? 'd' : 'j';
-  const tierName = (tier: (typeof DELIVERY_TIERS)[number]) => (isEn ? tier.name : tier.nameFr);
+  const tierName = (tier: (typeof DELIVERY_TIERS)[number]) => (isEn ? tier.name : isZh ? tier.nameZh : isAr ? tier.nameAr : tier.nameFr);
   const tierPositioning = (tier: (typeof DELIVERY_TIERS)[number]) =>
-    isEn ? tier.positioning : tier.positioningFr;
+    isEn ? tier.positioning : isZh ? tier.positioningZh : isAr ? tier.positioningAr : tier.positioningFr;
   const {
     deadlineState,
     setDeadlineField,
@@ -215,7 +217,7 @@ export function DeadlineCalculator() {
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Package className="w-4 h-4 text-blue-500" />
-            {t('deadlineCalculator.weight', { defaultValue: isEn ? 'Estimated weight' : 'Poids estimé' })}
+            {t('deadlineCalculator.weight', { defaultValue: isEn ? 'Estimated weight' : isZh ? '预估重量' : isAr ? 'الوزن المقدّر' : 'Poids estimé' })}
             <span className="text-red-500">*</span>
           </label>
           <div className="relative">
@@ -257,7 +259,7 @@ export function DeadlineCalculator() {
           </div>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             {t('deadlineCalculator.dimensionsHint', {
-              defaultValue: isEn ? 'To calculate volumetric weight and CBM' : 'Pour calculer le poids volumétrique et le CBM',
+              defaultValue: isEn ? 'To calculate volumetric weight and CBM' : isZh ? '用于计算体积重量和 CBM' : isAr ? 'لحساب الوزن الحجمي والـCBM' : 'Pour calculer le poids volumétrique et le CBM',
             })}
           </p>
         </div>
@@ -266,7 +268,7 @@ export function DeadlineCalculator() {
         <div className="space-y-2">
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Tag className="w-4 h-4 text-purple-500" />
-            {t('deadlineCalculator.category', { defaultValue: isEn ? 'Category' : 'Catégorie' })}
+            {t('deadlineCalculator.category', { defaultValue: isEn ? 'Category' : isZh ? '类别' : isAr ? 'الفئة' : 'Catégorie' })}
           </label>
           <div className="grid grid-cols-2 gap-2">
             {ITEM_CATEGORIES.filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
@@ -296,7 +298,7 @@ export function DeadlineCalculator() {
           <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <CalendarClock className="w-4 h-4 text-amber-500" />
             {t('deadlineCalculator.whenDoYouNeedIt', {
-              defaultValue: isEn ? 'When do you need it?' : 'Quand en avez-vous besoin ?',
+              defaultValue: isEn ? 'When do you need it?' : isZh ? '您什么时候需要？' : isAr ? 'متى تحتاجها؟' : 'Quand en avez-vous besoin ?',
             })}
           </label>
           <div className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl space-y-4">
@@ -381,7 +383,7 @@ export function DeadlineCalculator() {
                     <Sparkles className="w-5 h-5" />
                     <span className="font-semibold text-sm uppercase tracking-wide opacity-90">
                       {t('deadlineCalculator.recommended', {
-                        defaultValue: isEn ? 'Recommended for your deadline' : 'Recommandé pour votre deadline',
+                        defaultValue: isEn ? 'Recommended for your deadline' : isZh ? '根据您的截止日期推荐' : isAr ? 'موصى به لموعدك النهائي' : 'Recommandé pour votre deadline',
                       })}
                     </span>
                   </div>
@@ -404,21 +406,21 @@ export function DeadlineCalculator() {
                     </div>
                     {recommendedTier.price > 0 && (
                       <div className="text-sm opacity-80 mt-1">
-                        {t('deadlineCalculator.forYourShipment', { defaultValue: isEn ? 'for your shipment' : 'pour votre envoi' })}
+                        {t('deadlineCalculator.forYourShipment', { defaultValue: isEn ? 'for your shipment' : isZh ? '适用于您的货物' : isAr ? 'لشحنتك' : 'pour votre envoi' })}
                       </div>
                     )}
                   </div>
 
                   <div className="space-y-2 bg-white/10 rounded-xl p-4">
                     <div className="flex justify-between text-sm">
-                      <span className="opacity-80">{t('result.deliveryTime', { defaultValue: isEn ? 'Delivery time' : 'Délai' })}</span>
+                      <span className="opacity-80">{t('result.deliveryTime', { defaultValue: isEn ? 'Delivery time' : isZh ? '时效' : isAr ? 'المدة' : 'Délai' })}</span>
                       <span className="font-medium">
                         {recommendedTier.tier.minDays}-{recommendedTier.tier.maxDays}{' '}
                         {daysLabel}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="opacity-80">{t('result.rate', { defaultValue: isEn ? 'Rate' : 'Tarif' })}</span>
+                      <span className="opacity-80">{t('result.rate', { defaultValue: isEn ? 'Rate' : isZh ? '价格' : isAr ? 'السعر' : 'Tarif' })}</span>
                       <span className="font-medium">
                         {formatPriceFCFA(recommendedTier.tier.rateFCFA)}/{recommendedTier.tier.unit}
                       </span>
@@ -436,14 +438,14 @@ export function DeadlineCalculator() {
                       <div>
                         <p className="text-sm font-medium">
                           {t('deadlineCalculator.tooLate', {
-                            defaultValue: isEn ? 'No option guarantees this deadline' : 'Aucune option ne garantit cette deadline',
+                            defaultValue: isEn ? 'No option guarantees this deadline' : isZh ? '没有选项能保证这个截止日期' : isAr ? 'لا يوجد خيار يضمن هذا الموعد' : 'Aucune option ne garantit cette deadline',
                           })}
                         </p>
                         <p className="text-xs opacity-80 mt-1">
                           {t('deadlineCalculator.tooLateDescription', {
                             defaultValue: isEn
                               ? 'Even our fastest option (Flash Express) needs 2-5 days. Contact us for a custom solution.'
-                              : 'Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.',
+                              : isZh ? '即使最快的选项（Flash Express）也需要 2-5 天。请联系我们获取定制方案。' : isAr ? 'حتى أسرع خياراتنا (Flash Express) يحتاج إلى 2-5 أيام. تواصل معنا للحصول على حل مخصص.' : 'Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.',
                           })}
                         </p>
                       </div>
@@ -465,7 +467,7 @@ export function DeadlineCalculator() {
                     >
                       <MessageCircle className="w-5 h-5" />
                       {t('result.contactWhatsApp', {
-                        defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                        defaultValue: isEn ? 'Request a quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'اطلب عرض سعر عبر WhatsApp' : 'Demander un devis sur WhatsApp',
                       })}
                     </a>
                   </motion.div>
@@ -485,14 +487,14 @@ export function DeadlineCalculator() {
                     <div>
                       <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
                         {t('deadlineCalculator.cheaperOption', {
-                          defaultValue: isEn ? 'Cheaper option available' : 'Option moins chère disponible',
+                          defaultValue: isEn ? 'Cheaper option available' : isZh ? '有更便宜的选项' : isAr ? 'يتوفر خيار أرخص' : 'Option moins chère disponible',
                         })}
                       </p>
                       <p className="text-sm text-emerald-700 dark:text-emerald-400 mt-1">
                         {t('deadlineCalculator.cheaperOptionDescription', {
                           defaultValue: isEn
                             ? '{{tier}} arrives in {{min}}-{{max}} days for {{price}} - save {{savings}} if you have time.'
-                            : '{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.',
+                            : isZh ? '{{tier}} 在 {{min}}-{{max}} 天内到达，价格 {{price}} — 如果时间充裕可节省 {{savings}}。' : isAr ? 'يصل {{tier}} خلال {{min}}-{{max}} يومًا مقابل {{price}} — وفر {{savings}} إذا كان لديك وقت.' : '{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.',
                           tier: tierName(cheaperAlternative.tier),
                           min: cheaperAlternative.tier.minDays,
                           max: cheaperAlternative.tier.maxDays,
@@ -518,14 +520,14 @@ export function DeadlineCalculator() {
                     <div>
                       <p className="text-sm font-medium text-amber-800 dark:text-amber-300">
                         {t('deadlineCalculator.fasterOption', {
-                          defaultValue: isEn ? 'Need more speed?' : 'Besoin de plus de vitesse ?',
+                          defaultValue: isEn ? 'Need more speed?' : isZh ? '需要更快？' : isAr ? 'تحتاج إلى سرعة أكبر؟' : 'Besoin de plus de vitesse ?',
                         })}
                       </p>
                       <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
                         {t('deadlineCalculator.fasterOptionDescription', {
                           defaultValue: isEn
                             ? '{{tier}} delivers in {{min}}-{{max}} days for {{price}}.'
-                            : '{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.',
+                            : isZh ? '{{tier}} 在 {{min}}-{{max}} 天内送达，价格 {{price}}。' : isAr ? 'يسلم {{tier}} خلال {{min}}-{{max}} يومًا مقابل {{price}}.' : '{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.',
                           tier: tierName(fasterAlternative.tier),
                           min: fasterAlternative.tier.minDays,
                           max: fasterAlternative.tier.maxDays,
@@ -542,7 +544,7 @@ export function DeadlineCalculator() {
                 <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-gray-500" />
                   {t('deadlineCalculator.timelineLabel', {
-                    defaultValue: isEn ? 'Delivery time comparison' : 'Comparatif des délais',
+                    defaultValue: isEn ? 'Delivery time comparison' : isZh ? '时效比较' : isAr ? 'مقارنة المدد' : 'Comparatif des délais',
                   })}
                 </h4>
                 <div className="space-y-3">
@@ -574,7 +576,7 @@ export function DeadlineCalculator() {
                             )}
                             {isRec && (
                               <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300">
-                                {t('deadlineCalculator.bestChoice', { defaultValue: isEn ? 'Best choice' : 'Meilleur choix' })}
+                                {t('deadlineCalculator.bestChoice', { defaultValue: isEn ? 'Best choice' : isZh ? '最佳选择' : isAr ? 'الخيار الأفضل' : 'Meilleur choix' })}
                               </span>
                             )}
                           </div>
@@ -585,7 +587,7 @@ export function DeadlineCalculator() {
                         </div>
                         {!meets && (
                           <span className="text-xs text-red-500 dark:text-red-400 font-medium">
-                            {t('deadlineCalculator.tooLateShort', { defaultValue: isEn ? 'Too late' : 'Trop tard' })}
+                            {t('deadlineCalculator.tooLateShort', { defaultValue: isEn ? 'Too late' : isZh ? '来不及' : isAr ? 'متأخر جدًا' : 'Trop tard' })}
                           </span>
                         )}
                         {isRec && <ChevronRight className="w-4 h-4 text-blue-500" />}
@@ -598,7 +600,7 @@ export function DeadlineCalculator() {
                 <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-500 dark:text-gray-400">
-                      {t('deadlineCalculator.yourDeadline', { defaultValue: isEn ? 'Your deadline' : 'Votre deadline' })}:
+                      {t('deadlineCalculator.yourDeadline', { defaultValue: isEn ? 'Your deadline' : isZh ? '您的截止日期' : isAr ? 'موعدك النهائي' : 'Votre deadline' })}:
                     </span>
                     <span className="font-bold text-gray-900 dark:text-white">
                       {deadlineDays}{' '}
@@ -642,14 +644,14 @@ export function DeadlineCalculator() {
               <CalendarClock className="w-12 h-12 text-gray-300 dark:text-gray-600 mb-4" />
               <p className="text-gray-500 dark:text-gray-400 text-center font-medium">
                 {t('deadlineCalculator.enterWeight', {
-                  defaultValue: isEn ? 'Enter a weight to see options' : 'Entrez un poids pour voir les options',
+                  defaultValue: isEn ? 'Enter a weight to see options' : isZh ? '输入重量查看选项' : isAr ? 'أدخل الوزن لرؤية الخيارات' : 'Entrez un poids pour voir les options',
                 })}
               </p>
               <p className="text-gray-400 dark:text-gray-500 text-center text-sm mt-2">
                 {t('deadlineCalculator.enterWeightHint', {
                   defaultValue: isEn
                     ? "Choose your deadline and we'll find the best option"
-                    : 'Choisissez votre deadline et nous trouvons la meilleure option',
+                    : isZh ? '选择您的截止日期，我们为您找到最佳选项' : isAr ? 'اختر موعدك النهائي وسنجد لك أفضل خيار' : 'Choisissez votre deadline et nous trouvons la meilleure option',
                 })}
               </p>
             </motion.div>

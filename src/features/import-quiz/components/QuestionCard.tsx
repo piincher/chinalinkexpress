@@ -11,6 +11,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import type { QuizQuestion, QuizOption } from '../types';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 interface OptionButtonProps {
   option: QuizOption;
@@ -23,6 +25,7 @@ interface OptionButtonProps {
  * OptionButton - Individual selectable option
  */
 function OptionButton({ option, isSelected, onClick, index }: OptionButtonProps) {
+  const locale = useLocale();
   return (
     <motion.button
       initial={{ opacity: 0, y: 10 }}
@@ -54,7 +57,7 @@ function OptionButton({ option, isSelected, onClick, index }: OptionButtonProps)
             />
           )}
         </div>
-        <span className="font-medium">{option.label}</span>
+        <span className="font-medium">{phrase(locale, option.label)}</span>
       </div>
     </motion.button>
   );
@@ -78,6 +81,7 @@ export function QuestionCard({
   onNext,
   direction,
 }: QuestionCardProps) {
+  const locale = useLocale();
   // Animation variants based on direction
   const slideVariants = {
     enter: (direction: 'forward' | 'backward') => ({
@@ -112,19 +116,19 @@ export function QuestionCard({
         {/* Question Number Badge */}
         <div className="mb-4">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
-            Question {question.id}
+            {phrase(locale, "Question")} {question.id}
           </span>
         </div>
 
         {/* Question Text */}
         <h2 className="text-xl font-semibold text-gray-900 leading-tight">
-          {question.text}
+          {phrase(locale, question.text)}
         </h2>
 
         {/* Subtitle (optional) */}
         {question.subtitle && (
           <p className="mt-2 text-sm text-gray-500">
-            {question.subtitle}
+            {phrase(locale, question.subtitle)}
           </p>
         )}
 

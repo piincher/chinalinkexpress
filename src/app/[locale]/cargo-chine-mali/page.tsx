@@ -148,12 +148,134 @@ const cargoContent = {
       stepLabel: 'Step',
     },
   },
+  zh: {
+    metaTitle: '中国马里货运 | 空运与海运',
+    metaDescription:
+      '专注于中国到马里货运的货代。空运 14-21 天，海运集装箱 60-75 天到巴马科。WhatsApp 免费报价！',
+    keywords:
+      '中国马里货运, 中国马里物流, 中国马里寄包裹, 巴马科货代, 中国巴马科货运, 中国马里集装箱, 中国巴马科发货, 巴马科空运, 中国马里进口',
+    badge: '中国—马里货运',
+    title: '把您的货物从中国运到马里',
+    intro:
+      'ChinaLink Express 是从中国向马里发货的专业货代。无论您是为公司、店铺还是个人项目进口，我们都负责门到门运输直至巴马科：采购、供应商付款、空运或海运、清关和交付。',
+    highlights: [
+      '空运 14-21 天到巴马科',
+      '海运集装箱 60-75 天（FCL/LCL）',
+      '采购、付款与供应商核验',
+      'WhatsApp 跟踪，每个阶段都有照片',
+    ],
+    sections: [
+      {
+        title: '运输方式：空运与海运对比',
+        body: '选择空运还是海运，取决于您的预算、时间和货物类型。空运适合紧急包裹、样品或贵重产品；海运集装箱更适合大批量货物。',
+        items: ['空运：14-21 天', '整箱 FCL：60-75 天', '中等货量可选拼箱 LCL', '根据您的利润提供个性化建议'],
+      },
+      {
+        title: '每票货物包含的服务',
+        body: '我们负责收货、检查、集运、拍照、发运并跟踪您的货物，并通过 WhatsApp 提供清晰的支持。',
+        items: ['在中国收货', '照片或视频验货', '多供应商集运', '马里清关与交付'],
+      },
+      {
+        title: '马里优先，其次西非',
+        body: '巴马科仍是我们的主要枢纽，但我们的网络也能协助进口商前往塞内加尔、科特迪瓦、加纳、尼日利亚及其他西非目的地。',
+      },
+    ],
+    table: {
+      headers: ['需求', '没有 ChinaLink', '有 ChinaLink'],
+      rows: [
+        ['寻找可靠的货代', '寻找过程漫长且有风险', '专注中国—非洲的货代'],
+        ['向中国供应商付款', '支付宝和转账存在困难', '协助付款并核验供应商'],
+        ['合并多笔采购', '包裹分散', '中国仓库 + 集运'],
+        ['跟踪交付', '信息不透明', '照片和 WhatsApp 更新'],
+      ],
+    },
+    process: [
+      '您通过 WhatsApp 发送产品链接、数量或供应商报价。',
+      '我们提供清晰的报价，包含空运和海运、时效及税费。',
+      '我们收货、验货、集运并发运您的货物。',
+      '我们跟踪到货情况并协调最终交付。',
+    ],
+    faqs: [
+      { question: '从中国到马里的货运需要多长时间？', answer: '空运到巴马科需要 14 到 21 天。海运通常需要 60 到 75 天，具体取决于港口和陆路转运。' },
+      { question: '中国到马里的货运价格是多少？', answer: '价格取决于运输方式、重量、体积和货物类型。请通过 WhatsApp 发送详情，以获得准确估价。' },
+      { question: '运输途中我可以跟踪货物吗？', answer: '可以。在重要阶段，您会收到带照片的 WhatsApp 更新。' },
+    ],
+    links: [
+      { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+      { href: '/zh/services/air-freight', label: '中国—非洲空运' },
+      { href: '/zh/services/sea-freight', label: '集装箱海运' },
+      { href: '/zh/calculateur', label: '计算运费' },
+    ],
+    pageLabels: {},
+  },
+  ar: {
+    metaTitle: 'الشحن من الصين إلى مالي | جوًا وبحرًا',
+    metaDescription:
+      'وكيل شحن متخصص في نقل البضائع من الصين إلى مالي. شحن جوي خلال 14-21 يومًا، وحاوية بحرية خلال 60-75 يومًا إلى باماكو. عرض سعر مجاني عبر WhatsApp!',
+    keywords:
+      'الشحن من الصين إلى مالي، نقل البضائع من الصين إلى مالي، إرسال طرد من الصين إلى مالي، وكيل شحن في باماكو، الشحن من الصين إلى باماكو، حاوية من الصين إلى مالي، شحن جوي إلى باماكو، الاستيراد من الصين إلى مالي',
+    badge: 'الشحن من الصين إلى مالي',
+    title: 'اشحن بضائعك من الصين إلى مالي',
+    intro:
+      'ChinaLink Express وكيل شحن مرجعي لنقل البضائع من الصين إلى مالي. سواء كنت تستورد لشركتك أو متجرك أو مشروعك الشخصي، نتولى النقل كاملًا من الباب إلى الباب حتى باماكو: التوريد، والدفع للمورد، والشحن الجوي أو البحري، والتخليص الجمركي، والتسليم.',
+    highlights: [
+      'شحن جوي خلال 14-21 يومًا إلى باماكو',
+      'حاوية بحرية خلال 60-75 يومًا (FCL/LCL)',
+      'التوريد والدفع والتحقق من المورد',
+      'متابعة عبر WhatsApp مع صور في كل مرحلة',
+    ],
+    sections: [
+      {
+        title: 'خيارات الشحن: جوي أم بحري',
+        body: 'يعتمد الاختيار بين الشحن الجوي والبحري على ميزانيتك والوقت المتاح ونوع البضاعة. الشحن الجوي مثالي للطرود العاجلة والعينات والمنتجات الثمينة، أما الحاوية البحرية فهي الأنسب للكميات الكبيرة.',
+        items: ['الشحن الجوي: 14-21 يومًا', 'حاوية كاملة FCL: 60-75 يومًا', 'شحن مجمّع LCL للكميات المتوسطة', 'نصيحة مخصصة حسب هامش ربحك'],
+      },
+      {
+        title: 'ما تشمله كل شحنة',
+        body: 'نستلم بضائعك ونفحصها ونجمعها ونصورها ونشحنها ونتابعها، مع دعم واضح عبر WhatsApp.',
+        items: ['الاستلام في الصين', 'فحص بالصور أو الفيديو', 'تجميع البضائع من عدة موردين', 'التخليص الجمركي والتسليم في مالي'],
+      },
+      {
+        title: 'مالي أولًا، ثم غرب أفريقيا',
+        body: 'تبقى باماكو مركزنا الرئيسي، لكن شبكتنا تتيح أيضًا مرافقة المستوردين إلى السنغال وساحل العاج وغانا ونيجيريا ووجهات أخرى في غرب أفريقيا.',
+      },
+    ],
+    table: {
+      headers: ['الحاجة', 'بدون ChinaLink', 'مع ChinaLink'],
+      rows: [
+        ['العثور على وكيل شحن موثوق', 'بحث طويل ومحفوف بالمخاطر', 'وكيل شحن متخصص بين الصين وأفريقيا'],
+        ['الدفع لمورد صيني', 'صعوبات مع Alipay والتحويلات', 'مساعدة في الدفع والتحقق من المورد'],
+        ['تجميع عدة مشتريات', 'طرود متفرقة', 'مستودع في الصين + تجميع'],
+        ['متابعة التسليم', 'رؤية محدودة', 'صور وتحديثات عبر WhatsApp'],
+      ],
+    },
+    process: [
+      'ترسل إلينا عبر WhatsApp رابط المنتج أو الكميات أو عرض سعر المورد.',
+      'نقدّم عرض سعر واضحًا يشمل الشحن الجوي والبحري والمدد والضرائب.',
+      'نستلم بضائعك ونفحصها ونجمعها ونشحنها.',
+      'نتابع الوصول وننسق التسليم النهائي.',
+    ],
+    faqs: [
+      { question: 'كم يستغرق الشحن من الصين إلى مالي؟', answer: 'يستغرق الشحن الجوي من 14 إلى 21 يومًا حتى باماكو. أما البحري فيستغرق عادة من 60 إلى 75 يومًا حسب الميناء والعبور البري.' },
+      { question: 'ما سعر الشحن من الصين إلى مالي؟', answer: 'يعتمد السعر على طريقة الشحن والوزن والحجم ونوع البضاعة. أرسل إلينا التفاصيل عبر WhatsApp للحصول على تقدير دقيق.' },
+      { question: 'هل يمكنني متابعة بضائعي أثناء النقل؟', answer: 'نعم. تصلك تحديثات عبر WhatsApp مع صور في المراحل المهمة.' },
+    ],
+    links: [
+      { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+      { href: '/ar/services/air-freight', label: 'الشحن الجوي من الصين إلى أفريقيا' },
+      { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
+      { href: '/ar/calculateur', label: 'احسب كلفة الشحن' },
+    ],
+    pageLabels: {},
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const content = isEn ? cargoContent.en : cargoContent.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const content = cargoContent[locale as Locale];
 
   return generatePageMetadata({
     title: content.metaTitle,
@@ -161,14 +283,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: content.keywords,
     path: '/cargo-chine-mali',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
 export default async function CargoChineMaliPage({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const content = isEn ? cargoContent.en : cargoContent.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const content = cargoContent[locale as Locale];
   setRequestLocale(locale);
 
   const schemas = [
@@ -189,7 +313,7 @@ export default async function CargoChineMaliPage({ params }: Props) {
     },
     generateBreadcrumbSchema(
       [
-        { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+        { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
         { name: content.badge, url: `/${locale}/cargo-chine-mali` },
       ],
       locale as Locale
@@ -201,7 +325,7 @@ export default async function CargoChineMaliPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={content.badge}
         title={content.title}
         intro={content.intro}
@@ -218,7 +342,7 @@ export default async function CargoChineMaliPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

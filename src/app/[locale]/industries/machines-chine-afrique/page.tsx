@@ -199,25 +199,211 @@ const content = {
       { href: '/en/calculateur', label: 'Machinery container quote' },
     ],
   },
+  zh: {
+    badge: '从中国进口机器',
+    title: '从中国进口机器和工业设备',
+    intro: '您想从中国向马里或西非进口工业机器、建筑设备、工具或农业设备吗？ChinaLink Express 是您从中国工厂采购重型机器的专业伙伴。我们寻找认证制造商，谈判整柜价格，核验技术合规性，并安排带货物保险的 FCL 运输。',
+    highlights: [
+      '从中国工厂采购工业、建筑和农业机器',
+      '为 20 尺和 40 尺 FCL 集装箱谈判工厂直供价',
+      '发货前核验技术合规性并进行测试',
+      '装卸、安全加固和集装箱保险',
+      '工业品清关并交付到马里现场',
+    ],
+    sections: [
+      {
+        title: '从中国进口哪些机器？',
+        body: '中国是全球最大的机器和工业设备制造国。我们直接向工厂采购各类设备，提供 CE 认证和厂家保修。',
+        items: [
+          '建筑机械：小型挖掘机、压实机、搅拌机、脚手架',
+          '农业设备：微耕机、粉碎机、榨油机、灌溉系统',
+          '工业机器：压力机、切割机、焊接机、输送机',
+          '发电机和发电机组',
+          '食品加工设备：磨粉机、灌装、烘干',
+          '专业工具和车库设备',
+        ],
+      },
+      {
+        title: '机器运输：专用 FCL 集装箱',
+        body: '机器需要专门运输：在集装箱内加固、防潮，超尺寸时可能需要开顶箱或框架箱。我们负责全部重型物流。',
+        items: [
+          '标准 20/40 尺 FCL 集装箱，适用于 28 吨以内的机器',
+          '开顶集装箱，适用于超高机器',
+          '框架箱，适用于超尺寸设备',
+          '在集装箱内使用木材和绑带进行专业加固',
+          '海运防腐保护和防水罩',
+          '贵重机器的货物一切险',
+        ],
+      },
+      {
+        title: '进口机器的合规与文件',
+        body: '进口机器需要特定文件：详细的商业发票、原产地证书、技术手册，有时还需要 CE 认证。我们准备全部海关文件。',
+        items: [
+          '含机器技术明细的商业发票',
+          '用于马里清关的中国原产地证书',
+          '技术手册和电气图（如有法语版）',
+          '核验与马里兼容的 220V/380V 电压',
+          '关于 OAPI 标准和所需认证的建议',
+        ],
+      },
+    ],
+    tableHeaders: ['需求', '没有 ChinaLink', '使用 ChinaLink Express'],
+    tableRows: [
+      ['寻找机器工厂', '中间商成本高', '直接对接中国认证工厂'],
+      ['谈判整柜价格', '中间商加价', '直接谈判，节省 15-30%'],
+      ['核验合规性', '380V 机器不兼容', '现场测试电压、功率和安全性'],
+      ['安全运输', '运输途中损坏', '专业加固 + 一切险'],
+      ['机器清关', '手续复杂且耗时', '完整文件 + 一站式清关'],
+    ],
+    process: [
+      '通过 WhatsApp 发送技术规格和机器预算。',
+      '我们寻找 3 家认证工厂并比较技术方案。',
+      '您在收到报价、照片和规格后确认。',
+      '我们核验工厂、付款并监督装箱。',
+      'FCL 海运 + 工业品清关 + 交付到工地。',
+    ],
+    faqs: [
+      {
+        question: '进口机器用什么集装箱？',
+        answer: '大多数机器使用 20 尺（最多 28 吨）或 40 尺 FCL 集装箱即可。超高机器使用开顶箱，超尺寸使用框架箱。我们会根据您的机器建议最佳规格。',
+      },
+      {
+        question: '中国机器与马里电力兼容吗？',
+        answer: '我们始终核验电压（220V/380V）和频率（50Hz）是否与马里电网兼容。我们选择具有 CE 认证的机器，并在可能时提供法语手册。',
+      },
+      {
+        question: '中国到马里的机器集装箱费用是多少？',
+        answer: '一个 20 尺 FCL 机器集装箱费用在 3500 到 5000 美元之间，取决于重量和始发港。价格包含装货、加固、海运到达喀尔以及陆运到巴马科。请索取准确报价。',
+      },
+      {
+        question: '进口机器提供保修吗？',
+        answer: '提供，我们选择提供 12 到 24 个月厂家保修的工厂。我们记录序列号，并在需要时协调视频技术支持。',
+      },
+      {
+        question: '你们可以培训我的技术人员使用吗？',
+        answer: '对于大额订单，我们可以安排与中国厂家的视频培训。对于某些复杂机器，可以按报价安排技术人员随货交付。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sea-freight', label: '集装箱海运' },
+      { href: '/zh/services/verification-fournisseur-chine', label: '工厂核验' },
+      { href: '/zh/calculateur', label: '机器集装箱报价' },
+    ],
+  },
+  ar: {
+    badge: 'استيراد الآلات من الصين',
+    title: 'استيراد الآلات والمعدات الصناعية من الصين',
+    intro: 'هل تبحث عن استيراد آلات صناعية أو معدات بناء أو أدوات أو معدات زراعية من الصين إلى مالي أو غرب أفريقيا؟ ChinaLink Express شريكك المتخصص في توريد الآلات الثقيلة من المصانع الصينية. نجد المصنّعين المعتمدين، ونتفاوض على أسعار الحاويات، ونتحقق من المطابقة الفنية، وننظم نقل FCL مع تأمين البضائع.',
+    highlights: [
+      'توريد الآلات الصناعية والإنشائية والزراعية من المصانع الصينية',
+      'التفاوض على سعر المصنع المباشر لحاويات FCL مقاس 20 و40 قدمًا',
+      'التحقق من المطابقة الفنية واختبارات قبل الشحن',
+      'المناولة والتثبيت الآمن وتأمين الحاوية',
+      'التخليص الجمركي الصناعي والتسليم في الموقع في مالي',
+    ],
+    sections: [
+      {
+        title: 'ما الآلات التي يمكن استيرادها من الصين؟',
+        body: 'الصين أكبر مصنّع للآلات والمعدات الصناعية في العالم. نورّد مباشرة من المصانع مع شهادة CE وضمان الشركة المصنعة لجميع أنواع المعدات.',
+        items: [
+          'آلات البناء: حفارات صغيرة ومدكات وخلاطات خرسانة وسقالات',
+          'المعدات الزراعية: جرارات صغيرة وكسارات ومعاصر زيت وأنظمة ري',
+          'الآلات الصناعية: مكابس وآلات قطع ولحام وسيور ناقلة',
+          'المولدات الكهربائية ومجموعات التوليد',
+          'معدات تصنيع الأغذية: مطاحن وتعبئة وتجفيف',
+          'العدد الاحترافية ومعدات الورش',
+        ],
+      },
+      {
+        title: 'نقل الآلات: حاوية FCL متخصصة',
+        body: 'تحتاج الآلات إلى نقل خاص: التثبيت داخل الحاوية والحماية من الرطوبة، وأحيانًا حاوية مفتوحة السقف أو مسطحة للأحجام الكبيرة. نتولى كل الخدمات اللوجستية الثقيلة.',
+        items: [
+          'حاوية FCL قياسية 20/40 قدمًا للآلات حتى 28 طنًا',
+          'حاوية مفتوحة السقف للآلات العالية',
+          'حاوية مسطحة للمعدات كبيرة الحجم',
+          'تثبيت احترافي بالخشب والأحزمة داخل الحاوية',
+          'حماية من التآكل وغطاء عازل للماء للنقل البحري',
+          'تأمين شامل على البضائع للآلات الثمينة',
+        ],
+      },
+      {
+        title: 'مطابقة الآلات المستوردة ومستنداتها',
+        body: 'يتطلب استيراد الآلات مستندات محددة: فاتورة تجارية مفصلة وشهادة منشأ ودليل فني، وأحيانًا شهادة CE. نجهز جميع المستندات الجمركية.',
+        items: [
+          'فاتورة تجارية بالتفاصيل الفنية للآلات',
+          'شهادة منشأ صينية للتخليص الجمركي في مالي',
+          'الدليل الفني والمخططات الكهربائية بالفرنسية إن وجدت',
+          'التحقق من توافق جهد 220V/380V مع مالي',
+          'نصائح بشأن معايير OAPI والاعتمادات اللازمة',
+        ],
+      },
+    ],
+    tableHeaders: ['الحاجة', 'بدون ChinaLink', 'مع ChinaLink Express'],
+    tableRows: [
+      ['العثور على مصنع آلات', 'وسطاء مكلفون', 'مباشرة من مصنع معتمد في الصين'],
+      ['التفاوض على سعر الحاوية', 'أسعار مرتفعة بسبب الوسطاء', 'تفاوض مباشر وتوفير 15-30%'],
+      ['التحقق من المطابقة', 'آلات 380V غير متوافقة', 'اختبار الجهد والقدرة والسلامة ميدانيًا'],
+      ['نقل آمن', 'تلف أثناء النقل', 'تثبيت احترافي + تأمين شامل'],
+      ['التخليص الجمركي للآلات', 'إجراءات معقدة وطويلة', 'مستندات كاملة + تخليص جمركي متكامل'],
+    ],
+    process: [
+      'أرسل المواصفات الفنية وميزانية الآلة عبر WhatsApp.',
+      'نبحث عن 3 مصانع معتمدة ونقارن العروض الفنية.',
+      'تؤكد بعد استلام عرض السعر والصور والمواصفات.',
+      'نتحقق من المصنع وندفع ونشرف على تعبئة الحاوية.',
+      'شحن بحري FCL + تخليص جمركي صناعي + تسليم في الموقع.',
+    ],
+    faqs: [
+      {
+        question: 'ما الحاوية المناسبة لاستيراد الآلات؟',
+        answer: 'بالنسبة إلى معظم الآلات تكفي حاوية FCL مقاس 20 قدمًا (28 طنًا كحد أقصى) أو 40 قدمًا. وللآلات العالية نستخدم حاويات مفتوحة السقف، وللأحجام الكبيرة حاويات مسطحة. ننصحك بأفضل مقاس حسب آلاتك.',
+      },
+      {
+        question: 'هل الآلات الصينية متوافقة مع كهرباء مالي؟',
+        answer: 'نتحقق دائمًا من الجهد (220V/380V) والتردد (50Hz) للتوافق مع الشبكة المالية. ونختار آلات حاصلة على شهادة CE وأدلة بالفرنسية عند توفرها.',
+      },
+      {
+        question: 'ما كلفة حاوية آلات من الصين إلى مالي؟',
+        answer: 'تتراوح كلفة حاوية FCL مقاس 20 قدمًا للآلات بين 3500 و5000 دولار حسب الوزن وميناء المغادرة. ويشمل السعر التحميل والتثبيت والنقل البحري حتى داكار والعبور البري إلى باماكو. اطلب عرض سعر دقيقًا.',
+      },
+      {
+        question: 'هل تقدمون ضمانًا على الآلات المستوردة؟',
+        answer: 'نعم، نختار مصانع تقدم ضمانًا من الشركة المصنعة من 12 إلى 24 شهرًا. نوثق الأرقام التسلسلية وننسق الدعم الفني بالفيديو عند الحاجة.',
+      },
+      {
+        question: 'هل يمكنكم تدريب فنيّي على الاستخدام؟',
+        answer: 'للطلبات الكبيرة، يمكننا تنظيم تدريب بالفيديو مع المصنّع الصيني. ولبعض الآلات المعقدة، يمكن لفني مرافقة التسليم مقابل عرض سعر.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المصنع' },
+      { href: '/ar/calculateur', label: 'عرض سعر لحاوية آلات' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Import Machinery from China to Africa | Industrial Equipment | ChinaLink'
-      : 'Importer Machines Chine Afrique | Équipement Industriel | ChinaLink',
+      : isZh ? '从中国进口机器到非洲 | 工业设备 | ChinaLink' : isAr ? 'استيراد الآلات من الصين إلى أفريقيا | معدات صناعية | ChinaLink' : 'Importer Machines Chine Afrique | Équipement Industriel | ChinaLink',
     description: isEn
       ? 'Import industrial machinery, construction equipment & tools from China to Africa. FCL container shipping, factory direct pricing, installation support. Get your quote today! WhatsApp: +86 188 5172 5957'
-      : 'Importez machines industrielles, équipement construction et outils de Chine vers l\'Afrique. Expédition conteneur FCL, prix direct usine, support installation. Devis gratuit ! WhatsApp : +86 188 5172 5957',
+      : isZh ? '从中国向非洲进口工业机器、建筑设备和工具。FCL 集装箱运输，工厂直供价，安装支持。免费报价！WhatsApp：+86 188 5172 5957' : isAr ? 'استورد الآلات الصناعية ومعدات البناء والأدوات من الصين إلى أفريقيا. شحن بحاويات FCL وسعر المصنع المباشر ودعم التركيب. عرض سعر مجاني! WhatsApp: ‎+86 188 5172 5957' : 'Importez machines industrielles, équipement construction et outils de Chine vers l\'Afrique. Expédition conteneur FCL, prix direct usine, support installation. Devis gratuit ! WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'import machinery from China, industrial equipment China, buy machines from China, machinery sourcing agent, factory equipment China Africa, construction machinery import, machine supplier China, heavy equipment shipping, agricultural machinery China Africa, freight forwarder China Mali'
-      : 'importer machines Chine, équipement industriel Chine, acheter machines Chine, agent sourcing machines, équipement usine Chine Afrique, importer matériel construction, fournisseur machines Chine, matériel agricole Chine Afrique, cargo chine mali, transitaire chine mali',
+      : isZh ? '从中国进口机器, 中国工业设备, 从中国购买机器, 机器采购代理, 中国工厂设备到非洲, 进口建筑设备, 中国机器供应商, 中国农业设备到非洲, 中国马里货运, 中国马里货代' : isAr ? 'استيراد الآلات من الصين، معدات صناعية من الصين، شراء آلات من الصين، وكيل توريد الآلات، معدات المصانع من الصين إلى أفريقيا، استيراد معدات البناء، مورد آلات في الصين، معدات زراعية من الصين إلى أفريقيا، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'importer machines Chine, équipement industriel Chine, acheter machines Chine, agent sourcing machines, équipement usine Chine Afrique, importer matériel construction, fournisseur machines Chine, matériel agricole Chine Afrique, cargo chine mali, transitaire chine mali',
     path: '/industries/machines-chine-afrique',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -225,14 +411,16 @@ export default async function MachineryPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: isEn ? 'Industries' : 'Industries', url: `/${locale}/industries` },
-      { name: isEn ? 'Machinery China Africa' : 'Machines Chine Afrique', url: `/${locale}/industries/machines-chine-afrique` },
+      { name: isEn ? 'Machinery China Africa' : isZh ? '中国—非洲机器' : isAr ? 'الآلات من الصين إلى أفريقيا' : 'Machines Chine Afrique', url: `/${locale}/industries/machines-chine-afrique` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -241,7 +429,7 @@ export default async function MachineryPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -260,7 +448,7 @@ export default async function MachineryPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

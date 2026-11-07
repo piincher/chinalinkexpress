@@ -8,11 +8,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, X, Smartphone } from 'lucide-react';
 import { usePWA } from './PWAProvider';
 
 export function InstallPrompt() {
+  const t = useTranslations('installPrompt');
   const { isInstalled, installPrompt } = usePWA();
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -62,7 +64,7 @@ export function InstallPrompt() {
     const timer = setTimeout(() => {
       waited = true;
       maybeShow();
-    }, 12000);
+    }, 30000);
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -108,10 +110,10 @@ export function InstallPrompt() {
               
               <div className="flex-1 min-w-0">
                 <h3 className="font-semibold text-[var(--text-primary)] text-sm">
-                  Install ChinaLink Express
+                  {t('title')}
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)] mt-1">
-                  Add to your home screen for quick access to shipping rates and tracking
+                  {t('body')}
                 </p>
                 
                 <div className="flex items-center gap-2 mt-3">
@@ -120,11 +122,11 @@ export function InstallPrompt() {
                     className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
                   >
                     <Download className="w-4 h-4" />
-                    Install
+                    {t('install')}
                   </button>
                   <button
                     onClick={handleDismiss}
-                    aria-label="Dismiss install prompt"
+                    aria-label={t('dismiss')}
                     className="py-2 px-4 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     <X className="w-5 h-5" />

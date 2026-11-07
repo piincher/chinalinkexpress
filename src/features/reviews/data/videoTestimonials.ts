@@ -35,14 +35,15 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     country: 'Mali',
     countryFlag: '🇲🇱',
     language: 'Français',
-    thumbnailColor: 'from-amber-600 to-orange-700',
-    duration: '0:48',
+    thumbnailColor: 'from-slate-800 to-slate-950',
+    duration: '0:11',
     quote:
       "Avant ChinaLink, j'expédiait avec un autre cargo. Je ne recevais jamais mes marchandises en 2 mois — quand ça allait vite c'était 6 mois. Avec ChinaLink Express, mes 7 cartons sont arrivés en 2 mois et 12 jours. C'est au-delà de ce que j'imaginais possible.",
     result: '2 mois 12 jours',
     resultLabel: '7 cartons par mer',
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/niang.mp4',
+    posterUrl: '/media/poster-niang.webp',
   },
   {
     id: 'vid-002',
@@ -51,14 +52,15 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     country: 'Mali',
     countryFlag: '🇲🇱',
     language: 'Français / Bambara',
-    thumbnailColor: 'from-emerald-600 to-teal-700',
-    duration: '1:15',
+    thumbnailColor: 'from-slate-800 to-slate-950',
+    duration: '0:31',
     quote:
       "Nous avons fait venir toute notre équipement agricole — batteuses et machines — avec ChinaLink Express. Le service a été impeccable du début à la fin. Nos machines sont arrivées en parfait état et dans les délais. On recommande à 100%.",
     result: 'Parfait état',
     resultLabel: 'équipement agricole',
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/batteuse.mp4',
+    posterUrl: '/media/poster-batteuse.webp',
   },
 ];
 
@@ -70,14 +72,15 @@ export const EN_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     country: 'Mali',
     countryFlag: '🇲🇱',
     language: 'French',
-    thumbnailColor: 'from-amber-600 to-orange-700',
-    duration: '0:48',
+    thumbnailColor: 'from-slate-800 to-slate-950',
+    duration: '0:11',
     quote:
       'Before ChinaLink, I shipped with another cargo provider and delays were unpredictable. With ChinaLink Express, my cartons arrived with clear updates and a realistic timeline.',
     result: 'Reliable timeline',
     resultLabel: 'sea shipment',
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/niang.mp4',
+    posterUrl: '/media/poster-niang.webp',
   },
   {
     id: 'vid-en-002',
@@ -86,14 +89,15 @@ export const EN_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
     country: 'Mali',
     countryFlag: '🇲🇱',
     language: 'French / Bambara',
-    thumbnailColor: 'from-emerald-600 to-teal-700',
-    duration: '1:15',
+    thumbnailColor: 'from-slate-800 to-slate-950',
+    duration: '0:31',
     quote:
       'We imported agricultural machines with ChinaLink Express. The service was organized from supplier coordination to arrival, and the equipment reached us in good condition.',
     result: 'Good condition',
     resultLabel: 'agricultural equipment',
     videoUrl:
       'https://chinalinkexpress1.nyc3.cdn.digitaloceanspaces.com/goods/batteuse.mp4',
+    posterUrl: '/media/poster-batteuse.webp',
   },
 ];
 

@@ -23,6 +23,8 @@ interface StatusLegendProps {
 
 export function StatusLegend({ locale = 'fr' }: StatusLegendProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -30,8 +32,12 @@ export function StatusLegend({ locale = 'fr' }: StatusLegendProps) {
         status: keyof typeof statusIcons;
         label: string;
         labelFr: string;
+        labelZh: string;
+        labelAr: string;
         description: string;
         descriptionFr: string;
+        descriptionZh: string;
+        descriptionAr: string;
       }>).map((config) => {
         const Icon = statusIcons[config.status];
         return (
@@ -42,11 +48,11 @@ export function StatusLegend({ locale = 'fr' }: StatusLegendProps) {
             <div className="flex items-center gap-2 mb-2">
               <Icon className="w-5 h-5" />
               <span className="font-semibold text-sm">
-                {isEn ? config.label : config.labelFr}
+                {isEn ? config.label : isZh ? config.labelZh : isAr ? config.labelAr : config.labelFr}
               </span>
             </div>
             <p className="text-xs opacity-80">
-              {isEn ? config.description : config.descriptionFr}
+              {isEn ? config.description : isZh ? config.descriptionZh : isAr ? config.descriptionAr : config.descriptionFr}
             </p>
           </div>
         );

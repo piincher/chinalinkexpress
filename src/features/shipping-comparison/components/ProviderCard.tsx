@@ -12,14 +12,20 @@ import { useMemo } from 'react';
 interface ProviderCardProps {
   provider: string;
   providerFr: string;
+  providerZh: string;
+  providerAr: string;
   mode: 'sea' | 'air' | 'express';
   calculatedPrice: number;
   pricePerKg: number;
   durationDisplay: string;
   durationDisplayFr: string;
+  durationDisplayZh: string;
+  durationDisplayAr: string;
   durationDays: { min: number; max: number };
   features: string[];
   featuresFr: string[];
+  featuresZh: string[];
+  featuresAr: string[];
   color: string;
   isCompetitor: boolean;
   isBestValue?: boolean;
@@ -78,14 +84,20 @@ const colorMap: Record<string, { border: string; bg: string; badge: string; badg
 export function ProviderCard({
   provider,
   providerFr,
+  providerZh,
+  providerAr,
   mode,
   calculatedPrice,
   pricePerKg,
   durationDisplay,
   durationDisplayFr,
+  durationDisplayZh,
+  durationDisplayAr,
   durationDays,
   features,
   featuresFr,
+  featuresZh,
+  featuresAr,
   color,
   isCompetitor,
   isBestValue,
@@ -97,15 +109,17 @@ export function ProviderCard({
 }: ProviderCardProps) {
   const colors = colorMap[color] || colorMap.blue;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
-  const displayName = isEn ? provider : providerFr;
-  const displayDuration = isEn ? durationDisplay : durationDisplayFr;
-  const displayFeatures = isEn ? features : featuresFr;
+  const displayName = isEn ? provider : isZh ? providerZh : isAr ? providerAr : providerFr;
+  const displayDuration = isEn ? durationDisplay : isZh ? durationDisplayZh : isAr ? durationDisplayAr : durationDisplayFr;
+  const displayFeatures = isEn ? features : isZh ? featuresZh : isAr ? featuresAr : featuresFr;
 
   const modeLabel = useMemo(() => {
-    if (mode === 'sea') return isEn ? 'Sea Freight' : 'Fret Maritime';
-    if (mode === 'air') return isEn ? 'Air Freight' : 'Fret Aérien';
-    return isEn ? 'Express' : 'Express';
+    if (mode === 'sea') return isEn ? 'Sea Freight' : isZh ? '海运' : isAr ? 'الشحن البحري' : 'Fret Maritime';
+    if (mode === 'air') return isEn ? 'Air Freight' : isZh ? '空运' : isAr ? 'الشحن الجوي' : 'Fret Aérien';
+    return isEn ? 'Express' : isZh ? '快递' : isAr ? 'سريع' : 'Express';
   }, [mode, isEn]);
 
   const formatPrice = (price: number) =>
@@ -119,17 +133,17 @@ export function ProviderCard({
   const badges = [];
   if (isBestValue)
     badges.push({
-      label: isEn ? 'Best Value' : 'Meilleur Rapport',
+      label: isEn ? 'Best Value' : isZh ? '最佳性价比' : isAr ? 'أفضل قيمة' : 'Meilleur Rapport',
       className: 'bg-emerald-500 text-emerald-950',
     });
   if (isFastest)
     badges.push({
-      label: isEn ? 'Fastest' : 'Plus Rapide',
+      label: isEn ? 'Fastest' : isZh ? '最快' : isAr ? 'الأسرع' : 'Plus Rapide',
       className: 'bg-purple-500 text-white',
     });
   if (isCheapest)
     badges.push({
-      label: isEn ? 'Cheapest' : 'Moins Cher',
+      label: isEn ? 'Cheapest' : isZh ? '最便宜' : isAr ? 'الأرخص' : 'Moins Cher',
       className: 'bg-cyan-400 text-cyan-950',
     });
 
@@ -165,7 +179,7 @@ export function ProviderCard({
         )}
         {isCompetitor && (
           <span className="rounded-full bg-slate-700/50 px-2.5 py-1 text-xs font-semibold text-slate-400">
-            {isEn ? 'Competitor' : 'Concurrent'}
+            {isEn ? 'Competitor' : isZh ? '竞争对手' : isAr ? 'منافس' : 'Concurrent'}
           </span>
         )}
       </div>
@@ -241,9 +255,9 @@ export function ProviderCard({
       {savingsVsThis !== undefined && savingsVsThis > 0 && (
         <div className="mt-5 rounded-lg bg-emerald-500/10 p-3 text-center">
           <span className="text-sm font-semibold text-emerald-400">
-            {isEn ? 'Save' : 'Économisez'}{' '}
+            {isEn ? 'Save' : isZh ? '节省' : isAr ? 'وفر' : 'Économisez'}{' '}
             {formatPrice(savingsVsThis)}{' '}
-            {isEn ? 'with ChinaLink' : 'avec ChinaLink'}
+            {isEn ? 'with ChinaLink' : isZh ? '使用 ChinaLink' : isAr ? 'مع ChinaLink' : 'avec ChinaLink'}
           </span>
         </div>
       )}

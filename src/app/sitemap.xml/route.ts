@@ -54,24 +54,25 @@ const SERVICE_PAGES: PageConfig[] = [
   { path: 'services/air-freight', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/sea-freight', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/sourcing', priority: 0.9, changeFrequency: 'weekly' as const },
-  { path: 'services/paiement-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'services/verification-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'services/agent-sourcing-chine', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'services/achat-alibaba-mali', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'services/paiement-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'services/verification-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'services/agent-sourcing-chine', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'services/achat-alibaba-mali', priority: 0.9, changeFrequency: 'weekly' as const },
 ];
 
 const LANDING_PAGES: PageConfig[] = [
-  { path: 'cargo-chine-mali', priority: 1.0, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'blog', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'cargo-chine-mali', priority: 1.0, changeFrequency: 'weekly' as const },
+  { path: 'transitaire-chine-mali', priority: 1.0, changeFrequency: 'weekly' as const },
+  { path: 'blog', priority: 0.8, changeFrequency: 'weekly' as const },
 ];
 
 const BLOG_POSTS: PageConfig[] = [
-  { path: 'blog/comment-importer-chine-mali-2026', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'blog/cargo-chine-mali-guide-complet', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'blog/acheter-alibaba-mali-sans-arnaque', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'blog/paiement-fournisseur-chine-guide', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'blog/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'blog/conteneur-chine-mali-prix-2026', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'blog/comment-importer-chine-mali-2026', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'blog/cargo-chine-mali-guide-complet', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'blog/acheter-alibaba-mali-sans-arnaque', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'blog/paiement-fournisseur-chine-guide', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'blog/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'blog/conteneur-chine-mali-prix-2026', priority: 0.8, changeFrequency: 'monthly' as const },
 ];
 
 const ROUTE_PAGES = [
@@ -96,14 +97,14 @@ const GUIDE_PAGES = [
 ];
 
 const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
-  { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
 ];
 
 const TOOL_PAGES: PageConfig[] = [
-  { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
-  { path: 'verifier', priority: 0.5, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: 'verifier', priority: 0.5, changeFrequency: 'monthly' as const },
   /*
    * `/pourquoi-nous` was in neither the sitemap nor any internal link on the
    * site — a fully rendered page (features/comparison/FullServicePage, with its
@@ -111,33 +112,33 @@ const TOOL_PAGES: PageConfig[] = [
    * find it. It now has both: this entry, and a link from the home page's
    * "ce qui change" section, which is the argument it expands on.
    */
-  { path: 'pourquoi-nous', priority: 0.8, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'pourquoi-nous', priority: 0.8, changeFrequency: 'monthly' as const },
 ];
 
 const COMMUNITY_PAGES: PageConfig[] = [
-  { path: 'communaute', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'communaute', priority: 0.8, changeFrequency: 'weekly' as const },
   /*
    * `/avis` renders the reviews collection, so it changes whenever a client
    * writes one — weekly is the honest frequency, and the page is linked from
    * the home page's testimonials band and the footer.
    */
-  { path: 'avis', priority: 0.8, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'avis', priority: 0.8, changeFrequency: 'weekly' as const },
   /*
    * `/calendrier` carries the shipping cutoffs for each commercial date. Its
    * content changes as deadlines pass and the next occasion moves into range,
    * which is genuinely weekly — and it answers a question people type
    * ("quand expédier pour la rentrée") rather than one we invented.
    */
-  { path: 'calendrier', priority: 0.85, changeFrequency: 'weekly' as const, locales: ['fr', 'en'] },
+  { path: 'calendrier', priority: 0.85, changeFrequency: 'weekly' as const },
 ];
 
 const INDUSTRY_PAGES: PageConfig[] = [
-  { path: 'industries/textiles-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'industries/electronique-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'industries/machines-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'industries/cosmetiques-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'industries/pieces-auto-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
-  { path: 'industries/materiaux-construction-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const, locales: ['fr', 'en'] },
+  { path: 'industries/textiles-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: 'industries/electronique-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: 'industries/machines-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: 'industries/cosmetiques-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: 'industries/pieces-auto-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
+  { path: 'industries/materiaux-construction-chine-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
 ];
 
 // ============================================================================
@@ -297,7 +298,7 @@ export async function GET() {
       changeFrequency: page.changeFrequency,
       priority: page.priority,
       alternates: {
-        'fr-FR': `${BASE_URL}/fr/${page.path}`,
+        'fr': `${BASE_URL}/fr/${page.path}`,
         'x-default': `${BASE_URL}/fr/${page.path}`,
       },
     });

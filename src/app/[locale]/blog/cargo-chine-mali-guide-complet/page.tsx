@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: content.keywords,
     path: `/blog/${slug}`,
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
     ogType: 'article',
   });
 }
@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const content = getBlogPost(slug, locale as Locale);
   setRequestLocale(locale);
 
@@ -41,7 +43,7 @@ export default async function BlogPostPage({ params }: Props) {
     publisher: { '@type': 'Organization', name: BUSINESS_INFO.name },
     datePublished: content.date,
     dateModified: content.date,
-    inLanguage: isEn ? 'en-US' : 'fr-FR',
+    inLanguage: (locale as Locale),
     mainEntityOfPage: `${BUSINESS_INFO.url}/${locale}/blog/${slug}`,
   };
 
@@ -52,7 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
           articleSchema,
           generateBreadcrumbSchema(
             [
-              { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+              { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
               { name: 'Blog', url: `/${locale}/blog` },
               { name: content.title, url: `/${locale}/blog/${slug}` },
             ],
@@ -69,18 +71,18 @@ export default async function BlogPostPage({ params }: Props) {
         sections={content.sections}
         faqs={content.faqs}
         links={content.links}
-        kicker={isEn ? 'China-Africa import guide' : 'Guide import Chine-Mali'}
-        updatedLabel={isEn ? 'Updated' : 'Mis a jour'}
-        reviewedBy={isEn ? 'Reviewed by the China/Bamako operations team' : "Relu par l'equipe operations Chine/Bamako"}
-        continueTitle={isEn ? 'Continue' : 'Continuer'}
-        advisorCtaLabel={isEn ? 'Talk to an advisor' : 'Parler a un conseiller'}
+        kicker={isEn ? 'China-Africa import guide' : isZh ? '中国—马里进口指南' : isAr ? 'دليل الاستيراد من الصين إلى مالي' : 'Guide import Chine-Mali'}
+        updatedLabel={isEn ? 'Updated' : isZh ? '更新于' : isAr ? 'آخر تحديث' : 'Mis a jour'}
+        reviewedBy={isEn ? 'Reviewed by the China/Bamako operations team' : isZh ? '由中国/巴马科运营团队审核' : isAr ? 'راجعه فريق العمليات في الصين وباماكو' : "Relu par l'equipe operations Chine/Bamako"}
+        continueTitle={isEn ? 'Continue' : isZh ? '继续阅读' : isAr ? 'تابع القراءة' : 'Continuer'}
+        advisorCtaLabel={isEn ? 'Talk to an advisor' : isZh ? '咨询顾问' : isAr ? 'تحدث إلى مستشار' : 'Parler a un conseiller'}
       />
     </>
   );
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

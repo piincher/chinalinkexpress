@@ -11,20 +11,21 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { CATEGORIES, POPULAR_SEARCHES, STATUS_CONFIGS } from '../data';
+import { CATEGORIES, POPULAR_SEARCHES, POPULAR_SEARCHES_I18N, STATUS_CONFIGS } from '../data';
 import { useItemSearch } from '../hooks/useItemSearch';
 import { ItemResultCard } from './ItemResultCard';
 import { DangerousGoodsItem, ItemStatus } from '../types';
+import type { Locale } from '@/i18n/config';
 
 interface ItemSearchProps {
-  locale?: 'en' | 'fr';
+  locale?: 'fr' | 'en' | 'zh' | 'ar';
 }
 
-const statusFilterLabels: Record<ItemStatus, { en: string; fr: string }> = {
-  allowed: { en: 'Allowed', fr: 'Autorisé' },
-  restricted: { en: 'Restricted', fr: 'Restreint' },
-  prohibited: { en: 'Prohibited', fr: 'Interdit' },
-  'permit-required': { en: 'Permit', fr: 'Permis' },
+const statusFilterLabels: Record<ItemStatus, { en: string; fr: string; zh: string; ar: string }> = {
+  allowed: { en: 'Allowed', fr: 'Autorisé', zh: '允许', ar: 'مسموح' },
+  restricted: { en: 'Restricted', fr: 'Restreint', zh: '限制', ar: 'مقيّد' },
+  prohibited: { en: 'Prohibited', fr: 'Interdit', zh: '禁止', ar: 'محظور' },
+  'permit-required': { en: 'Permit', fr: 'Permis', zh: '需许可', ar: 'تصريح' },
 };
 
 const statusColors: Record<ItemStatus, string> = {
@@ -36,6 +37,8 @@ const statusColors: Record<ItemStatus, string> = {
 
 export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const {
     query,
     setQuery,
@@ -85,7 +88,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                 placeholder={
                   isEn
                     ? 'Search a product (e.g., phone, perfume, generator...)'
-                    : 'Rechercher un produit (ex: téléphone, parfum, générateur...)'
+                    : isZh ? '搜索产品（例如：手机、香水、发电机……）' : isAr ? 'ابحث عن منتج (مثل: هاتف، عطر، مولد...)' : 'Rechercher un produit (ex: téléphone, parfum, générateur...)'
                 }
                 className={cn(
                   'w-full pl-14 pr-12 py-5 text-lg rounded-2xl',
@@ -116,9 +119,9 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
             className="mt-4 flex flex-wrap items-center gap-2"
           >
             <span className="text-sm text-slate-500">
-              {isEn ? 'Popular:' : 'Populaires :'}
+              {isEn ? 'Popular:' : isZh ? '热门：' : isAr ? 'الأكثر بحثًا:' : 'Populaires :'}
             </span>
-            {POPULAR_SEARCHES.map((term) => (
+            {(isZh ? POPULAR_SEARCHES_I18N.zh : isAr ? POPULAR_SEARCHES_I18N.ar : POPULAR_SEARCHES).map((term) => (
               <button
                 key={term}
                 onClick={() => handlePopularSearch(term)}
@@ -155,7 +158,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                   : 'bg-slate-800/40 text-slate-400 border-slate-700/40 hover:bg-slate-700/40 hover:text-slate-300'
               )}
             >
-              {isEn ? cat.name : cat.nameFr}
+              {isEn ? cat.name : isZh ? cat.nameZh : isAr ? cat.nameAr : cat.nameFr}
             </button>
           ))}
         </motion.div>
@@ -171,6 +174,14 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
               {isEn ? (
                 <>
                   Found <span className="text-white font-semibold">{totalCount}</span> items
+                </>
+              ) : isZh ? (
+                <>
+                  <span className="text-white font-semibold">{totalCount}</span> 项结果
+                </>
+              ) : isAr ? (
+                <>
+                  <span className="text-white font-semibold">{totalCount}</span> نتيجة
                 </>
               ) : (
                 <>
@@ -190,7 +201,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                     : 'text-slate-500 hover:text-slate-300'
                 )}
               >
-                {isEn ? 'All' : 'Tous'}
+                {isEn ? 'All' : isZh ? '全部' : isAr ? 'الكل' : 'Tous'}
               </button>
               {(['allowed', 'restricted', 'permit-required', 'prohibited'] as ItemStatus[]).map(
                 (status) =>
@@ -206,7 +217,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                       )}
                     >
                       <span className={cn('w-2 h-2 rounded-full', statusColors[status])} />
-                      {isEn ? statusFilterLabels[status].en : statusFilterLabels[status].fr}
+                      {statusFilterLabels[status][locale as Locale]}
                       <span className="text-slate-500">({statusCounts[status]})</span>
                     </button>
                   )
@@ -246,18 +257,18 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                   <Search className="w-8 h-8 text-slate-500" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
-                  {isEn ? 'No results found' : 'Aucun résultat trouvé'}
+                  {isEn ? 'No results found' : isZh ? '未找到结果' : isAr ? 'لم يتم العثور على نتائج' : 'Aucun résultat trouvé'}
                 </h3>
                 <p className="text-sm text-slate-400 max-w-md mx-auto">
                   {isEn
                     ? `We couldn't find "${query}". Try different keywords or browse by category.`
-                    : `Nous n'avons pas trouvé "${query}". Essayez d'autres mots-clés ou parcourez par catégorie.`}
+                    : isZh ? `未找到"${query}"。请尝试其他关键词或按类别浏览。` : isAr ? `لم نجد "${query}". جرّب كلمات أخرى أو تصفح حسب الفئة.` : `Nous n'avons pas trouvé "${query}". Essayez d'autres mots-clés ou parcourez par catégorie.`}
                 </p>
                 <button
                   onClick={clearSearch}
                   className="mt-4 px-4 py-2 rounded-xl bg-blue-500/15 text-blue-400 border border-blue-500/30 text-sm font-medium hover:bg-blue-500/25 transition-colors"
                 >
-                  {isEn ? 'Clear search' : 'Effacer la recherche'}
+                  {isEn ? 'Clear search' : isZh ? '清除搜索' : isAr ? 'مسح البحث' : 'Effacer la recherche'}
                 </button>
               </motion.div>
             ) : (
@@ -279,7 +290,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                           <h3 className="text-lg font-semibold text-white">
                             {isEn
                               ? `${STATUS_CONFIGS[status].label} (${items.length})`
-                              : `${STATUS_CONFIGS[status].labelFr} (${items.length})`}
+                              : isZh ? `${STATUS_CONFIGS[status].labelZh} (${items.length})` : isAr ? `${STATUS_CONFIGS[status].labelAr} (${items.length})` : `${STATUS_CONFIGS[status].labelFr} (${items.length})`}
                           </h3>
                         </div>
                         <div className="space-y-3">
@@ -301,7 +312,7 @@ export function ItemSearch({ locale = 'fr' }: ItemSearchProps) {
                             >
                               {isEn
                                 ? `View all ${items.length} items`
-                                : `Voir les ${items.length} articles`}
+                                : isZh ? `查看 ${items.length} 项` : isAr ? `عرض ${items.length} سلعة` : `Voir les ${items.length} articles`}
                             </button>
                           )}
                         </div>

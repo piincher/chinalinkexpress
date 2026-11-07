@@ -169,7 +169,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
    if (isEn) {
       return (
          <main className="min-h-screen bg-[var(--surface)]">
-            <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-16 md:py-24">
+            <section className="bg-[var(--color-void)] pt-36 py-16 md:py-24">
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <motion.div
                      initial={{ opacity: 0, y: 20 }}
@@ -183,10 +183,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                      <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
                         Terms and Conditions of Sale and Transport
                      </h1>
-                     <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                     <p className="text-lg md:text-xl text-[var(--color-void-ink-2)] max-w-3xl mx-auto">
                         Service scope, rates, CBM rules, restricted items, insurance, and customer responsibilities for China to Africa logistics.
                      </p>
-                     <p className="text-sm text-blue-200 mt-4">
+                     <p className="text-sm text-[var(--color-void-ink-2)] mt-4">
                         Last updated:{" "}
                         {new Date().toLocaleDateString("en-US", {
                            year: "numeric",
@@ -825,7 +825,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
    return (
       <main className="min-h-screen bg-[var(--surface)]">
          {/* Hero Section */}
-         <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-16 md:py-24">
+         <section className="bg-[var(--color-void)] pt-36 py-16 md:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -839,10 +839,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
                      Conditions Générales de Vente et Transport
                   </h1>
-                  <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+                  <p className="text-lg md:text-xl text-[var(--color-void-ink-2)] max-w-3xl mx-auto">
                      Règles, tarifs, calculs CBM, articles interdits et responsabilités
                   </p>
-                  <p className="text-sm text-blue-200 mt-4">
+                  <p className="text-sm text-[var(--color-void-ink-2)] mt-4">
                      Dernière mise à jour :{" "}
                      {new Date().toLocaleDateString("fr-FR", {
                         year: "numeric",

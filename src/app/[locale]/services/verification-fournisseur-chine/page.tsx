@@ -159,11 +159,155 @@ const content = {
       { href: '/en/services/sourcing', label: 'China sourcing service' },
     ],
   },
+  zh: {
+    metaTitle: '中国供应商核验 | 购买前检查',
+    metaDescription:
+      '付款前核验中国供应商。ChinaLink Express 为马里进口商检查 Alibaba、1688、工厂、证书、样品和货物信息。',
+    keywords:
+      '中国供应商核验, 中国质量检验, 可靠的 Alibaba 供应商, 马里核查中国供应商, 1688 供应商核验, 中国非洲供应商核验',
+    badge: '供应商核验',
+    title: '付款前核验中国供应商',
+    intro:
+      '在向中国供应商转账之前，ChinaLink Express 帮助您核验关键信号：身份、真实产能、价格一致性、宣称质量、诈骗风险，以及发往马里前的检验选项。',
+    highlights: [
+      '检查 Alibaba、1688 和直接供应商',
+      '根据可用数据核验工厂和公司',
+      '发货前照片检验',
+      '向供应商付款前的建议',
+    ],
+    sections: [
+      {
+        title: '我们核验什么',
+        body: '供应商可能有漂亮的照片和动听的说辞，但这还不够。我们查看具体信息，帮助决定是继续、索取样品还是拒绝。',
+        items: ['公司名称和联系方式', '价格、数量和质量的一致性', '真实照片或视频', '备货能力和文件'],
+      },
+      {
+        title: 'Alibaba、1688 和直接供应商',
+        body: 'Alibaba 是使用最广泛的国际平台，而 1688 主要面向中国市场。每个渠道都有风险。我们根据平台和投入金额调整核验方式。',
+        items: ['分析供应商资料', '向卖家提出针对性问题', '检查要求的付款方式', '提示不切实际的价格'],
+      },
+      {
+        title: '发货前检验',
+        body: '货物备好后，照片或视频检查可在发往巴马科前确认数量、包装、产品外观和可见错误。',
+        items: ['纸箱和型号照片', '目视质量检查', '核验包装', '空运或海运前确认'],
+      },
+    ],
+    tableHeaders: ['检查点', '忽略的风险', 'ChinaLink 的做法'],
+    tableRows: [
+      ['供应商公司', '中间商或假卖家', '一致性核验'],
+      ['价格过低', '质量差或诈骗', '付款前提醒'],
+      ['产品照片', '产品不符', '索取真实证明'],
+      ['订单备好', '错误发现得太晚', '发货前检验'],
+    ],
+    process: [
+      '您发送供应商链接、截图、报价和付款条件。',
+      '我们分析风险信号和可用信息。',
+      '必要时我们联系供应商确认细节。',
+      '您会收到明确建议：继续、索取更多证明或避免。',
+      '如果您下单，我们可以跟进付款、质量检查和发往巴马科的货运。',
+    ],
+    faqs: [
+      {
+        question: '如何知道中国供应商是否可靠？',
+        answer: '需要核验公司身份、信息一致性、生产证明、评价、真实照片、付款条件以及提供所需文件的能力。',
+      },
+      {
+        question: '你们可以核验 Alibaba 或 1688 供应商吗？',
+        answer: '可以。我们可以分析可用信息、联系供应商、索取证明、安排照片检查，或根据金额建议更深入的检验。',
+      },
+      {
+        question: '核验能保证不会有任何问题吗？',
+        answer: '不能，任何核验都无法消除所有风险。但它能在付款前大幅减少明显错误和常见诈骗。',
+      },
+      {
+        question: '订购样品前需要核验吗？',
+        answer: '需要，尤其是新供应商。样品很有用，但应向看起来已有可信度的供应商订购。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/paiement-fournisseur-chine', label: '向中国供应商付款' },
+      { href: '/zh/guides/acheter-sur-alibaba-depuis-le-mali', label: '从马里在 Alibaba 购买' },
+      { href: '/zh/guides/acheter-sur-1688-depuis-le-mali', label: '从马里在 1688 购买' },
+      { href: '/zh/services/sourcing', label: '中国采购服务' },
+    ],
+  },
+  ar: {
+    metaTitle: 'التحقق من الموردين في الصين | فحص قبل الشراء',
+    metaDescription:
+      'تحقق من المورد الصيني قبل الدفع. تفحص ChinaLink Express معلومات Alibaba و1688 والمصنع والشهادات والعينات والبضائع للمستوردين الماليين.',
+    keywords:
+      'التحقق من الموردين في الصين، فحص الجودة في الصين، مورد Alibaba موثوق، فحص مورد صيني من مالي، التحقق من موردي 1688، التحقق من الموردين بين الصين وأفريقيا',
+    badge: 'التحقق من المورد',
+    title: 'تحقق من المورد الصيني قبل الدفع',
+    intro:
+      'قبل تحويل الأموال إلى مورد في الصين، تساعدك ChinaLink Express على التحقق من المؤشرات الأساسية: الهوية والقدرة الفعلية وتناسق الأسعار والجودة المعلنة ومخاطر الاحتيال وخيارات الفحص قبل الشحن إلى مالي.',
+    highlights: [
+      'فحص Alibaba و1688 والموردين المباشرين',
+      'التحقق من المصنع والشركة حسب البيانات المتاحة',
+      'فحص بالصور قبل الشحن',
+      'نصائح قبل الدفع للمورد',
+    ],
+    sections: [
+      {
+        title: 'ما نتحقق منه',
+        body: 'قد تكون لدى المورد صور جميلة وكلام مقنع، لكن هذا لا يكفي. ننظر في المعلومات الملموسة التي تساعد على تقرير المضي قدمًا أو طلب عينة أو الرفض.',
+        items: ['اسم الشركة وبيانات الاتصال', 'التناسق بين السعر والكمية والجودة', 'صور أو فيديو حقيقية', 'القدرة على تجهيز الطلب والمستندات'],
+      },
+      {
+        title: 'Alibaba و1688 والموردون المباشرون',
+        body: 'Alibaba أكثر المنصات الدولية استخدامًا، بينما تستهدف 1688 أساسًا السوق الصينية. ولكل قناة مخاطرها. نكيّف التحقق حسب المنصة والمبلغ المراد دفعه.',
+        items: ['تحليل ملف المورد', 'أسئلة موجهة إلى البائع', 'فحص طريقة الدفع المطلوبة', 'التنبيه إلى الأسعار غير الواقعية'],
+      },
+      {
+        title: 'الفحص قبل الشحن',
+        body: 'عندما تجهز البضاعة، يتيح الفحص بالصور أو الفيديو تأكيد الكمية والتغليف ومظهر المنتج والأخطاء الظاهرة قبل المغادرة إلى باماكو.',
+        items: ['صور الكراتين والمراجع', 'فحص بصري للجودة', 'التحقق من التغليف', 'الموافقة قبل الشحن الجوي أو البحري'],
+      },
+    ],
+    tableHeaders: ['نقطة الفحص', 'الخطر عند الإهمال', 'إجراء ChinaLink'],
+    tableRows: [
+      ['شركة المورد', 'وسيط أو بائع مزيف', 'التحقق من التناسق'],
+      ['سعر منخفض جدًا', 'جودة رديئة أو احتيال', 'تنبيه قبل الدفع'],
+      ['صور المنتج', 'منتج غير مطابق', 'طلب أدلة حقيقية'],
+      ['الطلب جاهز', 'خطأ يُكتشف بعد فوات الأوان', 'الفحص قبل الشحن'],
+    ],
+    process: [
+      'ترسل رابط المورد ولقطات الشاشة وعرض السعر وشروط الدفع.',
+      'نحلل مؤشرات الخطر والمعلومات المتاحة.',
+      'نتواصل مع المورد عند الحاجة لتأكيد التفاصيل.',
+      'تتلقى توصية واضحة: المتابعة أو طلب مزيد من الأدلة أو التجنب.',
+      'إذا طلبت، يمكننا متابعة الدفع وفحص الجودة والشحن إلى باماكو.',
+    ],
+    faqs: [
+      {
+        question: 'كيف أعرف أن المورد الصيني موثوق؟',
+        answer: 'يجب التحقق من هوية الشركة وتناسق المعلومات وأدلة الإنتاج والآراء والصور الحقيقية وشروط الدفع والقدرة على تقديم المستندات المطلوبة.',
+      },
+      {
+        question: 'هل يمكنكم التحقق من مورد في Alibaba أو 1688؟',
+        answer: 'نعم. يمكننا تحليل المعلومات المتاحة والتواصل مع المورد وطلب الأدلة وتنظيم فحص بالصور أو التوصية بفحص أعمق حسب المبلغ.',
+      },
+      {
+        question: 'هل يضمن التحقق عدم حدوث أي مشكلة؟',
+        answer: 'لا، لا يزيل أي تحقق جميع المخاطر. لكنه يقلل كثيرًا الأخطاء الواضحة وعمليات الاحتيال الشائعة قبل الدفع.',
+      },
+      {
+        question: 'هل يجب التحقق قبل طلب عينة؟',
+        answer: 'نعم، خصوصًا إذا كان المورد جديدًا. العينة مفيدة، لكن يجب طلبها من مورد يبدو موثوقًا بالفعل.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/paiement-fournisseur-chine', label: 'الدفع لمورد صيني' },
+      { href: '/ar/guides/acheter-sur-alibaba-depuis-le-mali', label: 'الشراء من Alibaba من مالي' },
+      { href: '/ar/guides/acheter-sur-1688-depuis-le-mali', label: 'الشراء من 1688 من مالي' },
+      { href: '/ar/services/sourcing', label: 'خدمة التوريد من الصين' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const page = locale === 'en' ? content.en : content.fr;
+  const page = content[locale as Locale];
 
   return generatePageMetadata({
     title: page.metaTitle,
@@ -171,7 +315,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: page.keywords,
     path: '/services/verification-fournisseur-chine',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -179,7 +323,9 @@ export default async function SupplierVerificationPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
@@ -197,9 +343,9 @@ export default async function SupplierVerificationPage({ params }: Props) {
         page.metaDescription,
     },
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: 'Services', url: `/${locale}/services` },
-      { name: isEn ? 'China supplier verification' : 'Vérification fournisseur Chine', url: `/${locale}/services/verification-fournisseur-chine` },
+      { name: isEn ? 'China supplier verification' : isZh ? '中国供应商核验' : isAr ? 'التحقق من الموردين في الصين' : 'Vérification fournisseur Chine', url: `/${locale}/services/verification-fournisseur-chine` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -208,7 +354,7 @@ export default async function SupplierVerificationPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -238,7 +384,7 @@ export default async function SupplierVerificationPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

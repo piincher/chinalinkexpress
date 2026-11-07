@@ -11,6 +11,7 @@ import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { Heart, Ban, ShieldCheck, Flag, HandHeart } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
+import { phrase } from '@/i18n/phrases';
 
 const guidelines = [
   {
@@ -78,6 +79,8 @@ const guidelines = [
 export function CommunityGuidelines() {
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const { ref, isActive } = useAnimationActivation({ threshold: 0.15, delay: 100 });
 
   return (
@@ -91,12 +94,12 @@ export function CommunityGuidelines() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {isEn ? 'Community guidelines' : 'Règles de la communauté'}
+            {isEn ? 'Community guidelines' : isZh ? '社区规则' : isAr ? 'قواعد المجتمع' : 'Règles de la communauté'}
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
             {isEn
               ? 'Simple guidelines to keep this space useful, respectful and collaborative for every importer.'
-              : 'Quelques lignes directrices simples pour garder cet espace utile, respectueux et collaboratif pour tous les importateurs.'}
+              : isZh ? '一些简单的准则，让这个空间对所有进口商都有用、互相尊重、彼此协作。' : isAr ? 'بعض القواعد البسيطة ليبقى هذا الفضاء مفيدًا ومحترمًا وتعاونيًا لجميع المستوردين.' : 'Quelques lignes directrices simples pour garder cet espace utile, respectueux et collaboratif pour tous les importateurs.'}
           </p>
         </motion.div>
 
@@ -104,7 +107,7 @@ export function CommunityGuidelines() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {guidelines.map((guideline, index) => (
             <motion.div
-              key={guideline.title}
+              key={phrase(locale, guideline.title)}
               initial={{ opacity: 0, y: 30 }}
               animate={isActive ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -118,11 +121,11 @@ export function CommunityGuidelines() {
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-2">
-                  {isEn ? guideline.titleEn : guideline.title}
+                  {isEn ? guideline.titleEn : phrase(locale, guideline.title)}
                 </h3>
 
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  {isEn ? guideline.descriptionEn : guideline.description}
+                  {isEn ? guideline.descriptionEn : phrase(locale, guideline.description)}
                 </p>
               </div>
             </motion.div>

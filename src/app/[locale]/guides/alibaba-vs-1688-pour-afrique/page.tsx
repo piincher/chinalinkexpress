@@ -198,25 +198,209 @@ const content = {
       { href: '/en/services/verification-fournisseur-chine', label: 'Supplier verification' },
     ],
   },
+  zh: {
+    badge: 'Alibaba 与 1688 指南',
+    title: 'Alibaba 与 1688：进口到非洲应该选哪个平台？',
+    intro: '在非洲从中国采购时，您是否在 Alibaba 和 1688 之间犹豫？这是所有非洲进口商都会问的问题。Alibaba 是英文国际平台，但出口价格较高。1688 是中国国内市场，价格便宜 30-50%，但只有中文，也没有国际买家保护。在这份完整指南中，ChinaLink Express 为您讲解关键区别、各平台的优势，以及我们的采购代理如何让您安全地在两个平台购买。',
+    highlights: [
+      '价格、质量、安全性和可用性的详细比较',
+      '1688：价格便宜 30-50%，但风险更高',
+      'Alibaba：更安全，但出口价格更高',
+      '我们的采购代理让您可以在两个平台购买',
+      '根据预算和经验推荐的策略',
+    ],
+    sections: [
+      {
+        title: 'Alibaba 和 1688 有什么区别？',
+        body: 'Alibaba.com 和 1688.com 都属于阿里巴巴集团，但面向完全不同的市场。理解这一区别，是根据您的进口商类型选择合适平台的关键。',
+        items: [
+          'Alibaba：国际 B2B 平台，英文，面向全球出口',
+          '1688：中国国内 B2B 平台，中文，面向中国国内市场',
+          '价格：同一产品 1688 通常比 Alibaba 便宜 30-50%',
+          '最小起订量（MOQ）：1688 通常更低，因为面向中国小商户',
+          '买家保护：Alibaba 有 Trade Assurance，1688 没有国际保护',
+        ],
+      },
+      {
+        title: '各平台的优缺点',
+        body: '每个平台都有优势和不足。下面的对比表可帮助您根据自身情况选择。',
+        items: [
+          'Alibaba 优点：英文界面、已核验供应商、Trade Assurance、安全付款、客户支持',
+          'Alibaba 缺点：出口价格高、起订量高、与卖家沟通慢',
+          '1688 优点：真实工厂价、起订量灵活、新品率先上架、选择极多',
+          '1688 缺点：仅中文、没有国际保护、不核验时诈骗风险高、从非洲付款困难',
+        ],
+      },
+      {
+        title: '我们为非洲进口商推荐的策略',
+        body: '在与数百位非洲进口商合作 7 年后，我们推荐一种混合策略，既结合两个平台的优势，又将风险降到最低。',
+        items: [
+          '新手：先在 Alibaba 使用 Trade Assurance，保障最初的订单',
+          '中级：复杂产品用 Alibaba，简单标准产品用 1688',
+          '资深进口商：主要通过已核验的代理在 1688 采购，以提高利润',
+          '所有水平：付款前始终通过在中国的本地采购代理核验供应商',
+        ],
+      },
+    ],
+    tableHeaders: ['标准', 'Alibaba.com', '1688.com'],
+    tableRows: [
+      ['语言', '英语（多语言）', '仅中文'],
+      ['价格', '出口价（加价 30-50%）', '国内工厂价（便宜 30-50%）'],
+      ['最小起订量', '高（100-1000+ 件）', '灵活（10-100 件）'],
+      ['买家保护', 'Alibaba Trade Assurance', '无国际保护'],
+      ['供应商核验', 'Gold Supplier，已核验', '入驻门槛低，核验困难'],
+      ['从非洲付款', '银行卡、T/T（困难）', '支付宝、微信支付（从非洲无法使用）'],
+      ['新品', '经过测试和验证的产品', '率先上架的新品'],
+      ['客户支持', '英文邮件', '仅中文'],
+    ],
+    process: [
+      '通过 WhatsApp 确定您的产品、预算和数量。',
+      '我们在 Alibaba 和 1688 上搜索相同产品进行比较。',
+      '您会收到价格、质量、时效和风险的比较。',
+      '您选择最佳方案，我们核验供应商。',
+      '我们付款、验货并发运到您所在的非洲国家。',
+    ],
+    faqs: [
+      {
+        question: '1688 真的比 Alibaba 便宜 50% 吗？',
+        answer: '是的，对于许多标准产品（纺织品、配件、电子产品、玩具），1688 的价格比 Alibaba 低 30% 到 50%。这是因为 1688 面向中国国内市场，没有出口、国际营销和中间佣金的额外成本。',
+      },
+      {
+        question: '我可以不通过代理从马里在 1688 购买吗？',
+        answer: '理论上不现实：网站是中文的，付款需要支付宝或中国银行账户，也没有任何国际保护。没有在中国的本地代理，您的资金将面临非常高的诈骗风险。',
+      },
+      {
+        question: 'ChinaLink 如何替我在 1688 购买？',
+        answer: '我们位于义乌的双语团队浏览 1688，筛选可靠供应商，用中文议价，通过我们的中国支付宝账户付款，现场检查质量，并发运到非洲。您既享受 1688 的价格，又有本地代理的保障。',
+      },
+      {
+        question: '哪些产品在 1688 上更好？',
+        answer: '标准且不复杂的产品最适合 1688：纺织品、时尚配件、家居用品、玩具、小型电子产品、工具。对于复杂的技术产品（机器、医疗、高级电子产品），Alibaba 仍然更安全。',
+      },
+      {
+        question: '代理在 1688 购买的费用是多少？',
+        answer: '我们在 1688 代购的服务费从每单 80 美元起（搜索 + 议价 + 付款）。质量检验为 100 美元。这些费用很快就能被 1688 价格节省的 30-50% 抵消。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/agent-sourcing-chine', label: '完整的中国采购代理服务' },
+      { href: '/zh/services/achat-alibaba-mali', label: '从马里在 Alibaba 购买' },
+      { href: '/zh/guides/acheter-sur-1688-depuis-le-mali', label: '1688 购买完整指南' },
+      { href: '/zh/services/verification-fournisseur-chine', label: '供应商核验' },
+    ],
+  },
+  ar: {
+    badge: 'دليل Alibaba مقابل 1688',
+    title: 'Alibaba أم 1688: أي منصة تختار للاستيراد إلى أفريقيا؟',
+    intro: 'هل تتردد بين Alibaba و1688 للشراء من الصين وأنت في أفريقيا؟ هذا سؤال يطرحه كل المستوردين الأفارقة. Alibaba منصة دولية باللغة الإنجليزية لكن بأسعار تصدير أعلى، و1688 هي السوق المحلية الصينية بأسعار أقل بنسبة 30-50%، لكنها بالصينية فقط وبلا حماية دولية للمشتري. في هذا الدليل الشامل تشرح لك ChinaLink Express الفروق الأساسية ومزايا كل منصة وكيف يتيح لك وكيلنا الشراء من كلتيهما بأمان.',
+    highlights: [
+      'مقارنة تفصيلية للسعر والجودة والأمان وسهولة الوصول',
+      '1688: أسعار أقل بنسبة 30-50% لكن المخاطر أعلى',
+      'Alibaba: أكثر أمانًا لكن بأسعار تصدير أعلى',
+      'يتيح لك وكيل الشراء لدينا الشراء من المنصتين',
+      'استراتيجية موصى بها حسب ميزانيتك وخبرتك',
+    ],
+    sections: [
+      {
+        title: 'ما الفرق بين Alibaba و1688؟',
+        body: 'تنتمي Alibaba.com و1688.com إلى مجموعة Alibaba، لكنهما موجهتان إلى سوقين مختلفتين تمامًا. وفهم هذا الفرق ضروري لاختيار المنصة المناسبة لوضعك كمستورد.',
+        items: [
+          'Alibaba: منصة B2B دولية بالإنجليزية للتصدير إلى العالم كله',
+          '1688: منصة B2B صينية محلية بالصينية للسوق الداخلية الصينية',
+          'السعر: 1688 أرخص دائمًا من Alibaba بنسبة 30-50% للمنتج نفسه',
+          'الحد الأدنى للطلب (MOQ): غالبًا أقل في 1688 لأنها موجهة إلى صغار التجار الصينيين',
+          'حماية المشتري: Trade Assurance في Alibaba، ولا حماية دولية في 1688',
+        ],
+      },
+      {
+        title: 'مزايا وعيوب كل منصة',
+        body: 'لكل منصة نقاط قوة وضعف. إليك جدول مقارنة يساعدك على الاختيار حسب وضعك.',
+        items: [
+          'مزايا Alibaba: واجهة إنجليزية، موردون موثقون، Trade Assurance، دفع آمن، دعم للعملاء',
+          'عيوب Alibaba: أسعار تصدير مرتفعة، حد أدنى مرتفع للطلب، تواصل بطيء مع البائعين',
+          'مزايا 1688: أسعار مصنع حقيقية وحد أدنى مرن للطلب وأحدث المنتجات وتشكيلة ضخمة',
+          'عيوب 1688: بالصينية فقط، بلا حماية دولية، خطر احتيال مرتفع دون تحقق، دفع صعب من أفريقيا',
+        ],
+      },
+      {
+        title: 'الاستراتيجية التي نوصي بها للمستوردين الأفارقة',
+        body: 'بعد 7 سنوات من الخبرة مع مئات المستوردين الأفارقة، نوصي باستراتيجية هجينة تجمع مزايا المنصتين مع تقليل المخاطر إلى الحد الأدنى.',
+        items: [
+          'المبتدئون: ابدأوا من Alibaba مع Trade Assurance لتأمين طلباتكم الأولى',
+          'المتوسطون: Alibaba للمنتجات المعقدة، و1688 للمنتجات البسيطة والقياسية',
+          'المستوردون المتمرسون: اشتروا أساسًا من 1688 عبر وكيل موثوق لزيادة هوامشكم',
+          'لكل المستويات: استعينوا دائمًا بوكيل توريد محلي في الصين للتحقق من الموردين قبل الدفع',
+        ],
+      },
+    ],
+    tableHeaders: ['المعيار', 'Alibaba.com', '1688.com'],
+    tableRows: [
+      ['اللغة', 'الإنجليزية (متعددة اللغات)', 'الصينية فقط'],
+      ['السعر', 'سعر التصدير (أعلى بنسبة 30-50%)', 'سعر المصنع المحلي (أقل بنسبة 30-50%)'],
+      ['الحد الأدنى للطلب', 'مرتفع (100-1000+ قطعة)', 'مرن (10-100 قطعة)'],
+      ['حماية المشتري', 'Trade Assurance من Alibaba', 'لا توجد حماية دولية'],
+      ['التحقق من المورد', 'Gold Supplier، موثق', 'شروط دخول منخفضة وتحقق صعب'],
+      ['الدفع من أفريقيا', 'بطاقة مصرفية، T/T (صعب)', 'Alipay وWeChat Pay (غير ممكن من أفريقيا)'],
+      ['المنتجات الجديدة', 'منتجات مجربة ومعتمدة', 'أحدث المنتجات قبل غيرها'],
+      ['دعم العملاء', 'بالإنجليزية عبر البريد الإلكتروني', 'بالصينية فقط'],
+    ],
+    process: [
+      'حدد منتجك وميزانيتك والكمية عبر WhatsApp.',
+      'نبحث عن المنتج نفسه في Alibaba و1688 للمقارنة.',
+      'تتلقى مقارنة للسعر والجودة والمدة والمخاطر.',
+      'تختار الخيار الأفضل، ونتحقق نحن من المورد.',
+      'ندفع ونفحص ونشحن إلى بلدك في أفريقيا.',
+    ],
+    faqs: [
+      {
+        question: 'هل 1688 أرخص حقًا بنسبة 50% من Alibaba؟',
+        answer: 'نعم، بالنسبة إلى كثير من المنتجات القياسية (المنسوجات والإكسسوارات والإلكترونيات والألعاب)، تقل أسعار 1688 عن Alibaba بنسبة 30 إلى 50%. والسبب أن 1688 موجهة إلى السوق المحلية الصينية بلا تكاليف إضافية للتصدير والتسويق الدولي وعمولات الوسطاء.',
+      },
+      {
+        question: 'هل يمكنني الشراء من 1688 من مالي دون وكيل؟',
+        answer: 'هذا غير عملي: فالموقع بالصينية، والدفع يتطلب Alipay أو حسابًا مصرفيًا صينيًا، ولا توجد أي حماية دولية. ودون وكيل محلي في الصين، تعرّض أموالك لخطر احتيال مرتفع جدًا.',
+      },
+      {
+        question: 'كيف تشتري ChinaLink من 1688 نيابة عني؟',
+        answer: 'يتصفح فريقنا ثنائي اللغة في ييوو منصة 1688، ويحدد الموردين الموثوقين، ويتفاوض بالصينية، ويدفع عبر حسابنا الصيني في Alipay، ويفحص الجودة ميدانيًا، ثم يشحن إلى أفريقيا. تستفيد من أسعار 1688 مع أمان وكيل محلي.',
+      },
+      {
+        question: 'ما المنتجات الأفضل في 1688؟',
+        answer: 'المنتجات القياسية غير المعقدة مثالية في 1688: المنسوجات وإكسسوارات الموضة والأدوات المنزلية والألعاب والإلكترونيات الصغيرة والعدد. أما المنتجات التقنية المعقدة (الآلات والمعدات الطبية والإلكترونيات المتقدمة) فتبقى Alibaba أكثر أمانًا لها.',
+      },
+      {
+        question: 'ما تكلفة الوكيل للشراء من 1688؟',
+        answer: 'تبدأ أتعابنا للشراء من 1688 من 80 دولارًا لكل طلب (بحث + تفاوض + دفع). ويبلغ فحص الجودة 100 دولار. وتُعوَّض هذه الرسوم سريعًا بما توفره أسعار 1688 من 30-50%.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل توريد شامل في الصين' },
+      { href: '/ar/services/achat-alibaba-mali', label: 'الشراء من Alibaba من مالي' },
+      { href: '/ar/guides/acheter-sur-1688-depuis-le-mali', label: 'الدليل الكامل للشراء من 1688' },
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المورد' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Alibaba vs 1688 for African Importers | Which is Better? | ChinaLink'
-      : 'Alibaba vs 1688 pour Importateurs Africains | Lequel Choisir? | ChinaLink',
+      : isZh ? '非洲进口商选 Alibaba 还是 1688 | 如何选择？ | ChinaLink' : isAr ? 'Alibaba أم 1688 للمستوردين الأفارقة | أيهما تختار؟ | ChinaLink' : 'Alibaba vs 1688 pour Importateurs Africains | Lequel Choisir? | ChinaLink',
     description: isEn
       ? 'Alibaba (international, English, higher prices) vs 1688 (Chinese-only, factory direct, 30-50% cheaper). Which platform should African importers use? Complete guide with pros, cons, and our recommendation. WhatsApp: +86 188 5172 5957'
-      : 'Alibaba (international, anglais, prix plus élevés) vs 1688 (chinois uniquement, direct usine, 30-50% moins cher). Quelle plateforme pour les importateurs africains ? Guide complet avec avantages et inconvénients. WhatsApp : +86 188 5172 5957',
+      : isZh ? 'Alibaba（国际、英文、价格较高）与 1688（仅中文、工厂直供、便宜 30-50%）。非洲进口商该选哪个平台？包含优缺点的完整指南。WhatsApp：+86 188 5172 5957' : isAr ? 'Alibaba (دولية، بالإنجليزية، أسعار أعلى) مقابل 1688 (بالصينية فقط، مباشرة من المصنع، أرخص بنسبة 30-50%). أي منصة تناسب المستوردين الأفارقة؟ دليل شامل بالمزايا والعيوب. WhatsApp: ‎+86 188 5172 5957' : 'Alibaba (international, anglais, prix plus élevés) vs 1688 (chinois uniquement, direct usine, 30-50% moins cher). Quelle plateforme pour les importateurs africains ? Guide complet avec avantages et inconvénients. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'Alibaba vs 1688 for Africa, difference Alibaba 1688, buy from 1688 Africa, 1688 sourcing agent, Alibaba agent Africa, cheaper than Alibaba, Chinese factory direct, 1688 vs Alibaba price comparison, freight forwarder China Mali'
-      : 'Alibaba vs 1688 pour Afrique, différence Alibaba 1688, acheter sur 1688 Afrique, agent sourcing 1688, agent Alibaba Afrique, moins cher qu Alibaba, direct usine chinoise, comparaison prix 1688 Alibaba, cargo chine mali, transitaire chine mali',
+      : isZh ? '非洲 Alibaba 与 1688, Alibaba 1688 区别, 从非洲在 1688 购买, 1688 采购代理, 非洲 Alibaba 代理, 比 Alibaba 便宜, 中国工厂直供, 1688 Alibaba 价格比较, 中国马里货运, 中国马里货代' : isAr ? 'Alibaba مقابل 1688 لأفريقيا، الفرق بين Alibaba و1688، الشراء من 1688 في أفريقيا، وكيل توريد 1688، وكيل Alibaba في أفريقيا، أرخص من Alibaba، مباشرة من المصنع الصيني، مقارنة أسعار 1688 وAlibaba، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'Alibaba vs 1688 pour Afrique, différence Alibaba 1688, acheter sur 1688 Afrique, agent sourcing 1688, agent Alibaba Afrique, moins cher qu Alibaba, direct usine chinoise, comparaison prix 1688 Alibaba, cargo chine mali, transitaire chine mali',
     path: '/guides/alibaba-vs-1688-pour-afrique',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -224,7 +408,9 @@ export default async function AlibabaVs1688Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const howToSteps = isEn
     ? [
@@ -234,7 +420,19 @@ export default async function AlibabaVs1688Page({ params }: Props) {
         { name: 'Choose the payment method', text: 'Use Trade Assurance, China-side payment support or a local agent depending on the platform.' },
         { name: 'Inspect and ship', text: 'Quality control, consolidation and freight to your African destination.' },
       ]
-    : [
+    : isZh ? [
+        { name: '明确您的需求', text: '在选择平台之前，先确定产品、数量和预算。' },
+        { name: '比较两个平台', text: '在 Alibaba 和 1688 搜索相同产品，比较价格和条件。' },
+        { name: '核验供应商', text: '在任何付款前审核营业执照、经营记录和客户评价。' },
+        { name: '选择付款方式', text: '1688 用支付宝，Alibaba 用 Trade Assurance，或通过本地代理确保安全。' },
+        { name: '验货并发运', text: '现场质检、集运并发往非洲。' },
+      ] : isAr ? [
+        { name: 'حدد حاجتك', text: 'حدد المنتج والكمية وميزانيتك قبل اختيار المنصة.' },
+        { name: 'قارن بين المنصتين', text: 'ابحث عن المنتج نفسه في Alibaba و1688 لمقارنة السعر والشروط.' },
+        { name: 'تحقق من المورد', text: 'افحص الرخصة والسجل وآراء العملاء قبل أي دفع.' },
+        { name: 'اختر طريقة الدفع', text: 'Alipay لـ1688، وTrade Assurance لـAlibaba، أو وكيل محلي لتأمين الدفع.' },
+        { name: 'افحص واشحن', text: 'فحص الجودة ميدانيًا والتجميع والشحن إلى أفريقيا.' },
+      ] : [
         { name: 'Définir votre besoin', text: 'Identifiez le produit, la quantité et votre budget avant de choisir une plateforme.' },
         { name: 'Comparer les deux plateformes', text: 'Recherchez le même produit sur Alibaba et 1688 pour comparer prix et conditions.' },
         { name: 'Vérifier le fournisseur', text: 'Audit de la licence, historique et avis clients avant tout paiement.' },
@@ -245,14 +443,14 @@ export default async function AlibabaVs1688Page({ params }: Props) {
   const schemas = [
     generateOrganizationSchema(),
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: isEn ? 'Guides' : 'Guides', url: `/${locale}/guides` },
       { name: isEn ? 'Alibaba vs 1688' : 'Alibaba vs 1688', url: `/${locale}/guides/alibaba-vs-1688-pour-afrique` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
     generateHowToSchema(
-      isEn ? 'How to Choose Between Alibaba and 1688 for African Importing' : 'Comment choisir entre Alibaba et 1688 pour importer en Afrique',
-      isEn ? 'Step-by-step guide to select the right Chinese platform for your business' : 'Guide étape par étape pour choisir la bonne plateforme chinoise pour votre business',
+      isEn ? 'How to Choose Between Alibaba and 1688 for African Importing' : isZh ? '进口到非洲时如何在 Alibaba 和 1688 之间选择' : isAr ? 'كيف تختار بين Alibaba و1688 للاستيراد إلى أفريقيا' : 'Comment choisir entre Alibaba et 1688 pour importer en Afrique',
+      isEn ? 'Step-by-step guide to select the right Chinese platform for your business' : isZh ? '一步一步选择适合您业务的中国平台的指南' : isAr ? 'دليل خطوة بخطوة لاختيار المنصة الصينية المناسبة لتجارتك' : 'Guide étape par étape pour choisir la bonne plateforme chinoise pour votre business',
       howToSteps,
       locale as Locale
     ),
@@ -262,7 +460,7 @@ export default async function AlibabaVs1688Page({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -281,7 +479,7 @@ export default async function AlibabaVs1688Page({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

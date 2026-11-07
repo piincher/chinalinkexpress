@@ -10,6 +10,8 @@
 import { useState, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 // Country configuration
 interface Country {
@@ -46,6 +48,7 @@ export function WhatsAppCapture({
   error,
   isValid,
 }: WhatsAppCaptureProps) {
+  const locale = useLocale();
   const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]);
   const [phoneInput, setPhoneInput] = useState('');
   const [validationMessage, setValidationMessage] = useState<string | null>(null);
@@ -104,25 +107,25 @@ export function WhatsAppCapture({
   const validateNumber = (fullNumber: string, digitsOnly: string) => {
     // Minimum 8 digits check
     if (digitsOnly.length < 8) {
-      setValidationMessage('Le numéro doit contenir au moins 8 chiffres');
+      setValidationMessage(phrase(locale, 'Le numéro doit contenir au moins 8 chiffres'));
       return;
     }
 
     // Maximum 15 digits check
     if (digitsOnly.length > 15) {
-      setValidationMessage('Le numéro ne doit pas dépasser 15 chiffres');
+      setValidationMessage(phrase(locale, 'Le numéro ne doit pas dépasser 15 chiffres'));
       return;
     }
 
     // Use libphonenumber-js for validation
     try {
       if (isValidPhoneNumber(fullNumber)) {
-        setValidationMessage('Numéro valide ✓');
+        setValidationMessage(phrase(locale, 'Numéro valide ✓'));
       } else {
-        setValidationMessage('Format de numéro invalide');
+        setValidationMessage(phrase(locale, 'Format de numéro invalide'));
       }
     } catch {
-      setValidationMessage('Format de numéro invalide');
+      setValidationMessage(phrase(locale, 'Format de numéro invalide'));
     }
   };
 
@@ -189,14 +192,14 @@ export function WhatsAppCapture({
 
         {/* Title */}
         <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
-          Recevez votre résultat sur WhatsApp
+          {phrase(locale, "Recevez votre résultat sur WhatsApp")}
         </h2>
 
         {/* Benefits List */}
         <ul className="space-y-2 mb-6">
           {[
-            'Guide personnalisé envoyé instantanément',
-            'Conseils adaptés à votre niveau',
+            phrase(locale, 'Guide personnalisé envoyé instantanément'),
+            phrase(locale, 'Conseils adaptés à votre niveau'),
             'Support client par WhatsApp',
           ].map((benefit, index) => (
             <li key={index} className="flex items-center text-sm text-gray-600">
@@ -226,7 +229,7 @@ export function WhatsAppCapture({
               htmlFor="whatsapp" 
               className="block text-sm font-medium text-gray-700 mb-2"
             >
-              Numéro WhatsApp
+              {phrase(locale, "Numéro WhatsApp")}
             </label>
             
             <div className="flex gap-2">
@@ -351,16 +354,14 @@ export function WhatsAppCapture({
 
           {/* Privacy Notice */}
           <p className="text-xs text-gray-500 text-center leading-relaxed">
-            En soumettant, vous acceptez de recevoir votre guide et des informations 
-            sur nos services par WhatsApp. Vos données sont sécurisées et ne seront 
-            jamais partagées.{' '}
+            {phrase(locale, "En soumettant, vous acceptez de recevoir votre guide et des informations sur nos services par WhatsApp. Vos données sont sécurisées et ne seront jamais partagées.")}{' '}
             <a 
               href="/privacy" 
               className="underline hover:text-gray-700 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Politique de confidentialité
+              {phrase(locale, "Politique de confidentialité")}
             </a>
           </p>
         </form>

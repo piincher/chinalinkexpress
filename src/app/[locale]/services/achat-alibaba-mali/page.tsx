@@ -198,25 +198,209 @@ const content = {
       { href: '/fr/guides/acheter-sur-1688-depuis-le-mali', label: 'Guide to buying on 1688' },
     ],
   },
+  zh: {
+    badge: '马里 Alibaba 采购',
+    title: '从马里在 Alibaba 安全购买，避免诈骗',
+    intro: '您想从马里在 Alibaba 购买，但担心诈骗、语言障碍和付款问题？ChinaLink Express 是您值得信赖的 Alibaba 采购代理。我们寻找最好的供应商、谈判价格、核验质量、安全付款并交付到巴马科。已有 500 多位马里进口商信任我们。',
+    highlights: [
+      '在 Alibaba 安全采购，并核验供应商',
+      '用中文议价，节省 20-40%',
+      '通过我们在中国的办公室安全付款',
+      '发货前带照片的质量检验',
+      '门到门交付到马里，14-21 天（空运）',
+    ],
+    sections: [
+      {
+        title: '为什么要通过代理在 Alibaba 购买？',
+        body: '从马里在 Alibaba 购买有不少困难：供应商更喜欢中国付款方式（支付宝、转账），用英语谈判得到的是较高的出口价，而且无法远程核验质量。在中国的本地代理可以解决所有这些问题。',
+        items: [
+          '付款：我们通过支付宝和中国转账向供应商付款',
+          '议价：用中文沟通，获得真实工厂价',
+          '核验：供应商审核、执照、经营记录、客户评价',
+          '质量：发货前照片和视频检验',
+          '物流：集运并空运/海运到马里',
+        ],
+      },
+      {
+        title: '如何避免 Alibaba 上的诈骗',
+        body: 'Alibaba 上针对非洲买家的诈骗很常见：假供应商、劣质产品、付款后更改规格或卖家消失。ChinaLink Express 通过系统性检查保护您的投资。',
+        items: [
+          '核验营业执照和卖家经营记录',
+          '分析客户评价和过往交易',
+          '大额订单实地考察工厂',
+          '发货前带详细照片的质量检查',
+          '安全付款，提供凭证并跟进供应商',
+        ],
+      },
+      {
+        title: '简化的 Alibaba 采购流程',
+        body: '通过 ChinaLink Express，从马里在 Alibaba 购买变得简单又安全。我们是这样为您工作的：',
+        items: [
+          '通过 WhatsApp 把 Alibaba 链接或产品描述发给我们',
+          '我们寻找 3 家合格供应商并比较报价',
+          '您确认供应商和谈判后的价格',
+          '我们核验、付款并跟进生产',
+          '我们验货、集运并发往马里',
+        ],
+      },
+    ],
+    tableHeaders: ['问题', '自己在 Alibaba 购买', '使用 ChinaLink Express'],
+    tableRows: [
+      ['供应商付款', '从马里无法使用支付宝', '通过我们在中国的办公室付款'],
+      ['价格谈判', '英语沟通，出口价高', '中文谈判，真正省钱'],
+      ['诈骗风险', '无法核验', '全面审核 + 质量检验'],
+      ['订单跟踪', '消息无人回复', 'WhatsApp 实时跟踪'],
+      ['发货', '每家供应商单独发货', '集运 + 拼货运输'],
+    ],
+    process: [
+      '通过 WhatsApp 发送 Alibaba 链接或产品描述。',
+      '我们寻找并比较 3 家合格供应商。',
+      '您选择谈判后性价比最高的方案。',
+      '我们核验供应商、付款并跟进生产。',
+      '质量检验、集运并发往马里。',
+    ],
+    faqs: [
+      {
+        question: '我可以从马里在 Alibaba 购买吗？',
+        answer: '可以，但有困难：支付宝付款经常受阻，用英语谈判拿到的是出口价，而且不核验就有诈骗风险。ChinaLink Express 作为驻中国的采购代理，可解决所有这些问题。',
+      },
+      {
+        question: 'Alibaba 采购代理收费多少？',
+        answer: '我们的采购代理费从每单 50 美元起（搜索 + 议价）。质量检验为 100 美元。供应商付款和运费按透明价格单独收取。',
+      },
+      {
+        question: '如何知道 Alibaba 供应商是否可靠？',
+        answer: '我们核验营业执照、交易记录和经过核实的客户评价，并对大额订单实地考察工厂。我们从不向未经审核的供应商付款。',
+      },
+      {
+        question: 'Alibaba 订单到马里需要多久？',
+        answer: '寻找供应商需要 2-3 天，生产视产品需要 7-30 天，然后空运 14-21 天或海运 60-75 天。我们会在每个阶段提供准确的时间表。',
+      },
+      {
+        question: '你们也能在 1688 购买吗？',
+        answer: '可以，1688 是中国国内市场，价格比 Alibaba 便宜 30-50%。我们的双语团队为您在 1688 购买，并提供同样的核验和质量保障。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/agent-sourcing-chine', label: '完整的中国采购代理服务' },
+      { href: '/zh/services/verification-fournisseur-chine', label: '供应商核验' },
+      { href: '/zh/services/paiement-fournisseur-chine', label: '中国供应商付款' },
+      { href: '/zh/guides/acheter-sur-alibaba-depuis-le-mali', label: 'Alibaba 购买完整指南' },
+      { href: '/zh/guides/acheter-sur-1688-depuis-le-mali', label: '1688 购买指南' },
+    ],
+  },
+  ar: {
+    badge: 'الشراء من Alibaba في مالي',
+    title: 'الشراء من Alibaba من مالي دون احتيال',
+    intro: 'هل تريد الشراء من Alibaba من مالي لكنك تخشى الاحتيال وحاجز اللغة ومشكلات الدفع؟ ChinaLink Express وكيلك الموثوق للشراء من Alibaba. نجد أفضل الموردين ونتفاوض على الأسعار ونتحقق من الجودة وندفع بأمان ونسلم في باماكو. أكثر من 500 مستورد مالي يثقون بنا بالفعل.',
+    highlights: [
+      'شراء آمن من Alibaba مع التحقق من المورد',
+      'التفاوض على الأسعار بالصينية لتوفير 20-40%',
+      'دفع آمن عبر مكتبنا في الصين',
+      'فحص الجودة بالصور قبل الشحن',
+      'تسليم من الباب إلى الباب في مالي خلال 14-21 يومًا (جوًا)',
+    ],
+    sections: [
+      {
+        title: 'لماذا تستعين بوكيل للشراء من Alibaba؟',
+        body: 'يطرح الشراء من Alibaba من مالي عدة تحديات: يفضل الموردون وسائل الدفع الصينية (Alipay والتحويل)، والتفاوض بالإنجليزية يعطي أسعار تصدير أعلى، ويستحيل التحقق من الجودة عن بعد. والوكيل المحلي في الصين يحل كل هذه المشكلات.',
+        items: [
+          'الدفع: ندفع للموردين عبر Alipay والتحويل الصيني',
+          'التفاوض: نقاش بالصينية للحصول على أسعار المصنع الحقيقية',
+          'التحقق: تدقيق المورد والرخصة والسجل وآراء العملاء',
+          'الجودة: فحص بالصور والفيديو قبل الشحن',
+          'الخدمات اللوجستية: تجميع وشحن جوي أو بحري إلى مالي',
+        ],
+      },
+      {
+        title: 'كيف تتجنب الاحتيال في Alibaba',
+        body: 'الاحتيال في Alibaba شائع بين المشترين الأفارقة: موردون مزيفون ومنتجات رديئة وتغيير المواصفات بعد الدفع أو اختفاء البائع. تحمي ChinaLink Express استثمارك بفحوصات منهجية.',
+        items: [
+          'التحقق من الرخصة التجارية وسجل البائع',
+          'تحليل آراء العملاء والمعاملات السابقة',
+          'زيارة ميدانية للمصنع للطلبات الكبيرة',
+          'فحص الجودة مع صور مفصلة قبل الشحن',
+          'دفع آمن مع إثبات ومتابعة المورد',
+        ],
+      },
+      {
+        title: 'عملية مبسطة للشراء من Alibaba',
+        body: 'مع ChinaLink Express يصبح الشراء من Alibaba من مالي بسيطًا وآمنًا. إليك كيف نعمل من أجلك:',
+        items: [
+          'أرسل إلينا رابط Alibaba أو وصف المنتج عبر WhatsApp',
+          'نبحث عن 3 موردين مؤهلين ونقارن العروض',
+          'تؤكد المورد والسعر المتفاوض عليه',
+          'نتحقق وندفع ونتابع الإنتاج',
+          'نفحص ونجمع ونشحن إلى مالي',
+        ],
+      },
+    ],
+    tableHeaders: ['المشكلة', 'الشراء من Alibaba بمفردك', 'مع ChinaLink Express'],
+    tableRows: [
+      ['الدفع للموردين', 'Alipay غير ممكن من مالي', 'الدفع عبر مكتبنا في الصين'],
+      ['التفاوض على السعر', 'أسعار تصدير مرتفعة بالإنجليزية', 'تفاوض بالصينية وتوفير حقيقي'],
+      ['خطر الاحتيال', 'لا يمكن التحقق', 'تدقيق كامل + فحص الجودة'],
+      ['متابعة الطلب', 'رسائل بلا رد', 'متابعة فورية عبر WhatsApp'],
+      ['الشحن', 'كل مورد يشحن على حدة', 'تجميع + شحن مجمّع'],
+    ],
+    process: [
+      'أرسل رابط Alibaba أو وصف المنتج عبر WhatsApp.',
+      'نبحث عن 3 موردين مؤهلين ونقارن بينهم.',
+      'تختار أفضل قيمة مقابل السعر بعد التفاوض.',
+      'نتحقق من المورد وندفع ونتابع الإنتاج.',
+      'فحص الجودة والتجميع والشحن إلى مالي.',
+    ],
+    faqs: [
+      {
+        question: 'هل يمكنني الشراء من Alibaba من مالي؟',
+        answer: 'نعم، لكن مع صعوبات: دفع Alipay غالبًا ما يتعذر، والتفاوض بالإنجليزية يعطي أسعار تصدير، وهناك خطر احتيال دون تحقق. تحل ChinaLink Express كل هذه المشكلات بصفتها وكيل شراء في الصين.',
+      },
+      {
+        question: 'كم تبلغ تكلفة وكيل الشراء من Alibaba؟',
+        answer: 'تبدأ رسوم وكيل الشراء لدينا من 50 دولارًا لكل طلب (بحث + تفاوض). ويبلغ فحص الجودة 100 دولار. ويُحتسب الدفع للمورد والشحن بشكل منفصل بأسعار شفافة.',
+      },
+      {
+        question: 'كيف أعرف أن مورد Alibaba موثوق؟',
+        answer: 'نتحقق من الرخصة التجارية وسجل المعاملات وآراء العملاء الموثقة، ونزور المصنع للطلبات الكبيرة. ولا ندفع أبدًا لمورد لم يخضع للتدقيق.',
+      },
+      {
+        question: 'كم يستغرق وصول طلب Alibaba إلى مالي؟',
+        answer: 'يستغرق البحث عن مورد 2-3 أيام، والإنتاج 7-30 يومًا حسب المنتج، ثم الشحن الجوي 14-21 يومًا أو البحري 60-75 يومًا. نزودك بجدول دقيق في كل مرحلة.',
+      },
+      {
+        question: 'هل يمكنكم الشراء من 1688 أيضًا؟',
+        answer: 'نعم، 1688 هي السوق الصينية المحلية بأسعار أقل بنسبة 30-50% من Alibaba. يشتري فريقنا ثنائي اللغة لك من 1688 بضمانات التحقق والجودة نفسها.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل توريد شامل في الصين' },
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المورد' },
+      { href: '/ar/services/paiement-fournisseur-chine', label: 'الدفع لمورد في الصين' },
+      { href: '/ar/guides/acheter-sur-alibaba-depuis-le-mali', label: 'الدليل الكامل للشراء من Alibaba' },
+      { href: '/ar/guides/acheter-sur-1688-depuis-le-mali', label: 'دليل الشراء من 1688' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Buy from Alibaba Mali | Alibaba Agent West Africa | ChinaLink'
-      : 'Acheter sur Alibaba Mali | Agent Achat Alibaba Afrique | ChinaLink',
+      : isZh ? '马里 Alibaba 采购 | 非洲 Alibaba 采购代理 | ChinaLink' : isAr ? 'الشراء من Alibaba في مالي | وكيل شراء Alibaba في أفريقيا | ChinaLink' : 'Acheter sur Alibaba Mali | Agent Achat Alibaba Afrique | ChinaLink',
     description: isEn
       ? 'Trusted Alibaba buying agent for Mali & West Africa. Buy safely from Alibaba with supplier verification, price negotiation, secure payment & shipping to Bamako. Avoid scams. WhatsApp: +86 188 5172 5957'
-      : 'Agent achat Alibaba de confiance pour le Mali et l\'Afrique de l\'Ouest. Achetez en sécurité sur Alibaba avec vérification fournisseur, négociation, paiement sécurisé et livraison à Bamako. WhatsApp : +86 188 5172 5957',
+      : isZh ? '面向马里和西非的可信赖 Alibaba 采购代理。在 Alibaba 安全购买，提供供应商核验、议价、安全付款和巴马科交付。WhatsApp：+86 188 5172 5957' : isAr ? 'وكيل شراء موثوق من Alibaba لمالي وغرب أفريقيا. اشترِ بأمان من Alibaba مع التحقق من المورد والتفاوض والدفع الآمن والتسليم في باماكو. WhatsApp: ‎+86 188 5172 5957' : 'Agent achat Alibaba de confiance pour le Mali et l\'Afrique de l\'Ouest. Achetez en sécurité sur Alibaba avec vérification fournisseur, négociation, paiement sécurisé et livraison à Bamako. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'buy from Alibaba Mali, Alibaba agent Mali, Alibaba buying agent Africa, Alibaba sourcing agent West Africa, purchase from Alibaba Africa, Alibaba procurement Mali, avoid Alibaba scam, Alibaba payment agent, Alibaba shipping agent Mali, freight forwarder China Mali'
-      : 'acheter sur Alibaba Mali, agent Alibaba Mali, agent achat Alibaba Afrique, agent sourcing Alibaba Afrique de l\'Ouest, acheter sur Alibaba Afrique, approvisionnement Alibaba Mali, éviter arnaque Alibaba, agent paiement Alibaba, agent maritime Alibaba Mali, cargo chine mali, transitaire chine mali',
+      : isZh ? '马里 Alibaba 购买, 马里 Alibaba 代理, 非洲 Alibaba 采购代理, 西非 Alibaba 采购代理, 从非洲在 Alibaba 购买, 马里 Alibaba 采购, 避免 Alibaba 诈骗, Alibaba 付款代理, 马里 Alibaba 海运代理, 中国马里货运, 中国马里货代' : isAr ? 'الشراء من Alibaba في مالي، وكيل Alibaba في مالي، وكيل شراء Alibaba في أفريقيا، وكيل توريد Alibaba في غرب أفريقيا، الشراء من Alibaba في أفريقيا، التوريد من Alibaba إلى مالي، تجنب احتيال Alibaba، وكيل دفع Alibaba، وكيل شحن بحري Alibaba إلى مالي، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'acheter sur Alibaba Mali, agent Alibaba Mali, agent achat Alibaba Afrique, agent sourcing Alibaba Afrique de l\'Ouest, acheter sur Alibaba Afrique, approvisionnement Alibaba Mali, éviter arnaque Alibaba, agent paiement Alibaba, agent maritime Alibaba Mali, cargo chine mali, transitaire chine mali',
     path: '/services/achat-alibaba-mali',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -224,15 +408,17 @@ export default async function AchatAlibabaPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
     generateServiceSchema('alibaba', locale as Locale),
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: 'Services', url: `/${locale}/services` },
-      { name: isEn ? 'Alibaba Buying Agent' : 'Achat Alibaba Mali', url: `/${locale}/services/achat-alibaba-mali` },
+      { name: isEn ? 'Alibaba Buying Agent' : isZh ? '马里 Alibaba 采购' : isAr ? 'الشراء من Alibaba في مالي' : 'Achat Alibaba Mali', url: `/${locale}/services/achat-alibaba-mali` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -241,7 +427,7 @@ export default async function AchatAlibabaPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -271,7 +457,7 @@ export default async function AchatAlibabaPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

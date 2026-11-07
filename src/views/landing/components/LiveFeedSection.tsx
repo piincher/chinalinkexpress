@@ -40,6 +40,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Band, Shell, SectionHead } from '@/components/site';
+import { NetworkMap } from './NetworkMap';
 import {
   fetchLiveFeed,
   liveFeedEventKey,
@@ -212,9 +213,10 @@ export function LiveFeedSection() {
   }, [canRotate, groupCount]);
 
   return (
-    <Band id={SECTION_IDS.LIVE_FEED} tone="paper" ruled>
+    <Band id={SECTION_IDS.LIVE_FEED} tone="void" className="tone-dark">
       <Shell>
         <SectionHead
+          tone="void"
           label={t('label')}
           title={t('title')}
           lede={t('lede')}
@@ -245,6 +247,8 @@ export function LiveFeedSection() {
             </span>
           }
         />
+
+        <NetworkMap />
 
         {status === 'loading' && <LiveFeedSkeleton rows={GROUP_SIZE} rowHeight={ROW_HEIGHT} />}
 

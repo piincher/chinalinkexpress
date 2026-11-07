@@ -26,6 +26,8 @@ export function SeaCalculator() {
   const t = useTranslations('pricing');
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const formatDuration = (value: string) =>
     isEn
       ? value
@@ -107,7 +109,7 @@ export function SeaCalculator() {
             {t('seaCalculator.dimensions')}
             <span className="text-red-500">*</span>
             <span className="text-xs text-amber-600 dark:text-amber-400 font-normal ml-auto bg-amber-100 dark:bg-amber-900/30 px-2 py-0.5 rounded-full">
-              {t('seaCalculator.unitMeters', { defaultValue: isEn ? 'in meters' : 'en mètres' })}
+              {t('seaCalculator.unitMeters', { defaultValue: isEn ? 'in meters' : isZh ? '单位：米' : isAr ? 'بالمتر' : 'en mètres' })}
             </span>
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -230,8 +232,8 @@ export function SeaCalculator() {
                 })}
               </p>
               <ul className="text-xs text-amber-600 dark:text-amber-500 mt-2 space-y-1">
-                <li>• {t('seaCalculator.densityInfo.standardRule', { defaultValue: isEn ? 'Standard 1:200 rule (density <= 200)' : 'Règle standard 1:200 (densité ≤ 200)' })}</li>
-                <li>• {t('seaCalculator.densityInfo.coscoRule', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule (density > 250)' : 'Règle COSCO/MAERSK 1:250 (densité > 250)' })}</li>
+                <li>• {t('seaCalculator.densityInfo.standardRule', { defaultValue: isEn ? 'Standard 1:200 rule (density <= 200)' : isZh ? '标准规则 1:200（密度 ≤ 200）' : isAr ? 'القاعدة القياسية 1:200 (الكثافة ≤ 200)' : 'Règle standard 1:200 (densité ≤ 200)' })}</li>
+                <li>• {t('seaCalculator.densityInfo.coscoRule', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule (density > 250)' : isZh ? 'COSCO/MAERSK 规则 1:250（密度 > 250）' : isAr ? 'قاعدة COSCO/MAERSK 1:250 (الكثافة > 250)' : 'Règle COSCO/MAERSK 1:250 (densité > 250)' })}</li>
               </ul>
             </div>
           </div>
@@ -331,7 +333,7 @@ export function SeaCalculator() {
                       <span>{t('result.densityAdjustment')}</span>
                     </div>
                     <div className="text-xs text-white/70 pl-6">
-                      {t('result.densityRuleApplied', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule applied' : 'Règle COSCO/MAERSK 1:250 appliquée' })}
+                      {t('result.densityRuleApplied', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule applied' : isZh ? '已应用 COSCO/MAERSK 规则 1:250' : isAr ? 'تم تطبيق قاعدة COSCO/MAERSK 1:250' : 'Règle COSCO/MAERSK 1:250 appliquée' })}
                     </div>
                   </>
                 )}
@@ -397,12 +399,12 @@ export function SeaCalculator() {
                 >
                   <MessageCircle className="w-5 h-5" />
                   {t('result.contactWhatsApp', {
-                    defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                    defaultValue: isEn ? 'Request a quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'اطلب عرض سعر عبر WhatsApp' : 'Demander un devis sur WhatsApp',
                   })}
                 </a>
                 <p className="text-center text-xs text-white/80 mt-2 italic">
                   {t('result.estimateDisclaimer', {
-                    defaultValue: isEn ? 'These prices are estimates only' : 'Ces prix sont des estimations uniquement',
+                    defaultValue: isEn ? 'These prices are estimates only' : isZh ? '这些价格仅为估算' : isAr ? 'هذه الأسعار تقديرية فقط' : 'Ces prix sont des estimations uniquement',
                   })}
                 </p>
               </motion.div>

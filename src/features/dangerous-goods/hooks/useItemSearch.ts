@@ -50,7 +50,7 @@ function matchesQuery(item: DangerousGoodsItem, searchQuery: string): boolean {
   const terms = normalizedQuery.split(/\s+/).filter(Boolean);
   if (terms.length === 0) return true;
 
-  const searchableText = `${normalizeText(item.name)} ${normalizeText(item.nameFr)} ${normalizeText(item.category)} ${normalizeText(item.categoryFr)} ${normalizeText(item.description)} ${normalizeText(item.descriptionFr)}`;
+  const searchableText = `${normalizeText(item.name)} ${normalizeText(item.nameFr)} ${normalizeText(item.nameZh)} ${normalizeText(item.nameAr)} ${normalizeText(item.categoryZh)} ${normalizeText(item.categoryAr)} ${normalizeText(item.descriptionZh)} ${normalizeText(item.descriptionAr)} ${normalizeText(item.category)} ${normalizeText(item.categoryFr)} ${normalizeText(item.description)} ${normalizeText(item.descriptionFr)}`;
 
   return terms.every((term) => searchableText.includes(term));
 }

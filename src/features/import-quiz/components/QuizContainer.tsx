@@ -28,6 +28,8 @@ import { QuizProgress } from './QuizProgress';
 import { QuestionCard } from './QuestionCard';
 import { WhatsAppCapture } from './WhatsAppCapture';
 import { QuizResult } from './QuizResult';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 interface QuizContainerProps {
   /** Additional CSS classes */
@@ -43,7 +45,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
   useEffect(() => setMounted(true), []);
   const sessionIdRef = useRef<string>(createQuizSessionId());
   const attribution = useMemo(() => (mounted ? captureQuizAttribution() : {}), [mounted]);
-  const locale = mounted ? window.location.pathname.split('/')[1] || 'fr' : 'fr';
+  const locale = useLocale();
   
   // Quiz store state and actions
   const {
@@ -165,7 +167,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
     // Validate WhatsApp number
     const validation = validateWhatsAppNumber(whatsappNumber);
     if (!validation.isValid) {
-      setError(validation.error || 'Numéro de téléphone invalide');
+      setError(validation.error || phrase(locale, 'Numéro de téléphone invalide'));
       return;
     }
 
@@ -193,7 +195,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Erreur lors de la soumission');
+        throw new Error(result.error || phrase(locale, 'Erreur lors de la soumission'));
       }
 
       setComplete();
@@ -215,7 +217,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
         setGuideUrl(result.guideUrl);
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Une erreur est survenue';
+      const message = err instanceof Error ? err.message : phrase(locale, 'Une erreur est survenue');
       setError(message);
       trackQuizEvent({
         eventName: 'quiz_submit_failed',
@@ -330,7 +332,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
               Quiz d&apos;import
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Testez votre readiness
+              {phrase(locale, "Testez votre readiness")}
             </p>
           </div>
         </motion.div>
@@ -349,11 +351,10 @@ export function QuizContainer({ className }: QuizContainerProps) {
                 className="text-center py-8"
               >
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  Êtes-vous prêt à importer de Chine?
+                  {phrase(locale, "Êtes-vous prêt à importer de Chine?")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto">
-                  Faites ce quiz de 5 questions pour évaluer votre readiness et recevoir 
-                  un guide personnalisé pour démarrer votre importation.
+                  {phrase(locale, "Faites ce quiz de 5 questions pour évaluer votre readiness et recevoir un guide personnalisé pour démarrer votre importation.")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
@@ -365,7 +366,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
                   </Button>
                 </div>
                 <p className="text-xs text-gray-400 mt-6">
-                  Durée: ~2 minutes • Résultat personnalisé
+                  {phrase(locale, "Durée: ~2 minutes • Résultat personnalisé")}
                 </p>
               </motion.div>
             )}
@@ -404,7 +405,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
                     onClick={handlePrevious}
                     disabled={currentQuestion === 0}
                   >
-                    Précédent
+                    {phrase(locale, "Précédent")}
                   </Button>
                   <Button
                     onClick={handleNext}
@@ -444,7 +445,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
                     onClick={handlePrevious}
                     disabled={isSubmitting}
                   >
-                    Retour aux questions
+                    {phrase(locale, "Retour aux questions")}
                   </Button>
                 </div>
               </motion.div>
@@ -461,7 +462,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
               >
                 <Loader2 className="w-12 h-12 text-blue-500 animate-spin mb-4" />
                 <p className="text-gray-600 dark:text-gray-300">
-                  Génération de votre guide personnalisé...
+                  {phrase(locale, "Génération de votre guide personnalisé...")}
                 </p>
               </motion.div>
             )}
@@ -482,7 +483,7 @@ export function QuizContainer({ className }: QuizContainerProps) {
                 <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-red-800 dark:text-red-200 font-medium">
-                    Une erreur est survenue
+                    {phrase(locale, "Une erreur est survenue")}
                   </p>
                   <p className="text-red-600 dark:text-red-300 text-sm mt-1">
                     {error}
@@ -522,10 +523,10 @@ export function QuizContainer({ className }: QuizContainerProps) {
           >
             <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
               <span>
-                Question {currentQuestion + 1} sur {QUIZ_CONFIG.totalQuestions}
+                {phrase(locale, "Question")} {currentQuestion + 1} sur {QUIZ_CONFIG.totalQuestions}
               </span>
               <span>
-                {Math.round(progress)}% complété
+                {Math.round(progress)}{phrase(locale, "% complété")}
               </span>
             </div>
           </motion.div>

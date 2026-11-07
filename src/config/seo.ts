@@ -135,6 +135,16 @@ export const PAGE_SEO = {
       description: 'Calculez vos frais d\'expédition de la Chine vers le Mali instantanément. Tarifs fret aérien et maritime vers Bamako via notre réseau de partenaires. Estimation précise!',
       keywords: 'calculateur frais expédition, tarifs fret Chine Mali, estimateur coût transport, calculateur fret aérien',
     },
+    zh: {
+      title: '运费计算器 | 中国—马里运价',
+      description: '立即计算从中国到马里的运费。通过我们的伙伴网络查看到巴马科的空运和海运价格。准确估算！',
+      keywords: '运费计算器, 中国马里运价, 运输成本估算, 空运计算器, 运价模拟',
+    },
+    ar: {
+      title: 'حاسبة رسوم الشحن | أسعار الشحن من الصين إلى مالي',
+      description: 'احسب رسوم الشحن من الصين إلى مالي فورًا. أسعار الشحن الجوي والبحري إلى باماكو عبر شبكة شركائنا. تقدير دقيق!',
+      keywords: 'حاسبة رسوم الشحن، أسعار الشحن من الصين إلى مالي، مقدّر كلفة النقل، حاسبة الشحن الجوي، محاكي أسعار الشحن',
+    },
   },
   
   pricing: {
@@ -147,6 +157,16 @@ export const PAGE_SEO = {
       title: 'Tarifs d\'Expédition Chine-Mali | Prix Fret Aérien & Maritime',
       description: 'Tarifs compétitifs pour expédier de la Chine vers le Mali. Fret aérien et maritime vers Bamako via des partenaires. Prix transparents. Consultez nos tarifs!',
       keywords: 'tarifs expédition Chine Mali, prix fret, tarifs fret aérien, tarifs fret maritime, coûts transport',
+    },
+    zh: {
+      title: '中国—马里发货价格 | 空运和海运价格',
+      description: '从中国发往马里的有竞争力价格。通过合作伙伴空运和海运到巴马科。价格透明。查看我们的价格！',
+      keywords: '中国马里发货价格, 运费价格, 空运价格, 海运价格, 运输成本',
+    },
+    ar: {
+      title: 'أسعار الشحن من الصين إلى مالي | أسعار الشحن الجوي والبحري',
+      description: 'أسعار تنافسية للشحن من الصين إلى مالي. شحن جوي وبحري إلى باماكو عبر شركاء. أسعار شفافة. اطلع على أسعارنا!',
+      keywords: 'أسعار الشحن من الصين إلى مالي، أسعار النقل، أسعار الشحن الجوي، أسعار الشحن البحري، تكاليف النقل',
     },
   },
   
@@ -161,6 +181,16 @@ export const PAGE_SEO = {
       description: 'Contactez ChinaLink Express pour un devis fret gratuit. WhatsApp: +86 188 5172 5957. Fret aérien et maritime de la Chine vers Bamako, Mali via des partenaires de confiance. Support 24/7!',
       keywords: 'contact transitaire, devis fret Chine Mali, ChinaLink Express contact, demande expédition',
     },
+    zh: {
+      title: '联系 ChinaLink Express | 货运报价 | 中国—马里发货',
+      description: '联系 ChinaLink Express 获取免费运费报价。WhatsApp：+86 188 5172 5957。通过值得信赖的伙伴从中国空运和海运到马里巴马科。全天候支持！',
+      keywords: '联系货代, 中国马里运费报价, ChinaLink Express 联系方式, 发货咨询, 物流报价',
+    },
+    ar: {
+      title: 'تواصل مع ChinaLink Express | عرض سعر الشحن | الشحن من الصين إلى مالي',
+      description: 'تواصل مع ChinaLink Express للحصول على عرض سعر مجاني للشحن. WhatsApp: ‎+86 188 5172 5957. شحن جوي وبحري من الصين إلى باماكو في مالي عبر شركاء موثوقين. دعم على مدار الساعة!',
+      keywords: 'التواصل مع وكيل شحن، عرض سعر الشحن من الصين إلى مالي، الاتصال بـChinaLink Express، طلب شحن، عرض سعر لوجستي',
+    },
   },
   
   faq: {
@@ -173,6 +203,16 @@ export const PAGE_SEO = {
       title: 'FAQ Expédition | Questions Fret Chine-Mali',
       description: 'Trouvez les réponses à toutes vos questions sur l\'expédition. Délais, tarifs, douanes, articles interdits. Tout savoir sur l\'expédition de la Chine vers le Mali.',
       keywords: 'FAQ expédition, questions fret, FAQ fret Chine Mali, FAQ dédouanement, délais livraison',
+    },
+    zh: {
+      title: '发货常见问题 | 中国—马里货运问题',
+      description: '找到所有发货问题的答案。时效、价格、海关、禁运物品。关于从中国发往马里需要了解的一切。',
+      keywords: '发货常见问题, 货运问题, 中国马里货运常见问题, 清关常见问题, 交付时效',
+    },
+    ar: {
+      title: 'الأسئلة الشائعة عن الشحن | أسئلة الشحن من الصين إلى مالي',
+      description: 'اعثر على إجابات كل أسئلتك عن الشحن. المدد والأسعار والجمارك والسلع المحظورة. كل ما يجب معرفته عن الشحن من الصين إلى مالي.',
+      keywords: 'الأسئلة الشائعة عن الشحن، أسئلة الشحن، الشحن من الصين إلى مالي، التخليص الجمركي، مدد التسليم',
     },
   },
 } as const;

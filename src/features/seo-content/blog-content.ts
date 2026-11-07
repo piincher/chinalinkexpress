@@ -14,7 +14,7 @@ export interface SeoArticleContent {
   links: Array<{ href: string; label: string }>;
 }
 
-type ArticleLocaleContent = Record<'fr' | 'en', SeoArticleContent>;
+type ArticleLocaleContent = Record<Locale, SeoArticleContent>;
 
 const commonLinks = {
   fr: [
@@ -28,6 +28,18 @@ const commonLinks = {
     { href: '/en/routes/china-to-africa', label: 'China to Africa routes' },
     { href: '/en/services/sourcing', label: 'China sourcing service' },
     { href: '/en/calculateur', label: 'Freight calculator' },
+  ],
+  zh: [
+    { href: '/zh/cargo-chine-mali', label: '中国—马里货运' },
+    { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+    { href: '/zh/services/sourcing', label: '中国采购代理' },
+    { href: '/zh/calculateur', label: '运费计算器' },
+  ],
+  ar: [
+    { href: '/ar/cargo-chine-mali', label: 'الشحن من الصين إلى مالي' },
+    { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+    { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
+    { href: '/ar/calculateur', label: 'حاسبة الشحن' },
   ],
 };
 
@@ -73,6 +85,46 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       ],
       links: commonLinks.en,
     },
+    zh: {
+      slug: 'comment-importer-chine-mali-2026',
+      title: '2026 年如何从中国进口到马里',
+      description: '从中国进口到马里的分步指南：供应商、付款、质量检查、海关、空运、海运和交付。',
+      keywords: '从中国进口到马里, 中国马里进口指南, 中国马里供应商, 中国马里货运',
+      date: '2026-04-21',
+      updatedAt: '2026 年 4 月 21 日',
+      readTime: '阅读时间：8 分钟',
+      category: '指南',
+      sections: [
+        { title: '1. 确认产品和利润', body: '联系供应商之前，先比较供应商价格、运费、本地需求和可能的限制。在 Alibaba 上有利润的产品，运输后可能就没有利润了。' },
+        { title: '2. 核验供应商', body: '索取生产证明、清晰的发票、近期照片和书面条款。ChinaLink 可以在付款前核验关键信号。' },
+        { title: '3. 保障付款、检查和交付', body: '确认后，安排付款、检验、集运和运输方式。马里仍是我们的主要枢纽，也可扩展到西非。' },
+      ],
+      faqs: [
+        { question: '开始需要多少预算？', answer: '从测试批次或样品开始。预算取决于产品、起订量、供应商付款和运输方式。' },
+        { question: '选择哪种运输方式？', answer: '空运适合紧急或轻便的产品。海运适合大批量和不紧急的货物。' },
+      ],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'comment-importer-chine-mali-2026',
+      title: 'كيف تستورد من الصين إلى مالي في 2026',
+      description: 'دليل خطوة بخطوة للاستيراد من الصين إلى مالي: الموردون والدفع وفحص الجودة والجمارك والشحن الجوي والبحري والتسليم.',
+      keywords: 'الاستيراد من الصين إلى مالي، دليل الاستيراد من الصين إلى مالي، مورد من الصين إلى مالي، الشحن من الصين إلى مالي',
+      date: '2026-04-21',
+      updatedAt: '21 أبريل 2026',
+      readTime: 'وقت القراءة: 8 دقائق',
+      category: 'دليل',
+      sections: [
+        { title: '1. التحقق من المنتج والهامش', body: 'قبل التواصل مع مورد، قارن سعر المورد وكلفة الشحن والطلب المحلي والقيود المحتملة. فقد يصبح منتج مربح في Alibaba غير مربح بعد النقل.' },
+        { title: '2. التحقق من المورد', body: 'اطلب أدلة الإنتاج وفاتورة واضحة وصورًا حديثة وشروطًا مكتوبة. ويمكن لـChinaLink التحقق من المؤشرات الأساسية قبل الدفع.' },
+        { title: '3. تأمين الدفع والفحص والتسليم', body: 'بعد الموافقة، نظم الدفع والفحص والتجميع وطريقة الشحن. وتبقى مالي مركزنا الرئيسي مع إمكانية التوسع إلى غرب أفريقيا.' },
+      ],
+      faqs: [
+        { question: 'ما الميزانية اللازمة للبدء؟', answer: 'ابدأ بدفعة تجريبية أو عينة. تعتمد الميزانية على المنتج والحد الأدنى للطلب والدفع للمورد وطريقة الشحن.' },
+        { question: 'أي طريقة شحن أختار؟', answer: 'الشحن الجوي مناسب للمنتجات العاجلة أو الخفيفة. والبحري مناسب للكميات الكبيرة والبضائع غير العاجلة.' },
+      ],
+      links: commonLinks.fr,
+    },
   },
   'cargo-chine-mali-guide-complet': {
     fr: {
@@ -115,6 +167,46 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       ],
       links: commonLinks.en,
     },
+    zh: {
+      slug: 'cargo-chine-mali-guide-complet',
+      title: '中国马里货运：空运和海运完整指南',
+      description: '关于中国马里货运的一切：空运、海运、价格、时效、海关以及如何选择合适的运输方式。',
+      keywords: '中国马里货运, 中国马里空运, 中国马里海运, 中国马里集装箱',
+      date: '2026-04-18',
+      updatedAt: '2026 年 4 月 18 日',
+      readTime: '阅读时间：6 分钟',
+      category: '货运',
+      sections: [
+        { title: '1. 中国—马里空运', body: '空运非常适合紧急、轻便或高利润的产品。到巴马科的常规时效为 14 到 21 天。' },
+        { title: '2. 中国—马里海运', body: '海运适合大批量、家具、机器和重型纸箱。路线通常先经达喀尔，再陆路转运到巴马科。' },
+        { title: '3. 如何通过 ChinaLink 预订', body: '通过 WhatsApp 发送信息，收到清晰的报价，让货物送到中国，然后跟踪集运、出发和到达。' },
+      ],
+      faqs: [
+        { question: '中国到马里的货运费用是多少？', answer: '价格取决于重量、体积、产品类别和运输方式。需要个性化报价。' },
+        { question: '服务是门到门吗？', answer: '是的，根据目的地和货物类型，ChinaLink 协调收货、集运、货运、清关和交付。' },
+      ],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'cargo-chine-mali-guide-complet',
+      title: 'الشحن من الصين إلى مالي: الدليل الكامل للشحن الجوي والبحري',
+      description: 'كل ما يجب معرفته عن الشحن من الصين إلى مالي: الجوي والبحري والأسعار والمدد والجمارك واختيار طريقة النقل المناسبة.',
+      keywords: 'الشحن من الصين إلى مالي، الشحن الجوي من الصين إلى مالي، الشحن البحري من الصين إلى مالي، حاوية من الصين إلى مالي',
+      date: '2026-04-18',
+      updatedAt: '18 أبريل 2026',
+      readTime: 'وقت القراءة: 6 دقائق',
+      category: 'الشحن',
+      sections: [
+        { title: '1. الشحن الجوي من الصين إلى مالي', body: 'الشحن الجوي مثالي للمنتجات العاجلة أو الخفيفة أو عالية الهامش. والمدة المعتادة إلى باماكو من 14 إلى 21 يومًا.' },
+        { title: '2. الشحن البحري من الصين إلى مالي', body: 'الشحن البحري مناسب للكميات الكبيرة والأثاث والآلات والكراتين الثقيلة. ويمر المسار غالبًا عبر داكار قبل العبور البري إلى باماكو.' },
+        { title: '3. كيف تحجز مع ChinaLink', body: 'أرسل معلوماتك عبر WhatsApp، واستلم عرض سعر واضحًا، واجعل التسليم في الصين، ثم تابع التجميع والمغادرة والوصول.' },
+      ],
+      faqs: [
+        { question: 'كم تبلغ كلفة الشحن من الصين إلى مالي؟', answer: 'يعتمد السعر على الوزن والحجم وفئة المنتج وطريقة الشحن. يلزم عرض سعر مخصص.' },
+        { question: 'هل الخدمة من الباب إلى الباب؟', answer: 'نعم، حسب الوجهة ونوع الشحنة، تنسق ChinaLink الاستلام والتجميع والشحن والتخليص الجمركي والتسليم.' },
+      ],
+      links: commonLinks.fr,
+    },
   },
   'acheter-alibaba-mali-sans-arnaque': {
     fr: {
@@ -150,6 +242,40 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       ],
       faqs: [{ question: 'Can Alibaba ship directly to Mali?', answer: 'Sometimes, but costs can be high. A freight partner can consolidate and inspect parcels before shipping.' }],
       links: commonLinks.en,
+    },
+    zh: {
+      slug: 'acheter-alibaba-mali-sans-arnaque',
+      title: '从马里在 Alibaba 购买而不被骗',
+      description: '从马里在 Alibaba 购买的实用指南：供应商核验、安全付款、质量检验和运输。',
+      keywords: '马里 Alibaba 购买, 马里 Alibaba, 中国马里 Alibaba 供应商, Alibaba 安全采购',
+      date: '2026-04-15',
+      updatedAt: '2026 年 4 月 15 日',
+      readTime: '阅读时间：7 分钟',
+      category: '采购',
+      sections: [
+        { title: '1. 识别可信信号', body: '核验经营年限、文件、评价、价格一致性和真实的生产证明。' },
+        { title: '2. 不核验不付款', body: '避开可疑的个人账户，并在付款前要求明确确认。' },
+        { title: '3. 发货前验货', body: '照片或视频检验可降低数量、颜色、包装或质量出错的风险。' },
+      ],
+      faqs: [{ question: 'Alibaba 直接送到马里吗？', answer: '有时可以，但费用可能很高。货代通常可以合并并检查包裹。' }],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'acheter-alibaba-mali-sans-arnaque',
+      title: 'الشراء من Alibaba من مالي دون التعرض للاحتيال',
+      description: 'دليل عملي للشراء من Alibaba من مالي: التحقق من المورد والدفع الآمن وفحص الجودة والشحن.',
+      keywords: 'الشراء من Alibaba في مالي، Alibaba مالي، مورد Alibaba من الصين إلى مالي، الشراء الآمن من Alibaba',
+      date: '2026-04-15',
+      updatedAt: '15 أبريل 2026',
+      readTime: 'وقت القراءة: 7 دقائق',
+      category: 'التوريد',
+      sections: [
+        { title: '1. رصد مؤشرات الثقة', body: 'تحقق من الأقدمية والمستندات والآراء وتناسق السعر والأدلة الحقيقية للإنتاج.' },
+        { title: '2. لا تدفع دون تحقق', body: 'تجنب الحسابات الشخصية المشبوهة واطلب تأكيدًا واضحًا قبل الدفع.' },
+        { title: '3. افحص قبل الشحن', body: 'يقلل الفحص بالصور أو الفيديو مخاطر الخطأ في الكمية أو اللون أو التغليف أو الجودة.' },
+      ],
+      faqs: [{ question: 'هل تسلم Alibaba مباشرة في مالي؟', answer: 'أحيانًا، لكن قد تكون التكاليف مرتفعة. وغالبًا ما يتيح وكيل الشحن تجميع الطرود وفحصها.' }],
+      links: commonLinks.fr,
     },
   },
   'paiement-fournisseur-chine-guide': {
@@ -187,6 +313,40 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       faqs: [{ question: 'Can ChinaLink pay a supplier for me?', answer: 'Yes, depending on the case, we can assist supplier payment and follow goods preparation.' }],
       links: commonLinks.en,
     },
+    zh: {
+      slug: 'paiement-fournisseur-chine-guide',
+      title: '中国供应商付款：支付宝、转账与安全',
+      description: '比较向中国供应商付款的方式，了解如何在购买前降低风险。',
+      keywords: '中国供应商付款, 马里支付宝, 向中国供应商付款, 非洲 Alibaba 付款',
+      date: '2026-04-10',
+      updatedAt: '2026 年 4 月 10 日',
+      readTime: '阅读时间：5 分钟',
+      category: '付款',
+      sections: [
+        { title: '1. 了解对方要求的付款方式', body: '供应商可能要求支付宝、中国银行转账或平台付款。每种方式都有风险。' },
+        { title: '2. 付款前核验', body: '确认公司名称、联系方式、发票和报价的一致性。' },
+        { title: '3. 保留可用的凭证', body: '保留收据、截图、发票和重要沟通记录，以便跟踪订单。' },
+      ],
+      faqs: [{ question: 'ChinaLink 可以向供应商付款吗？', answer: '可以，视情况我们可以协助付款并跟进货物准备。' }],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'paiement-fournisseur-chine-guide',
+      title: 'الدفع للمورد الصيني: Alipay والتحويل والأمان',
+      description: 'قارن طرق الدفع للموردين في الصين واكتشف كيف تحد من المخاطر قبل الشراء.',
+      keywords: 'الدفع لمورد صيني، Alipay في مالي، الدفع لمورد في الصين، الدفع في Alibaba من أفريقيا',
+      date: '2026-04-10',
+      updatedAt: '10 أبريل 2026',
+      readTime: 'وقت القراءة: 5 دقائق',
+      category: 'الدفع',
+      sections: [
+        { title: '1. افهم طريقة الدفع المطلوبة', body: 'قد يطلب الموردون Alipay أو تحويلًا مصرفيًا صينيًا أو الدفع عبر المنصة. ولكل طريقة مخاطرها.' },
+        { title: '2. تحقق قبل الدفع', body: 'تأكد من اسم الشركة وبيانات الاتصال والفاتورة وتناسق عرض السعر.' },
+        { title: '3. احتفظ بإثبات يمكن استخدامه', body: 'احتفظ بالإيصالات ولقطات الشاشة والفاتورة والمراسلات المهمة لمتابعة الطلب.' },
+      ],
+      faqs: [{ question: 'هل يمكن لـChinaLink الدفع لمورد؟', answer: 'نعم، حسب الحالة يمكننا المساعدة في الدفع ومتابعة تجهيز البضاعة.' }],
+      links: commonLinks.fr,
+    },
   },
   'douane-mali-import-chine': {
     fr: {
@@ -222,6 +382,40 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       ],
       faqs: [{ question: 'Can every product clear customs?', answer: 'No. Some products are prohibited or regulated and must be validated before purchase.' }],
       links: commonLinks.en,
+    },
+    zh: {
+      slug: 'douane-mali-import-chine',
+      title: '马里海关：从中国进口所需文件',
+      description: '从中国进口到马里的文件和注意事项：发票、装箱单、限制、清关和交付。',
+      keywords: '马里海关中国进口, 马里海关文件, 马里中国清关',
+      date: '2026-04-05',
+      updatedAt: '2026 年 4 月 5 日',
+      readTime: '阅读时间：6 分钟',
+      category: '海关',
+      sections: [
+        { title: '1. 准备文件', body: '商业发票、装箱单、产品描述、数量、价值和包装信息必须清晰。' },
+        { title: '2. 核查敏感产品', body: '电池、液体、无人机、化学品和某些补充剂可能需要确认。' },
+        { title: '3. 减少延误', body: '准确的描述和一致的文件可减少扣货和意外费用。' },
+      ],
+      faqs: [{ question: '所有产品都能通关吗？', answer: '不能。有些产品被禁止或受管制，必须在购买前确认。' }],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'douane-mali-import-chine',
+      title: 'جمارك مالي: مستندات الاستيراد من الصين',
+      description: 'المستندات والاحتياطات للاستيراد من الصين إلى مالي: الفاتورة وقائمة التعبئة والقيود والتخليص الجمركي والتسليم.',
+      keywords: 'جمارك مالي والاستيراد من الصين، مستندات جمارك مالي، التخليص الجمركي بين مالي والصين',
+      date: '2026-04-05',
+      updatedAt: '5 أبريل 2026',
+      readTime: 'وقت القراءة: 6 دقائق',
+      category: 'الجمارك',
+      sections: [
+        { title: '1. جهّز المستندات', body: 'يجب أن تكون الفاتورة التجارية وقائمة التعبئة ووصف المنتج والكمية والقيمة ومعلومات التغليف واضحة.' },
+        { title: '2. تحقق من المنتجات الحساسة', body: 'قد تتطلب البطاريات والسوائل والطائرات المسيّرة والمواد الكيميائية وبعض المكملات موافقة.' },
+        { title: '3. قلل التأخير', body: 'يقلل الوصف الدقيق والمستندات المتسقة الحجز والرسوم غير المتوقعة.' },
+      ],
+      faqs: [{ question: 'هل تمر كل المنتجات عبر الجمارك؟', answer: 'لا. بعض المنتجات محظورة أو منظمة ويجب التأكد منها قبل الشراء.' }],
+      links: commonLinks.fr,
     },
   },
   'conteneur-chine-mali-prix-2026': {
@@ -259,15 +453,49 @@ export const BLOG_CONTENT: Record<string, ArticleLocaleContent> = {
       faqs: [{ question: 'Should I start with FCL or LCL?', answer: 'LCL is often better for testing moderate volume before filling a full container.' }],
       links: commonLinks.en,
     },
+    zh: {
+      slug: 'conteneur-chine-mali-prix-2026',
+      title: '中国马里集装箱：2026 年的价格、时效和手续',
+      description: '20 尺 FCL、40 尺 FCL、LCL 拼箱、参考价格、时效、始发港和到巴马科的路线。',
+      keywords: '中国马里集装箱, 中国马里集装箱价格, 马里 FCL, 马里 LCL',
+      date: '2026-04-01',
+      updatedAt: '2026 年 4 月 1 日',
+      readTime: '阅读时间：5 分钟',
+      category: '货运',
+      sections: [
+        { title: '1. FCL 还是 LCL', body: 'FCL 适合大批量。货量较小时，LCL 可以共用集装箱。' },
+        { title: '2. 海运路线', body: '货物从中国出发，通常到达达喀尔或其他西非港口，然后走公路。' },
+        { title: '3. 获取可靠报价', body: '价格取决于体积、重量、产品、季节和港口。确认报价仍然必不可少。' },
+      ],
+      faqs: [{ question: '开始时选 FCL 还是 LCL？', answer: '在装满整箱之前，LCL 通常更适合测试中等货量。' }],
+      links: commonLinks.fr,
+    },
+    ar: {
+      slug: 'conteneur-chine-mali-prix-2026',
+      title: 'حاوية من الصين إلى مالي: الأسعار والمدد والإجراءات في 2026',
+      description: 'FCL مقاس 20 قدمًا وFCL مقاس 40 قدمًا وشحن مجمّع LCL وأسعار استرشادية ومدد وموانئ المغادرة والطريق إلى باماكو.',
+      keywords: 'حاوية من الصين إلى مالي، سعر حاوية من الصين إلى مالي، FCL إلى مالي، LCL إلى مالي',
+      date: '2026-04-01',
+      updatedAt: '1 أبريل 2026',
+      readTime: 'وقت القراءة: 5 دقائق',
+      category: 'الشحن',
+      sections: [
+        { title: '1. FCL أم LCL', body: 'FCL مناسب للكميات الكبيرة. ويتيح LCL مشاركة حاوية عندما يكون حجمك أقل.' },
+        { title: '2. الطريق البحري', body: 'تغادر البضائع الصين، وتصل غالبًا إلى داكار أو ميناء آخر في غرب أفريقيا، ثم تكمل برًا.' },
+        { title: '3. احصل على سعر موثوق', body: 'يعتمد السعر على الحجم والوزن والمنتج والموسم والميناء. ويبقى عرض السعر المؤكد ضروريًا.' },
+      ],
+      faqs: [{ question: 'FCL أم LCL للبدء؟', answer: 'غالبًا ما يكون LCL أنسب لاختبار حجم متوسط قبل ملء حاوية كاملة.' }],
+      links: commonLinks.fr,
+    },
   },
 };
 
 export function getBlogPosts(locale: Locale): SeoArticleContent[] {
-  const lang = locale === 'en' ? 'en' : 'fr';
+  const lang = (locale as Locale);
   return Object.values(BLOG_CONTENT).map((post) => post[lang]);
 }
 
 export function getBlogPost(slug: string, locale: Locale): SeoArticleContent {
   const post = BLOG_CONTENT[slug] || BLOG_CONTENT['comment-importer-chine-mali-2026'];
-  return post[locale === 'en' ? 'en' : 'fr'];
+  return post[(locale as Locale)];
 }

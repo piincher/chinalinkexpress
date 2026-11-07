@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "ChinaLink Express | Cargo Chine Mali | Fret Aérien & Maritime",
+    "title": "Cargo Chine Mali | Transitaire Chine Mali · ChinaLink Express",
     "description": "ChinaLink Express - cargo chine mali. Votre partenaire logistique de confiance pour le sourcing, l'achat et l'expédition de marchandises de la Chine vers le Mali. Devis gratuit.",
     "keywords": "cargo chine mali, transitaire chine mali, sourcing Chine Afrique, expédition Chine Mali, fret maritime Chine Afrique, fret aérien Chine Bamako, logistique internationale"
   },
@@ -75,7 +75,8 @@
     ],
     "stats": {
       "payOnDelivery": "Payez à la livraison"
-    }
+    },
+    "keywords": "Cargo Chine Mali · Transitaire Chine Mali"
   },
   "landing": {
     "marquee": [
@@ -90,7 +91,16 @@
     "finalCta": {
       "title": "Vous avez des marchandises en Chine ?",
       "lede": "Envoyez-nous le lien du produit, la quantité et le mode qui vous arrange. Nous vous disons ce que ça coûte et combien de temps ça prend."
-    }
+    },
+    "lanesLabel": "Lignes desservies",
+    "lanes": [
+      "Guangzhou → Bamako",
+      "Foshan → Bamako",
+      "Cargo Chine Mali",
+      "Transitaire Chine Mali",
+      "Fret aérien",
+      "Fret maritime"
+    ]
   },
   "stats": {
     "sectionLabel": "Le réseau en chiffres",
@@ -434,7 +444,7 @@
   },
   "testimonials": {
     "sectionLabel": "Témoignages",
-    "title": "Ce Que Disent Nos Clients",
+    "title": "Ce que disent nos clients",
     "testimonials": {
       "sectionLabel": "Témoignages"
     },
@@ -455,7 +465,7 @@
   },
   "faq": {
     "sectionLabel": "FAQ",
-    "title": "Questions Fréquentes",
+    "title": "Questions fréquentes",
     "noAnswer": "Vous ne trouvez pas votre réponse ?",
     "contactWhatsApp": "Contactez-nous sur WhatsApp",
     "helpTitle": "Besoin d'aide ?",
@@ -1527,7 +1537,8 @@
       "buy": "Vous achetez",
       "consolidate": "Nous réceptionnons",
       "receive": "Vous recevez"
-    }
+    },
+    "destination": "Bamako"
   },
   "journey": {
     "label": "Le parcours",
@@ -1738,5 +1749,72 @@
     "dummyLabel": "EXEMPLE · DONNÉES FICTIVES",
     "dummyNote": "Ce modèle est une démonstration. Pour vos envois, utilisez uniquement votre marque personnelle.",
     "imageAlt": "Exemple fictif de marque ChinaLink : entrepôt DEMO-0000, client CLX-ML-DEMO, CLIENT EXEMPLE, téléphone +223 00 00 00 00."
+  },
+  "estimator": {
+    "title": "Estimation instantanée",
+    "publicRates": "Tarifs publics",
+    "modeLabel": "Mode d'expédition",
+    "modes": {
+      "standard": "Air Standard",
+      "express": "Flash Express",
+      "electronics": "Électronique",
+      "phones": "Téléphones",
+      "sea": "Maritime"
+    },
+    "quantity": {
+      "kg": "Poids en kg",
+      "piece": "Nombre de pièces",
+      "cbm": "Volume en CBM"
+    },
+    "units": {
+      "kg": "kg",
+      "piece": "pièce",
+      "cbm": "CBM"
+    },
+    "decrease": "Diminuer",
+    "increase": "Augmenter",
+    "announcedDelay": "Délai annoncé",
+    "rate": "Tarif",
+    "days": "{days} jours",
+    "cta": "Recevoir ce devis sur WhatsApp",
+    "whatsapp": "Bonjour ChinaLink, je souhaite un devis : {mode}, {quantity} {unit}. Estimation du site : {price} F CFA.",
+    "notes": {
+      "standard": "Estimation avant pesée à l’entrepôt. Poids volumétrique : (L × l × H) ÷ 5000.",
+      "express": "Estimation avant pesée à l’entrepôt. Poids volumétrique : (L × l × H) ÷ 5000.",
+      "electronics": "Électronique, batteries, liquides. Estimation avant pesée à l’entrepôt.",
+      "phones": "Téléphones : tarif à la pièce, jamais au poids.",
+      "sea": "Minimum 0,1 CBM. Densité au dessus de 250 kg/m³ : volume ajusté."
+    },
+    "scope": "Tarifs vers Bamako."
+  },
+  "proof": {
+    "label": "La preuve",
+    "title": "Une photo de votre colis, un code pour la vérifier.",
+    "lede": "Les photos de réception portent la référence du colis, la date, l'entrepôt et un code de vérification. Entrez ce code sur notre site : vous savez si la photo est authentique.",
+    "bannerLine": "Reçu le •• •• •••• · Entrepôt Foshan (SEA) · Maritime · • cartons",
+    "code": "Code de vérification ••••-••••",
+    "scan": "Scannez ou entrez le code sur chinalinkexpress.com/verifier",
+    "note": "Exemple fictif de bandeau photo",
+    "chain": "Chaîne de possession",
+    "stages": [
+      "Réception à l'entrepôt",
+      "Colis étiqueté",
+      "Arrivée à destination",
+      "Remise au client"
+    ],
+    "cta": "Vérifier une photo"
+  },
+  "tagline": "Acheter à 12 000 km ne veut pas dire acheter à l’aveugle.",
+  "network": {
+    "air": "Aérien · 14-21 jours",
+    "sea": "Maritime · 60-75 jours",
+    "note": "Tracés illustratifs",
+    "alt": "Carte des lignes de la Chine vers Bamako"
+  },
+  "installPrompt": {
+    "title": "Installer ChinaLink Express",
+    "body": "Ajoutez-le à votre écran d’accueil pour accéder vite aux tarifs et au suivi.",
+    "install": "Installer",
+    "dismiss": "Fermer"
   }
 }

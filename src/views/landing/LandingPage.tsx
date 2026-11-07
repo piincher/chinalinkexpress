@@ -61,6 +61,9 @@ import { OccasionsHomeBand } from './components/OccasionsHomeBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
 import { ContainerFill } from '@/components/moments/ContainerFill';
+import { ProofSection } from './components/ProofSection';
+import { RouteChip } from './components/RouteChip';
+import { TaglineSection } from './components/TaglineSection';
 import { ShippingMarkExampleSection } from './components/ShippingMarkExampleSection';
 
 interface LandingPageProps {
@@ -97,6 +100,7 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           one full-bleed photo, not for a blog post. */}
 
       {/* ── I. the promise ───────────────────────────────────────────────── */}
+      <RouteChip />
       <HeroSection />
 
       {/* ── II. what this company is, in one screen ──────────────────────── */}
@@ -108,6 +112,9 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
 
       {/* ── IV. how it actually works — the page's centre of gravity ─────── */}
       <JourneySection />
+
+      {/* ── IV.a the proof no competitor has: a code on every reception photo ── */}
+      <ProofSection />
 
       {/* ── IV.b why groupage costs less ───────────────────────────────────
           The one thing the journey does not show: the container is shared, so
@@ -145,6 +152,7 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           component is still in the tree and re-mounts in one line. */}
       <WhyUsSection />
       <AboutSection />
+      <TaglineSection />
 
       {/* ── IX. other people's words ───────────────────────────────────────
           TestimonialsBand is async: it fetches the real reviews clients wrote

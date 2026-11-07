@@ -10,6 +10,7 @@ import { PAGE_SEO } from '@/config/seo';
 import { FAQStructuredData } from '@/components/seo';
 import { CalculatorPage } from '@/features/pricing';
 import { fetchPublicReviews } from '@/lib/publicReviewsApi';
+import type { Locale } from '@/i18n/config';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.calculator.en : PAGE_SEO.calculator.fr;
+  const seo = PAGE_SEO.calculator[locale as Locale];
   
   return {
     title: seo.title,
@@ -27,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${locale}/calculateur`,
       languages: {
-        'en-US': '/en/calculateur',
-        'fr-FR': '/fr/calculateur',
-        'zh-CN': '/zh/calculateur',
-        'ar-SA': '/ar/calculateur',
+        'en': '/en/calculateur',
+        'fr': '/fr/calculateur',
+        'zh': '/zh/calculateur',
+        'ar': '/ar/calculateur',
         'x-default': '/fr/calculateur',
       },
     },
@@ -66,12 +67,40 @@ const calculatorFaqs = {
       answer: 'The final price can change if the product is sensitive, badly packed, requires special handling or if the real volume differs from the declared information.',
     },
   ],
+  zh: [
+    {
+      question: '如何计算从中国到巴马科的包裹价格？',
+      answer: '填写重量、尺寸、产品类别和运输方式。计算器会先估算空运或海运费用，再由 ChinaLink 团队确认。',
+    },
+    {
+      question: '空运是否使用体积重量？',
+      answer: '是的。对于体积较大的包裹，价格可能按体积重量而不是实际重量计算。',
+    },
+    {
+      question: '为什么最终价格可能变化？',
+      answer: '如果产品属于敏感货物、包装不当、需要特殊检查，或实际体积与申报信息不符，价格可能会变化。',
+    },
+  ],
+  ar: [
+    {
+      question: 'كيف أحسب سعر طرد من الصين إلى باماكو؟',
+      answer: 'أدخل الوزن والأبعاد وفئة المنتج وطريقة الشحن. تقدّر الحاسبة كلفة الشحن الجوي أو البحري قبل أن يؤكدها فريق ChinaLink.',
+    },
+    {
+      question: 'هل يُستخدم الوزن الحجمي في الشحن الجوي؟',
+      answer: 'نعم. بالنسبة إلى الطرود كبيرة الحجم، قد يُحسب السعر على أساس الوزن الحجمي بدلًا من الوزن الفعلي.',
+    },
+    {
+      question: 'لماذا قد يتغير السعر النهائي؟',
+      answer: 'قد يتغير السعر إذا كان المنتج حساسًا أو سيئ التغليف أو خاضعًا لفحص خاص، أو إذا اختلف الحجم الفعلي عن البيانات المصرّح بها.',
+    },
+  ],
 };
 
 export default async function CalculatorRoute({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const faqs = isEn ? calculatorFaqs.en : calculatorFaqs.fr;
+  const faqs = calculatorFaqs[locale as Locale];
   // Fetched here rather than in the client page so the review text is in the
   // HTML; returns an empty payload rather than throwing if the API is down.
   const { reviews, stats } = await fetchPublicReviews();

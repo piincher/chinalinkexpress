@@ -14,22 +14,22 @@ import { MessageCircle, Heart, Pin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CommunityTopic, categories, categoryColors } from '../data';
 
-function timeAgo(dateString: string, isEn: boolean): string {
+function timeAgo(dateString: string, isEn: boolean, isZh: boolean, isAr: boolean): string {
   const date = new Date(dateString);
   const now = new Date();
   const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
-  if (seconds < 60) return isEn ? 'just now' : "À l'instant";
+  if (seconds < 60) return isEn ? 'just now' : isZh ? '刚刚' : isAr ? 'الآن' : "À l'instant";
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return isEn ? `${minutes} min ago` : `Il y a ${minutes} min`;
+  if (minutes < 60) return isEn ? `${minutes} min ago` : isZh ? `${minutes} 分钟前` : isAr ? `قبل ${minutes} دقيقة` : `Il y a ${minutes} min`;
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return isEn ? `${hours}h ago` : `Il y a ${hours}h`;
+  if (hours < 24) return isEn ? `${hours}h ago` : isZh ? `${hours} 小时前` : isAr ? `قبل ${hours} ساعة` : `Il y a ${hours}h`;
   const days = Math.floor(hours / 24);
-  if (days < 7) return isEn ? `${days}d ago` : `Il y a ${days}j`;
+  if (days < 7) return isEn ? `${days}d ago` : isZh ? `${days} 天前` : isAr ? `قبل ${days} يوم` : `Il y a ${days}j`;
   const weeks = Math.floor(days / 7);
-  if (weeks < 4) return isEn ? `${weeks} wk ago` : `Il y a ${weeks} sem.`;
+  if (weeks < 4) return isEn ? `${weeks} wk ago` : isZh ? `${weeks} 周前` : isAr ? `قبل ${weeks} أسبوع` : `Il y a ${weeks} sem.`;
   const months = Math.floor(days / 30);
-  return isEn ? `${months} mo ago` : `Il y a ${months} mois`;
+  return isEn ? `${months} mo ago` : isZh ? `${months} 个月前` : isAr ? `قبل ${months} شهر` : `Il y a ${months} mois`;
 }
 
 interface TopicCardProps {
@@ -40,6 +40,8 @@ interface TopicCardProps {
 export function TopicCard({ topic, index = 0 }: TopicCardProps) {
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const category = categories.find((item) => item.id === topic.category);
 
   return (
@@ -61,7 +63,7 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
           {topic.isPinned && (
             <div className="absolute top-4 right-4 flex items-center gap-1 px-2 py-1 bg-amber-500/10 text-amber-400 rounded-full text-xs font-semibold border border-amber-500/20">
               <Pin className="w-3 h-3" />
-              {isEn ? 'Pinned' : 'Épinglé'}
+              {isEn ? 'Pinned' : isZh ? '已置顶' : isAr ? 'مثبّت' : 'Épinglé'}
             </div>
           )}
 
@@ -79,7 +81,7 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
 
             <div className="flex-1 min-w-0">
               <p className="text-white font-semibold text-sm truncate">{topic.author}</p>
-              <p className="text-slate-500 text-xs">{timeAgo(topic.createdAt, isEn)}</p>
+              <p className="text-slate-500 text-xs">{timeAgo(topic.createdAt, isEn, isZh, isAr)}</p>
             </div>
 
             {/* Category badge */}
@@ -89,18 +91,18 @@ export function TopicCard({ topic, index = 0 }: TopicCardProps) {
                 categoryColors[topic.category] || categoryColors.general
               )}
             >
-              {isEn ? category?.label ?? topic.category : topic.categoryFr}
+              {isEn ? category?.label ?? topic.category : isZh ? topic.categoryZh : isAr ? topic.categoryAr : topic.categoryFr}
             </span>
           </div>
 
           {/* Title */}
           <h3 className="text-white font-bold text-base md:text-lg mb-2 group-hover:text-amber-300 transition-colors line-clamp-2">
-            {isEn ? topic.title : topic.titleFr}
+            {isEn ? topic.title : isZh ? topic.titleZh : isAr ? topic.titleAr : topic.titleFr}
           </h3>
 
           {/* Content preview */}
           <p className="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2">
-            {isEn ? topic.content : topic.contentFr}
+            {isEn ? topic.content : isZh ? topic.contentZh : isAr ? topic.contentAr : topic.contentFr}
           </p>
 
           {/* Stats row */}

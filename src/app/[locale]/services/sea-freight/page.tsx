@@ -52,6 +52,42 @@ const seaFreightFaqs = {
       answer: 'Sea freight is best for larger volumes, furniture, machinery, many cartons or heavy goods. For urgent shipments, air freight is usually better.',
     },
   ],
+  zh: [
+    {
+      question: '中国到马里的海运需要多长时间？',
+      answer: '海运到巴马科通常需要 60 到 75 天，从佛山港到达喀尔港，再经陆路转运到马里。',
+    },
+    {
+      question: 'FCL 和 LCL 有什么区别？',
+      answer: 'FCL 指一位客户独享整个集装箱。LCL 指海运拼箱，您的货物与其他货物共用一个集装箱。',
+    },
+    {
+      question: '到巴马科的集装箱经过哪些港口？',
+      answer: '海运线路从佛山港出发，到达达喀尔港，然后经陆路运到巴马科。',
+    },
+    {
+      question: '海运适合小包裹吗？',
+      answer: '海运主要适合大批量、家具、机器、大量纸箱或重型货物。紧急货物更适合空运。',
+    },
+  ],
+  ar: [
+    {
+      question: 'كم يستغرق الشحن البحري من الصين إلى مالي؟',
+      answer: 'يستغرق الشحن البحري إلى باماكو عادة من 60 إلى 75 يومًا من ميناء فوشان إلى ميناء داكار، ثم عبورًا بريًا إلى مالي.',
+    },
+    {
+      question: 'ما الفرق بين FCL وLCL؟',
+      answer: 'FCL تعني حاوية كاملة لعميل واحد. وLCL تعني الشحن البحري المجمّع، حيث تشارك بضائعك حاوية مع شحنات أخرى.',
+    },
+    {
+      question: 'عبر أي موانئ تمر الحاويات إلى باماكو؟',
+      answer: 'ينطلق الخط البحري من ميناء فوشان، ويصل إلى ميناء داكار، ثم يكمل برًا حتى باماكو.',
+    },
+    {
+      question: 'هل يناسب الشحن البحري الطرود الصغيرة؟',
+      answer: 'الشحن البحري مفيد أساسًا للكميات الكبيرة والأثاث والآلات والكراتين الكثيرة والبضائع الثقيلة. أما الحالات العاجلة فالشحن الجوي أنسب لها.',
+    },
+  ],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -64,11 +100,13 @@ export default async function SeaFreight({ params }: Props) {
   setRequestLocale(locale);
 
   const isEn = locale === 'en';
-  const faqs = isEn ? seaFreightFaqs.en : seaFreightFaqs.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const faqs = seaFreightFaqs[locale as Locale];
   const breadcrumbs = [
-    { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
     { name: isEn ? 'Services' : 'Services', url: `/${locale}/services` },
-    { name: isEn ? 'Sea Freight' : 'Fret Maritime', url: `/${locale}/services/sea-freight` },
+    { name: isEn ? 'Sea Freight' : isZh ? '海运' : isAr ? 'الشحن البحري' : 'Fret Maritime', url: `/${locale}/services/sea-freight` },
   ];
 
   return (

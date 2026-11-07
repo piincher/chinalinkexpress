@@ -70,9 +70,9 @@ export function Cta({
   // inline handlers on every instance.
   const variantVars: Record<Variant, React.CSSProperties> = {
     solid: {
-      '--cta-bg': tone === 'void' ? 'var(--color-accent-bright)' : 'var(--color-accent)',
-      '--cta-bg-hover': tone === 'void' ? 'var(--color-accent)' : 'var(--color-accent-deep)',
-      '--cta-fg': 'var(--color-accent-ink)',
+      '--cta-bg': tone === 'void' ? 'var(--color-void-ink)' : 'var(--color-accent)',
+      '--cta-bg-hover': tone === 'void' ? 'var(--color-signal)' : 'var(--color-accent-deep)',
+      '--cta-fg': tone === 'void' ? 'oklch(0% 0 0)' : 'var(--color-accent-ink)',
       '--cta-border': 'transparent',
     } as React.CSSProperties,
     outline: {

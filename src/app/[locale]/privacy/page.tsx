@@ -16,18 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   return {
-    title: locale === 'en' ? 'Privacy Policy' : 'Politique de Confidentialité',
+    title: locale === 'en' ? 'Privacy Policy' : locale === 'zh' ? '隐私政策' : locale === 'ar' ? 'سياسة الخصوصية' : 'Politique de Confidentialité',
     description:
       locale === 'en'
         ? 'How ChinaLink Express protects customer data for sourcing, supplier payment, and freight services.'
-        : 'Comment ChinaLink Express protège les données clients pour le sourcing, le paiement fournisseur et le fret Chine-Mali.',
+        : locale === 'zh' ? 'ChinaLink Express 如何在采购、供应商付款和中国—马里货运中保护客户数据。' : locale === 'ar' ? 'كيف تحمي ChinaLink Express بيانات العملاء في التوريد والدفع للموردين والشحن من الصين إلى مالي.' : 'Comment ChinaLink Express protège les données clients pour le sourcing, le paiement fournisseur et le fret Chine-Mali.',
     alternates: {
       canonical: `/${locale}/privacy`,
       languages: {
-        'fr-FR': '/fr/privacy',
-        'en-US': '/en/privacy',
-        'zh-CN': '/zh/privacy',
-        'ar-SA': '/ar/privacy',
+        'fr': '/fr/privacy',
+        'en': '/en/privacy',
+        'zh': '/zh/privacy',
+        'ar': '/ar/privacy',
         'x-default': '/fr/privacy',
       },
     },

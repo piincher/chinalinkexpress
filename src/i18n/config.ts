@@ -24,11 +24,13 @@ export const i18nConfig = {
   },
   
   // SEO locale codes for hreflang
+  // Language only, no country: fr-FR and en-US tell search engines these pages
+  // are for France and the USA, and the audience is in Africa.
   seoLocales: {
-    fr: 'fr-FR',
-    en: 'en-US',
-    zh: 'zh-CN',
-    ar: 'ar-SA',
+    fr: 'fr',
+    en: 'en',
+    zh: 'zh',
+    ar: 'ar',
   },
 };
 

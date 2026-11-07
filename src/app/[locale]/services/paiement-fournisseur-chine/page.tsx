@@ -159,11 +159,155 @@ const content = {
       { href: '/en/calculateur', label: 'Calculate freight cost' },
     ],
   },
+  zh: {
+    metaTitle: '从马里向中国供应商付款 | 支付宝、转账',
+    metaDescription:
+      '通过 ChinaLink Express 从马里向中国供应商付款。支付宝、转账、付款凭证、供应商核验并发往巴马科。',
+    keywords:
+      '马里中国供应商付款, 从马里向中国供应商付款, 马里中国支付宝, 中国供应商转账, 中国马里供应商付款, 从非洲向中国供应商付款',
+    badge: '中国—马里供应商付款',
+    title: '从马里向中国供应商付款',
+    intro:
+      '您在 Alibaba、1688 或直接在中国找到了供应商，但对方要求本地付款、支付宝或中国转账？ChinaLink Express 帮助您保障付款、核验关键信息并安排后续：检查、集运和发往巴马科。',
+    highlights: [
+      '视情况使用支付宝或转账付款',
+      '与客户共享付款凭证',
+      '大额付款前建议先核验',
+      '跟进供应商，然后从中国发往马里',
+    ],
+    sections: [
+      {
+        title: '接受的平台和付款方式',
+        body: '中国供应商常用的付款方式在马里或西非很难使用。当供应商接受支付宝、中国银行转账或平台付款时，我们帮助支付订单。',
+        items: ['Alibaba 和 B2B 供应商', '1688 和中国国内卖家', '部分采购可用天猫', '直接联系的供应商'],
+      },
+      {
+        title: '付款前要避免的风险',
+        body: '付款是许多进口商亏钱的环节：假供应商、可疑的个人账户、价格过低、质量变更或没有凭证。ChinaLink 在付款前索取关键信息，以降低这些风险。',
+        items: ['公司名称一致', '经营记录和生产证明', '供应商地址和联系方式', '必要时提供照片、视频或样品'],
+      },
+      {
+        title: '付款后您会收到什么',
+        body: '确认后，您会收到清晰的确认信息。随后跟进供应商直到货物备好，并可在发往马里前进行照片检查。',
+        items: ['已付金额确认', '视渠道提供截图或收据', '跟进供应商订单', '与采购或货运服务协调'],
+      },
+    ],
+    tableHeaders: ['需求', '没有 ChinaLink', '有 ChinaLink'],
+    tableRows: [
+      ['通过支付宝付款', '在马里通常无法使用', '在中国协助付款'],
+      ['减少诈骗', '远程核验困难', '付款前检查'],
+      ['合并采购', '每家供应商单独发货', '货运前集运'],
+      ['跟踪订单', '消息分散', 'WhatsApp 协调'],
+    ],
+    process: [
+      '您发送产品链接、供应商报价、金额和卖家联系方式。',
+      '我们核实基本信息，并在付款前提示可见的风险。',
+      '您确认金额、汇率和适用费用。',
+      '一切清楚后，ChinaLink 通过对方接受的渠道向供应商付款。',
+      '我们跟进订单准备，并可安排检验、集运和发运。',
+    ],
+    faqs: [
+      {
+        question: '我可以从马里向中国供应商付款吗？',
+        answer: '可以。ChinaLink Express 可以帮助马里进口商向中国供应商付款，尤其是在供应商要求支付宝或中国本地转账时。',
+      },
+      {
+        question: '我会收到付款凭证吗？',
+        answer: '会。我们会分享付款确认和跟进供应商订单所需的信息。',
+      },
+      {
+        question: '你们在付款前核验供应商吗？',
+        answer: '我们始终建议在付款前核验，尤其是新供应商或大额付款。',
+      },
+      {
+        question: '你们可以向多家供应商付款，再合并包裹吗？',
+        answer: '可以。我们可以处理多笔付款、跟进订单，并在发往巴马科前合并货物。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/verification-fournisseur-chine', label: '核验中国供应商' },
+      { href: '/zh/services/sourcing', label: '面向马里的中国采购代理' },
+      { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+      { href: '/zh/calculateur', label: '计算运费' },
+    ],
+  },
+  ar: {
+    metaTitle: 'الدفع لمورد صيني من مالي | Alipay والتحويل',
+    metaDescription:
+      'ادفع لمورد في الصين من مالي مع ChinaLink Express. دفع عبر Alipay والتحويل وإثبات الدفع والتحقق من المورد والشحن إلى باماكو.',
+    keywords:
+      'الدفع لمورد صيني من مالي، الدفع لمورد في الصين من مالي، Alipay بين مالي والصين، تحويل إلى مورد في الصين، الدفع للموردين بين الصين ومالي، الدفع لمورد صيني من أفريقيا',
+    badge: 'الدفع للموردين بين الصين ومالي',
+    title: 'الدفع لمورد في الصين من مالي',
+    intro:
+      'وجدت موردًا في Alibaba أو 1688 أو مباشرة في الصين، لكنه يطلب دفعًا محليًا أو Alipay أو تحويلًا صينيًا؟ تساعدك ChinaLink Express على تأمين الدفع والتحقق من المعلومات الأساسية وتنظيم ما بعده: الفحص والتجميع والشحن إلى باماكو.',
+    highlights: [
+      'الدفع عبر Alipay أو التحويل حسب الحالة',
+      'مشاركة إثبات الدفع مع العميل',
+      'يوصى بالتحقق قبل أي مبلغ كبير',
+      'متابعة المورد ثم الشحن من الصين إلى مالي',
+    ],
+    sections: [
+      {
+        title: 'المنصات ووسائل الدفع المقبولة',
+        body: 'كثيرًا ما يعمل الموردون الصينيون بوسائل دفع يصعب استخدامها من مالي أو غرب أفريقيا. نساعد في دفع الطلبات عندما يقبل المورد Alipay أو التحويل المصرفي الصيني أو الدفع عبر المنصة.',
+        items: ['Alibaba وموردو B2B', '1688 والبائعون المحليون في الصين', 'Tmall لبعض المشتريات', 'موردون يتم التواصل معهم مباشرة'],
+      },
+      {
+        title: 'المخاطر التي يجب تجنبها قبل الدفع',
+        body: 'الدفع هو المرحلة التي يخسر فيها كثير من المستوردين أموالهم: موردون مزيفون وحساب شخصي مشبوه وسعر منخفض جدًا وتغيّر في الجودة أو غياب الإثبات. تطلب ChinaLink المعلومات الأساسية قبل الدفع لتقليل هذه المخاطر.',
+        items: ['اسم شركة متسق', 'السجل وأدلة الإنتاج', 'عنوان المورد وبيانات الاتصال', 'صور أو فيديو أو عينة عند الحاجة'],
+      },
+      {
+        title: 'ما تحصل عليه بعد الدفع',
+        body: 'بعد الموافقة، تصلك رسالة تأكيد واضحة. ثم تتم متابعة المورد حتى تجهيز البضاعة، مع إمكانية الفحص بالصور قبل الشحن إلى مالي.',
+        items: ['تأكيد المبلغ المدفوع', 'لقطة شاشة أو إيصال حسب القناة', 'متابعة طلب المورد', 'التنسيق مع خدمة التوريد أو الشحن'],
+      },
+    ],
+    tableHeaders: ['الحاجة', 'بدون ChinaLink', 'مع ChinaLink'],
+    tableRows: [
+      ['الدفع عبر Alipay', 'غالبًا غير ممكن من مالي', 'دفع بمساعدة في الصين'],
+      ['الحد من الاحتيال', 'تحقق صعب عن بعد', 'فحوصات قبل الدفع'],
+      ['تجميع المشتريات', 'كل مورد يشحن على حدة', 'تجميع قبل الشحن'],
+      ['متابعة الطلب', 'رسائل متفرقة', 'تنسيق عبر WhatsApp'],
+    ],
+    process: [
+      'ترسل رابط المنتج وعرض سعر المورد والمبلغ وبيانات البائع.',
+      'نتحقق من المعلومات الأساسية وننبهك إلى المخاطر الظاهرة قبل الدفع.',
+      'تؤكد المبلغ وسعر الصرف والرسوم المطبقة.',
+      'تدفع ChinaLink للمورد عبر القناة المقبولة عندما يتضح كل شيء.',
+      'نتابع تجهيز الطلب ويمكننا تنظيم الفحص والتجميع والشحن.',
+    ],
+    faqs: [
+      {
+        question: 'هل يمكنني الدفع لمورد صيني من مالي؟',
+        answer: 'نعم. يمكن لـChinaLink Express تسهيل الدفع للموردين في الصين للمستوردين الماليين، خصوصًا عندما يطلب المورد Alipay أو تحويلًا محليًا صينيًا.',
+      },
+      {
+        question: 'هل سأتلقى إثبات دفع؟',
+        answer: 'نعم. نشارك معك تأكيد الدفع والتفاصيل اللازمة لمتابعة الطلب مع المورد.',
+      },
+      {
+        question: 'هل تتحققون من المورد قبل الدفع؟',
+        answer: 'نوصي دائمًا بالتحقق قبل الدفع، خصوصًا مع مورد جديد أو مبلغ كبير.',
+      },
+      {
+        question: 'هل يمكنكم الدفع لعدة موردين ثم تجميع الطرود؟',
+        answer: 'نعم. يمكننا إدارة عدة مدفوعات ومتابعة الطلبات وتجميع البضائع قبل الشحن إلى باماكو.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من مورد صيني' },
+      { href: '/ar/services/sourcing', label: 'وكيل توريد في الصين لمالي' },
+      { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+      { href: '/ar/calculateur', label: 'احسب كلفة الشحن' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const page = locale === 'en' ? content.en : content.fr;
+  const page = content[locale as Locale];
 
   return generatePageMetadata({
     title: page.metaTitle,
@@ -171,7 +315,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: page.keywords,
     path: '/services/paiement-fournisseur-chine',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -179,7 +323,9 @@ export default async function SupplierPaymentPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
@@ -197,9 +343,9 @@ export default async function SupplierPaymentPage({ params }: Props) {
         page.metaDescription,
     },
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: 'Services', url: `/${locale}/services` },
-      { name: isEn ? 'Supplier payment China' : 'Paiement fournisseur Chine', url: `/${locale}/services/paiement-fournisseur-chine` },
+      { name: isEn ? 'Supplier payment China' : isZh ? '中国供应商付款' : isAr ? 'الدفع لمورد في الصين' : 'Paiement fournisseur Chine', url: `/${locale}/services/paiement-fournisseur-chine` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -208,7 +354,7 @@ export default async function SupplierPaymentPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -238,7 +384,7 @@ export default async function SupplierPaymentPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

@@ -94,9 +94,9 @@ export interface Carrier {
  * and it is what the `wordmark` treatment is built for.
  */
 export const CARRIERS: Carrier[] = [
-  { name: 'CMA CGM', src: `${AIR}/cma-cgm.png`, mode: 'sea', art: 'wordmark' },
-  { name: 'Hapag-Lloyd', src: `${AIR}/hapag.png`, mode: 'sea', art: 'wordmark' },
-  { name: 'Evergreen', src: `${AIR}/evergreen.png`, mode: 'sea', art: 'wordmark' },
-  { name: 'Ethiopian Cargo', src: `${AIR}/ethiopian.png`, mode: 'air', art: 'wordmark' },
-  { name: 'Turkish Cargo', src: `${AIR}/turkish.png`, mode: 'air', art: 'wordmark' },
+  { name: 'CMA CGM', src: '/media/carriers/cma-cgm.png', mode: 'sea', art: 'wordmark' },
+  { name: 'Hapag-Lloyd', src: '/media/carriers/hapag.png', mode: 'sea', art: 'wordmark' },
+  { name: 'Evergreen', src: '/media/carriers/evergreen.png', mode: 'sea', art: 'wordmark' },
+  { name: 'Ethiopian Cargo', src: '/media/carriers/ethiopian.png', mode: 'air', art: 'wordmark' },
+  { name: 'Turkish Cargo', src: '/media/carriers/turkish.png', mode: 'air', art: 'wordmark' },
 ];

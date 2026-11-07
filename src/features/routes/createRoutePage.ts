@@ -47,7 +47,7 @@ export function getRouteLane(slug: string): RouteLane | undefined {
 
 export function createRouteBreadcrumbs(slug: string, locale: string, breadcrumb: string) {
   return [
-    { name: locale === 'en' ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: locale === 'en' ? 'Home' : locale === 'zh' ? '首页' : locale === 'ar' ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
     { name: 'Routes', url: `/${locale}/routes/${slug}` },
     { name: breadcrumb, url: `/${locale}/routes/${slug}` },
   ];

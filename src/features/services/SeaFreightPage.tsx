@@ -8,9 +8,10 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Ship, Clock, Package, DollarSign, Container, Phone } from 'lucide-react';
+import { Clock, Package, DollarSign, Container, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { ContainerFill } from '@/components/moments/ContainerFill';
+import { PageHero, Cta } from '@/components/site';
 
 interface Props {
   locale: string;
@@ -18,27 +19,29 @@ interface Props {
 
 export function SeaFreightPage({ locale }: Props) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   const features = [
     {
       icon: DollarSign,
-      title: isEn ? 'Economical Rates' : 'Tarifs Économiques',
-      desc: isEn ? 'Up to 70% cheaper than air freight for large volumes' : 'Jusqu\'à 70% moins cher que le fret aérien pour gros volumes',
+      title: isEn ? 'Economical Rates' : isZh ? '经济价格' : isAr ? 'أسعار اقتصادية' : 'Tarifs Économiques',
+      desc: isEn ? 'Up to 70% cheaper than air freight for large volumes' : isZh ? '大批量比空运便宜多达 70%' : isAr ? 'أرخص بنسبة تصل إلى 70% من الشحن الجوي للكميات الكبيرة' : 'Jusqu\'à 70% moins cher que le fret aérien pour gros volumes',
     },
     {
       icon: Container,
-      title: isEn ? 'FCL & LCL Options' : 'Options FCL & LCL',
-      desc: isEn ? 'Full container load or less than container load consolidation' : 'Conteneur complet ou groupage partiel',
+      title: isEn ? 'FCL & LCL Options' : isZh ? 'FCL 和 LCL 选项' : isAr ? 'خيارات FCL وLCL' : 'Options FCL & LCL',
+      desc: isEn ? 'Full container load or less than container load consolidation' : isZh ? '整箱或部分拼箱' : isAr ? 'حاوية كاملة أو شحن مجمّع جزئي' : 'Conteneur complet ou groupage partiel',
     },
     {
       icon: Package,
-      title: isEn ? 'All Cargo Types' : 'Tous Types de Cargo',
-      desc: isEn ? 'Furniture, machinery, vehicles, and bulk goods' : 'Meubles, machines, véhicules et marchandises en vrac',
+      title: isEn ? 'All Cargo Types' : isZh ? '所有货物类型' : isAr ? 'جميع أنواع البضائع' : 'Tous Types de Cargo',
+      desc: isEn ? 'Furniture, machinery, vehicles, and bulk goods' : isZh ? '家具、机器、车辆和散货' : isAr ? 'الأثاث والآلات والمركبات والبضائع السائبة' : 'Meubles, machines, véhicules et marchandises en vrac',
     },
     {
       icon: Clock,
-      title: isEn ? 'Regular Departures' : 'Départs Réguliers',
-      desc: isEn ? 'Weekly sailings from Foshan port' : 'Départs hebdomadaires du port de Foshan',
+      title: isEn ? 'Regular Departures' : isZh ? '定期发运' : isAr ? 'رحلات منتظمة' : 'Départs Réguliers',
+      desc: isEn ? 'Weekly sailings from Foshan port' : isZh ? '每周从佛山港发运' : isAr ? 'مغادرة أسبوعية من ميناء فوشان' : 'Départs hebdomadaires du port de Foshan',
     },
   ];
 
@@ -49,47 +52,17 @@ export function SeaFreightPage({ locale }: Props) {
   return (
     <main className="min-h-screen bg-[var(--surface)]">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-cyan-600 via-blue-700 to-indigo-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-white/90 mb-6">
-              <Ship className="w-5 h-5" />
-              <span>{isEn ? 'Economical Sea Freight' : 'Fret Maritime Économique'}</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              {isEn 
-                ? 'Sea Freight from China to Mali' 
-                : 'Fret Maritime de la Chine vers le Mali'}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-              {isEn 
-                ? 'Cost-effective ocean shipping for large volumes to Bamako. Containers depart from Foshan, arrive at Dakar port, then continue by land transit to Bamako. We coordinate with trusted partner carriers for the entire journey.'
-                : 'Transport maritime économique pour gros volumes vers Bamako. Les conteneurs partent du port de Foshan, arrivent au port de Dakar, puis continuent par transit terrestre jusqu’à Bamako. Nous coordonnons avec des transporteurs partenaires de confiance pour tout le trajet.'}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`/${locale}/calculateur`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
-              >
-                {isEn ? 'Calculate Shipping Cost' : 'Calculer les Frais'}
-              </Link>
-              <a
-                href="https://wa.me/8618851725957"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-400 transition-colors"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                {isEn ? 'Get Quote on WhatsApp' : 'Devis sur WhatsApp'}
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={isEn ? 'Economical Sea Freight' : isZh ? '经济海运' : isAr ? 'الشحن البحري الاقتصادي' : 'Fret Maritime Économique'}
+        title={isEn ? 'Sea Freight from China to Mali' : isZh ? '从中国到马里的海运' : isAr ? 'الشحن البحري من الصين إلى مالي' : 'Fret Maritime de la Chine vers le Mali'}
+        lede={isEn
+          ? 'Cost-effective ocean shipping for large volumes to Bamako. Containers depart from Foshan, arrive at Dakar port, then continue by land transit to Bamako. We coordinate with trusted partner carriers for the entire journey.'
+          : isZh ? '面向大批量货物到巴马科的经济海运。集装箱从佛山港出发，到达达喀尔港，然后陆路转运到巴马科。我们与值得信赖的合作承运人协调全程。' : isAr ? 'نقل بحري اقتصادي للكميات الكبيرة إلى باماكو. تغادر الحاويات ميناء فوشان، وتصل إلى ميناء داكار، ثم تكمل عبورًا بريًا حتى باماكو. ننسق الرحلة كلها مع ناقلين شركاء موثوقين.' : 'Transport maritime économique pour gros volumes vers Bamako. Les conteneurs partent du port de Foshan, arrivent au port de Dakar, puis continuent par transit terrestre jusqu’à Bamako. Nous coordonnons avec des transporteurs partenaires de confiance pour tout le trajet.'}
+        actions={<>
+          <Cta href="https://wa.me/8618851725957" external arrow={false} tone="void" size="lg" icon={<Phone size={18} aria-hidden />}>{isEn ? 'Get Quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'عرض سعر عبر WhatsApp' : 'Devis sur WhatsApp'}</Cta>
+          <Cta href={`/${locale}/calculateur`} variant="outline" tone="void" size="lg">{isEn ? 'Calculate Shipping Cost' : isZh ? '计算费用' : isAr ? 'احسب الرسوم' : 'Calculer les Frais'}</Cta>
+        </>}
+      />
 
       {/* Groupage: why sharing a container costs less. */}
       <ContainerFill />
@@ -99,12 +72,12 @@ export function SeaFreightPage({ locale }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              {isEn ? 'Why Choose Sea Freight?' : 'Pourquoi Choisir le Fret Maritime?'}
+              {isEn ? 'Why Choose Sea Freight?' : isZh ? '为什么选择海运？' : isAr ? 'لماذا تختار الشحن البحري؟' : 'Pourquoi Choisir le Fret Maritime?'}
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
               {isEn 
                 ? 'The most economical solution for shipping large volumes from China to Mali'
-                : 'La solution la plus économique pour expédier de gros volumes de la Chine vers le Mali'}
+                : isZh ? '从中国向马里发运大批量货物最经济的方案' : isAr ? 'الحل الأوفر لشحن الكميات الكبيرة من الصين إلى مالي' : 'La solution la plus économique pour expédier de gros volumes de la Chine vers le Mali'}
             </p>
           </div>
 
@@ -136,12 +109,12 @@ export function SeaFreightPage({ locale }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              {isEn ? 'Popular Shipping Routes to Mali' : 'Routes Maritimes Populaires vers le Mali'}
+              {isEn ? 'Popular Shipping Routes to Mali' : isZh ? '到马里的热门海运线路' : isAr ? 'الخطوط البحرية الشائعة إلى مالي' : 'Routes Maritimes Populaires vers le Mali'}
             </h2>
             <p className="text-lg text-[var(--text-secondary)]">
               {isEn 
                 ? 'Sea freight from Foshan to Dakar port with onward land transport to Bamako, coordinated through our partner network'
-                : 'Fret maritime de Foshan au port de Dakar avec transport terrestre vers Bamako, coordonné via notre réseau de partenaires'}
+                : isZh ? '从佛山到达喀尔港的海运，再陆运到巴马科，通过我们的伙伴网络协调' : isAr ? 'شحن بحري من فوشان إلى ميناء داكار مع نقل بري إلى باماكو، بالتنسيق عبر شبكة شركائنا' : 'Fret maritime de Foshan au port de Dakar avec transport terrestre vers Bamako, coordonné via notre réseau de partenaires'}
             </p>
           </div>
 
@@ -150,16 +123,16 @@ export function SeaFreightPage({ locale }: Props) {
               <thead>
                 <tr className="border-b border-[var(--border)]">
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
-                    {isEn ? 'Origin' : 'Origine'}
+                    {isEn ? 'Origin' : isZh ? '始发地' : isAr ? 'المنشأ' : 'Origine'}
                   </th>
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
                     {isEn ? 'Destination' : 'Destination'}
                   </th>
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
-                    {isEn ? 'Partner Carrier' : 'Transporteur Partenaire'}
+                    {isEn ? 'Partner Carrier' : isZh ? '合作承运人' : isAr ? 'الناقل الشريك' : 'Transporteur Partenaire'}
                   </th>
                   <th className="px-6 py-4 text-left text-[var(--text-primary)] font-semibold">
-                    {isEn ? 'Duration' : 'Durée'}
+                    {isEn ? 'Duration' : isZh ? '时长' : isAr ? 'المدة' : 'Durée'}
                   </th>
                 </tr>
               </thead>
@@ -187,25 +160,25 @@ export function SeaFreightPage({ locale }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-cyan-600 to-blue-700 rounded-xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {isEn ? 'Ship by Sea, Save Big' : 'Expédiez par Mer, Économisez'}
+              {isEn ? 'Ship by Sea, Save Big' : isZh ? '海运发货，节省费用' : isAr ? 'اشحن بحرًا ووفر' : 'Expédiez par Mer, Économisez'}
             </h2>
             <p className="text-xl text-cyan-100 mb-8 max-w-2xl mx-auto">
               {isEn 
                 ? 'Perfect for furniture, machinery, and large shipments to Mali. Get your quote today!'
-                : 'Parfait pour meubles, machines et gros envois vers le Mali. Obtenez votre devis aujourd\'hui!'}
+                : isZh ? '非常适合发往马里的家具、机器和大批量货物。今天就获取报价！' : isAr ? 'مثالي للأثاث والآلات والشحنات الكبيرة إلى مالي. احصل على عرض سعرك اليوم!' : 'Parfait pour meubles, machines et gros envois vers le Mali. Obtenez votre devis aujourd\'hui!'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={`/${locale}/calculateur`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
               >
-                {isEn ? 'Calculate CBM Cost' : 'Calculer Coût CBM'}
+                {isEn ? 'Calculate CBM Cost' : isZh ? '计算 CBM 费用' : isAr ? 'احسب كلفة الـCBM' : 'Calculer Coût CBM'}
               </Link>
               <Link
                 href={`/${locale}/tarifs`}
                 className="inline-flex items-center justify-center px-8 py-4 bg-blue-500 text-white rounded-xl font-semibold hover:bg-blue-400 transition-colors"
               >
-                {isEn ? 'View Sea Freight Rates' : 'Voir Tarifs Maritime'}
+                {isEn ? 'View Sea Freight Rates' : isZh ? '查看海运价格' : isAr ? 'عرض أسعار الشحن البحري' : 'Voir Tarifs Maritime'}
               </Link>
             </div>
           </div>

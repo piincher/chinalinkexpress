@@ -23,7 +23,7 @@ interface SeoFaq {
 }
 
 interface SeoServicePageProps {
-  locale?: 'fr' | 'en';
+  locale?: 'fr' | 'en' | 'zh' | 'ar';
   badge: string;
   title: string;
   intro: string;
@@ -73,22 +73,24 @@ export function SeoServicePage({
   stepLabel,
 }: SeoServicePageProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const labels = {
-    ctaLabel: ctaLabel ?? (isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp'),
-    routeCtaLabel: routeCtaLabel ?? (isEn ? 'See China to Africa routes' : 'Voir le fret Chine-Mali'),
-    routeCtaHref: routeCtaHref ?? (isEn ? '/en/routes/china-to-africa' : '/fr/routes/china-to-mali'),
-    comparisonTitle: comparisonTitle ?? (isEn ? 'Quick comparison' : 'Comparaison rapide'),
-    processTitle: processTitle ?? (isEn ? 'Our process' : 'Notre processus'),
-    faqTitle: faqTitle ?? (isEn ? 'Frequently asked questions' : 'Questions fréquentes'),
-    usefulLinksTitle: usefulLinksTitle ?? (isEn ? 'Useful links' : 'Liens utiles'),
-    asideTitle: asideTitle ?? (isEn ? 'Need advice before paying?' : "Besoin d'un avis avant de payer ?"),
+    ctaLabel: ctaLabel ?? (isEn ? 'Request a quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'اطلب عرض سعر عبر WhatsApp' : 'Demander un devis sur WhatsApp'),
+    routeCtaLabel: routeCtaLabel ?? (isEn ? 'See China to Africa routes' : isZh ? '查看中国—马里货运' : isAr ? 'عرض الشحن من الصين إلى مالي' : 'Voir le fret Chine-Mali'),
+    routeCtaHref: routeCtaHref ?? (isEn ? '/en/routes/china-to-africa' : isZh ? '/zh/routes/china-to-mali' : isAr ? '/ar/routes/china-to-mali' : '/fr/routes/china-to-mali'),
+    comparisonTitle: comparisonTitle ?? (isEn ? 'Quick comparison' : isZh ? '快速比较' : isAr ? 'مقارنة سريعة' : 'Comparaison rapide'),
+    processTitle: processTitle ?? (isEn ? 'Our process' : isZh ? '我们的流程' : isAr ? 'عمليتنا' : 'Notre processus'),
+    faqTitle: faqTitle ?? (isEn ? 'Frequently asked questions' : isZh ? '常见问题' : isAr ? 'الأسئلة الشائعة' : 'Questions fréquentes'),
+    usefulLinksTitle: usefulLinksTitle ?? (isEn ? 'Useful links' : isZh ? '实用链接' : isAr ? 'روابط مفيدة' : 'Liens utiles'),
+    asideTitle: asideTitle ?? (isEn ? 'Need advice before paying?' : isZh ? '付款前需要建议吗？' : isAr ? 'تحتاج إلى رأي قبل الدفع؟' : "Besoin d'un avis avant de payer ?"),
     asideText:
       asideText ??
       (isEn
         ? 'Send the supplier link, quantities and destination. Our team will reply on WhatsApp.'
-        : 'Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.'),
-    asideCtaLabel: asideCtaLabel ?? (isEn ? 'Contact ChinaLink' : 'Contacter ChinaLink'),
-    stepLabel: stepLabel ?? (isEn ? 'Step' : 'Etape'),
+        : isZh ? '发送供应商链接、数量和目的地。我们的团队会在 WhatsApp 上回复您。' : isAr ? 'أرسل رابط المورد والكميات والوجهة. سيرد فريقنا عليك عبر WhatsApp.' : 'Envoyez le lien du fournisseur, les quantités et la destination. Notre équipe vous répond sur WhatsApp.'),
+    asideCtaLabel: asideCtaLabel ?? (isEn ? 'Contact ChinaLink' : isZh ? '联系 ChinaLink' : isAr ? 'تواصل مع ChinaLink' : 'Contacter ChinaLink'),
+    stepLabel: stepLabel ?? (isEn ? 'Step' : isZh ? '步骤' : isAr ? 'الخطوة' : 'Etape'),
   };
 
   return (
@@ -128,7 +130,7 @@ export function SeoServicePage({
 
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
-          <article className="space-y-12">
+          <article className="min-w-0 space-y-12">
             {sections.map((section) => (
               <section key={section.title}>
                 <h2 className="text-2xl font-bold md:text-3xl">{section.title}</h2>

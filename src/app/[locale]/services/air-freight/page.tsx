@@ -78,6 +78,42 @@ const airFreightFaqs = {
       answer: 'Send the weight, volume, product category, China origin city and destination on WhatsApp. We will estimate the most suitable freight mode.',
     },
   ],
+  zh: [
+    {
+      question: '中国到马里的空运需要多长时间？',
+      answer: '从中国到巴马科的空运通常需要 14 到 21 个工作日，取决于始发城市、集运和登机前检查。',
+    },
+    {
+      question: '哪些产品适合中国到马里空运？',
+      answer: '空运适合服装、配件、零件、小型设备、样品和紧急货物。电池、液体和危险品需要在发货前确认。',
+    },
+    {
+      question: '你们可以在发货前购买货物吗？',
+      answer: '可以。ChinaLink 可以采购、向供应商付款、检查货物、合并包裹，再安排空运到巴马科。',
+    },
+    {
+      question: '如何获得空运报价？',
+      answer: '通过 WhatsApp 发送重量、体积、产品类别、中国始发城市和巴马科目的地。我们会估算最合适的方式。',
+    },
+  ],
+  ar: [
+    {
+      question: 'كم يستغرق الشحن الجوي من الصين إلى مالي؟',
+      answer: 'يستغرق الشحن الجوي من الصين إلى باماكو عادة من 14 إلى 21 يوم عمل حسب مدينة المغادرة والتجميع والفحوصات قبل التحميل.',
+    },
+    {
+      question: 'ما المنتجات المناسبة للشحن الجوي من الصين إلى مالي؟',
+      answer: 'يناسب الشحن الجوي الملابس والإكسسوارات والقطع والمعدات الصغيرة والعينات والبضائع العاجلة. وتتطلب البطاريات والسوائل والمواد الخطرة موافقة قبل الشحن.',
+    },
+    {
+      question: 'هل يمكنكم شراء البضاعة قبل شحنها؟',
+      answer: 'نعم. يمكن لـChinaLink التوريد والدفع للمورد وفحص البضاعة وتجميع الطرود ثم تنظيم الشحن الجوي إلى باماكو.',
+    },
+    {
+      question: 'كيف أحصل على عرض سعر للشحن الجوي؟',
+      answer: 'أرسل الوزن والحجم وفئة المنتج ومدينة المغادرة في الصين والوجهة في باماكو عبر WhatsApp. نقدّر لك الطريقة الأنسب.',
+    },
+  ],
 };
 
 export default async function AirFreightService({ params }: PageProps) {
@@ -87,13 +123,15 @@ export default async function AirFreightService({ params }: PageProps) {
   setRequestLocale(locale);
   
   const isEn = locale === 'en';
-  const faqs = isEn ? airFreightFaqs.en : airFreightFaqs.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const faqs = airFreightFaqs[locale as Locale];
   
   // Breadcrumb data for structured data
   const breadcrumbs = [
-    { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+    { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
     { name: isEn ? 'Services' : 'Services', url: `/${locale}/services` },
-    { name: isEn ? 'Air Freight' : 'Fret Aérien', url: `/${locale}/services/air-freight` },
+    { name: isEn ? 'Air Freight' : isZh ? '空运' : isAr ? 'الشحن الجوي' : 'Fret Aérien', url: `/${locale}/services/air-freight` },
   ];
 
   return (

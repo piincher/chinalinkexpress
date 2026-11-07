@@ -200,25 +200,211 @@ const content = {
       { href: '/fr/guides/acheter-sur-1688-depuis-le-mali', label: 'Guide to buying on 1688' },
     ],
   },
+  zh: {
+    badge: '中国采购代理',
+    title: '您在中国的西非采购代理',
+    intro: '您在寻找中国可靠的采购代理，在 Alibaba、1688 或直接从工厂购买吗？ChinaLink Express 是您在义乌和广州值得信赖的中间人。我们寻找供应商、谈判价格、核验质量、代您付款，并发往马里、塞内加尔、科特迪瓦及整个西非。自 2019 年以来，已有 500 多家非洲企业信任我们。',
+    highlights: [
+      '在 Alibaba、1688 和工厂寻找供应商',
+      '用中文议价，获得更好价格',
+      '发货前质量核验和检查',
+      '通过我们在中国的办公室安全向供应商付款',
+      '集运并空运或海运',
+    ],
+    sections: [
+      {
+        title: '为什么要使用中国采购代理？',
+        body: '不通过中间人直接在中国购买有很多风险：Alibaba 诈骗、质量差、语言不通、付款困难和物流问题。像 ChinaLink Express 这样的本地采购代理在中国管理每个环节，消除这些风险。',
+        items: [
+          '避免 Alibaba 诈骗和假供应商',
+          '通过本地议价获得便宜 20-40% 的价格',
+          '发货前现场检查，确保质量',
+          '通过我们在中国的办公室简化付款',
+          '把多笔采购合并为一票经济的货运',
+        ],
+      },
+      {
+        title: '我们的全程采购服务',
+        body: 'ChinaLink Express 提供从中国出发的一站式采购服务。从寻找供应商到送达您在非洲的地址，我们为您管理一切。',
+        items: [
+          '寻找供应商：Alibaba、1688、展会、直接工厂',
+          '议价：用中文沟通，争取最好价格',
+          '供应商核验：工厂审核、执照、经营记录',
+          '质量检验：发货前带照片的产品检查',
+          '安全付款：通过我们在中国的办公室（支付宝、转账、微信）',
+          '集运：发货前合并多家供应商的货物',
+          '发运：空运 14-21 天或海运 60-75 天到非洲',
+        ],
+      },
+      {
+        title: 'Alibaba 与 1688：选哪个平台？',
+        body: 'Alibaba 是价格较高的英文国际平台。1688 是面向国内市场的中文网站，价格便宜 30-50%，但只有中文。我们的双语团队在两个平台采购，为您寻找最佳机会。',
+        items: [
+          'Alibaba：认证供应商、Trade Assurance、国际价格',
+          '1688：工厂直供价，中国国内市场，便宜 30-50%',
+          '我们根据您的需求和预算在两个平台采购',
+          '在 1688 付款前进行系统性核验',
+        ],
+      },
+    ],
+    tableHeaders: ['需求', '没有采购代理', '使用 ChinaLink Express'],
+    tableRows: [
+      ['寻找供应商', '花费数小时搜索，有诈骗风险', '专家搜索 + 包含核验'],
+      ['谈判价格', '出口价高，语言障碍', '中文谈判，节省 20-40%'],
+      ['在中国付款', '从非洲无法完成（支付宝、1688）', '通过我们在中国的办公室付款'],
+      ['核验质量', '收货时才发现问题，无法追索', '发货前照片检验'],
+      ['发运到非洲', '每家供应商单独发货', '集运 + 经济拼货运输'],
+    ],
+    process: [
+      '您通过 WhatsApp 发送需求（产品、数量、预算）。',
+      '我们在 Alibaba 和/或 1688 寻找 3-5 家合格供应商。',
+      '您选择供应商，我们谈判价格和条件。',
+      '我们核验供应商、付款并跟进生产。',
+      '我们检查质量、集运并发往您的国家。',
+    ],
+    faqs: [
+      {
+        question: '中国采购代理收费多少？',
+        answer: '我们的采购服务费从每单 50 美元起（搜索 + 议价）。质量检验为 100 美元。供应商付款和集运按金额和货量收取透明费用。请通过 WhatsApp 联系我们获取个性化报价。',
+      },
+      {
+        question: '你们能替我在 1688 购买吗？',
+        answer: '可以，这是我们最受欢迎的服务之一。1688 的价格比 Alibaba 便宜 30-50%，但只有中文。我们的团队为您购买、核验质量并安排发运。',
+      },
+      {
+        question: '如何避免 Alibaba 上的诈骗？',
+        answer: '我们系统性地核验每家供应商：营业执照、经营记录、客户评价，必要时实地考察工厂。我们从不向未经核验的供应商付款，并在可用时使用保护机制。',
+      },
+      {
+        question: '收到货物需要多久？',
+        answer: '寻找供应商需要 2-5 天。生产视产品需要 7 到 30 天。空运再加 14-21 天，海运再加 60-75 天。我们在报价时就提供准确的时间表。',
+      },
+      {
+        question: '你们送达所有西非国家吗？',
+        answer: '是的，我们送达马里、塞内加尔、科特迪瓦、加纳、尼日利亚、布基纳法索、尼日尔、贝宁、多哥、几内亚、喀麦隆和刚果（金）。空运通常到达巴马科或达喀尔，再本地转运。',
+      },
+    ],
+    links: [
+      { href: '/zh/services/verification-fournisseur-chine', label: '中国供应商核验' },
+      { href: '/zh/services/paiement-fournisseur-chine', label: '中国供应商付款' },
+      { href: '/zh/services/sourcing', label: '全程采购服务' },
+      { href: '/zh/guides/acheter-sur-alibaba-depuis-le-mali', label: 'Alibaba 购买指南' },
+      { href: '/zh/guides/acheter-sur-1688-depuis-le-mali', label: '1688 购买指南' },
+    ],
+  },
+  ar: {
+    badge: 'وكيل التوريد في الصين',
+    title: 'وكيل التوريد لديك في الصين لغرب أفريقيا',
+    intro: 'هل تبحث عن وكيل توريد موثوق في الصين للشراء من Alibaba أو 1688 أو مباشرة من المصنع؟ ChinaLink Express وسيطك الموثوق في ييوو وقوانغتشو. نجد مورديك ونتفاوض على الأسعار ونتحقق من الجودة وندفع نيابة عنك ونشحن إلى مالي والسنغال وساحل العاج وغرب أفريقيا كلها. أكثر من 500 شركة أفريقية تثق بنا منذ 2019.',
+    highlights: [
+      'البحث عن موردين في Alibaba و1688 والمصانع',
+      'التفاوض بالصينية للحصول على أسعار أفضل',
+      'التحقق من الجودة والفحص قبل الشحن',
+      'دفع آمن للمورد عبر مكتبنا في الصين',
+      'التجميع والشحن الجوي أو البحري',
+    ],
+    sections: [
+      {
+        title: 'لماذا تستعين بوكيل توريد في الصين؟',
+        body: 'الشراء مباشرة من الصين دون وسيط يعرّضك لمخاطر كثيرة: احتيال في Alibaba وجودة رديئة وسوء فهم لغوي وصعوبات في الدفع ومشكلات لوجستية. ووكيل التوريد المحلي مثل ChinaLink Express يزيل هذه المخاطر بإدارة كل مرحلة من الصين.',
+        items: [
+          'تجنب احتيال Alibaba والموردين المزيفين',
+          'احصل على أسعار أقل بنسبة 20-40% بفضل التفاوض المحلي',
+          'اضمن الجودة بالفحص الميداني قبل الشحن',
+          'بسّط الدفع عبر مكتبنا في الصين',
+          'اجمع عدة مشتريات في شحنة واحدة اقتصادية',
+        ],
+      },
+      {
+        title: 'خدماتنا المتكاملة للتوريد',
+        body: 'تقدم ChinaLink Express خدمة توريد متكاملة من الصين. من البحث عن المورد إلى التسليم في عنوانك في أفريقيا، نتولى كل شيء نيابة عنك.',
+        items: [
+          'البحث عن مورد: Alibaba و1688 والمعارض والمصانع مباشرة',
+          'التفاوض على السعر: نقاش بالصينية للحصول على أفضل الأسعار',
+          'التحقق من المورد: تدقيق المصنع والرخصة والسجل',
+          'فحص الجودة: فحص المنتج قبل الشحن مع الصور',
+          'دفع آمن: عبر مكتبنا في الصين (Alipay والتحويل وWeChat)',
+          'التجميع: جمع عدة موردين قبل الإرسال',
+          'الشحن: جوًا خلال 14-21 يومًا أو بحرًا خلال 60-75 يومًا إلى أفريقيا',
+        ],
+      },
+      {
+        title: 'Alibaba أم 1688: أي منصة تختار؟',
+        body: 'Alibaba منصة دولية بالإنجليزية بأسعار أعلى. و1688 موقع صيني مخصص للسوق المحلية بأسعار أقل بنسبة 30-50% لكنه بالصينية فقط. يشتري فريقنا ثنائي اللغة من المنصتين ليجد لك أفضل الفرص.',
+        items: [
+          'Alibaba: موردون معتمدون وTrade Assurance وأسعار دولية',
+          '1688: سعر المصنع المباشر، السوق الصينية المحلية، أرخص بنسبة 30-50%',
+          'نورّد من المنصتين حسب احتياجاتك وميزانيتك',
+          'تحقق منهجي قبل أي دفع في 1688',
+        ],
+      },
+    ],
+    tableHeaders: ['الحاجة', 'بدون وكيل توريد', 'مع ChinaLink Express'],
+    tableRows: [
+      ['العثور على مورد', 'ساعات من البحث وخطر احتيال', 'بحث متخصص + التحقق مشمول'],
+      ['التفاوض على الأسعار', 'أسعار تصدير مرتفعة وحاجز لغوي', 'تفاوض بالصينية وتوفير 20-40%'],
+      ['الدفع في الصين', 'مستحيل من أفريقيا (Alipay و1688)', 'الدفع عبر مكتبنا في الصين'],
+      ['التحقق من الجودة', 'مفاجآت عند الاستلام ولا سبيل للمطالبة', 'فحص بالصور قبل الشحن'],
+      ['الشحن إلى أفريقيا', 'كل مورد يشحن على حدة', 'تجميع + شحن مجمّع اقتصادي'],
+    ],
+    process: [
+      'ترسل حاجتك (المنتج والكمية والميزانية) عبر WhatsApp.',
+      'نبحث عن 3-5 موردين مؤهلين في Alibaba و/أو 1688.',
+      'تختار المورد، ونتفاوض نحن على الأسعار والشروط.',
+      'نتحقق من المورد وندفع ونتابع الإنتاج.',
+      'نفحص الجودة ونجمع ونشحن إلى بلدك.',
+    ],
+    faqs: [
+      {
+        question: 'كم تبلغ تكلفة وكيل التوريد في الصين؟',
+        answer: 'تبدأ أتعاب التوريد لدينا من 50 دولارًا لكل طلب (بحث + تفاوض). ويبلغ فحص الجودة 100 دولار. وللدفع للمورد والتجميع أسعار شفافة حسب المبلغ والحجم. تواصل معنا عبر WhatsApp للحصول على عرض سعر مخصص.',
+      },
+      {
+        question: 'هل يمكنكم الشراء من 1688 نيابة عني؟',
+        answer: 'نعم، هذه من أكثر خدماتنا طلبًا. تقدم 1688 أسعارًا أقل بنسبة 30-50% من Alibaba لكنها بالصينية فقط. يشتري فريقنا لك ويتحقق من الجودة ويدير الشحن.',
+      },
+      {
+        question: 'كيف أتجنب الاحتيال في Alibaba؟',
+        answer: 'نتحقق بشكل منهجي من كل مورد: الرخصة التجارية والسجل وآراء العملاء وزيارة المصنع عند الحاجة. ولا ندفع أبدًا لمورد غير موثق، ونستخدم آليات الحماية عند توفرها.',
+      },
+      {
+        question: 'كم يستغرق استلام بضائعي؟',
+        answer: 'يستغرق البحث عن مورد 2-5 أيام. ويتراوح الإنتاج بين 7 و30 يومًا حسب المنتج. ويضيف الشحن الجوي 14-21 يومًا والبحري 60-75 يومًا. نزودك بجدول دقيق منذ عرض السعر.',
+      },
+      {
+        question: 'هل تسلمون في كل دول غرب أفريقيا؟',
+        answer: 'نعم، نسلم في مالي والسنغال وساحل العاج وغانا ونيجيريا وبوركينا فاسو والنيجر وبنين وتوغو وغينيا والكاميرون وجمهورية الكونغو الديمقراطية. ويصل الشحن الجوي عادة إلى باماكو أو داكار مع عبور محلي.',
+      },
+    ],
+    links: [
+      { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من الموردين الصينيين' },
+      { href: '/ar/services/paiement-fournisseur-chine', label: 'الدفع لمورد في الصين' },
+      { href: '/ar/services/sourcing', label: 'خدمة توريد متكاملة' },
+      { href: '/ar/guides/acheter-sur-alibaba-depuis-le-mali', label: 'دليل الشراء من Alibaba' },
+      { href: '/ar/guides/acheter-sur-1688-depuis-le-mali', label: 'دليل الشراء من 1688' },
+    ],
+  },
 } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'China Sourcing Agent for Africa | Alibaba & 1688 Buying Agent | ChinaLink'
-      : 'Agent Sourcing Chine Afrique | Achat Alibaba 1688 | ChinaLink Express',
+      : isZh ? '中国非洲采购代理 | Alibaba 1688 代购 | ChinaLink Express' : isAr ? 'وكيل توريد من الصين إلى أفريقيا | الشراء من Alibaba و1688 | ChinaLink Express' : 'Agent Sourcing Chine Afrique | Achat Alibaba 1688 | ChinaLink Express',
     description: isEn
       ? 'Trusted China sourcing agent for West Africa. Buy from Alibaba, 1688 & Chinese factories with price negotiation, quality inspection, secure payment & shipping to Mali, Senegal, Ivory Coast. WhatsApp: +86 188 5172 5957'
-      : 'Agent sourcing de confiance en Chine pour l\'Afrique de l\'Ouest. Achat sur Alibaba, 1688 et usines chinoises avec négociation, inspection qualité, paiement sécurisé et expédition vers le Mali, Sénégal, Côte d\'Ivoire. WhatsApp : +86 188 5172 5957',
+      : isZh ? '面向西非的中国可信赖采购代理。在 Alibaba、1688 和中国工厂采购，提供议价、质量检验、安全付款并发往马里、塞内加尔、科特迪瓦。WhatsApp：+86 188 5172 5957' : isAr ? 'وكيل توريد موثوق في الصين لغرب أفريقيا. الشراء من Alibaba و1688 والمصانع الصينية مع التفاوض وفحص الجودة والدفع الآمن والشحن إلى مالي والسنغال وساحل العاج. WhatsApp: ‎+86 188 5172 5957' : 'Agent sourcing de confiance en Chine pour l\'Afrique de l\'Ouest. Achat sur Alibaba, 1688 et usines chinoises avec négociation, inspection qualité, paiement sécurisé et expédition vers le Mali, Sénégal, Côte d\'Ivoire. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'China sourcing agent, Alibaba sourcing agent, 1688 sourcing agent, buy from Alibaba Africa, China buying agent Mali, Alibaba agent West Africa, sourcing agent Yiwu, factory direct sourcing China, wholesale from China Africa, China procurement services, import from China Mali, freight forwarder China Mali'
-      : 'agent sourcing Chine, agent sourcing Alibaba, agent sourcing 1688, acheter sur Alibaba Afrique, agent achat Chine Mali, agent Alibaba Afrique de l\'Ouest, sourcing Yiwu, sourcing direct usine Chine, grossiste Chine Afrique, service approvisionnement Chine, importer de Chine Mali, cargo chine mali, transitaire chine mali',
+      : isZh ? '中国采购代理, Alibaba 采购代理, 1688 采购代理, 从非洲在 Alibaba 购买, 中国马里采购代理, 西非 Alibaba 代理, 义乌采购, 中国工厂直采, 中国非洲批发商, 中国采购服务, 从中国进口到马里, 中国马里货运, 中国马里货代' : isAr ? 'وكيل توريد في الصين، وكيل توريد Alibaba، وكيل توريد 1688، الشراء من Alibaba في أفريقيا، وكيل شراء من الصين إلى مالي، وكيل Alibaba في غرب أفريقيا، التوريد من ييوو، التوريد مباشرة من المصانع الصينية، تاجر جملة من الصين إلى أفريقيا، خدمة التوريد من الصين، الاستيراد من الصين إلى مالي، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'agent sourcing Chine, agent sourcing Alibaba, agent sourcing 1688, acheter sur Alibaba Afrique, agent achat Chine Mali, agent Alibaba Afrique de l\'Ouest, sourcing Yiwu, sourcing direct usine Chine, grossiste Chine Afrique, service approvisionnement Chine, importer de Chine Mali, cargo chine mali, transitaire chine mali',
     path: '/services/agent-sourcing-chine',
     locale: locale as Locale,
-    supportedLocales: ['fr', 'en'],
+
   });
 }
 
@@ -226,15 +412,17 @@ export default async function AgentSourcingPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const isEn = locale === 'en';
-  const page = isEn ? content.en : content.fr;
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
+  const page = content[locale as Locale];
 
   const schemas = [
     generateOrganizationSchema(),
     generateServiceSchema('sourcing', locale as Locale),
     generateBreadcrumbSchema([
-      { name: isEn ? 'Home' : 'Accueil', url: `/${locale}/` },
+      { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${locale}/` },
       { name: 'Services', url: `/${locale}/services` },
-      { name: isEn ? 'China Sourcing Agent' : 'Agent Sourcing Chine', url: `/${locale}/services/agent-sourcing-chine` },
+      { name: isEn ? 'China Sourcing Agent' : isZh ? '中国采购代理' : isAr ? 'وكيل التوريد في الصين' : 'Agent Sourcing Chine', url: `/${locale}/services/agent-sourcing-chine` },
     ], locale as Locale),
     generateFAQPageSchema([...page.faqs], locale as Locale),
   ];
@@ -243,7 +431,7 @@ export default async function AgentSourcingPage({ params }: Props) {
     <>
       <StructuredData schemas={schemas} />
       <SeoServicePage
-        locale={isEn ? 'en' : 'fr'}
+        locale={(locale as Locale)}
         badge={page.badge}
         title={page.title}
         intro={page.intro}
@@ -273,7 +461,7 @@ export default async function AgentSourcingPage({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'en' }];
+  return [{ locale: 'fr' }, { locale: 'en' }, { locale: 'zh' }, { locale: 'ar' }];
 }
 
 export const dynamic = 'force-static';

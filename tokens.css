@@ -1,34 +1,25 @@
-/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5
- * macrostructure: Marquee Hero → Stat-Led hybrid (banded) · tone: industrial-confident
- * genre: modern-minimal · theme: custom "dark industrial, photo-led"
- * theme axes: dark / geometric-sans / cool
- * anchor hue: 250 · display: Archivo · body: Geist Sans · outlier: Geist Mono
- * nav: N5 Floating pill · footer: Ft5 Statement
+/* Hallmark · macrostructure: Le conteneur · tone: precise, physical, confident
+ * genre: modern-minimal · theme: custom "bleu nuit" · design-system: tokens.css
+ * anchor hue: 264 · display + body: Geist · data labels: Geist Mono
  *
- * ============================================================================
- * ChinaLink Express — unified token system
- * ============================================================================
- *
- * This file is the ONLY place colour, type, space and motion are defined.
- * `globals.css` maps the legacy variable names (--color-primary, --surface,
- * --text-primary, --border …) onto these tokens so that the ~half of the site
- * still written against the old names inherits this palette instead of raw
- * Tailwind hexes. Nothing downstream should declare a raw colour.
+ * ChinaLink Express unified token system. This file is the ONLY place colour,
+ * type, space and motion are defined. globals.css maps the legacy variable
+ * names onto these tokens, so every page inherits this palette.
  */
 
 :root {
   /* ==========================================================================
      Colour — light band
      ========================================================================== */
-  --color-paper:      oklch(98%  0.004 250);
-  --color-paper-2:    oklch(95.5% 0.006 250);
-  --color-paper-3:    oklch(92%  0.008 250);
-  --color-ink:        oklch(16%  0.012 250);
-  --color-ink-2:      oklch(42%  0.012 250);
-  --color-rule:       oklch(88%  0.008 250);
-  --color-rule-2:     oklch(80%  0.010 250);
-  --color-neutral:    oklch(54%  0.008 250);
-  --color-muted:      oklch(70%  0.008 250);
+  --color-paper: oklch(97.1% 0.003 264);
+  --color-paper-2: oklch(100% 0 0);
+  --color-paper-3: oklch(93.5% 0.005 264);
+  --color-ink: oklch(14% 0.008 264);
+  --color-ink-2: oklch(43% 0.012 264);
+  --color-rule: oklch(90% 0.006 264);
+  --color-rule-2: oklch(82% 0.008 264);
+  --color-neutral:    oklch(54%  0.008 264);
+  --color-muted:      oklch(70%  0.008 264);
 
   /* --- Colour: the dark band ---
      These are *band* colours, not theme colours: the hero and the two feature
@@ -36,12 +27,12 @@
      from --color-paper is what lets a section be deliberately dark rather than
      accidentally inverted. Cool cast (hue 250, low chroma) so warehouse
      photography sits on them without a colour clash. */
-  --color-void:       oklch(15%  0.018 250);
-  --color-void-2:     oklch(20%  0.020 250);
-  --color-void-3:     oklch(26%  0.020 250);
-  --color-void-ink:   oklch(97%  0.004 250);
-  --color-void-ink-2: oklch(74%  0.010 250);
-  --color-void-rule:  oklch(32%  0.016 250);
+  --color-void: oklch(0% 0 0);
+  --color-void-2: oklch(21% 0 0);
+  --color-void-3: oklch(29% 0 0);
+  --color-void-ink: oklch(100% 0 0);
+  --color-void-ink-2: oklch(74% 0.008 264);
+  --color-void-rule: oklch(32% 0 0);
 
   /* Photo scrim.
      Four stops, not one flat wash. A uniform overlay greys the whole frame and
@@ -54,22 +45,27 @@
      bottom third where the headline and CTAs live. The first pass was far too
      transparent through the middle — the headline was competing with a lit
      warehouse roof. */
-  --scrim-0:  oklch(12% 0.020 250 / 0.78);
-  --scrim-25: oklch(12% 0.020 250 / 0.46);
-  --scrim-55: oklch(11% 0.020 250 / 0.66);
-  --scrim-85: oklch(10% 0.020 250 / 0.93);
-  --scrim-100:oklch(10% 0.020 250 / 0.97);
+  --scrim-0:  oklch(12% 0.020 264 / 0.78);
+  --scrim-25: oklch(12% 0.020 264 / 0.46);
+  --scrim-55: oklch(11% 0.020 264 / 0.66);
+  --scrim-85: oklch(10% 0.020 264 / 0.93);
+  --scrim-100:oklch(10% 0.020 264 / 0.97);
 
   /* --- Accent ---
      One accent, used as a signal, not as decoration. Sits at the sRGB gamut
      edge for this hue so a CTA on a phone in Bamako daylight is unmistakably a
      CTA. --color-accent-bright is the dark-band variant: on the void surfaces
      the same chroma reads muddy, so it lifts. */
-  --color-accent:        oklch(55%  0.200 250);
-  --color-accent-deep:   oklch(46%  0.190 250);
-  --color-accent-bright: oklch(70%  0.180 250);
-  --color-accent-ink:    oklch(99%  0.004 250);
-  --color-focus:         oklch(60%  0.200 250);
+  --color-accent: oklch(48.8% 0.217 264);
+  --color-accent-deep: oklch(41% 0.19 264);
+  --color-accent-bright: oklch(72% 0.13 264);
+  --color-accent-ink: oklch(100% 0 0);
+  /* Bleu nuit carries the big brand surfaces; yellow comes from the logo and the
+     shipping mark and is a signal, never a section background. */
+  --color-night:  oklch(25.5% 0.083 264);
+  --color-night-2: oklch(21% 0.07 264);
+  --color-signal: oklch(89% 0.15 92);
+  --color-focus: oklch(55% 0.2 264);
 
   /* Semantic. Desaturated toward the brand's cool cast so a success tick does
      not read as a different product's green. */
@@ -82,7 +78,7 @@
   /* ==========================================================================
      Type
      ========================================================================== */
-  --font-display: var(--font-archivo), "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-body:    var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono:    var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
 
@@ -95,22 +91,21 @@
   --text-lg:   1.375rem;
   --text-xl:   1.75rem;
   --text-2xl:  2.25rem;
-  --text-3xl:  clamp(2.125rem, 2.6vw + 1.35rem, 3.25rem);
-  --text-4xl:  clamp(2.5rem,  3.8vw + 1.4rem,  4.25rem);
-  --text-display:   clamp(2.75rem, 6.4vw + 0.6rem, 6.5rem);
-  --text-display-s: clamp(2.25rem, 4.4vw + 0.6rem, 4rem);
+  --text-3xl: clamp(2.25rem, 3.6vw + 1rem, 4.5rem);
+  --text-4xl: clamp(2.5rem, 4vw + 1.2rem, 5rem);
+  --text-display: clamp(3rem, 6.2vw + 0.5rem, 6rem);
+  --text-display-s: clamp(2.75rem, 5vw + 0.5rem, 5.5rem);
 
-  /* Archivo is a variable grotesque, so 800 is a drawn weight rather than a
-     synthesised bold. Tracking tightens as size grows — the optical rule that
-     makes large type read as set rather than scaled. */
-  --weight-display: 800;
-  --weight-heading: 700;
+  /* Tracking tightens as size grows, the optical rule that makes large type read
+     as set rather than scaled. */
+  --weight-display: 600;
+  --weight-heading: 600;
   --weight-medium:  500;
-  --tracking-display: -0.038em;
-  --tracking-heading: -0.022em;
+  --tracking-display: -0.048em;
+  --tracking-heading: -0.03em;
   --tracking-label:    0.14em;
-  --leading-display:  0.94;
-  --leading-heading:  1.06;
+  --leading-display: 1;
+  --leading-heading: 1.04;
   --leading-body:     1.62;
 
   /* ==========================================================================
@@ -147,16 +142,16 @@
   /* ==========================================================================
      Radius / elevation
      ========================================================================== */
-  --radius-card:  10px;
-  --radius-panel: 14px;
-  --radius-input: 8px;
+  --radius-card: 24px;
+  --radius-panel: 32px;
+  --radius-input: 12px;
   --radius-pill:  9999px;
 
   /* Elevation is carried by a hairline plus a very low, very wide shadow.
      Large blurred drop-shadows are the single loudest "template" signal. */
-  --shadow-whisper: 0 1px 2px oklch(20% 0.01 250 / 0.05);
-  --shadow-lift:    0 12px 32px -12px oklch(20% 0.02 250 / 0.18);
-  --shadow-void:    0 20px 60px -24px oklch(5% 0.02 250 / 0.7);
+  --shadow-whisper: 0 1px 2px oklch(20% 0.01 264 / 0.05);
+  --shadow-lift:    0 12px 32px -12px oklch(20% 0.02 264 / 0.18);
+  --shadow-void:    0 20px 60px -24px oklch(5% 0.02 264 / 0.7);
 
   /* ==========================================================================
      Z-index
@@ -174,29 +169,29 @@
    Dark mode — the light band darkens; the void band stays put
    ============================================================================ */
 .dark {
-  --color-paper:      oklch(13%  0.012 250);
-  --color-paper-2:    oklch(17%  0.014 250);
-  --color-paper-3:    oklch(22%  0.016 250);
-  --color-ink:        oklch(97%  0.004 250);
-  --color-ink-2:      oklch(74%  0.010 250);
-  --color-rule:       oklch(28%  0.014 250);
-  --color-rule-2:     oklch(36%  0.014 250);
-  --color-neutral:    oklch(60%  0.010 250);
-  --color-muted:      oklch(46%  0.010 250);
+  --color-paper:      oklch(13%  0.012 264);
+  --color-paper-2:    oklch(17%  0.014 264);
+  --color-paper-3:    oklch(22%  0.016 264);
+  --color-ink:        oklch(97%  0.004 264);
+  --color-ink-2:      oklch(74%  0.010 264);
+  --color-rule:       oklch(28%  0.014 264);
+  --color-rule-2:     oklch(36%  0.014 264);
+  --color-neutral:    oklch(60%  0.010 264);
+  --color-muted:      oklch(46%  0.010 264);
 
   /* In dark mode the void bands must still separate from the page, so they go
      *lighter* than the paper rather than darker — the band reads as a raised
      plate instead of a hole. */
-  --color-void:       oklch(18%  0.020 250);
-  --color-void-2:     oklch(23%  0.020 250);
-  --color-void-3:     oklch(29%  0.020 250);
-  --color-void-rule:  oklch(35%  0.016 250);
+  --color-void:       oklch(18%  0.020 264);
+  --color-void-2:     oklch(23%  0.020 264);
+  --color-void-3:     oklch(29%  0.020 264);
+  --color-void-rule:  oklch(35%  0.016 264);
 
-  --color-accent:        oklch(70%  0.180 250);
-  --color-accent-deep:   oklch(60%  0.175 250);
-  --color-accent-bright: oklch(76%  0.165 250);
-  --color-accent-ink:    oklch(13%  0.012 250);
-  --color-focus:         oklch(74%  0.180 250);
+  --color-accent:        oklch(70%  0.180 264);
+  --color-accent-deep:   oklch(60%  0.175 264);
+  --color-accent-bright: oklch(76%  0.165 264);
+  --color-accent-ink:    oklch(13%  0.012 264);
+  --color-focus:         oklch(74%  0.180 264);
 
   --color-positive-soft: oklch(26% 0.050 160);
   --color-negative-soft: oklch(26% 0.050  25);

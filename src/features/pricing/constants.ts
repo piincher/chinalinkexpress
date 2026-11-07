@@ -13,12 +13,16 @@ export interface DeliveryTier {
   id: string;
   name: string;
   nameFr: string;
+  nameZh: string;
+  nameAr: string;
   minDays: number;
   maxDays: number;
   rateFCFA: number;
   unit: 'kg' | 'm³';
   positioning: string;
   positioningFr: string;
+  positioningZh: string;
+  positioningAr: string;
   color: string;
   icon: string;
 }
@@ -28,12 +32,16 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     id: 'flash',
     name: 'Flash Express',
     nameFr: 'Flash Express',
+    nameZh: 'Flash Express',
+    nameAr: 'Flash Express',
     minDays: 2,
     maxDays: 5,
     rateFCFA: 16000,
     unit: 'kg',
     positioning: 'For urgent orders',
     positioningFr: 'Pour les commandes urgentes',
+    positioningZh: '用于紧急订单',
+    positioningAr: 'للطلبات العاجلة',
     color: 'from-red-500 to-rose-600',
     icon: '⚡',
   },
@@ -41,12 +49,16 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     id: 'air_standard',
     name: 'Air Standard',
     nameFr: 'Air Standard',
+    nameZh: '标准空运',
+    nameAr: 'الشحن الجوي القياسي',
     minDays: 14,
     maxDays: 21,
     rateFCFA: 10500,
     unit: 'kg',
     positioning: 'Smart choice for non-urgent',
     positioningFr: 'Le choix malin pour les non-urgents',
+    positioningZh: '不紧急时的明智选择',
+    positioningAr: 'الخيار الذكي لغير العاجل',
     color: 'from-blue-500 to-blue-600',
     icon: '✈️',
   },
@@ -54,12 +66,16 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     id: 'sea_economy',
     name: 'Sea Economy',
     nameFr: 'Sea Economy',
+    nameZh: 'Sea Economy',
+    nameAr: 'Sea Economy',
     minDays: 60,
     maxDays: 75,
     rateFCFA: 300000,
     unit: 'm³',
     positioning: 'Cheapest for big volumes',
     positioningFr: 'Le moins cher pour les gros volumes',
+    positioningZh: '大批量最便宜',
+    positioningAr: 'الأرخص للكميات الكبيرة',
     color: 'from-emerald-500 to-emerald-600',
     icon: '🚢',
   },

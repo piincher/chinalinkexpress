@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ChinaLink Express | China-Africa Sourcing & Shipping",
-    "description": "ChinaLink Express - Your China-Africa logistics partner for sourcing, purchasing and shipping goods to Mali and West Africa. Free quote.",
-    "keywords": "China Africa sourcing, China Mali shipping, freight forwarding China Africa, air freight China Bamako, shipping China West Africa, international logistics"
+    "title": "China to Mali Cargo & Freight Forwarder | ChinaLink Express",
+    "description": "China to Mali cargo and freight forwarding for importers across East and West Africa: sourcing, supplier payment, air and sea freight to Bamako, with verified photos and tracking.",
+    "keywords": "China Mali cargo, China Mali freight forwarder, freight forwarder China Africa, shipping from China to West Africa, shipping from China to East Africa, air freight China Bamako, sea freight China Bamako, China sourcing agent Africa"
   },
   "navigation": {
     "home": "Home",
@@ -75,7 +75,8 @@
     ],
     "stats": {
       "payOnDelivery": "Pay on Delivery"
-    }
+    },
+    "keywords": "China Mali cargo · China Mali freight forwarder"
   },
   "landing": {
     "marquee": [
@@ -90,7 +91,16 @@
     "finalCta": {
       "title": "Do you have goods in China?",
       "lede": "Send us the product link, the quantity and the mode that suits you. We will tell you what it costs and how long it takes."
-    }
+    },
+    "lanesLabel": "Routes served",
+    "lanes": [
+      "Guangzhou → Bamako",
+      "Foshan → Bamako",
+      "China Mali cargo",
+      "China Mali freight forwarder",
+      "Air freight",
+      "Sea freight"
+    ]
   },
   "stats": {
     "sectionLabel": "The network in numbers",
@@ -144,7 +154,7 @@
       "items": {
         "scam": {
           "title": "Scam risk",
-          "description": "You find suppliers yourself on Alibaba or . Without local verification, the risk of fraud is real."
+          "description": "You find suppliers yourself on Alibaba or 1688. Without local verification, the risk of fraud is real."
         },
         "quality": {
           "title": "No quality control",
@@ -183,7 +193,7 @@
         },
         "payment": {
           "label": "Supplier payment",
-          "simple": "You handle Alipay/",
+          "simple": "You handle Alipay and transfers",
           "full": "We pay on your behalf"
         },
         "consolidation": {
@@ -434,7 +444,7 @@
   },
   "testimonials": {
     "sectionLabel": "Testimonials",
-    "title": "What Our Clients Say",
+    "title": "What our clients say",
     "testimonials": {
       "sectionLabel": "Testimonials"
     },
@@ -455,7 +465,7 @@
   },
   "faq": {
     "sectionLabel": "FAQ",
-    "title": "Frequently Asked Questions",
+    "title": "Frequently asked questions",
     "noAnswer": "Can't find your answer?",
     "contactWhatsApp": "Contact us on WhatsApp",
     "helpTitle": "Need Help?",
@@ -1555,7 +1565,8 @@
       "buy": "You buy",
       "consolidate": "We receive",
       "receive": "You receive"
-    }
+    },
+    "destination": "Bamako"
   },
   "journey": {
     "label": "The journey",
@@ -1766,5 +1777,72 @@
     "dummyLabel": "EXAMPLE · FICTITIOUS DATA",
     "dummyNote": "This is a demonstration. Always use your own personal shipping mark for shipments.",
     "imageAlt": "Fictitious ChinaLink mark: warehouse DEMO-0000, client CLX-ML-DEMO, CLIENT EXEMPLE, phone +223 00 00 00 00."
+  },
+  "estimator": {
+    "title": "Instant estimate",
+    "publicRates": "Published rates",
+    "modeLabel": "Shipping mode",
+    "modes": {
+      "standard": "Air Standard",
+      "express": "Flash Express",
+      "electronics": "Electronics",
+      "phones": "Phones",
+      "sea": "Sea"
+    },
+    "quantity": {
+      "kg": "Weight in kg",
+      "piece": "Number of pieces",
+      "cbm": "Volume in CBM"
+    },
+    "units": {
+      "kg": "kg",
+      "piece": "piece",
+      "cbm": "CBM"
+    },
+    "decrease": "Decrease",
+    "increase": "Increase",
+    "announcedDelay": "Stated transit",
+    "rate": "Rate",
+    "days": "{days} days",
+    "cta": "Get this quote on WhatsApp",
+    "whatsapp": "Hello ChinaLink, I would like a quote: {mode}, {quantity} {unit}. Website estimate: {price} F CFA.",
+    "notes": {
+      "standard": "Estimate before weighing at the warehouse. Volumetric weight: (L × W × H) ÷ 5000.",
+      "express": "Estimate before weighing at the warehouse. Volumetric weight: (L × W × H) ÷ 5000.",
+      "electronics": "Electronics, batteries, liquids. Estimate before weighing at the warehouse.",
+      "phones": "Phones are billed per piece, never by weight.",
+      "sea": "Minimum 0.1 CBM. Density above 250 kg/m³: volume adjusted."
+    },
+    "scope": "Rates to Bamako."
+  },
+  "proof": {
+    "label": "The proof",
+    "title": "A photo of your parcel, and a code to verify it.",
+    "lede": "Reception photos carry the parcel reference, the date, the warehouse and a verification code. Enter the code on our site and you know whether the photo is genuine.",
+    "bannerLine": "Received •• •• •••• · Foshan warehouse (SEA) · Sea · • cartons",
+    "code": "Verification code ••••-••••",
+    "scan": "Scan or enter the code at chinalinkexpress.com/verifier",
+    "note": "Fictional example of a photo banner",
+    "chain": "Chain of custody",
+    "stages": [
+      "Received at the warehouse",
+      "Parcel labelled",
+      "Arrived at destination",
+      "Handed to the client"
+    ],
+    "cta": "Verify a photo"
+  },
+  "tagline": "Buying from 12,000 km away should not mean buying blind.",
+  "network": {
+    "air": "Air · 14-21 days",
+    "sea": "Sea · 60-75 days",
+    "note": "Illustrative routes",
+    "alt": "Map of routes from China to Bamako"
+  },
+  "installPrompt": {
+    "title": "Install ChinaLink Express",
+    "body": "Add it to your home screen for quick access to rates and tracking.",
+    "install": "Install",
+    "dismiss": "Close"
   }
 }

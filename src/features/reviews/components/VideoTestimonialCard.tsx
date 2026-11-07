@@ -42,6 +42,11 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
             transition={{ duration: 0.4, ease: 'easeOut' }}
           />
 
+          {testimonial.posterUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={testimonial.posterUrl} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+          )}
+
           {/* Subtle pattern overlay */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -57,7 +62,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
           {/* Real video badge */}
           {hasVideo && (
             <motion.div
-              className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-full shadow-md"
+              className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 bg-black text-white text-[10px] font-bold rounded-full shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 + index * 0.1 }}
@@ -72,7 +77,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
             <motion.div
               className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm ${
                 hasVideo
-                  ? 'bg-red-600/90 text-white'
+                  ? 'bg-black/80 text-white'
                   : 'bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-white'
               }`}
               animate={{ scale: isHovered ? 1.12 : 1 }}
@@ -114,7 +119,7 @@ export function VideoTestimonialCard({ testimonial, index = 0 }: VideoTestimonia
 
           {/* Language badge */}
           <div className="flex items-center gap-1.5 mb-3">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 rounded-full text-[10px] font-semibold border border-amber-100 dark:border-amber-800/40">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full text-[10px] font-semibold border border-blue-100 dark:border-blue-800/40">
               <Mic className="w-3 h-3" />
               {testimonial.language}
             </span>

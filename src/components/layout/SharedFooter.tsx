@@ -1,23 +1,6 @@
 /**
- * Site footer.
- *
- * The old one was the single most recognisable template shape on the web: five
- * equal columns of links, a row of circular social buttons that each turned a
- * different brand colour on hover (blue, pink, dark blue), a blue-to-cyan
- * gradient wordmark, and a centred copyright line. Symmetric, evenly weighted,
- * and identical to ten thousand other sites.
- *
- * This one is asymmetric on purpose. A statement block carries the left — the
- * wordmark set large, the positioning line, and the one action worth taking.
- * The links keep every destination the old footer had, because they are load
- * bearing for SEO on a site with sixty routes, but they are set quietly at the
- * right where a directory belongs rather than competing with the statement.
- *
- * It sits on the void band, which gives the page a deliberate close: the
- * document opens dark on the warehouse and ends dark on the wordmark.
- *
- * Social links keep their icons and lose the coloured hover chips — a footer is
- * not the place to reproduce three other companies' brand colours.
+ * Site footer: a statement block, the full link directory (load bearing for SEO
+ * on a site with sixty routes), and the wordmark set at full width as the close.
  */
 
 'use client';
@@ -42,29 +25,29 @@ const SOCIAL_LINKS = [
 ] as const;
 
 const SERVICE_LINKS = [
-  { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
   {
-    labels: { fr: 'Agent sourcing Chine', en: 'China sourcing agent' },
-    href: '/services/agent-sourcing-chine',
-    locales: ['fr', 'en'],
+    labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo', zh: '中国马里货运', ar: 'الشحن من الصين إلى مالي' },
+    href: '/cargo-chine-mali',
   },
   {
-    labels: { fr: 'Achat Alibaba Mali', en: 'Alibaba buying agent' },
+    labels: { fr: 'Transitaire Chine Mali', en: 'China to Mali freight forwarder', zh: '中国马里货代', ar: 'وكيل شحن من الصين إلى مالي' },
+    href: '/transitaire-chine-mali',
+  },
+  { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
+  {
+    labels: { fr: 'Agent sourcing Chine', en: 'China sourcing agent', zh: '中国采购代理', ar: 'وكيل التوريد في الصين' },
+    href: '/services/agent-sourcing-chine',
+  },
+  {
+    labels: { fr: 'Achat Alibaba Mali', en: 'Alibaba buying agent', zh: '马里 Alibaba 采购', ar: 'الشراء من Alibaba في مالي' },
     href: '/services/achat-alibaba-mali',
-    locales: ['fr', 'en'],
   },
   { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
   { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
-  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine', locales: ['fr', 'en'] },
+  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine' },
   {
     labelKey: 'services.features.sourcing.supplierVerification',
     href: '/services/verification-fournisseur-chine',
-    locales: ['fr', 'en'],
-  },
-  {
-    labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo' },
-    href: '/cargo-chine-mali',
-    locales: ['fr', 'en'],
   },
 ] as const;
 
@@ -179,8 +162,8 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
               <li>
                 <Phone size={15} aria-hidden />
                 <span>
-                  <a href="tel:+8618851725957">+86 188 5172 5957</a>
-                  <a href="tel:+22376696177">+223 76 69 61 77</a>
+                  <a href="tel:+8618851725957" dir="ltr">+86 188 5172 5957</a>
+                  <a href="tel:+22376696177" dir="ltr">+223 76 69 61 77</a>
                 </span>
               </li>
               <li>
@@ -198,6 +181,10 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
             </ul>
           </div>
         </nav>
+      </div>
+
+      <div className="ft-giant" aria-hidden>
+        CHINALINK
       </div>
 
       {/* ── legal ────────────────────────────────────────────────────────── */}

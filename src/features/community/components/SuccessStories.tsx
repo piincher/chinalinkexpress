@@ -11,6 +11,8 @@ import { motion } from 'framer-motion';
 import { Quote, TrendingUp, PiggyBank, ShieldAlert } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { successStories } from '../data';
+import { phrase } from '@/i18n/phrases';
+import { useLocale } from 'next-intl';
 
 const metricConfig = [
   {
@@ -40,6 +42,7 @@ const metricConfig = [
 ];
 
 export function SuccessStories() {
+  const locale = useLocale();
   const { ref, isActive } = useAnimationActivation({ threshold: 0.15, delay: 100 });
 
   return (
@@ -56,11 +59,10 @@ export function SuccessStories() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ils ont transformé leur business
+            {phrase(locale, "Ils ont transformé leur business")}
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Des histoires réelles d&apos;importateurs africains qui ont bénéficié
-            de la communauté ChinaLink.
+            {phrase(locale, "Des histoires réelles d'importateurs africains qui ont bénéficié de la communauté ChinaLink.")}
           </p>
         </motion.div>
 
@@ -85,7 +87,7 @@ export function SuccessStories() {
 
                   {/* Quote text */}
                   <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6 min-h-[80px]">
-                    {story.quoteFr}
+                    {locale === 'en' ? story.quote : locale === 'zh' ? story.quoteZh : locale === 'ar' ? story.quoteAr : story.quoteFr}
                   </p>
 
                   {/* Author info */}
@@ -113,7 +115,7 @@ export function SuccessStories() {
 
                   {/* Metric label */}
                   <p className={`text-xs mt-2 text-right ${metric.color}`}>
-                    {metric.label}
+                    {phrase(locale, metric.label)}
                   </p>
                 </div>
               </motion.div>

@@ -9,6 +9,7 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { PageHero } from '@/components/site';
 import { 
   Shield, 
   Database, 
@@ -64,33 +65,14 @@ export function PrivacyPolicyPage() {
   const t = useTranslations();
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-16">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-6">
-              <Shield className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">
-                {t('privacy.badge')}
-              </span>
-            </div>
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              {t('privacy.title')}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              {t('privacy.subtitle')}
-            </p>
-            <p className="text-sm text-blue-200 mt-4">
-              {t('privacy.lastUpdated')}: {new Date().toLocaleDateString()}
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={t('privacy.badge')}
+        title={t('privacy.title')}
+        lede={t('privacy.subtitle')}
+        meta={[`${t('privacy.lastUpdated')}: ${new Date().toLocaleDateString()}`]}
+      />
 
       {/* Content Sections */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">

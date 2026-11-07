@@ -31,6 +31,8 @@ export function ComparisonResults({
   locale = 'fr',
 }: ComparisonResultsProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat(isEn ? 'en-US' : 'fr-FR', {
@@ -64,12 +66,12 @@ export function ComparisonResults({
           </svg>
         </div>
         <h3 className="text-lg font-semibold text-white">
-          {isEn ? 'Enter your shipment details' : 'Renseignez les détails de votre envoi'}
+          {isEn ? 'Enter your shipment details' : isZh ? '填写您的货物详情' : isAr ? 'أدخل تفاصيل شحنتك' : 'Renseignez les détails de votre envoi'}
         </h3>
         <p className="mt-2 text-slate-400">
           {isEn
             ? 'Fill in the form above to compare shipping rates from China to West Africa.'
-            : 'Remplissez le formulaire ci-dessus pour comparer les tarifs de Chine vers Afrique de l\'Ouest.'}
+            : isZh ? '填写上面的表格，比较从中国到西非的价格。' : isAr ? 'املأ النموذج أعلاه لمقارنة الأسعار من الصين إلى غرب أفريقيا.' : 'Remplissez le formulaire ci-dessus pour comparer les tarifs de Chine vers Afrique de l\'Ouest.'}
         </p>
       </div>
     );
@@ -77,7 +79,7 @@ export function ComparisonResults({
 
   const whatsappText = isEn
     ? `Hello ChinaLink, I compared shipping rates for ${result.weight}kg to ${result.destination.name} and I'm interested in a quote.`
-    : `Bonjour ChinaLink, j'ai comparé les tarifs pour ${result.weight}kg vers ${result.destination.nameFr} et je suis intéressé par un devis.`;
+    : isZh ? `您好 ChinaLink，我比较了 ${result.weight} 公斤到 ${result.destination.nameZh} 的价格，想要一份报价。` : isAr ? `مرحبًا ChinaLink، قارنت الأسعار لـ${result.weight} كغ إلى ${result.destination.nameAr} وأرغب في عرض سعر.` : `Bonjour ChinaLink, j'ai comparé les tarifs pour ${result.weight}kg vers ${result.destination.nameFr} et je suis intéressé par un devis.`;
 
   const whatsappHref = `https://wa.me/8618851725957?text=${encodeURIComponent(whatsappText)}`;
 
@@ -88,14 +90,14 @@ export function ComparisonResults({
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 p-6 text-center shadow-lg shadow-emerald-500/20">
           <div className="relative z-10">
             <p className="text-sm font-medium text-emerald-100">
-              {isEn ? 'Compared to DHL Express' : 'Par rapport à DHL Express'}
+              {isEn ? 'Compared to DHL Express' : isZh ? '与 DHL Express 相比' : isAr ? 'مقارنة بـDHL Express' : 'Par rapport à DHL Express'}
             </p>
             <p className="mt-1 text-3xl font-black text-white">
-              {isEn ? 'Save ' : 'Économisez '}{' '}
+              {isEn ? 'Save ' : isZh ? '节省 ' : isAr ? 'وفر' : 'Économisez '}{' '}
               {formatPrice(savingsVsExpress)}
             </p>
             <p className="mt-1 text-lg font-semibold text-emerald-100">
-              ({savingsPercentage}% {isEn ? 'cheaper with ChinaLink' : 'moins cher avec ChinaLink'})
+              ({savingsPercentage}% {isEn ? 'cheaper with ChinaLink' : isZh ? '通过 ChinaLink 更便宜' : isAr ? 'أرخص مع ChinaLink' : 'moins cher avec ChinaLink'})
             </p>
           </div>
           {/* Decorative circles */}
@@ -107,7 +109,7 @@ export function ComparisonResults({
       {/* Bar Chart */}
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
         <h3 className="mb-5 text-lg font-bold text-white">
-          {isEn ? 'Price Comparison' : 'Comparaison des prix'}
+          {isEn ? 'Price Comparison' : isZh ? '价格比较' : isAr ? 'مقارنة الأسعار' : 'Comparaison des prix'}
         </h3>
         <div className="space-y-4">
           {result.rates.map((rate) => {
@@ -123,7 +125,7 @@ export function ComparisonResults({
                       isBest ? 'text-emerald-400' : 'text-white'
                     }`}
                   >
-                    {isEn ? rate.provider : rate.providerFr}
+                    {isEn ? rate.provider : isZh ? rate.providerZh : isAr ? rate.providerAr : rate.providerFr}
                   </span>
                   <span className="text-slate-400">
                     {formatPrice(rate.calculatedPrice)}
@@ -185,7 +187,7 @@ export function ComparisonResults({
       {/* Timeline comparison */}
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
         <h3 className="mb-5 text-lg font-bold text-white">
-          {isEn ? 'Delivery Timeline' : 'Délai de livraison'}
+          {isEn ? 'Delivery Timeline' : isZh ? '交付时效' : isAr ? 'مدة التسليم' : 'Délai de livraison'}
         </h3>
         <div className="relative">
           {/* Timeline line */}
@@ -201,7 +203,7 @@ export function ComparisonResults({
                   style={{ minWidth: '80px' }}
                 >
                   <span className="mb-2 text-xs font-semibold text-white">
-                    {isEn ? rate.provider : rate.providerFr}
+                    {isEn ? rate.provider : isZh ? rate.providerZh : isAr ? rate.providerAr : rate.providerFr}
                   </span>
                   <div
                     className={`relative z-10 h-4 w-4 rounded-full border-2 ${
@@ -211,7 +213,7 @@ export function ComparisonResults({
                     }`}
                   />
                   <span className="mt-2 text-xs text-slate-400">
-                    {isEn ? rate.durationDisplay : rate.durationDisplayFr}
+                    {isEn ? rate.durationDisplay : isZh ? rate.durationDisplayZh : isAr ? rate.durationDisplayAr : rate.durationDisplayFr}
                   </span>
                 </div>
               );
@@ -225,12 +227,12 @@ export function ComparisonResults({
         <h3 className="text-xl font-bold text-white">
           {isEn
             ? 'Ready to ship with ChinaLink?'
-            : 'Prêt à expédier avec ChinaLink ?'}
+            : isZh ? '准备好用 ChinaLink 发货了吗？' : isAr ? 'هل أنت مستعد للشحن مع ChinaLink؟' : 'Prêt à expédier avec ChinaLink ?'}
         </h3>
         <p className="mx-auto mt-2 max-w-lg text-slate-400">
           {isEn
             ? 'Get a personalized quote in minutes via WhatsApp. Our team will confirm availability and guide you through the process.'
-            : 'Obtenez un devis personnalisé en quelques minutes via WhatsApp. Notre équipe confirmera la disponibilité et vous guidera.'}
+            : isZh ? '几分钟内通过 WhatsApp 获取个性化报价。我们的团队会确认可用性并为您指导。' : isAr ? 'احصل على عرض سعر مخصص خلال دقائق عبر WhatsApp. سيؤكد فريقنا التوفر ويرشدك.' : 'Obtenez un devis personnalisé en quelques minutes via WhatsApp. Notre équipe confirmera la disponibilité et vous guidera.'}
         </p>
         <a
           href={whatsappHref}
@@ -245,7 +247,7 @@ export function ComparisonResults({
           >
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
           </svg>
-          {isEn ? 'Get Quote on WhatsApp' : 'Devis sur WhatsApp'}
+          {isEn ? 'Get Quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'عرض سعر عبر WhatsApp' : 'Devis sur WhatsApp'}
         </a>
       </div>
     </div>

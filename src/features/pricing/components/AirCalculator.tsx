@@ -25,6 +25,8 @@ export function AirCalculator() {
   const t = useTranslations('pricing');
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const formatDuration = (value: string) =>
     isEn ? value.replace(/jours/g, 'days') : value;
   const averageUnit = isEn ? 'days' : 'j';
@@ -392,12 +394,12 @@ export function AirCalculator() {
                 >
                   <MessageCircle className="w-5 h-5" />
                   {t('result.contactWhatsApp', {
-                    defaultValue: isEn ? 'Request a quote on WhatsApp' : 'Demander un devis sur WhatsApp',
+                    defaultValue: isEn ? 'Request a quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'اطلب عرض سعر عبر WhatsApp' : 'Demander un devis sur WhatsApp',
                   })}
                 </a>
                 <p className="text-center text-xs text-white/70 mt-2 italic">
                   {t('result.estimateDisclaimer', {
-                    defaultValue: isEn ? 'These prices are estimates only' : 'Ces prix sont des estimations uniquement',
+                    defaultValue: isEn ? 'These prices are estimates only' : isZh ? '这些价格仅为估算' : isAr ? 'هذه الأسعار تقديرية فقط' : 'Ces prix sont des estimations uniquement',
                   })}
                 </p>
               </motion.div>

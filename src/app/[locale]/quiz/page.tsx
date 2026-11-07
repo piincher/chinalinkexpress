@@ -17,14 +17,16 @@ interface QuizPageProps {
 export async function generateMetadata({ params }: QuizPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   
   return {
     title: isEn 
       ? 'Import Readiness Quiz'
-      : 'Quiz Importation',
+      : isZh ? '进口测验' : isAr ? 'اختبار الاستيراد' : 'Quiz Importation',
     description: isEn
       ? 'Take our 2-minute quiz to assess your import readiness and get a personalized guide on WhatsApp.'
-      : 'Faites notre quiz de 2 minutes pour évaluer votre readiness et recevoir un guide personnalisé sur WhatsApp.',
+      : isZh ? '完成我们 2 分钟的测验，评估您的准备情况，并在 WhatsApp 上收到个性化指南。' : isAr ? 'أجب عن اختبارنا في دقيقتين لتقييم استعدادك واستلام دليل مخصص عبر WhatsApp.' : 'Faites notre quiz de 2 minutes pour évaluer votre readiness et recevoir un guide personnalisé sur WhatsApp.',
     robots: {
       index: true,
       follow: true,

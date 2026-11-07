@@ -25,14 +25,16 @@ interface PhotoVerifyPageProps {
 export async function generateMetadata({ params }: PhotoVerifyPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   return generatePageMetadata({
     title: isEn
       ? 'Verify a photo | ChinaLink Express'
-      : 'Vérifier une photo | ChinaLink Express',
+      : isZh ? '验证照片 | ChinaLink Express' : isAr ? 'التحقق من صورة | ChinaLink Express' : 'Vérifier une photo | ChinaLink Express',
     description: isEn
       ? 'Enter the code printed under a ChinaLink Express photo to check that it is genuine and unaltered.'
-      : 'Saisissez le code imprimé sous une photo ChinaLink Express pour vérifier qu’elle est authentique et non modifiée.',
-    keywords: isEn ? 'verify photo, ChinaLink Express, authenticity' : 'vérifier photo, ChinaLink Express, authenticité',
+      : isZh ? '输入 ChinaLink Express 照片下方印的代码，验证照片是否真实且未被修改。' : isAr ? 'أدخل الرمز المطبوع أسفل صورة ChinaLink Express للتحقق من أنها أصلية ولم تُعدَّل.' : 'Saisissez le code imprimé sous une photo ChinaLink Express pour vérifier qu’elle est authentique et non modifiée.',
+    keywords: isEn ? 'verify photo, ChinaLink Express, authenticity' : isZh ? '验证照片, ChinaLink Express, 真实性' : isAr ? 'التحقق من الصورة، ChinaLink Express، الأصالة' : 'vérifier photo, ChinaLink Express, authenticité',
     path: '/verifier',
     locale: locale as Locale,
   });

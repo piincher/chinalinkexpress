@@ -32,7 +32,7 @@ const metadataByLocale: Record<string, Metadata> = {
   },
   ar: {
     title: 'الشروط والأحكام',
-    description: 'شروط وأحكام البيع والنقل. قواعد CBM، الوزن الحجمي، العناصر المحظورة، مسؤوليات العميل. اتصل: +86 188 5172 5957',
+    description: 'شروط وأحكام البيع والنقل. قواعد CBM، الوزن الحجمي، العناصر المحظورة، مسؤوليات العميل. اتصل: ‎+86 188 5172 5957',
     keywords: 'الشروط والأحكام, الشحن البحري, الشحن الجوي, حساب CBM, العناصر المحظورة, المسؤوليات, تأمين النقل',
   },
 };
@@ -46,10 +46,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${locale}/terms`,
       languages: {
-        'fr-FR': '/fr/terms',
-        'en-US': '/en/terms',
-        'zh-CN': '/zh/terms',
-        'ar-SA': '/ar/terms',
+        'fr': '/fr/terms',
+        'en': '/en/terms',
+        'zh': '/zh/terms',
+        'ar': '/ar/terms',
         'x-default': '/fr/terms',
       },
     },
@@ -64,5 +64,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TermsPage({ params }: Props) {
   const { locale } = await params;
+  // Split out so fr and en pages don't ship the zh and ar legal text.
+  if (locale === 'zh') {
+    const { TermsContentZh } = await import('@/components/terms/TermsContentZh');
+    return <TermsContentZh locale={locale} />;
+  }
+  if (locale === 'ar') {
+    const { TermsContentAr } = await import('@/components/terms/TermsContentAr');
+    return <TermsContentAr locale={locale} />;
+  }
   return <TermsContent locale={locale} />;
 }

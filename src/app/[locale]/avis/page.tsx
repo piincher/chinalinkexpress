@@ -32,17 +32,19 @@ interface AvisPageProps {
 export async function generateMetadata({ params }: AvisPageProps): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   return generatePageMetadata({
     title: isEn
       ? 'Client Reviews | ChinaLink Express'
-      : 'Avis clients | ChinaLink Express',
+      : isZh ? '客户评价 | ChinaLink Express' : isAr ? 'آراء العملاء | ChinaLink Express' : 'Avis clients | ChinaLink Express',
     description: isEn
       ? 'Reviews written by ChinaLink Express clients in the app after their delivery from China to Bamako, with the team\u2019s replies.'
-      : "Les avis écrits par les clients de ChinaLink Express dans l'application après leur livraison de Chine à Bamako, avec les réponses de l'équipe.",
+      : isZh ? 'ChinaLink Express 客户在货物从中国运抵巴马科后，在应用内写下的评价，以及团队的回复。' : isAr ? 'آراء كتبها عملاء ChinaLink Express داخل التطبيق بعد استلام شحناتهم من الصين إلى باماكو، مع ردود الفريق.' : "Les avis écrits par les clients de ChinaLink Express dans l'application après leur livraison de Chine à Bamako, avec les réponses de l'équipe.",
     keywords: isEn
       ? 'chinalink express reviews, china mali freight forwarder reviews, shipping china bamako reviews, client testimonials'
-      : 'avis chinalink express, avis transitaire chine mali, avis expedition chine bamako, temoignages clients import chine',
+      : isZh ? 'ChinaLink Express 评价, 中国马里货代评价, 中国巴马科货运评价, 中国进口客户反馈' : isAr ? 'آراء ChinaLink Express، تقييم وكيل الشحن من الصين إلى مالي، آراء الشحن من الصين إلى باماكو، شهادات عملاء الاستيراد من الصين' : 'avis chinalink express, avis transitaire chine mali, avis expedition chine bamako, temoignages clients import chine',
     path: '/avis',
     locale: locale as Locale,
     ogType: 'website',
@@ -59,14 +61,16 @@ export default async function AvisPage({ params }: AvisPageProps) {
   setRequestLocale(validLocale);
 
   const isEn = validLocale === 'en';
+  const isZh = validLocale === 'zh';
+  const isAr = validLocale === 'ar';
   const { reviews, stats } = await fetchPublicReviews(100);
 
   const schemas = [
     generateOrganizationSchema(),
     generateBreadcrumbSchema(
       [
-        { name: isEn ? 'Home' : 'Accueil', url: `/${validLocale}/` },
-        { name: isEn ? 'Reviews' : 'Avis', url: `/${validLocale}/avis/` },
+        { name: isEn ? 'Home' : isZh ? '首页' : isAr ? 'الرئيسية' : 'Accueil', url: `/${validLocale}/` },
+        { name: isEn ? 'Reviews' : isZh ? '评价' : isAr ? 'الآراء' : 'Avis', url: `/${validLocale}/avis/` },
       ],
       validLocale as Locale,
     ),

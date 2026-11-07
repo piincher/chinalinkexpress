@@ -21,6 +21,8 @@ interface ComparisonFormProps {
 
 export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps) {
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
 
   const [weight, setWeight] = useState<number>(50);
   const [destinationCode, setDestinationCode] = useState<string>('ML');
@@ -83,7 +85,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
         {/* Weight */}
         <div className="md:col-span-2">
           <label className="mb-3 block text-sm font-semibold text-white">
-            {isEn ? 'Package Weight' : 'Poids du colis'}
+            {isEn ? 'Package Weight' : isZh ? '包裹重量' : isAr ? 'وزن الطرد' : 'Poids du colis'}
           </label>
           <div className="flex items-center gap-4">
             <input
@@ -124,7 +126,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
           >
             {DESTINATIONS.map((d) => (
               <option key={d.code} value={d.code}>
-                {isEn ? d.name : d.nameFr}
+                {isEn ? d.name : isZh ? d.nameZh : isAr ? d.nameAr : d.nameFr}
               </option>
             ))}
           </select>
@@ -154,7 +156,11 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
               ? showDimensions
                 ? 'Hide dimensions'
                 : 'Add dimensions (for sea freight)'
-              : showDimensions
+              : isZh ? showDimensions
+                ? '隐藏尺寸'
+                : '添加尺寸（用于海运）' : isAr ? showDimensions
+                ? 'إخفاء الأبعاد'
+                : 'إضافة الأبعاد (للشحن البحري)' : showDimensions
                 ? 'Masquer les dimensions'
                 : 'Ajouter des dimensions (pour le maritime)'}
           </button>
@@ -166,7 +172,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
         <div className="mt-6 grid grid-cols-3 gap-4 rounded-xl border border-white/5 bg-slate-900/50 p-4 transition-all">
           <div>
             <label className="mb-2 block text-xs font-medium text-slate-400">
-              {isEn ? 'Length' : 'Longueur'} (cm)
+              {isEn ? 'Length' : isZh ? '长度' : isAr ? 'الطول' : 'Longueur'} (cm)
             </label>
             <input
               type="number"
@@ -189,7 +195,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
           </div>
           <div>
             <label className="mb-2 block text-xs font-medium text-slate-400">
-              {isEn ? 'Width' : 'Largeur'} (cm)
+              {isEn ? 'Width' : isZh ? '宽度' : isAr ? 'العرض' : 'Largeur'} (cm)
             </label>
             <input
               type="number"
@@ -212,7 +218,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
           </div>
           <div>
             <label className="mb-2 block text-xs font-medium text-slate-400">
-              {isEn ? 'Height' : 'Hauteur'} (cm)
+              {isEn ? 'Height' : isZh ? '高度' : isAr ? 'الارتفاع' : 'Hauteur'} (cm)
             </label>
             <input
               type="number"
@@ -242,7 +248,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
           onClick={handleCompare}
           className="w-full rounded-xl bg-blue-600 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-500 hover:shadow-blue-500/30 active:scale-[0.99] md:w-auto"
         >
-          {isEn ? 'Compare Rates' : 'Comparer les tarifs'}
+          {isEn ? 'Compare Rates' : isZh ? '比较价格' : isAr ? 'قارن الأسعار' : 'Comparer les tarifs'}
         </button>
       </div>
 
@@ -252,7 +258,7 @@ export function ComparisonForm({ locale = 'fr', onCompare }: ComparisonFormProps
           {weight} kg
         </span>
         <span className="rounded-full bg-white/5 px-3 py-1">
-          {isEn ? destination?.name : destination?.nameFr}
+          {isEn ? destination?.name : isZh ? destination?.nameZh : isAr ? destination?.nameAr : destination?.nameFr}
         </span>
         {showDimensions && length > 0 && width > 0 && height > 0 && (
           <span className="rounded-full bg-white/5 px-3 py-1">

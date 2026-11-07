@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "ChinaLink Express | التوريد والشحن من الصين إلى أفريقيا",
-    "description": "ChinaLink Express - شريكك الموثوق في الخدمات اللوجستية للتوريد والشراء والشحن من الصين إلى مالي. عرض مجاني.",
-    "keywords": "التوريد من الصين, الشحن من الصين إلى مالي, الشحن الجوي والبحري, الشحن من الصين إلى أفريقيا, الخدمات اللوجستية الدولية"
+    "title": "الشحن من الصين إلى مالي ووكيل الشحن | ChinaLink Express",
+    "description": "شحن من الصين إلى مالي للمستوردين في شرق وغرب أفريقيا: التوريد، والدفع للموردين، والشحن الجوي والبحري إلى باماكو، مع صور قابلة للتحقق وتتبع الشحنات.",
+    "keywords": "الشحن من الصين إلى مالي, وكيل شحن الصين مالي, الشحن من الصين إلى غرب أفريقيا, الشحن من الصين إلى شرق أفريقيا, الشحن الجوي إلى باماكو, الشحن البحري إلى باماكو"
   },
   "navigation": {
     "home": "الرئيسية",
@@ -75,7 +75,8 @@
         "icon": "🚚",
         "label": "الاستلام"
       }
-    ]
+    ],
+    "keywords": "شحن من الصين إلى مالي · وكيل شحن الصين مالي"
   },
   "landing": {
     "marquee": [
@@ -90,7 +91,16 @@
     "finalCta": {
       "title": "هل لديك بضاعة في الصين؟",
       "lede": "أرسل لنا رابط المنتج والكمية ونوع الشحن الذي يناسبك. سنخبرك بالتكلفة والمدة."
-    }
+    },
+    "lanesLabel": "الخطوط المخدومة",
+    "lanes": [
+      "قوانغتشو ← باماكو",
+      "فوشان ← باماكو",
+      "شحن من الصين إلى مالي",
+      "وكيل شحن الصين مالي",
+      "شحن جوي",
+      "شحن بحري"
+    ]
   },
   "stats": {
     "sectionLabel": "الشبكة بالأرقام",
@@ -261,7 +271,7 @@
         "problem": "Bought textiles from 3 different sellers. Each sent poor quality. No way to check before paying.",
         "solution": "ChinaLink consolidated purchases from multiple suppliers, did quality control on every batch, and shipped everything together.",
         "result": "Saved 40% on shipping by consolidating. All items matched the samples. Business revenue up 60%.",
-        "metricValue": "+60%",
+        "metricValue": "‎+60%",
         "metricLabel": "revenue up"
       },
       "ousmane": {
@@ -308,7 +318,7 @@
     "items": {
       "0": {
         "question": "ما أنواع البضائع التي يمكنكم شحنها؟",
-        "answer": "نشحن تقريباً جميع أنواع البضائع، باستثناء المواد الخطرة أو المحظورة بموجب القانون. اتصل بنا للحصول على مزيد من التفاصيل حول بضائعك المحددة +8618851725957."
+        "answer": "نشحن تقريباً جميع أنواع البضائع، باستثناء المواد الخطرة أو المحظورة بموجب القانون. اتصل بنا للحصول على مزيد من التفاصيل حول بضائعك المحددة ‎+8618851725957."
       },
       "1": {
         "question": "كم تستغرق الشحن الجوي؟",
@@ -366,7 +376,7 @@
       "message": "الرسالة",
       "namePlaceholder": "اسمك",
       "emailPlaceholder": "your@email.com",
-      "phonePlaceholder": "+223 XX XX XX XX",
+      "phonePlaceholder": "‎+223 XX XX XX XX",
       "messagePlaceholder": "صف احتياجاتك...",
       "send": "إرسال الرسالة",
       "sending": "جاري الإرسال...",
@@ -466,7 +476,7 @@
       },
       "contact": {
         "title": "اتصل بنا",
-        "content": "لأية أسئلة حول سياسة الخصوصية هذه أو لممارسة حقوقك، يمكنك التواصل معنا على contact@chinalinkexpress.com أو بالهاتف على +223 76 69 61 77. نحن ملتزمون بمعالجة طلباتك في أقرب وقت ممكن."
+        "content": "لأية أسئلة حول سياسة الخصوصية هذه أو لممارسة حقوقك، يمكنك التواصل معنا على contact@chinalinkexpress.com أو بالهاتف على ‎+223 76 69 61 77. نحن ملتزمون بمعالجة طلباتك في أقرب وقت ممكن."
       }
     },
     "content": {
@@ -626,7 +636,9 @@
     },
     "calculator": {
       "title": "حاسبة التكاليف",
-      "subtitle": "احسب تكلفة شحنتك فوراً"
+      "subtitle": "احسب تكلفة شحنتك فوراً",
+      "deadlineView": "حسب الموعد",
+      "classicView": "حسب الطريقة"
     },
     "calculatorPage": {
       "title": "حاسبة الشحن",
@@ -701,8 +713,9 @@
         "title": "منتج عالي الكثافة",
         "description": "تم تطبيق تعديل الحجم وفقاً لسياسات كوسكو ومايرسك."
       },
-      "smartChoice": "Good choice! You save {}% vs express.",
-      "patientImporter": "The patient importer's power move"
+      "smartChoice": "خيار ممتاز! توفر {percent}% مقارنة بالشحن السريع.",
+      "patientImporter": "الخيار الذكي للمستورد الصبور",
+      "deliveryConfidence": "تسليم مبكر محتمل"
     },
     "prohibitedItems": {
       "badge": "مهم",
@@ -806,6 +819,34 @@
         "payOnDelivery": {
           "question": "متى أدفع؟",
           "answer": "تدفع فقط بعد استلام بضاعتك وفحصها. لا يوجد دفعة مقدمة مطلوبة."
+        },
+        "whatIsCBM": {
+          "question": "ما هو CBM؟",
+          "answer": "CBM (متر مكعب) هو وحدة قياس الحجم في الشحن البحري. 1 CBM يساوي مترًا مكعبًا واحدًا. يُحسب سعر الشحن البحري بضرب CBM في سعر الوحدة."
+        },
+        "volumetricWeight": {
+          "question": "كيف يُحسب الوزن الحجمي؟",
+          "answer": "يُحسب الوزن الحجمي بالصيغة: (الطول × العرض × الارتفاع) ÷ 5000، والنتيجة بالكيلوغرام. الوزن المحتسب هو الأعلى بين الوزن الفعلي والوزن الحجمي."
+        },
+        "chargeableWeight": {
+          "question": "ما هو الوزن المحتسب؟",
+          "answer": "الوزن المحتسب هو الوزن المستخدم لحساب سعر الشحن، وهو الأعلى بين الوزن الفعلي للطرد ووزنه الحجمي."
+        },
+        "deliveryTime": {
+          "question": "ما هي مدد التسليم؟",
+          "answer": "الشحن الجوي: 14-21 يوم عمل. الشحن البحري: 60-75 يوم عمل. قد تختلف المدد بحسب الوجهة الدقيقة والفحوصات الجمركية."
+        },
+        "customsFees": {
+          "question": "هل الرسوم الجمركية مشمولة؟",
+          "answer": "لا، الأسعار المعروضة للنقل فقط. الرسوم الجمركية وضرائب الاستيراد على عاتق المستلم وتختلف بحسب البلد ونوع البضاعة."
+        },
+        "paymentMethods": {
+          "question": "ما طرق الدفع المقبولة؟",
+          "answer": "نقبل التحويل البنكي وOrange Money وWave والنقد والدفع عبر منصتنا. ويمكن للعملاء الدائمين الاستفادة من حساب عميل بائتمان."
+        },
+        "tracking": {
+          "question": "كيف أتتبع شحنتي؟",
+          "answer": "تحصل على رقم تتبع فور شحن بضاعتك. تابع طردك مباشرة عبر تطبيقنا أو قسم \"التتبع\" في موقعنا."
         }
       }
     },
@@ -853,19 +894,19 @@
     },
     "smartChoice": {
       "badge": "Smart Choice",
-      "description": "For planners. Same quality, better price."
+      "description": "للمستوردين الذين يخططون مسبقًا. الجودة نفسها بسعر أفضل."
     },
     "savings": {
-      "vsExpress": "Save {}% vs Flash Express"
+      "vsExpress": "وفّر {percent}% مقارنة بالجوي السريع"
     },
     "deliveryPerformance": {
-      "title": "Delivery Performance",
-      "subtitle": "We under-promise, we over-deliver",
+      "title": "أداء التسليم",
+      "subtitle": "نعد بأقل لنفي بأكثر.",
       "quoted": "Quoted",
       "actualAverage": "Actual avg",
       "onTimeRate": "on-time rate",
-      "earlyDelivery": "Early delivery likely",
-      "earlyDeliveryStat": "94% of our deliveries arrive earlier than promised"
+      "earlyDelivery": "تسليم مبكر محتمل",
+      "earlyDeliveryStat": "94% من شحناتنا تصل قبل الموعد المعلن."
     },
     "weightPolicy": {
       "title": "كيف يُحتسب الوزن المفوتر",
@@ -899,6 +940,43 @@
         "التعرفة القياسية 10,500 فرنك/كغ ← 14,700 فرنك"
       ],
       "termsLink": "اقرأ المادة 3.1 من الشروط"
+    },
+    "deadlineCalculator": {
+      "title": "حسب الموعد",
+      "subtitle": "متى تحتاج إلى بضاعتك؟ سنجد لك أفضل خيار.",
+      "weight": "الوزن التقديري",
+      "dimensions": "الأبعاد (سم)",
+      "optional": "اختياري",
+      "dimensionsHint": "لحساب الوزن الحجمي والمتر المكعب",
+      "category": "الفئة",
+      "whenDoYouNeedIt": "متى تحتاج إليها؟",
+      "day": "يوم",
+      "days": "أيام",
+      "destination": "الوجهة",
+      "recommended": "الخيار الموصى به لموعدك",
+      "cheaperOption": "يتوفر خيار أرخص",
+      "cheaperOptionDescription": "{{tier}} يصل خلال {{min}}-{{max}} يومًا بسعر {{price}}. وفّر {{savings}} إذا كان لديك وقت.",
+      "fasterOption": "هل تحتاج إلى سرعة أكبر؟",
+      "fasterOptionDescription": "{{tier}} يسلّم خلال {{min}}-{{max}} يومًا بسعر {{price}}.",
+      "tooLate": "لا يضمن أي خيار هذا الموعد",
+      "tooLateDescription": "حتى أسرع خياراتنا يحتاج إلى 2-5 أيام. تواصل معنا للحصول على حل مخصص.",
+      "tooLateShort": "متأخر جدًا",
+      "meetsDeadline": "مناسب",
+      "bestChoice": "الخيار الأفضل",
+      "timelineLabel": "مقارنة مدد التسليم",
+      "yourDeadline": "موعدك",
+      "forYourShipment": "لشحنتك",
+      "enterWeight": "أدخل الوزن لرؤية الخيارات",
+      "enterWeightHint": "اختر موعدك وسنجد لك أفضل خيار",
+      "urgent": "عاجل",
+      "standard": "عادي",
+      "relaxed": "مريح",
+      "economy": "اقتصادي",
+      "positioning": {
+        "flash": "للطلبات العاجلة",
+        "air_standard": "خيار ذكي لغير المستعجل",
+        "sea_economy": "الأرخص للكميات الكبيرة"
+      }
     }
   },
   "damageGuarantee": {
@@ -1080,7 +1158,7 @@
       "items": {
         "amadou": {
           "quote": "اكتشفت 3 موردين موثوقين بفضل المجتمع. تضاعف دخلي.",
-          "metricLabel": "+100% الإيرادات"
+          "metricLabel": "‎+100% الإيرادات"
         },
         "fatou": {
           "quote": "وفّرت لي مجموعة الشراء 30% على حاويتي الأخيرة.",
@@ -1104,7 +1182,7 @@
       ]
     },
     "promo": {
-      "title": "انضم إلى +500 مستورد",
+      "title": "انضم إلى ‎+500 مستورد",
       "subtitle": "نصائح، موردون موثوقون وتنبيهات منتجات — كل يوم على واتساب.",
       "pills": {
         "freeTips": "نصائح مجانية",
@@ -1212,19 +1290,19 @@
     "appSectionTitle": "تقييمات منشورة في التطبيق",
     "whatsappSectionTitle": "رسائل واردة عبر واتساب",
     "howTo": "هل أنت عميل؟ قيّم شحنتك من التطبيق في قسم « Mes Avis ».",
-    "silentReview": "Rating left without a comment",
+    "silentReview": "تقييم من دون تعليق",
     "profileEyebrow": "Client profile",
-    "profileLede": "What this client has shipped with ChinaLink Express, and the reviews they published.",
+    "profileLede": "ما شحنه هذا العميل مع ChinaLink Express والتقييمات التي نشرها.",
     "profileShipments": "Shipments",
     "profileShipmentsOne": "Shipment",
     "profileRating": "Average rating",
-    "profileReviewsCount": "{count} review(s) published",
+    "profileReviewsCount": "{count} تقييم منشور",
     "profileModes": "Shipping modes",
-    "profileMemberSince": "Client since {date}",
-    "profileFirstShipment": "First shipment in {date}",
+    "profileMemberSince": "عميل منذ {date}",
+    "profileFirstShipment": "أول شحنة في {date}",
     "profileReviews": "Their reviews",
-    "profileNotFound": "This profile does not exist or is no longer public.",
-    "profilePrivacy": "Limited public profile: no full name, phone number, address or amount. Only clients who published a review appear here.",
+    "profileNotFound": "هذا الملف غير موجود أو لم يعد عامًا.",
+    "profilePrivacy": "ملف عام محدود: لا اسم كامل ولا هاتف ولا عنوان ولا مبلغ. لا يظهر هنا إلا العملاء الذين نشروا تقييمًا.",
     "profileBackToReviews": "See all reviews",
     "modeAir": "Air",
     "modeSea": "Sea"
@@ -1293,7 +1371,118 @@
         "them": "التفريغ في منطقة الميناء فقط"
       }
     },
-    "ctaText": "الخيار بسيط. ابدأ مع ChinaLink."
+    "ctaText": "الخيار بسيط. ابدأ مع ChinaLink.",
+    "metadata": {
+      "title": "لماذا نحن | خدمة كاملة مقابل شحن بسيط | ChinaLink Express",
+      "description": "لماذا تختار شريك استيراد كاملًا بدل وكيل شحن عادي. اكتشف كيف تؤمّن ChinaLink Express مشترياتك من الصين.",
+      "keywords": "وكيل شحن الصين أفريقيا, شريك استيراد, التوريد من الصين, خدمة كاملة, الاستيراد من الصين إلى مالي"
+    },
+    "hero": {
+      "badge": "شريك استيراد كامل",
+      "title": "لا تدفع مقابل الشحن فقط. استثمر في شريك استيراد.",
+      "subtitle": "لا تكتفِ بوكيل شحن. مع ChinaLink Express تحصل على شريك يتولى كل شيء: التوريد والدفع والجودة والشحن.",
+      "ctaWhatsApp": "ابدأ الاستيراد",
+      "ctaRates": "اطلع على أسعارنا"
+    },
+    "problem": {
+      "sectionLabel": "المشكلة",
+      "title": "ما الذي يحدث عندما تكتفي بوكيل شحن عادي",
+      "subtitle": "وكيل الشحن ينقل صناديقك فقط. وكل ما عدا ذلك يبقى عليك.",
+      "items": {
+        "scam": {
+          "title": "خطر الاحتيال",
+          "description": "تبحث عن الموردين بنفسك على علي بابا أو 1688. ومن دون تحقق محلي يبقى خطر الاحتيال حقيقيًا."
+        },
+        "quality": {
+          "title": "لا فحص للجودة",
+          "description": "تستلم المنتجات كما هي، وتفاجأ حين لا تطابق الجودة الصور."
+        },
+        "payment": {
+          "title": "متاعب الدفع",
+          "description": "علي باي والتحويلات البنكية الصينية... تتولى كل شيء وحدك مع مخاطر العملة والاحتيال."
+        },
+        "consolidation": {
+          "title": "بائعون متعددون",
+          "description": "عند الشراء من عدة بائعين لا يمكنك تجميع الطرود، فتدفع الشحن عدة مرات."
+        },
+        "customs": {
+          "title": "مفاجآت الجمارك",
+          "description": "رسوم خفية وتخليص معقد وأوراق لا تنتهي. السعر المعلن ليس السعر النهائي أبدًا."
+        }
+      }
+    },
+    "comparisonTable": {
+      "sectionLabel": "المقارنة",
+      "title": "شحن بسيط مقابل خدمة كاملة",
+      "subtitle": "قارن ما تحصل عليه فعليًا.",
+      "simpleTransit": "شحن بسيط",
+      "fullService": "خدمة ChinaLink الكاملة",
+      "rows": {
+        "supplierFinding": {
+          "label": "البحث عن الموردين",
+          "simple": "تبحث بنفسك",
+          "full": "نبحث ونتحقق"
+        },
+        "qualityCheck": {
+          "label": "فحص الجودة",
+          "simple": "لا يوجد",
+          "full": "فحص قبل الشحن"
+        },
+        "payment": {
+          "label": "الدفع للمورد",
+          "simple": "تتولى علي باي والتحويلات",
+          "full": "ندفع نيابة عنك"
+        },
+        "consolidation": {
+          "label": "تجميع الطرود",
+          "simple": "غير ممكن",
+          "full": "تجميع مجاني"
+        },
+        "customs": {
+          "label": "التخليص الجمركي",
+          "simple": "رسوم خفية",
+          "full": "مشمول وشفاف"
+        },
+        "tracking": {
+          "label": "التتبع",
+          "simple": "رقم تتبع بسيط",
+          "full": "تتبع مباشر وتطبيق"
+        },
+        "support": {
+          "label": "دعم العملاء",
+          "simple": "بريد إلكتروني، رد خلال 48 ساعة",
+          "full": "واتساب على مدار الساعة"
+        }
+      }
+    },
+    "result": {
+      "sectionLabel": "النتيجة",
+      "title": "مع ChinaLink Express تحصل على",
+      "subtitle": "شريك يعمل من أجلك، لا مجرد ناقل.",
+      "items": {
+        "peaceOfMind": {
+          "title": "راحة البال",
+          "description": "نتحقق من مورديك ونراقب الجودة ونعالج المشكلات. ما عليك إلا انتظار شحنتك."
+        },
+        "qualityGoods": {
+          "title": "بضائع جيدة",
+          "description": "فحص بالصور والفيديو قبل الشحن. وإذا لم تطابق البضاعة، لا نرسلها إليك."
+        },
+        "costSavings": {
+          "title": "توفير حقيقي",
+          "description": "تجميع مشترياتك والتفاوض على الأسعار ولا رسوم جمركية خفية. توفر في كل مرحلة."
+        },
+        "timeSavings": {
+          "title": "توفير الوقت",
+          "description": "لا مزيد من الليالي في التفاوض مع الموردين بالصينية. نتولى كل شيء."
+        }
+      }
+    },
+    "cta": {
+      "title": "هل أنت مستعد للاستيراد بلا عناء؟",
+      "subtitle": "انضم إلى الشركات الأفريقية التي اختارت شريك استيراد كاملًا.",
+      "button": "تواصل عبر واتساب"
+    }
   },
   "sharedShipment": {
     "title": "تتبع الشحنة",
@@ -1376,7 +1565,8 @@
       "buy": "أنت تشتري",
       "consolidate": "نحن نستلم",
       "receive": "أنت تستلم"
-    }
+    },
+    "destination": "باماكو"
   },
   "journey": {
     "label": "الرحلة",
@@ -1438,23 +1628,23 @@
   },
   "occasions": {
     "sectionLabel": "Shipping calendar",
-    "title": "What to prepare for",
-    "lede": "The dates that matter in Mali, and the last day to ship from China to arrive in time.",
+    "title": "ما يجب الاستعداد له",
+    "lede": "التواريخ المهمة في مالي، وآخر يوم للشحن من الصين للوصول في الوقت المناسب.",
     "air": "Air",
     "sea": "Sea",
     "shipBy": "Ship before {date}",
     "daysLeft": "{days} days left",
-    "closed": "Too late for this date",
+    "closed": "فات الأوان لهذا التاريخ",
     "estimated": "estimated date",
-    "allClosed": "Shipping deadlines have passed for this date.",
+    "allClosed": "انتهت مواعيد الشحن لهذا التاريخ.",
     "inDays": "in {days} days",
-    "seeAll": "See the full calendar",
+    "seeAll": "عرض التقويم الكامل",
     "pageEyebrow": "Shipping calendar",
-    "pageTitle": "When to ship from China to arrive in time",
-    "pageLede": "Ramadan, back to school, end-of-year holidays: for each date, the last reasonable day to ship by air or by sea. The transit times come from our own shipments, not from an industry average.",
-    "pageEmpty": "No upcoming deadlines right now.",
-    "howTitle": "How to read these dates",
-    "howLede": "The recommended date leaves room for customs and the last mile. After it, arrival before the event can no longer be promised honestly."
+    "pageTitle": "متى تشحن من الصين لتصل في الوقت المناسب",
+    "pageLede": "رمضان، والعودة إلى المدارس، وأعياد نهاية العام: لكل تاريخ آخر يوم معقول للشحن جوًا أو بحرًا. مدد النقل مأخوذة من شحناتنا نحن، لا من متوسط القطاع.",
+    "pageEmpty": "لا توجد مواعيد قادمة حاليًا.",
+    "howTitle": "كيف تقرأ هذه التواريخ",
+    "howLede": "يترك التاريخ الموصى به وقتًا للجمارك والمرحلة الأخيرة. وبعده لا يمكن الوعد بصدق بالوصول قبل المناسبة."
   },
   "photoVerify": {
     "eyebrow": "الأصالة",
@@ -1586,6 +1776,73 @@
     "enlarge": "عرض المثال بالحجم الكامل",
     "dummyLabel": "مثال · بيانات وهمية",
     "dummyNote": "هذا النموذج للعرض فقط. استخدم دائمًا علامة الشحن الشخصية عند إرسال بضائعك.",
-    "imageAlt": "مثال وهمي لعلامة ChinaLink: المستودع DEMO-0000، العميل CLX-ML-DEMO، CLIENT EXEMPLE، الهاتف +223 00 00 00 00."
+    "imageAlt": "مثال وهمي لعلامة ChinaLink: المستودع DEMO-0000، العميل CLX-ML-DEMO، CLIENT EXEMPLE، الهاتف ‎+223 00 00 00 00."
+  },
+  "estimator": {
+    "title": "تقدير فوري",
+    "publicRates": "أسعار معلنة",
+    "modeLabel": "طريقة الشحن",
+    "modes": {
+      "standard": "جوي عادي",
+      "express": "جوي سريع",
+      "electronics": "إلكترونيات",
+      "phones": "هواتف",
+      "sea": "بحري"
+    },
+    "quantity": {
+      "kg": "الوزن بالكيلوغرام",
+      "piece": "عدد القطع",
+      "cbm": "الحجم بالمتر المكعب"
+    },
+    "units": {
+      "kg": "كغ",
+      "piece": "قطعة",
+      "cbm": "م³"
+    },
+    "decrease": "إنقاص",
+    "increase": "زيادة",
+    "announcedDelay": "المدة المعلنة",
+    "rate": "السعر",
+    "days": "{days} يومًا",
+    "cta": "احصل على هذا العرض عبر واتساب",
+    "whatsapp": "مرحبًا ChinaLink، أود الحصول على عرض سعر: {mode}، {quantity} {unit}. تقدير الموقع: {price} فرنك أفريقي.",
+    "notes": {
+      "standard": "تقدير قبل الوزن في المستودع. الوزن الحجمي: (الطول × العرض × الارتفاع) ÷ 5000.",
+      "express": "تقدير قبل الوزن في المستودع. الوزن الحجمي: (الطول × العرض × الارتفاع) ÷ 5000.",
+      "electronics": "إلكترونيات وبطاريات وسوائل. تقدير قبل الوزن في المستودع.",
+      "phones": "تُحسب الهواتف بالقطعة، لا بالوزن.",
+      "sea": "الحد الأدنى 0.1 متر مكعب. عند كثافة تتجاوز 250 كغ/م³ يُعدَّل الحجم."
+    },
+    "scope": "الأسعار إلى باماكو."
+  },
+  "proof": {
+    "label": "الدليل",
+    "title": "صورة لطردك، ورمز للتحقق منها.",
+    "lede": "تحمل صور الاستلام مرجع الطرد والتاريخ والمستودع ورمز تحقق. أدخل الرمز على موقعنا لتعرف إن كانت الصورة أصلية.",
+    "bannerLine": "استُلم في •• •• •••• · مستودع فوشان (SEA) · بحري · • صناديق",
+    "code": "رمز التحقق ••••-••••",
+    "scan": "امسح الرمز أو أدخله على chinalinkexpress.com/verifier",
+    "note": "مثال خيالي لشريط الصورة",
+    "chain": "سلسلة الحيازة",
+    "stages": [
+      "الاستلام في المستودع",
+      "وضع الملصق على الطرد",
+      "الوصول إلى الوجهة",
+      "التسليم إلى العميل"
+    ],
+    "cta": "تحقق من صورة"
+  },
+  "tagline": "الشراء من بعيد لا يعني الشراء على غير هدى.",
+  "network": {
+    "air": "جوي · 14-21 يومًا",
+    "sea": "بحري · 60-75 يومًا",
+    "note": "مسارات توضيحية",
+    "alt": "خريطة المسارات من الصين إلى باماكو"
+  },
+  "installPrompt": {
+    "title": "ثبّت ChinaLink Express",
+    "body": "أضفه إلى شاشتك الرئيسية للوصول السريع إلى الأسعار والتتبع.",
+    "install": "تثبيت",
+    "dismiss": "إغلاق"
   }
 }

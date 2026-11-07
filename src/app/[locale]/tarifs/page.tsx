@@ -10,6 +10,7 @@ import { PAGE_SEO } from '@/config/seo';
 import { FAQStructuredData } from '@/components/seo';
 import { PricingPage } from '@/features/pricing';
 import { fetchCompanyStats } from '@/lib/publicStatsApi';
+import type { Locale } from '@/i18n/config';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const seo = isEn ? PAGE_SEO.pricing.en : PAGE_SEO.pricing.fr;
+  const seo = PAGE_SEO.pricing[locale as Locale];
   
   return {
     title: seo.title,
@@ -27,10 +28,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${locale}/tarifs`,
       languages: {
-        'en-US': '/en/tarifs',
-        'fr-FR': '/fr/tarifs',
-        'zh-CN': '/zh/tarifs',
-        'ar-SA': '/ar/tarifs',
+        'en': '/en/tarifs',
+        'fr': '/fr/tarifs',
+        'zh': '/zh/tarifs',
+        'ar': '/ar/tarifs',
         'x-default': '/fr/tarifs',
       },
     },
@@ -66,12 +67,40 @@ const pricingFaqs = {
       answer: 'In many cases, payment is made on arrival after inspection. Some profiles, products or shipment values may require an advance payment.',
     },
   ],
+  zh: [
+    {
+      question: '中国到马里的运价是多少？',
+      answer: '价格取决于重量、体积、产品类型、空运或海运方式以及巴马科的最终目的地。计算器会在 WhatsApp 确认前给出估算。',
+    },
+    {
+      question: '包含清关吗？',
+      answer: '常规价格包含标准清关协助。敏感或受管制产品可能需要额外费用或文件。',
+    },
+    {
+      question: '我可以到货后再付运费吗？',
+      answer: '在许多情况下，可以在到货并检查后付款。部分客户、产品或金额可能需要预付。',
+    },
+  ],
+  ar: [
+    {
+      question: 'ما أسعار الشحن من الصين إلى مالي؟',
+      answer: 'تعتمد الأسعار على الوزن والحجم ونوع المنتج وطريقة الشحن الجوي أو البحري والوجهة النهائية في باماكو. تعطي الحاسبة تقديرًا قبل التأكيد عبر WhatsApp.',
+    },
+    {
+      question: 'هل التخليص الجمركي مشمول؟',
+      answer: 'تشمل الأسعار المعتادة المساعدة في التخليص الجمركي القياسي. وقد تتطلب المنتجات الحساسة أو المنظمة رسومًا أو مستندات إضافية.',
+    },
+    {
+      question: 'هل يمكنني دفع الشحن عند الوصول؟',
+      answer: 'في كثير من الحالات يتم الدفع عند الوصول بعد الفحص. وقد تتطلب بعض الملفات أو المنتجات أو المبالغ دفعة مقدمة.',
+    },
+  ],
 };
 
 export default async function PricingRoute({ params }: Props) {
   const { locale } = await params;
   const isEn = locale === 'en';
-  const faqs = isEn ? pricingFaqs.en : pricingFaqs.fr;
+  const faqs = pricingFaqs[locale as Locale];
   const stats = await fetchCompanyStats();
 
   return (

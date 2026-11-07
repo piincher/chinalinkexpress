@@ -57,35 +57,15 @@ function FloatingBubble({
 export function CommunityHero() {
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const whatsappLink = isEn
     ? 'https://wa.me/22376696177?text=Hello%2C%20I%20want%20to%20join%20the%20ChinaLink%20community'
     : WHATSAPP_LINK;
 
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950">
+    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[var(--color-void)]">
       {/* Animated background bubbles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <FloatingBubble delay={0} duration={12} size={60} left="10%" />
-        <FloatingBubble delay={2} duration={15} size={80} left="25%" />
-        <FloatingBubble delay={4} duration={11} size={50} left="40%" />
-        <FloatingBubble delay={1} duration={14} size={70} left="55%" />
-        <FloatingBubble delay={3} duration={13} size={55} left="70%" />
-        <FloatingBubble delay={5} duration={16} size={90} left="85%" />
-        <FloatingBubble delay={6} duration={12} size={45} left="15%" />
-        <FloatingBubble delay={7} duration={15} size={65} left="50%" />
-
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -100,23 +80,23 @@ export function CommunityHero() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 text-amber-300 rounded-full text-sm font-semibold mb-6 border border-amber-500/20"
           >
             <Users className="w-4 h-4" />
-            {isEn ? 'Private community' : 'Communauté privée'}
+            {isEn ? 'Private community' : isZh ? '私密社区' : isAr ? 'مجتمع خاص' : 'Communauté privée'}
           </motion.div>
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {isEn ? 'Join' : 'Rejoignez'}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+            {isEn ? 'Join' : isZh ? '加入' : isAr ? 'انضم إلى' : 'Rejoignez'}{' '}
+            <span className="text-[var(--color-signal)]">
               2,400+
             </span>{' '}
-            {isEn ? 'African importers' : 'importateurs africains'}
+            {isEn ? 'African importers' : isZh ? '非洲进口商' : isAr ? 'مستوردًا أفريقيًا' : 'importateurs africains'}
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10">
             {isEn
               ? 'Exchange tips, discover verified suppliers, receive scam alerts and use the power of group buying. Every day on WhatsApp.'
-              : "Échangez conseils, découvrez des fournisseurs vérifiés, recevez des alertes arnaques et bénéficiez de la force de l'achat groupé. Chaque jour sur WhatsApp."}
+              : isZh ? '交流建议、发现已核验供应商、接收诈骗提醒，并享受团购的力量。每天在 WhatsApp 上。' : isAr ? 'تبادل النصائح واكتشف موردين موثوقين وتلقَّ تنبيهات الاحتيال واستفد من قوة الشراء الجماعي. كل يوم عبر WhatsApp.' : "Échangez conseils, découvrez des fournisseurs vérifiés, recevez des alertes arnaques et bénéficiez de la force de l'achat groupé. Chaque jour sur WhatsApp."}
           </p>
 
           {/* WhatsApp CTA */}
@@ -133,7 +113,7 @@ export function CommunityHero() {
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#25D366] to-emerald-500 text-white rounded-2xl font-bold text-lg hover:from-[#128C7E] hover:to-emerald-600 transition-all duration-300 shadow-sm shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105"
             >
               <WhatsAppIcon className="w-6 h-6" />
-              {isEn ? 'Join on WhatsApp' : 'Rejoindre sur WhatsApp'}
+              {isEn ? 'Join on WhatsApp' : isZh ? '在 WhatsApp 上加入' : isAr ? 'انضم عبر WhatsApp' : 'Rejoindre sur WhatsApp'}
             </a>
 
             <a
@@ -153,9 +133,9 @@ export function CommunityHero() {
             className="mt-8 flex flex-wrap justify-center gap-3"
           >
             {[
-              { icon: ShieldCheck, text: isEn ? 'Verified members' : 'Membres vérifiés' },
-              { icon: Star, text: isEn ? 'Daily tips' : 'Conseils quotidiens' },
-              { icon: MessageCircle, text: isEn ? 'Scam alerts' : 'Alertes arnaques' },
+              { icon: ShieldCheck, text: isEn ? 'Verified members' : isZh ? '已核验成员' : isAr ? 'أعضاء موثقون' : 'Membres vérifiés' },
+              { icon: Star, text: isEn ? 'Daily tips' : isZh ? '每日建议' : isAr ? 'نصائح يومية' : 'Conseils quotidiens' },
+              { icon: MessageCircle, text: isEn ? 'Scam alerts' : isZh ? '诈骗提醒' : isAr ? 'تنبيهات الاحتيال' : 'Alertes arnaques' },
             ].map((badge) => (
               <div
                 key={badge.text}
@@ -179,7 +159,7 @@ export function CommunityHero() {
                 <Users className="w-5 h-5 text-amber-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.memberCount.toLocaleString()}+</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Members' : 'Membres'}</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Members' : isZh ? '成员' : isAr ? 'الأعضاء' : 'Membres'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -187,7 +167,7 @@ export function CommunityHero() {
                 <Activity className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.activeTopics}</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Active topics' : 'Sujets actifs'}</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Active topics' : isZh ? '活跃话题' : isAr ? 'مواضيع نشطة' : 'Sujets actifs'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -195,7 +175,7 @@ export function CommunityHero() {
                 <MessageCircle className="w-5 h-5 text-blue-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.dailyMessages}+</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Messages/day' : 'Messages/jour'}</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Messages/day' : isZh ? '消息/天' : isAr ? 'رسالة/يوم' : 'Messages/jour'}</div>
             </div>
 
             <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -203,7 +183,7 @@ export function CommunityHero() {
                 <Globe className="w-5 h-5 text-violet-400" />
               </div>
               <div className="text-white font-bold text-xl">{communityStats.countriesRepresented}</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Countries represented' : 'Pays représentés'}</div>
+              <div className="text-xs text-slate-400">{isEn ? 'Countries represented' : isZh ? '覆盖国家' : isAr ? 'دولة ممثلة' : 'Pays représentés'}</div>
             </div>
           </motion.div>
         </motion.div>

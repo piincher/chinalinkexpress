@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { WhatsAppThread } from '@/components/moments/WhatsAppThread';
+import { PageHero } from '@/components/site';
 
 interface FormData {
   name: string;
@@ -43,6 +44,8 @@ export function ContactPage() {
   const t = useTranslations('contact');
   const locale = useLocale();
   const isEn = locale === 'en';
+  const isZh = locale === 'zh';
+  const isAr = locale === 'ar';
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -111,24 +114,9 @@ export function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-16">
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              {t('title')}
-            </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              {t('subtitle')}
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero title={t('title')} lede={t('subtitle')} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
         <div className="grid lg:grid-cols-3 gap-8">
@@ -173,13 +161,13 @@ export function ContactPage() {
                   </h3>
                   <div className="space-y-1">
                     <a href="tel:+8618851725957" className="block text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400">
-                      +86 188 5172 5957 ({isEn ? 'China' : 'Chine'})
+                      <bdi dir="ltr">+86 188 5172 5957</bdi> ({isEn ? 'China' : isZh ? '中国' : isAr ? 'الصين' : 'Chine'})
                     </a>
                     <a href="tel:+22376696177" className="block text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400">
-                      +223 76 69 61 77 (Mali)
+                      <bdi dir="ltr">+223 76 69 61 77</bdi> (Mali)
                     </a>
                     <a href="tel:+22351005042" className="block text-gray-600 dark:text-gray-400 text-sm hover:text-blue-600 dark:hover:text-blue-400">
-                      +223 51 00 50 42 (Mali)
+                      <bdi dir="ltr">+223 51 00 50 42</bdi> (Mali)
                     </a>
                   </div>
                 </div>
@@ -248,13 +236,13 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    {isEn ? 'China office and network' : 'Bureau et réseau Chine'}
+                    {isEn ? 'China office and network' : isZh ? '中国办公室和网络' : isAr ? 'المكتب والشبكة في الصين' : 'Bureau et réseau Chine'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Guangzhou / Shenzhen / Yiwu<br />
                     {isEn
                       ? 'Supplier receiving, photo checks, consolidation and freight departure.'
-                      : 'Réception fournisseur, contrôle photo, consolidation et départ fret.'}
+                      : isZh ? '供应商收货、照片检查、集运和发运。' : isAr ? 'الاستلام من المورد والفحص بالصور والتجميع والشحن.' : 'Réception fournisseur, contrôle photo, consolidation et départ fret.'}
                   </p>
                 </div>
               </div>
@@ -273,13 +261,13 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    {isEn ? 'Company information' : 'Informations entreprise'}
+                    {isEn ? 'Company information' : isZh ? '公司信息' : isAr ? 'معلومات الشركة' : 'Informations entreprise'}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    {isEn ? 'Bamako address' : 'Adresse Bamako'} : Kalaban Coura, près du lycée Birgo.<br />
+                    {isEn ? 'Bamako address' : isZh ? '巴马科地址' : isAr ? 'العنوان في باماكو' : 'Adresse Bamako'} : Kalaban Coura, près du lycée Birgo.<br />
                     {isEn
                       ? 'Mali and China support, payment receipts, WhatsApp tracking and checks before shipping.'
-                      : 'Support Mali et Chine, reçus de paiement, suivi WhatsApp et contrôle avant expédition.'}
+                      : isZh ? '马里和中国支持、付款收据、WhatsApp 跟踪和发货前检查。' : isAr ? 'دعم في مالي والصين وإيصالات دفع ومتابعة عبر WhatsApp وفحص قبل الشحن.' : 'Support Mali et Chine, reçus de paiement, suivi WhatsApp et contrôle avant expédition.'}
                   </p>
                 </div>
               </div>
