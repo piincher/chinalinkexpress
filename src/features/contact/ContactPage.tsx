@@ -25,6 +25,7 @@ import {
 import { cn } from '@/lib/utils';
 import { WhatsAppThread } from '@/components/moments/WhatsAppThread';
 import { PageHero } from '@/components/site';
+import { whatsappUrl, WHATSAPP_SALES } from '@/constants/contact';
 
 interface FormData {
   name: string;
@@ -53,7 +54,6 @@ export function ContactPage() {
     message: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = (): boolean => {
@@ -66,10 +66,8 @@ export function ContactPage() {
       newErrors.name = t('form.errors.nameMin');
     }
 
-    // Email validation
-    if (!formData.email.trim()) {
-      newErrors.email = t('form.errors.emailRequired');
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    // Email validation (optional: the request travels by WhatsApp)
+    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = t('form.errors.emailInvalid');
     }
 
@@ -89,19 +87,17 @@ export function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // This form used to fake a 1.5 s "send" and show "Message envoyé !" while
+  // nothing went anywhere. It now hands the request to WhatsApp, already written;
+  // the visitor presses Send there, so nothing is claimed that does not happen.
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!validateForm()) return;
-
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
+    const lines = ['Bonjour ChinaLink Express,', '', formData.message.trim(), '', `Nom : ${formData.name.trim()}`];
+    if (formData.phone.trim()) lines.push(`Téléphone : ${formData.phone.trim()}`);
+    if (formData.email.trim()) lines.push(`E-mail : ${formData.email.trim()}`);
+    window.open(whatsappUrl(WHATSAPP_SALES, lines.join('\n')), '_blank', 'noopener,noreferrer');
     setIsSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -353,7 +349,7 @@ export function ContactPage() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('form.email')} <span className="text-red-500">*</span>
+                        {t('form.email')}
                       </label>
                       <input
                         type="email"
@@ -434,20 +430,10 @@ export function ContactPage() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
                     className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-4 rounded-xl transition-colors"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        {t('form.sending')}
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        {t('form.send')}
-                      </>
-                    )}
+                    <Send className="w-5 h-5" />
+                    {t('form.openWhatsApp')}
                   </button>
                 </form>
               )}

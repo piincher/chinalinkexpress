@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "Cargo Chine Mali | Transitaire Chine Mali · ChinaLink Express",
-    "description": "ChinaLink Express - cargo chine mali. Votre partenaire logistique de confiance pour le sourcing, l'achat et l'expédition de marchandises de la Chine vers le Mali. Devis gratuit.",
-    "keywords": "cargo chine mali, transitaire chine mali, sourcing Chine Afrique, expédition Chine Mali, fret maritime Chine Afrique, fret aérien Chine Bamako, logistique internationale"
+    "title": "Cargo Chine Mali | Transitaire Chine Mali et Ouganda · ChinaLink Express",
+    "description": "Sourcing et expédition de la Chine vers le Mali et l'Ouganda, pour les importateurs d'Afrique de l'Ouest et de l'Est : recherche de fournisseurs, achat et paiement en Chine, fret aérien ou maritime jusqu'à Bamako ou Kampala. Devis gratuit.",
+    "keywords": "cargo chine mali, transitaire chine mali, cargo chine ouganda, sourcing Chine Afrique, expédition Chine Afrique de l'Ouest, expédition Chine Afrique de l'Est, fret aérien Chine Bamako, fret Chine Kampala"
   },
   "navigation": {
     "home": "Accueil",
@@ -23,7 +23,8 @@
     "checkProduct": "Vérifier Produit",
     "reviews": "Avis clients",
     "shippingCalendar": "Calendrier d'expédition",
-    "verifyPhoto": "Vérifier une photo"
+    "verifyPhoto": "Vérifier une photo",
+    "trackParcel": "Suivre mon colis"
   },
   "cta": {
     "getQuote": "Obtenir un Devis Gratuit",
@@ -37,16 +38,16 @@
     "seeHowItWorks": "Voir comment ça marche"
   },
   "hero": {
-    "title": "ChinaLink Express — Transport Chine-Mali",
+    "title": "ChinaLink Express — Sourcing et expédition Chine → Mali et Ouganda",
     "headline": "Vos marchandises quittent la Chine. Vous ne perdez pas leur trace.",
-    "subheadline": "Achat chez votre fournisseur, réception à nos entrepôts de Guangzhou et Foshan, expédition aérienne ou maritime, et information à chaque étape jusqu’à Bamako.",
-    "subtitle": "Recherche de fournisseurs, achat et paiement en Chine, réception et consolidation en entrepôt, fret aérien ou maritime, dédouanement et livraison à Bamako.",
+    "subheadline": "Achat chez votre fournisseur, réception à nos entrepôts de Guangzhou et Foshan, expédition aérienne ou maritime vers le Mali ou l'Ouganda, et information à chaque étape jusqu’à Bamako ou Kampala.",
+    "subtitle": "Recherche de fournisseurs, achat et paiement en Chine, réception et consolidation en entrepôt, fret aérien ou maritime, dédouanement et livraison à Bamako ou Kampala.",
     "typingTexts": [
       "Solutions Logistiques Complètes",
       "Expéditions Internationales",
       "Votre Partenaire de Confiance"
     ],
-    "badge": "Chine → Bamako · Fret aérien & maritime",
+    "badge": "Chine → Bamako · Kampala · Aérien & maritime",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -76,7 +77,7 @@
     "stats": {
       "payOnDelivery": "Payez à la livraison"
     },
-    "keywords": "Cargo Chine Mali · Transitaire Chine Mali"
+    "keywords": "Cargo Chine Mali · Chine Ouganda · Afrique de l'Ouest et de l'Est"
   },
   "landing": {
     "marquee": [
@@ -96,8 +97,10 @@
     "lanes": [
       "Guangzhou → Bamako",
       "Foshan → Bamako",
+      "Chine → Kampala",
       "Cargo Chine Mali",
-      "Transitaire Chine Mali",
+      "Cargo Chine Ouganda",
+      "Afrique de l'Ouest et de l'Est",
       "Fret aérien",
       "Fret maritime"
     ]
@@ -120,11 +123,12 @@
   "about": {
     "sectionLabel": "À Propos de Nous",
     "title": "Qui nous sommes",
-    "description1": "ChinaLink Express opère sur un seul corridor : la Chine et le Mali. Bureau à Bamako, deux entrepôts en Chine — Guangzhou pour le fret aérien, Foshan pour le fret maritime — où vos fournisseurs livrent vos marchandises.",
+    "description1": "ChinaLink Express fait le sourcing et l'expédition de la Chine vers le Mali et l'Ouganda, pour des importateurs de toute l'Afrique de l'Ouest et de l'Est. Bureau à Bamako, deux entrepôts en Chine — Guangzhou pour le fret aérien, Foshan pour le fret maritime — où vos fournisseurs livrent vos marchandises.",
     "description2": "Nous ne faisons pas que transporter. Nous pouvons trouver le fournisseur, vérifier la marchandise, la payer en Chine, la regrouper et vous tenir informé jusqu’à la livraison — pour que le fait d’acheter à 12 000 km ne veuille pas dire acheter à l’aveugle.",
     "tags": [
       "Depuis 2019",
       "Bureau à Bamako",
+      "Mali et Ouganda",
       "2 entrepôts en Chine",
       "Aérien & maritime"
     ],
@@ -293,7 +297,7 @@
   "services": {
     "sectionLabel": "Nos Services",
     "title": "Ce que nous prenons en charge",
-    "subtitle": "Trois moments : avant l’expédition, en Chine, puis vers Bamako. Vous pouvez nous confier les trois ou seulement le transport.",
+    "subtitle": "Trois moments : avant l’expédition, en Chine, puis vers Bamako ou Kampala. Vous pouvez nous confier les trois ou seulement le transport. Pour l’Ouganda, demandez-nous délais et tarifs.",
     "items": {
       "sourcing": {
         "title": "Recherche de fournisseurs",
@@ -372,7 +376,7 @@
     "groups": {
       "before": "Avant l’expédition",
       "inChina": "En Chine",
-      "toBamako": "Vers Bamako"
+      "toBamako": "Vers Bamako et Kampala"
     }
   },
   "whyUs": {
@@ -537,8 +541,8 @@
       "send": "Envoyer le message",
       "sending": "Envoi en cours...",
       "success": {
-        "title": "Message envoyé !",
-        "message": "Nous vous répondrons dans les plus brefs délais."
+        "title": "Votre message est prêt dans WhatsApp",
+        "message": "Appuyez sur Envoyer dans WhatsApp pour nous le transmettre. Rien ne part tant que vous ne l’avez pas fait."
       },
       "errors": {
         "nameRequired": "Le nom est requis",
@@ -570,7 +574,7 @@
     }
   },
   "footer": {
-    "description": "Votre partenaire de confiance pour le commerce international avec la Chine. Des solutions logistiques complètes pour faire grandir votre business.",
+    "description": "Sourcing et expédition de la Chine vers le Mali et l'Ouganda, pour les importateurs d'Afrique de l'Ouest et de l'Est.",
     "services": "Services",
     "links": "Liens Utiles",
     "newsletter": "Newsletter",
@@ -800,10 +804,9 @@
       },
       "sea": {
         "description": "Solution économique pour gros volumes",
-        "minCBM": "CBM minimum",
         "densityThreshold": "Seuil de densité",
-        "adjustment": "Ajustement haute densité",
-        "note": "Les articles avec une densité > 250 kg/m³ sont soumis à un ajustement de volume"
+        "adjustment": "Colis très lourd",
+        "note": "Au-delà de 1000 kg par m³, le colis est facturé au poids (1000 kg = 1 m³)."
       }
     },
     "calculator": {
@@ -830,9 +833,9 @@
       "destination": "Destination",
       "recommended": "Recommandé pour votre deadline",
       "cheaperOption": "Option moins chère disponible",
-      "cheaperOptionDescription": "{{tier}} arrive en {{min}}-{{max}} jours pour {{price}} — économisez {{savings}} si vous avez le temps.",
+      "cheaperOptionDescription": "{tier} arrive en {min}-{max} jours pour {price} — économisez {savings} si vous avez le temps.",
       "fasterOption": "Besoin de plus de vitesse ?",
-      "fasterOptionDescription": "{{tier}} livre en {{min}}-{{max}} jours pour {{price}}.",
+      "fasterOptionDescription": "{tier} livre en {min}-{max} jours pour {price}.",
       "tooLate": "Aucune option ne garantit cette deadline",
       "tooLateDescription": "Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.",
       "tooLateShort": "Trop tard",
@@ -882,17 +885,11 @@
       },
       "rateInfo": {
         "title": "Tarif Maritime",
-        "description": "{{rate}} par CBM avec un minimum de {{minCBM}} CBM"
+        "description": "{rate} par m³, facturé sur le volume réel, sans minimum"
       },
       "densityInfo": {
         "title": "Calcul de Densité",
-        "description": "Si la densité dépasse {{threshold}} kg/m³, un ajustement est appliqué: Poids × 0.005",
-        "standardRule": "Règle standard 1:200 (densité ≤ 200)",
-        "coscoRule": "Règle COSCO/MAERSK 1:250 (densité > 250)"
-      },
-      "minCBM": {
-        "title": "CBM Minimum",
-        "description": "Un minimum de {{minCBM}} CBM est facturé pour toute expédition"
+        "description": "Un colis très lourd est facturé au poids : 1000 kg comptent pour 1 m³. On facture la valeur la plus élevée."
       }
     },
     "result": {
@@ -908,22 +905,20 @@
       "rate": "Tarif",
       "originalCBM": "CBM original",
       "density": "Densité",
-      "densityAdjustment": "Ajustement densité appliqué",
-      "minCBMApplied": "CBM minimum appliqué",
+      "densityAdjustment": "Facturé au poids (1000 kg = 1 m³)",
       "finalCBM": "CBM final",
       "calculating": "Calcul en cours...",
       "enterDetails": "Entrez les détails pour obtenir un devis",
       "enterDimensions": "Entrez les dimensions pour calculer",
       "contactWhatsApp": "Demander un devis sur WhatsApp",
       "estimateDisclaimer": "Ces prix sont des estimations uniquement",
-      "densityRuleApplied": "Règle COSCO/MAERSK 1:250 appliquée",
       "seaRecommendation": {
         "title": "💡 Le fret maritime pourrait être plus économique",
-        "description": "Densité détectée: {{density}} kg/m³. En raison du poids élevé par rapport au volume, le transport maritime pourrait être plus avantageux."
+        "description": "Densité détectée: {density} kg/m³. En raison du poids élevé par rapport au volume, le transport maritime pourrait être plus avantageux."
       },
       "highDensity": {
         "title": "Article à haute densité",
-        "description": "Un ajustement de volume a été appliqué conformément aux politiques de Cosco et Maersk."
+        "description": "Ce colis pèse plus de 1000 kg par m³ : il est facturé au poids (1000 kg = 1 m³)."
       }
     },
     "prohibitedItems": {
@@ -1783,7 +1778,7 @@
       "express": "Estimation avant pesée à l’entrepôt. Poids volumétrique : (L × l × H) ÷ 5000.",
       "electronics": "Électronique, batteries, liquides. Estimation avant pesée à l’entrepôt.",
       "phones": "Téléphones : tarif à la pièce, jamais au poids.",
-      "sea": "Minimum 0,1 CBM. Densité au dessus de 250 kg/m³ : volume ajusté."
+      "sea": "Facturé sur le volume réel, sans minimum. Au-delà de 1000 kg par m³ : 1000 kg = 1 m³."
     },
     "scope": "Tarifs vers Bamako."
   },
@@ -1816,5 +1811,35 @@
     "body": "Ajoutez-le à votre écran d’accueil pour accéder vite aux tarifs et au suivi.",
     "install": "Installer",
     "dismiss": "Fermer"
+  },
+  "parcelTrack": {
+    "eyebrow": "Suivi",
+    "title": "Suivre mon colis",
+    "lede": "Saisissez le code de votre colis et les 4 derniers chiffres de votre numéro de téléphone pour voir où en est votre marchandise.",
+    "codeLabel": "Code du colis",
+    "phoneLabel": "4 derniers chiffres de votre téléphone",
+    "hint": "Le code est sur votre reçu et dans l’application, par exemple G-2609-0069. Le numéro est celui enregistré chez ChinaLink.",
+    "submit": "Voir mon colis",
+    "checking": "Recherche…",
+    "invalid": "Vérifiez le code du colis et saisissez exactement 4 chiffres.",
+    "notFound": "Aucun colis ne correspond à ce code et à ce numéro. Vérifiez les deux, ou écrivez-nous sur WhatsApp.",
+    "rateLimited": "Trop de tentatives. Réessayez dans quelques minutes.",
+    "error": "Le suivi est momentanément indisponible. Réessayez dans un instant.",
+    "modeAir": "Aérien",
+    "modeSea": "Maritime",
+    "eta": "Arrivée prévue : {date}",
+    "moreInApp": "Photos, documents et détails de paiement : dans l’application ChinaLink Express ou sur WhatsApp.",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "Reçu à notre entrepôt en Chine",
+      "PACKED": "Préparé pour l’envoi",
+      "ASSIGNED_TO_CONTAINER": "Attribué à un départ",
+      "LOADED_IN_CONTAINER": "Chargé",
+      "IN_TRANSIT": "En route",
+      "ARRIVED_DESTINATION": "Arrivé à destination",
+      "READY_FOR_PICKUP": "Prêt pour le retrait",
+      "DELIVERED": "Remis au client",
+      "HANDED_OVER_EXPRESS": "Remis à votre transporteur express",
+      "other": "En cours de traitement"
+    }
   }
 }

@@ -44,8 +44,8 @@ export const BUSINESS_INFO = {
     email: 'contact@chinalinkexpress.com',
     phones: {
       china: '+86 188 5172 5957',
-      mali: '+223 7669 61 77',
-      maliAlt: '+223 5100 50 42',
+      mali: '+223 76 69 61 77',
+      maliAlt: '+223 51 00 50 42',
     },
     whatsapp: {
       china: '+8618851725957',
@@ -137,9 +137,9 @@ export const BUSINESS_INFO = {
 // Shipping Routes Data - destinations served
 // ============================================================================
 
-export const SHIPPING_ROUTES: ShippingRoute[] = [
-  { origin: 'China', destination: 'Mali', durationDays: { min: 14, max: 75 }, methods: ['air', 'sea'] },
-];
+// Destinations served (owner, 2026-11-15): Mali and Uganda, for importers across West and East Africa.
+export const SERVED_COUNTRIES = ['Mali', 'Uganda'].map((name) => ({ '@type': 'Country', name }));
+
 
 // ============================================================================
 // Service Offers - EXPANDED with new services
@@ -224,21 +224,21 @@ export function generateOrganizationSchema() {
         '@type': 'ContactPoint',
         telephone: BUSINESS_INFO.contact.phones.china,
         contactType: 'customer service',
-        areaServed: ['CN', 'ML', 'SN', 'CI', 'NG', 'GH', 'BF', 'NE', 'BJ', 'TG', 'GN', 'CM', 'CD'],
+        areaServed: ['CN', 'ML', 'UG'],
         availableLanguage: ['French', 'English', 'Chinese', 'Bambara'],
       },
       {
         '@type': 'ContactPoint',
         telephone: BUSINESS_INFO.contact.phones.mali,
         contactType: 'technical support',
-        areaServed: ['ML', 'SN', 'CI', 'NG', 'GH', 'BF', 'NE', 'BJ', 'TG', 'GN', 'CM', 'CD'],
+        areaServed: ['ML', 'UG'],
         availableLanguage: ['French', 'Bambara', 'English'],
       },
       {
         '@type': 'ContactPoint',
         contactType: 'WhatsApp',
         url: `https://wa.me/${BUSINESS_INFO.contact.whatsapp.china}`,
-        areaServed: ['CN', 'ML', 'SN', 'CI', 'NG', 'GH', 'BF', 'NE', 'BJ', 'TG', 'GN', 'CM', 'CD'],
+        areaServed: ['CN', 'ML', 'UG'],
         availableLanguage: ['French', 'English', 'Chinese', 'Bambara'],
       },
     ],
@@ -342,7 +342,7 @@ export function generateServiceSchema(
         : isZh ? '从中国到巴马科（马里）、达喀尔（塞内加尔）、阿比让（科特迪瓦）及整个西非的快速可靠空运。14-21 天交付，实时跟踪。' : isAr ? 'شحن جوي سريع وموثوق من الصين إلى باماكو (مالي) وداكار (السنغال) وأبيدجان (ساحل العاج) وغرب أفريقيا كلها. تسليم خلال 14-21 يومًا مع متابعة فورية.' : 'Fret aérien rapide et fiable de la Chine vers Bamako (Mali), Dakar (Sénégal), Abidjan (Côte d\'Ivoire) et toute l\'Afrique de l\'Ouest. Livraison en 14-21 jours avec suivi en temps réel.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
-      areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
+      areaServed: SERVED_COUNTRIES,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: isEn ? 'Air Freight Services' : isZh ? '空运服务' : isAr ? 'خدمات الشحن الجوي' : 'Services de Fret Aérien',
@@ -390,7 +390,7 @@ export function generateServiceSchema(
         : isZh ? '经济的海运，从佛山/广州港到达喀尔、拉各斯、阿比让，再陆路转运到巴马科和整个西非。可选 FCL 和 LCL。60-75 天交付。' : isAr ? 'شحن بحري اقتصادي من ميناء فوشان/قوانغتشو إلى داكار ولاغوس وأبيدجان، ثم عبور بري إلى باماكو وغرب أفريقيا كلها. خيارات FCL وLCL. تسليم خلال 60-75 يومًا.' : 'Fret maritime économique du port de Foshan/Guangzhou vers Dakar, Lagos, Abidjan, puis transit terrestre vers Bamako et toute l\'Afrique de l\'Ouest. Options FCL et LCL. Livraison en 60-75 jours.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
-      areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
+      areaServed: SERVED_COUNTRIES,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: isEn ? 'Sea Freight Services' : isZh ? '海运服务' : isAr ? 'خدمات الشحن البحري' : 'Services de Fret Maritime',
@@ -491,7 +491,7 @@ export function generateServiceSchema(
         : isZh ? '面向中国供应商的安全付款服务。我们通过支付宝、微信支付、银行转账或托管，安全地向您的 Alibaba、1688 和工厂供应商付款。保护您的资金免受诈骗。' : isAr ? 'خدمة دفع آمنة للموردين الصينيين. ندفع لمورديك في Alibaba و1688 والمصانع بأمان عبر Alipay أو WeChat Pay أو التحويل المصرفي أو الضمان (Escrow). احمِ أموالك من الاحتيال.' : 'Service de paiement sécurisé pour fournisseurs chinois. Nous payons vos fournisseurs Alibaba, 1688 et usines en toute sécurité via Alipay, WeChat Pay, virement bancaire ou escrow. Protégez votre argent des arnaques.',
       provider: generateOrganizationSchema(),
       serviceType: 'FinancialService',
-      areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
+      areaServed: SERVED_COUNTRIES,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: isEn ? 'Payment Services' : isZh ? '付款服务' : isAr ? 'خدمات الدفع' : 'Services de Paiement',
@@ -536,7 +536,7 @@ export function generateServiceSchema(
         : isZh ? '避免 Alibaba 和 1688 上的诈骗。我们实地核验中国供应商：执照核查、工厂考察、产能检查，并在付款前确认质量。' : isAr ? 'تجنب الاحتيال في Alibaba و1688. نتحقق من الموردين الصينيين ميدانيًا: فحص الرخص وزيارة المصنع وفحص القدرة الإنتاجية والتأكد من الجودة قبل الدفع.' : 'Évitez les arnaques sur Alibaba et 1688. Nous vérifions les fournisseurs chinois sur place : vérification des licences, visite d\'usine, inspection de la capacité de production et validation de la qualité avant paiement.',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
-      areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
+      areaServed: SERVED_COUNTRIES,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: isEn ? 'Verification Services' : isZh ? '核验服务' : isAr ? 'خدمات التحقق' : 'Services de Vérification',
@@ -581,7 +581,7 @@ export function generateServiceSchema(
         : isZh ? '您在中国值得信赖的 Alibaba 采购代理。我们帮助非洲企业在 Alibaba 安全购买：寻找供应商、议价、质量核验、付款和运输。' : isAr ? 'وكيلك الموثوق للشراء من Alibaba في الصين. نساعد الشركات الأفريقية على الشراء بأمان من Alibaba: البحث عن موردين والتفاوض والتحقق من الجودة والدفع والشحن.' : 'Votre agent achat Alibaba de confiance en Chine. Nous aidons les entreprises africaines à acheter en toute sécurité sur Alibaba : recherche de fournisseurs, négociation, vérification qualité, paiement et expédition.',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
-      areaServed: SHIPPING_ROUTES.map(r => ({ '@type': 'Country', name: r.destination })),
+      areaServed: SERVED_COUNTRIES,
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: isEn ? 'Alibaba Agent Services' : isZh ? 'Alibaba 代理服务' : isAr ? 'خدمات وكيل Alibaba' : 'Services Agent Alibaba',

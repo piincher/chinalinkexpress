@@ -308,16 +308,12 @@ export function PriceTable() {
               {/* Sea Details */}
               <div className="mt-6 space-y-3">
                 <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
-                  <span className="text-gray-600 dark:text-gray-400">{t('priceTable.sea.minCBM')}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">{SEA_RATES.minCBM} CBM</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                   <span className="text-gray-600 dark:text-gray-400">{t('priceTable.sea.densityThreshold')}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">250 kg/m³</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">1000 kg/m³</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-600 dark:text-gray-400">{t('priceTable.sea.adjustment')}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">Weight × 0.005</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">1000 kg = 1 m³</span>
                 </div>
               </div>
 

@@ -93,7 +93,6 @@ export interface AirRate {
 
 export interface SeaRate {
   rateFCFA: number;
-  minCBM: number;
   deliveryTime: string;
   description: string;
 }
@@ -181,7 +180,6 @@ export const ITEM_CATEGORIES: ItemCategoryInfo[] = [
 // Sea Freight Rates
 export const SEA_RATES: SeaRate = {
   rateFCFA: 300000,
-  minCBM: 0.1,
   deliveryTime: '60-75 jours (dédouanement inclus)',
   description: 'Économique Maritime par CBM',
 };
@@ -207,12 +205,10 @@ export const PURCHASE_SERVICE: PurchaseService = {
 };
 
 // Density Thresholds
-// Standard rule: 1:200 (density ≤ 200 kg/CBM - use actual CBM)
-// COSCO/MAERSK rule: 1:250 (density > 250 kg/CBM - use weight × 0.004)
+// Sea billing matches the backend (cbmService): max(volume, weight / 1000), no minimum.
 export const DENSITY_THRESHOLDS = {
   standard: 200, // kg/CBM - threshold for sea recommendation
-  coscoMaersk: 250, // kg/CBM - adjustment threshold for COSCO/MAERSK
-  adjustmentFactor: 0.004, // 1/250 = 0.004 for COSCO/MAERSK rule
+  kgPerCBM: 1000, // above this the parcel is billed by weight (1 000 kg = 1 m³)
 };
 
 // Volumetric Weight Divisor (industry standard for air freight)

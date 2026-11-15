@@ -11,6 +11,7 @@
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { useQuoteHref } from '../lib/useQuoteHref';
 import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown, ShieldCheck, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
@@ -23,6 +24,7 @@ import { WeighScale } from '@/components/moments/WeighScale';
 
 export function AirCalculator() {
   const t = useTranslations('pricing');
+  const quoteHref = useQuoteHref();
   const locale = useLocale();
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
@@ -387,7 +389,7 @@ export function AirCalculator() {
                 className="mt-6"
               >
                 <a
-                  href="https://wa.me/8618851725957"
+                  href={quoteHref(airResult.category === 'liquids' ? 'electronics' : airResult.category, airResult.chargeableWeight, airResult.unit, airResult.totalPrice)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"

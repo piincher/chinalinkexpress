@@ -11,6 +11,7 @@
 import { useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { useQuoteHref, type QuoteMode } from '../lib/useQuoteHref';
 import {
   Package,
   Ruler,
@@ -42,6 +43,8 @@ import {
 } from '../constants';
 import { Input } from '@/components/common/form/FormField';
 
+const TIER_QUOTE_MODE: Record<string, QuoteMode> = { flash: 'express', air_standard: 'standard', sea_economy: 'sea' };
+
 interface TierRecommendation {
   tier: (typeof DELIVERY_TIERS)[number];
   meetsDeadline: boolean;
@@ -52,6 +55,7 @@ interface TierRecommendation {
 
 export function DeadlineCalculator() {
   const t = useTranslations('pricing');
+  const quoteHref = useQuoteHref();
   const locale = useLocale();
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
@@ -460,7 +464,9 @@ export function DeadlineCalculator() {
                     className="mt-6"
                   >
                     <a
-                      href="https://wa.me/8618851725957"
+                      href={recommendedTier
+                        ? quoteHref(TIER_QUOTE_MODE[recommendedTier.tier.id] ?? 'standard', weightNum, 'kg', recommendedTier.price)
+                        : quoteHref('standard', 0, 'kg', 0)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"

@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "中国到马里货运与货运代理 | ChinaLink Express",
-    "description": "为东非和西非进口商提供中国到马里的货运代理服务：采购、供应商付款、空运和海运到巴马科，并提供可验证的照片和货物跟踪。",
-    "keywords": "中国马里货运, 中国马里货运代理, 中非货运代理, 中国到西非货运, 中国到东非货运, 中国到巴马科空运, 中国到巴马科海运"
+    "title": "中国到马里和乌干达的采购与货运 | ChinaLink Express",
+    "description": "为西非和东非进口商提供从中国到马里和乌干达的采购与货运服务：寻找供应商、在中国采购与付款、空运和海运到巴马科或坎帕拉，并提供可验证的照片和货物跟踪。",
+    "keywords": "中国马里货运, 中国乌干达货运, 中国马里货运代理, 中国乌干达货运代理, 中国到西非货运, 中国到东非货运, 中国采购代理 非洲, 中国到坎帕拉货运, 中国到巴马科空运"
   },
   "navigation": {
     "home": "首页",
@@ -23,7 +23,8 @@
     "checkProduct": "产品检查",
     "reviews": "客户评价",
     "shippingCalendar": "Shipping calendar",
-    "verifyPhoto": "验证照片"
+    "verifyPhoto": "验证照片",
+    "trackParcel": "查询我的包裹"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -37,19 +38,19 @@
     "seeHowItWorks": "了解流程"
   },
   "hero": {
-    "title": "ChinaLink Express — 中国至马里货运",
-    "subtitle": "寻找供应商、在中国采购与付款、仓库收货与拼箱、空运或海运、清关及巴马科交付。",
+    "title": "ChinaLink Express — 中国至马里和乌干达的采购与货运",
+    "subtitle": "寻找供应商、在中国采购与付款、仓库收货与拼箱、空运或海运、清关及巴马科或坎帕拉交付。",
     "typingTexts": [
       "完整物流解决方案",
       "国际货运服务",
       "您信赖的合作伙伴"
     ],
-    "badge": "中国 → 巴马科 · 空运与海运",
+    "badge": "中国 → 巴马科 · 坎帕拉 · 空运与海运",
     "stats": {
       "payOnDelivery": "货到付款"
     },
     "headline": "货物离开中国，您始终掌握它的去向。",
-    "subheadline": "代您向供应商采购，货物入我们广州和佛山的仓库，空运或海运发出，每一个环节都通知到您，直至巴马科。",
+    "subheadline": "代您向供应商采购，货物入我们广州和佛山的仓库，空运或海运发往马里或乌干达，每一个环节都通知到您，直至巴马科或坎帕拉。",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -76,7 +77,7 @@
         "label": "收货"
       }
     ],
-    "keywords": "中国马里货运 · 中国马里货运代理"
+    "keywords": "中国马里货运 · 中国乌干达货运 · 西非与东非"
   },
   "landing": {
     "marquee": [
@@ -96,8 +97,10 @@
     "lanes": [
       "广州 → 巴马科",
       "佛山 → 巴马科",
+      "中国 → 坎帕拉",
       "中国马里货运",
-      "中国马里货运代理",
+      "中国乌干达货运",
+      "西非与东非",
       "空运",
       "海运"
     ]
@@ -120,11 +123,12 @@
   "about": {
     "sectionLabel": "关于我们",
     "title": "关于我们",
-    "description1": "ChinaLink Express 只做一条线路：中国与马里。巴马科设有办公室，中国有两个仓库——广州收空运货，佛山收海运货，供应商把您的货送到这里。",
+    "description1": "ChinaLink Express 为西非和东非的进口商提供从中国到马里和乌干达的采购与货运服务。巴马科设有办公室，中国有两个仓库——广州收空运货，佛山收海运货，供应商把您的货送到这里。",
     "description2": "我们不止是运输。我们可以帮您找供应商、验货、在中国付款、拼箱，并全程通知您——让您在一万两千公里外采购，不等于盲买。",
     "tags": [
       "成立于 2019",
       "巴马科办公室",
+      "马里与乌干达",
       "中国两个仓库",
       "空运与海运"
     ],
@@ -137,7 +141,7 @@
   "services": {
     "sectionLabel": "我们的服务",
     "title": "我们负责的环节",
-    "subtitle": "三个阶段：发货前、在中国、运往巴马科。三段全交给我们，或只交运输，都可以。",
+    "subtitle": "三个阶段：发货前、在中国、运往巴马科或坎帕拉。三段全交给我们，或只交运输，都可以。乌干达的时效和价格请向我们咨询。",
     "items": {
       "sourcing": {
         "title": "寻找供应商",
@@ -216,7 +220,7 @@
     "groups": {
       "before": "发货前",
       "inChina": "在中国",
-      "toBamako": "运往巴马科"
+      "toBamako": "运往巴马科和坎帕拉"
     }
   },
   "whyUs": {
@@ -381,8 +385,8 @@
       "send": "发送消息",
       "sending": "发送中...",
       "success": {
-        "title": "消息已发送！",
-        "message": "我们会尽快回复您。"
+        "title": "您的消息已在 WhatsApp 中准备好",
+        "message": "请在 WhatsApp 中点击发送，我们才能收到。您发送之前不会有任何消息发出。"
       },
       "errors": {
         "nameRequired": "请输入姓名",
@@ -414,7 +418,7 @@
     }
   },
   "footer": {
-    "description": "您值得信赖的中非贸易合作伙伴。完整的物流解决方案助力您的业务发展。",
+    "description": "为西非和东非进口商提供从中国到马里和乌干达的采购与货运服务。",
     "services": "服务",
     "links": "有用链接",
     "newsletter": "订阅通讯",
@@ -628,10 +632,9 @@
       },
       "sea": {
         "description": "大批量货物的经济方案",
-        "minCBM": "最低立方米",
         "densityThreshold": "密度阈值",
-        "adjustment": "高密度调整",
-        "note": "密度超过250公斤/立方米的物品将收取体积调整费"
+        "adjustment": "超重货物",
+        "note": "每立方米超过 1000 公斤的货物按重量计费（1000 公斤 = 1 立方米）。"
       }
     },
     "calculator": {
@@ -673,17 +676,11 @@
       },
       "rateInfo": {
         "title": "海运价格",
-        "description": "每立方米 {}，最低 {} 立方米"
+        "description": "每立方米 {rate}，按实际体积计费，无最低限额"
       },
       "densityInfo": {
         "title": "密度计算",
-        "description": "如果密度超过 {} 公斤/立方米，将应用调整：重量 × 0.005",
-        "standardRule": "标准规则 1:200（密度 ≤ 200）",
-        "coscoRule": "中远/马士基规则 1:250（密度 > 250）"
-      },
-      "minCBM": {
-        "title": "最低立方米",
-        "description": "任何货运最低收费 {} 立方米"
+        "description": "很重的货物按重量计费：1000 公斤按 1 立方米计，取两者中较高者计费。"
       }
     },
     "result": {
@@ -696,22 +693,20 @@
       "rate": "费率",
       "originalCBM": "原始立方米",
       "density": "密度",
-      "densityAdjustment": "已应用密度调整",
-      "minCBMApplied": "已应用最低立方米",
+      "densityAdjustment": "按重量计费（1000 公斤 = 1 立方米）",
       "finalCBM": "最终立方米",
       "calculating": "计算中...",
       "enterDetails": "输入详情以获取报价",
       "enterDimensions": "输入尺寸以计算",
       "contactWhatsApp": "在 WhatsApp 上询价",
       "estimateDisclaimer": "这些价格仅为估算",
-      "densityRuleApplied": "已应用中远/马士基 1:250 规则",
       "seaRecommendation": {
         "title": "💡 海运可能更经济",
-        "description": "检测到密度：{} 公斤/立方米。由于重量相对于体积较高，海运可能更有优势。"
+        "description": "检测到密度：{density} 公斤/立方米。由于重量相对于体积较高，海运可能更有优势。"
       },
       "highDensity": {
         "title": "高密度物品",
-        "description": "已根据中远和马士基的政策应用体积调整。"
+        "description": "该货物每立方米超过 1000 公斤，因此按重量计费（1000 公斤 = 1 立方米）。"
       },
       "smartChoice": "好选择！与特快相比节省 {percent}%。",
       "patientImporter": "有耐心的进口商的明智之选",
@@ -955,9 +950,9 @@
       "destination": "目的地",
       "recommended": "符合您期限的推荐方案",
       "cheaperOption": "有更便宜的方案",
-      "cheaperOptionDescription": "{{tier}} 需 {{min}}-{{max}} 天，价格 {{price}}。如果时间充裕，可节省 {{savings}}。",
+      "cheaperOptionDescription": "{tier} 需 {min}-{max} 天，价格 {price}。如果时间充裕，可节省 {savings}。",
       "fasterOption": "需要更快？",
-      "fasterOptionDescription": "{{tier}} 需 {{min}}-{{max}} 天，价格 {{price}}。",
+      "fasterOptionDescription": "{tier} 需 {min}-{max} 天，价格 {price}。",
       "tooLate": "没有方案能保证此期限",
       "tooLateDescription": "即使最快的特快空运也需要 2-5 天。请联系我们获取定制方案。",
       "tooLateShort": "太晚",
@@ -1811,7 +1806,7 @@
       "express": "仓库称重前的估价。体积重：（长 × 宽 × 高）÷ 5000。",
       "electronics": "电子产品、电池、液体。仓库称重前的估价。",
       "phones": "手机按件计费，不按重量。",
-      "sea": "最低 0.1 立方米。密度超过 250 公斤/立方米时调整体积。"
+      "sea": "按实际体积计费，无最低限额。每立方米超过 1000 公斤：1000 公斤 = 1 立方米。"
     },
     "scope": "价格为到巴马科。"
   },
@@ -1844,5 +1839,35 @@
     "body": "添加到主屏幕，快速查看价格和货物跟踪。",
     "install": "安装",
     "dismiss": "关闭"
+  },
+  "parcelTrack": {
+    "eyebrow": "货物查询",
+    "title": "查询我的包裹",
+    "lede": "输入包裹编号和手机号码后 4 位，查看您的货物现在在哪里。",
+    "codeLabel": "包裹编号",
+    "phoneLabel": "手机号码后 4 位",
+    "hint": "编号在您的收据和 App 中，例如 G-2609-0069。请使用在 ChinaLink 登记的号码。",
+    "submit": "查看包裹",
+    "checking": "查询中…",
+    "invalid": "请检查包裹编号，并输入 4 位数字。",
+    "notFound": "没有与该编号和号码匹配的包裹。请检查两者，或通过 WhatsApp 联系我们。",
+    "rateLimited": "尝试次数过多，请几分钟后再试。",
+    "error": "查询暂时不可用，请稍后再试。",
+    "modeAir": "空运",
+    "modeSea": "海运",
+    "eta": "预计到达：{date}",
+    "moreInApp": "照片、单据和付款详情：请查看 ChinaLink Express App 或 WhatsApp。",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "已到达我们的中国仓库",
+      "PACKED": "已打包待发",
+      "ASSIGNED_TO_CONTAINER": "已安排发运批次",
+      "LOADED_IN_CONTAINER": "已装运",
+      "IN_TRANSIT": "运输途中",
+      "ARRIVED_DESTINATION": "已到达目的地",
+      "READY_FOR_PICKUP": "可以提货",
+      "DELIVERED": "已交付客户",
+      "HANDED_OVER_EXPRESS": "已交给您的快递公司",
+      "other": "处理中"
+    }
   }
 }

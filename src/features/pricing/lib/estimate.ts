@@ -3,7 +3,7 @@
  *
  * Rates come from the same tables as /tarifs so the two can never disagree.
  * Billable rules are the published ones: kilos round up to the next 0.1 kg
- * (CGV article 3.1), phones bill per whole piece, sea has a 0.1 CBM minimum.
+ * (CGV article 3.1), phones bill per whole piece, sea bills the real volume (no minimum since 2026-09-06).
  * Volumetric weight and the density adjustment need dimensions, so they stay on
  * /calculateur and the page says the figure precedes weighing at the warehouse.
  */
@@ -36,5 +36,5 @@ export function estimatePrice(mode: EstimateMode, quantity: number): number {
   if (q === 0) return 0;
   if (unit === 'kg') return Math.round((Math.ceil(q * 10 - 1e-9) / 10) * rate);
   if (unit === 'piece') return Math.ceil(q) * rate;
-  return Math.round(Math.max(q, SEA_RATES.minCBM) * rate);
+  return Math.round(q * rate);
 }

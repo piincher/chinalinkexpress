@@ -45,7 +45,6 @@ export interface AirCalculationResult {
 export interface SeaCalculationResult {
   originalCBM: number;
   adjustedCBM: number;
-  minCBMApplied: boolean;
   densityRatio: number;
   highDensity: boolean;
   baseRate: number;
@@ -92,16 +91,9 @@ export function shouldRecommendSea(density: number): boolean {
   return density > DENSITY_THRESHOLDS.standard;
 }
 
-/**
- * Calculate adjusted CBM for high-density items
- * Formula: Weight × 0.005 (when density > 250)
- */
-export function calculateAdjustedCBM(weight: number, density: number): number {
-  if (density <= DENSITY_THRESHOLDS.coscoMaersk) {
-    return weight / density; // Original CBM
-  }
-  // High density adjustment
-  return weight * DENSITY_THRESHOLDS.adjustmentFactor;
+/** Chargeable sea volume, as the backend bills it: the larger of volume and weight / 1000. */
+export function calculateAdjustedCBM(weight: number, cbm: number): number {
+  return Math.max(cbm, weight / DENSITY_THRESHOLDS.kgPerCBM);
 }
 
 /**
@@ -180,21 +172,10 @@ export function calculateSeaFreight(
   // Calculate density
   const densityRatio = calculateDensity(weight, originalCBM);
   
-  // Check if high density adjustment needed
-  const highDensity = densityRatio > DENSITY_THRESHOLDS.coscoMaersk;
-  
-  // Calculate adjusted CBM if needed
-  let adjustedCBM = originalCBM;
-  let adjustmentApplied = false;
-  
-  if (highDensity) {
-    adjustedCBM = calculateAdjustedCBM(weight, densityRatio);
-    adjustmentApplied = true;
-  }
-  
-  // Apply minimum CBM
-  const minCBMApplied = adjustedCBM < SEA_RATES.minCBM;
-  const finalCBM = Math.max(adjustedCBM, SEA_RATES.minCBM);
+  // Heavier than 1000 kg per m³: billed by weight. No minimum volume (owner, 2026-09-06).
+  const finalCBM = calculateAdjustedCBM(weight, originalCBM);
+  const highDensity = finalCBM > originalCBM;
+  const adjustmentApplied = highDensity;
   
   // Calculate price
   const totalPrice = finalCBM * SEA_RATES.rateFCFA;
@@ -202,7 +183,6 @@ export function calculateSeaFreight(
   return {
     originalCBM: Math.round(originalCBM * 1000) / 1000,
     adjustedCBM: Math.round(finalCBM * 1000) / 1000,
-    minCBMApplied,
     densityRatio: Math.round(densityRatio * 100) / 100,
     highDensity,
     baseRate: SEA_RATES.rateFCFA,

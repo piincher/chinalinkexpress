@@ -63,6 +63,7 @@ const PAGE_LINKS = [
 ] as const;
 
 const TOOL_LINKS = [
+  { key: 'navigation.trackParcel', href: 'suivi' },
   { key: 'navigation.calculator', href: 'calculateur' },
   { key: 'navigation.compareShipping', href: 'comparateur-transport' },
   { key: 'navigation.checkProduct', href: 'verifier-produit' },
@@ -164,6 +165,7 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
                 <span>
                   <a href="tel:+8618851725957" dir="ltr">+86 188 5172 5957</a>
                   <a href="tel:+22376696177" dir="ltr">+223 76 69 61 77</a>
+                  <a href="tel:+22351005042" dir="ltr">+223 51 00 50 42</a>
                 </span>
               </li>
               <li>

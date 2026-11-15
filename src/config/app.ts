@@ -36,8 +36,8 @@ export const CONTACT_CONFIG = {
   EMAIL: 'contact@chinalinkexpress.com',
   PHONE: {
     CHINA: '+86 188 5172 5957',
-    MALI_1: '+223 5100 50 42',
-    MALI_2: '+223 7669 61 77',
+    MALI_1: '+223 51 00 50 42',
+    MALI_2: '+223 76 69 61 77',
   },
   WHATSAPP: {
     CHINA: '+8618851725957',

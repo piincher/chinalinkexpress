@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "title": "China to Mali Cargo & Freight Forwarder | ChinaLink Express",
-    "description": "China to Mali cargo and freight forwarding for importers across East and West Africa: sourcing, supplier payment, air and sea freight to Bamako, with verified photos and tracking.",
-    "keywords": "China Mali cargo, China Mali freight forwarder, freight forwarder China Africa, shipping from China to West Africa, shipping from China to East Africa, air freight China Bamako, sea freight China Bamako, China sourcing agent Africa"
+    "title": "China to Mali & Uganda Cargo, Sourcing & Shipping | ChinaLink Express",
+    "description": "Sourcing and shipping from China to Mali and Uganda for importers across West and East Africa: supplier search, purchasing and payment in China, air and sea freight to Bamako or Kampala, with verified photos and tracking.",
+    "keywords": "China Mali cargo, China Uganda cargo, China Mali freight forwarder, China Uganda freight forwarder, shipping from China to West Africa, shipping from China to East Africa, China sourcing agent Africa, freight China Kampala, air freight China Bamako"
   },
   "navigation": {
     "home": "Home",
@@ -23,7 +23,8 @@
     "checkProduct": "Check Product",
     "reviews": "Client reviews",
     "shippingCalendar": "Shipping calendar",
-    "verifyPhoto": "Verify a photo"
+    "verifyPhoto": "Verify a photo",
+    "trackParcel": "Track my parcel"
   },
   "cta": {
     "getQuote": "Get Free Quote",
@@ -37,16 +38,16 @@
     "seeHowItWorks": "See how it works"
   },
   "hero": {
-    "title": "ChinaLink Express — China to Mali shipping",
+    "title": "ChinaLink Express — Sourcing & shipping from China to Mali and Uganda",
     "headline": "Your goods leave China. You never lose track of them.",
-    "subheadline": "Buying from your supplier, receiving at our Guangzhou and Foshan warehouses, air or sea freight, and an update at every stage through to Bamako.",
-    "subtitle": "Supplier sourcing, purchasing and payment in China, warehouse receiving and consolidation, air or sea freight, customs clearance and delivery in Bamako.",
+    "subheadline": "Buying from your supplier, receiving at our Guangzhou and Foshan warehouses, air or sea freight to Mali or Uganda, and an update at every stage through to Bamako or Kampala.",
+    "subtitle": "Supplier sourcing, purchasing and payment in China, warehouse receiving and consolidation, air or sea freight, customs clearance and delivery in Bamako or Kampala.",
     "typingTexts": [
       "Complete Logistics Solutions",
       "International Shipping",
       "Your Trusted Partner"
     ],
-    "badge": "China → Bamako · Air & sea freight",
+    "badge": "China → Bamako · Kampala · Air & sea",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -76,7 +77,7 @@
     "stats": {
       "payOnDelivery": "Pay on Delivery"
     },
-    "keywords": "China Mali cargo · China Mali freight forwarder"
+    "keywords": "China Mali cargo · China Uganda cargo · West & East Africa"
   },
   "landing": {
     "marquee": [
@@ -96,8 +97,10 @@
     "lanes": [
       "Guangzhou → Bamako",
       "Foshan → Bamako",
+      "China → Kampala",
       "China Mali cargo",
-      "China Mali freight forwarder",
+      "China Uganda cargo",
+      "West & East Africa",
       "Air freight",
       "Sea freight"
     ]
@@ -120,11 +123,12 @@
   "about": {
     "sectionLabel": "About Us",
     "title": "Who we are",
-    "description1": "ChinaLink Express runs one corridor: China and Mali. An office in Bamako, two warehouses in China — Guangzhou for air freight, Foshan for sea freight — where your suppliers deliver your goods.",
+    "description1": "ChinaLink Express sources and ships from China to Mali and Uganda, for importers across West and East Africa. An office in Bamako, two warehouses in China — Guangzhou for air freight, Foshan for sea freight — where your suppliers deliver your goods.",
     "description2": "We do more than move boxes. We can find the supplier, check the goods, pay for them in China, consolidate them and keep you informed through to delivery — so that buying 12,000 km away does not mean buying blind.",
     "tags": [
       "Since 2019",
       "Office in Bamako",
+      "Mali & Uganda",
       "2 warehouses in China",
       "Air & sea"
     ],
@@ -293,7 +297,7 @@
   "services": {
     "sectionLabel": "Our Services",
     "title": "What we handle",
-    "subtitle": "Three moments: before the shipment, in China, then on to Bamako. You can hand us all three, or only the freight.",
+    "subtitle": "Three moments: before the shipment, in China, then on to Bamako or Kampala. You can hand us all three, or only the freight. For Uganda, ask us for transit times and rates.",
     "items": {
       "sourcing": {
         "title": "Supplier sourcing",
@@ -372,7 +376,7 @@
     "groups": {
       "before": "Before the shipment",
       "inChina": "In China",
-      "toBamako": "On to Bamako"
+      "toBamako": "On to Bamako and Kampala"
     }
   },
   "whyUs": {
@@ -537,8 +541,8 @@
       "send": "Send Message",
       "sending": "Sending...",
       "success": {
-        "title": "Message sent!",
-        "message": "We will respond as soon as possible."
+        "title": "Your message is ready in WhatsApp",
+        "message": "Press Send in WhatsApp to deliver it to us. Nothing is sent until you do."
       },
       "errors": {
         "nameRequired": "Name is required",
@@ -570,7 +574,7 @@
     }
   },
   "footer": {
-    "description": "Your trusted partner for China-Africa trade. Complete sourcing, payment, freight and delivery solutions for Mali and West Africa.",
+    "description": "Sourcing and shipping from China to Mali and Uganda, for importers across West and East Africa.",
     "services": "Services",
     "links": "Useful Links",
     "newsletter": "Newsletter",
@@ -672,10 +676,9 @@
       },
       "sea": {
         "description": "Economical solution for large volumes",
-        "minCBM": "Minimum CBM",
         "densityThreshold": "Density threshold",
-        "adjustment": "High density adjustment",
-        "note": "Items with density > 250 kg/m³ are subject to volume adjustment"
+        "adjustment": "Very heavy parcel",
+        "note": "Above 1000 kg per m³, the parcel is billed by weight (1000 kg = 1 m³)."
       }
     },
     "calculator": {
@@ -702,9 +705,9 @@
       "destination": "Destination",
       "recommended": "Recommended for your deadline",
       "cheaperOption": "Cheaper option available",
-      "cheaperOptionDescription": "{{tier}} arrives in {{min}}-{{max}} days for {{price}} — save {{savings}} if you have time.",
+      "cheaperOptionDescription": "{tier} arrives in {min}-{max} days for {price} — save {savings} if you have time.",
       "fasterOption": "Need more speed?",
-      "fasterOptionDescription": "{{tier}} delivers in {{min}}-{{max}} days for {{price}}.",
+      "fasterOptionDescription": "{tier} delivers in {min}-{max} days for {price}.",
       "tooLate": "No option guarantees this deadline",
       "tooLateDescription": "Even our fastest option (Flash Express) needs 2-5 days. Contact us for a custom solution.",
       "tooLateShort": "Too late",
@@ -754,17 +757,11 @@
       },
       "rateInfo": {
         "title": "Sea Freight Rate",
-        "description": "{{rate}} per CBM with a minimum of {{minCBM}} CBM"
+        "description": "{rate} per m³, billed on the actual volume, no minimum"
       },
       "densityInfo": {
         "title": "Density Calculation",
-        "description": "If density exceeds {{threshold}} kg/m³, an adjustment is applied: Weight × 0.005",
-        "standardRule": "Standard rule 1:200 (density ≤ 200)",
-        "coscoRule": "COSCO/MAERSK 1:250 rule (density > 250)"
-      },
-      "minCBM": {
-        "title": "Minimum CBM",
-        "description": "A minimum of {{minCBM}} CBM is charged for any shipment"
+        "description": "Very heavy goods are billed by weight: 1000 kg count as 1 m³. The higher of the two is billed."
       }
     },
     "result": {
@@ -780,22 +777,20 @@
       "rate": "Rate",
       "originalCBM": "Original CBM",
       "density": "Density",
-      "densityAdjustment": "Density adjustment applied",
-      "minCBMApplied": "Minimum CBM applied",
+      "densityAdjustment": "Billed by weight (1000 kg = 1 m³)",
       "finalCBM": "Final CBM",
       "calculating": "Calculating...",
       "enterDetails": "Enter details to get a quote",
       "enterDimensions": "Enter dimensions to calculate",
       "contactWhatsApp": "Request a quote on WhatsApp",
       "estimateDisclaimer": "These prices are estimates only",
-      "densityRuleApplied": "COSCO/MAERSK 1:250 rule applied",
       "seaRecommendation": {
         "title": "💡 Sea freight might be more economical",
-        "description": "Detected density: {{density}} kg/m³. Due to high weight relative to volume, sea transport might be more advantageous."
+        "description": "Detected density: {density} kg/m³. Due to high weight relative to volume, sea transport might be more advantageous."
       },
       "highDensity": {
         "title": "High density item",
-        "description": "A volume adjustment has been applied according to Cosco and Maersk policies."
+        "description": "This parcel weighs more than 1000 kg per m³, so it is billed by weight (1000 kg = 1 m³)."
       }
     },
     "prohibitedItems": {
@@ -1811,7 +1806,7 @@
       "express": "Estimate before weighing at the warehouse. Volumetric weight: (L × W × H) ÷ 5000.",
       "electronics": "Electronics, batteries, liquids. Estimate before weighing at the warehouse.",
       "phones": "Phones are billed per piece, never by weight.",
-      "sea": "Minimum 0.1 CBM. Density above 250 kg/m³: volume adjusted."
+      "sea": "Billed on the actual volume, no minimum. Above 1000 kg per m³: 1000 kg = 1 m³."
     },
     "scope": "Rates to Bamako."
   },
@@ -1844,5 +1839,35 @@
     "body": "Add it to your home screen for quick access to rates and tracking.",
     "install": "Install",
     "dismiss": "Close"
+  },
+  "parcelTrack": {
+    "eyebrow": "Tracking",
+    "title": "Track my parcel",
+    "lede": "Enter your parcel code and the last 4 digits of your phone number to see where your goods are.",
+    "codeLabel": "Parcel code",
+    "phoneLabel": "Last 4 digits of your phone",
+    "hint": "The code is on your receipt and in the app, for example G-2609-0069. Use the number registered with ChinaLink.",
+    "submit": "Show my parcel",
+    "checking": "Searching…",
+    "invalid": "Check the parcel code and enter exactly 4 digits.",
+    "notFound": "No parcel matches this code and number. Check both, or message us on WhatsApp.",
+    "rateLimited": "Too many attempts. Try again in a few minutes.",
+    "error": "Tracking is temporarily unavailable. Try again in a moment.",
+    "modeAir": "Air",
+    "modeSea": "Sea",
+    "eta": "Expected arrival: {date}",
+    "moreInApp": "Photos, documents and payment details: in the ChinaLink Express app or on WhatsApp.",
+    "stages": {
+      "RECEIVED_AT_WAREHOUSE": "Received at our warehouse in China",
+      "PACKED": "Prepared for shipping",
+      "ASSIGNED_TO_CONTAINER": "Assigned to a departure",
+      "LOADED_IN_CONTAINER": "Loaded",
+      "IN_TRANSIT": "On the way",
+      "ARRIVED_DESTINATION": "Arrived at destination",
+      "READY_FOR_PICKUP": "Ready for pickup",
+      "DELIVERED": "Handed to the client",
+      "HANDED_OVER_EXPRESS": "Handed to your express courier",
+      "other": "Being processed"
+    }
   }
 }

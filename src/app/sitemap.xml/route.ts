@@ -96,6 +96,7 @@ const TOOL_PAGES: PageConfig[] = [
   { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'verifier', priority: 0.5, changeFrequency: 'monthly' as const },
+  { path: 'suivi', priority: 0.6, changeFrequency: 'monthly' as const },
   /*
    * `/pourquoi-nous` was in neither the sitemap nor any internal link on the
    * site — a fully rendered page (features/comparison/FullServicePage, with its

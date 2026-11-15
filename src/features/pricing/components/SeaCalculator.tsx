@@ -12,18 +12,20 @@
 import { useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { useQuoteHref } from '../lib/useQuoteHref';
 import { Ruler, Weight, Info, AlertCircle, ArrowRight, Ship, MessageCircle, TrendingDown, ShieldCheck, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateSeaFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { SEA_RATES, DENSITY_THRESHOLDS, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
+import { SEA_RATES, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
 import { Input } from '@/components/common/form/FormField';
 import { CartonCube } from '@/components/moments/CartonCube';
 import { RollingFigure } from '@/components/moments/RollingFigure';
 
 export function SeaCalculator() {
   const t = useTranslations('pricing');
+  const quoteHref = useQuoteHref();
   const locale = useLocale();
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
@@ -190,7 +192,6 @@ export function SeaCalculator() {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {t('seaCalculator.rateInfo.description', {
               rate: formatPriceFCFA(SEA_RATES.rateFCFA),
-              minCBM: SEA_RATES.minCBM,
             })}
           </p>
         </div>
@@ -227,14 +228,8 @@ export function SeaCalculator() {
                 {t('seaCalculator.densityInfo.title')}
               </span>
               <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
-                {t('seaCalculator.densityInfo.description', {
-                  threshold: DENSITY_THRESHOLDS.coscoMaersk,
-                })}
+                {t('seaCalculator.densityInfo.description')}
               </p>
-              <ul className="text-xs text-amber-600 dark:text-amber-500 mt-2 space-y-1">
-                <li>• {t('seaCalculator.densityInfo.standardRule', { defaultValue: isEn ? 'Standard 1:200 rule (density <= 200)' : isZh ? '标准规则 1:200（密度 ≤ 200）' : isAr ? 'القاعدة القياسية 1:200 (الكثافة ≤ 200)' : 'Règle standard 1:200 (densité ≤ 200)' })}</li>
-                <li>• {t('seaCalculator.densityInfo.coscoRule', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule (density > 250)' : isZh ? 'COSCO/MAERSK 规则 1:250（密度 > 250）' : isAr ? 'قاعدة COSCO/MAERSK 1:250 (الكثافة > 250)' : 'Règle COSCO/MAERSK 1:250 (densité > 250)' })}</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -332,9 +327,6 @@ export function SeaCalculator() {
                       <ArrowRight className="w-4 h-4" />
                       <span>{t('result.densityAdjustment')}</span>
                     </div>
-                    <div className="text-xs text-white/70 pl-6">
-                      {t('result.densityRuleApplied', { defaultValue: isEn ? 'COSCO/MAERSK 1:250 rule applied' : isZh ? '已应用 COSCO/MAERSK 规则 1:250' : isAr ? 'تم تطبيق قاعدة COSCO/MAERSK 1:250' : 'Règle COSCO/MAERSK 1:250 appliquée' })}
-                    </div>
                   </>
                 )}
 
@@ -344,13 +336,6 @@ export function SeaCalculator() {
                     <span className="font-medium">
                       {formatNumber(seaResult.densityRatio)} kg/m³
                     </span>
-                  </div>
-                )}
-
-                {seaResult.minCBMApplied && (
-                  <div className="flex items-center gap-2 text-sm text-amber-200">
-                    <ArrowRight className="w-4 h-4" />
-                    <span>{t('result.minCBMApplied')}</span>
                   </div>
                 )}
 
@@ -392,7 +377,7 @@ export function SeaCalculator() {
                 className="mt-6"
               >
                 <a
-                  href="https://wa.me/8618851725957"
+                  href={quoteHref('sea', seaResult.adjustedCBM, 'cbm', seaResult.totalPrice)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors duration-200"
@@ -425,22 +410,6 @@ export function SeaCalculator() {
           )}
         </AnimatePresence>
 
-        {/* Minimum CBM Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl"
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <Info className="w-4 h-4 text-gray-500" />
-            <span className="font-medium text-sm text-gray-900 dark:text-white">
-              {t('seaCalculator.minCBM.title')}
-            </span>
-          </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {t('seaCalculator.minCBM.description', { minCBM: SEA_RATES.minCBM })}
-          </p>
-        </motion.div>
       </div>
     </div>
   );

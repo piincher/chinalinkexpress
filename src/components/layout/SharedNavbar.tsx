@@ -12,7 +12,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Users, ChevronDown, Calculator, Scale, ShieldCheck, MessageCircle } from 'lucide-react';
+import { Menu, X, Users, ChevronDown, Calculator, Scale, ShieldCheck, MessageCircle, PackageSearch } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
@@ -46,6 +46,7 @@ const NAV_LINKS = [
 const TOOL_LINKS = [
   { key: 'shippingMark', href: '/#shipping-mark', label: 'shippingMarkExample.navLabel', icon: null },
   { key: 'pricing', href: '/tarifs', label: 'navigation.pricing', icon: null },
+  { key: 'trackParcel', href: '/suivi', label: 'navigation.trackParcel', icon: PackageSearch },
   { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
   { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
   { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },

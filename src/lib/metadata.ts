@@ -396,8 +396,10 @@ export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
    * noise to a reader and carries no weight with a search engine, because
    * every competitor makes it too.
    *
-   * More importantly it positioned the brand as pan-African. The business runs
-   * one corridor: Guangzhou and Foshan to Bamako. Spreading the homepage's
+   * More importantly it positioned the brand as pan-African. Owner, 2026-11-15:
+   * the business sources and ships China to Mali and Uganda (Bamako, Kampala) for
+   * importers across West and East Africa, and the title says exactly that.
+   * Earlier note: it used to read as one corridor, Guangzhou and Foshan to Bamako. Spreading the homepage's
    * strongest signal across "Afrique", Senegal, Ivory Coast, Ghana and Nigeria
    * meant the highest-authority URL on the site never said plainly what this
    * company is, which is precisely the ambiguity that lets similarly-named
@@ -421,32 +423,32 @@ export async function generateHomeMetadata(locale: Locale): Promise<Metadata> {
    */
   const byLocale = {
     fr: {
-      title: 'Cargo Chine Mali | Transitaire Chine Mali · ChinaLink Express',
+      title: "Cargo Chine Mali | Transitaire Chine Mali et Ouganda · ChinaLink Express",
       description:
-        "Expédition de marchandises de Chine vers le Mali : recherche de fournisseurs, achat et paiement en Chine, réception à nos entrepôts de Guangzhou et Foshan, fret aérien en 14 à 21 jours ou maritime en 60 à 75 jours, et suivi de vos colis jusqu'à Bamako.",
+        "Sourcing et expédition de la Chine vers le Mali et l'Ouganda, pour les importateurs d'Afrique de l'Ouest et de l'Est : recherche de fournisseurs, achat et paiement en Chine, fret aérien ou maritime jusqu'à Bamako ou Kampala. Devis gratuit.",
       keywords:
-        'ChinaLink Express, transport chine mali, cargo chine mali, transitaire chine mali, fret aérien chine mali, fret maritime chine mali, expédition chine bamako, fournisseur chine mali, paiement fournisseur chine',
+        "cargo chine mali, transitaire chine mali, cargo chine ouganda, sourcing Chine Afrique, expédition Chine Afrique de l'Ouest, expédition Chine Afrique de l'Est, fret aérien Chine Bamako, fret Chine Kampala",
     },
     en: {
-      title: 'China to Mali Cargo & Freight Forwarder | ChinaLink Express',
+      title: "China to Mali & Uganda Cargo, Sourcing & Shipping | ChinaLink Express",
       description:
-        'China to Mali cargo and freight forwarding for importers across East and West Africa: sourcing, supplier payment, air and sea freight to Bamako, with verified photos and tracking.',
+        "Sourcing and shipping from China to Mali and Uganda for importers across West and East Africa: supplier search, purchasing and payment in China, air and sea freight to Bamako or Kampala, with verified photos and tracking.",
       keywords:
-        'China Mali cargo, China Mali freight forwarder, freight forwarder China Africa, shipping from China to West Africa, shipping from China to East Africa, air freight China Bamako, sea freight China Bamako, China sourcing agent Africa',
+        "China Mali cargo, China Uganda cargo, China Mali freight forwarder, China Uganda freight forwarder, shipping from China to West Africa, shipping from China to East Africa, China sourcing agent Africa, freight China Kampala, air freight China Bamako",
     },
     zh: {
-      title: '中国到马里货运与货运代理 | ChinaLink Express',
+      title: "中国到马里和乌干达的采购与货运 | ChinaLink Express",
       description:
-        '为东非和西非进口商提供中国到马里的货运代理服务：采购、供应商付款、空运和海运到巴马科，并提供可验证的照片和货物跟踪。',
+        "为西非和东非进口商提供从中国到马里和乌干达的采购与货运服务：寻找供应商、在中国采购与付款、空运和海运到巴马科或坎帕拉，并提供可验证的照片和货物跟踪。",
       keywords:
-        '中国马里货运, 中国马里货运代理, 中非货运代理, 中国到西非货运, 中国到东非货运, 中国到巴马科空运, 中国到巴马科海运',
+        "中国马里货运, 中国乌干达货运, 中国马里货运代理, 中国乌干达货运代理, 中国到西非货运, 中国到东非货运, 中国采购代理 非洲, 中国到坎帕拉货运, 中国到巴马科空运",
     },
     ar: {
-      title: 'الشحن من الصين إلى مالي ووكيل الشحن | ChinaLink Express',
+      title: "التوريد والشحن من الصين إلى مالي وأوغندا | ChinaLink Express",
       description:
-        'شحن من الصين إلى مالي للمستوردين في شرق وغرب أفريقيا: التوريد، والدفع للموردين، والشحن الجوي والبحري إلى باماكو، مع صور قابلة للتحقق وتتبع الشحنات.',
+        "التوريد والشحن من الصين إلى مالي وأوغندا للمستوردين في غرب وشرق أفريقيا: البحث عن المورّدين، والشراء والدفع في الصين، والشحن الجوي والبحري إلى باماكو أو كمبالا، مع صور قابلة للتحقق وتتبع الشحنات.",
       keywords:
-        'الشحن من الصين إلى مالي, وكيل شحن الصين مالي, الشحن من الصين إلى غرب أفريقيا, الشحن من الصين إلى شرق أفريقيا, الشحن الجوي إلى باماكو, الشحن البحري إلى باماكو',
+        "الشحن من الصين إلى مالي, الشحن من الصين إلى أوغندا, وكيل شحن الصين مالي, وكيل شحن الصين أوغندا, الشحن من الصين إلى غرب أفريقيا, الشحن من الصين إلى شرق أفريقيا, وكيل توريد في الصين, الشحن إلى كمبالا, الشحن الجوي إلى باماكو",
     },
   } as const;
 
