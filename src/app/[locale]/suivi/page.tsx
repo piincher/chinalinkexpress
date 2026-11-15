@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isZh = locale === 'zh';
   const isAr = locale === 'ar';
   return generatePageMetadata({
-    title: isEn ? 'Track my parcel | ChinaLink Express' : isZh ? '查询我的包裹 | ChinaLink Express' : isAr ? 'تتبّع طردي | ChinaLink Express' : 'Suivre mon colis | ChinaLink Express',
+    title: isEn ? 'Track my parcel' : isZh ? '查询我的包裹' : isAr ? 'تتبّع طردي' : 'Suivre mon colis',
     description: isEn
       ? 'Enter your parcel code and the last 4 digits of your phone number to see where your goods are between China and Bamako or Kampala.'
       : isZh ? '输入包裹编号和手机号码后 4 位，查看您的货物在中国到巴马科或坎帕拉途中的位置。' : isAr ? 'أدخل رمز الطرد وآخر 4 أرقام من هاتفك لمعرفة مكان بضاعتك بين الصين وباماكو أو كمبالا.' : 'Saisissez le code de votre colis et les 4 derniers chiffres de votre téléphone pour voir où en est votre marchandise entre la Chine et Bamako ou Kampala.',
