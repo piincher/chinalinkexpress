@@ -43,7 +43,7 @@ export default createMiddleware({
 export const config = {
   // Match all paths except api, _next, static files, and share links.
   //
-  // `s/` and `r/` are locale-free on purpose: both are pasted verbatim into
+  // `s/`, `r/` and `bilan` are locale-free on purpose: both are pasted verbatim into
   // WhatsApp and printed into QR codes / app-link associations. Letting the
   // locale middleware redirect /r/CODE to /fr/r/CODE would change a link that
   // has already been shared, and break the universal-link path match that opens
@@ -51,6 +51,6 @@ export const config = {
   matcher: [
     '/',
     '/(fr|en|zh|ar)/:path*',
-    '/((?!api|_next|_vercel|s/|r/|.*\\..*).*)',
+    '/((?!api|_next|_vercel|s/|r/|bilan|.*\\..*).*)',
   ],
 };

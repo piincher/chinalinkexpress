@@ -211,6 +211,10 @@
             "comment": "Referral invitation — opens the app when installed, otherwise the web page handles it"
           },
           {
+            "/": "/bilan",
+            "comment": "Bilan de l'année — opens the app when installed, otherwise the web page handles it"
+          },
+          {
             "/": "/past-orders",
             "comment": "Past orders"
           },
