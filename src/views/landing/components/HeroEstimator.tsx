@@ -17,6 +17,8 @@ import {
   getEstimateRate,
   type EstimateMode,
 } from '@/features/pricing/lib/estimate';
+import { usePricing } from '@/features/pricing/lib/usePricing';
+import { minCbmCoversKg } from '@/features/pricing/lib/livePricing';
 
 const START: Record<EstimateMode, number> = { standard: 10, express: 5, electronics: 5, phones: 5, sea: 1 };
 
@@ -25,12 +27,13 @@ const formatFcfa = (value: number) => value.toLocaleString('fr-FR').replace(/\s/
 export function HeroEstimator() {
   const t = useTranslations('estimator');
   const inputId = useId();
+  const pricing = usePricing();
   const [mode, setMode] = useState<EstimateMode>('standard');
   const [raw, setRaw] = useState(String(START.standard));
 
-  const { rate, unit, days } = getEstimateRate(mode);
+  const { rate, unit, days } = getEstimateRate(mode, pricing);
   const quantity = Number(raw.replace(',', '.'));
-  const price = estimatePrice(mode, quantity);
+  const price = estimatePrice(mode, quantity, pricing);
   const step = unit === 'cbm' ? 0.1 : 1;
 
   const nudge = (direction: 1 | -1) => {
@@ -120,7 +123,7 @@ export function HeroEstimator() {
         {t('cta')}
       </Cta>
 
-      <small>{t(`notes.${mode}`)} {t('scope')}</small>
+      <small>{t(`notes.${mode}`, { kg: pricing.sea.kgPerCbm, min: pricing.sea.minCbm, minKg: minCbmCoversKg(pricing.sea) })} {t('scope')}</small>
     </form>
   );
 }

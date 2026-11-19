@@ -11,8 +11,16 @@ import {
   SEA_RATES,
   DENSITY_THRESHOLDS,
   VOLUMETRIC_DIVISOR,
+  type AirRate,
   type ItemCategory,
 } from '../constants';
+import type { SeaPricing } from './livePricing';
+
+const FALLBACK_SEA: SeaPricing = {
+  ratePerCbm: SEA_RATES.rateFCFA,
+  kgPerCbm: DENSITY_THRESHOLDS.kgPerCBM,
+  minCbm: DENSITY_THRESHOLDS.minCBM,
+};
 
 export interface AirCalculationInput {
   weight: number; // kg
@@ -91,21 +99,22 @@ export function shouldRecommendSea(density: number): boolean {
   return density > DENSITY_THRESHOLDS.standard;
 }
 
-/** Chargeable sea volume, as the backend bills it: the larger of volume and weight / 1000. */
-export function calculateAdjustedCBM(weight: number, cbm: number): number {
-  return Math.max(cbm, weight / DENSITY_THRESHOLDS.kgPerCBM);
+/** Billed sea volume: the largest of the minimum, the volume and weight ÷ kg-per-CBM. */
+export function calculateAdjustedCBM(weight: number, cbm: number, sea: SeaPricing = FALLBACK_SEA): number {
+  return Math.max(sea.minCbm, cbm, weight / sea.kgPerCbm);
 }
 
 /**
  * Calculate air freight price
  */
 export function calculateAirFreight(
-  input: AirCalculationInput
+  input: AirCalculationInput,
+  rates: AirRate[] = AIR_RATES
 ): AirCalculationResult {
   const { weight, length, width, height, category } = input;
   
   // Get rate for category
-  const rateInfo = AIR_RATES.find((r) => r.category === category);
+  const rateInfo = rates.find((r) => r.category === category);
   if (!rateInfo) {
     throw new Error(`Unknown category: ${category}`);
   }
@@ -162,7 +171,8 @@ export function calculateAirFreight(
  * Calculate sea freight price
  */
 export function calculateSeaFreight(
-  input: SeaCalculationInput
+  input: SeaCalculationInput,
+  sea: SeaPricing = FALLBACK_SEA
 ): SeaCalculationResult {
   const { length, width, height, weight } = input;
   
@@ -172,20 +182,21 @@ export function calculateSeaFreight(
   // Calculate density
   const densityRatio = calculateDensity(weight, originalCBM);
   
-  // Heavier than 1000 kg per m³: billed by weight. No minimum volume (owner, 2026-09-06).
-  const finalCBM = calculateAdjustedCBM(weight, originalCBM);
-  const highDensity = finalCBM > originalCBM;
+  // Heavier than kgPerCbm per m³: billed by weight; never below the minimum volume.
+  const finalCBM = calculateAdjustedCBM(weight, originalCBM, sea);
+  // Only weight counts as "high density"; the minimum volume alone is not.
+  const highDensity = weight / sea.kgPerCbm > Math.max(originalCBM, sea.minCbm);
   const adjustmentApplied = highDensity;
   
   // Calculate price
-  const totalPrice = finalCBM * SEA_RATES.rateFCFA;
+  const totalPrice = finalCBM * sea.ratePerCbm;
   
   return {
     originalCBM: Math.round(originalCBM * 1000) / 1000,
     adjustedCBM: Math.round(finalCBM * 1000) / 1000,
     densityRatio: Math.round(densityRatio * 100) / 100,
     highDensity,
-    baseRate: SEA_RATES.rateFCFA,
+    baseRate: sea.ratePerCbm,
     totalPrice: Math.round(totalPrice),
     deliveryTime: SEA_RATES.deliveryTime,
     adjustmentApplied,

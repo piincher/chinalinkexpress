@@ -17,7 +17,9 @@ import { cn } from '@/lib/utils';
 import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateAirFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { AIR_RATES, ITEM_CATEGORIES, STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
+import { STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
+import { usePricing } from '../lib/usePricing';
+import { liveAirRates, liveItemCategories } from '../lib/livePricing';
 import { Input } from '@/components/common/form/FormField';
 import { RollingFigure } from '@/components/moments/RollingFigure';
 import { WeighScale } from '@/components/moments/WeighScale';
@@ -25,6 +27,8 @@ import { WeighScale } from '@/components/moments/WeighScale';
 export function AirCalculator() {
   const t = useTranslations('pricing');
   const quoteHref = useQuoteHref();
+  const pricing = usePricing();
+  const airRates = liveAirRates(pricing);
   const locale = useLocale();
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
@@ -67,7 +71,7 @@ export function AirCalculator() {
           width: airState.width ? parseDecimalInput(airState.width) : undefined,
           height: airState.height ? parseDecimalInput(airState.height) : undefined,
           category: airState.category as ItemCategory,
-        });
+        }, liveAirRates(pricing));
 
         setAirResult(result);
       } catch (err) {
@@ -80,7 +84,7 @@ export function AirCalculator() {
 
     const timer = setTimeout(calculate, 500);
     return () => clearTimeout(timer);
-  }, [airState, setAirResult, setError, setIsCalculating]);
+  }, [airState, pricing, setAirResult, setError, setIsCalculating]);
 
   const handleInputChange = useCallback(
     (field: keyof typeof airState, value: string) => {
@@ -90,11 +94,11 @@ export function AirCalculator() {
     [setAirField]
   );
 
-  const selectedRate = AIR_RATES.find((r) => r.category === airState.category);
+  const selectedRate = airRates.find((r) => r.category === airState.category);
 
   // Calculate savings vs express for standard category
-  const expressRate = AIR_RATES.find((r) => r.category === 'express');
-  const standardRate = AIR_RATES.find((r) => r.category === 'standard');
+  const expressRate = airRates.find((r) => r.category === 'express');
+  const standardRate = airRates.find((r) => r.category === 'standard');
   const savingsPercent = expressRate && standardRate
     ? Math.floor(((expressRate.rateFCFA - standardRate.rateFCFA) / expressRate.rateFCFA) * 100)
     : 37;
@@ -177,7 +181,7 @@ export function AirCalculator() {
             {t('airCalculator.category')}
           </label>
           <div className="grid grid-cols-2 gap-2">
-            {ITEM_CATEGORIES.filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
+            {liveItemCategories(pricing).filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
               <button
                 key={category.id}
                 onClick={() => setAirField('category', category.id)}

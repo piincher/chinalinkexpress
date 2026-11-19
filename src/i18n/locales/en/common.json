@@ -678,7 +678,7 @@
         "description": "Economical solution for large volumes",
         "densityThreshold": "Density threshold",
         "adjustment": "Very heavy parcel",
-        "note": "Above 1000 kg per m³, the parcel is billed by weight (1000 kg = 1 m³)."
+        "note": "Minimum {min} CBM (up to {minKg} kg); beyond that, every {kg} kg = 1 CBM. The higher of volume and weight is billed."
       }
     },
     "calculator": {
@@ -757,11 +757,11 @@
       },
       "rateInfo": {
         "title": "Sea Freight Rate",
-        "description": "{rate} per m³, billed on the actual volume, no minimum"
+        "description": "{rate} per m³, minimum {min} CBM (up to {minKg} kg)"
       },
       "densityInfo": {
         "title": "Density Calculation",
-        "description": "Very heavy goods are billed by weight: 1000 kg count as 1 m³. The higher of the two is billed."
+        "description": "Heavy goods are billed by weight: {kg} kg count as 1 m³. The higher of the two is billed."
       }
     },
     "result": {
@@ -777,7 +777,7 @@
       "rate": "Rate",
       "originalCBM": "Original CBM",
       "density": "Density",
-      "densityAdjustment": "Billed by weight (1000 kg = 1 m³)",
+      "densityAdjustment": "Billed by weight ({kg} kg = 1 m³)",
       "finalCBM": "Final CBM",
       "calculating": "Calculating...",
       "enterDetails": "Enter details to get a quote",
@@ -790,7 +790,7 @@
       },
       "highDensity": {
         "title": "High density item",
-        "description": "This parcel weighs more than 1000 kg per m³, so it is billed by weight (1000 kg = 1 m³)."
+        "description": "This parcel weighs more than {kg} kg per m³, so it is billed by weight ({kg} kg = 1 m³)."
       }
     },
     "prohibitedItems": {
@@ -1806,7 +1806,7 @@
       "express": "Estimate before weighing at the warehouse. Volumetric weight: (L × W × H) ÷ 5000.",
       "electronics": "Electronics, batteries, liquids. Estimate before weighing at the warehouse.",
       "phones": "Phones are billed per piece, never by weight.",
-      "sea": "Billed on the actual volume, no minimum. Above 1000 kg per m³: 1000 kg = 1 m³."
+      "sea": "Minimum {min} CBM (up to {minKg} kg); beyond that, every {kg} kg = 1 CBM."
     },
     "scope": "Rates to Bamako."
   },

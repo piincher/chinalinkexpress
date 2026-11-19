@@ -448,8 +448,8 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                      <List
                         items={[
                            "CBM = length x width x height in meters",
-                           "Minimum billable volume may apply even when volume is lower",
-                           "Dense cargo may be converted using carrier density rules",
+                           "Minimum billable volume: 0.1 CBM (covers up to 20 kg)",
+                           "Above 200 kg per m³, billed by weight: 200 kg = 1 CBM",
                            "Final cost depends on route, volume, product category, and destination handling",
                         ]}
                      />
@@ -459,10 +459,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            "Furniture: L=1.2m x W=0.8m x H=1.0m, weight = 80kg",
                            "CBM = 1.2 x 0.8 x 1.0 = 0.96 CBM",
                            "Density = 80 / 0.96 = 83 kg/m3",
-                           "Final volume may be rounded to 1.0 CBM",
-                           "Example: 1.0 CBM x 350,000 XOF = 350,000 XOF",
+                           "Billed CBM = 0.96 (volume is higher than 80 / 200 = 0.4)",
+                           "Example at the published rate: 0.96 CBM x 310,000 XOF = 297,600 XOF",
                         ]}
-                        result="Estimated sea freight: 350,000 XOF"
+                        result="Estimated sea freight: 297,600 XOF"
                      />
                   </SubSection>
 
@@ -473,10 +473,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            "Motors: L=0.8m x W=0.6m x H=0.5m, weight = 350kg",
                            "Original CBM = 0.8 x 0.6 x 0.5 = 0.24 CBM",
                            "Density = 350 / 0.24 = 1458 kg/m3",
-                           "Adjusted CBM may be required under carrier rules",
-                           "Example adjusted CBM = 1.75 CBM",
+                           "Billed by weight: 350 / 200 = 1.75 CBM",
+                           "1.75 CBM x 310,000 XOF = 542,500 XOF",
                         ]}
-                        result="High-density shipments require route confirmation"
+                        result="Estimated sea freight: 542,500 XOF"
                      />
                   </SubSection>
                </Section>
@@ -968,7 +968,7 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                      items={[
                         "Transport économique par conteneur (FCL) ou groupage (LCL)",
                         "Délai moyen : 60-75 jours ouvrables (Chine → Afrique de l'Ouest)",
-                        "Tarification au CBM (mètre cube), sans volume minimum",
+                        "Tarification au CBM (mètre cube), minimum 0,1 CBM",
                         "Compagnies partenaires : COSCO, MAERSK, CMA CGM",
                         "Groupage disponible pour petits volumes (consolidation)",
                         "Idéal pour : meubles, marchandises lourdes, volumes importants",
@@ -1163,10 +1163,10 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   <List
                      items={[
                         "CBM = Longueur(m) × Largeur(m) × Hauteur(m)",
-                        "Aucun volume minimum : le volume enregistré est le volume facturé",
-                        "Si densité {`> 200`} kg/m³ : ajustement selon règle 1:200",
-                        "Si densité {`> 250`} kg/m³ : règle COSCO/MAERSK (1:250)",
-                        "Formule ajustement haute densité : Poids(kg) × 0.005 = CBM ajusté",
+                        "Volume minimum facturé : 0,1 CBM (couvre jusqu'à 20 kg)",
+                        "Si densité {`> 200`} kg/m³ : facturé au poids, 200 kg = 1 CBM",
+                        "CBM facturé = le plus élevé de : 0,1 CBM, le volume réel, Poids(kg) ÷ 200",
+                        "Le tarif au CBM en vigueur est celui publié sur la page Tarifs ; les exemples utilisent 310 000 FCFA",
                      ]}
                   />
 
@@ -1177,22 +1177,22 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                         "CBM = 1.2 × 0.8 × 1.0 = 0.96 CBM",
                         "Densité = 80 ÷ 0.96 = 83 kg/m³ (< 200, pas d'ajustement)",
                         "CBM final = 0.96 (pas d'arrondi)",
-                        "Tarif indicatif : 0.96 CBM × 350 000 FCFA = 336 000 FCFA",
+                        "Tarif indicatif : 0.96 CBM × 310 000 FCFA = 297 600 FCFA",
                      ]}
-                     result="Total fret maritime : 336 000 FCFA"
+                     result="Total fret maritime : 297 600 FCFA"
                   />
 
                   <CalculationExample
-                     title="Exemple 2 - CBM Haute Densité (règle COSCO/MAERSK)"
+                     title="Exemple 2 - CBM Haute Densité (facturé au poids)"
                      steps={[
                         "Moteurs : L=0.8m × l=0.6m × H=0.5m, Poids = 350kg",
                         "CBM original = 0.8 × 0.6 × 0.5 = 0.24 CBM",
-                        "Densité = 350 ÷ 0.24 = 1458 kg/m³ (> 250)",
-                        "Ajustement : 350 kg × 0.005 = 1.75 CBM",
+                        "Densité = 350 ÷ 0.24 = 1458 kg/m³ (> 200)",
+                        "Ajustement : 350 kg ÷ 200 = 1.75 CBM",
                         "CBM final = max(0.24, 1.75) = 1.75 CBM",
-                        "1.75 CBM × 350 000 FCFA = 612 500 FCFA",
+                        "1.75 CBM × 310 000 FCFA = 542 500 FCFA",
                      ]}
-                     result="Total fret maritime : 612 500 FCFA"
+                     result="Total fret maritime : 542 500 FCFA"
                   />
                </SubSection>
 
@@ -1308,21 +1308,21 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                   </div>
                </SubSection>
 
-               <SubSection title="4.2 Pas de Volume Minimum">
+               <SubSection title="4.2 Volume Minimum : 0,1 CBM">
                   <p className="text-[var(--text-secondary)] mb-3">
-                     Vous payez le volume exact enregistré à notre entrepôt. Il n'y a{" "}
-                     <strong>ni arrondi, ni volume minimum facturable</strong> : un colis mesuré à
-                     0.075 m³ est facturé 0.075 × le tarif au m³.
+                     Vous payez le volume exact enregistré à notre entrepôt, sans arrondi, avec{" "}
+                     <strong>un minimum facturé de 0,1 CBM</strong>, qui couvre un colis jusqu'à 20 kg.
+                     Au-delà de 20 kg, le poids s'applique : chaque 200 kg compte pour 1 CBM.
                   </p>
                   <CalculationExample
                      title="Exemple - Petit colis"
                      steps={[
                         "Petit colis : L=0.3m × l=0.2m × H=0.15m",
                         "CBM calculé = 0.3 × 0.2 × 0.15 = 0.009 CBM",
-                        "CBM facturable = 0.009 CBM (le volume mesuré)",
-                        "0.009 CBM × 350 000 FCFA = 3 150 FCFA",
+                        "CBM facturable = 0.1 CBM (minimum, colis de 20 kg ou moins)",
+                        "0.1 CBM × 310 000 FCFA = 31 000 FCFA",
                      ]}
-                     result="Total : 3 150 FCFA"
+                     result="Total : 31 000 FCFA"
                   />
                </SubSection>
 
@@ -1357,22 +1357,11 @@ export function TermsContent({ locale = "fr" }: { locale?: string }) {
                            </tr>
                            <tr>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 200 - 250 kg/m³
+                                 {`> 200`} kg/m³
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">1:200</td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 CBM = Poids × 0.005
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 {`> 250`} kg/m³
-                              </td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 COSCO/MAERSK 1:250
-                              </td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 CBM = Poids × 0.005
+                                 CBM = Poids ÷ 200
                               </td>
                            </tr>
                         </tbody>

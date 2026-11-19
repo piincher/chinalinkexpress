@@ -1,64 +1,31 @@
 /**
- * Current Pricing API Route
- * 
- * Returns current shipping rates for display in the guide.
- * In production, this could fetch from a database or external API.
+ * Current published prices, read live from the backend on every request
+ * (owner decision 2026-11-20: a price change shows instantly). Falls back to
+ * the constants in features/pricing if the backend cannot be reached.
+ *
+ * `pricing` is the full shape (usePricing); the flat fields are kept for the
+ * guide's PricingSection.
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+import { AIR_RATES } from '@/features/pricing/constants';
+import { fetchBackendPricing } from '@/features/pricing/lib/livePricing';
 
-interface PricingData {
-  express: number;
-  standard: number;
-  electronics: number;
-  phones: number;
-  sea: number;
-  seaUnit: 'CBM';
-  lastUpdated: string;
-}
+export const dynamic = 'force-dynamic';
 
-/**
- * GET handler for current pricing
- */
-export async function GET(_request: NextRequest): Promise<NextResponse> {
-  try {
-    // Current pricing data (in FCFA)
-    // In production, this could be fetched from a database
-    const pricingData: PricingData = {
-      express: 16000,      // 16,000 FCFA/kg
-      standard: 10500,     // 10,500 FCFA/kg
-      electronics: 12000,  // 12,000 FCFA/kg
-      phones: 12000,       // 12,000 FCFA/piece
-      sea: 300000,         // 300,000 FCFA/CBM
+export async function GET(): Promise<NextResponse> {
+  const pricing = await fetchBackendPricing();
+  return NextResponse.json(
+    {
+      pricing,
+      express: AIR_RATES.find((r) => r.category === 'express')!.rateFCFA,
+      standard: pricing.air.standard,
+      electronics: pricing.air.electronics,
+      phones: pricing.air.phones,
+      sea: pricing.sea.ratePerCbm,
       seaUnit: 'CBM',
       lastUpdated: new Date().toISOString(),
-    };
-
-    return NextResponse.json(pricingData, {
-      status: 200,
-      headers: {
-        'Cache-Control': 'public, max-age=300', // Cache for 5 minutes
-      },
-    });
-  } catch (error) {
-    console.error('Error fetching pricing:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch pricing data' },
-      { status: 500 }
-    );
-  }
-}
-
-/**
- * OPTIONS handler for CORS preflight requests
- */
-export async function OPTIONS(): Promise<NextResponse> {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
-  });
+    { status: 200, headers: { 'Cache-Control': 'no-store' } },
+  );
 }

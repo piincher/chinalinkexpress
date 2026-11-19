@@ -18,7 +18,9 @@ import { cn } from '@/lib/utils';
 import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateSeaFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { SEA_RATES, SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
+import { SEA_STANDARD_ITEMS, DELIVERY_PERFORMANCE } from '../constants';
+import { usePricing } from '../lib/usePricing';
+import { minCbmCoversKg } from '../lib/livePricing';
 import { Input } from '@/components/common/form/FormField';
 import { CartonCube } from '@/components/moments/CartonCube';
 import { RollingFigure } from '@/components/moments/RollingFigure';
@@ -50,6 +52,8 @@ export function SeaCalculator() {
     isCalculating,
     setIsCalculating,
   } = usePricingStore();
+  const pricing = usePricing();
+  const seaRule = { kg: pricing.sea.kgPerCbm, min: pricing.sea.minCbm, minKg: minCbmCoversKg(pricing.sea) };
 
   // Auto-calculate when inputs change
   useEffect(() => {
@@ -70,12 +74,15 @@ export function SeaCalculator() {
       try {
         await new Promise((resolve) => setTimeout(resolve, 300));
 
-        const result = calculateSeaFreight({
-          length,
-          width,
-          height,
-          weight,
-        });
+        const result = calculateSeaFreight(
+          {
+            length,
+            width,
+            height,
+            weight,
+          },
+          pricing.sea
+        );
 
         setSeaResult(result);
       } catch (err) {
@@ -88,7 +95,7 @@ export function SeaCalculator() {
 
     const timer = setTimeout(calculate, 500);
     return () => clearTimeout(timer);
-  }, [seaState, setSeaResult, setError, setIsCalculating]);
+  }, [seaState, pricing, setSeaResult, setError, setIsCalculating]);
 
   const handleInputChange = useCallback(
     (field: keyof typeof seaState, value: string) => {
@@ -191,7 +198,8 @@ export function SeaCalculator() {
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {t('seaCalculator.rateInfo.description', {
-              rate: formatPriceFCFA(SEA_RATES.rateFCFA),
+              rate: formatPriceFCFA(pricing.sea.ratePerCbm),
+              ...seaRule,
             })}
           </p>
         </div>
@@ -228,7 +236,7 @@ export function SeaCalculator() {
                 {t('seaCalculator.densityInfo.title')}
               </span>
               <p className="text-sm text-amber-700 dark:text-amber-400 mt-1">
-                {t('seaCalculator.densityInfo.description')}
+                {t('seaCalculator.densityInfo.description', seaRule)}
               </p>
             </div>
           </div>
@@ -325,7 +333,7 @@ export function SeaCalculator() {
                     </div>
                     <div className="flex items-center gap-2 text-sm text-amber-200">
                       <ArrowRight className="w-4 h-4" />
-                      <span>{t('result.densityAdjustment')}</span>
+                      <span>{t('result.densityAdjustment', seaRule)}</span>
                     </div>
                   </>
                 )}
@@ -363,7 +371,7 @@ export function SeaCalculator() {
                     <strong>{t('result.highDensity.title')}</strong>
                     <br />
                     <span className="text-white/80 text-xs">
-                      {t('result.highDensity.description')}
+                      {t('result.highDensity.description', seaRule)}
                     </span>
                   </p>
                 </motion.div>

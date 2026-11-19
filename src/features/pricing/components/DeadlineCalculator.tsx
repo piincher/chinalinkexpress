@@ -36,11 +36,12 @@ import {
   formatPriceFCFA,
 } from '../lib/pricingEngine';
 import {
-  ITEM_CATEGORIES,
   DELIVERY_TIERS,
   DESTINATIONS,
   type ItemCategoryInfo,
 } from '../constants';
+import { usePricing } from '../lib/usePricing';
+import { liveAirRates, liveDeliveryTiers, liveItemCategories } from '../lib/livePricing';
 import { Input } from '@/components/common/form/FormField';
 
 const TIER_QUOTE_MODE: Record<string, QuoteMode> = { flash: 'express', air_standard: 'standard', sea_economy: 'sea' };
@@ -56,6 +57,7 @@ interface TierRecommendation {
 export function DeadlineCalculator() {
   const t = useTranslations('pricing');
   const quoteHref = useQuoteHref();
+  const pricing = usePricing();
   const locale = useLocale();
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
@@ -84,6 +86,8 @@ export function DeadlineCalculator() {
     if (weightNum <= 0) return null;
 
     const results: TierRecommendation[] = [];
+    const airRates = liveAirRates(pricing);
+    const tiers = liveDeliveryTiers(pricing);
 
     // Flash Express (air express)
     try {
@@ -93,8 +97,8 @@ export function DeadlineCalculator() {
         width: widthNum || undefined,
         height: heightNum || undefined,
         category: 'express',
-      });
-      const tier = DELIVERY_TIERS.find((t) => t.id === 'flash')!;
+      }, airRates);
+      const tier = tiers.find((t) => t.id === 'flash')!;
       results.push({
         tier,
         meetsDeadline: deadlineDays >= tier.minDays,
@@ -114,8 +118,8 @@ export function DeadlineCalculator() {
         width: widthNum || undefined,
         height: heightNum || undefined,
         category: deadlineState.category,
-      });
-      const tier = DELIVERY_TIERS.find((t) => t.id === 'air_standard')!;
+      }, airRates);
+      const tier = tiers.find((t) => t.id === 'air_standard')!;
       results.push({
         tier,
         meetsDeadline: deadlineDays >= tier.minDays,
@@ -135,8 +139,8 @@ export function DeadlineCalculator() {
           width: widthNum / 100,
           height: heightNum / 100,
           weight: weightNum,
-        });
-        const tier = DELIVERY_TIERS.find((t) => t.id === 'sea_economy')!;
+        }, pricing.sea);
+        const tier = tiers.find((t) => t.id === 'sea_economy')!;
         results.push({
           tier,
           meetsDeadline: deadlineDays >= tier.minDays,
@@ -149,7 +153,7 @@ export function DeadlineCalculator() {
       }
     } else {
       // Show sea as option without specific price
-      const tier = DELIVERY_TIERS.find((t) => t.id === 'sea_economy')!;
+      const tier = tiers.find((t) => t.id === 'sea_economy')!;
       results.push({
         tier,
         meetsDeadline: deadlineDays >= tier.minDays,
@@ -174,7 +178,7 @@ export function DeadlineCalculator() {
     }
 
     return results;
-  }, [weightNum, lengthNum, widthNum, heightNum, deadlineDays, deadlineState.category]);
+  }, [weightNum, lengthNum, widthNum, heightNum, deadlineDays, deadlineState.category, pricing]);
 
   const recommendedTier = recommendations?.find((r) => r.isRecommended);
   const cheaperAlternative = useMemo(() => {
@@ -275,7 +279,7 @@ export function DeadlineCalculator() {
             {t('deadlineCalculator.category', { defaultValue: isEn ? 'Category' : isZh ? '类别' : isAr ? 'الفئة' : 'Catégorie' })}
           </label>
           <div className="grid grid-cols-2 gap-2">
-            {ITEM_CATEGORIES.filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
+            {liveItemCategories(pricing).filter((c: ItemCategoryInfo) => c.id !== 'containers').map((category: ItemCategoryInfo) => (
               <button
                 key={category.id}
                 onClick={() => setDeadlineField('category', category.id)}

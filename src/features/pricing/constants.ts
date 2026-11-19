@@ -70,7 +70,7 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     nameAr: 'Sea Economy',
     minDays: 60,
     maxDays: 75,
-    rateFCFA: 300000,
+    rateFCFA: 310000,
     unit: 'm³',
     positioning: 'Cheapest for big volumes',
     positioningFr: 'Le moins cher pour les gros volumes',
@@ -174,12 +174,13 @@ export const ITEM_CATEGORIES: ItemCategoryInfo[] = [
   { id: 'phones', rate: 12000, unit: 'piece' },
   { id: 'electronics', rate: 12000, unit: 'kg' },
   { id: 'standard', rate: 10500, unit: 'kg' },
-  { id: 'containers', rate: 300000, unit: 'm³' },
+  { id: 'containers', rate: 310000, unit: 'm³' },
 ];
 
 // Sea Freight Rates
+// Fallbacks only: live prices come from the backend (lib/livePricing.ts).
 export const SEA_RATES: SeaRate = {
-  rateFCFA: 300000,
+  rateFCFA: 310000,
   deliveryTime: '60-75 jours (dédouanement inclus)',
   description: 'Économique Maritime par CBM',
 };
@@ -205,10 +206,12 @@ export const PURCHASE_SERVICE: PurchaseService = {
 };
 
 // Density Thresholds
-// Sea billing matches the backend (cbmService): max(volume, weight / 1000), no minimum.
+// Published sea rule (owner 2026-11-20): billed CBM = max(0.1, volume, weight / 200).
+// Fallbacks only: live values come from the backend (lib/livePricing.ts).
 export const DENSITY_THRESHOLDS = {
   standard: 200, // kg/CBM - threshold for sea recommendation
-  kgPerCBM: 1000, // above this the parcel is billed by weight (1 000 kg = 1 m³)
+  kgPerCBM: 200, // 1 CBM = 200 kg; heavier parcels are billed by weight
+  minCBM: 0.1, // smallest volume charged (covers up to 20 kg)
 };
 
 // Volumetric Weight Divisor (industry standard for air freight)

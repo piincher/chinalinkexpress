@@ -11,11 +11,17 @@ import { motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { Plane, Ship, Clock, Info, Lightbulb, TrendingDown, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { AIR_RATES, SEA_RATES, DELIVERY_PERFORMANCE } from '../constants';
+import { SEA_RATES, DELIVERY_PERFORMANCE } from '../constants';
 import { formatPriceFCFA } from '../lib/pricingEngine';
+import { usePricing } from '../lib/usePricing';
+import { liveAirRates, minCbmCoversKg } from '../lib/livePricing';
 
 export function PriceTable() {
   const t = useTranslations('pricing');
+  const pricing = usePricing();
+  const airRates = liveAirRates(pricing);
+  const { sea } = pricing;
+  const seaRule = { kg: sea.kgPerCbm, min: sea.minCbm, minKg: minCbmCoversKg(sea) };
   const locale = useLocale();
   const isEn = locale === 'en';
   const formatDuration = (value: string) =>
@@ -30,8 +36,8 @@ export function PriceTable() {
           : value;
   const averageUnit = isEn ? 'days' : locale === 'zh' ? '天' : locale === 'ar' ? 'يوم' : 'j';
 
-  const expressRate = AIR_RATES.find((r) => r.category === 'express');
-  const standardRate = AIR_RATES.find((r) => r.category === 'standard');
+  const expressRate = airRates.find((r) => r.category === 'express');
+  const standardRate = airRates.find((r) => r.category === 'standard');
   const savingsPercent = expressRate && standardRate
     ? Math.floor(((expressRate.rateFCFA - standardRate.rateFCFA) / expressRate.rateFCFA) * 100)
     : 37;
@@ -85,7 +91,7 @@ export function PriceTable() {
 
             <div className="p-6">
               <div className="space-y-4">
-                {AIR_RATES.map((rate, index) => {
+                {airRates.map((rate, index) => {
                   const perfKey = getPerformanceKey(rate.category);
                   const perf = perfKey ? DELIVERY_PERFORMANCE[perfKey] : null;
                   const isStandard = rate.category === 'standard';
@@ -296,7 +302,7 @@ export function PriceTable() {
                   {t('result.patientImporter')}
                 </div>
                 <div className="text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">
-                  {formatPriceFCFA(SEA_RATES.rateFCFA)}
+                  {formatPriceFCFA(sea.ratePerCbm)}
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">/ CBM</div>
                 <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
@@ -309,11 +315,11 @@ export function PriceTable() {
               <div className="mt-6 space-y-3">
                 <div className="flex justify-between py-2 border-b border-gray-100 dark:border-gray-700">
                   <span className="text-gray-600 dark:text-gray-400">{t('priceTable.sea.densityThreshold')}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">1000 kg/m³</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">{sea.kgPerCbm} kg/m³</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-600 dark:text-gray-400">{t('priceTable.sea.adjustment')}</span>
-                  <span className="font-semibold text-gray-900 dark:text-white">1000 kg = 1 m³</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">{sea.kgPerCbm} kg = 1 m³</span>
                 </div>
               </div>
 
@@ -350,7 +356,7 @@ export function PriceTable() {
                 <div className="flex items-start gap-2">
                   <Info className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-blue-700 dark:text-blue-400">
-                    {t('priceTable.sea.note')}
+                    {t('priceTable.sea.note', seaRule)}
                   </p>
                 </div>
               </div>

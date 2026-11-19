@@ -10,6 +10,19 @@ import {
 } from '@/config/seo-advanced';
 import { StructuredData } from '@/components/seo';
 import { SeoServicePage } from '@/features/seo-content/SeoServicePage';
+import { fetchBackendPricing } from '@/features/pricing/lib/livePricing';
+
+/** The page text with {SEA_RATE} / {AIR_*} placeholders replaced by the live published rates. */
+async function localized(locale: Locale): Promise<(typeof content)[Locale]> {
+  const { sea, air } = await fetchBackendPricing();
+  const fmt = (n: number) => (locale === 'en' ? n.toLocaleString('en-US') : n.toLocaleString('en-US').replaceAll(',', ' '));
+  const text = JSON.stringify(content[locale])
+    .replaceAll('{SEA_RATE}', fmt(sea.ratePerCbm))
+    .replaceAll('{AIR_STD}', fmt(air.standard))
+    .replaceAll('{AIR_ELEC}', fmt(air.electronics))
+    .replaceAll('{AIR_PHONE}', fmt(air.phones));
+  return JSON.parse(text);
+}
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -29,7 +42,7 @@ const content = {
     highlights: [
       'Fret aérien : 14 à 21 jours jusqu’à Bamako',
       'Fret maritime : 60 à 75 jours, dédouanement inclus',
-      'Tarifs publics : 10 500 F CFA/kg en aérien, 300 000 F CFA/CBM en maritime',
+      'Tarifs publics : {AIR_STD} F CFA/kg en aérien, {SEA_RATE} F CFA/CBM en maritime',
       'Photos de réception avec code de vérification',
     ],
     sections: [
@@ -46,11 +59,11 @@ const content = {
     table: {
       headers: ['Mode', 'Tarif', 'Délai annoncé'],
       rows: [
-        ['Air Standard', '10 500 F CFA / kg', '14 à 21 jours'],
-        ['Électronique', '12 000 F CFA / kg', '10 à 14 jours'],
-        ['Téléphones', '12 000 F CFA / pièce', '10 à 14 jours'],
+        ['Air Standard', '{AIR_STD} F CFA / kg', '14 à 21 jours'],
+        ['Électronique', '{AIR_ELEC} F CFA / kg', '10 à 14 jours'],
+        ['Téléphones', '{AIR_PHONE} F CFA / pièce', '10 à 14 jours'],
         ['Flash Express', '16 000 F CFA / kg', '2 à 5 jours'],
-        ['Maritime', '300 000 F CFA / CBM', '60 à 75 jours'],
+        ['Maritime', '{SEA_RATE} F CFA / CBM', '60 à 75 jours'],
       ],
     },
     process: [
@@ -61,7 +74,7 @@ const content = {
     ],
     faqs: [
       { question: 'Quel transitaire choisir de la Chine vers le Mali ?', answer: 'Choisissez un transitaire qui publie ses tarifs, donne une adresse d’entrepôt précise et fournit une preuve de réception vérifiable. ChinaLink Express publie ses tarifs et chaque photo de réception porte un code de vérification.' },
-      { question: 'Combien coûte un transitaire Chine Mali ?', answer: 'Nos tarifs publics vont de 10 500 F CFA/kg en Air Standard à 16 000 F CFA/kg en Flash Express, et 300 000 F CFA/CBM en maritime. Le poids ou le volume facturé est confirmé à l’entrepôt.' },
+      { question: 'Combien coûte un transitaire Chine Mali ?', answer: 'Nos tarifs publics vont de {AIR_STD} F CFA/kg en Air Standard à 16 000 F CFA/kg en Flash Express, et {SEA_RATE} F CFA/CBM en maritime. Le poids ou le volume facturé est confirmé à l’entrepôt.' },
       { question: 'Où mon fournisseur doit-il livrer ?', answer: 'À Guangzhou pour l’aérien et à Foshan pour le maritime. Les adresses exactes et votre marque d’expédition sont disponibles dans l’application ChinaLink Express.' },
     ],
     links: [
@@ -85,7 +98,7 @@ const content = {
     highlights: [
       'Air freight: 14 to 21 days to Bamako',
       'Sea freight: 60 to 75 days, customs clearance included',
-      'Published rates: 10,500 F CFA/kg by air, 300,000 F CFA/CBM by sea',
+      'Published rates: {AIR_STD} F CFA/kg by air, {SEA_RATE} F CFA/CBM by sea',
       'Reception photos with a verification code',
     ],
     sections: [
@@ -102,11 +115,11 @@ const content = {
     table: {
       headers: ['Mode', 'Rate', 'Stated transit'],
       rows: [
-        ['Air Standard', '10,500 F CFA / kg', '14 to 21 days'],
-        ['Electronics', '12,000 F CFA / kg', '10 to 14 days'],
-        ['Phones', '12,000 F CFA / piece', '10 to 14 days'],
+        ['Air Standard', '{AIR_STD} F CFA / kg', '14 to 21 days'],
+        ['Electronics', '{AIR_ELEC} F CFA / kg', '10 to 14 days'],
+        ['Phones', '{AIR_PHONE} F CFA / piece', '10 to 14 days'],
         ['Flash Express', '16,000 F CFA / kg', '2 to 5 days'],
-        ['Sea', '300,000 F CFA / CBM', '60 to 75 days'],
+        ['Sea', '{SEA_RATE} F CFA / CBM', '60 to 75 days'],
       ],
     },
     process: [
@@ -117,7 +130,7 @@ const content = {
     ],
     faqs: [
       { question: 'Which freight forwarder should I choose from China to Mali?', answer: 'Choose one that publishes its rates, gives an exact warehouse address and provides verifiable proof of receipt. ChinaLink Express publishes its rates and every reception photo carries a verification code.' },
-      { question: 'How much does a China to Mali freight forwarder cost?', answer: 'Our published rates run from 10,500 F CFA/kg for Air Standard to 16,000 F CFA/kg for Flash Express, and 300,000 F CFA/CBM by sea. The billed weight or volume is confirmed at the warehouse.' },
+      { question: 'How much does a China to Mali freight forwarder cost?', answer: 'Our published rates run from {AIR_STD} F CFA/kg for Air Standard to 16,000 F CFA/kg for Flash Express, and {SEA_RATE} F CFA/CBM by sea. The billed weight or volume is confirmed at the warehouse.' },
       { question: 'Where should my supplier deliver?', answer: 'To Guangzhou for air freight and Foshan for sea freight. The exact addresses and your shipping mark are in the ChinaLink Express app.' },
     ],
     links: [
@@ -153,7 +166,7 @@ const content = {
     highlights: [
       '空运：14 到 21 天到巴马科',
       '海运：60 到 75 天，含清关',
-      '公开价格：空运 10 500 西非法郎/公斤，海运 300 000 西非法郎/CBM',
+      '公开价格：空运 {AIR_STD} 西非法郎/公斤，海运 {SEA_RATE} 西非法郎/CBM',
       '带验证码的收货照片',
     ],
     sections: [
@@ -170,11 +183,11 @@ const content = {
     table: {
       headers: ['方式', '价格', '公布时效'],
       rows: [
-        ['标准空运', '10 500 西非法郎 / 公斤', '14 到 21 天'],
-        ['电子产品', '12 000 西非法郎 / 公斤', '10 到 14 天'],
-        ['手机', '12 000 西非法郎 / 件', '10 到 14 天'],
+        ['标准空运', '{AIR_STD} 西非法郎 / 公斤', '14 到 21 天'],
+        ['电子产品', '{AIR_ELEC} 西非法郎 / 公斤', '10 到 14 天'],
+        ['手机', '{AIR_PHONE} 西非法郎 / 件', '10 到 14 天'],
         ['Flash Express', '16 000 西非法郎 / 公斤', '2 到 5 天'],
-        ['海运', '300 000 西非法郎 / CBM', '60 到 75 天'],
+        ['海运', '{SEA_RATE} 西非法郎 / CBM', '60 到 75 天'],
       ],
     },
     process: [
@@ -185,7 +198,7 @@ const content = {
     ],
     faqs: [
       { question: '从中国到马里应该选择哪家货代？', answer: '选择公开价格、提供准确仓库地址和可验证收货证明的货代。ChinaLink Express 公布价格，每张收货照片都带验证码。' },
-      { question: '中国马里货代收费多少？', answer: '我们的公开价格从标准空运 10 500 西非法郎/公斤到 Flash Express 16 000 西非法郎/公斤，海运为 300 000 西非法郎/CBM。计费重量或体积在仓库确认。' },
+      { question: '中国马里货代收费多少？', answer: '我们的公开价格从标准空运 {AIR_STD} 西非法郎/公斤到 Flash Express 16 000 西非法郎/公斤，海运为 {SEA_RATE} 西非法郎/CBM。计费重量或体积在仓库确认。' },
       { question: '我的供应商应该把货送到哪里？', answer: '空运送到广州，海运送到佛山。准确地址和您的唛头可在 ChinaLink Express 应用内查看。' },
     ],
     links: [
@@ -256,7 +269,7 @@ const content = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const page = content[locale as Locale];
+  const page = await localized(locale as Locale);
   return generatePageMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
@@ -272,7 +285,7 @@ export default async function TransitaireChineMaliPage({ params }: Props) {
   const isEn = locale === 'en';
   const isZh = locale === 'zh';
   const isAr = locale === 'ar';
-  const page = content[locale as Locale];
+  const page = await localized(locale as Locale);
   setRequestLocale(locale);
 
   const schemas = [
@@ -326,4 +339,4 @@ export function generateStaticParams() {
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = 300; // published sea rate refreshes within 5 minutes

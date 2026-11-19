@@ -806,7 +806,7 @@
         "description": "Solution économique pour gros volumes",
         "densityThreshold": "Seuil de densité",
         "adjustment": "Colis très lourd",
-        "note": "Au-delà de 1000 kg par m³, le colis est facturé au poids (1000 kg = 1 m³)."
+        "note": "Minimum {min} CBM (jusqu’à {minKg} kg) ; au-delà, chaque {kg} kg = 1 CBM. On facture la valeur la plus élevée entre le volume et le poids."
       }
     },
     "calculator": {
@@ -885,11 +885,11 @@
       },
       "rateInfo": {
         "title": "Tarif Maritime",
-        "description": "{rate} par m³, facturé sur le volume réel, sans minimum"
+        "description": "{rate} par m³, minimum {min} CBM (jusqu’à {minKg} kg)"
       },
       "densityInfo": {
         "title": "Calcul de Densité",
-        "description": "Un colis très lourd est facturé au poids : 1000 kg comptent pour 1 m³. On facture la valeur la plus élevée."
+        "description": "Un colis lourd est facturé au poids : {kg} kg comptent pour 1 m³. On facture la valeur la plus élevée."
       }
     },
     "result": {
@@ -905,7 +905,7 @@
       "rate": "Tarif",
       "originalCBM": "CBM original",
       "density": "Densité",
-      "densityAdjustment": "Facturé au poids (1000 kg = 1 m³)",
+      "densityAdjustment": "Facturé au poids ({kg} kg = 1 m³)",
       "finalCBM": "CBM final",
       "calculating": "Calcul en cours...",
       "enterDetails": "Entrez les détails pour obtenir un devis",
@@ -918,7 +918,7 @@
       },
       "highDensity": {
         "title": "Article à haute densité",
-        "description": "Ce colis pèse plus de 1000 kg par m³ : il est facturé au poids (1000 kg = 1 m³)."
+        "description": "Ce colis pèse plus de {kg} kg par m³ : il est facturé au poids ({kg} kg = 1 m³)."
       }
     },
     "prohibitedItems": {
@@ -1778,7 +1778,7 @@
       "express": "Estimation avant pesée à l’entrepôt. Poids volumétrique : (L × l × H) ÷ 5000.",
       "electronics": "Électronique, batteries, liquides. Estimation avant pesée à l’entrepôt.",
       "phones": "Téléphones : tarif à la pièce, jamais au poids.",
-      "sea": "Facturé sur le volume réel, sans minimum. Au-delà de 1000 kg par m³ : 1000 kg = 1 m³."
+      "sea": "Minimum {min} CBM (jusqu’à {minKg} kg) ; au-delà, chaque {kg} kg = 1 CBM."
     },
     "scope": "Tarifs vers Bamako."
   },

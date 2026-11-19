@@ -305,7 +305,7 @@ export function TermsContentZh({ locale }: { locale: string }) {
                      items={[
                         '经济的整箱（FCL）或拼箱（LCL）运输',
                         '平均时效：60-75 个工作日（中国 → 西非）',
-                        '按 CBM（立方米）计费，无最低体积',
+                        '按 CBM（立方米）计费，最低 0.1 CBM',
                         '合作公司：COSCO、MAERSK、CMA CGM',
                         '小批量可拼箱（集运）',
                         '适合：家具、重型货物、大批量货物',
@@ -476,10 +476,10 @@ export function TermsContentZh({ locale }: { locale: string }) {
                   <List
                      items={[
                         'CBM = 长(m) × 宽(m) × 高(m)',
-                        '无最低体积：记录的体积即计费体积',
-                        '如果密度 > 200 kg/m³：按 1:200 规则调整',
-                        '如果密度 > 250 kg/m³：COSCO/MAERSK 规则（1:250）',
-                        '高密度调整公式：重量(kg) × 0.005 = 调整后 CBM',
+                        '最低计费体积：0.1 CBM（覆盖 20 kg 以内）',
+                        '如果密度 > 200 kg/m³：按重量计费，200 kg = 1 CBM',
+                        '计费 CBM = 以下最大值：0.1 CBM、实际体积、重量(kg) ÷ 200',
+                        '现行每 CBM 价格以价格页面公布为准；示例使用 310 000 FCFA',
                      ]}
                   />
 
@@ -490,9 +490,9 @@ export function TermsContentZh({ locale }: { locale: string }) {
                         'CBM = 1.2 × 0.8 × 1.0 = 0.96 CBM',
                         '密度 = 80 ÷ 0.96 = 83 kg/m³（< 200，不调整）',
                         '最终 CBM = 0.96（不进位）',
-                        '参考价格：0.96 CBM × 350 000 FCFA = 336 000 FCFA',
+                        '参考价格：0.96 CBM × 310 000 FCFA = 297 600 FCFA',
                      ]}
-                     result="海运总计：336 000 FCFA"
+                     result="海运总计：297 600 FCFA"
                   />
 
                   <CalculationExample
@@ -500,12 +500,12 @@ export function TermsContentZh({ locale }: { locale: string }) {
                      steps={[
                         '发动机：长=0.8m × 宽=0.6m × 高=0.5m，重量 = 350kg',
                         '原始 CBM = 0.8 × 0.6 × 0.5 = 0.24 CBM',
-                        '密度 = 350 ÷ 0.24 = 1458 kg/m³（> 250）',
-                        '调整：350 kg × 0.005 = 1.75 CBM',
+                        '密度 = 350 ÷ 0.24 = 1458 kg/m³（> 200）',
+                        '调整：350 kg ÷ 200 = 1.75 CBM',
                         '最终 CBM = max(0.24, 1.75) = 1.75 CBM',
-                        '1.75 CBM × 350 000 FCFA = 612 500 FCFA',
+                        '1.75 CBM × 310 000 FCFA = 542 500 FCFA',
                      ]}
-                     result="海运总计：612 500 FCFA"
+                     result="海运总计：542 500 FCFA"
                   />
                </SubSection>
 
@@ -619,20 +619,20 @@ export function TermsContentZh({ locale }: { locale: string }) {
                   </div>
                </SubSection>
 
-               <SubSection title="4.2 无最低体积">
+               <SubSection title="4.2 最低体积：0.1 CBM">
                   <p className="text-[var(--text-secondary)] mb-3">
-                     您按我们仓库记录的准确体积付款。{" "}
-                     <strong>不进位，也没有最低计费体积</strong> ：测得 0.075 m³ 的包裹按 0.075 × 每立方米价格计费。
+                     您按我们仓库记录的准确体积付款，不进位，{" "}
+                     <strong>最低计费 0.1 CBM</strong>，可覆盖 20 kg 以内的包裹。超过 20 kg 按重量计费：每 200 kg 计 1 CBM。
                   </p>
                   <CalculationExample
                      title="示例 - 小包裹"
                      steps={[
                         '小包裹：长=0.3m × 宽=0.2m × 高=0.15m',
                         '计算 CBM = 0.3 × 0.2 × 0.15 = 0.009 CBM',
-                        '计费 CBM = 0.009 CBM（测得的体积）',
-                        '0.009 CBM × 350 000 FCFA = 3 150 FCFA',
+                        '计费 CBM = 0.1 CBM（最低体积，20 kg 以内）',
+                        '0.1 CBM × 310 000 FCFA = 31 000 FCFA',
                      ]}
-                     result="总计：3 150 FCFA"
+                     result="总计：31 000 FCFA"
                   />
                </SubSection>
 
@@ -667,22 +667,11 @@ export function TermsContentZh({ locale }: { locale: string }) {
                            </tr>
                            <tr>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 200 - 250 kg/m³
+                                 {`> 200`} kg/m³
                               </td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">1:200</td>
                               <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 CBM = 重量 × 0.005
-                              </td>
-                           </tr>
-                           <tr>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 {`> 250`} kg/m³
-                              </td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 COSCO/MAERSK 1:250
-                              </td>
-                              <td className="px-4 py-3 text-[var(--text-secondary)]">
-                                 CBM = 重量 × 0.005
+                                 CBM = 重量 ÷ 200
                               </td>
                            </tr>
                         </tbody>
