@@ -29,23 +29,6 @@ export interface DeliveryTier {
 
 export const DELIVERY_TIERS: DeliveryTier[] = [
   {
-    id: 'flash',
-    name: 'Flash Express',
-    nameFr: 'Flash Express',
-    nameZh: 'Flash Express',
-    nameAr: 'Flash Express',
-    minDays: 2,
-    maxDays: 5,
-    rateFCFA: 16000,
-    unit: 'kg',
-    positioning: 'For urgent orders',
-    positioningFr: 'Pour les commandes urgentes',
-    positioningZh: '用于紧急订单',
-    positioningAr: 'للطلبات العاجلة',
-    color: 'from-red-500 to-rose-600',
-    icon: '⚡',
-  },
-  {
     id: 'air_standard',
     name: 'Air Standard',
     nameFr: 'Air Standard',
@@ -80,7 +63,7 @@ export const DELIVERY_TIERS: DeliveryTier[] = [
     icon: '🚢',
   },
 ];
-export type ItemCategory = 'express' | 'standard' | 'electronics' | 'phones' | 'liquids';
+export type ItemCategory = 'standard' | 'electronics' | 'phones' | 'liquids';
 
 export interface AirRate {
   category: ItemCategory;
@@ -95,12 +78,6 @@ export interface SeaRate {
   rateFCFA: number;
   deliveryTime: string;
   description: string;
-}
-
-export interface DeliveryPerformance {
-  quoted: string;
-  actualAverage: number;
-  onTimeRate: number;
 }
 
 export interface PurchaseService {
@@ -129,14 +106,6 @@ export const SEA_STANDARD_ITEMS = [
 // Air Freight Rates (FCFA)
 export const AIR_RATES: AirRate[] = [
   {
-    category: 'express',
-    rateFCFA: 16000,
-    unit: 'kg',
-    deliveryTime: '2-5 jours',
-    description: 'Livraison Flash Express prioritaire',
-    emoji: '⚡',
-  },
-  {
     category: 'standard',
     rateFCFA: 10500,
     unit: 'kg',
@@ -148,7 +117,7 @@ export const AIR_RATES: AirRate[] = [
     category: 'electronics',
     rateFCFA: 12000,
     unit: 'kg',
-    deliveryTime: '10-14 jours',
+    deliveryTime: '14-21 jours',
     description: 'Électronique, Batteries, Liquides',
     emoji: '💻',
   },
@@ -156,7 +125,7 @@ export const AIR_RATES: AirRate[] = [
     category: 'phones',
     rateFCFA: 12000,
     unit: 'piece',
-    deliveryTime: '10-14 jours',
+    deliveryTime: '14-21 jours',
     description: 'Téléphones mobiles (tarif à la pièce)',
     emoji: '📱',
   },
@@ -170,7 +139,6 @@ export interface ItemCategoryInfo {
 }
 
 export const ITEM_CATEGORIES: ItemCategoryInfo[] = [
-  { id: 'express', rate: 16000, unit: 'kg' },
   { id: 'phones', rate: 12000, unit: 'piece' },
   { id: 'electronics', rate: 12000, unit: 'kg' },
   { id: 'standard', rate: 10500, unit: 'kg' },
@@ -187,17 +155,9 @@ export const SEA_RATES: SeaRate = {
 
 // Speed tier display mapping
 export const SPEED_TIERS = {
-  express: { label: 'Flash Express', time: '2-5 jours', highlight: true },
-  standard: { label: 'Air Standard', time: '14-21 jours', highlight: false },
+  standard: { label: 'Air Standard', time: '14-21 jours', highlight: true },
   sea: { label: 'Économique Maritime', time: '60-75 jours', highlight: false },
 } as const;
-
-// Delivery Performance Data (marketing positioning — under-promise, over-deliver)
-export const DELIVERY_PERFORMANCE: Record<string, DeliveryPerformance> = {
-  flashExpress: { quoted: '2-5 jours', actualAverage: 3.2, onTimeRate: 96 },
-  airStandard: { quoted: '14-21 jours', actualAverage: 12, onTimeRate: 94 },
-  seaEconomy: { quoted: '60-75 jours', actualAverage: 62, onTimeRate: 91 },
-};
 
 // Purchase Service
 export const PURCHASE_SERVICE: PurchaseService = {
@@ -370,12 +330,5 @@ export const PRICING_FAQ = [
 // Country destinations for pricing
 export const DESTINATIONS = [
   { code: 'ML', nameKey: 'destinations.mali', flag: '🇲🇱' },
-  { code: 'SN', nameKey: 'destinations.senegal', flag: '🇸🇳' },
-  { code: 'CI', nameKey: 'destinations.ivoryCoast', flag: '🇨🇮' },
-  { code: 'BJ', nameKey: 'destinations.benin', flag: '🇧🇯' },
-  { code: 'TG', nameKey: 'destinations.togo', flag: '🇹🇬' },
-  { code: 'BF', nameKey: 'destinations.burkina', flag: '🇧🇫' },
-  { code: 'NE', nameKey: 'destinations.niger', flag: '🇳🇪' },
-  { code: 'GN', nameKey: 'destinations.guinea', flag: '🇬🇳' },
-  { code: 'GH', nameKey: 'destinations.ghana', flag: '🇬🇭' },
+  { code: 'UG', nameKey: 'destinations.uganda', flag: '🇺🇬' },
 ];

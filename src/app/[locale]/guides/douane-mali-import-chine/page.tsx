@@ -73,7 +73,7 @@ const content = {
     links: [
       { href: '/fr/services/verification-fournisseur-chine', label: 'Vérifier avant achat' },
       { href: '/fr/services/air-freight', label: 'Articles sensibles en aérien' },
-      { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
+      { href: '/fr/cargo-chine-mali', label: 'Fret Chine-Mali' },
       { href: '/fr/contact', label: 'Demander un avis douane' },
     ],
   },
@@ -135,7 +135,7 @@ const content = {
     links: [
       { href: '/en/services/verification-fournisseur-chine', label: 'Verify before buying' },
       { href: '/en/services/air-freight', label: 'Sensitive items by air' },
-      { href: '/en/routes/china-to-mali', label: 'China to Mali freight' },
+      { href: '/en/cargo-chine-mali', label: 'China to Mali freight' },
       { href: '/en/contact', label: 'Ask for customs advice' },
     ],
   },
@@ -197,7 +197,7 @@ const content = {
     links: [
       { href: '/zh/services/verification-fournisseur-chine', label: '购买前核实' },
       { href: '/zh/services/air-freight', label: '空运敏感物品' },
-      { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+      { href: '/zh/cargo-chine-mali', label: '中国—马里货运线路' },
       { href: '/zh/contact', label: '咨询海关意见' },
     ],
   },
@@ -259,7 +259,7 @@ const content = {
     links: [
       { href: '/ar/services/verification-fournisseur-chine', label: 'تحقق قبل الشراء' },
       { href: '/ar/services/air-freight', label: 'المواد الحساسة في الشحن الجوي' },
-      { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+      { href: '/ar/cargo-chine-mali', label: 'خط الشحن من الصين إلى مالي' },
       { href: '/ar/contact', label: 'اطلب رأيًا جمركيًا' },
     ],
   },

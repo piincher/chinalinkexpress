@@ -8,7 +8,8 @@
 
 'use client';
 
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useId, useMemo } from 'react';
+import { trackOnce } from '@/lib/analytics';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useQuoteHref, type QuoteMode } from '../lib/useQuoteHref';
@@ -44,7 +45,7 @@ import { usePricing } from '../lib/usePricing';
 import { liveAirRates, liveDeliveryTiers, liveItemCategories } from '../lib/livePricing';
 import { Input } from '@/components/common/form/FormField';
 
-const TIER_QUOTE_MODE: Record<string, QuoteMode> = { flash: 'express', air_standard: 'standard', sea_economy: 'sea' };
+const TIER_QUOTE_MODE: Record<string, QuoteMode> = { air_standard: 'standard', sea_economy: 'sea' };
 
 interface TierRecommendation {
   tier: (typeof DELIVERY_TIERS)[number];
@@ -57,6 +58,7 @@ interface TierRecommendation {
 export function DeadlineCalculator() {
   const t = useTranslations('pricing');
   const quoteHref = useQuoteHref();
+  const fid = useId();
   const pricing = usePricing();
   const locale = useLocale();
   const isEn = locale === 'en';
@@ -88,27 +90,6 @@ export function DeadlineCalculator() {
     const results: TierRecommendation[] = [];
     const airRates = liveAirRates(pricing);
     const tiers = liveDeliveryTiers(pricing);
-
-    // Flash Express (air express)
-    try {
-      const flashResult = calculateAirFreight({
-        weight: weightNum,
-        length: lengthNum || undefined,
-        width: widthNum || undefined,
-        height: heightNum || undefined,
-        category: 'express',
-      }, airRates);
-      const tier = tiers.find((t) => t.id === 'flash')!;
-      results.push({
-        tier,
-        meetsDeadline: deadlineDays >= tier.minDays,
-        price: flashResult.totalPrice,
-        priceLabel: formatPriceFCFA(flashResult.totalPrice),
-        isRecommended: false,
-      });
-    } catch {
-      // ignore
-    }
 
     // Air Standard
     try {
@@ -217,19 +198,24 @@ export function DeadlineCalculator() {
     return t('deadlineCalculator.economy', { defaultValue: 'Economy' });
   }, [deadlineDays, t]);
 
+  useEffect(() => {
+    if (recommendations) trackOnce('calc-deadline', 'calculator_used', { tool: 'calculateur', mode: 'deadline' });
+  }, [recommendations]);
+
   return (
     <div className="grid lg:grid-cols-2 gap-8">
       {/* Input Section */}
       <div className="space-y-6">
         {/* Weight Input */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor={`${fid}-weight`} className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <Package className="w-4 h-4 text-blue-500" />
             {t('deadlineCalculator.weight', { defaultValue: isEn ? 'Estimated weight' : isZh ? '预估重量' : isAr ? 'الوزن المقدّر' : 'Poids estimé' })}
             <span className="text-red-500">*</span>
           </label>
           <div className="relative">
             <Input
+              id={`${fid}-weight`}
               type="text"
               inputMode="decimal"
               value={deadlineState.weight}
@@ -257,6 +243,7 @@ export function DeadlineCalculator() {
                   type="text"
                   inputMode="decimal"
                   value={deadlineState[dim]}
+                  aria-label={`${({ length: isEn ? 'Length' : 'Longueur', width: isEn ? 'Width' : 'Largeur', height: isEn ? 'Height' : 'Hauteur' })[dim]} (cm)`}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(dim, e.target.value)}
                   placeholder={dim.charAt(0).toUpperCase()}
                   className="pr-10 text-center"
@@ -303,7 +290,7 @@ export function DeadlineCalculator() {
 
         {/* Deadline Slider */}
         <div className="space-y-3">
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor={`${fid}-deadline`} className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <CalendarClock className="w-4 h-4 text-amber-500" />
             {t('deadlineCalculator.whenDoYouNeedIt', {
               defaultValue: isEn ? 'When do you need it?' : isZh ? '您什么时候需要？' : isAr ? 'متى تحتاجها؟' : 'Quand en avez-vous besoin ?',
@@ -317,6 +304,7 @@ export function DeadlineCalculator() {
               </span>
             </div>
             <input
+              id={`${fid}-deadline`}
               type="range"
               min={3}
               max={90}
@@ -335,11 +323,12 @@ export function DeadlineCalculator() {
 
         {/* Destination */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <label htmlFor={`${fid}-destination`} className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <MapPin className="w-4 h-4 text-red-500" />
             {t('deadlineCalculator.destination', { defaultValue: 'Destination' })}
           </label>
           <select
+            id={`${fid}-destination`}
             value={deadlineState.destination}
             onChange={(e) => setDeadlineField('destination', e.target.value)}
             className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -452,8 +441,8 @@ export function DeadlineCalculator() {
                         <p className="text-xs opacity-80 mt-1">
                           {t('deadlineCalculator.tooLateDescription', {
                             defaultValue: isEn
-                              ? 'Even our fastest option (Flash Express) needs 2-5 days. Contact us for a custom solution.'
-                              : isZh ? '即使最快的选项（Flash Express）也需要 2-5 天。请联系我们获取定制方案。' : isAr ? 'حتى أسرع خياراتنا (Flash Express) يحتاج إلى 2-5 أيام. تواصل معنا للحصول على حل مخصص.' : 'Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.',
+                              ? 'Our fastest option, air freight, takes 14 to 21 days. Contact us to talk it through.'
+                              : isZh ? '我们最快的选项是空运，需要 14 到 21 天。请联系我们商量。' : isAr ? 'أسرع خياراتنا هو الشحن الجوي ويستغرق من 14 إلى 21 يومًا. تواصل معنا لمناقشة ذلك.' : 'Notre option la plus rapide, l’aérien, prend 14 à 21 jours. Contactez-nous pour en parler.',
                           })}
                         </p>
                       </div>

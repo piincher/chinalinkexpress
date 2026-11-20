@@ -67,16 +67,9 @@ const LANDING_PAGES: PageConfig[] = [
 ];
 
 const BLOG_POSTS: PageConfig[] = [
-  { path: 'blog/comment-importer-chine-mali-2026', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/cargo-chine-mali-guide-complet', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/acheter-alibaba-mali-sans-arnaque', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/paiement-fournisseur-chine-guide', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'blog/conteneur-chine-mali-prix-2026', priority: 0.8, changeFrequency: 'monthly' as const },
 ];
 
 const ROUTE_PAGES = [
-  { path: 'routes/china-to-mali', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'routes/china-to-africa', priority: 0.8, changeFrequency: 'weekly' as const },
 ];
 
@@ -93,7 +86,6 @@ const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
 ];
 
 const TOOL_PAGES: PageConfig[] = [
-  { path: 'comparateur-transport', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'verifier-produit', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'verifier', priority: 0.5, changeFrequency: 'monthly' as const },
   { path: 'suivi', priority: 0.6, changeFrequency: 'monthly' as const },

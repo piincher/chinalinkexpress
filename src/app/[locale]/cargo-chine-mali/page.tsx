@@ -69,7 +69,7 @@ const cargoContent = {
       { question: 'Puis-je suivre mon cargo pendant le transport ?', answer: 'Oui. Vous recevez des mises à jour WhatsApp avec photos aux étapes importantes.' },
     ],
     links: [
-      { href: '/fr/routes/china-to-mali', label: 'Route fret Chine-Mali' },
+      { href: '/fr/cargo-chine-mali', label: 'Route fret Chine-Mali' },
       { href: '/fr/services/air-freight', label: 'Fret aérien Chine-Afrique' },
       { href: '/fr/services/sea-freight', label: 'Fret maritime conteneur' },
       { href: '/fr/calculateur', label: 'Calculer le coût de fret' },
@@ -129,7 +129,7 @@ const cargoContent = {
       { question: 'Can I track my cargo during transit?', answer: 'Yes. You receive WhatsApp updates and photos at key shipment milestones.' },
     ],
     links: [
-      { href: '/en/routes/china-to-mali', label: 'China to Mali route' },
+      { href: '/en/cargo-chine-mali', label: 'China to Mali route' },
       { href: '/en/routes/china-to-africa', label: 'China to Africa routes' },
       { href: '/en/services/air-freight', label: 'Air freight service' },
       { href: '/en/services/sea-freight', label: 'Sea freight service' },
@@ -201,7 +201,7 @@ const cargoContent = {
       { question: '运输途中我可以跟踪货物吗？', answer: '可以。在重要阶段，您会收到带照片的 WhatsApp 更新。' },
     ],
     links: [
-      { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+      { href: '/zh/cargo-chine-mali', label: '中国—马里货运线路' },
       { href: '/zh/services/air-freight', label: '中国—非洲空运' },
       { href: '/zh/services/sea-freight', label: '集装箱海运' },
       { href: '/zh/calculateur', label: '计算运费' },
@@ -261,7 +261,7 @@ const cargoContent = {
       { question: 'هل يمكنني متابعة بضائعي أثناء النقل؟', answer: 'نعم. تصلك تحديثات عبر WhatsApp مع صور في المراحل المهمة.' },
     ],
     links: [
-      { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+      { href: '/ar/cargo-chine-mali', label: 'خط الشحن من الصين إلى مالي' },
       { href: '/ar/services/air-freight', label: 'الشحن الجوي من الصين إلى أفريقيا' },
       { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
       { href: '/ar/calculateur', label: 'احسب كلفة الشحن' },

@@ -16,7 +16,7 @@
  */
 
 import { useTranslations } from 'next-intl';
-import { Zap, Clock, TrendingUp, Package } from 'lucide-react';
+import { Clock, TrendingUp, Package } from 'lucide-react';
 import { PageHero, PHOTOS } from '@/components/site';
 
 export function PricingHero({ shipmentsHandled }: { shipmentsHandled: number }) {
@@ -30,7 +30,6 @@ export function PricingHero({ shipmentsHandled }: { shipmentsHandled: number }) 
    * anyway — a rating says people liked it, a shipment count says it runs.
    */
   const facts = [
-    { Icon: Zap, label: t('hero.stats.express') },
     { Icon: Clock, label: t('hero.stats.standard') },
     { Icon: TrendingUp, label: t('hero.stats.sea') },
     { Icon: Package, label: t('hero.stats.shipments', { count: shipmentsHandled }) },

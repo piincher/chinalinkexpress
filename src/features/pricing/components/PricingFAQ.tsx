@@ -45,15 +45,11 @@ const FAQ_ITEMS_ZH: FAQSourceItem[] = [
   },
   {
     question: '发生丢失或损坏时你们提供什么保障？',
-    answer: '我们有保险，100% 覆盖损坏和丢失的情况。但易碎物品的包装由供应商或包裹所有人负责。因包装不当造成的损坏，我们不承担责任。',
+    answer: '我们的责任以申报的货物价值为限（销售条款第 11.1 条）。易碎物品的包装由供应商或货主负责，包装不当造成的损坏不在保障范围内。收货时如发现损坏，请立即联系我们。',
   },
   {
     question: '有禁运物品吗？',
     hasList: true,
-  },
-  {
-    question: '我什么时候付款？',
-    answer: '您只需在收到并检查货物后付款。无需定金。',
   },
 ];
 
@@ -76,15 +72,11 @@ const FAQ_ITEMS_AR: FAQSourceItem[] = [
   },
   {
     question: 'ما الضمانات التي تقدمونها في حالة الفقدان أو التلف؟',
-    answer: 'لدينا تأمين يغطي بنسبة 100% حالات التلف والفقدان. لكن تغليف السلع الهشة وتعبئتها من مسؤولية المورد أو صاحب الطرد. وفي حالة التلف بسبب تغليف غير مناسب، لا نتحمل المسؤولية.',
+    answer: 'تقتصر مسؤوليتنا على القيمة المصرّح بها للبضائع (الشروط العامة، المادة 11.1). تغليف السلع القابلة للكسر من مسؤولية المورد أو صاحب الشحنة، والأضرار الناتجة عن تغليف غير مناسب غير مشمولة. إذا وجدت ضررًا عند الاستلام، تواصل معنا فورًا.',
   },
   {
     question: 'هل توجد سلع محظورة؟',
     hasList: true,
-  },
-  {
-    question: 'متى أدفع؟',
-    answer: 'تدفع فقط بعد استلام بضائعك وفحصها. لا حاجة إلى دفعة مقدمة.',
   },
 ];
 
@@ -107,15 +99,11 @@ const FAQ_ITEMS_FR: FAQSourceItem[] = [
   },
   {
     question: "Quelles garanties offrez-vous en cas de perte ou de dommage ?",
-    answer: "Nous avons une assurance couvrant à 100% les cas de dommages et de perte. Par contre, l'emballage et le conditionnement des articles fragiles sont de la responsabilité du fournisseur ou du propriétaire du colis. En cas de dommages dû à un conditionnement inadéquat, nous excluons notre responsabilité.",
+    answer: "Notre responsabilité est limitée à la valeur déclarée des marchandises (CGV, article 11.1). L'emballage des articles fragiles reste à la charge du fournisseur ou du propriétaire du colis, et un dommage dû à un emballage inadapté n'est pas couvert. Si vous constatez un dommage au retrait, contactez-nous tout de suite.",
   },
   {
     question: "Il y a t il des articles interdits ?",
     hasList: true,
-  },
-  {
-    question: "Quand dois-je payer ?",
-    answer: "Vous payez uniquement après avoir reçu et inspecté vos marchandises. Aucun acompte requis.",
   },
 ];
 
@@ -138,15 +126,11 @@ const FAQ_ITEMS_EN: FAQSourceItem[] = [
   },
   {
     question: 'What guarantee do you offer for loss or damage?',
-    answer: 'We provide coverage for proven loss or damage cases. Fragile-item packaging remains the supplier or shipment owner responsibility; damage caused by inadequate packaging may be excluded.',
+    answer: 'Our liability is limited to the declared value of the goods (terms, article 11.1). Packaging fragile items remains the supplier or shipment owner responsibility, and damage caused by inadequate packaging is not covered. If you find damage at pickup, contact us right away.',
   },
   {
     question: 'Are some items prohibited?',
     hasList: true,
-  },
-  {
-    question: 'When do I pay?',
-    answer: 'You usually pay after receiving and inspecting your goods. Some shipments may require an advance depending on risk, value or product category.',
   },
 ];
 

@@ -18,7 +18,7 @@ const content = {
   fr: {
     badge: 'Import Électronique Chine',
     title: 'Importer de l\'électronique de Chine vers l\'Afrique',
-    intro: 'Vous souhaitez importer des téléphones, ordinateurs, accessoires électroniques ou gadgets de Chine vers le Mali, le Sénégal ou l\'Afrique de l\'Ouest ? ChinaLink Express est votre agent sourcing spécialisé électronique basé à Shenzhen, la capitale mondiale de la tech. Nous sourçons directement depuis le marché électronique de Huaqiangbei, vérifions la qualité et les spécifications techniques, et expédions avec emballage anti-choc et assurance.',
+    intro: 'Vous souhaitez importer des téléphones, ordinateurs, accessoires électroniques ou gadgets de Chine vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est) ou l\'Afrique de l\'Ouest ? ChinaLink Express est votre agent sourcing spécialisé électronique basé à Shenzhen, la capitale mondiale de la tech. Nous sourçons directement depuis le marché électronique de Huaqiangbei, vérifions la qualité et les spécifications techniques, et expédions avec emballage anti-choc et assurance.',
     highlights: [
       'Sourcing direct depuis Shenzhen Huaqiangbei et marchés tech',
       'Téléphones, ordinateurs, accessoires, gadgets et composants',
@@ -109,7 +109,7 @@ const content = {
   en: {
     badge: 'Import Electronics China',
     title: 'Import Electronics from China to Africa',
-    intro: 'Want to import phones, computers, electronic accessories, or gadgets from China to Mali, Senegal, or West Africa? ChinaLink Express is your specialized electronics sourcing agent based in Shenzhen, the world tech capital. We source directly from Huaqiangbei electronic market, verify quality and technical specifications, and ship with anti-shock packaging and insurance.',
+    intro: 'Want to import phones, computers, electronic accessories, or gadgets from China to Mali and Uganda (West and East Africa)? ChinaLink Express is your specialized electronics sourcing agent based in Shenzhen, the world tech capital. We source directly from Huaqiangbei electronic market, verify quality and technical specifications, and ship with anti-shock packaging and insurance.',
     highlights: [
       'Direct sourcing from Shenzhen Huaqiangbei and tech markets',
       'Phones, computers, accessories, gadgets, and components',
@@ -200,7 +200,7 @@ const content = {
   zh: {
     badge: '从中国进口电子产品',
     title: '从中国向非洲进口电子产品',
-    intro: '您想从中国向马里、塞内加尔或西非进口手机、电脑、电子配件或小工具吗？ChinaLink Express 是您在全球科技之都深圳的电子品类专业采购代理。我们直接从华强北电子市场采购，核验质量和技术规格，并采用防震包装和保险发运。',
+    intro: '您想从中国向马里和乌干达（西非和东非）进口手机、电脑、电子配件或小工具吗？ChinaLink Express 是您在全球科技之都深圳的电子品类专业采购代理。我们直接从华强北电子市场采购，核验质量和技术规格，并采用防震包装和保险发运。',
     highlights: [
       '直接从深圳华强北和科技市场采购',
       '手机、电脑、配件、小工具和元器件',
@@ -291,7 +291,7 @@ const content = {
   ar: {
     badge: 'استيراد الإلكترونيات من الصين',
     title: 'استيراد الإلكترونيات من الصين إلى أفريقيا',
-    intro: 'هل ترغب في استيراد الهواتف أو الحواسيب أو الإكسسوارات الإلكترونية أو الأجهزة الصغيرة من الصين إلى مالي أو السنغال أو غرب أفريقيا؟ ChinaLink Express وكيل التوريد المتخصص في الإلكترونيات لديك في شنتشن، عاصمة التكنولوجيا العالمية. نورّد مباشرة من سوق هواتشيانغبي للإلكترونيات، ونتحقق من الجودة والمواصفات الفنية، ونشحن بتغليف مقاوم للصدمات مع التأمين.',
+    intro: 'هل ترغب في استيراد الهواتف أو الحواسيب أو الإكسسوارات الإلكترونية أو الأجهزة الصغيرة من الصين إلى مالي وأوغندا (غرب أفريقيا وشرقها)؟ ChinaLink Express وكيل التوريد المتخصص في الإلكترونيات لديك في شنتشن، عاصمة التكنولوجيا العالمية. نورّد مباشرة من سوق هواتشيانغبي للإلكترونيات، ونتحقق من الجودة والمواصفات الفنية، ونشحن بتغليف مقاوم للصدمات مع التأمين.',
     highlights: [
       'توريد مباشر من هواتشيانغبي في شنتشن وأسواق التكنولوجيا',
       'الهواتف والحواسيب والإكسسوارات والأجهزة الصغيرة والمكونات',

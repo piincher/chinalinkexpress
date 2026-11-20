@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { WHATSAPP_URL, WHATSAPP_SALES, whatsappUrl } from '@/constants/contact';
 
-export type QuoteMode = 'standard' | 'express' | 'electronics' | 'phones' | 'sea';
+export type QuoteMode = 'standard' | 'electronics' | 'phones' | 'sea';
 
 /**
  * The calculators' "request a quote" link: WhatsApp with the estimate already

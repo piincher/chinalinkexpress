@@ -22,7 +22,7 @@ export function getRouteSeo(routeKey: string, locale: Locale): RouteSeoCopy {
   const destination = route[locale as Locale];
 
   if (isEn) {
-    const africaPhrase = routeKey === 'china-to-africa' ? 'Mali, Senegal, Ivory Coast, Ghana and Nigeria' : destination;
+    const africaPhrase = routeKey === 'china-to-africa' ? 'Mali and Uganda, for importers across West and East Africa' : destination;
     return {
       title: `Shipping from China to ${destination} | Air & Sea Freight`,
       description: `ChinaLink Express coordinates China-to-Africa freight to ${africaPhrase}. Sourcing, supplier payment, consolidation, air freight, sea freight and WhatsApp tracking with Mali as our strongest hub.`,

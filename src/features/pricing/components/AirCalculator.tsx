@@ -9,15 +9,16 @@
 'use client';
 
 import { useCallback, useEffect } from 'react';
+import { trackOnce } from '@/lib/analytics';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useQuoteHref } from '../lib/useQuoteHref';
-import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown, ShieldCheck, Zap } from 'lucide-react';
+import { Package, Ruler, Tag, Info, AlertCircle, Plane, MessageCircle, Lightbulb, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { isDecimalInput, parseDecimalInput } from '@/lib/decimalInput';
 import { usePricingStore } from '../store/usePricingStore';
 import { calculateAirFreight, formatPriceFCFA, formatNumber } from '../lib/pricingEngine';
-import { STANDARD_ITEMS, DELIVERY_PERFORMANCE, type ItemCategory, type ItemCategoryInfo } from '../constants';
+import { STANDARD_ITEMS, type ItemCategory, type ItemCategoryInfo } from '../constants';
 import { usePricing } from '../lib/usePricing';
 import { liveAirRates, liveItemCategories } from '../lib/livePricing';
 import { Input } from '@/components/common/form/FormField';
@@ -35,7 +36,6 @@ export function AirCalculator() {
   const isAr = locale === 'ar';
   const formatDuration = (value: string) =>
     isEn ? value.replace(/jours/g, 'days') : value;
-  const averageUnit = isEn ? 'days' : 'j';
   const standardItems = isEn
     ? ['Clothing', 'Shoes', 'Everyday goods', 'Accessories', 'Textiles']
     : STANDARD_ITEMS;
@@ -96,19 +96,10 @@ export function AirCalculator() {
 
   const selectedRate = airRates.find((r) => r.category === airState.category);
 
-  // Calculate savings vs express for standard category
-  const expressRate = airRates.find((r) => r.category === 'express');
-  const standardRate = airRates.find((r) => r.category === 'standard');
-  const savingsPercent = expressRate && standardRate
-    ? Math.floor(((expressRate.rateFCFA - standardRate.rateFCFA) / expressRate.rateFCFA) * 100)
-    : 37;
-
   const isStandardSelected = airState.category === 'standard';
-  const deliveryPerf = isStandardSelected
-    ? DELIVERY_PERFORMANCE.airStandard
-    : airState.category === 'express'
-      ? DELIVERY_PERFORMANCE.flashExpress
-      : null;
+  useEffect(() => {
+    if (airResult) trackOnce('calc-air', 'calculator_used', { tool: 'calculateur', mode: 'air' });
+  }, [airResult]);
 
   return (
     <div className="grid lg:grid-cols-2 gap-8">
@@ -190,18 +181,10 @@ export function AirCalculator() {
                   airState.category === category.id
                     ? category.id === 'standard'
                       ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                      : category.id === 'express'
-                        ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20'
-                        : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                      : 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                     : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
                 )}
               >
-                {category.id === 'express' && (
-                  <div className="absolute -top-2 -right-1 px-1.5 py-0.5 bg-amber-500 text-white text-[10px] font-bold rounded-full flex items-center gap-0.5">
-                    <Zap className="w-2.5 h-2.5 fill-current" />
-                    {isEn ? '2-5d' : '2-5j'}
-                  </div>
-                )}
                 {category.id === 'standard' && airState.category === 'standard' && (
                   <div className="absolute -top-2 -right-2 px-1.5 py-0.5 bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center gap-0.5">
                     <Lightbulb className="w-2.5 h-2.5" />
@@ -210,7 +193,7 @@ export function AirCalculator() {
                 )}
                 <div className={cn(
                   "font-medium text-sm",
-                  category.id === 'express' ? 'text-amber-900 dark:text-amber-100' : 'text-gray-900 dark:text-white'
+                  'text-gray-900 dark:text-white'
                 )}>
                   {t(`categories.${category.id}.name`)}
                 </div>
@@ -291,42 +274,6 @@ export function AirCalculator() {
                   {t('result.deliveryTime')}: {formatDuration(airResult.deliveryTime)}
                 </div>
               </div>
-
-              {/* Smart Choice Banner for Standard */}
-              {isStandardSelected && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mb-4 p-3 bg-white/20 border border-white/30 rounded-lg"
-                >
-                  <div className="flex items-start gap-2">
-                    <Lightbulb className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
-                    <div className="text-sm text-white">
-                      <strong>{t('result.smartChoice', { percent: savingsPercent })}</strong>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Delivery Confidence Indicator */}
-              {deliveryPerf && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="mb-4 p-3 bg-white/10 border border-white/20 rounded-lg"
-                >
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-300" />
-                    <span className="text-sm text-emerald-100">
-                      {t('deliveryPerformance.earlyDelivery')}
-                    </span>
-                    <span className="text-xs text-white/70 ml-auto">
-                      {t('deliveryPerformance.actualAverage')}: {deliveryPerf.actualAverage} {averageUnit}
-                    </span>
-                  </div>
-                </motion.div>
-              )}
 
               {/* Calculation Breakdown */}
               <div className="space-y-3 bg-white/10 rounded-xl p-4">
@@ -455,11 +402,6 @@ export function AirCalculator() {
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {t(`categories.${selectedRate.category}.description`)}
             </p>
-            {selectedRate.category === 'standard' && (
-              <p className="mt-2 text-xs text-blue-600 dark:text-blue-400 font-medium">
-                {t('savings.vsExpress', { percent: savingsPercent })}
-              </p>
-            )}
           </motion.div>
         )}
       </div>

@@ -6,7 +6,8 @@
  * to WhatsApp with the estimate already written, so the visitor does not retype it.
  */
 
-import React, { useId, useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
+import { trackOnce } from '@/lib/analytics';
 import { MessageCircle, Minus, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Cta } from '@/components/site/Cta';
@@ -20,7 +21,7 @@ import {
 import { usePricing } from '@/features/pricing/lib/usePricing';
 import { minCbmCoversKg } from '@/features/pricing/lib/livePricing';
 
-const START: Record<EstimateMode, number> = { standard: 10, express: 5, electronics: 5, phones: 5, sea: 1 };
+const START: Record<EstimateMode, number> = { standard: 10, electronics: 5, phones: 5, sea: 1 };
 
 const formatFcfa = (value: number) => value.toLocaleString('fr-FR').replace(/\s/g, '\u00A0');
 
@@ -34,6 +35,16 @@ export function HeroEstimator() {
   const { rate, unit, days } = getEstimateRate(mode, pricing);
   const quantity = Number(raw.replace(',', '.'));
   const price = estimatePrice(mode, quantity, pricing);
+
+  // Counted once the visitor changes something: the default 10 kg shows a price on load.
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    if (price > 0) trackOnce('calc-hero', 'calculator_used', { tool: 'hero', mode });
+  }, [mode, raw]); // eslint-disable-line react-hooks/exhaustive-deps
   const step = unit === 'cbm' ? 0.1 : 1;
 
   const nudge = (direction: 1 | -1) => {

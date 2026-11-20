@@ -51,6 +51,8 @@
     "headline": "بضاعتك تغادر الصين. وأنت لا تفقد أثرها.",
     "subheadline": "الشراء من مورّدك، الاستلام في مستودعينا بقوانغتشو وفوشان، الشحن جوًا أو بحرًا إلى مالي أو أوغندا، وإبلاغك في كل مرحلة حتى باماكو أو كمبالا.",
     "badge": "الصين ← باماكو · كمبالا · شحن جوي وبحري",
+    "proofStats": "{shipments} شحنة منجزة · {clients} عميلًا",
+    "proofRating": "{rating}/5 من {count} تقييمًا",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -246,50 +248,6 @@
     },
     "moreLink": "بالتفصيل: شريك متكامل أم مجرد وسيط شحن"
   },
-  "successStories": {
-    "sectionLabel": "Success Stories",
-    "title": "Our Clients Succeeded. You Can Too.",
-    "subtitle": "African entrepreneurs who transformed their supply chain with ChinaLink.",
-    "problem": "The Problem",
-    "solution": "Our Solution",
-    "result": "The Result",
-    "saved": "saved",
-    "timeReduced": "time reduced",
-    "revenueUp": "revenue up",
-    "ctaText": "Become Our Next Success Story",
-    "stories": {
-      "toure": {
-        "name": "Dr. Ibrahim Touré",
-        "location": "Bamako, Mali",
-        "business": "Clinique du Sahel",
-        "problem": "Ordered medical equipment from a random Alibaba supplier. Received counterfeit products with no warranty. Lost $3,500.",
-        "solution": "ChinaLink found a verified supplier, inspected the goods before shipping, and handled payment securely.",
-        "result": "Saved $2,000 compared to his first attempt. Received certified genuine equipment in 18 days.",
-        "metricValue": "$2,000",
-        "metricLabel": "saved"
-      },
-      "aminata": {
-        "name": "Aminata Diarra",
-        "location": "Bamako, Mali",
-        "business": "Maison Aminata Textiles",
-        "problem": "Bought textiles from 3 different sellers. Each sent poor quality. No way to check before paying.",
-        "solution": "ChinaLink consolidated purchases from multiple suppliers, did quality control on every batch, and shipped everything together.",
-        "result": "Saved 40% on shipping by consolidating. All items matched the samples. Business revenue up 60%.",
-        "metricValue": "‎+60%",
-        "metricLabel": "revenue up"
-      },
-      "ousmane": {
-        "name": "Ousmane Traoré",
-        "location": "Bamako, Mali",
-        "business": "Ndiaye Electronics",
-        "problem": "Electronics shipment held at customs for 3 weeks. Had to pay unexpected fees. Customer orders were delayed.",
-        "solution": "ChinaLink handled customs clearance as part of door-to-door service. No surprises.",
-        "result": "Delivery time reduced from 45 days to 16 days. Zero extra customs fees. Customers happy.",
-        "metricValue": "16 days",
-        "metricLabel": "time reduced"
-      }
-    }
-  },
   "testimonials": {
     "sectionLabel": "آراء العملاء",
     "title": "ماذا يقول عملاؤنا",
@@ -317,7 +275,7 @@
     "noAnswer": "لم تجد إجابتك؟",
     "contactWhatsApp": "تواصل معنا عبر واتساب",
     "helpTitle": "هل تحتاج إلى مساعدة؟",
-    "helpDescription": "فريق الدعم لدينا متاح على مدار الساعة للإجابة على جميع أسئلتك.",
+    "helpDescription": "يجيب فريقنا عن أسئلتك عبر واتساب.",
     "supportLabel": "الدعم عبر واتساب",
     "items": {
       "0": {
@@ -326,11 +284,11 @@
       },
       "1": {
         "question": "كم تستغرق الشحن الجوي؟",
-        "answer": "يستغرق الشحن الجوي العادي لدينا 10-14 يوماً من الصين إلى باماكو. للشحنات العاجلة، خدمة السريع تصل في 3-5 أيام."
+        "answer": "يستغرق الشحن الجوي عادةً من 14 إلى 21 يومًا من الصين إلى باماكو."
       },
       "2": {
         "question": "كم تستغرق الشحن البحري؟",
-        "answer": "يستغرق الشحن البحري 45-60 يوماً من الباب إلى الباب من الصين إلى باماكو، شامل تخليص الجمركي. هذا هو الخيار الأكثر اقتصاداً للكميات الكبيرة."
+        "answer": "يستغرق الشحن البحري عادةً من 60 إلى 75 يومًا من الصين إلى باماكو. وهو الخيار الأوفر للكميات الكبيرة."
       },
       "3": {
         "question": "كيف يعمل الدفع للموردين؟",
@@ -565,11 +523,10 @@
   },
   "pricing": {
     "hero": {
-      "title": "فلاش إكسبريس — توصيلك في 2-5 أيام",
-      "subtitle": "أسعار شفافة لشحناتك من الصين إلى أفريقيا. فلاش إكسبريس هو أسرع خدمة جوية في السوق.",
-      "speedBadge": "توصيل في 2-5 أيام",
+      "title": "أسعار الشحن من الصين إلى مالي: جوي وبحري",
+      "subtitle": "أسعار منشورة لشحناتك من الصين إلى باماكو. قارن بين الشحن الجوي والبحري حسب مهلتك وهامش ربحك.",
+      "speedBadge": "أسعار منشورة ومحدَّثة مباشرة",
       "stats": {
-        "express": "فلاش إكسبريس: 2-5 أيام",
         "standard": "الشحن الجوي القياسي: 14-21 يوم",
         "sea": "الشحن البحري الاقتصادي: 60-75 يوم",
         "shipments": "{count} شحنة تمت معالجتها"
@@ -585,21 +542,9 @@
     },
     "destinations": {
       "mali": "مالي",
-      "senegal": "السنغال",
-      "ivoryCoast": "ساحل العاج",
-      "benin": "بنين",
-      "togo": "توغو",
-      "burkina": "بوركينا فاسو",
-      "niger": "النيجر",
-      "guinea": "غينيا",
-      "ghana": "غانا"
+      "uganda": "أوغندا"
     },
     "categories": {
-      "express": {
-        "name": "فلاش إكسبريس",
-        "description": "توصيل أولوي 2-5 أيام",
-        "unit": "كجم"
-      },
       "phones": {
         "name": "الهواتف",
         "description": "الهواتف الذكية وملحقات الهاتف المحمول",
@@ -625,7 +570,6 @@
       "title": "جدول الأسعار",
       "subtitle": "قارن أسعارنا لاختيار أفضل خيار لاحتياجاتك",
       "fastestBadge": "الأسرع",
-      "comparisonHint": "أسرع وقت لديهم: 4 أيام. لدينا: 2-5 أيام. الفرق حقيقي.",
       "air": {
         "description": "شحن سريع وآمن",
         "note": "يتم احتساب الوزن الحجمي وفقاً للمعادلة: (الطول × العرض × الارتفاع) ÷ 5000"
@@ -708,7 +652,6 @@
         "title": "منتج عالي الكثافة",
         "description": "يزن هذا الطرد أكثر من 1000 كجم لكل م³، لذلك يُحتسب بالوزن (1000 كجم = 1 م³)."
       },
-      "smartChoice": "خيار ممتاز! توفر {percent}% مقارنة بالشحن السريع.",
       "patientImporter": "الخيار الذكي للمستورد الصبور",
       "deliveryConfidence": "تسليم مبكر محتمل"
     },
@@ -891,18 +834,6 @@
       "badge": "Smart Choice",
       "description": "للمستوردين الذين يخططون مسبقًا. الجودة نفسها بسعر أفضل."
     },
-    "savings": {
-      "vsExpress": "وفّر {percent}% مقارنة بالجوي السريع"
-    },
-    "deliveryPerformance": {
-      "title": "أداء التسليم",
-      "subtitle": "نعد بأقل لنفي بأكثر.",
-      "quoted": "Quoted",
-      "actualAverage": "Actual avg",
-      "onTimeRate": "on-time rate",
-      "earlyDelivery": "تسليم مبكر محتمل",
-      "earlyDeliveryStat": "94% من شحناتنا تصل قبل الموعد المعلن."
-    },
     "weightPolicy": {
       "title": "كيف يُحتسب الوزن المفوتر",
       "lede": "تنطبق قاعدتان على كل شحنة جوية، منشورتان في المادة 3.1 من شروطنا. وهما غير مُضمَّنتين في التقدير أعلاه.",
@@ -954,7 +885,7 @@
       "fasterOption": "هل تحتاج إلى سرعة أكبر؟",
       "fasterOptionDescription": "{tier} يسلّم خلال {min}-{max} يومًا بسعر {price}.",
       "tooLate": "لا يضمن أي خيار هذا الموعد",
-      "tooLateDescription": "حتى أسرع خياراتنا يحتاج إلى 2-5 أيام. تواصل معنا للحصول على حل مخصص.",
+      "tooLateDescription": "أسرع خياراتنا هو الشحن الجوي ويستغرق من 14 إلى 21 يومًا. تواصل معنا لمناقشة ذلك.",
       "tooLateShort": "متأخر جدًا",
       "meetsDeadline": "مناسب",
       "bestChoice": "الخيار الأفضل",
@@ -972,284 +903,6 @@
         "air_standard": "خيار ذكي لغير المستعجل",
         "sea_economy": "الأرخص للكميات الكبيرة"
       }
-    }
-  },
-  "damageGuarantee": {
-    "headline": "ضمان الأضرار — بضائعك محمية",
-    "subheadline": "إذا وصلت بضائعك تالفة بسبب تعاملنا، فإن ChinaLink تتحمل التكاليف.",
-    "badge": "الضمان شامل",
-    "points": {
-      "handling": {
-        "title": "ضمان التعامل",
-        "description": "أي ضرر ناتج عن تعاملنا مغطى بنسبة 100%."
-      },
-      "quality": {
-        "title": "مراقبة الجودة في الصين",
-        "description": "فحص دقيق لكل طرد قبل المغادرة."
-      },
-      "packaging": {
-        "title": "التغليف الاحترافي",
-        "description": "حماية مثالية للنقل الدولي."
-      },
-      "refund": {
-        "title": "استرداد أو استبدال",
-        "description": "حل سريع في حالة وجود مشكلة مثبتة."
-      }
-    },
-    "cta": "اعرف المزيد عن ضماننا",
-    "ctaSubtitle": "تحدث معنا على واتساب"
-  },
-  "trustFlow": {
-    "badge": "خدمة شاملة",
-    "headline": "من الطلب إلى التسليم، نحن نتولى كل شيء",
-    "subheadline": "شريك واحد لجميع الخطوات الست. ليس 4 موردين مختلفين.",
-    "steps": [
-      {
-        "title": "أخبرنا بما تحتاج",
-        "description": "المنتجات، الكميات، الميزانية. نحن نفهم مشروعك."
-      },
-      {
-        "title": "نحن نبحث ونتفاوض",
-        "description": "البحث عن الموردين، التحقق منهم، التفاوض على أفضل الأسعار."
-      },
-      {
-        "title": "نحن نفحص ونصور",
-        "description": "مراقبة الجودة في المصنع. صور وتقارير قبل الشحن."
-      },
-      {
-        "title": "نحن نشحن (اختيارك)",
-        "description": "جوي سريع 2-5 أيام، قياسي 14-21 يوم، أو بحري 60-75 يوم."
-      },
-      {
-        "title": "تتبع في الوقت الفعلي",
-        "description": "تتبع طردك في كل خطوة. إشعارات تلقائية."
-      },
-      {
-        "title": "استلام أمام بابك",
-        "description": "توصيل منزلي مع مساعدة التخليص الجمركي."
-      }
-    ],
-    "guarantee": "الرضا مضمون أو نسترد المبلغ",
-    "comparison": {
-      "label": "من يفعل ماذا؟",
-      "us": {
-        "label": "ChinaLink",
-        "badge": "6 خطوات",
-        "description": "من البحث إلى التسليم. جهة اتصال واحدة."
-      },
-      "them": {
-        "label": "الآخرون",
-        "badge": "3 خطوات",
-        "description": "الشحن فقط. أنت تتولى الباقي وحدك."
-      },
-      "cta": "عمليتهم تبدأ من الخطوة 4. عمليتنا تبدأ من الخطوة 1."
-    }
-  },
-  "splitPayment": {
-    "headline": "الدفع عند التسليم — خطر صفر",
-    "subheadline": "تدفع فقط بعد فحص وتأكيد استلام بضاعتك.",
-    "steps": [
-      {
-        "title": "طلب",
-        "description": "تقدم طلبك، ونحن نتوالى الباقي."
-      },
-      {
-        "title": "التوصيل",
-        "description": "تصل بضاعتك إلى باب منزلك."
-      },
-      {
-        "title": "الدفع",
-        "description": "تفحص، تؤكد، تدفع."
-      }
-    ],
-    "badge": "100% آمن",
-    "badgeSubtitle": "الدفع بعد التأكيد",
-    "cta": "ناقش طلبك",
-    "ctaSubtitle": "عبر واتساب"
-  },
-  "community": {
-    "hero": {
-      "badge": "مجتمع خاص",
-      "headline": "انضم إلى مجتمع ChinaLink",
-      "subheadline": "500+ مستورد أفريقي يتبادلون النصائح والموردين والفرص يومياً.",
-      "cta": "انضم عبر واتساب",
-      "members": "500+ عضو",
-      "membersLabel": "مستورد",
-      "activity": "نشط 24/7",
-      "activityLabel": "مناقشات",
-      "countries": "مالي",
-      "countriesLabel": "التوصيل",
-      "reviewsLabel": "تقييم مُصدَّق"
-    },
-    "benefits": {
-      "title": "ما تكسبه بالانضمام",
-      "badge": "فوائد حصرية",
-      "items": {
-        "importTips": {
-          "title": "نصائح الاستيراد",
-          "description": "تعلم من المستوردين ذوي الخبرة. حيل، ومخاطر لتجنبها، وأفضل الممارسات."
-        },
-        "verifiedSuppliers": {
-          "title": "موردون موثوقون",
-          "description": "شارك واكتشف موردين موثوقين تم التحقق منهم من قبل المجتمع."
-        },
-        "productAlerts": {
-          "title": "تنبيهات المنتجات",
-          "description": "كن أول من يعرف عن المنتجات الرائجة والفرص في الصين."
-        },
-        "groupBuying": {
-          "title": "الشراء الجماعي",
-          "description": "ادمج طلباتك مع مستوردين آخرين للحصول على أسعار أفضل."
-        },
-        "support247": {
-          "title": "دعم 24/7",
-          "description": "اطرح أسئلتك في أي وقت. المجتمع يستجيب ليلاً ونهاراً."
-        },
-        "localNetwork": {
-          "title": "الشبكة المحلية",
-          "description": "تواصل مع مستوردين من بلدك ومجالك."
-        }
-      }
-    },
-    "topics": {
-      "trendingProducts": {
-        "title": "المنتجات الرائجة",
-        "tags": [
-          "الإلكترونيات",
-          "المنسوجات",
-          "مستحضرات التجميل"
-        ]
-      },
-      "reliableSuppliers": {
-        "title": "موردون موثوقون",
-        "tags": [
-          "علي بابا vs",
-          "زيارات المصانع",
-          "التحقق"
-        ]
-      },
-      "logisticsCustoms": {
-        "title": "الخدمات اللوجستية والجمارك",
-        "tags": [
-          "أسعار الشحن",
-          "التخليص الجمركي",
-          "التأمين"
-        ]
-      },
-      "financePayment": {
-        "title": "المالية والدفع",
-        "tags": [
-          "أسعار الصرف",
-          "طرق الدفع",
-          "الأمان"
-        ]
-      },
-      "discussions": "مناقشات نشطة",
-      "badge": "مناقشات جارية",
-      "title": "عما نتحدث؟"
-    },
-    "testimonials": {
-      "title": "حوّلوا أعمالهم",
-      "items": {
-        "amadou": {
-          "quote": "اكتشفت 3 موردين موثوقين بفضل المجتمع. تضاعف دخلي.",
-          "metricLabel": "‎+100% الإيرادات"
-        },
-        "fatou": {
-          "quote": "وفّرت لي مجموعة الشراء 30% على حاويتي الأخيرة.",
-          "metricLabel": "-30% التكاليف"
-        },
-        "kofi": {
-          "quote": "تجنبت عملية احتيال بقيمة 5000 يورو بفضل نصائح المجتمع.",
-          "metricLabel": "5000 يورو تم توفيرها"
-        }
-      },
-      "badge": "نتائج حقيقية"
-    },
-    "whatsappCTA": {
-      "title": "حاويتك الأولى تبدأ بمحادثة",
-      "subtitle": "انضم إلى أكثر من 500 مستورد. مجاني.",
-      "button": "انضم عبر واتساب",
-      "trustPills": [
-        "مجاني",
-        "بدون التزام",
-        "نشط 24/7"
-      ]
-    },
-    "promo": {
-      "title": "انضم إلى ‎+500 مستورد",
-      "subtitle": "نصائح، موردون موثوقون وتنبيهات منتجات — كل يوم على واتساب.",
-      "pills": {
-        "freeTips": "نصائح مجانية",
-        "verifiedSuppliers": "موردون موثوقون",
-        "productAlerts": "تنبيهات المنتجات"
-      },
-      "ctaPrimary": "انضم إلى المجتمع",
-      "ctaSecondary": "اعرف المزيد",
-      "badge": "المجتمع"
-    },
-    "cta": {
-      "headline": "حاويتك الأولى تبدأ بمحادثة",
-      "subheadline": "انضم إلى 500+ مستورد. إنه مجاني.",
-      "button": "انضم عبر واتساب",
-      "free": "مجاني",
-      "noCommitment": "بدون التزام",
-      "active247": "نشط 24/7"
-    }
-  },
-  "whatsappUpdates": {
-    "badge": "تحديثات واتساب",
-    "headline": "ترى بضائعك في كل مرحلة",
-    "subheadline": "لا رسائل نصية غامضة. صور حقيقية لمنتجاتك على واتساب.",
-    "stages": {
-      "warehouse": {
-        "label": "الخطوة 1",
-        "title": "البضائع في المستودع",
-        "photoLabel": "صورة المستودع",
-        "description": "صورة منتجاتك عند وصولها إلى مستودعنا في الصين."
-      },
-      "packed": {
-        "label": "الخطوة 2",
-        "title": "الشحنة مجهزة",
-        "photoLabel": "صورة التغليف",
-        "description": "صورة طردك مغلف وجاهز للشحن."
-      },
-      "customs": {
-        "label": "الخطوة 3",
-        "title": "التخليص الجمركي",
-        "photoLabel": "مستند الجمارك",
-        "description": "تأكيد بصري من اجتياز الجمارك مع المستندات."
-      },
-      "delivery": {
-        "label": "الخطوة 4",
-        "title": "التوصيل للمنزل",
-        "photoLabel": "صورة التوصيل",
-        "description": "صورة طردك مسلّم إلى باب منزلك."
-      }
-    },
-    "comparison": {
-      "label": "الدليل البصري يتغلب على النص",
-      "whatsapp": {
-        "label": "ChinaLink (واتساب)",
-        "badge": "وسائط غنية",
-        "features": {
-          "photos": "صور حقيقية في كل مرحلة",
-          "liveChat": "دردشة مباشرة مع وكيلك",
-          "voice": "رسائل صوتية عند الحاجة",
-          "location": "مشاركة الموقع في الوقت الفعلي"
-        }
-      },
-      "sms": {
-        "label": "الآخرون (SMS)",
-        "badge": "نص فقط",
-        "features": {
-          "textOnly": "رسالة نصية غامضة",
-          "noPhotos": "لا صور لبضائعك",
-          "noTracking": "لا تتبع مفصل",
-          "delayed": "المعلومات غالباً متأخرة"
-        }
-      },
-      "cta": "الدليل البصري > الإشعار النصي. تستحق أن ترى ما تدفع ثمنه."
     }
   },
   "reviews": {
@@ -1446,7 +1099,7 @@
         "support": {
           "label": "دعم العملاء",
           "simple": "بريد إلكتروني، رد خلال 48 ساعة",
-          "full": "واتساب على مدار الساعة"
+          "full": "واتساب"
         }
       }
     },
@@ -1549,9 +1202,6 @@
     "label": "التتبّع",
     "demoLabel": "مثال للعرض — شحنة توضيحية",
     "demoNote": "للتوضيح فقط: المراجع والأوقات أعلاه أمثلة وليست بيانات عميل حقيقي."
-  },
-  "promoCampaign": {
-    "close": "إغلاق"
   },
   "sourcing": {
     "title": "من السوق الصينية إلى بابك",
@@ -1779,7 +1429,6 @@
     "modeLabel": "طريقة الشحن",
     "modes": {
       "standard": "جوي عادي",
-      "express": "جوي سريع",
       "electronics": "إلكترونيات",
       "phones": "هواتف",
       "sea": "بحري"

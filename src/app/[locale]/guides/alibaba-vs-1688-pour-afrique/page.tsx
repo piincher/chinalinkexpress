@@ -97,7 +97,7 @@ const content = {
       },
       {
         question: 'Quel est le coût de l\'agent pour acheter sur 1688 ?',
-        answer: 'Nos honoraires pour l\'achat sur 1688 commencent à 80 USD par commande (recherche + négociation + paiement). L\'inspection qualité est à 100 USD. Ces frais sont rapidement amortis par les économies de 30-50% sur les prix 1688.',
+        answer: 'Les frais d’achat et de vérification sont fixés sur devis, selon la commande. Le paiement fournisseur se fait au taux du jour en F CFA, et le fret suit nos tarifs publics. Envoyez-nous votre besoin sur WhatsApp pour un devis.',
       },
     ],
     links: [
@@ -188,7 +188,7 @@ const content = {
       },
       {
         question: 'What is the agent cost for buying on 1688?',
-        answer: 'Our fees for buying on 1688 start at $80 per order (search + negotiation + payment). Quality inspection is $100. These fees are quickly offset by 30-50% savings on 1688 prices.',
+        answer: 'Buying and verification fees are quoted per order. Supplier payment is made at the day’s rate in F CFA, and freight follows our published rates. Send us what you need on WhatsApp for a quote.',
       },
     ],
     links: [
@@ -279,7 +279,7 @@ const content = {
       },
       {
         question: '代理在 1688 购买的费用是多少？',
-        answer: '我们在 1688 代购的服务费从每单 80 美元起（搜索 + 议价 + 付款）。质量检验为 100 美元。这些费用很快就能被 1688 价格节省的 30-50% 抵消。',
+        answer: '采购和核验费用按订单报价。供应商付款按当日汇率以西非法郎结算，运费按我们公开的价格计算。请通过 WhatsApp 告诉我们您的需求以获取报价。',
       },
     ],
     links: [
@@ -370,7 +370,7 @@ const content = {
       },
       {
         question: 'ما تكلفة الوكيل للشراء من 1688؟',
-        answer: 'تبدأ أتعابنا للشراء من 1688 من 80 دولارًا لكل طلب (بحث + تفاوض + دفع). ويبلغ فحص الجودة 100 دولار. وتُعوَّض هذه الرسوم سريعًا بما توفره أسعار 1688 من 30-50%.',
+        answer: 'تُحدَّد رسوم الشراء والتحقق بعرض سعر حسب الطلب. ويتم الدفع للمورد بسعر صرف اليوم بالفرنك الأفريقي، ويخضع الشحن لأسعارنا المنشورة. أرسل إلينا حاجتك عبر واتساب للحصول على عرض سعر.',
       },
     ],
     links: [

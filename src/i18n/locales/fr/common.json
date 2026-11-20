@@ -48,6 +48,8 @@
       "Votre Partenaire de Confiance"
     ],
     "badge": "Chine → Bamako · Kampala · Aérien & maritime",
+    "proofStats": "{shipments} expéditions traitées · {clients} clients",
+    "proofRating": "{rating}/5 sur {count} avis",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -218,7 +220,7 @@
         "support": {
           "label": "Support client",
           "simple": "Email, réponse en 48h",
-          "full": "WhatsApp 24/7"
+          "full": "WhatsApp"
         }
       }
     },
@@ -402,50 +404,6 @@
     },
     "moreLink": "Le détail : partenaire complet ou simple transitaire"
   },
-  "successStories": {
-    "sectionLabel": "Histoires de Réussite",
-    "title": "Nos Clients Ont Réussi. Vous Pouvez Aussi.",
-    "subtitle": "Des entrepreneurs africains qui ont transformé leur approvisionnement avec ChinaLink.",
-    "problem": "Le Problème",
-    "solution": "Notre Solution",
-    "result": "Le Résultat",
-    "saved": "économisé",
-    "timeReduced": "délai réduit",
-    "revenueUp": "CA en hausse",
-    "ctaText": "Devenez notre prochain succès",
-    "stories": {
-      "toure": {
-        "name": "Dr. Ibrahim Touré",
-        "location": "Bamako, Mali",
-        "business": "Clinique du Sahel",
-        "problem": "A commandé du matériel médical auprès d'un fournisseur Alibaba au hasard. A reçu des produits contrefaits sans garantie. A perdu 3 500 $.",
-        "solution": "ChinaLink a trouvé un fournisseur vérifié, inspecté les marchandises avant l'expédition et géré le paiement en toute sécurité.",
-        "result": "A économisé 2 000 $ par rapport à sa première tentative. A reçu du matériel certifié authentique en 18 jours.",
-        "metricValue": "2 000 $",
-        "metricLabel": "économisés"
-      },
-      "aminata": {
-        "name": "Aminata Diarra",
-        "location": "Bamako, Mali",
-        "business": "Maison Aminata Textiles",
-        "problem": "A acheté des textiles chez 3 vendeurs différents sur Alibaba. Chacun a envoyé de la mauvaise qualité. Aucun moyen de vérifier avant de payer.",
-        "solution": "ChinaLink a consolidé les achats de plusieurs fournisseurs, fait du contrôle qualité sur chaque lot et tout expédié ensemble vers Bamako.",
-        "result": "40% d'économie sur l'expédition grâce à la consolidation. Tous les articles correspondaient aux échantillons. Chiffre d'affaires en hausse de 60%.",
-        "metricValue": "+60%",
-        "metricLabel": "CA en hausse"
-      },
-      "ousmane": {
-        "name": "Ousmane Traoré",
-        "location": "Bamako, Mali",
-        "business": "Traoré Electronics",
-        "problem": "Expédition d'électronique bloquée en douane à Bamako pendant 3 semaines. A dû payer des frais imprévus. Les commandes clients étaient retardées.",
-        "solution": "ChinaLink a géré le dédouanement dans le cadre du service porte-à-porte. Pas de mauvaises surprises.",
-        "result": "Délai de livraison réduit de 45 jours à 16 jours. Zéro frais de douane supplémentaires. Clients satisfaits.",
-        "metricValue": "16 jours",
-        "metricLabel": "délai réduit"
-      }
-    }
-  },
   "testimonials": {
     "sectionLabel": "Témoignages",
     "title": "Ce que disent nos clients",
@@ -473,7 +431,7 @@
     "noAnswer": "Vous ne trouvez pas votre réponse ?",
     "contactWhatsApp": "Contactez-nous sur WhatsApp",
     "helpTitle": "Besoin d'aide ?",
-    "helpDescription": "Notre équipe de support client est disponible 24/7 pour répondre à toutes vos questions.",
+    "helpDescription": "Notre équipe répond à vos questions sur WhatsApp.",
     "supportLabel": "Support via Whatsapp",
     "items": {
       "0": {
@@ -482,11 +440,11 @@
       },
       "1": {
         "question": "Combien de temps prend une expédition aérienne ?",
-        "answer": "L'expédition aérienne prend généralement entre 14 à 21 jours ouvrables Chine Bamako. Nous offrons également des options express pour des livraisons en 2-5 jours."
+        "answer": "L'expédition aérienne prend généralement de 14 à 21 jours entre la Chine et Bamako."
       },
       "2": {
         "question": "Combien de temps prend une expédition maritime ?",
-        "answer": "L'expédition maritime prend généralement entre 60 à 75 jours ouvrables Chine Bamako. C'est l'option la plus économique pour les gros volumes."
+        "answer": "L'expédition maritime prend généralement de 60 à 75 jours entre la Chine et Bamako. C'est l'option la plus économique pour les gros volumes."
       },
       "3": {
         "question": "Comment fonctionne le paiement des fournisseurs ?",
@@ -723,9 +681,8 @@
     "hero": {
       "title": "Tarifs fret Chine-Mali : aérien, maritime et cargo",
       "subtitle": "Des tarifs transparents pour vos expéditions de la Chine vers Bamako. Comparez fret aérien, fret maritime, cargo urgent et options économiques selon votre marge.",
-      "speedBadge": "Livraison en 2-5 jours",
+      "speedBadge": "Prix publics, mis à jour en direct",
       "stats": {
-        "express": "Flash Express: 2-5 jours",
         "standard": "Air Standard: 14-21 jours",
         "sea": "Économique Maritime: 60-75 jours",
         "shipments": "{count} expéditions traitées"
@@ -741,21 +698,9 @@
     },
     "destinations": {
       "mali": "Mali",
-      "senegal": "Sénégal",
-      "ivoryCoast": "Côte d'Ivoire",
-      "benin": "Bénin",
-      "togo": "Togo",
-      "burkina": "Burkina Faso",
-      "niger": "Niger",
-      "guinea": "Guinée",
-      "ghana": "Ghana"
+      "uganda": "Ouganda"
     },
     "categories": {
-      "express": {
-        "name": "Flash Express",
-        "description": "Livraison prioritaire 2-5 jours",
-        "unit": "kg"
-      },
       "phones": {
         "name": "Téléphones",
         "description": "Smartphones et accessoires mobiles",
@@ -781,23 +726,10 @@
       "badge": "Le Choix Malin",
       "description": "Pour les importateurs qui planifient. Même qualité, meilleur prix."
     },
-    "deliveryPerformance": {
-      "title": "Performance de Livraison",
-      "subtitle": "On sous-estime les délais pour les dépasser.",
-      "quoted": "Délai annoncé",
-      "actualAverage": "Moyenne réelle",
-      "onTimeRate": "Livraisons à l'heure",
-      "earlyDelivery": "Livraison anticipée probable",
-      "earlyDeliveryStat": "94% de nos livraisons arrivent avant le délai annoncé."
-    },
-    "savings": {
-      "vsExpress": "Économisez {percent}% vs Flash Express"
-    },
     "priceTable": {
       "title": "Grille Tarifaire",
       "subtitle": "Comparez nos tarifs pour choisir la meilleure option pour vos besoins",
       "fastestBadge": "LE PLUS RAPIDE",
-      "comparisonHint": "Leur délai le plus rapide : 4 jours. Le nôtre : 2-5 jours. La différence est réelle.",
       "air": {
         "description": "Expédition rapide et sécurisée",
         "note": "Le poids volumétrique s'applique selon la formule: (L × l × H) ÷ 5000"
@@ -837,7 +769,7 @@
       "fasterOption": "Besoin de plus de vitesse ?",
       "fasterOptionDescription": "{tier} livre en {min}-{max} jours pour {price}.",
       "tooLate": "Aucune option ne garantit cette deadline",
-      "tooLateDescription": "Même notre option la plus rapide (Flash Express) nécessite 2-5 jours. Contactez-nous pour une solution sur mesure.",
+      "tooLateDescription": "Notre option la plus rapide, l’aérien, prend 14 à 21 jours. Contactez-nous pour en parler.",
       "tooLateShort": "Trop tard",
       "meetsDeadline": "OK",
       "bestChoice": "Meilleur choix",
@@ -895,7 +827,6 @@
     "result": {
       "estimatedPrice": "Prix Estimé",
       "deliveryTime": "Délai de livraison",
-      "smartChoice": "Bon choix ! Vous économisez {percent}% par rapport à l'express.",
       "deliveryConfidence": "Livraison anticipée probable",
       "patientImporter": "Le choix stratégique des importateurs patients",
       "actualWeight": "Poids réel",
@@ -1102,284 +1033,6 @@
       "termsLink": "Lire l'article 3.1 des CGV"
     }
   },
-  "damageGuarantee": {
-    "headline": "Garantie Dommages — Vos marchandises sont protégées",
-    "subheadline": "Si vos marchandises arrivent endommagées suite à notre manutention, ChinaLink prend en charge les coûts.",
-    "badge": "Garantie incluse",
-    "points": {
-      "handling": {
-        "title": "Garantie manutention",
-        "description": "Tout dommage causé par notre manutention est couvert à 100%."
-      },
-      "quality": {
-        "title": "Contrôle qualité en Chine",
-        "description": "Inspection rigoureuse de chaque colis avant départ."
-      },
-      "packaging": {
-        "title": "Emballage professionnel",
-        "description": "Protection optimale pour le transport international."
-      },
-      "refund": {
-        "title": "Remboursement ou remplacement",
-        "description": "Solution rapide en cas de problème avéré."
-      }
-    },
-    "cta": "En savoir plus sur notre garantie",
-    "ctaSubtitle": "Discutez avec nous sur WhatsApp"
-  },
-  "trustFlow": {
-    "badge": "Service complet",
-    "headline": "De la commande à la livraison, on gère tout",
-    "subheadline": "Un seul partenaire pour les 6 étapes. Pas 4 fournisseurs différents.",
-    "steps": [
-      {
-        "title": "Dites-nous ce dont vous avez besoin",
-        "description": "Produits, quantités, budget. Nous comprenons votre projet."
-      },
-      {
-        "title": "On trouve et négocie",
-        "description": "Sourcing, vérification fournisseurs, négociation des meilleurs prix."
-      },
-      {
-        "title": "On inspecte et photographie",
-        "description": "Contrôle qualité en usine. Photos et rapports avant expédition."
-      },
-      {
-        "title": "On expédie (votre choix)",
-        "description": "Air express 2-5j, standard 14-21j, ou maritime 60-75j."
-      },
-      {
-        "title": "Suivi en temps réel",
-        "description": "Localisez votre colis à chaque étape. Notifications automatiques."
-      },
-      {
-        "title": "Réception à votre porte",
-        "description": "Livraison domicile avec assistance dédouanement."
-      }
-    ],
-    "guarantee": "Satisfaction garantie ou nous remboursons",
-    "comparison": {
-      "label": "Qui fait quoi ?",
-      "us": {
-        "label": "ChinaLink",
-        "badge": "6 étapes",
-        "description": "Du sourcing à la livraison. Un seul contact."
-      },
-      "them": {
-        "label": "Les autres",
-        "badge": "3 étapes",
-        "description": "Expédition uniquement. Vous gérez le reste seul."
-      },
-      "cta": "Leur processus commence à l'étape 4. Le nôtre commence à l'étape 1."
-    }
-  },
-  "splitPayment": {
-    "headline": "Payez à la livraison — Zéro risque",
-    "subheadline": "Vous ne réglez qu'après avoir inspecté et confirmé la réception de vos marchandises.",
-    "steps": [
-      {
-        "title": "Commande",
-        "description": "Vous passez votre commande, nous nous occupons du reste."
-      },
-      {
-        "title": "Livraison",
-        "description": "Vos marchandises arrivent à votre porte."
-      },
-      {
-        "title": "Paiement",
-        "description": "Vous inspectez, vous confirmez, vous payez."
-      }
-    ],
-    "badge": "100% sécurisé",
-    "badgeSubtitle": "Paiement après confirmation",
-    "cta": "Discutez de votre commande",
-    "ctaSubtitle": "Sur WhatsApp"
-  },
-  "community": {
-    "hero": {
-      "badge": "Communauté privée",
-      "headline": "Rejoignez la Communauté ChinaLink",
-      "subheadline": "+500 importateurs africains échangent conseils, fournisseurs et opportunités chaque jour.",
-      "cta": "Rejoindre sur WhatsApp",
-      "members": "500+ membres",
-      "membersLabel": "importateurs",
-      "activity": "Actif 24/7",
-      "activityLabel": "discussions",
-      "countries": "Mali",
-      "countriesLabel": "livraison",
-      "reviewsLabel": "avis vérifiés"
-    },
-    "benefits": {
-      "title": "Ce que vous gagnez en rejoignant",
-      "badge": "Avantages exclusifs",
-      "items": {
-        "importTips": {
-          "title": "Conseils d'importation",
-          "description": "Apprenez des importateurs expérimentés. Astuces, pièges à éviter, meilleures pratiques."
-        },
-        "verifiedSuppliers": {
-          "title": "Fournisseurs vérifiés",
-          "description": "Partagez et découvrez des fournisseurs de confiance validés par la communauté."
-        },
-        "productAlerts": {
-          "title": "Alertes produits",
-          "description": "Soyez le premier sur les produits tendance et les opportunités en Chine."
-        },
-        "groupBuying": {
-          "title": "Négociation groupée",
-          "description": "Regroupez vos commandes avec d'autres importateurs pour de meilleurs prix."
-        },
-        "support247": {
-          "title": "Support 24/7",
-          "description": "Posez vos questions à tout moment. La communauté répond jour et nuit."
-        },
-        "localNetwork": {
-          "title": "Réseau local",
-          "description": "Connectez-vous avec des importateurs de votre pays et de votre secteur."
-        }
-      }
-    },
-    "topics": {
-      "trendingProducts": {
-        "title": "Produits tendance",
-        "tags": [
-          "Électronique",
-          "Textiles",
-          "Cosmétiques"
-        ]
-      },
-      "reliableSuppliers": {
-        "title": "Fournisseurs fiables",
-        "tags": [
-          "Alibaba vs",
-          "Visites usines",
-          "Vérification"
-        ]
-      },
-      "logisticsCustoms": {
-        "title": "Logistique & douanes",
-        "tags": [
-          "Tarifs fret",
-          "Dédouanement",
-          "Assurance"
-        ]
-      },
-      "financePayment": {
-        "title": "Finance & paiement",
-        "tags": [
-          "Taux de change",
-          "Moyens de paiement",
-          "Sécurité"
-        ]
-      },
-      "discussions": "discussions actives",
-      "badge": "Discussions en cours",
-      "title": "De quoi parle-t-on ?"
-    },
-    "testimonials": {
-      "title": "Ils ont transformé leur business",
-      "items": {
-        "amadou": {
-          "quote": "J'ai découvert 3 fournisseurs fiables grâce à la communauté. Mon chiffre d'affaires a doublé.",
-          "metricLabel": "+100% CA"
-        },
-        "fatou": {
-          "quote": "Le groupe d'achat m'a fait économiser 30% sur mon dernier conteneur.",
-          "metricLabel": "-30% coûts"
-        },
-        "kofi": {
-          "quote": "J'ai évité une arnaque de 5000€ grâce aux conseils de la communauté.",
-          "metricLabel": "5000€ sauvés"
-        }
-      },
-      "badge": "Résultats concrets"
-    },
-    "whatsappCTA": {
-      "title": "Votre premier conteneur commence par une conversation",
-      "subtitle": "Rejoignez +500 importateurs. C'est gratuit.",
-      "button": "Rejoindre sur WhatsApp",
-      "trustPills": [
-        "Gratuit",
-        "Sans engagement",
-        "Actif 24/7"
-      ]
-    },
-    "promo": {
-      "title": "Rejoignez +500 importateurs",
-      "subtitle": "Conseils, fournisseurs vérifiés et alertes produits — chaque jour sur WhatsApp.",
-      "pills": {
-        "freeTips": "Conseils gratuits",
-        "verifiedSuppliers": "Fournisseurs vérifiés",
-        "productAlerts": "Alertes produits"
-      },
-      "ctaPrimary": "Rejoindre la communauté",
-      "ctaSecondary": "En savoir plus",
-      "badge": "Communauté"
-    },
-    "cta": {
-      "headline": "Votre premier conteneur commence par une conversation",
-      "subheadline": "Rejoignez +500 importateurs. C'est gratuit.",
-      "button": "Rejoindre sur WhatsApp",
-      "free": "Gratuit",
-      "noCommitment": "Sans engagement",
-      "active247": "Actif 24/7"
-    }
-  },
-  "whatsappUpdates": {
-    "badge": "Mises à jour WhatsApp",
-    "headline": "Vous voyez vos marchandises à chaque étape",
-    "subheadline": "Pas de SMS vague. Des photos réelles de vos produits sur WhatsApp.",
-    "stages": {
-      "warehouse": {
-        "label": "Étape 1",
-        "title": "Marchandises en entrepôt",
-        "photoLabel": "Photo en entrepôt",
-        "description": "Photo de vos produits dès leur arrivée à notre entrepôt en Chine."
-      },
-      "packed": {
-        "label": "Étape 2",
-        "title": "Colis préparé",
-        "photoLabel": "Photo emballage",
-        "description": "Photo de votre colis emballé et prêt pour expédition."
-      },
-      "customs": {
-        "label": "Étape 3",
-        "title": "Dédouanement",
-        "photoLabel": "Doc. douane",
-        "description": "Confirmation visuelle du passage en douane avec documents."
-      },
-      "delivery": {
-        "label": "Étape 4",
-        "title": "Livraison à domicile",
-        "photoLabel": "Photo livraison",
-        "description": "Photo de votre colis livré à votre porte."
-      }
-    },
-    "comparison": {
-      "label": "La preuve visuelle bat le texte",
-      "whatsapp": {
-        "label": "ChinaLink (WhatsApp)",
-        "badge": "Média riche",
-        "features": {
-          "photos": "Photos réelles à chaque étape",
-          "liveChat": "Chat en direct avec votre agent",
-          "voice": "Messages vocaux si besoin",
-          "location": "Partage de localisation en temps réel"
-        }
-      },
-      "sms": {
-        "label": "Les autres (SMS)",
-        "badge": "Texte uniquement",
-        "features": {
-          "textOnly": "SMS texte vague",
-          "noPhotos": "Aucune photo de vos marchandises",
-          "noTracking": "Pas de suivi détaillé",
-          "delayed": "Informations souvent en retard"
-        }
-      },
-      "cta": "Visual proof > text notification. Vous méritez de voir ce que vous payez."
-    }
-  },
   "reviews": {
     "basedOn": "Basé sur {count} avis clients vérifiés",
     "verified": "Avis vérifié",
@@ -1521,9 +1174,6 @@
     "label": "Le suivi",
     "demoLabel": "Exemple d’affichage — expédition fictive",
     "demoNote": "Écran d’illustration : les références et les horaires ci-dessus sont des exemples, pas ceux d’un client."
-  },
-  "promoCampaign": {
-    "close": "Fermer"
   },
   "sourcing": {
     "title": "De la marketplace chinoise à votre porte",
@@ -1751,7 +1401,6 @@
     "modeLabel": "Mode d'expédition",
     "modes": {
       "standard": "Air Standard",
-      "express": "Flash Express",
       "electronics": "Électronique",
       "phones": "Téléphones",
       "sea": "Maritime"

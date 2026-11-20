@@ -5,7 +5,7 @@
  * Keeping constants close to where they are used.
  */
 
-import type { Partner, FAQ, Testimonial } from '@/types';
+import type { Partner, Testimonial } from '@/types';
 import { WHATSAPP_SALES, whatsappUrl } from '@/constants/contact';
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -28,7 +28,8 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: '3',
     name: "Maimouna Matel N'Diaye",
-    company: 'Société Générale',
+    // Employer name removed: it reads as the bank's endorsement. Restore only with her written consent.
+    company: '',
     text: 'Ils sont impeccables. Les délais communiqués sont respectes. Bon.courage',
     rating: 5,
     image: 'https://placehold.co/100x100/10B981/FFFFFF?text=MN',
@@ -45,63 +46,6 @@ export const PARTNERS: Partner[] = [
   { id: 'turkish', name: 'TURKISH AIRLINES', logo: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/turkish.png' },
 ];
 
-export const FAQS: FAQ[] = [
-  {
-    id: '1',
-    question: 'Quels types de marchandises pouvez-vous expédier ?',
-    answer:
-      "Nous expédions presque tous les types de marchandises, à l'exception des articles dangereux ou interdits par la loi. Contactez-nous pour plus de détails sur vos articles spécifiques +8618851725957.",
-  },
-  {
-    id: '2',
-    question: 'Combien de temps prend une expédition aérienne ?',
-    answer:
-      "L'expédition aérienne prend généralement entre 14 à 21 jours ouvrables Chine Bamako. Nous offrons également des options express pour des livraisons en 2-5 jours.",
-  },
-  {
-    id: '3',
-    question: 'Combien de temps prend une expédition maritime ?',
-    answer:
-      "L'expédition maritime prend généralement entre 60 à 75 jours ouvrables Chine Bamako. C'est l'option la plus économique pour les gros volumes.",
-  },
-  {
-    id: '4',
-    question: 'Comment fonctionne le paiement des fournisseurs ?',
-    answer:
-      'Nous facilitons le paiement sécurisé à vos fournisseurs en Chine via Alipay, cartes bancaires et autres méthodes. Vous payez le montant chez nous en fonction du taux du jour et nous réglons vos fournisseurs.',
-  },
-  {
-    id: '5',
-    question: 'Comment recharger mon compte ChinaLink Express ?',
-    answer:
-      'Vous pouvez recharger votre compte client via Orange Money,Wave et Cash. Les fonds sont crédités instantanément et vous permettent de régler vos expéditions plus rapidement.',
-  },
-  {
-    id: '6',
-    question: 'Proposez-vous un suivi en temps réel ?',
-    answer:
-      "Oui, tous nos envois sont équipés d'un système de suivi en temps réel accessible depuis votre tableau de bord client dans notre application mobile 24/7 .",
-  },
-];
-
-/**
- * Re-exported so landing components keep a local import path, while the number
- * itself lives in one place for the whole site.
- */
-export { WHATSAPP_SALES as WHATSAPP_NUMBER, WHATSAPP_URL } from '@/constants/contact';
-
-/**
- * The hero's WhatsApp link, with the opening message already written.
- *
- * A bare wa.me link drops the visitor into an empty thread, where the most
- * common first message is "Bonjour" followed by silence while they work out
- * what to ask. Pre-filling costs nothing and starts the conversation with the
- * one fact the agent needs: this person has goods in China.
- *
- * Kept deliberately plain — no marketing voice, no emoji. It is going to appear
- * as though the visitor typed it, so it has to sound like something a person
- * would type.
- */
 export const HERO_WHATSAPP_URL = whatsappUrl(
   WHATSAPP_SALES,
   "Bonjour ChinaLink Express, j'aimerais avoir des informations pour une expédition depuis la Chine."

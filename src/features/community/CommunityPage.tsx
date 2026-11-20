@@ -10,8 +10,6 @@
 import {
   CommunityHero,
   WhatsAppCTA,
-  TopicList,
-  SuccessStories,
   CommunityGuidelines,
 } from './components';
 
@@ -20,8 +18,6 @@ export function CommunityPage() {
     <main className="min-h-screen bg-slate-950">
       <CommunityHero />
       <WhatsAppCTA />
-      <TopicList />
-      <SuccessStories />
       <CommunityGuidelines />
     </main>
   );

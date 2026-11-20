@@ -6,6 +6,7 @@
  */
 
 import type { Metadata } from 'next';
+import { withoutBrand } from '@/config/seo-advanced';
 import { PAGE_SEO } from '@/config/seo';
 import { FAQStructuredData } from '@/components/seo';
 import { CalculatorPage } from '@/features/pricing';
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seo = PAGE_SEO.calculator[locale as Locale];
   
   return {
-    title: seo.title,
+    title: withoutBrand(seo.title),
     description: seo.description,
     keywords: seo.keywords,
     alternates: {

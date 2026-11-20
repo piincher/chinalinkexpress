@@ -54,6 +54,8 @@ const SERVICE_LINKS = [
 const PAGE_LINKS = [
   { key: 'navigation.about', href: '#about' },
   { key: 'navigation.reviews', href: 'avis' },
+  { key: 'navigation.whyUs', href: 'pourquoi-nous' },
+  { key: 'navigation.community', href: 'communaute' },
   { key: 'navigation.shippingCalendar', href: 'calendrier' },
   { key: 'navigation.blog', href: 'blog' },
   { key: 'navigation.faq', href: 'faq' },
@@ -65,7 +67,6 @@ const PAGE_LINKS = [
 const TOOL_LINKS = [
   { key: 'navigation.trackParcel', href: 'suivi' },
   { key: 'navigation.calculator', href: 'calculateur' },
-  { key: 'navigation.compareShipping', href: 'comparateur-transport' },
   { key: 'navigation.checkProduct', href: 'verifier-produit' },
   { key: 'navigation.verifyPhoto', href: 'verifier' },
 ] as const;
@@ -194,20 +195,11 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
         <p>
           &copy; {year} ChinaLink Express. {t('footer.copyright')}
         </p>
-        {/*
-          The agency credit. Its number is nuvotech's own, not ChinaLink's — an
-          earlier pass at consolidating phone numbers wrongly pointed this at the
-          sales line while the visible text still read the agency's, so the link
-          and its label disagreed. Both are the agency's again.
-        */}
+        {/* Agency credit. Its WhatsApp number was dropped: on every page it could be mistaken for ChinaLink's. */}
         <p>
           Made by{' '}
           <a href="https://nuvotech.tech" target="_blank" rel="noopener noreferrer">
             nuvotech.tech
-          </a>{' '}
-          ·{' '}
-          <a href="https://wa.me/8617865673053" target="_blank" rel="noopener noreferrer">
-            +86 178 6567 3053
           </a>
         </p>
       </div>

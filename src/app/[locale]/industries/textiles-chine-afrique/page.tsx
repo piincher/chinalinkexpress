@@ -18,13 +18,13 @@ const content = {
   fr: {
     badge: 'Import Textiles Chine',
     title: 'Importer des textiles et vêtements de Chine vers l\'Afrique',
-    intro: 'Vous cherchez à importer des textiles, tissus, vêtements ou accessoires de mode de Chine vers le Mali, le Sénégal ou l\'Afrique de l\'Ouest ? ChinaLink Express est votre partenaire spécialisé dans le sourcing textile depuis les marchés de gros de Guangzhou, Yiwu et Keqiao. Nous trouvons les meilleures usines textiles, négocions les prix au mètre ou en gros, contrôlons la qualité du tissu et expédions par conteneur FCL, groupage LCL ou fret aérien selon vos besoins.',
+    intro: 'Vous cherchez à importer des textiles, tissus, vêtements ou accessoires de mode de Chine vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est) ou l\'Afrique de l\'Ouest ? ChinaLink Express est votre partenaire spécialisé dans le sourcing textile depuis les marchés de gros de Guangzhou, Yiwu et Keqiao. Nous trouvons les meilleures usines textiles, négocions les prix au mètre ou en gros, contrôlons la qualité du tissu et expédions par conteneur FCL, groupage LCL ou fret aérien selon vos besoins.',
     highlights: [
       'Sourcing direct depuis les marchés textiles de Guangzhou et Keqiao',
       'Usines de vêtements, tissus, wax, dentelle et accessoires',
       'Négociation prix au mètre et en gros container',
       'Contrôle qualité tissu, couture et finitions avant expédition',
-      'Fret maritime conteneur ou aérien express vers Bamako/Dakar',
+      'Fret maritime conteneur ou aérien express vers Bamako',
     ],
     sections: [
       {
@@ -78,7 +78,7 @@ const content = {
     faqs: [
       {
         question: 'Quel est le prix d\'un conteneur de vêtements Chine-Mali ?',
-        answer: 'Un conteneur FCL 20ft de textiles coûte entre 3200 et 4500 USD selon la saison et le port de départ. Le groupage LCL est à environ 120 USD par CBM. Le fret aérien textile est entre 8 et 12 USD/kg. Demandez un devis précis sur WhatsApp.',
+        answer: 'En groupage, le maritime est facturé au CBM selon nos tarifs publics (page Tarifs), avec un minimum de 0,1 CBM. Pour un conteneur complet, le prix dépend du volume, du poids et de la date de départ : demandez un devis sur WhatsApp.',
       },
       {
         question: 'Puis-je importer des wax africains de Chine ?',
@@ -107,13 +107,13 @@ const content = {
   en: {
     badge: 'Import Textiles China',
     title: 'Import Textiles and Clothing from China to Africa',
-    intro: 'Looking to import textiles, fabrics, clothing, or fashion accessories from China to Mali, Senegal, or West Africa? ChinaLink Express is your specialized partner for textile sourcing from the wholesale markets of Guangzhou, Yiwu, and Keqiao. We find the best textile factories, negotiate meter and bulk prices, control fabric quality, and ship by FCL container, LCL consolidation, or air freight according to your needs.',
+    intro: 'Looking to import textiles, fabrics, clothing, or fashion accessories from China to Mali and Uganda (West and East Africa)? ChinaLink Express is your specialized partner for textile sourcing from the wholesale markets of Guangzhou, Yiwu, and Keqiao. We find the best textile factories, negotiate meter and bulk prices, control fabric quality, and ship by FCL container, LCL consolidation, or air freight according to your needs.',
     highlights: [
       'Direct sourcing from Guangzhou and Keqiao textile markets',
       'Clothing factories, fabrics, wax, lace, and accessories',
       'Price negotiation per meter and bulk container rates',
       'Fabric, stitching, and finishing quality control before shipping',
-      'Sea freight container or air express to Bamako/Dakar',
+      'Sea freight container or air express to Bamako',
     ],
     sections: [
       {
@@ -167,7 +167,7 @@ const content = {
     faqs: [
       {
         question: 'What is the price of a clothing container China-Mali?',
-        answer: 'A 20ft FCL container of textiles costs between $3200 and $4500 depending on the season and departure port. LCL consolidation is about $120 per CBM. Textile air freight is between $8-12/kg. Request a precise quote on WhatsApp.',
+        answer: 'In groupage, sea freight is billed per CBM at our published rates (Pricing page), with a 0.1 CBM minimum. For a full container, the price depends on volume, weight and departure date: ask for a quote on WhatsApp.',
       },
       {
         question: 'Can I import African wax prints from China?',
@@ -196,13 +196,13 @@ const content = {
   zh: {
     badge: '从中国进口纺织品',
     title: '从中国向非洲进口纺织品和服装',
-    intro: '您想从中国向马里、塞内加尔或西非进口纺织品、面料、服装或时尚配件吗？ChinaLink Express 是您在广州、义乌和柯桥批发市场采购纺织品的专业伙伴。我们寻找最好的纺织工厂，按米或按批量谈判价格，检查面料质量，并根据您的需要通过 FCL 整箱、LCL 拼箱或空运发货。',
+    intro: '您想从中国向马里和乌干达（西非和东非）进口纺织品、面料、服装或时尚配件吗？ChinaLink Express 是您在广州、义乌和柯桥批发市场采购纺织品的专业伙伴。我们寻找最好的纺织工厂，按米或按批量谈判价格，检查面料质量，并根据您的需要通过 FCL 整箱、LCL 拼箱或空运发货。',
     highlights: [
       '直接从广州和柯桥纺织市场采购',
       '服装、面料、蜡染布、蕾丝和配件工厂',
       '按米和整柜批量谈判价格',
       '发货前检查面料、缝制和整理质量',
-      '集装箱海运或快速空运到巴马科/达喀尔',
+      '集装箱海运或快速空运到巴马科',
     ],
     sections: [
       {
@@ -256,7 +256,7 @@ const content = {
     faqs: [
       {
         question: '中国到马里的服装集装箱价格是多少？',
-        answer: '一个 20 尺 FCL 纺织品集装箱费用在 3200 到 4500 美元之间，取决于季节和始发港。LCL 拼箱约每 CBM 120 美元。纺织品空运每公斤 8 到 12 美元。请在 WhatsApp 上索取准确报价。',
+        answer: '拼箱海运按 CBM 计费，采用我们公开的价格（见价格页面），最低 0.1 CBM。整柜价格取决于体积、重量和发船日期：请通过 WhatsApp 询价。',
       },
       {
         question: '我可以从中国进口非洲蜡染布吗？',
@@ -285,7 +285,7 @@ const content = {
   ar: {
     badge: 'استيراد المنسوجات من الصين',
     title: 'استيراد المنسوجات والملابس من الصين إلى أفريقيا',
-    intro: 'هل تبحث عن استيراد المنسوجات أو الأقمشة أو الملابس أو إكسسوارات الموضة من الصين إلى مالي أو السنغال أو غرب أفريقيا؟ ChinaLink Express شريكك المتخصص في توريد المنسوجات من أسواق الجملة في قوانغتشو وييوو وكيتشياو. نجد أفضل مصانع النسيج، ونتفاوض على الأسعار بالمتر أو بالجملة، ونفحص جودة القماش، ونشحن بحاوية FCL أو شحن مجمّع LCL أو جوًا حسب حاجتك.',
+    intro: 'هل تبحث عن استيراد المنسوجات أو الأقمشة أو الملابس أو إكسسوارات الموضة من الصين إلى مالي وأوغندا (غرب أفريقيا وشرقها)؟ ChinaLink Express شريكك المتخصص في توريد المنسوجات من أسواق الجملة في قوانغتشو وييوو وكيتشياو. نجد أفضل مصانع النسيج، ونتفاوض على الأسعار بالمتر أو بالجملة، ونفحص جودة القماش، ونشحن بحاوية FCL أو شحن مجمّع LCL أو جوًا حسب حاجتك.',
     highlights: [
       'توريد مباشر من أسواق النسيج في قوانغتشو وكيتشياو',
       'مصانع الملابس والأقمشة والواكس والدانتيل والإكسسوارات',
@@ -345,7 +345,7 @@ const content = {
     faqs: [
       {
         question: 'ما سعر حاوية ملابس من الصين إلى مالي؟',
-        answer: 'تتراوح كلفة حاوية FCL مقاس 20 قدمًا من المنسوجات بين 3200 و4500 دولار حسب الموسم وميناء المغادرة. ويبلغ الشحن المجمّع LCL نحو 120 دولارًا لكل CBM. والشحن الجوي للمنسوجات بين 8 و12 دولارًا/كغ. اطلب عرض سعر دقيقًا عبر WhatsApp.',
+        answer: 'في الشحن المجمّع، يُحتسب الشحن البحري بالـCBM وفق أسعارنا المنشورة (صفحة الأسعار)، بحد أدنى 0.1 CBM. أما الحاوية الكاملة فيتوقف سعرها على الحجم والوزن وتاريخ الشحن: اطلب عرض سعر عبر واتساب.',
       },
       {
         question: 'هل يمكنني استيراد أقمشة الواكس الأفريقية من الصين؟',
@@ -384,8 +384,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? 'Import Textiles from China to Africa | Clothing Wholesale Agent | ChinaLink'
       : isZh ? '从中国进口纺织品到非洲 | 中国服装批发 | ChinaLink' : isAr ? 'استيراد المنسوجات من الصين إلى أفريقيا | ملابس بالجملة من الصين | ChinaLink' : 'Importer Textiles Chine Afrique | Grossiste Vêtements Chine | ChinaLink',
     description: isEn
-      ? 'Import clothing, fabrics & textiles from China to Mali, Senegal & West Africa. Source from Guangzhou wholesale markets, inspect quality, ship by air or sea container. Best prices guaranteed! WhatsApp: +86 188 5172 5957'
-      : isZh ? '从中国向马里、塞内加尔和西非进口服装、面料和纺织品。在广州批发市场采购，质量检查，空运或海运。最优价格保证！WhatsApp：+86 188 5172 5957' : isAr ? 'استورد الملابس والأقمشة والمنسوجات من الصين إلى مالي والسنغال وغرب أفريقيا. توريد من أسواق الجملة في قوانغتشو وفحص الجودة وشحن جوي أو بحري. أفضل الأسعار مضمونة! WhatsApp: ‎+86 188 5172 5957' : 'Importez vêtements, tissus et textiles de Chine vers le Mali, Sénégal et Afrique de l\'Ouest. Sourcing marchés gros Guangzhou, inspection qualité, expédition air ou mer. Meilleurs tarifs garantis ! WhatsApp : +86 188 5172 5957',
+      ? 'Import clothing, fabrics & textiles from China to Mali and Uganda (West and East Africa). Source from Guangzhou wholesale markets, inspect quality, ship by air or sea container. WhatsApp: +86 188 5172 5957'
+      : isZh ? '从中国向马里和乌干达（西非和东非）进口服装、面料和纺织品。在广州批发市场采购，质量检查，空运或海运。WhatsApp：+86 188 5172 5957' : isAr ? 'استورد الملابس والأقمشة والمنسوجات من الصين إلى مالي وأوغندا (غرب أفريقيا وشرقها). توريد من أسواق الجملة في قوانغتشو وفحص الجودة وشحن جوي أو بحري. WhatsApp: ‎+86 188 5172 5957' : 'Importez vêtements, tissus et textiles de Chine vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est) et Afrique de l\'Ouest. Sourcing marchés gros Guangzhou, inspection qualité, expédition air ou mer. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'import textiles from China, wholesale clothing China, buy clothes from China, textile sourcing agent, import fabrics China Africa, garment factory China, wholesale fashion China, clothing supplier China, wax fabric China, lace fabric China, textile container shipping, freight forwarder China Mali'
       : isZh ? '从中国进口纺织品, 中国服装批发, 从中国购买服装, 纺织品采购代理, 中国进口面料到非洲, 中国服装工厂, 中国时尚批发, 中国服装供应商, 中国蜡染布, 中国蕾丝, 纺织品集装箱, 中国马里货运, 中国马里货代' : isAr ? 'استيراد المنسوجات من الصين، ملابس بالجملة من الصين، شراء ملابس من الصين، وكيل توريد المنسوجات، استيراد الأقمشة من الصين إلى أفريقيا، مصنع ملابس في الصين، موضة بالجملة من الصين، مورد ملابس في الصين، قماش واكس من الصين، دانتيل من الصين، حاوية منسوجات، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'importer textiles Chine, grossiste vêtements Chine, acheter vêtements Chine, agent sourcing textile, importer tissus Chine Afrique, usine vêtements Chine, grossiste mode Chine, fournisseur vêtements Chine, tissu wax Chine, dentelle Chine, conteneur textile, cargo chine mali, transitaire chine mali',

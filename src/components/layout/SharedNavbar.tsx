@@ -12,7 +12,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Users, ChevronDown, Calculator, Scale, ShieldCheck, MessageCircle, PackageSearch } from 'lucide-react';
+import { Menu, X, ChevronDown, Calculator, ShieldCheck, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
@@ -33,22 +33,21 @@ interface SharedNavbarProps {
  */
 const WHATSAPP_HREF = WHATSAPP_URL;
 
+// Audit 2026-11-20: prices and parcel tracking are the two most frequent tasks, so
+// they are top-level. Home (the logo), why-us, community and contact moved out:
+// the WhatsApp button covers contact, the footer lists the rest.
 const NAV_LINKS = [
-  { key: 'home', href: '/', label: 'navigation.home' },
-  { key: 'services', href: '/#services', label: 'navigation.services' },
-  { key: 'about', href: '/#about', label: 'navigation.about' },
-  { key: 'whyUs', href: '/#why-us', label: 'navigation.whyUs' },
-  { key: 'community', href: '/communaute', label: 'navigation.community' },
+  { key: 'services', href: '/services', label: 'navigation.services' },
+  { key: 'pricing', href: '/tarifs', label: 'navigation.pricing' },
+  { key: 'trackParcel', href: '/suivi', label: 'navigation.trackParcel' },
   { key: 'blog', href: '/blog', label: 'navigation.blog' },
-  { key: 'contact', href: '/#contact', label: 'navigation.contact' },
+  { key: 'reviews', href: '/avis', label: 'navigation.reviews' },
+  { key: 'about', href: '/#about', label: 'navigation.about' },
 ] as const;
 
 const TOOL_LINKS = [
   { key: 'shippingMark', href: '/#shipping-mark', label: 'shippingMarkExample.navLabel', icon: null },
-  { key: 'pricing', href: '/tarifs', label: 'navigation.pricing', icon: null },
-  { key: 'trackParcel', href: '/suivi', label: 'navigation.trackParcel', icon: PackageSearch },
   { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
-  { key: 'compareShipping', href: '/comparateur-transport', label: 'navigation.compareShipping', icon: Scale },
   { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },
 ] as const;
 
@@ -246,7 +245,6 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="mobile-link"
                 >
-                  {link.key === 'community' && <Users size={16} />}
                   {t(link.label)}
                 </Link>
               ))}

@@ -83,7 +83,7 @@ const content = {
     links: [
       { href: '/fr/services/verification-fournisseur-chine', label: 'Vérifier un fournisseur chinois' },
       { href: '/fr/services/sourcing', label: 'Agent sourcing Chine pour le Mali' },
-      { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
+      { href: '/fr/cargo-chine-mali', label: 'Fret Chine-Mali' },
       { href: '/fr/calculateur', label: 'Calculer le coût de fret' },
     ],
   },
@@ -155,7 +155,7 @@ const content = {
     links: [
       { href: '/en/services/verification-fournisseur-chine', label: 'Verify a Chinese supplier' },
       { href: '/en/services/sourcing', label: 'China sourcing agent' },
-      { href: '/en/routes/china-to-mali', label: 'China to Mali freight' },
+      { href: '/en/cargo-chine-mali', label: 'China to Mali freight' },
       { href: '/en/calculateur', label: 'Calculate freight cost' },
     ],
   },
@@ -227,7 +227,7 @@ const content = {
     links: [
       { href: '/zh/services/verification-fournisseur-chine', label: '核验中国供应商' },
       { href: '/zh/services/sourcing', label: '面向马里的中国采购代理' },
-      { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+      { href: '/zh/cargo-chine-mali', label: '中国—马里货运线路' },
       { href: '/zh/calculateur', label: '计算运费' },
     ],
   },
@@ -299,7 +299,7 @@ const content = {
     links: [
       { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من مورد صيني' },
       { href: '/ar/services/sourcing', label: 'وكيل توريد في الصين لمالي' },
-      { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+      { href: '/ar/cargo-chine-mali', label: 'خط الشحن من الصين إلى مالي' },
       { href: '/ar/calculateur', label: 'احسب كلفة الشحن' },
     ],
   },
@@ -368,7 +368,7 @@ export default async function SupplierPaymentPage({ params }: Props) {
         faqs={[...page.faqs]}
         links={[...page.links]}
         ctaLabel={isEn ? 'Request a quote on WhatsApp' : undefined}
-        routeCtaHref={`/${locale}/routes/china-to-mali`}
+        routeCtaHref={`/${locale}/cargo-chine-mali`}
         routeCtaLabel={isEn ? 'See China to Mali freight' : undefined}
         comparisonTitle={isEn ? 'Quick comparison' : undefined}
         processTitle={isEn ? 'Our process' : undefined}

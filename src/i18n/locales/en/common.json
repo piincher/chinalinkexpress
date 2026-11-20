@@ -48,6 +48,8 @@
       "Your Trusted Partner"
     ],
     "badge": "China → Bamako · Kampala · Air & sea",
+    "proofStats": "{shipments} shipments handled · {clients} clients",
+    "proofRating": "{rating}/5 from {count} reviews",
     "journeySteps": [
       {
         "icon": "🔍",
@@ -218,7 +220,7 @@
         "support": {
           "label": "Customer support",
           "simple": "Email, 48h response",
-          "full": "WhatsApp 24/7"
+          "full": "WhatsApp"
         }
       }
     },
@@ -402,50 +404,6 @@
     },
     "moreLink": "In detail: full partner or plain forwarder"
   },
-  "successStories": {
-    "sectionLabel": "Success Stories",
-    "title": "Our Clients Succeeded. You Can Too.",
-    "subtitle": "African entrepreneurs who transformed their supply chain with ChinaLink.",
-    "problem": "The Problem",
-    "solution": "Our Solution",
-    "result": "The Result",
-    "saved": "saved",
-    "timeReduced": "time reduced",
-    "revenueUp": "revenue up",
-    "ctaText": "Become Our Next Success Story",
-    "stories": {
-      "toure": {
-        "name": "Dr. Ibrahim Touré",
-        "location": "Bamako, Mali",
-        "business": "Clinique du Sahel",
-        "problem": "Ordered medical equipment from a random Alibaba supplier. Received counterfeit products with no warranty. Lost $3,500.",
-        "solution": "ChinaLink found a verified supplier, inspected the goods before shipping, and handled payment securely.",
-        "result": "Saved $2,000 compared to his first attempt. Received certified genuine equipment in 18 days.",
-        "metricValue": "$2,000",
-        "metricLabel": "saved"
-      },
-      "aminata": {
-        "name": "Aminata Diarra",
-        "location": "Bamako, Mali",
-        "business": "Maison Aminata Textiles",
-        "problem": "Bought textiles from 3 different sellers on Alibaba. Each sent poor quality. No way to check before paying.",
-        "solution": "ChinaLink consolidated purchases from multiple suppliers, did quality control on every batch, and shipped everything together to Bamako.",
-        "result": "Saved 40% on shipping by consolidating. All items matched the samples. Business revenue up 60%.",
-        "metricValue": "+60%",
-        "metricLabel": "revenue up"
-      },
-      "ousmane": {
-        "name": "Ousmane Traoré",
-        "location": "Bamako, Mali",
-        "business": "Traoré Electronics",
-        "problem": "Electronics shipment held at customs in Bamako for 3 weeks. Had to pay unexpected fees. Customer orders were delayed.",
-        "solution": "ChinaLink handled customs clearance as part of door-to-door service. No surprises.",
-        "result": "Delivery time reduced from 45 days to 16 days. Zero extra customs fees. Customers happy.",
-        "metricValue": "16 days",
-        "metricLabel": "time reduced"
-      }
-    }
-  },
   "testimonials": {
     "sectionLabel": "Testimonials",
     "title": "What our clients say",
@@ -473,7 +431,7 @@
     "noAnswer": "Can't find your answer?",
     "contactWhatsApp": "Contact us on WhatsApp",
     "helpTitle": "Need Help?",
-    "helpDescription": "Our support team is available 24/7 to answer all your questions.",
+    "helpDescription": "Our team answers your questions on WhatsApp.",
     "supportLabel": "Support via Whatsapp",
     "items": {
       "0": {
@@ -482,11 +440,11 @@
       },
       "1": {
         "question": "How long does air freight take?",
-        "answer": "Air freight generally takes between 14 to 21 business days from China to Bamako. We also offer express options for deliveries in 2-5 days."
+        "answer": "Air freight generally takes 14 to 21 days from China to Bamako."
       },
       "2": {
         "question": "How long does sea freight take?",
-        "answer": "Sea freight generally takes between 60 to 75 business days from China to Bamako. This is the most economical option for large volumes."
+        "answer": "Sea freight generally takes 60 to 75 days from China to Bamako. It is the most economical option for large volumes."
       },
       "3": {
         "question": "How does supplier payment work?",
@@ -595,9 +553,8 @@
     "hero": {
       "title": "China to Mali freight rates: air, sea, and cargo",
       "subtitle": "Transparent rates for shipments from China to Bamako. Compare air freight, sea freight, urgent cargo, and economical options based on your margin.",
-      "speedBadge": "Delivery in 2-5 days",
+      "speedBadge": "Published prices, updated live",
       "stats": {
-        "express": "Flash Express: 2-5 days",
         "standard": "Air Standard: 14-21 days",
         "sea": "Economy Sea: 60-75 days",
         "shipments": "{count} shipments handled"
@@ -613,21 +570,9 @@
     },
     "destinations": {
       "mali": "Mali",
-      "senegal": "Senegal",
-      "ivoryCoast": "Ivory Coast",
-      "benin": "Benin",
-      "togo": "Togo",
-      "burkina": "Burkina Faso",
-      "niger": "Niger",
-      "guinea": "Guinea",
-      "ghana": "Ghana"
+      "uganda": "Uganda"
     },
     "categories": {
-      "express": {
-        "name": "Flash Express",
-        "description": "Priority delivery 2-5 days",
-        "unit": "kg"
-      },
       "phones": {
         "name": "Phones",
         "description": "Smartphones and mobile accessories",
@@ -653,23 +598,10 @@
       "badge": "The Smart Choice",
       "description": "For importers who plan ahead. Same quality, better price."
     },
-    "deliveryPerformance": {
-      "title": "Delivery Performance",
-      "subtitle": "We under-promise so we over-deliver.",
-      "quoted": "Quoted time",
-      "actualAverage": "Actual average",
-      "onTimeRate": "On-time deliveries",
-      "earlyDelivery": "Early delivery likely",
-      "earlyDeliveryStat": "94% of our deliveries arrive before the quoted time."
-    },
-    "savings": {
-      "vsExpress": "Save {percent}% vs Flash Express"
-    },
     "priceTable": {
       "title": "Price List",
       "subtitle": "Compare our rates to choose the best option for your needs",
       "fastestBadge": "FASTEST",
-      "comparisonHint": "Their fastest time: 4 days. Ours: 2-5 days. The difference is real.",
       "air": {
         "description": "Fast and secure shipping",
         "note": "Volumetric weight applies according to formula: (L × W × H) ÷ 5000"
@@ -709,7 +641,7 @@
       "fasterOption": "Need more speed?",
       "fasterOptionDescription": "{tier} delivers in {min}-{max} days for {price}.",
       "tooLate": "No option guarantees this deadline",
-      "tooLateDescription": "Even our fastest option (Flash Express) needs 2-5 days. Contact us for a custom solution.",
+      "tooLateDescription": "Our fastest option, air freight, takes 14 to 21 days. Contact us to talk it through.",
       "tooLateShort": "Too late",
       "meetsDeadline": "OK",
       "bestChoice": "Best choice",
@@ -767,7 +699,6 @@
     "result": {
       "estimatedPrice": "Estimated Price",
       "deliveryTime": "Delivery time",
-      "smartChoice": "Great choice! You save {percent}% compared to express.",
       "deliveryConfidence": "Early delivery likely",
       "patientImporter": "The patient importer's power move",
       "actualWeight": "Actual weight",
@@ -1130,284 +1061,6 @@
       }
     }
   },
-  "damageGuarantee": {
-    "headline": "Damage Guarantee — Your goods are protected",
-    "subheadline": "If your goods arrive damaged due to our handling, ChinaLink covers the costs.",
-    "badge": "Guarantee included",
-    "points": {
-      "handling": {
-        "title": "Handling guarantee",
-        "description": "Any damage caused by our handling is covered 100%."
-      },
-      "quality": {
-        "title": "Quality control in China",
-        "description": "Rigorous inspection of every package before departure."
-      },
-      "packaging": {
-        "title": "Professional packaging",
-        "description": "Optimal protection for international transport."
-      },
-      "refund": {
-        "title": "Refund or replacement",
-        "description": "Quick solution in case of proven issue."
-      }
-    },
-    "cta": "Learn more about our guarantee",
-    "ctaSubtitle": "Chat with us on WhatsApp"
-  },
-  "trustFlow": {
-    "badge": "Full Service",
-    "headline": "From order to delivery, we handle everything",
-    "subheadline": "One partner for all 6 steps. Not 4 different suppliers.",
-    "steps": [
-      {
-        "title": "Tell us what you need",
-        "description": "Products, quantities, budget. We understand your project."
-      },
-      {
-        "title": "We source & negotiate",
-        "description": "Sourcing, supplier verification, negotiating the best prices."
-      },
-      {
-        "title": "We inspect & photograph",
-        "description": "Factory quality control. Photos and reports before shipping."
-      },
-      {
-        "title": "We ship (your choice)",
-        "description": "Air express 2-5 days, standard 14-21 days, or sea 60-75 days."
-      },
-      {
-        "title": "Track in real-time",
-        "description": "Track your package at every step. Automatic notifications."
-      },
-      {
-        "title": "Receive at your door",
-        "description": "Home delivery with customs clearance assistance."
-      }
-    ],
-    "guarantee": "Satisfaction guaranteed or we refund",
-    "comparison": {
-      "label": "Who does what?",
-      "us": {
-        "label": "ChinaLink",
-        "badge": "6 steps",
-        "description": "From sourcing to delivery. One single contact."
-      },
-      "them": {
-        "label": "Others",
-        "badge": "3 steps",
-        "description": "Shipping only. You handle the rest alone."
-      },
-      "cta": "Their process starts at step 4. Ours starts at step 1."
-    }
-  },
-  "splitPayment": {
-    "headline": "Pay on Delivery — Zero Risk",
-    "subheadline": "You only pay after inspecting and confirming receipt of your goods.",
-    "steps": [
-      {
-        "title": "Order",
-        "description": "You place your order, we handle the rest."
-      },
-      {
-        "title": "Delivery",
-        "description": "Your goods arrive at your door."
-      },
-      {
-        "title": "Payment",
-        "description": "You inspect, you confirm, you pay."
-      }
-    ],
-    "badge": "100% Secure",
-    "badgeSubtitle": "Pay after confirmation",
-    "cta": "Discuss your order",
-    "ctaSubtitle": "On WhatsApp"
-  },
-  "community": {
-    "hero": {
-      "badge": "Private Community",
-      "headline": "Join the ChinaLink Community",
-      "subheadline": "500+ African importers sharing tips, suppliers, and opportunities daily.",
-      "cta": "Join on WhatsApp",
-      "members": "500+ members",
-      "membersLabel": "importers",
-      "activity": "Active 24/7",
-      "activityLabel": "discussions",
-      "countries": "Mali",
-      "countriesLabel": "delivery",
-      "reviewsLabel": "verified reviews"
-    },
-    "benefits": {
-      "title": "What you gain by joining",
-      "badge": "Exclusive Benefits",
-      "items": {
-        "importTips": {
-          "title": "Import Tips",
-          "description": "Learn from experienced importers. Tricks, pitfalls to avoid, best practices."
-        },
-        "verifiedSuppliers": {
-          "title": "Verified Suppliers",
-          "description": "Share and discover trusted suppliers validated by the community."
-        },
-        "productAlerts": {
-          "title": "Product Alerts",
-          "description": "Be the first to know about trending products and opportunities in China."
-        },
-        "groupBuying": {
-          "title": "Group Buying",
-          "description": "Pool your orders with other importers for better prices."
-        },
-        "support247": {
-          "title": "24/7 Support",
-          "description": "Ask your questions anytime. The community responds day and night."
-        },
-        "localNetwork": {
-          "title": "Local Network",
-          "description": "Connect with importers from your country and industry."
-        }
-      }
-    },
-    "topics": {
-      "trendingProducts": {
-        "title": "Trending Products",
-        "tags": [
-          "Electronics",
-          "Textiles",
-          "Cosmetics"
-        ]
-      },
-      "reliableSuppliers": {
-        "title": "Reliable Suppliers",
-        "tags": [
-          "Alibaba vs",
-          "Factory Visits",
-          "Verification"
-        ]
-      },
-      "logisticsCustoms": {
-        "title": "Logistics & Customs",
-        "tags": [
-          "Freight Rates",
-          "Customs Clearance",
-          "Insurance"
-        ]
-      },
-      "financePayment": {
-        "title": "Finance & Payment",
-        "tags": [
-          "Exchange Rates",
-          "Payment Methods",
-          "Security"
-        ]
-      },
-      "discussions": "active discussions",
-      "badge": "Ongoing Discussions",
-      "title": "What do we talk about?"
-    },
-    "testimonials": {
-      "title": "They transformed their business",
-      "items": {
-        "amadou": {
-          "quote": "I discovered 3 reliable suppliers thanks to the community. My revenue doubled.",
-          "metricLabel": "+100% revenue"
-        },
-        "fatou": {
-          "quote": "The buying group saved me 30% on my last container.",
-          "metricLabel": "-30% costs"
-        },
-        "kofi": {
-          "quote": "I avoided a 5000€ scam thanks to community advice.",
-          "metricLabel": "5000€ saved"
-        }
-      },
-      "badge": "Real Results"
-    },
-    "whatsappCTA": {
-      "title": "Your first container starts with a conversation",
-      "subtitle": "Join 500+ importers. It's free.",
-      "button": "Join on WhatsApp",
-      "trustPills": [
-        "Free",
-        "No commitment",
-        "Active 24/7"
-      ]
-    },
-    "promo": {
-      "title": "Join 500+ importers",
-      "subtitle": "Tips, verified suppliers, and product alerts — every day on WhatsApp.",
-      "pills": {
-        "freeTips": "Free Tips",
-        "verifiedSuppliers": "Verified Suppliers",
-        "productAlerts": "Product Alerts"
-      },
-      "ctaPrimary": "Join the Community",
-      "ctaSecondary": "Learn More",
-      "badge": "Community"
-    },
-    "cta": {
-      "headline": "Your first container starts with a conversation",
-      "subheadline": "Join 500+ importers. It's free.",
-      "button": "Join on WhatsApp",
-      "free": "Free",
-      "noCommitment": "No commitment",
-      "active247": "Active 24/7"
-    }
-  },
-  "whatsappUpdates": {
-    "badge": "WhatsApp Updates",
-    "headline": "You see your goods at every stage",
-    "subheadline": "No vague SMS. Real photos of your products on WhatsApp.",
-    "stages": {
-      "warehouse": {
-        "label": "Step 1",
-        "title": "Goods at warehouse",
-        "photoLabel": "Warehouse photo",
-        "description": "Photo of your products upon arrival at our China warehouse."
-      },
-      "packed": {
-        "label": "Step 2",
-        "title": "Packed shipment",
-        "photoLabel": "Packing photo",
-        "description": "Photo of your parcel packed and ready for shipping."
-      },
-      "customs": {
-        "label": "Step 3",
-        "title": "Customs clearance",
-        "photoLabel": "Customs doc",
-        "description": "Visual confirmation of customs clearance with documents."
-      },
-      "delivery": {
-        "label": "Step 4",
-        "title": "Home delivery",
-        "photoLabel": "Delivery photo",
-        "description": "Photo of your parcel delivered to your door."
-      }
-    },
-    "comparison": {
-      "label": "Visual proof beats text",
-      "whatsapp": {
-        "label": "ChinaLink (WhatsApp)",
-        "badge": "Rich media",
-        "features": {
-          "photos": "Real photos at every stage",
-          "liveChat": "Live chat with your agent",
-          "voice": "Voice messages when needed",
-          "location": "Real-time location sharing"
-        }
-      },
-      "sms": {
-        "label": "Others (SMS)",
-        "badge": "Text only",
-        "features": {
-          "textOnly": "Vague text SMS",
-          "noPhotos": "No photos of your goods",
-          "noTracking": "No detailed tracking",
-          "delayed": "Information often delayed"
-        }
-      },
-      "cta": "Visual proof > text notification. You deserve to see what you pay for."
-    }
-  },
   "reviews": {
     "basedOn": "Based on {count} verified client reviews",
     "verified": "Verified review",
@@ -1549,9 +1202,6 @@
     "label": "Tracking",
     "demoLabel": "Example view — sample shipment",
     "demoNote": "Illustration only: the references and times above are examples, not a real client’s."
-  },
-  "promoCampaign": {
-    "close": "Close"
   },
   "sourcing": {
     "title": "From the Chinese marketplace to your door",
@@ -1779,7 +1429,6 @@
     "modeLabel": "Shipping mode",
     "modes": {
       "standard": "Air Standard",
-      "express": "Flash Express",
       "electronics": "Electronics",
       "phones": "Phones",
       "sea": "Sea"

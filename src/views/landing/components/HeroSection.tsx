@@ -8,18 +8,26 @@
  */
 
 import React from 'react';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { MessageCircle } from 'lucide-react';
 import { Cta, CarrierBar } from '@/components/site';
 import { LazyVideo } from '@/components/site/LazyVideo';
 import { HeroEstimator } from './HeroEstimator';
 import { LaneTicker } from './LaneTicker';
 import { SECTION_IDS, HERO_WHATSAPP_URL } from '../constants';
+import { fetchCompanyStats } from '@/lib/publicStatsApi';
+import { fetchPublicReviews } from '@/lib/publicReviewsApi';
 
 const ONCE_PER_VISIT = `try{if(sessionStorage.getItem('cl-doors')){document.documentElement.dataset.doors='seen'}else{sessionStorage.setItem('cl-doors','1')}}catch(e){}`;
 
 export async function HeroSection() {
   const t = await getTranslations();
+  const locale = await getLocale();
+  // Live figures next to the CTA (audit 2026-11-20). Both fetchers fall back instead of throwing.
+  const [stats, { stats: reviewStats }] = await Promise.all([fetchCompanyStats(), fetchPublicReviews(1)]);
+  const num = (n: number) =>
+    locale === 'en' ? n.toLocaleString('en-US') : n.toLocaleString('fr-FR').replace(/\s/g, '\u00A0');
+  const rating = (reviewStats?.averageRating ?? 0).toFixed(1).replace('.', locale === 'en' || locale === 'zh' ? '.' : ',');
 
   return (
     <>
@@ -53,6 +61,8 @@ export async function HeroSection() {
           <div className="hero-copy">
             <h1>
               <span className="hero-kw">{t('hero.keywords')}</span>
+              {/* Keeps the keyword line and the headline apart in the H1 text. */}
+              <span className="sr-only"> — </span>
               {t('hero.headline')}
             </h1>
             <p>{t('hero.subheadline')}</p>
@@ -74,6 +84,12 @@ export async function HeroSection() {
               </Cta>
             </div>
             <span className="hero-badge">{t('hero.badge')}</span>
+            <span className="hero-badge" data-proof>
+              {t('hero.proofStats', { shipments: num(stats.shipmentsHandled), clients: num(stats.clientsServed) })}
+              {reviewStats && reviewStats.totalReviews > 0 && (
+                <> · {t('hero.proofRating', { rating, count: num(reviewStats.totalReviews) })}</>
+              )}
+            </span>
           </div>
 
           <HeroEstimator />

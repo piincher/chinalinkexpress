@@ -368,7 +368,7 @@ export default async function SupplierVerificationPage({ params }: Props) {
         faqs={[...page.faqs]}
         links={[...page.links]}
         ctaLabel={isEn ? 'Request a supplier check on WhatsApp' : undefined}
-        routeCtaHref={`/${locale}/routes/china-to-mali`}
+        routeCtaHref={`/${locale}/cargo-chine-mali`}
         routeCtaLabel={isEn ? 'See China to Mali freight' : undefined}
         comparisonTitle={isEn ? 'Quick comparison' : undefined}
         processTitle={isEn ? 'Our process' : undefined}

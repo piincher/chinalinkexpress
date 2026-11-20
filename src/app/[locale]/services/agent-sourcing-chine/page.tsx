@@ -19,7 +19,7 @@ const content = {
   fr: {
     badge: 'Agent Sourcing Chine',
     title: 'Votre agent sourcing en Chine pour l\'Afrique de l\'Ouest',
-    intro: 'Vous cherchez un agent sourcing fiable en Chine pour acheter sur Alibaba, 1688 ou directement en usine ? ChinaLink Express est votre intermédiaire de confiance basé à Yiwu et Guangzhou. Nous trouvons vos fournisseurs, négocions les prix, vérifions la qualité, payons en votre nom et expédions vers le Mali, le Sénégal, la Côte d\'Ivoire et toute l\'Afrique de l\'Ouest. Plus de 500 entreprises africaines nous font confiance depuis 2019.',
+    intro: 'Vous cherchez un agent sourcing fiable en Chine pour acheter sur Alibaba, 1688 ou directement en usine ? ChinaLink Express est votre intermédiaire de confiance basé à Yiwu et Guangzhou. Nous trouvons vos fournisseurs, négocions les prix, vérifions la qualité, payons en votre nom et expédions vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est), la Côte d\'Ivoire et toute l\'Afrique de l\'Ouest.',
     highlights: [
       'Recherche de fournisseurs sur Alibaba, 1688 et usines',
       'Négociation des prix en mandarin pour de meilleurs tarifs',
@@ -81,7 +81,7 @@ const content = {
     faqs: [
       {
         question: 'Combien coûte un agent sourcing en Chine ?',
-        answer: 'Nos honoraires de sourcing commencent à 50 USD par commande (recherche + négociation). L\'inspection qualité est à 100 USD. Le paiement fournisseur et la consolidation ont des tarifs transparents selon le montant et le volume. Contactez-nous sur WhatsApp pour un devis personnalisé.',
+        answer: 'Les frais d’achat et de vérification sont fixés sur devis, selon la commande. Le paiement fournisseur se fait au taux du jour en F CFA, et le fret suit nos tarifs publics. Envoyez-nous votre besoin sur WhatsApp pour un devis.',
       },
       {
         question: 'Pouvez-vous acheter sur 1688 pour moi ?',
@@ -111,7 +111,7 @@ const content = {
   en: {
     badge: 'China Sourcing Agent',
     title: 'Your China Sourcing Agent for West Africa',
-    intro: 'Looking for a reliable sourcing agent in China to buy from Alibaba, 1688, or directly from factories? ChinaLink Express is your trusted intermediary based in Yiwu and Guangzhou. We find your suppliers, negotiate prices, verify quality, pay on your behalf, and ship to Mali, Senegal, Ivory Coast, and all of West Africa. Over 500 African businesses trust us since 2019.',
+    intro: 'Looking for a reliable sourcing agent in China to buy from Alibaba, 1688, or directly from factories? ChinaLink Express is your trusted intermediary based in Yiwu and Guangzhou. We find your suppliers, negotiate prices, verify quality, pay on your behalf, and ship to Mali and Uganda (West and East Africa).',
     highlights: [
       'Supplier search on Alibaba, 1688, and direct factories',
       'Price negotiation in Mandarin for better rates',
@@ -173,7 +173,7 @@ const content = {
     faqs: [
       {
         question: 'How much does a China sourcing agent cost?',
-        answer: 'Our sourcing fees start at $50 per order (search + negotiation). Quality inspection is $100. Supplier payment and consolidation have transparent rates based on amount and volume. Contact us on WhatsApp for a personalized quote.',
+        answer: 'Buying and verification fees are quoted per order. Supplier payment is made at the day’s rate in F CFA, and freight follows our published rates. Send us what you need on WhatsApp for a quote.',
       },
       {
         question: 'Can you buy on 1688 for me?',
@@ -203,7 +203,7 @@ const content = {
   zh: {
     badge: '中国采购代理',
     title: '您在中国的西非采购代理',
-    intro: '您在寻找中国可靠的采购代理，在 Alibaba、1688 或直接从工厂购买吗？ChinaLink Express 是您在义乌和广州值得信赖的中间人。我们寻找供应商、谈判价格、核验质量、代您付款，并发往马里、塞内加尔、科特迪瓦及整个西非。自 2019 年以来，已有 500 多家非洲企业信任我们。',
+    intro: '您在寻找中国可靠的采购代理，在 Alibaba、1688 或直接从工厂购买吗？ChinaLink Express 是您在义乌和广州值得信赖的中间人。我们寻找供应商、谈判价格、核验质量、代您付款，并发往马里和乌干达（西非和东非）。',
     highlights: [
       '在 Alibaba、1688 和工厂寻找供应商',
       '用中文议价，获得更好价格',
@@ -265,7 +265,7 @@ const content = {
     faqs: [
       {
         question: '中国采购代理收费多少？',
-        answer: '我们的采购服务费从每单 50 美元起（搜索 + 议价）。质量检验为 100 美元。供应商付款和集运按金额和货量收取透明费用。请通过 WhatsApp 联系我们获取个性化报价。',
+        answer: '采购和核验费用按订单报价。供应商付款按当日汇率以西非法郎结算，运费按我们公开的价格计算。请通过 WhatsApp 告诉我们您的需求以获取报价。',
       },
       {
         question: '你们能替我在 1688 购买吗？',
@@ -295,7 +295,7 @@ const content = {
   ar: {
     badge: 'وكيل التوريد في الصين',
     title: 'وكيل التوريد لديك في الصين لغرب أفريقيا',
-    intro: 'هل تبحث عن وكيل توريد موثوق في الصين للشراء من Alibaba أو 1688 أو مباشرة من المصنع؟ ChinaLink Express وسيطك الموثوق في ييوو وقوانغتشو. نجد مورديك ونتفاوض على الأسعار ونتحقق من الجودة وندفع نيابة عنك ونشحن إلى مالي والسنغال وساحل العاج وغرب أفريقيا كلها. أكثر من 500 شركة أفريقية تثق بنا منذ 2019.',
+    intro: 'هل تبحث عن وكيل توريد موثوق في الصين للشراء من Alibaba أو 1688 أو مباشرة من المصنع؟ ChinaLink Express وسيطك الموثوق في ييوو وقوانغتشو. نجد مورديك ونتفاوض على الأسعار ونتحقق من الجودة وندفع نيابة عنك ونشحن إلى مالي وأوغندا (غرب أفريقيا وشرقها).',
     highlights: [
       'البحث عن موردين في Alibaba و1688 والمصانع',
       'التفاوض بالصينية للحصول على أسعار أفضل',
@@ -357,7 +357,7 @@ const content = {
     faqs: [
       {
         question: 'كم تبلغ تكلفة وكيل التوريد في الصين؟',
-        answer: 'تبدأ أتعاب التوريد لدينا من 50 دولارًا لكل طلب (بحث + تفاوض). ويبلغ فحص الجودة 100 دولار. وللدفع للمورد والتجميع أسعار شفافة حسب المبلغ والحجم. تواصل معنا عبر WhatsApp للحصول على عرض سعر مخصص.',
+        answer: 'تُحدَّد رسوم الشراء والتحقق بعرض سعر حسب الطلب. ويتم الدفع للمورد بسعر صرف اليوم بالفرنك الأفريقي، ويخضع الشحن لأسعارنا المنشورة. أرسل إلينا حاجتك عبر واتساب للحصول على عرض سعر.',
       },
       {
         question: 'هل يمكنكم الشراء من 1688 نيابة عني؟',
@@ -397,8 +397,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? 'China Sourcing Agent for Africa | Alibaba & 1688 Buying Agent | ChinaLink'
       : isZh ? '中国非洲采购代理 | Alibaba 1688 代购 | ChinaLink Express' : isAr ? 'وكيل توريد من الصين إلى أفريقيا | الشراء من Alibaba و1688 | ChinaLink Express' : 'Agent Sourcing Chine Afrique | Achat Alibaba 1688 | ChinaLink Express',
     description: isEn
-      ? 'Trusted China sourcing agent for West Africa. Buy from Alibaba, 1688 & Chinese factories with price negotiation, quality inspection, secure payment & shipping to Mali, Senegal, Ivory Coast. WhatsApp: +86 188 5172 5957'
-      : isZh ? '面向西非的中国可信赖采购代理。在 Alibaba、1688 和中国工厂采购，提供议价、质量检验、安全付款并发往马里、塞内加尔、科特迪瓦。WhatsApp：+86 188 5172 5957' : isAr ? 'وكيل توريد موثوق في الصين لغرب أفريقيا. الشراء من Alibaba و1688 والمصانع الصينية مع التفاوض وفحص الجودة والدفع الآمن والشحن إلى مالي والسنغال وساحل العاج. WhatsApp: ‎+86 188 5172 5957' : 'Agent sourcing de confiance en Chine pour l\'Afrique de l\'Ouest. Achat sur Alibaba, 1688 et usines chinoises avec négociation, inspection qualité, paiement sécurisé et expédition vers le Mali, Sénégal, Côte d\'Ivoire. WhatsApp : +86 188 5172 5957',
+      ? 'Trusted China sourcing agent for West Africa. Buy from Alibaba, 1688 & Chinese factories with price negotiation, quality inspection, secure payment & shipping to Mali and Uganda (West and East Africa). WhatsApp: +86 188 5172 5957'
+      : isZh ? '面向西非的中国可信赖采购代理。在 Alibaba、1688 和中国工厂采购，提供议价、质量检验、安全付款并发往马里和乌干达（西非和东非）。WhatsApp：+86 188 5172 5957' : isAr ? 'وكيل توريد موثوق في الصين لغرب أفريقيا. الشراء من Alibaba و1688 والمصانع الصينية مع التفاوض وفحص الجودة والدفع الآمن والشحن إلى مالي وأوغندا (غرب أفريقيا وشرقها). WhatsApp: ‎+86 188 5172 5957' : 'Agent sourcing de confiance en Chine pour l\'Afrique de l\'Ouest. Achat sur Alibaba, 1688 et usines chinoises avec négociation, inspection qualité, paiement sécurisé et expédition vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est), Côte d\'Ivoire. WhatsApp : +86 188 5172 5957',
     keywords: isEn
       ? 'China sourcing agent, Alibaba sourcing agent, 1688 sourcing agent, buy from Alibaba Africa, China buying agent Mali, Alibaba agent West Africa, sourcing agent Yiwu, factory direct sourcing China, wholesale from China Africa, China procurement services, import from China Mali, freight forwarder China Mali'
       : isZh ? '中国采购代理, Alibaba 采购代理, 1688 采购代理, 从非洲在 Alibaba 购买, 中国马里采购代理, 西非 Alibaba 代理, 义乌采购, 中国工厂直采, 中国非洲批发商, 中国采购服务, 从中国进口到马里, 中国马里货运, 中国马里货代' : isAr ? 'وكيل توريد في الصين، وكيل توريد Alibaba، وكيل توريد 1688، الشراء من Alibaba في أفريقيا، وكيل شراء من الصين إلى مالي، وكيل Alibaba في غرب أفريقيا، التوريد من ييوو، التوريد مباشرة من المصانع الصينية، تاجر جملة من الصين إلى أفريقيا، خدمة التوريد من الصين، الاستيراد من الصين إلى مالي، الشحن من الصين إلى مالي، وكيل شحن من الصين إلى مالي' : 'agent sourcing Chine, agent sourcing Alibaba, agent sourcing 1688, acheter sur Alibaba Afrique, agent achat Chine Mali, agent Alibaba Afrique de l\'Ouest, sourcing Yiwu, sourcing direct usine Chine, grossiste Chine Afrique, service approvisionnement Chine, importer de Chine Mali, cargo chine mali, transitaire chine mali',
@@ -445,7 +445,7 @@ export default async function AgentSourcingPage({ params }: Props) {
         faqs={[...page.faqs]}
         links={[...page.links]}
         ctaLabel={isEn ? 'Request a sourcing quote on WhatsApp' : undefined}
-        routeCtaHref={`/${locale}/routes/china-to-mali`}
+        routeCtaHref={`/${locale}/cargo-chine-mali`}
         routeCtaLabel={isEn ? 'See China to Mali freight' : undefined}
         comparisonTitle={isEn ? 'Quick comparison' : undefined}
         processTitle={isEn ? 'Our process' : undefined}

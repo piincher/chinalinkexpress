@@ -7,7 +7,6 @@ import { parseBackendPricing } from '../src/features/pricing/lib/livePricing';
 test('air bills kilos rounded up to 0.1 kg', () => {
   assert.equal(estimatePrice('standard', 10), 105000);
   assert.equal(estimatePrice('standard', 1.21), 13650);
-  assert.equal(estimatePrice('express', 5), 80000);
   assert.equal(estimatePrice('electronics', 2), 24000);
 });
 
@@ -73,6 +72,5 @@ test('nothing to ship costs nothing', () => {
 
 test('transit ranges come from the published tables', () => {
   assert.equal(getEstimateRate('standard').days, '14-21');
-  assert.equal(getEstimateRate('express').days, '2-5');
   assert.equal(getEstimateRate('sea').days, '60-75');
 });

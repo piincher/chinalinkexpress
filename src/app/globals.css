@@ -1101,6 +1101,8 @@ canvas {
 
 .ft-list--contact a,
 .ft-list--contact span > span { display: block; }
+/* Phone numbers stacked tightly failed the 24 px touch-target check (Lighthouse, 2026-11-20). */
+.ft-list--contact a { min-height: 24px; padding-block: 3px; }
 
 .ft-giant {
   display: block;

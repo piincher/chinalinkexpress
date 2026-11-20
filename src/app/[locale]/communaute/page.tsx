@@ -28,11 +28,11 @@ export async function generateMetadata({
 
   return generatePageMetadata({
     title: isEn
-      ? 'Join 2,400+ African Importers | ChinaLink Community Hub'
-      : isZh ? '加入 2,400+ 非洲进口商 | ChinaLink 社区' : isAr ? 'انضم إلى أكثر من 2,400 مستورد أفريقي | مجتمع ChinaLink' : 'Rejoignez 2,400+ Importateurs Africains | Communauté ChinaLink',
+      ? 'WhatsApp group for China–Africa importers'
+      : isZh ? '中非进口商 WhatsApp 群' : isAr ? 'مجموعة WhatsApp لمستوردي الصين وأفريقيا' : 'Groupe WhatsApp des importateurs Chine–Afrique',
     description: isEn
-      ? 'Join the ChinaLink Express community of 2,400+ African importers. WhatsApp group for sourcing tips, verified suppliers, scam alerts, and container sharing. Free to join!'
-      : isZh ? '加入拥有 2,400+ 非洲进口商的 ChinaLink Express 社区。WhatsApp 群提供采购建议、已核验供应商、诈骗提醒和集装箱拼柜信息。免费！' : isAr ? 'انضم إلى مجتمع ChinaLink Express الذي يضم أكثر من 2,400 مستورد أفريقي. مجموعة WhatsApp لنصائح التوريد والموردين الموثوقين وتنبيهات الاحتيال ومشاركة الحاويات. مجانًا!' : 'Rejoignez la communauté ChinaLink Express de 2,400+ importateurs africains. Groupe WhatsApp pour conseils sourcing, fournisseurs vérifiés, alertes arnaques et partage de conteneurs. Gratuit !',
+      ? 'The ChinaLink Express WhatsApp group for importers in West and East Africa: sourcing tips, scam alerts and container sharing. Free to join.'
+      : isZh ? 'ChinaLink Express 面向西非和东非进口商的 WhatsApp 群：采购建议、诈骗提醒和拼柜信息。免费加入。' : isAr ? 'مجموعة WhatsApp من ChinaLink Express للمستوردين في غرب أفريقيا وشرقها: نصائح التوريد وتنبيهات الاحتيال ومشاركة الحاويات. الانضمام مجاني.' : 'Le groupe WhatsApp ChinaLink Express pour les importateurs d’Afrique de l’Ouest et de l’Est : conseils sourcing, alertes arnaques et partage de conteneurs. Gratuit.',
     keywords: isEn
       ? 'importers community west africa, china sourcing community, cargo discussion group mali, african importers forum, china import group, whatsapp group import chine, communauté importateurs afrique, groupe whatsapp import chine, alibaba community africa, 1688 discussion group, container sharing mali, bamako importers network, west africa trade community, chinese supplier reviews africa, import tips africa'
       : isZh ? '非洲进口商社区, 中国进口 WhatsApp 群, 马里进口商论坛, 中国采购社区, 非洲 Alibaba 采购群, 巴马科拼柜, 中国供应商诈骗提醒, 中国非洲进口建议, 货代社区, 中国马里货运讨论, 巴马科进口商网络, 中国供应商评价, 中国非洲团购, 中国马里进口指南' : isAr ? 'مجتمع المستوردين في أفريقيا، مجموعة WhatsApp للاستيراد من الصين، منتدى المستوردين في مالي، مجتمع التوريد من الصين، مجموعة شراء Alibaba في أفريقيا، مشاركة حاوية إلى باماكو، تنبيه احتيال الموردين الصينيين، نصائح الاستيراد من الصين إلى أفريقيا، مجتمع وكلاء الشحن، نقاش الشحن من الصين إلى مالي، شبكة مستوردي باماكو، آراء الموردين الصينيين، الشراء الجماعي من الصين، دليل الاستيراد من الصين إلى مالي' : 'communaute importateurs afrique, groupe whatsapp import chine, forum importateurs mali, communauté sourcing chine, groupe achat alibaba afrique, partage conteneur bamako, alerte arnaque fournisseur chine, conseils importation chine afrique, transitaire communauté, cargo chine mali discussion, importateurs bamako réseau, avis fournisseurs chine afrique, achat groupé chine afrique, guide importation chine mali',

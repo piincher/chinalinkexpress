@@ -256,6 +256,7 @@ export function ContactSection() {
 
               <Cta
                 href={waHref}
+                data-quote="home-form"
                 external
                 variant="solid"
                 size="lg"
@@ -300,7 +301,7 @@ export function ContactSection() {
                   CONTACT_CONFIG.PHONE.MALI_2,
                 ].map((number) => (
                   <p key={number}>
-                    <a href={`tel:${number.replace(/[^\d+]/g, '')}`} style={{ color: 'inherit' }}>
+                    <a href={`tel:${number.replace(/[^\d+]/g, '')}`} style={{ color: 'inherit', display: 'inline-block', minHeight: 24, paddingBlock: 3 }}>
                       {number}
                     </a>
                   </p>

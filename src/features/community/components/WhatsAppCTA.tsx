@@ -1,8 +1,8 @@
 /**
  * WhatsApp CTA Section
  *
- * Prominent WhatsApp invitation with QR placeholder, group benefits,
- * member avatars cluster, and "Active now" indicator.
+ * WhatsApp group invitation and benefits. The member count, avatars, "active now"
+ * dot and a QR placeholder that could not be scanned were removed (audit 2026-11-20).
  */
 
 'use client';
@@ -10,7 +10,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
-import { Check, MessageCircle, QrCode, Users, Zap, ShieldCheck, Bell } from 'lucide-react';
+import { Check, MessageCircle, Users, Zap, ShieldCheck, Bell } from 'lucide-react';
 import { useAnimationActivation } from '@/hooks/useAnimationActivation';
 import { phrase } from '@/i18n/phrases';
 
@@ -22,15 +22,6 @@ const benefits = [
   { icon: ShieldCheck, text: 'Alertes arnaques vérifiées', textEn: 'Verified scam alerts' },
   { icon: Users, text: 'Partage de conteneurs', textEn: 'Container sharing' },
   { icon: Bell, text: 'Promos fournisseurs exclusives', textEn: 'Exclusive supplier deals' },
-];
-
-const avatarColors = [
-  'bg-amber-500',
-  'bg-emerald-500',
-  'bg-blue-500',
-  'bg-rose-500',
-  'bg-violet-500',
-  'bg-cyan-500',
 ];
 
 function WhatsAppIcon({ className = 'w-5 h-5' }: { className?: string }) {
@@ -92,8 +83,8 @@ export function WhatsAppCTA() {
 
             <p className="text-lg text-emerald-100 mb-8 max-w-lg">
               {isEn
-                ? 'Get instant access to 2,400+ importers. Ask questions, share experience and stay informed about the best opportunities.'
-                : isZh ? '立即接触 2,400+ 进口商。提问、分享经验，及时了解最佳机会。' : isAr ? 'انضم فورًا إلى أكثر من 2,400 مستورد. اطرح أسئلتك وشارك تجاربك وابقَ على اطلاع بأفضل الفرص.' : 'Accédez instantanément à 2,400+ importateurs. Posez vos questions, partagez vos expériences et restez informé des meilleures opportunités.'}
+                ? 'Ask questions, share experience and stay informed about the best opportunities.'
+                : isZh ? '提问、分享经验，及时了解最佳机会。' : isAr ? 'اطرح أسئلتك وشارك تجاربك وابقَ على اطلاع بأفضل الفرص.' : 'Posez vos questions, partagez vos expériences et restez informé des meilleures opportunités.'}
             </p>
 
             {/* Benefits list */}
@@ -134,51 +125,6 @@ export function WhatsAppCTA() {
             className="relative"
           >
             <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 shadow-sm">
-              {/* QR Code Placeholder */}
-              <div className="flex flex-col items-center mb-8">
-                <div className="w-48 h-48 bg-white rounded-2xl flex items-center justify-center shadow-lg mb-4">
-                  <div className="text-center">
-                    <QrCode className="w-16 h-16 text-slate-800 mx-auto mb-2" />
-                    <p className="text-xs text-slate-500 font-medium px-4">
-                      {isEn ? 'Scan to join' : isZh ? '扫码加入' : isAr ? 'امسح الرمز للانضمام' : 'Scanner pour rejoindre'}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-sm text-white/70">
-                  {isEn ? 'Or click the green button' : isZh ? '或点击绿色按钮' : isAr ? 'أو اضغط على الزر الأخضر' : 'Ou cliquez sur le bouton vert'}
-                </p>
-              </div>
-
-              {/* Divider */}
-              <div className="h-px bg-white/20 mb-6" />
-
-              {/* Member avatars cluster */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex -space-x-3">
-                    {avatarColors.map((color, i) => (
-                      <div
-                        key={i}
-                        className={`w-10 h-10 rounded-full ${color} border-2 border-emerald-600 flex items-center justify-center text-white text-xs font-bold`}
-                      >
-                        {['AK', 'FD', 'MT', 'BS', 'NC', 'IO'][i]}
-                      </div>
-                    ))}
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-white font-semibold text-sm">+2,400 {isEn ? 'members' : phrase(locale, 'membres')}</p>
-                    <div className="flex items-center gap-1.5">
-                      <span className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
-                      </span>
-                      <span className="text-emerald-200 text-xs font-medium">
-                        {isEn ? 'Active now' : isZh ? '当前活跃' : isAr ? 'نشط الآن' : 'Actif maintenant'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="text-right">
                   <div className="flex items-center gap-1 text-emerald-200 text-sm font-medium">
                     <Check className="w-4 h-4" />
@@ -189,7 +135,6 @@ export function WhatsAppCTA() {
                     {isEn ? 'No commitment' : isZh ? '无需承诺' : isAr ? 'دون التزام' : 'Sans engagement'}
                   </div>
                 </div>
-              </div>
             </div>
 
             {/* Decorative elements */}

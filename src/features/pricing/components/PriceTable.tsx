@@ -9,9 +9,9 @@
 
 import { motion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
-import { Plane, Ship, Clock, Info, Lightbulb, TrendingDown, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
+import { Plane, Ship, Clock, Info, Lightbulb, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SEA_RATES, DELIVERY_PERFORMANCE } from '../constants';
+import { SEA_RATES } from '../constants';
 import { formatPriceFCFA } from '../lib/pricingEngine';
 import { usePricing } from '../lib/usePricing';
 import { liveAirRates, minCbmCoversKg } from '../lib/livePricing';
@@ -34,22 +34,7 @@ export function PriceTable() {
         : locale === 'ar'
           ? value.replace(/jours/g, 'يومًا').replace(/dédouanement inclus/g, 'التخليص الجمركي مشمول')
           : value;
-  const averageUnit = isEn ? 'days' : locale === 'zh' ? '天' : locale === 'ar' ? 'يوم' : 'j';
-
-  const expressRate = airRates.find((r) => r.category === 'express');
   const standardRate = airRates.find((r) => r.category === 'standard');
-  const savingsPercent = expressRate && standardRate
-    ? Math.floor(((expressRate.rateFCFA - standardRate.rateFCFA) / expressRate.rateFCFA) * 100)
-    : 37;
-
-  const getPerformanceKey = (category: string) => {
-    switch (category) {
-      case 'express': return 'flashExpress';
-      case 'standard': return 'airStandard';
-      default: return null;
-    }
-  };
-
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-900/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,8 +77,6 @@ export function PriceTable() {
             <div className="p-6">
               <div className="space-y-4">
                 {airRates.map((rate, index) => {
-                  const perfKey = getPerformanceKey(rate.category);
-                  const perf = perfKey ? DELIVERY_PERFORMANCE[perfKey] : null;
                   const isStandard = rate.category === 'standard';
 
                   return (
@@ -105,18 +88,11 @@ export function PriceTable() {
                       transition={{ delay: index * 0.1 }}
                       className={cn(
                         'flex items-center justify-between p-4 rounded-xl relative',
-                        rate.category === 'express' 
-                          ? 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/30 dark:to-orange-900/20 border-2 border-amber-200 dark:border-amber-800' 
-                          : isStandard
+                        isStandard
                             ? 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 dark:border-blue-800'
                             : index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-700/50' : 'bg-transparent'
                       )}
                     >
-                      {rate.category === 'express' && (
-                        <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-amber-500 text-white text-xs font-bold rounded-full">
-                          EXPRESS
-                        </div>
-                      )}
                       {isStandard && (
                         <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-blue-500 text-white text-xs font-bold rounded-full flex items-center gap-1">
                           <Lightbulb className="w-3 h-3" />
@@ -126,9 +102,7 @@ export function PriceTable() {
                       <div className="flex items-center gap-3">
                         <div className={cn(
                           "w-10 h-10 rounded-lg flex items-center justify-center",
-                          rate.category === 'express'
-                            ? 'bg-amber-100 dark:bg-amber-900/50'
-                            : isStandard
+                          isStandard
                               ? 'bg-blue-100 dark:bg-blue-900/50'
                               : 'bg-blue-100 dark:bg-blue-900/30'
                         )}>
@@ -137,9 +111,7 @@ export function PriceTable() {
                         <div>
                           <div className={cn(
                             "font-semibold",
-                            rate.category === 'express'
-                              ? 'text-amber-900 dark:text-amber-100'
-                              : isStandard
+                            isStandard
                                 ? 'text-blue-900 dark:text-blue-100'
                                 : 'text-gray-900 dark:text-white'
                           )}>
@@ -147,9 +119,7 @@ export function PriceTable() {
                           </div>
                           <div className={cn(
                             "flex items-center gap-2 text-xs",
-                            rate.category === 'express'
-                              ? 'text-amber-700 dark:text-amber-400'
-                              : isStandard
+                            isStandard
                                 ? 'text-blue-700 dark:text-blue-400'
                                 : 'text-gray-500 dark:text-gray-400'
                           )}>
@@ -161,9 +131,7 @@ export function PriceTable() {
                       <div className="text-right">
                         <div className={cn(
                           "text-xl font-bold",
-                          rate.category === 'express'
-                            ? 'text-amber-600 dark:text-amber-400'
-                            : isStandard
+                          isStandard
                               ? 'text-blue-600 dark:text-blue-400'
                               : 'text-blue-600 dark:text-blue-400'
                         )}>
@@ -171,9 +139,7 @@ export function PriceTable() {
                         </div>
                         <div className={cn(
                           "text-xs",
-                          rate.category === 'express'
-                            ? 'text-amber-600 dark:text-amber-500'
-                            : isStandard
+                          isStandard
                               ? 'text-blue-600 dark:text-blue-500'
                               : 'text-gray-500 dark:text-gray-400'
                         )}>
@@ -184,19 +150,6 @@ export function PriceTable() {
                   );
                 })}
               </div>
-
-              {/* Speed Comparison Hint */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800"
-              >
-                <div className="flex items-center gap-2 text-sm text-green-700 dark:text-green-400">
-                  <TrendingUp className="w-4 h-4 flex-shrink-0" />
-                  <span>{t('priceTable.comparisonHint')}</span>
-                </div>
-              </motion.div>
 
               {/* Smart Choice Note for Standard */}
               {standardRate && (
@@ -210,52 +163,10 @@ export function PriceTable() {
                     <Lightbulb className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                     <div className="text-sm text-blue-700 dark:text-blue-400">
                       <p className="font-medium">{t('smartChoice.description')}</p>
-                      <p className="mt-1 text-xs">
-                        {t('savings.vsExpress', { percent: savingsPercent })}
-                      </p>
                     </div>
                   </div>
                 </motion.div>
               )}
-
-              {/* Delivery Performance Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <ShieldCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
-                  <span className="font-medium text-sm text-gray-900 dark:text-white">
-                    {t('deliveryPerformance.title')}
-                  </span>
-                </div>
-                <div className="space-y-2">
-                  {(['flashExpress', 'airStandard'] as const).map((key) => {
-                    const perf = DELIVERY_PERFORMANCE[key];
-                    const isExpress = key === 'flashExpress';
-                    return (
-                      <div key={key} className="flex items-center justify-between text-xs">
-                        <span className={cn(
-                          "font-medium",
-                          isExpress ? 'text-amber-700 dark:text-amber-400' : 'text-blue-700 dark:text-blue-400'
-                        )}>
-                          {isExpress ? 'Flash Express' : 'Air Standard'}
-                        </span>
-                        <div className="flex items-center gap-3">
-                          <span className="text-gray-500 dark:text-gray-400">
-                            {t('deliveryPerformance.quoted')}: {formatDuration(perf.quoted)}
-                          </span>
-                          <span className="text-green-600 dark:text-green-400 font-medium">
-                            {t('deliveryPerformance.actualAverage')}: {perf.actualAverage} {averageUnit}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
 
               {/* Air Note */}
               <div className="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
@@ -323,34 +234,6 @@ export function PriceTable() {
                 </div>
               </div>
 
-              {/* Sea Delivery Performance */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <ShieldCheck className="w-4 h-4 text-green-600 dark:text-green-400" />
-                  <span className="font-medium text-sm text-gray-900 dark:text-white">
-                    {t('deliveryPerformance.title')}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-medium text-indigo-700 dark:text-indigo-400">
-                    Sea Economy
-                  </span>
-                  <div className="flex items-center gap-3">
-                    <span className="text-gray-500 dark:text-gray-400">
-                      {t('deliveryPerformance.quoted')}: {formatDuration(DELIVERY_PERFORMANCE.seaEconomy.quoted)}
-                    </span>
-                    <span className="text-green-600 dark:text-green-400 font-medium">
-                      {t('deliveryPerformance.actualAverage')}: {DELIVERY_PERFORMANCE.seaEconomy.actualAverage} {averageUnit}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-
               {/* Sea Note */}
               <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                 <div className="flex items-start gap-2">
@@ -364,32 +247,6 @@ export function PriceTable() {
           </motion.div>
         </div>
 
-        {/* Global Delivery Performance Trust Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-8 p-6 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl text-white text-center"
-        >
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Zap className="w-5 h-5" />
-            <h3 className="text-lg font-bold">{t('deliveryPerformance.subtitle')}</h3>
-          </div>
-          <p className="text-white/90 text-sm max-w-xl mx-auto">
-            {t('deliveryPerformance.earlyDeliveryStat')}
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs">
-            {(['flashExpress', 'airStandard', 'seaEconomy'] as const).map((key) => {
-              const perf = DELIVERY_PERFORMANCE[key];
-              return (
-                <div key={key} className="bg-white/20 rounded-lg px-3 py-2">
-                  <span className="font-medium">{perf.onTimeRate}%</span>
-                  <span className="ml-1 opacity-80">{t('deliveryPerformance.onTimeRate')}</span>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

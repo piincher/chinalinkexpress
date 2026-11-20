@@ -21,9 +21,9 @@ import { Analytics } from '@vercel/analytics/next';
 import { i18nConfig, type Locale, getLocaleDirection, getSeoLocale } from '@/i18n/config';
 import { SharedNavbar, SharedFooter } from '@/components/layout';
 import { GoogleAnalytics } from '@/components/seo';
+import { SiteEvents } from '@/components/analytics/SiteEvents';
 import { ThemeProvider, ThemeInitScript } from '@/components/theme';
 import { PWAProvider, InstallPrompt, UpdateNotification, OfflineIndicator } from '@/components/pwa';
-import { PromoModalProvider } from '@/features/promoCampaigns';
 import { SmoothScroll } from '@/components/smooth-scroll';
 import { AnimationProvider } from '@/components/animation';
 import type { Theme, ResolvedTheme } from '@/store/useThemeStore';
@@ -286,18 +286,16 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             <NextIntlClientProvider locale={validLocale} messages={messages}>
               <AnimationProvider>
                 <SmoothScroll>
-                  <PromoModalProvider>
-                    <OfflineIndicator />
-                    <UpdateNotification />
-                    <SharedNavbar locale={validLocale as Locale} />
-                    
-                    <main className="flex-grow">
-                      {children}
-                    </main>
-                    
-                    <SharedFooter locale={validLocale as Locale} />
-                    <InstallPrompt />
-                  </PromoModalProvider>
+                  <OfflineIndicator />
+                  <UpdateNotification />
+                  <SharedNavbar locale={validLocale as Locale} />
+                  
+                  <main className="flex-grow">
+                    {children}
+                  </main>
+                  
+                  <SharedFooter locale={validLocale as Locale} />
+                  <InstallPrompt />
                 </SmoothScroll>
               </AnimationProvider>
             </NextIntlClientProvider>
@@ -308,6 +306,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <SpeedInsights />
         <Analytics />
         <GoogleAnalytics />
+        <SiteEvents locale={validLocale} />
       </div>
     </>
   );

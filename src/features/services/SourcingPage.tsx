@@ -204,7 +204,7 @@ export function SourcingPage({ locale }: Props) {
             {[
               { href: `/${frenchContentLocale}/services/paiement-fournisseur-chine`, label: isEn ? 'Supplier payment' : isZh ? '中国供应商付款' : isAr ? 'الدفع لمورد صيني' : 'Paiement fournisseur chinois' },
               { href: `/${frenchContentLocale}/services/verification-fournisseur-chine`, label: isEn ? 'Supplier verification' : isZh ? '中国供应商核验' : isAr ? 'التحقق من الموردين في الصين' : 'Vérification fournisseur Chine' },
-              { href: `/${locale}/routes/china-to-mali`, label: isEn ? 'China to Mali freight' : isZh ? '中国—马里货运线路' : isAr ? 'خط الشحن من الصين إلى مالي' : 'Fret Chine-Mali' },
+              { href: `/${locale}/cargo-chine-mali`, label: isEn ? 'China to Mali freight' : isZh ? '中国—马里货运线路' : isAr ? 'خط الشحن من الصين إلى مالي' : 'Fret Chine-Mali' },
               { href: `/${frenchContentLocale}/guides/importer-de-chine-au-mali`, label: isEn ? 'Import guide' : isZh ? '从中国进口到马里指南' : isAr ? 'دليل الاستيراد من الصين إلى مالي' : 'Guide importer de Chine au Mali' },
             ].map((link) => (
               <Link

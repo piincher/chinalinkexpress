@@ -15,7 +15,7 @@ import { fetchBackendPricing } from '@/features/pricing/lib/livePricing';
 /** The page text with {SEA_RATE} / {AIR_*} placeholders replaced by the live published rates. */
 async function localized(locale: Locale): Promise<(typeof content)[Locale]> {
   const { sea, air } = await fetchBackendPricing();
-  const fmt = (n: number) => (locale === 'en' ? n.toLocaleString('en-US') : n.toLocaleString('en-US').replaceAll(',', ' '));
+  const fmt = (n: number) => (locale === 'en' ? n.toLocaleString('en-US') : n.toLocaleString('en-US').replaceAll(',', locale === 'ar' ? '\u00A0' : ' '));
   const text = JSON.stringify(content[locale])
     .replaceAll('{SEA_RATE}', fmt(sea.ratePerCbm))
     .replaceAll('{AIR_STD}', fmt(air.standard))
@@ -60,9 +60,8 @@ const content = {
       headers: ['Mode', 'Tarif', 'Délai annoncé'],
       rows: [
         ['Air Standard', '{AIR_STD} F CFA / kg', '14 à 21 jours'],
-        ['Électronique', '{AIR_ELEC} F CFA / kg', '10 à 14 jours'],
-        ['Téléphones', '{AIR_PHONE} F CFA / pièce', '10 à 14 jours'],
-        ['Flash Express', '16 000 F CFA / kg', '2 à 5 jours'],
+        ['Électronique', '{AIR_ELEC} F CFA / kg', '14 à 21 jours'],
+        ['Téléphones', '{AIR_PHONE} F CFA / pièce', '14 à 21 jours'],
         ['Maritime', '{SEA_RATE} F CFA / CBM', '60 à 75 jours'],
       ],
     },
@@ -74,7 +73,7 @@ const content = {
     ],
     faqs: [
       { question: 'Quel transitaire choisir de la Chine vers le Mali ?', answer: 'Choisissez un transitaire qui publie ses tarifs, donne une adresse d’entrepôt précise et fournit une preuve de réception vérifiable. ChinaLink Express publie ses tarifs et chaque photo de réception porte un code de vérification.' },
-      { question: 'Combien coûte un transitaire Chine Mali ?', answer: 'Nos tarifs publics vont de {AIR_STD} F CFA/kg en Air Standard à 16 000 F CFA/kg en Flash Express, et {SEA_RATE} F CFA/CBM en maritime. Le poids ou le volume facturé est confirmé à l’entrepôt.' },
+      { question: 'Combien coûte un transitaire Chine Mali ?', answer: 'Nos tarifs publics vont de {AIR_STD} F CFA/kg en Air Standard à {AIR_ELEC} F CFA/kg pour l’électronique, et {SEA_RATE} F CFA/CBM en maritime. Le poids ou le volume facturé est confirmé à l’entrepôt.' },
       { question: 'Où mon fournisseur doit-il livrer ?', answer: 'À Guangzhou pour l’aérien et à Foshan pour le maritime. Les adresses exactes et votre marque d’expédition sont disponibles dans l’application ChinaLink Express.' },
     ],
     links: [
@@ -116,9 +115,8 @@ const content = {
       headers: ['Mode', 'Rate', 'Stated transit'],
       rows: [
         ['Air Standard', '{AIR_STD} F CFA / kg', '14 to 21 days'],
-        ['Electronics', '{AIR_ELEC} F CFA / kg', '10 to 14 days'],
-        ['Phones', '{AIR_PHONE} F CFA / piece', '10 to 14 days'],
-        ['Flash Express', '16,000 F CFA / kg', '2 to 5 days'],
+        ['Electronics', '{AIR_ELEC} F CFA / kg', '14 to 21 days'],
+        ['Phones', '{AIR_PHONE} F CFA / piece', '14 to 21 days'],
         ['Sea', '{SEA_RATE} F CFA / CBM', '60 to 75 days'],
       ],
     },
@@ -130,7 +128,7 @@ const content = {
     ],
     faqs: [
       { question: 'Which freight forwarder should I choose from China to Mali?', answer: 'Choose one that publishes its rates, gives an exact warehouse address and provides verifiable proof of receipt. ChinaLink Express publishes its rates and every reception photo carries a verification code.' },
-      { question: 'How much does a China to Mali freight forwarder cost?', answer: 'Our published rates run from {AIR_STD} F CFA/kg for Air Standard to 16,000 F CFA/kg for Flash Express, and {SEA_RATE} F CFA/CBM by sea. The billed weight or volume is confirmed at the warehouse.' },
+      { question: 'How much does a China to Mali freight forwarder cost?', answer: 'Our published rates run from {AIR_STD} F CFA/kg for Air Standard to {AIR_ELEC} F CFA/kg for electronics, and {SEA_RATE} F CFA/CBM by sea. The billed weight or volume is confirmed at the warehouse.' },
       { question: 'Where should my supplier deliver?', answer: 'To Guangzhou for air freight and Foshan for sea freight. The exact addresses and your shipping mark are in the ChinaLink Express app.' },
     ],
     links: [
@@ -142,7 +140,7 @@ const content = {
     pageLabels: {
       ctaLabel: 'Get a quote on WhatsApp',
       routeCtaLabel: 'See China to Mali route',
-      routeCtaHref: '/en/routes/china-to-mali',
+      routeCtaHref: '/en/cargo-chine-mali',
       comparisonTitle: 'Published rates',
       processTitle: 'Our process',
       faqTitle: 'Frequently asked questions',
@@ -184,9 +182,8 @@ const content = {
       headers: ['方式', '价格', '公布时效'],
       rows: [
         ['标准空运', '{AIR_STD} 西非法郎 / 公斤', '14 到 21 天'],
-        ['电子产品', '{AIR_ELEC} 西非法郎 / 公斤', '10 到 14 天'],
-        ['手机', '{AIR_PHONE} 西非法郎 / 件', '10 到 14 天'],
-        ['Flash Express', '16 000 西非法郎 / 公斤', '2 到 5 天'],
+        ['电子产品', '{AIR_ELEC} 西非法郎 / 公斤', '14 到 21 天'],
+        ['手机', '{AIR_PHONE} 西非法郎 / 件', '14 到 21 天'],
         ['海运', '{SEA_RATE} 西非法郎 / CBM', '60 到 75 天'],
       ],
     },
@@ -198,7 +195,7 @@ const content = {
     ],
     faqs: [
       { question: '从中国到马里应该选择哪家货代？', answer: '选择公开价格、提供准确仓库地址和可验证收货证明的货代。ChinaLink Express 公布价格，每张收货照片都带验证码。' },
-      { question: '中国马里货代收费多少？', answer: '我们的公开价格从标准空运 {AIR_STD} 西非法郎/公斤到 Flash Express 16 000 西非法郎/公斤，海运为 {SEA_RATE} 西非法郎/CBM。计费重量或体积在仓库确认。' },
+      { question: '中国马里货代收费多少？', answer: '我们的公开价格从标准空运 {AIR_STD} 西非法郎/公斤到电子产品 {AIR_ELEC} 西非法郎/公斤，海运为 {SEA_RATE} 西非法郎/CBM。计费重量或体积在仓库确认。' },
       { question: '我的供应商应该把货送到哪里？', answer: '空运送到广州，海运送到佛山。准确地址和您的唛头可在 ChinaLink Express 应用内查看。' },
     ],
     links: [
@@ -239,11 +236,10 @@ const content = {
     table: {
       headers: ['الطريقة', 'السعر', 'المدة المعلنة'],
       rows: [
-        ['الشحن الجوي القياسي', '10 500 فرنك CFA / كغ', '14 إلى 21 يومًا'],
-        ['الإلكترونيات', '12 000 فرنك CFA / كغ', '10 إلى 14 يومًا'],
-        ['الهواتف', '12 000 فرنك CFA / قطعة', '10 إلى 14 يومًا'],
-        ['Flash Express', '16 000 فرنك CFA / كغ', '2 إلى 5 أيام'],
-        ['الشحن البحري', '300 000 فرنك CFA / CBM', '60 إلى 75 يومًا'],
+        ['الشحن الجوي القياسي', '{AIR_STD} فرنك CFA / كغ', '14 إلى 21 يومًا'],
+        ['الإلكترونيات', '{AIR_ELEC} فرنك CFA / كغ', '14 إلى 21 يومًا'],
+        ['الهواتف', '{AIR_PHONE} فرنك CFA / قطعة', '14 إلى 21 يومًا'],
+        ['الشحن البحري', '{SEA_RATE} فرنك CFA / CBM', '60 إلى 75 يومًا'],
       ],
     },
     process: [
@@ -254,7 +250,7 @@ const content = {
     ],
     faqs: [
       { question: 'أي وكيل شحن أختار من الصين إلى مالي؟', answer: 'اختر وكيلًا ينشر أسعاره ويعطي عنوان مستودع دقيقًا ويقدم إثبات استلام قابلًا للتحقق. تنشر ChinaLink Express أسعارها وتحمل كل صورة استلام رمز تحقق.' },
-      { question: 'كم يكلف وكيل الشحن من الصين إلى مالي؟', answer: 'تتراوح أسعارنا المعلنة من 10 500 فرنك CFA/كغ للشحن الجوي القياسي إلى 16 000 فرنك CFA/كغ لـFlash Express، و300 000 فرنك CFA/CBM للشحن البحري. ويتأكد الوزن أو الحجم المحتسب في المستودع.' },
+      { question: 'كم يكلف وكيل الشحن من الصين إلى مالي؟', answer: 'تتراوح أسعارنا المعلنة من {AIR_STD} فرنك CFA/كغ للشحن الجوي القياسي إلى {AIR_ELEC} فرنك CFA/كغ للإلكترونيات، و{SEA_RATE} فرنك CFA/CBM للشحن البحري. ويتأكد الوزن أو الحجم المحتسب في المستودع.' },
       { question: 'أين يجب أن يسلم مورّدي؟', answer: 'في قوانغتشو للشحن الجوي وفي فوشان للشحن البحري. العناوين الدقيقة وعلامة الشحن الخاصة بك متاحة في تطبيق ChinaLink Express.' },
     ],
     links: [

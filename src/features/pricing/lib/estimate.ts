@@ -13,7 +13,7 @@ import { FALLBACK_PRICING, liveAirRates, type LivePricing } from './livePricing'
 
 export type EstimateMode = Exclude<ItemCategory, 'liquids'> | 'sea';
 
-export const ESTIMATE_MODES: EstimateMode[] = ['standard', 'express', 'electronics', 'phones', 'sea'];
+export const ESTIMATE_MODES: EstimateMode[] = ['standard', 'electronics', 'phones', 'sea'];
 
 export interface EstimateRate {
   rate: number;

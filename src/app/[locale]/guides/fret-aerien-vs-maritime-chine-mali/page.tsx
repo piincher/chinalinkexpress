@@ -41,7 +41,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/air-freight', label: 'Fret aérien Chine-Mali' },
       { href: '/services/sea-freight', label: 'Fret maritime Chine-Mali' },
       { href: '/calculateur', label: 'Calculer le prix du fret' },
-      { href: '/routes/china-to-mali', label: 'Route Chine vers Bamako' },
+      { href: '/cargo-chine-mali', label: 'Route Chine vers Bamako' },
     ],
   },
   en: {
@@ -67,7 +67,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/air-freight', label: 'China to Mali air freight' },
       { href: '/services/sea-freight', label: 'China to Mali sea freight' },
       { href: '/calculateur', label: 'Calculate the freight price' },
-      { href: '/routes/china-to-mali', label: 'China to Bamako route' },
+      { href: '/cargo-chine-mali', label: 'China to Bamako route' },
     ],
   },
   zh: {
@@ -93,7 +93,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/air-freight', label: '中国—马里空运' },
       { href: '/services/sea-freight', label: '中国—马里海运' },
       { href: '/calculateur', label: '计算运费' },
-      { href: '/routes/china-to-mali', label: '中国到巴马科线路' },
+      { href: '/cargo-chine-mali', label: '中国到巴马科线路' },
     ],
   },
   ar: {
@@ -119,7 +119,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/air-freight', label: 'الشحن الجوي من الصين إلى مالي' },
       { href: '/services/sea-freight', label: 'الشحن البحري من الصين إلى مالي' },
       { href: '/calculateur', label: 'احسب سعر الشحن' },
-      { href: '/routes/china-to-mali', label: 'الطريق من الصين إلى باماكو' },
+      { href: '/cargo-chine-mali', label: 'الطريق من الصين إلى باماكو' },
     ],
   },
 };

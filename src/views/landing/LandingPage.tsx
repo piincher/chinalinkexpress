@@ -50,20 +50,16 @@ import {
   WhyUsSection,
   FAQSection,
   ContactSection,
-  LiveFeedSection,
   FinalCtaSection,
 } from './components';
-import { QuizSection } from './components/QuizSection';
 import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsBand } from './components/TestimonialsBand';
 import { LiveStatsSection } from './components/LiveStatsSection';
 import { OccasionsHomeBand } from './components/OccasionsHomeBand';
 import { AppPreviewSection } from './components/AppPreviewSection';
 import { JourneySection } from './components/JourneySection';
-import { ContainerFill } from '@/components/moments/ContainerFill';
 import { ProofSection } from './components/ProofSection';
 import { RouteChip } from './components/RouteChip';
-import { TaglineSection } from './components/TaglineSection';
 import { ShippingMarkExampleSection } from './components/ShippingMarkExampleSection';
 
 interface LandingPageProps {
@@ -103,69 +99,35 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
       <RouteChip />
       <HeroSection />
 
-      {/* ── II. what this company is, in one screen ──────────────────────── */}
+      {/*
+        Order since the 2026-11-20 audit: what we do → how → proof → other people
+        → services → figures → tracking → the close. On a phone the page was 34
+        screens with the reviews 15th of 17 sections. Removed from the home page:
+        the 3D live feed (heaviest script on the page), the container fill, the
+        tagline band and the quiz (still at /quiz; its block hard-coded an old
+        client count). Reviews moved up to sit right after the photo proof.
+      */}
       <SourcingSection />
-
-      {/* ── III. the proof, immediately ──────────────────────────────────── */}
-      <AppPreviewSection />
-      <ShippingMarkExampleSection />
-
-      {/* ── IV. how it actually works — the page's centre of gravity ─────── */}
       <JourneySection />
-
-      {/* ── IV.a the proof no competitor has: a code on every reception photo ── */}
       <ProofSection />
 
-      {/* ── IV.b why groupage costs less ───────────────────────────────────
-          The one thing the journey does not show: the container is shared, so
-          is its cost. Plays once on view; CSS only. */}
-      <ContainerFill />
-
-      {/* ── V. the network, live ─────────────────────────────────────────── */}
-      <LiveFeedSection />
-
-      {/* ── VI. what we take on ──────────────────────────────────────────── */}
-      <ServicesSection />
-
-      {/* ── VI.b what to prepare for ───────────────────────────────────────
-          The shipping calendar the app shows its clients: the dates that
-          matter in Mali with the last day to ship for each. Async, and it
-          renders nothing out of season. It sits after the services because it
-          is the first thing on the page that is about the reader's deadline
-          rather than about us. */}
-      <OccasionsHomeBand />
-
-      {/* ── VII. the figures, once there is something to count ───────────── */}
-      <LiveStatsSection />
-
-      {/* ── VIII. the argument ─────────────────────────────────────────────
-          ComparisonSection is no longer mounted. Its seven-row "ChinaLink vs
-          les autres" table restated the services index directly above it —
-          which now covers the same before / in-China / to-Bamako span in nine
-          rows — and then restated the four points beside it in WhyUs. Three
-          tellings of one argument is what actually reads as unconvincing, and
-          it cost ~1,800px on a phone.
-
-          Nothing is lost: /pourquoi-nous renders the full comparison from the
-          same `comparison` message namespace, and WhyUs now links to it. That
-          page previously had no inbound link from anywhere on the site. The
-          component is still in the tree and re-mounts in one line. */}
-      <WhyUsSection />
-      <AboutSection />
-      <TaglineSection />
-
-      {/* ── IX. other people's words ───────────────────────────────────────
-          TestimonialsBand is async: it fetches the real reviews clients wrote
-          in the app and renders them above the WhatsApp quotes, with the
-          rating from the collection stated beside the heading. */}
+      {/* Real reviews from the app plus the WhatsApp quotes; the rating is stated with its count. */}
       <TestimonialsBand />
       <VideoTestimonialsSection />
 
-      {/* ── X. the close ─────────────────────────────────────────────────── */}
-      <QuizSection locale={locale} />
+      <ServicesSection />
+      <LiveStatsSection />
+      <AppPreviewSection />
+      <ShippingMarkExampleSection />
+      <OccasionsHomeBand />
+
+      <WhyUsSection />
+      <AboutSection />
+
       <FAQSection />
       <FinalCtaSection />
       <ContactSection />
+
     </div>
   );
 }

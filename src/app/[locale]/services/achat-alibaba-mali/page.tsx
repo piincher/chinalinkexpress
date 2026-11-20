@@ -84,7 +84,7 @@ const content = {
       },
       {
         question: 'Combien coûte un agent achat Alibaba ?',
-        answer: 'Nos frais d\'agent achat commencent à 50 USD par commande (recherche + négociation). L\'inspection qualité est à 100 USD. Le paiement fournisseur et le fret sont facturés séparément avec des tarifs transparents.',
+        answer: 'Les frais d’achat et de vérification sont fixés sur devis, selon la commande. Le paiement fournisseur se fait au taux du jour en F CFA, et le fret suit nos tarifs publics. Envoyez-nous votre besoin sur WhatsApp pour un devis.',
       },
       {
         question: 'Comment savoir si un fournisseur Alibaba est fiable ?',
@@ -175,7 +175,7 @@ const content = {
       },
       {
         question: 'How much does an Alibaba buying agent cost?',
-        answer: 'Our buying agent fees start at $50 per order (search + negotiation). Quality inspection is $100. Supplier payment and freight are charged separately with transparent rates.',
+        answer: 'Buying and verification fees are quoted per order. Supplier payment is made at the day’s rate in F CFA, and freight follows our published rates. Send us what you need on WhatsApp for a quote.',
       },
       {
         question: 'How to know if an Alibaba supplier is reliable?',
@@ -266,7 +266,7 @@ const content = {
       },
       {
         question: 'Alibaba 采购代理收费多少？',
-        answer: '我们的采购代理费从每单 50 美元起（搜索 + 议价）。质量检验为 100 美元。供应商付款和运费按透明价格单独收取。',
+        answer: '采购和核验费用按订单报价。供应商付款按当日汇率以西非法郎结算，运费按我们公开的价格计算。请通过 WhatsApp 告诉我们您的需求以获取报价。',
       },
       {
         question: '如何知道 Alibaba 供应商是否可靠？',
@@ -357,7 +357,7 @@ const content = {
       },
       {
         question: 'كم تبلغ تكلفة وكيل الشراء من Alibaba؟',
-        answer: 'تبدأ رسوم وكيل الشراء لدينا من 50 دولارًا لكل طلب (بحث + تفاوض). ويبلغ فحص الجودة 100 دولار. ويُحتسب الدفع للمورد والشحن بشكل منفصل بأسعار شفافة.',
+        answer: 'تُحدَّد رسوم الشراء والتحقق بعرض سعر حسب الطلب. ويتم الدفع للمورد بسعر صرف اليوم بالفرنك الأفريقي، ويخضع الشحن لأسعارنا المنشورة. أرسل إلينا حاجتك عبر واتساب للحصول على عرض سعر.',
       },
       {
         question: 'كيف أعرف أن مورد Alibaba موثوق؟',
@@ -441,7 +441,7 @@ export default async function AchatAlibabaPage({ params }: Props) {
         faqs={[...page.faqs]}
         links={[...page.links]}
         ctaLabel={isEn ? 'Request an Alibaba quote on WhatsApp' : undefined}
-        routeCtaHref={`/${locale}/routes/china-to-mali`}
+        routeCtaHref={`/${locale}/cargo-chine-mali`}
         routeCtaLabel={isEn ? 'See China to Mali freight' : undefined}
         comparisonTitle={isEn ? 'Quick comparison' : undefined}
         processTitle={isEn ? 'Our process' : undefined}

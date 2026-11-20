@@ -26,6 +26,7 @@ import { cn } from '@/lib/utils';
 import { WhatsAppThread } from '@/components/moments/WhatsAppThread';
 import { PageHero } from '@/components/site';
 import { whatsappUrl, WHATSAPP_SALES } from '@/constants/contact';
+import { track, withSiteRef } from '@/lib/analytics';
 
 interface FormData {
   name: string;
@@ -96,7 +97,11 @@ export function ContactPage() {
     const lines = ['Bonjour ChinaLink Express,', '', formData.message.trim(), '', `Nom : ${formData.name.trim()}`];
     if (formData.phone.trim()) lines.push(`Téléphone : ${formData.phone.trim()}`);
     if (formData.email.trim()) lines.push(`E-mail : ${formData.email.trim()}`);
-    window.open(whatsappUrl(WHATSAPP_SALES, lines.join('\n')), '_blank', 'noopener,noreferrer');
+    // window.open is invisible to the site-wide click listener, so tag and count here.
+    const path = window.location.pathname;
+    window.open(withSiteRef(whatsappUrl(WHATSAPP_SALES, lines.join('\n')), path, ''), '_blank', 'noopener,noreferrer');
+    track('quote_form_submitted', { form: 'contact-page', page: path });
+    track('whatsapp_click', { placement: 'contact-page-form', page: path, has_message: true });
     setIsSubmitted(true);
   };
 

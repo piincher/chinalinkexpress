@@ -41,7 +41,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/sourcing', label: 'Agent 1688 pour le Mali' },
       { href: '/services/paiement-fournisseur-chine', label: 'Paiement 1688 depuis le Mali' },
       { href: '/services/verification-fournisseur-chine', label: 'Vérification fournisseur 1688' },
-      { href: '/routes/china-to-mali', label: 'Expédition vers Bamako' },
+      { href: '/cargo-chine-mali', label: 'Expédition vers Bamako' },
     ],
   },
   en: {
@@ -67,7 +67,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/sourcing', label: '1688 agent for Mali' },
       { href: '/services/paiement-fournisseur-chine', label: '1688 payment from Mali' },
       { href: '/services/verification-fournisseur-chine', label: '1688 supplier verification' },
-      { href: '/routes/china-to-mali', label: 'Shipping to Bamako' },
+      { href: '/cargo-chine-mali', label: 'Shipping to Bamako' },
     ],
   },
   zh: {
@@ -93,7 +93,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/sourcing', label: '面向马里的 1688 代理' },
       { href: '/services/paiement-fournisseur-chine', label: '从马里进行 1688 付款' },
       { href: '/services/verification-fournisseur-chine', label: '1688 供应商核验' },
-      { href: '/routes/china-to-mali', label: '发往巴马科' },
+      { href: '/cargo-chine-mali', label: '发往巴马科' },
     ],
   },
   ar: {
@@ -119,7 +119,7 @@ const content: Record<Locale, GuideContent> = {
       { href: '/services/sourcing', label: 'وكيل 1688 لمالي' },
       { href: '/services/paiement-fournisseur-chine', label: 'الدفع في 1688 من مالي' },
       { href: '/services/verification-fournisseur-chine', label: 'التحقق من موردي 1688' },
-      { href: '/routes/china-to-mali', label: 'الشحن إلى باماكو' },
+      { href: '/cargo-chine-mali', label: 'الشحن إلى باماكو' },
     ],
   },
 };

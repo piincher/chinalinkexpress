@@ -20,7 +20,6 @@ import { Button } from '@/components/common/button/Button';
 // ============================================================================
 
 interface PricingData {
-  express: number;
   standard: number;
   electronics: number;
   phones: number;
@@ -50,21 +49,11 @@ interface ShippingMode {
 
 const SHIPPING_MODES: ShippingMode[] = [
   {
-    key: 'express',
-    name: 'Express',
-    icon: Zap,
-    unit: 'kg',
-    deliveryTime: '3-5 jours',
-    description: 'Livraison ultra-rapide pour urgences',
-    highlighted: true,
-    color: 'amber',
-  },
-  {
     key: 'standard',
     name: 'Standard',
     icon: Package,
     unit: 'kg',
-    deliveryTime: '7-10 jours',
+    deliveryTime: '14-21 jours',
     description: 'Le meilleur rapport qualité/prix',
     color: 'blue',
   },
@@ -73,7 +62,7 @@ const SHIPPING_MODES: ShippingMode[] = [
     name: 'Électronique',
     icon: Laptop,
     unit: 'kg',
-    deliveryTime: '7-12 jours',
+    deliveryTime: '14-21 jours',
     description: 'Spécial produits électroniques',
     color: 'emerald',
   },
@@ -82,7 +71,7 @@ const SHIPPING_MODES: ShippingMode[] = [
     name: 'Téléphones',
     icon: Smartphone,
     unit: 'piece',
-    deliveryTime: '5-8 jours',
+    deliveryTime: '14-21 jours',
     description: 'Smartphones et accessoires',
     color: 'purple',
   },
@@ -91,7 +80,7 @@ const SHIPPING_MODES: ShippingMode[] = [
     name: 'Fret Maritime',
     icon: Ship,
     unit: 'CBM',
-    deliveryTime: '45-60 jours',
+    deliveryTime: '60-75 jours',
     description: 'Pour les gros volumes',
     color: 'cyan',
   },

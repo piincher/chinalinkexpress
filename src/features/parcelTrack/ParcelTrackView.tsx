@@ -5,7 +5,8 @@
  * Nothing about the visitor is stored; the digits never go in the URL.
  */
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { track } from '@/lib/analytics';
 import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell, PageHero, Cta } from '@/components/site';
 import { trackParcel, type ParcelTrackOutcome } from '@/lib/parcelTrackApi';
@@ -36,6 +37,12 @@ export function ParcelTrackView() {
   const [state, setState] = useState<ViewState>({ status: 'idle' });
   const inFlight = useRef<AbortController | null>(null);
 
+  // /suivi?code=G-2609-0069 (links in messages, receipts) fills the code; the phone digits stay required.
+  useEffect(() => {
+    const fromLink = new URLSearchParams(window.location.search).get('code');
+    if (fromLink) setCode(fromLink.trim().slice(0, 40));
+  }, []);
+
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     inFlight.current?.abort();
@@ -43,7 +50,10 @@ export function ParcelTrackView() {
     inFlight.current = controller;
     setState({ status: 'checking' });
     const outcome = await trackParcel(code, last4, controller.signal);
-    if (!controller.signal.aborted) setState(outcome);
+    if (!controller.signal.aborted) {
+      setState(outcome);
+      track('track_lookup', { result: outcome.status });
+    }
   };
 
   const checking = state.status === 'checking';

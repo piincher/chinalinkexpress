@@ -42,7 +42,7 @@ const content: Record<Locale, GuideContent> = {
     links: [
       { href: '/services/sourcing', label: 'Agent sourcing Chine pour le Mali' },
       { href: '/services/paiement-fournisseur-chine', label: 'Paiement fournisseur chinois' },
-      { href: '/routes/china-to-mali', label: 'Fret Chine-Mali' },
+      { href: '/cargo-chine-mali', label: 'Fret Chine-Mali' },
       { href: '/calculateur', label: 'Calculateur fret Chine-Mali' },
     ],
   },
@@ -70,7 +70,7 @@ const content: Record<Locale, GuideContent> = {
     links: [
       { href: '/services/sourcing', label: 'China sourcing agent for Mali' },
       { href: '/services/paiement-fournisseur-chine', label: 'Chinese supplier payment' },
-      { href: '/routes/china-to-mali', label: 'China to Mali freight' },
+      { href: '/cargo-chine-mali', label: 'China to Mali freight' },
       { href: '/calculateur', label: 'China to Mali freight calculator' },
     ],
   },
@@ -98,7 +98,7 @@ const content: Record<Locale, GuideContent> = {
     links: [
       { href: '/services/sourcing', label: '面向马里的中国采购代理' },
       { href: '/services/paiement-fournisseur-chine', label: '中国供应商付款' },
-      { href: '/routes/china-to-mali', label: '中国—马里货运' },
+      { href: '/cargo-chine-mali', label: '中国—马里货运' },
       { href: '/calculateur', label: '中国—马里运费计算器' },
     ],
   },
@@ -126,7 +126,7 @@ const content: Record<Locale, GuideContent> = {
     links: [
       { href: '/services/sourcing', label: 'وكيل توريد في الصين لمالي' },
       { href: '/services/paiement-fournisseur-chine', label: 'الدفع لمورد صيني' },
-      { href: '/routes/china-to-mali', label: 'الشحن من الصين إلى مالي' },
+      { href: '/cargo-chine-mali', label: 'الشحن من الصين إلى مالي' },
       { href: '/calculateur', label: 'حاسبة الشحن من الصين إلى مالي' },
     ],
   },

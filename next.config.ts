@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
+import { MOVED_PAGES } from './src/config/movedPages';
 
 const nextConfig: NextConfig = {
   // ============================================================================
@@ -65,6 +66,12 @@ const nextConfig: NextConfig = {
         destination: '/:locale',
         permanent: true,
       },
+      // Duplicate pages merged into the stronger page (src/config/movedPages.ts).
+      ...Object.entries(MOVED_PAGES).map(([from, to]) => ({
+        source: `/:locale(fr|en|zh|ar)/${from}{/}?`,
+        destination: `/:locale/${to}`,
+        permanent: true,
+      })),
       // Force lowercase URLs
       {
         source: '/:path*',

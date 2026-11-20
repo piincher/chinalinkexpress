@@ -81,7 +81,7 @@ const content = {
     faqs: [
       {
         question: 'Quel est le prix d\'un conteneur de carreaux Chine-Mali ?',
-        answer: 'Un conteneur FCL 20ft de carreaux (500-800 m²) coûte entre 3500 et 5000 USD fret inclus jusqu\'à Bamako. Les carreaux eux-mêmes coûtent 3-8 USD/m² selon la qualité et le format. Un conteneur 40ft HC (1500-2000 m²) est plus économique au m².',
+        answer: 'En groupage, le maritime est facturé au CBM selon nos tarifs publics (page Tarifs), avec un minimum de 0,1 CBM. Pour un conteneur complet, le prix dépend du volume, du poids et de la date de départ : demandez un devis sur WhatsApp.',
       },
       {
         question: 'Les carreaux chinois résistent-ils au climat africain ?',
@@ -173,7 +173,7 @@ const content = {
     faqs: [
       {
         question: 'What is the price of a tile container China-Mali?',
-        answer: 'A 20ft FCL tile container (500-800 m²) costs between $3500 and $5000 freight included to Bamako. The tiles themselves cost $3-8/m² depending on quality and format. A 40ft HC container (1500-2000 m²) is more economical per m².',
+        answer: 'In groupage, sea freight is billed per CBM at our published rates (Pricing page), with a 0.1 CBM minimum. For a full container, the price depends on volume, weight and departure date: ask for a quote on WhatsApp.',
       },
       {
         question: 'Do Chinese tiles resist the African climate?',
@@ -265,7 +265,7 @@ const content = {
     faqs: [
       {
         question: '中国到马里的瓷砖集装箱价格是多少？',
-        answer: '一个 20 尺 FCL 瓷砖集装箱（500-800 平方米）含运费到巴马科的费用在 3500 到 5000 美元之间。瓷砖本身根据质量和规格每平方米 3-8 美元。40 尺高柜（1500-2000 平方米）每平方米更经济。',
+        answer: '拼箱海运按 CBM 计费，采用我们公开的价格（见价格页面），最低 0.1 CBM。整柜价格取决于体积、重量和发船日期：请通过 WhatsApp 询价。',
       },
       {
         question: '中国瓷砖能适应非洲气候吗？',
@@ -357,7 +357,7 @@ const content = {
     faqs: [
       {
         question: 'ما سعر حاوية بلاط من الصين إلى مالي؟',
-        answer: 'تتراوح كلفة حاوية FCL مقاس 20 قدمًا من البلاط (500-800 م²) بين 3500 و5000 دولار شاملة الشحن حتى باماكو. ويبلغ سعر البلاط نفسه 3-8 دولارات/م² حسب الجودة والمقاس. والحاوية العالية 40 قدمًا (1500-2000 م²) أوفر للمتر المربع.',
+        answer: 'في الشحن المجمّع، يُحتسب الشحن البحري بالـCBM وفق أسعارنا المنشورة (صفحة الأسعار)، بحد أدنى 0.1 CBM. أما الحاوية الكاملة فيتوقف سعرها على الحجم والوزن وتاريخ الشحن: اطلب عرض سعر عبر واتساب.',
       },
       {
         question: 'هل يتحمل البلاط الصيني مناخ أفريقيا؟',

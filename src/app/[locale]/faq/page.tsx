@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { setRequestLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/config';
 import { PAGE_SEO } from '@/config/seo';
-import { generateFAQPageSchema, generatePageMetadata } from '@/config/seo-advanced';
+import { generateFAQPageSchema, generatePageMetadata, withoutBrand } from '@/config/seo-advanced';
 import { StructuredData } from '@/components/seo';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { PageHero } from '@/components/site';
@@ -43,7 +43,7 @@ const faqsFr = [
   },
   {
     question: 'Combien coûte un conteneur de la Chine vers le Mali ?',
-    answer: 'Un conteneur 20ft coûte entre 2 000 et 3 500 USD, et un 40ft entre 3 500 et 5 500 USD selon la saison, le port de départ et les frais de destination. Contactez-nous pour un devis précis.',
+    answer: 'En groupage, le maritime est facturé au CBM selon nos tarifs publics (page Tarifs), avec un minimum de 0,1 CBM. Pour un conteneur complet, le prix dépend du volume, du poids et de la date de départ : demandez un devis sur WhatsApp.',
   },
   {
     question: 'Comment acheter sur Alibaba depuis le Mali ?',
@@ -122,7 +122,7 @@ const faqsZh = [
   },
   {
     question: '从中国到马里的集装箱多少钱？',
-    answer: '20 尺集装箱费用在 2 000 到 3 500 美元之间，40 尺在 3 500 到 5 500 美元之间，取决于季节、始发港和目的地费用。请联系我们获取准确报价。',
+    answer: '拼箱海运按 CBM 计费，采用我们公开的价格（见价格页面），最低 0.1 CBM。整柜价格取决于体积、重量和发船日期：请通过 WhatsApp 询价。',
   },
   {
     question: '如何从马里在 Alibaba 购买？',
@@ -201,7 +201,7 @@ const faqsAr = [
   },
   {
     question: 'كم تكلف حاوية من الصين إلى مالي؟',
-    answer: 'تتراوح كلفة الحاوية 20 قدمًا بين 2 000 و3 500 دولار، و40 قدمًا بين 3 500 و5 500 دولار حسب الموسم وميناء المغادرة ورسوم الوجهة. تواصل معنا للحصول على عرض سعر دقيق.',
+    answer: 'في الشحن المجمّع، يُحتسب الشحن البحري بالـCBM وفق أسعارنا المنشورة (صفحة الأسعار)، بحد أدنى 0.1 CBM. أما الحاوية الكاملة فيتوقف سعرها على الحجم والوزن وتاريخ الشحن: اطلب عرض سعر عبر واتساب.',
   },
   {
     question: 'كيف أشتري من Alibaba من مالي؟',
@@ -280,7 +280,7 @@ const faqsEn = [
   },
   {
     question: 'How much does a container from China to Mali cost?',
-    answer: 'A 20ft container often ranges from 2,000 to 3,500 USD, and a 40ft from 3,500 to 5,500 USD depending on season, departure port and destination charges. Contact us for a precise quote.',
+    answer: 'In groupage, sea freight is billed per CBM at our published rates (Pricing page), with a 0.1 CBM minimum. For a full container, the price depends on volume, weight and departure date: ask for a quote on WhatsApp.',
   },
   {
     question: 'How do I buy on Alibaba from Mali or West Africa?',
@@ -337,7 +337,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seo = PAGE_SEO.faq[locale as Locale];
 
   return generatePageMetadata({
-    title: seo.title,
+    title: withoutBrand(seo.title),
     description: seo.description,
     keywords: seo.keywords,
     path: '/faq',

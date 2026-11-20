@@ -23,19 +23,12 @@ interface ShippingRoute {
   methods: ('air' | 'sea')[];
 }
 
-interface ServiceOffer {
-  name: string;
-  description: string;
-  price?: { min: number; max: number; unit: string };
-}
-
 // ============================================================================
 // Business Information - EXPANDED with China Office
 // ============================================================================
 
 export const BUSINESS_INFO = {
   name: 'ChinaLink Express',
-  alternateName: 'CLE Logistics',
   url: 'https://www.chinalinkexpress.com',
   logo: 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/logo.png',
   founded: '2019',
@@ -59,7 +52,6 @@ export const BUSINESS_INFO = {
     streetAddress: 'Kalaban Coura, près du lycée Birgo',
     addressLocality: 'Bamako',
     addressRegion: 'Bamako District',
-    postalCode: 'BPE',
     addressCountry: 'ML',
   },
   
@@ -125,12 +117,8 @@ export const BUSINESS_INFO = {
     { days: ['Sunday'], opens: '10:00', closes: '15:00' },
   ],
   
-  social: [
-    'https://facebook.com/chinalinkexpress',
-    'https://instagram.com/chinalinkexpress',
-    'https://linkedin.com/company/chinalinkexpress',
-    'https://twitter.com/chinalinkexpress',
-  ],
+  // Real profile URLs only; the four guessed ones were removed (audit 2026-11-20). Add them when confirmed.
+  social: [] as string[],
 } as const;
 
 // ============================================================================
@@ -140,53 +128,6 @@ export const BUSINESS_INFO = {
 // Destinations served (owner, 2026-11-15): Mali and Uganda, for importers across West and East Africa.
 export const SERVED_COUNTRIES = ['Mali', 'Uganda'].map((name) => ({ '@type': 'Country', name }));
 
-
-// ============================================================================
-// Service Offers - EXPANDED with new services
-// ============================================================================
-
-export const SERVICE_OFFERS: Record<string, ServiceOffer> = {
-  airFreight: {
-    name: 'Air Freight China to Africa',
-    description: 'Express air freight delivery from China to Bamako, Mali and across West Africa in 14-21 business days via trusted partner carriers',
-    price: { min: 8, max: 15, unit: 'USD per kg' },
-  },
-  seaFreightFCL: {
-    name: 'Sea Freight FCL to Africa',
-    description: 'Full container load shipping from Foshan/Guangzhou port to Dakar/Lagos/Abidjan port, then land transit across West Africa in 60-75 days through partner network',
-    price: { min: 2000, max: 4500, unit: 'USD per 20ft container' },
-  },
-  seaFreightLCL: {
-    name: 'Sea Freight LCL to Africa',
-    description: 'Less than container load consolidation shipping from China to West Africa via trusted partners',
-    price: { min: 80, max: 150, unit: 'USD per CBM' },
-  },
-  sourcing: {
-    name: 'China Sourcing & Procurement Service',
-    description: 'Professional sourcing agent services from Alibaba, 1688, and Chinese factories with quality inspection and shipping to Africa',
-    price: { min: 50, max: 500, unit: 'USD per order' },
-  },
-  supplierPayment: {
-    name: 'Supplier Payment Service China',
-    description: 'Secure payment processing for Chinese suppliers via Alibaba, WeChat Pay, Alipay, and bank transfer. Protect your payments with our escrow service.',
-    price: { min: 25, max: 200, unit: 'USD per transaction' },
-  },
-  supplierVerification: {
-    name: 'Chinese Supplier Verification Service',
-    description: 'On-site factory audits, business license verification, and quality checks of Chinese suppliers before you pay. Avoid scams on Alibaba and 1688.',
-    price: { min: 100, max: 500, unit: 'USD per supplier' },
-  },
-  alibabaAgent: {
-    name: 'Alibaba Buying Agent for Africa',
-    description: 'We buy from Alibaba on your behalf, negotiate prices, inspect quality, and ship to Mali, Senegal, Ivory Coast, and all of West Africa.',
-    price: { min: 50, max: 300, unit: 'USD per order' },
-  },
-  consolidation: {
-    name: 'Package Consolidation China',
-    description: 'Combine multiple supplier orders into one shipment. Save up to 60% on shipping costs from China to Africa with our consolidation warehouse in Yiwu.',
-    price: { min: 5, max: 50, unit: 'USD per package' },
-  },
-};
 
 // ============================================================================
 // Advanced Structured Data Generators
@@ -201,7 +142,6 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     '@id': `${BUSINESS_INFO.url}/#organization`,
     name: BUSINESS_INFO.name,
-    alternateName: BUSINESS_INFO.alternateName,
     url: BUSINESS_INFO.url,
     logo: {
       '@type': 'ImageObject',
@@ -211,7 +151,7 @@ export function generateOrganizationSchema() {
       caption: `${BUSINESS_INFO.name} Logo`,
     },
     image: BUSINESS_INFO.logo,
-    sameAs: BUSINESS_INFO.social,
+    ...(BUSINESS_INFO.social.length ? { sameAs: BUSINESS_INFO.social } : {}),
     foundingDate: BUSINESS_INFO.founded,
     /*
      * `numberOfEmployees: 50–200` was declared here with nothing behind it. A
@@ -297,9 +237,9 @@ export function generateLocalBusinessSchema() {
       opens: h.opens,
       closes: h.closes,
     })),
-    priceRange: '$$$',
-    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer', 'Mobile Money', 'Alipay', 'WeChat Pay', 'PayPal'],
-    currenciesAccepted: ['USD', 'EUR', 'CNY', 'XOF', 'XAF'],
+    // What the site itself says clients use: cash, Orange Money / Wave, bank transfer; billed in F CFA.
+    paymentAccepted: ['Cash', 'Mobile Money', 'Bank Transfer'],
+    currenciesAccepted: ['XOF'],
     // Bamako and Kampala are the only destinations served.
     areaServed: [
       { '@type': 'Country', name: 'Mali' },
@@ -338,196 +278,38 @@ export function generateServiceSchema(
     air: {
       name: isEn ? 'Air Freight China to Africa' : isZh ? '中国—非洲空运' : isAr ? 'الشحن الجوي من الصين إلى أفريقيا' : 'Fret Aérien Chine-Afrique',
       description: isEn 
-        ? 'Fast and reliable air freight from China to Bamako, Mali, Dakar, Senegal, Abidjan, Ivory Coast and all West Africa. Delivery in 14-21 days with real-time tracking via our partner network.'
-        : isZh ? '从中国到巴马科（马里）、达喀尔（塞内加尔）、阿比让（科特迪瓦）及整个西非的快速可靠空运。14-21 天交付，实时跟踪。' : isAr ? 'شحن جوي سريع وموثوق من الصين إلى باماكو (مالي) وداكار (السنغال) وأبيدجان (ساحل العاج) وغرب أفريقيا كلها. تسليم خلال 14-21 يومًا مع متابعة فورية.' : 'Fret aérien rapide et fiable de la Chine vers Bamako (Mali), Dakar (Sénégal), Abidjan (Côte d\'Ivoire) et toute l\'Afrique de l\'Ouest. Livraison en 14-21 jours avec suivi en temps réel.',
+        ? 'Air freight from China to Bamako (Mali) and Kampala (Uganda), for importers across West and East Africa. Announced transit to Bamako: 14 to 21 days.'
+        : isZh ? '从中国空运到巴马科（马里）和坎帕拉（乌干达），服务西非和东非进口商。到巴马科的公布时效：14 到 21 天。' : isAr ? 'شحن جوي من الصين إلى باماكو (مالي) وكمبالا (أوغندا)، للمستوردين في غرب أفريقيا وشرقها. المدة المعلنة إلى باماكو: من 14 إلى 21 يومًا.' : 'Fret aérien de la Chine vers Bamako (Mali) et Kampala (Ouganda), pour les importateurs d’Afrique de l’Ouest et de l’Est. Délai annoncé vers Bamako : 14 à 21 jours.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
       areaServed: SERVED_COUNTRIES,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Air Freight Services' : isZh ? '空运服务' : isAr ? 'خدمات الشحن الجوي' : 'Services de Fret Aérien',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Standard Air Freight' : isZh ? '标准空运' : isAr ? 'الشحن الجوي القياسي' : 'Fret Aérien Standard',
-              description: isEn ? '5-10kg packages, 21 days delivery to Bamako' : isZh ? '5-10 公斤包裹，21 天到巴马科' : isAr ? 'طرود 5-10 كغ، تسليم خلال 21 يومًا في باماكو' : 'Colis 5-10kg, livraison 21 jours à Bamako',
-            },
-            price: '12.00',
-            priceCurrency: 'USD',
-            priceUnit: 'kilogram',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Express Air Freight' : isZh ? '快速空运' : isAr ? 'الشحن الجوي السريع' : 'Fret Aérien Express',
-              description: isEn ? '10kg+ packages, 14 days delivery to Bamako' : isZh ? '10 公斤以上包裹，14 天到巴马科' : isAr ? 'طرود 10 كغ فأكثر، تسليم خلال 14 يومًا في باماكو' : 'Colis 10kg+, livraison 14 jours à Bamako',
-            },
-            price: '10.00',
-            priceCurrency: 'USD',
-            priceUnit: 'kilogram',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Bulk Air Cargo' : isZh ? '散货空运' : isAr ? 'الشحن الجوي السائب' : 'Cargo Aérien en Vrac',
-              description: isEn ? '100kg+ commercial shipments, 14-18 days' : isZh ? '100 公斤以上商业货物，14-18 天' : isAr ? 'شحنات تجارية 100 كغ فأكثر، 14-18 يومًا' : 'Expéditions commerciales 100kg+, 14-18 jours',
-            },
-            price: '8.00',
-            priceCurrency: 'USD',
-            priceUnit: 'kilogram',
-          },
-        ],
-      },
     },
     sea: {
       name: isEn ? 'Sea Freight China to Africa' : isZh ? '中国—非洲海运' : isAr ? 'الشحن البحري من الصين إلى أفريقيا' : 'Fret Maritime Chine-Afrique',
       description: isEn
-        ? 'Economical sea freight from Foshan/Guangzhou port to Dakar, Lagos, Abidjan ports, then land transit to Bamako and across West Africa. FCL and LCL options. Delivery in 60-75 days through trusted partners.'
-        : isZh ? '经济的海运，从佛山/广州港到达喀尔、拉各斯、阿比让，再陆路转运到巴马科和整个西非。可选 FCL 和 LCL。60-75 天交付。' : isAr ? 'شحن بحري اقتصادي من ميناء فوشان/قوانغتشو إلى داكار ولاغوس وأبيدجان، ثم عبور بري إلى باماكو وغرب أفريقيا كلها. خيارات FCL وLCL. تسليم خلال 60-75 يومًا.' : 'Fret maritime économique du port de Foshan/Guangzhou vers Dakar, Lagos, Abidjan, puis transit terrestre vers Bamako et toute l\'Afrique de l\'Ouest. Options FCL et LCL. Livraison en 60-75 jours.',
+        ? 'Sea freight from Foshan to the port of Dakar, then by road to Bamako. Groupage billed per CBM, or a full container. Announced transit: 60 to 75 days. Uganda: contact us.'
+        : isZh ? '从佛山海运到达喀尔港，再陆运到巴马科。拼箱按 CBM 计费，或整柜。公布时效：60 到 75 天。乌干达：请咨询我们。' : isAr ? 'شحن بحري من فوشان إلى ميناء داكار، ثم برًا إلى باماكو. شحن مجمّع بالـCBM أو حاوية كاملة. المدة المعلنة: من 60 إلى 75 يومًا. أوغندا: تواصل معنا.' : 'Fret maritime de Foshan jusqu’au port de Dakar, puis par la route jusqu’à Bamako. Groupage facturé au CBM, ou conteneur complet. Délai annoncé : 60 à 75 jours. Ouganda : nous consulter.',
       provider: generateOrganizationSchema(),
       serviceType: 'FreightForwardingService',
       areaServed: SERVED_COUNTRIES,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Sea Freight Services' : isZh ? '海运服务' : isAr ? 'خدمات الشحن البحري' : 'Services de Fret Maritime',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'FCL 20ft Container' : isZh ? '20 尺 FCL 集装箱' : isAr ? 'حاوية FCL مقاس 20 قدمًا' : 'Conteneur FCL 20ft',
-              description: isEn ? 'Full container load, 20-foot container to West Africa' : isZh ? '20 尺整箱到西非' : isAr ? 'حاوية كاملة 20 قدمًا إلى غرب أفريقيا' : 'Conteneur complet 20 pieds vers l\'Afrique de l\'Ouest',
-            },
-            price: '3200.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'FCL 40ft Container' : isZh ? '40 尺 FCL 集装箱' : isAr ? 'حاوية FCL مقاس 40 قدمًا' : 'Conteneur FCL 40ft',
-              description: isEn ? 'Full container load, 40-foot container to West Africa' : isZh ? '40 尺整箱到西非' : isAr ? 'حاوية كاملة 40 قدمًا إلى غرب أفريقيا' : 'Conteneur complet 40 pieds vers l\'Afrique de l\'Ouest',
-            },
-            price: '4500.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'LCL Consolidation' : isZh ? 'LCL 拼箱' : isAr ? 'الشحن المجمّع LCL' : 'Groupage LCL',
-              description: isEn ? 'Less than container load, per CBM pricing to Bamako' : isZh ? '拼箱，按 CBM 计费到巴马科' : isAr ? 'شحن مجمّع بسعر الـCBM إلى باماكو' : 'Groupage, tarification au CBM vers Bamako',
-            },
-            price: '120.00',
-            priceCurrency: 'USD',
-            priceUnit: 'cubic meter',
-          },
-        ],
-      },
     },
     sourcing: {
       name: isEn ? 'China Sourcing Agent & Procurement' : isZh ? '中国采购与供应代理' : isAr ? 'وكيل التوريد والتموين في الصين' : 'Agent Sourcing & Approvisionnement Chine',
       description: isEn
-        ? 'Professional China sourcing agent for African importers. We buy from Alibaba, 1688, and Chinese factories. Supplier verification, quality inspection, payment processing, and shipping to Mali, Senegal, Ivory Coast, and all West Africa.'
-        : isZh ? '为非洲进口商服务的中国专业采购代理。在 Alibaba、1688 和中国工厂采购。供应商核验、质量检验、付款并发往马里、塞内加尔、科特迪瓦及整个西非。' : isAr ? 'وكيل توريد محترف في الصين للمستوردين الأفارقة. الشراء من Alibaba و1688 والمصانع الصينية. التحقق من الموردين وفحص الجودة والدفع والشحن إلى مالي والسنغال وساحل العاج وغرب أفريقيا كلها.' : 'Agent sourcing professionnel en Chine pour importateurs africains. Achat sur Alibaba, 1688 et usines chinoises. Vérification fournisseurs, inspection qualité, paiement et expédition vers le Mali, Sénégal, Côte d\'Ivoire et toute l\'Afrique de l\'Ouest.',
+        ? 'Professional China sourcing agent for African importers. We buy from Alibaba, 1688, and Chinese factories. Supplier verification, quality inspection, payment processing, and shipping to Mali and Uganda (West and East Africa).'
+        : isZh ? '为非洲进口商服务的中国专业采购代理。在 Alibaba、1688 和中国工厂采购。供应商核验、质量检验、付款并发往马里和乌干达（西非和东非）。' : isAr ? 'وكيل توريد محترف في الصين للمستوردين الأفارقة. الشراء من Alibaba و1688 والمصانع الصينية. التحقق من الموردين وفحص الجودة والدفع والشحن إلى مالي وأوغندا (غرب أفريقيا وشرقها).' : 'Agent sourcing professionnel en Chine pour importateurs africains. Achat sur Alibaba, 1688 et usines chinoises. Vérification fournisseurs, inspection qualité, paiement et expédition vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est).',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: { '@type': 'Place', name: 'Worldwide' },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Sourcing Services' : isZh ? '采购服务' : isAr ? 'خدمات التوريد' : 'Services de Sourcing',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Alibaba Buying Agent' : isZh ? 'Alibaba 采购代理' : isAr ? 'وكيل الشراء من Alibaba' : 'Agent Achat Alibaba',
-              description: isEn ? 'Buy from Alibaba on your behalf, negotiate prices' : isZh ? '代您在 Alibaba 购买并议价' : isAr ? 'الشراء من Alibaba باسمك والتفاوض على الأسعار' : 'Acheter sur Alibaba en votre nom, négocier les prix',
-            },
-            price: '50.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? '1688 Sourcing Agent' : isZh ? '1688 采购代理' : isAr ? 'وكيل التوريد من 1688' : 'Agent Sourcing 1688',
-              description: isEn ? 'Source directly from Chinese factories on 1688.com' : isZh ? '直接在 1688.com 从中国工厂采购' : isAr ? 'التوريد مباشرة من المصانع الصينية عبر 1688.com' : 'Sourcer directement des usines chinoises sur 1688.com',
-            },
-            price: '80.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Quality Inspection' : isZh ? '质量检验' : isAr ? 'فحص الجودة' : 'Inspection Qualité',
-              description: isEn ? 'Pre-shipment product inspection at factory' : isZh ? '在工厂进行发货前产品检验' : isAr ? 'فحص المنتج قبل الشحن في المصنع' : 'Inspection produit avant expédition à l\'usine',
-            },
-            price: '100.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Factory Visit & Audit' : isZh ? '工厂考察与审核' : isAr ? 'زيارة المصنع وتدقيقه' : 'Visite Usine & Audit',
-              description: isEn ? 'On-site factory verification in China' : isZh ? '在中国实地核验工厂' : isAr ? 'التحقق الميداني من المصانع في الصين' : 'Vérification sur place des usines en Chine',
-            },
-            price: '300.00',
-            priceCurrency: 'USD',
-          },
-        ],
-      },
     },
     payment: {
       name: isEn ? 'Chinese Supplier Payment Service' : isZh ? '中国供应商付款服务' : isAr ? 'خدمة الدفع للموردين الصينيين' : 'Service Paiement Fournisseur Chinois',
       description: isEn
-        ? 'Secure payment service for Chinese suppliers. We pay your Alibaba, 1688, and factory suppliers safely via Alipay, WeChat Pay, bank transfer, or escrow. Protect your money from scams and payment failures.'
-        : isZh ? '面向中国供应商的安全付款服务。我们通过支付宝、微信支付、银行转账或托管，安全地向您的 Alibaba、1688 和工厂供应商付款。保护您的资金免受诈骗。' : isAr ? 'خدمة دفع آمنة للموردين الصينيين. ندفع لمورديك في Alibaba و1688 والمصانع بأمان عبر Alipay أو WeChat Pay أو التحويل المصرفي أو الضمان (Escrow). احمِ أموالك من الاحتيال.' : 'Service de paiement sécurisé pour fournisseurs chinois. Nous payons vos fournisseurs Alibaba, 1688 et usines en toute sécurité via Alipay, WeChat Pay, virement bancaire ou escrow. Protégez votre argent des arnaques.',
+        ? 'Secure payment service for Chinese suppliers. We pay your Alibaba, 1688, and factory suppliers safely via Alipay, WeChat Pay, or bank transfer. Protect your money from scams and payment failures.'
+        : isZh ? '面向中国供应商的安全付款服务。我们通过支付宝、微信支付或银行转账，安全地向您的 Alibaba、1688 和工厂供应商付款。保护您的资金免受诈骗。' : isAr ? 'خدمة دفع آمنة للموردين الصينيين. ندفع لمورديك في Alibaba و1688 والمصانع بأمان عبر Alipay أو WeChat Pay أو التحويل المصرفي. احمِ أموالك من الاحتيال.' : 'Service de paiement sécurisé pour fournisseurs chinois. Nous payons vos fournisseurs Alibaba, 1688 et usines en toute sécurité via Alipay, WeChat Pay ou virement bancaire. Protégez votre argent des arnaques.',
       provider: generateOrganizationSchema(),
       serviceType: 'FinancialService',
       areaServed: SERVED_COUNTRIES,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Payment Services' : isZh ? '付款服务' : isAr ? 'خدمات الدفع' : 'Services de Paiement',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Alibaba Order Payment' : isZh ? 'Alibaba 订单付款' : isAr ? 'دفع طلب Alibaba' : 'Paiement Commande Alibaba',
-              description: isEn ? 'Pay your Alibaba suppliers safely' : isZh ? '安全地向 Alibaba 供应商付款' : isAr ? 'ادفع لموردي Alibaba بأمان' : 'Payez vos fournisseurs Alibaba en toute sécurité',
-            },
-            price: '25.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? '1688 Order Payment' : isZh ? '1688 订单付款' : isAr ? 'دفع طلب 1688' : 'Paiement Commande 1688',
-              description: isEn ? 'Pay your 1688 suppliers (Chinese-only platform)' : isZh ? '向 1688（中国平台）供应商付款' : isAr ? 'ادفع لموردي 1688 (منصة صينية)' : 'Payez vos fournisseurs 1688 (plateforme chinoise)',
-            },
-            price: '35.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Factory Direct Payment' : isZh ? '工厂直接付款' : isAr ? 'الدفع مباشرة للمصنع' : 'Paiement Direct Usine',
-              description: isEn ? 'Bank transfer or mobile payment to Chinese factories' : isZh ? '通过银行转账或移动支付向中国工厂付款' : isAr ? 'تحويل مصرفي أو دفع عبر الهاتف إلى المصانع الصينية' : 'Virement bancaire ou paiement mobile vers usines chinoises',
-            },
-            price: '50.00',
-            priceCurrency: 'USD',
-          },
-        ],
-      },
     },
     verification: {
       name: isEn ? 'Chinese Supplier Verification Service' : isZh ? '中国供应商核验服务' : isAr ? 'خدمة التحقق من الموردين الصينيين' : 'Service Vérification Fournisseur Chinois',
@@ -537,77 +319,15 @@ export function generateServiceSchema(
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: SERVED_COUNTRIES,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Verification Services' : isZh ? '核验服务' : isAr ? 'خدمات التحقق' : 'Services de Vérification',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Business License Check' : isZh ? '营业执照核验' : isAr ? 'التحقق من الرخصة التجارية' : 'Vérification Licence Commerciale',
-              description: isEn ? 'Verify supplier registration and legal status in China' : isZh ? '核验供应商在中国的注册和法律状态' : isAr ? 'التحقق من تسجيل المورد ووضعه القانوني في الصين' : 'Vérifier l\'enregistrement et le statut légal du fournisseur en Chine',
-            },
-            price: '50.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Factory Site Inspection' : isZh ? '工厂现场检查' : isAr ? 'فحص ميداني للمصنع' : 'Inspection sur Site Usine',
-              description: isEn ? 'Physical visit to supplier factory in China' : isZh ? '实地考察供应商在中国的工厂' : isAr ? 'زيارة فعلية لمصنع المورد في الصين' : 'Visite physique de l\'usine du fournisseur en Chine',
-            },
-            price: '200.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Full Due Diligence Report' : isZh ? '完整尽职调查报告' : isAr ? 'تقرير كامل للعناية الواجبة' : 'Rapport Due Diligence Complet',
-              description: isEn ? 'Complete supplier background check and risk assessment' : isZh ? '对供应商进行全面核验和风险评估' : isAr ? 'تحقق شامل من المورد وتقييم للمخاطر' : 'Vérification complète et évaluation des risques du fournisseur',
-            },
-            price: '500.00',
-            priceCurrency: 'USD',
-          },
-        ],
-      },
     },
     alibaba: {
       name: isEn ? 'Alibaba Agent for Africa' : isZh ? '面向非洲的 Alibaba 代理' : isAr ? 'وكيل Alibaba لأفريقيا' : 'Agent Alibaba pour l\'Afrique',
       description: isEn
-        ? 'Your trusted Alibaba buying agent in China. We help African businesses buy safely from Alibaba: find suppliers, negotiate prices, verify quality, handle payment, and ship to Mali, Senegal, Ivory Coast, and all West Africa.'
+        ? 'Your trusted Alibaba buying agent in China. We help African businesses buy safely from Alibaba: find suppliers, negotiate prices, verify quality, handle payment, and ship to Mali and Uganda (West and East Africa).'
         : isZh ? '您在中国值得信赖的 Alibaba 采购代理。我们帮助非洲企业在 Alibaba 安全购买：寻找供应商、议价、质量核验、付款和运输。' : isAr ? 'وكيلك الموثوق للشراء من Alibaba في الصين. نساعد الشركات الأفريقية على الشراء بأمان من Alibaba: البحث عن موردين والتفاوض والتحقق من الجودة والدفع والشحن.' : 'Votre agent achat Alibaba de confiance en Chine. Nous aidons les entreprises africaines à acheter en toute sécurité sur Alibaba : recherche de fournisseurs, négociation, vérification qualité, paiement et expédition.',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: SERVED_COUNTRIES,
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: isEn ? 'Alibaba Agent Services' : isZh ? 'Alibaba 代理服务' : isAr ? 'خدمات وكيل Alibaba' : 'Services Agent Alibaba',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Alibaba Product Sourcing' : isZh ? 'Alibaba 产品采购' : isAr ? 'توريد منتجات Alibaba' : 'Sourcing Produits Alibaba',
-              description: isEn ? 'Find the best suppliers for your products on Alibaba' : isZh ? '在 Alibaba 为您的产品寻找最佳供应商' : isAr ? 'العثور على أفضل الموردين لمنتجاتك في Alibaba' : 'Trouver les meilleurs fournisseurs pour vos produits sur Alibaba',
-            },
-            price: '50.00',
-            priceCurrency: 'USD',
-          },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: isEn ? 'Alibaba Order Management' : isZh ? 'Alibaba 订单管理' : isAr ? 'إدارة طلبات Alibaba' : 'Gestion Commandes Alibaba',
-              description: isEn ? 'We place and manage your Alibaba orders for you' : isZh ? '我们为您下单并管理 Alibaba 订单' : isAr ? 'نضع طلبات Alibaba ونديرها نيابة عنك' : 'Nous passons et gérons vos commandes Alibaba pour vous',
-            },
-            price: '30.00',
-            priceCurrency: 'USD',
-          },
-        ],
-      },
     },
   };
   
@@ -936,6 +656,14 @@ export function generateHreflangAlternates(
 }
 
 /**
+ * Page titles without a trailing brand: the [locale] layout template appends
+ * " | ChinaLink Express" itself, so titles that ended in "| ChinaLink" showed the
+ * brand twice (17 French pages, audit 2026-11-20).
+ */
+export const withoutBrand = (title: string) =>
+  title.replace(/(\s*[|·—-]\s*ChinaLink(\s+Express)?)+\s*$/i, '').trim();
+
+/**
  * Generate comprehensive metadata for any page
  */
 export function generatePageMetadata({
@@ -964,7 +692,8 @@ export function generatePageMetadata({
   const fullUrl = `${baseUrl}${canonicalUrl}`;
   const seoLocale = getSeoLocale(locale);
   const defaultOgImage = 'https://chinalinkexpress.nyc3.cdn.digitaloceanspaces.com/airshipping/warehouse%20view.jpg';
-  
+  title = withoutBrand(title);
+
   return {
     title,
     description,
@@ -1036,7 +765,7 @@ export const PAGE_PATHS = {
     alibabaBuying: '/services/achat-alibaba-mali',
   },
   routes: {
-    chinaToMali: '/routes/china-to-mali',
+    chinaToMali: '/cargo-chine-mali',
     chinaToAfrica: '/routes/china-to-africa',
   },
   tools: {
@@ -1069,7 +798,7 @@ export const SEO_KEYWORDS = {
     // Core shipping keywords
     primary: 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, cargo shipping, express delivery, freight forwarder, shipping agent',
     // Long-tail search queries
-    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent, how to import from China to Mali, cheapest shipping from China to Africa, reliable freight forwarder China Africa, shipping agent for small business, door to door shipping China Africa, shipping from China to Senegal, shipping from China to Ivory Coast, shipping from China to Nigeria, shipping from China to Ghana',
+    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent, how to import from China to Mali, cheapest shipping from China to Africa, reliable freight forwarder China Africa, shipping agent for small business, door to door shipping China Africa',
     // Service-specific keywords
     service: 'air cargo China Africa, express shipping China Mali, FCL shipping, LCL consolidation, customs clearance Africa, container shipping China Africa, bulk cargo shipping, parcel delivery China Africa, package consolidation China, warehousing China Africa, door to door delivery, multimodal transport',
     // Location keywords
@@ -1077,7 +806,7 @@ export const SEO_KEYWORDS = {
     // Sourcing keywords - NEW
     sourcing: 'China sourcing agent, Alibaba sourcing agent, 1688 sourcing agent, buy from Alibaba, buy from 1688, Chinese supplier finder, factory direct sourcing, wholesale from China, import from China, China procurement services, product sourcing China, private label manufacturing China, OEM factory China',
     // Payment keywords - NEW
-    payment: 'pay Chinese supplier, supplier payment China, Alibaba payment service, 1688 payment, pay factory in China, secure payment China, escrow payment China, WeChat Pay supplier, Alipay supplier payment, bank transfer China supplier, payment agent China, avoid Alibaba scam, safe payment China',
+    payment: 'pay Chinese supplier, supplier payment China, Alibaba payment service, 1688 payment, pay factory in China, secure payment China, WeChat Pay supplier, Alipay supplier payment, bank transfer China supplier, payment agent China, avoid Alibaba scam, safe payment China',
     // Verification keywords - NEW
     verification: 'verify Chinese supplier, Alibaba supplier verification, check Chinese factory, avoid China scam, legitimate Chinese supplier, factory audit China, supplier background check, Alibaba scam check, 1688 supplier check, China supplier blacklist, reliable supplier China, trusted manufacturer China',
     // Industry keywords - NEW
@@ -1089,7 +818,7 @@ export const SEO_KEYWORDS = {
     // Core shipping keywords
     primary: 'fret maritime, fret aérien, expédition Chine, transitaire, logistique internationale, transport maritime, transport aérien, cargo Chine, société logistique, agent maritime',
     // Long-tail search queries
-    longTail: 'expédition colis Chine Afrique, fret Chine Mali, agent sourcing Chine, paiement fournisseur chinois, comment importer de Chine au Mali, fret pas cher Chine Afrique, transitaire fiable Chine Afrique, agent maritime petit commerce, livraison porte à porte Chine Afrique, expédition Chine Sénégal, expédition Chine Côte d\'Ivoire, expédition Chine Nigeria, expédition Chine Ghana',
+    longTail: 'expédition colis Chine Afrique, fret Chine Mali, agent sourcing Chine, paiement fournisseur chinois, comment importer de Chine au Mali, fret pas cher Chine Afrique, transitaire fiable Chine Afrique, agent maritime petit commerce, livraison porte à porte Chine Afrique',
     // Service-specific keywords
     service: 'cargo aérien Chine Afrique, express Chine Mali, conteneur complet FCL, groupage maritime LCL, dédouanement Mali, transport conteneur Chine Afrique, fret vrac, livraison colis Chine Afrique, consolidation colis Chine, entrepôt Chine Afrique, livraison porte à porte, transport multimodal',
     // Location keywords
@@ -1097,7 +826,7 @@ export const SEO_KEYWORDS = {
     // Sourcing keywords - NEW
     sourcing: 'agent sourcing Chine, agent sourcing Alibaba, agent sourcing 1688, acheter sur Alibaba, acheter sur 1688, trouver fournisseur chinois, sourcing direct usine, grossiste Chine, importer de Chine, service approvisionnement Chine, sourcing produits Chine, fabrication marque privée Chine, usine OEM Chine',
     // Payment keywords - NEW
-    payment: 'payer fournisseur chinois, paiement fournisseur Chine, service paiement Alibaba, paiement 1688, payer usine Chine, paiement sécurisé Chine, escrow Chine, WeChat Pay fournisseur, Alipay paiement fournisseur, virement bancaire fournisseur Chine, agent paiement Chine, éviter arnaque Alibaba, paiement sécurisé Chine',
+    payment: 'payer fournisseur chinois, paiement fournisseur Chine, service paiement Alibaba, paiement 1688, payer usine Chine, paiement sécurisé Chine, WeChat Pay fournisseur, Alipay paiement fournisseur, virement bancaire fournisseur Chine, agent paiement Chine, éviter arnaque Alibaba, paiement sécurisé Chine',
     // Verification keywords - NEW
     verification: 'vérifier fournisseur chinois, vérification fournisseur Alibaba, vérifier usine chinoise, éviter arnaque Chine, fournisseur chinois sérieux, audit usine Chine, vérification antécédents fournisseur, vérification arnaque Alibaba, vérification fournisseur 1688, liste noire fournisseurs Chine, fournisseur fiable Chine, fabricant de confiance Chine',
     // Industry keywords - NEW
@@ -1109,7 +838,7 @@ export const SEO_KEYWORDS = {
     // Core shipping keywords
     primary: '海运, 空运, 中国发货, 货代, 国际物流, 海上运输, 航空运输, 中国货运, 物流公司, 海运代理',
     // Long-tail search queries
-    longTail: '中国非洲寄包裹, 中国马里货运, 中国采购代理, 中国供应商付款, 如何从中国进口到马里, 中国非洲便宜货运, 可靠的中国非洲货代, 小生意海运代理, 中国非洲门到门, 中国塞内加尔发货, 中国科特迪瓦发货, 中国尼日利亚发货, 中国加纳发货',
+    longTail: '中国非洲寄包裹, 中国马里货运, 中国采购代理, 中国供应商付款, 如何从中国进口到马里, 中国非洲便宜货运, 可靠的中国非洲货代, 小生意海运代理, 中国非洲门到门',
     // Service-specific keywords
     service: '中国非洲空运, 中国马里快递, FCL 整箱, LCL 拼箱, 马里清关, 中国非洲集装箱运输, 散货运输, 中国非洲包裹交付, 中国包裹集运, 中国非洲仓库, 门到门交付, 多式联运',
     // Location keywords
@@ -1117,7 +846,7 @@ export const SEO_KEYWORDS = {
     // Sourcing keywords - NEW
     sourcing: '中国采购代理, Alibaba 采购代理, 1688 采购代理, 在 Alibaba 购买, 在 1688 购买, 寻找中国供应商, 工厂直采, 中国批发商, 从中国进口, 中国采购服务, 中国产品采购, 中国贴牌生产, 中国 OEM 工厂',
     // Payment keywords - NEW
-    payment: '向中国供应商付款, 中国供应商付款, Alibaba 付款服务, 1688 付款, 向中国工厂付款, 中国安全付款, 中国托管, 微信支付供应商, 支付宝供应商付款, 中国供应商银行转账, 中国付款代理, 避免 Alibaba 诈骗, 中国安全付款',
+    payment: '向中国供应商付款, 中国供应商付款, Alibaba 付款服务, 1688 付款, 向中国工厂付款, 中国安全付款, 微信支付供应商, 支付宝供应商付款, 中国供应商银行转账, 中国付款代理, 避免 Alibaba 诈骗, 中国安全付款',
     // Verification keywords - NEW
     verification: '核验中国供应商, Alibaba 供应商核验, 核验中国工厂, 避免中国诈骗, 可靠的中国供应商, 中国工厂审核, 供应商背景调查, Alibaba 诈骗核查, 1688 供应商核验, 中国供应商黑名单, 中国可靠供应商, 中国值得信赖的制造商',
     // Industry keywords - NEW
@@ -1129,7 +858,7 @@ export const SEO_KEYWORDS = {
     // Core shipping keywords
     primary: 'الشحن البحري، الشحن الجوي، الشحن من الصين، وكيل شحن، الخدمات اللوجستية الدولية، النقل البحري، النقل الجوي، الشحن من الصين، شركة لوجستية، وكيل بحري',
     // Long-tail search queries
-    longTail: 'إرسال طرد من الصين إلى أفريقيا، الشحن من الصين إلى مالي، وكيل توريد في الصين، الدفع لمورد صيني، كيفية الاستيراد من الصين إلى مالي، شحن رخيص من الصين إلى أفريقيا، وكيل شحن موثوق من الصين إلى أفريقيا، وكيل بحري للتجارة الصغيرة، التسليم من الباب إلى الباب، الشحن من الصين إلى السنغال، الشحن من الصين إلى ساحل العاج، الشحن من الصين إلى نيجيريا، الشحن من الصين إلى غانا',
+    longTail: 'إرسال طرد من الصين إلى أفريقيا، الشحن من الصين إلى مالي، وكيل توريد في الصين، الدفع لمورد صيني، كيفية الاستيراد من الصين إلى مالي، شحن رخيص من الصين إلى أفريقيا، وكيل شحن موثوق من الصين إلى أفريقيا، وكيل بحري للتجارة الصغيرة، التسليم من الباب إلى الباب',
     // Service-specific keywords
     service: 'الشحن الجوي من الصين إلى أفريقيا، الشحن السريع من الصين إلى مالي، حاوية كاملة FCL، شحن مجمّع LCL، التخليص الجمركي في مالي، النقل بالحاويات من الصين إلى أفريقيا، الشحن السائب، تسليم الطرود من الصين إلى أفريقيا، تجميع الطرود في الصين، مستودع بين الصين وأفريقيا، التسليم من الباب إلى الباب، النقل متعدد الوسائط',
     // Location keywords

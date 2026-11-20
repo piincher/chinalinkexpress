@@ -8,7 +8,6 @@
  */
 
 import { NextResponse } from 'next/server';
-import { AIR_RATES } from '@/features/pricing/constants';
 import { fetchBackendPricing } from '@/features/pricing/lib/livePricing';
 
 export const dynamic = 'force-dynamic';
@@ -18,7 +17,6 @@ export async function GET(): Promise<NextResponse> {
   return NextResponse.json(
     {
       pricing,
-      express: AIR_RATES.find((r) => r.category === 'express')!.rateFCFA,
       standard: pricing.air.standard,
       electronics: pricing.air.electronics,
       phones: pricing.air.phones,

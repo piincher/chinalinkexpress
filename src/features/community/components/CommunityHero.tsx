@@ -11,7 +11,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { Users, Activity, Globe, ShieldCheck, MessageCircle, Star, Phone } from 'lucide-react';
-import { communityStats } from '../data';
 
 const WHATSAPP_LINK =
   'https://wa.me/22376696177?text=Bonjour%2C%20je%20souhaite%20rejoindre%20la%20communaut%C3%A9%20ChinaLink';
@@ -85,11 +84,7 @@ export function CommunityHero() {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            {isEn ? 'Join' : isZh ? '加入' : isAr ? 'انضم إلى' : 'Rejoignez'}{' '}
-            <span className="text-[var(--color-signal)]">
-              2,400+
-            </span>{' '}
-            {isEn ? 'African importers' : isZh ? '非洲进口商' : isAr ? 'مستوردًا أفريقيًا' : 'importateurs africains'}
+            {isEn ? 'Join the ChinaLink importers group' : isZh ? '加入 ChinaLink 进口商群' : isAr ? 'انضم إلى مجموعة مستوردي ChinaLink' : 'Rejoignez le groupe des importateurs ChinaLink'}
           </h1>
 
           {/* Subheadline */}
@@ -147,45 +142,6 @@ export function CommunityHero() {
             ))}
           </motion.div>
 
-          {/* Social Proof Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-          >
-            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                <Users className="w-5 h-5 text-amber-400" />
-              </div>
-              <div className="text-white font-bold text-xl">{communityStats.memberCount.toLocaleString()}+</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Members' : isZh ? '成员' : isAr ? 'الأعضاء' : 'Membres'}</div>
-            </div>
-
-            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-                <Activity className="w-5 h-5 text-emerald-400" />
-              </div>
-              <div className="text-white font-bold text-xl">{communityStats.activeTopics}</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Active topics' : isZh ? '活跃话题' : isAr ? 'مواضيع نشطة' : 'Sujets actifs'}</div>
-            </div>
-
-            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                <MessageCircle className="w-5 h-5 text-blue-400" />
-              </div>
-              <div className="text-white font-bold text-xl">{communityStats.dailyMessages}+</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Messages/day' : isZh ? '消息/天' : isAr ? 'رسالة/يوم' : 'Messages/jour'}</div>
-            </div>
-
-            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-violet-500/20 flex items-center justify-center">
-                <Globe className="w-5 h-5 text-violet-400" />
-              </div>
-              <div className="text-white font-bold text-xl">{communityStats.countriesRepresented}</div>
-              <div className="text-xs text-slate-400">{isEn ? 'Countries represented' : isZh ? '覆盖国家' : isAr ? 'دولة ممثلة' : 'Pays représentés'}</div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

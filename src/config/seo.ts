@@ -111,7 +111,7 @@ export const PAGE_SEO = {
     chinaToMali: {
     en: {
         title: 'Shipping from China to Mali | Freight Forwarder Bamako',
-        description: 'Reliable freight forwarding from China to Mali. Air & sea shipping to Bamako. Door-to-door delivery. 7+ years experience. Get your free quote now!',
+        description: 'Reliable freight forwarding from China to Mali. Air & sea shipping to Bamako. Get your free quote on WhatsApp.',
         keywords: 'shipping China Mali, freight forwarder Bamako, China to Bamako shipping, Mali logistics, import China Mali',
       },
     fr: {
@@ -173,22 +173,22 @@ export const PAGE_SEO = {
   contact: {
     en: {
       title: 'Contact ChinaLink Express | Freight Quote China to Mali',
-      description: 'Contact ChinaLink Express for a free freight quote. WhatsApp: +86 188 5172 5957. Air & sea shipping from China to Bamako, Mali through trusted partners. 24/7 support!',
+      description: 'Contact ChinaLink Express for a free freight quote. WhatsApp: +86 188 5172 5957. Air & sea shipping from China to Bamako, Mali.',
       keywords: 'contact freight forwarder, shipping quote China Mali, ChinaLink Express contact, freight inquiry',
     },
     fr: {
       title: 'Contact ChinaLink Express | Devis Fret Chine-Mali',
-      description: 'Contactez ChinaLink Express pour un devis fret gratuit. WhatsApp: +86 188 5172 5957. Fret aérien et maritime de la Chine vers Bamako, Mali via des partenaires de confiance. Support 24/7!',
+      description: 'Contactez ChinaLink Express pour un devis fret gratuit. WhatsApp: +86 188 5172 5957. Fret aérien et maritime de la Chine vers Bamako, Mali.',
       keywords: 'contact transitaire, devis fret Chine Mali, ChinaLink Express contact, demande expédition',
     },
     zh: {
       title: '联系 ChinaLink Express | 货运报价 | 中国—马里发货',
-      description: '联系 ChinaLink Express 获取免费运费报价。WhatsApp：+86 188 5172 5957。通过值得信赖的伙伴从中国空运和海运到马里巴马科。全天候支持！',
+      description: '联系 ChinaLink Express 获取免费运费报价。WhatsApp：+86 188 5172 5957。从中国空运和海运到马里巴马科。',
       keywords: '联系货代, 中国马里运费报价, ChinaLink Express 联系方式, 发货咨询, 物流报价',
     },
     ar: {
       title: 'تواصل مع ChinaLink Express | عرض سعر الشحن | الشحن من الصين إلى مالي',
-      description: 'تواصل مع ChinaLink Express للحصول على عرض سعر مجاني للشحن. WhatsApp: ‎+86 188 5172 5957. شحن جوي وبحري من الصين إلى باماكو في مالي عبر شركاء موثوقين. دعم على مدار الساعة!',
+      description: 'تواصل مع ChinaLink Express للحصول على عرض سعر مجاني للشحن. WhatsApp: ‎+86 188 5172 5957. شحن جوي وبحري من الصين إلى باماكو في مالي.',
       keywords: 'التواصل مع وكيل شحن، عرض سعر الشحن من الصين إلى مالي، الاتصال بـChinaLink Express، طلب شحن، عرض سعر لوجستي',
     },
   },

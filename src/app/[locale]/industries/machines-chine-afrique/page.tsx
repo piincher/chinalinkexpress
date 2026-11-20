@@ -89,7 +89,7 @@ const content = {
       },
       {
         question: 'Quel est le coût d\'un conteneur machines Chine-Mali ?',
-        answer: 'Un conteneur FCL 20ft machines coûte entre 3500 et 5000 USD selon le poids et le port de départ. Le tarif inclut le chargement, calage, maritime jusqu\'à Dakar, et transit terrestre vers Bamako. Demandez un devis précis.',
+        answer: 'En groupage, le maritime est facturé au CBM selon nos tarifs publics (page Tarifs), avec un minimum de 0,1 CBM. Pour un conteneur complet, le prix dépend du volume, du poids et de la date de départ : demandez un devis sur WhatsApp.',
       },
       {
         question: 'Proposez-vous une garantie sur les machines importées ?',
@@ -181,7 +181,7 @@ const content = {
       },
       {
         question: 'What is the cost of a machinery container China-Mali?',
-        answer: 'A 20ft FCL machinery container costs between $3500 and $5000 depending on weight and departure port. The rate includes loading, blocking, sea freight to Dakar, and land transit to Bamako. Request a precise quote.',
+        answer: 'In groupage, sea freight is billed per CBM at our published rates (Pricing page), with a 0.1 CBM minimum. For a full container, the price depends on volume, weight and departure date: ask for a quote on WhatsApp.',
       },
       {
         question: 'Do you offer warranty on imported machinery?',
@@ -273,7 +273,7 @@ const content = {
       },
       {
         question: '中国到马里的机器集装箱费用是多少？',
-        answer: '一个 20 尺 FCL 机器集装箱费用在 3500 到 5000 美元之间，取决于重量和始发港。价格包含装货、加固、海运到达喀尔以及陆运到巴马科。请索取准确报价。',
+        answer: '拼箱海运按 CBM 计费，采用我们公开的价格（见价格页面），最低 0.1 CBM。整柜价格取决于体积、重量和发船日期：请通过 WhatsApp 询价。',
       },
       {
         question: '进口机器提供保修吗？',
@@ -365,7 +365,7 @@ const content = {
       },
       {
         question: 'ما كلفة حاوية آلات من الصين إلى مالي؟',
-        answer: 'تتراوح كلفة حاوية FCL مقاس 20 قدمًا للآلات بين 3500 و5000 دولار حسب الوزن وميناء المغادرة. ويشمل السعر التحميل والتثبيت والنقل البحري حتى داكار والعبور البري إلى باماكو. اطلب عرض سعر دقيقًا.',
+        answer: 'في الشحن المجمّع، يُحتسب الشحن البحري بالـCBM وفق أسعارنا المنشورة (صفحة الأسعار)، بحد أدنى 0.1 CBM. أما الحاوية الكاملة فيتوقف سعرها على الحجم والوزن وتاريخ الشحن: اطلب عرض سعر عبر واتساب.',
       },
       {
         question: 'هل تقدمون ضمانًا على الآلات المستوردة؟',

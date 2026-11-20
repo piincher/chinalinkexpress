@@ -97,7 +97,7 @@ const content = {
       },
       {
         question: 'Quel délai pour recevoir des pièces auto de Chine ?',
-        answer: 'Le fret aérien livre en 14-21 jours. Le conteneur maritime prend 60-75 jours. Pour les pièces en stock à Guangzhou, l\'expédition aérienne peut être réalisée en 10-14 jours.',
+        answer: 'Le fret aérien livre en 14-21 jours. Le conteneur maritime prend 60-75 jours.',
       },
     ],
     links: [
@@ -189,7 +189,7 @@ const content = {
       },
       {
         question: 'What is the timeline to receive auto parts from China?',
-        answer: 'Air freight delivers in 14-21 days. Sea container takes 60-75 days. For parts in stock in Guangzhou, air shipping can be done in 10-14 days.',
+        answer: 'Air freight delivers in 14-21 days. Sea container takes 60-75 days.',
       },
     ],
     links: [
@@ -281,7 +281,7 @@ const content = {
       },
       {
         question: '从中国收到汽车配件需要多久？',
-        answer: '空运 14-21 天送达。海运集装箱需要 60-75 天。广州现货配件可在 10-14 天内空运发货。',
+        answer: '空运 14-21 天送达。海运集装箱需要 60-75 天。',
       },
     ],
     links: [
@@ -373,7 +373,7 @@ const content = {
       },
       {
         question: 'كم يستغرق استلام قطع السيارات من الصين؟',
-        answer: 'يصل الشحن الجوي خلال 14-21 يومًا. وتستغرق الحاوية البحرية 60-75 يومًا. وللقطع المتوفرة في قوانغتشو يمكن الشحن جوًا خلال 10-14 يومًا.',
+        answer: 'يصل الشحن الجوي خلال 14-21 يومًا. وتستغرق الحاوية البحرية 60-75 يومًا.',
       },
     ],
     links: [

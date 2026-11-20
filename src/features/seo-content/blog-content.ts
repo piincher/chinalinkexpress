@@ -19,7 +19,7 @@ type ArticleLocaleContent = Record<Locale, SeoArticleContent>;
 const commonLinks = {
   fr: [
     { href: '/fr/cargo-chine-mali', label: 'Cargo Chine-Mali' },
-    { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
+    { href: '/fr/cargo-chine-mali', label: 'Fret Chine-Mali' },
     { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
     { href: '/fr/calculateur', label: 'Calculateur de fret' },
   ],
@@ -31,13 +31,13 @@ const commonLinks = {
   ],
   zh: [
     { href: '/zh/cargo-chine-mali', label: '中国—马里货运' },
-    { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+    { href: '/zh/cargo-chine-mali', label: '中国—马里货运线路' },
     { href: '/zh/services/sourcing', label: '中国采购代理' },
     { href: '/zh/calculateur', label: '运费计算器' },
   ],
   ar: [
     { href: '/ar/cargo-chine-mali', label: 'الشحن من الصين إلى مالي' },
-    { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+    { href: '/ar/cargo-chine-mali', label: 'خط الشحن من الصين إلى مالي' },
     { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
     { href: '/ar/calculateur', label: 'حاسبة الشحن' },
   ],

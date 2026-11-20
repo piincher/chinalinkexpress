@@ -78,7 +78,7 @@ export function SeoServicePage({
   const labels = {
     ctaLabel: ctaLabel ?? (isEn ? 'Request a quote on WhatsApp' : isZh ? '在 WhatsApp 上询价' : isAr ? 'اطلب عرض سعر عبر WhatsApp' : 'Demander un devis sur WhatsApp'),
     routeCtaLabel: routeCtaLabel ?? (isEn ? 'See China to Africa routes' : isZh ? '查看中国—马里货运' : isAr ? 'عرض الشحن من الصين إلى مالي' : 'Voir le fret Chine-Mali'),
-    routeCtaHref: routeCtaHref ?? (isEn ? '/en/routes/china-to-africa' : isZh ? '/zh/routes/china-to-mali' : isAr ? '/ar/routes/china-to-mali' : '/fr/routes/china-to-mali'),
+    routeCtaHref: routeCtaHref ?? (isEn ? '/en/routes/china-to-africa' : isZh ? '/zh/cargo-chine-mali' : isAr ? '/ar/cargo-chine-mali' : '/fr/cargo-chine-mali'),
     comparisonTitle: comparisonTitle ?? (isEn ? 'Quick comparison' : isZh ? '快速比较' : isAr ? 'مقارنة سريعة' : 'Comparaison rapide'),
     processTitle: processTitle ?? (isEn ? 'Our process' : isZh ? '我们的流程' : isAr ? 'عمليتنا' : 'Notre processus'),
     faqTitle: faqTitle ?? (isEn ? 'Frequently asked questions' : isZh ? '常见问题' : isAr ? 'الأسئلة الشائعة' : 'Questions fréquentes'),

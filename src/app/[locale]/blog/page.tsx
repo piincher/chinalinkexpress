@@ -5,6 +5,7 @@ import { Locale } from '@/i18n/config';
 import { generatePageMetadata } from '@/config/seo-advanced';
 import { getBlogPosts } from '@/features/seo-content/blog-content';
 import { PageHero } from '@/components/site';
+import { currentPath } from '@/config/movedPages';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -49,19 +50,19 @@ export default async function BlogIndexPage({ params }: Props) {
       ]
     : isZh ? [
         { href: '/zh/cargo-chine-mali', label: '中国—马里货运' },
-        { href: '/zh/routes/china-to-mali', label: '中国—马里货运线路' },
+        { href: '/zh/cargo-chine-mali', label: '中国—马里货运线路' },
         { href: '/zh/services/sourcing', label: '中国采购代理' },
         { href: '/zh/services/paiement-fournisseur-chine', label: '供应商付款' },
         { href: '/zh/calculateur', label: '运费计算器' },
       ] : isAr ? [
         { href: '/ar/cargo-chine-mali', label: 'الشحن من الصين إلى مالي' },
-        { href: '/ar/routes/china-to-mali', label: 'خط الشحن من الصين إلى مالي' },
+        { href: '/ar/cargo-chine-mali', label: 'خط الشحن من الصين إلى مالي' },
         { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
         { href: '/ar/services/paiement-fournisseur-chine', label: 'الدفع للموردين' },
         { href: '/ar/calculateur', label: 'حاسبة الشحن' },
       ] : [
         { href: '/fr/cargo-chine-mali', label: 'Cargo Chine-Mali' },
-        { href: '/fr/routes/china-to-mali', label: 'Fret Chine-Mali' },
+        { href: '/fr/cargo-chine-mali', label: 'Fret Chine-Mali' },
         { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
         { href: '/fr/services/paiement-fournisseur-chine', label: 'Paiement fournisseur' },
         { href: '/fr/calculateur', label: 'Calculateur de fret' },
@@ -112,7 +113,7 @@ export default async function BlogIndexPage({ params }: Props) {
                 <span>{post.readTime}</span>
               </div>
               <h2 className="text-xl font-bold leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <Link href={`/${locale}/blog/${post.slug}`} className="focus:outline-none">
+                <Link href={`/${locale}/${currentPath(`blog/${post.slug}`)}`} className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
                   {post.title}
                 </Link>

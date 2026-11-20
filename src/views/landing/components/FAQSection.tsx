@@ -24,12 +24,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Phone, ChevronDown } from 'lucide-react';
+import { MessageCircle, ChevronDown } from 'lucide-react';
 import { Band, Shell } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
 import { Reveal, RevealGroup } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
 import { CONTACT_CONFIG } from '@/config/app';
+import { WHATSAPP_URL } from '@/constants/contact';
 import { PHOTOS } from '@/components/site/assets';
 
 const FAQ_KEYS = ['0', '1', '2', '3', '4', '5'] as const;
@@ -112,8 +113,9 @@ export function FAQSection() {
               {t('helpDescription')}
             </p>
 
-            <a href={`tel:${CONTACT_CONFIG.PHONE.CHINA}`} className="faq-phone">
-              <Phone size={18} aria-hidden style={{ color: 'var(--color-accent-bright)' }} />
+            {/* WhatsApp, as the label says: a tel: link made Malian visitors dial a +86 number. */}
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="faq-phone">
+              <MessageCircle size={18} aria-hidden style={{ color: 'var(--color-accent-bright)' }} />
               <span>
                 <span className="faq-phone-label">{t('supportLabel')}</span>
                 <span className="faq-phone-number">{CONTACT_CONFIG.PHONE.CHINA}</span>
