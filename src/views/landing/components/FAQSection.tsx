@@ -22,18 +22,15 @@
  */
 
 import React from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { MessageCircle, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { Band, Shell } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
-import { Reveal, RevealGroup } from '@/components/motion';
+import { RevealGroup } from '@/components/motion';
 import { SECTION_IDS } from '../constants';
-import { CONTACT_CONFIG } from '@/config/app';
-import { WHATSAPP_URL } from '@/constants/contact';
-import { PHOTOS } from '@/components/site/assets';
 
-const FAQ_KEYS = ['0', '1', '2', '3', '4', '5'] as const;
+// Owner 2026-11-23: four questions on the home page; the rest are on /faq.
+const FAQ_KEYS = ['0', '1', '2', '3'] as const;
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
@@ -54,75 +51,6 @@ export function FAQSection() {
     <Band id={SECTION_IDS.FAQ} tone="paper-2">
       <Shell width="narrow">
         <SectionHead label={t('sectionLabel')} title={t('title')} />
-
-        {/* ── support panel ────────────────────────────────────────────── */}
-        <Reveal
-          className="band-void"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 15rem), 1fr))',
-            gap: 'clamp(1.5rem, 4vw, 2.5rem)',
-            alignItems: 'center',
-            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
-            marginBottom: 'var(--space-2xl)',
-            borderRadius: 'var(--radius-panel)',
-            backgroundColor: 'var(--color-void)',
-            color: 'var(--color-void-ink)',
-          }}
-        >
-          <div
-            style={{
-              position: 'relative',
-              aspectRatio: '4 / 3',
-              minWidth: 0,
-              borderRadius: 'var(--radius-card)',
-              overflow: 'hidden',
-              backgroundColor: 'var(--color-void-2)',
-            }}
-          >
-            <Image
-              src={PHOTOS.support}
-              alt="Équipe support client ChinaLink Express"
-              fill
-              sizes="(max-width: 700px) 100vw, 22vw"
-              style={{ objectFit: 'cover', filter: 'saturate(0.8) contrast(1.03)' }}
-            />
-          </div>
-
-          <div style={{ minWidth: 0 }}>
-            <h3
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-xl)',
-                fontWeight: 'var(--weight-display)',
-                letterSpacing: 'var(--tracking-heading)',
-                color: 'var(--color-void-ink)',
-                margin: '0 0 var(--space-sm)',
-              }}
-            >
-              {t('helpTitle')}
-            </h3>
-            <p
-              style={{
-                fontSize: 'var(--text-base)',
-                lineHeight: 'var(--leading-body)',
-                color: 'var(--color-void-ink-2)',
-                margin: '0 0 var(--space-lg)',
-              }}
-            >
-              {t('helpDescription')}
-            </p>
-
-            {/* WhatsApp, as the label says: a tel: link made Malian visitors dial a +86 number. */}
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="faq-phone">
-              <MessageCircle size={18} aria-hidden style={{ color: 'var(--color-accent-bright)' }} />
-              <span>
-                <span className="faq-phone-label">{t('supportLabel')}</span>
-                <span className="faq-phone-number">{CONTACT_CONFIG.PHONE.CHINA}</span>
-              </span>
-            </a>
-          </div>
-        </Reveal>
 
         {/* ── questions ────────────────────────────────────────────────── */}
         <RevealGroup stagger={0.05} selector=".faq-item">

@@ -101,7 +101,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/fr/services/agent-sourcing-chine', label: 'Agent sourcing Chine' },
+      { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
       { href: '/fr/services/sea-freight', label: 'Fret maritime conteneur' },
       { href: '/fr/services/air-freight', label: 'Fret aérien pièces urgentes' },
       { href: '/fr/calculateur', label: 'Devis conteneur pièces auto' },
@@ -193,7 +193,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/en/services/agent-sourcing-chine', label: 'China sourcing agent' },
+      { href: '/en/services/sourcing', label: 'China sourcing agent' },
       { href: '/en/services/sea-freight', label: 'Sea freight container' },
       { href: '/en/services/air-freight', label: 'Air freight urgent parts' },
       { href: '/en/calculateur', label: 'Auto parts container quote' },
@@ -285,7 +285,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sourcing', label: '中国采购代理' },
       { href: '/zh/services/sea-freight', label: '集装箱海运' },
       { href: '/zh/services/air-freight', label: '紧急配件空运' },
       { href: '/zh/calculateur', label: '汽配集装箱报价' },
@@ -377,7 +377,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
       { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
       { href: '/ar/services/air-freight', label: 'شحن جوي للقطع العاجلة' },
       { href: '/ar/calculateur', label: 'عرض سعر لحاوية قطع سيارات' },

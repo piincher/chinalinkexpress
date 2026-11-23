@@ -1,12 +1,12 @@
 /**
- * Site footer: a statement block, the full link directory (load bearing for SEO
- * on a site with sixty routes), and the wordmark set at full width as the close.
+ * Site footer: a statement block, three short link columns + contact, one small
+ * row of SEO landing pages (each keeps an internal link), and the wordmark.
  */
 
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn, getCurrentYear } from '@/lib/utils';
 import { Cta } from '@/components/site/Cta';
@@ -24,51 +24,50 @@ const SOCIAL_LINKS = [
   { icon: Linkedin, href: 'https://linkedin.com/company/chinalinkexpress', label: 'LinkedIn' },
 ] as const;
 
-const SERVICE_LINKS = [
+// Minimal footer (owner 2026-11-23): three short columns. The SEO landing
+// pages keep one internal link each in the small row under the directory.
+const COLUMNS = [
   {
-    labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo', zh: '中国马里货运', ar: 'الشحن من الصين إلى مالي' },
-    href: '/cargo-chine-mali',
+    heading: 'footer.services',
+    links: [
+      { key: 'services.items.sourcing.title', href: 'services/sourcing' },
+      { key: 'services.items.airFreight.title', href: 'services/air-freight' },
+      { key: 'services.items.seaFreight.title', href: 'services/sea-freight' },
+      { key: 'navigation.pricing', href: 'tarifs' },
+    ],
   },
   {
-    labels: { fr: 'Transitaire Chine Mali', en: 'China to Mali freight forwarder', zh: '中国马里货代', ar: 'وكيل شحن من الصين إلى مالي' },
-    href: '/transitaire-chine-mali',
+    heading: 'footer.company',
+    links: [
+      { key: 'navigation.about', href: 'qui-sommes-nous' },
+      { key: 'navigation.reviews', href: 'avis' },
+      { key: 'navigation.faq', href: 'faq' },
+      { key: 'navigation.contact', href: 'contact' },
+    ],
   },
-  { labelKey: 'services.items.sourcing.title', href: '/services/sourcing' },
   {
-    labels: { fr: 'Agent sourcing Chine', en: 'China sourcing agent', zh: '中国采购代理', ar: 'وكيل التوريد في الصين' },
-    href: '/services/agent-sourcing-chine',
-  },
-  {
-    labels: { fr: 'Achat Alibaba Mali', en: 'Alibaba buying agent', zh: '马里 Alibaba 采购', ar: 'الشراء من Alibaba في مالي' },
-    href: '/services/achat-alibaba-mali',
-  },
-  { labelKey: 'services.items.airFreight.title', href: '/services/air-freight' },
-  { labelKey: 'services.items.seaFreight.title', href: '/services/sea-freight' },
-  { labelKey: 'services.items.payment.title', href: '/services/paiement-fournisseur-chine' },
-  {
-    labelKey: 'services.features.sourcing.supplierVerification',
-    href: '/services/verification-fournisseur-chine',
+    heading: 'navigation.tools',
+    links: [
+      { key: 'navigation.trackParcel', href: 'suivi' },
+      { key: 'navigation.application', href: 'application' },
+      { key: 'navigation.calculator', href: 'calculateur' },
+    ],
   },
 ] as const;
 
-const PAGE_LINKS = [
-  { key: 'navigation.about', href: '#about' },
-  { key: 'navigation.reviews', href: 'avis' },
+const MORE_LINKS = [
+  { labels: { fr: 'Cargo Chine Mali', en: 'China to Mali cargo', zh: '中国马里货运', ar: 'الشحن من الصين إلى مالي' }, href: 'cargo-chine-mali' },
+  { labels: { fr: 'Transitaire Chine Mali', en: 'China to Mali freight forwarder', zh: '中国马里货代', ar: 'وكيل شحن من الصين إلى مالي' }, href: 'transitaire-chine-mali' },
   { key: 'navigation.whyUs', href: 'pourquoi-nous' },
-  { key: 'navigation.community', href: 'communaute' },
   { key: 'navigation.shippingCalendar', href: 'calendrier' },
   { key: 'navigation.blog', href: 'blog' },
-  { key: 'navigation.faq', href: 'faq' },
-  { key: 'navigation.contact', href: '#contact' },
-  { key: 'navigation.privacy', href: 'privacy' },
-  { key: 'navigation.terms', href: 'terms' },
+  { key: 'navigation.community', href: 'communaute' },
+  { key: 'navigation.checkProduct', href: 'verifier-produit' },
 ] as const;
 
-const TOOL_LINKS = [
-  { key: 'navigation.trackParcel', href: 'suivi' },
-  { key: 'navigation.calculator', href: 'calculateur' },
-  { key: 'navigation.checkProduct', href: 'verifier-produit' },
-  { key: 'navigation.verifyPhoto', href: 'verifier' },
+const LEGAL_LINKS = [
+  { key: 'navigation.privacy', href: 'privacy' },
+  { key: 'navigation.terms', href: 'terms' },
 ] as const;
 
 export function SharedFooter({ locale, className }: SharedFooterProps) {
@@ -109,50 +108,18 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
 
         {/* ── directory ──────────────────────────────────────────────────── */}
         <nav className="ft-dir" aria-label={t('footer.links')}>
-          <div>
-            <h2 className="ft-h">{t('footer.services')}</h2>
-            <ul className="ft-list">
-              {SERVICE_LINKS.map((link) => {
-                // `locales` is a readonly tuple of the locales a link is
-                // written for, so it is narrower than Locale. Widen for the
-                // membership test rather than narrowing `locale`.
-                const only = 'locales' in link ? (link.locales as readonly string[]) : null;
-                if (only && !only.includes(locale)) return null;
-                const label =
-                  'labelKey' in link && link.labelKey
-                    ? t(link.labelKey)
-                    : (link as { labels: Record<string, string> }).labels[locale] ?? '';
-                if (!label) return null;
-                return (
-                  <li key={link.href}>
-                    <Link href={`/${locale}${link.href}`}>{label}</Link>
+          {COLUMNS.map((col) => (
+            <div key={col.heading}>
+              <h2 className="ft-h">{t(col.heading)}</h2>
+              <ul className="ft-list">
+                {col.links.map(({ key, href }) => (
+                  <li key={key}>
+                    <Link href={`/${locale}/${href}`}>{t(key)}</Link>
                   </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="ft-h">{t('footer.links')}</h2>
-            <ul className="ft-list">
-              {PAGE_LINKS.map(({ key, href }) => (
-                <li key={key}>
-                  <Link href={`/${locale}/${href}`}>{t(key)}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="ft-h">{t('navigation.tools')}</h2>
-            <ul className="ft-list">
-              {TOOL_LINKS.map(({ key, href }) => (
-                <li key={key}>
-                  <Link href={`/${locale}/${href}`}>{t(key)}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div>
             <h2 className="ft-h">{t('contact.info.title')}</h2>
@@ -173,18 +140,20 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
                 <Mail size={15} aria-hidden />
                 <a href="mailto:contact@chinalinkexpress.com">contact@chinalinkexpress.com</a>
               </li>
-              <li>
-                <Clock size={15} aria-hidden />
-                <span>
-                  <span>{t('contact.info.hoursWeekday')}</span>
-                  <span>{t('contact.info.hoursSaturday')}</span>
-                  <span>{t('contact.info.hoursSunday')}</span>
-                </span>
-              </li>
             </ul>
           </div>
         </nav>
       </div>
+
+      <ul className="ft-more">
+        {MORE_LINKS.map((link) => (
+          <li key={link.href}>
+            <Link href={`/${locale}/${link.href}`}>
+              {'key' in link ? t(link.key) : link.labels[locale]}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
       <div className="ft-giant" aria-hidden>
         CHINALINK
@@ -194,6 +163,12 @@ export function SharedFooter({ locale, className }: SharedFooterProps) {
       <div className="ft-legal">
         <p>
           &copy; {year} ChinaLink Express. {t('footer.copyright')}
+          {LEGAL_LINKS.map(({ key, href }) => (
+            <span key={key}>
+              {' · '}
+              <Link href={`/${locale}/${href}`}>{t(key)}</Link>
+            </span>
+          ))}
         </p>
         {/* Agency credit. Its WhatsApp number was dropped: on every page it could be mistaken for ChinaLink's. */}
         <p>

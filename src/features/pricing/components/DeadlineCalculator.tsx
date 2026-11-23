@@ -17,8 +17,7 @@ import {
   Package,
   Ruler,
   Tag,
-  CalendarClock,
-  MapPin,
+  CalendarClock,
   AlertCircle,
   Zap,
   MessageCircle,
@@ -37,8 +36,7 @@ import {
   formatPriceFCFA,
 } from '../lib/pricingEngine';
 import {
-  DELIVERY_TIERS,
-  DESTINATIONS,
+  DELIVERY_TIERS,
   type ItemCategoryInfo,
 } from '../constants';
 import { usePricing } from '../lib/usePricing';
@@ -319,26 +317,6 @@ export function DeadlineCalculator() {
               <span>90 {daysLabel}</span>
             </div>
           </div>
-        </div>
-
-        {/* Destination */}
-        <div className="space-y-2">
-          <label htmlFor={`${fid}-destination`} className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-            <MapPin className="w-4 h-4 text-red-500" />
-            {t('deadlineCalculator.destination', { defaultValue: 'Destination' })}
-          </label>
-          <select
-            id={`${fid}-destination`}
-            value={deadlineState.destination}
-            onChange={(e) => setDeadlineField('destination', e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {DESTINATIONS.map((dest) => (
-              <option key={dest.code} value={dest.code}>
-                {dest.flag} {t(dest.nameKey, { defaultValue: dest.code })}
-              </option>
-            ))}
-          </select>
         </div>
 
         {/* Error */}

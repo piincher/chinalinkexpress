@@ -10,7 +10,6 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell, Cta } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
-import { LazyVideo } from '@/components/site/LazyVideo';
 
 export function ProofSection() {
   const t = useTranslations('proof');
@@ -22,23 +21,16 @@ export function ProofSection() {
       <Shell>
         <div className="proof">
           <figure className="proof-media">
-            <div className="proof-video">
-              <LazyVideo src="/media/proof-loop.mp4" poster="/media/proof-poster.webp" />
+            {/* Owner 2026-11-23: a REAL intake photo (generator, Foshan) with its real
+                watermark banner; QR, IMG code and labels blurred in the file. */}
+            <div className="proof-video" style={{ position: 'relative', aspectRatio: '1600 / 1061', height: 'auto', borderRadius: 'var(--radius-card)' }}>
+              <Image src="/media/proof/generator.webp" alt={t('photoAlt')} fill sizes="(max-width: 900px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
             </div>
-            <figcaption className="proof-banner">
-              <Image src="/images/chinalink-logo-square.png" alt="" width={48} height={48} style={{ borderRadius: 8, flex: 'none' }} />
-              <div>
-                <b>CHINALINK EXPRESS · G-•••••</b>
-                <span>{t('bannerLine')}</span>
-                <em>{t('code')}</em>
-                <small>{t('scan')}</small>
-              </div>
-            </figcaption>
             <span className="proof-note">{t('note')}</span>
           </figure>
 
           <div>
-            <SectionHead tone="void" label={t('label')} title={t('title')} lede={t('lede')} />
+            <SectionHead tone="void" label={t('label')} title={t('title')} />
             <div className="proof-chain">
               <header>
                 {t('chain')}

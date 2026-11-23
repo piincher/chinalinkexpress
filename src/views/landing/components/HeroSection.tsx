@@ -9,14 +9,19 @@
 
 import React from 'react';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, ShoppingCart, Ship, ShieldCheck, Truck } from 'lucide-react';
 import { Cta, CarrierBar } from '@/components/site';
 import { LazyVideo } from '@/components/site/LazyVideo';
-import { HeroEstimator } from './HeroEstimator';
-import { LaneTicker } from './LaneTicker';
 import { SECTION_IDS, HERO_WHATSAPP_URL } from '../constants';
 import { fetchCompanyStats } from '@/lib/publicStatsApi';
 import { fetchPublicReviews } from '@/lib/publicReviewsApi';
+
+const HERO_STEPS = [
+  { key: 'source', Icon: ShoppingCart },
+  { key: 'ship', Icon: Ship },
+  { key: 'clear', Icon: ShieldCheck },
+  { key: 'deliver', Icon: Truck },
+];
 
 const ONCE_PER_VISIT = `try{if(sessionStorage.getItem('cl-doors')){document.documentElement.dataset.doors='seen'}else{sessionStorage.setItem('cl-doors','1')}}catch(e){}`;
 
@@ -57,15 +62,16 @@ export async function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-grid">
+        {/* Owner decision 2026-11-23: say who we are first; one action (WhatsApp),
+            prices as a quiet link. The estimator lives on /calculateur and /tarifs. */}
+        <div className="hero-grid hero-grid--solo">
           <div className="hero-copy">
+            {/* Owner reference 2026-11-23: very short headline, one button, four steps. */}
             <h1>
-              <span className="hero-kw">{t('hero.keywords')}</span>
-              {/* Keeps the keyword line and the headline apart in the H1 text. */}
-              <span className="sr-only"> — </span>
-              {t('hero.headline')}
+              <span className="sr-only">ChinaLink Express — </span>
+              {t('home.headlineLead')} <span className="hero-accent">{t('home.headlineAccent')}</span>
             </h1>
-            <p>{t('hero.subheadline')}</p>
+            <p className="hero-route">{t('home.routeLine')}</p>
             <div className="hero-actions">
               <Cta
                 href={HERO_WHATSAPP_URL}
@@ -76,26 +82,28 @@ export async function HeroSection() {
                 arrow={false}
                 data-cta="hero-whatsapp"
                 icon={<MessageCircle size={18} aria-hidden />}
+                style={{ '--cta-bg': 'var(--color-sun)', '--cta-bg-hover': 'var(--color-sun-deep)', '--cta-fg': 'var(--color-sun-ink)' } as React.CSSProperties}
               >
-                {t('cta.startShipping')}
+                {t('home.getQuote')}
               </Cta>
               <Cta href="#parcours" variant="outline" tone="void" size="lg" data-cta="hero-journey">
                 {t('cta.seeHowItWorks')}
               </Cta>
             </div>
-            <span className="hero-badge">{t('hero.badge')}</span>
+            <ul className="hero-steps">
+              {HERO_STEPS.map(({ key, Icon }) => (
+                <li key={key}>
+                  <Icon size={26} aria-hidden />
+                  {t(`home.steps.${key}`)}
+                </li>
+              ))}
+            </ul>
             <span className="hero-badge" data-proof>
-              {t('hero.proofStats', { shipments: num(stats.shipmentsHandled), clients: num(stats.clientsServed) })}
-              {reviewStats && reviewStats.totalReviews > 0 && (
-                <> · {t('hero.proofRating', { rating, count: num(reviewStats.totalReviews) })}</>
-              )}
+              {t('home.proofClients', { clients: num(stats.clientsServed) })}
+              {reviewStats && reviewStats.totalReviews > 0 && <> · {rating}/5</>}
             </span>
           </div>
-
-          <HeroEstimator />
         </div>
-
-        <LaneTicker />
       </section>
 
       <div className="carriers">

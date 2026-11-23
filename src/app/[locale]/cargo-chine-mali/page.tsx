@@ -52,7 +52,7 @@ const cargoContent = {
       headers: ['Besoin', 'Sans ChinaLink', 'Avec ChinaLink'],
       rows: [
         ['Trouver un transitaire fiable', 'Recherche longue et risquée', 'Transitaire spécialisé Chine-Afrique'],
-        ['Payer un fournisseur chinois', 'Difficultés avec Alipay et virements', 'Paiement assisté et vérification fournisseur'],
+        ['Payer un fournisseur chinois', 'Difficultés pour payer en Chine', 'Paiement assisté et vérification fournisseur'],
         ['Consolider plusieurs achats', 'Colis éparpillés', 'Entrepôt en Chine + regroupement'],
         ['Suivre la livraison', 'Peu de visibilité', 'Photos et updates WhatsApp'],
       ],
@@ -112,7 +112,7 @@ const cargoContent = {
       headers: ['Need', 'Without ChinaLink', 'With ChinaLink'],
       rows: [
         ['Find a reliable freight partner', 'Long and risky search', 'China-Africa freight specialist'],
-        ['Pay a Chinese supplier', 'Alipay and transfer issues', 'Assisted payment and supplier checks'],
+        ['Pay a Chinese supplier', 'Hard to pay in China', 'Assisted payment and supplier checks'],
         ['Consolidate several purchases', 'Scattered parcels', 'China-side warehouse and grouping'],
         ['Track the delivery', 'Limited visibility', 'Photo updates on WhatsApp'],
       ],
@@ -184,7 +184,7 @@ const cargoContent = {
       headers: ['需求', '没有 ChinaLink', '有 ChinaLink'],
       rows: [
         ['寻找可靠的货代', '寻找过程漫长且有风险', '专注中国—非洲的货代'],
-        ['向中国供应商付款', '支付宝和转账存在困难', '协助付款并核验供应商'],
+        ['向中国供应商付款', '在中国付款困难', '协助付款并核验供应商'],
         ['合并多笔采购', '包裹分散', '中国仓库 + 集运'],
         ['跟踪交付', '信息不透明', '照片和 WhatsApp 更新'],
       ],
@@ -244,7 +244,7 @@ const cargoContent = {
       headers: ['الحاجة', 'بدون ChinaLink', 'مع ChinaLink'],
       rows: [
         ['العثور على وكيل شحن موثوق', 'بحث طويل ومحفوف بالمخاطر', 'وكيل شحن متخصص بين الصين وأفريقيا'],
-        ['الدفع لمورد صيني', 'صعوبات مع Alipay والتحويلات', 'مساعدة في الدفع والتحقق من المورد'],
+        ['الدفع لمورد صيني', 'صعوبة الدفع في الصين', 'مساعدة في الدفع والتحقق من المورد'],
         ['تجميع عدة مشتريات', 'طرود متفرقة', 'مستودع في الصين + تجميع'],
         ['متابعة التسليم', 'رؤية محدودة', 'صور وتحديثات عبر WhatsApp'],
       ],

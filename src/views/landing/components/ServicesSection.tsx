@@ -32,7 +32,7 @@
  *     covered in the FAQ, where someone looking for it will be.
  */
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import {
@@ -47,9 +47,10 @@ import {
   MapPin,
   ArrowRight,
 } from 'lucide-react';
-import { Band, Shell } from '@/components/site';
+import { Band, Shell, Figure } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
 import { Reveal, RevealGroup } from '@/components/motion';
+import { useFlowLine } from '@/components/motion/useFlowLine';
 import { SECTION_IDS } from '../constants';
 
 interface ServiceItem {
@@ -86,9 +87,40 @@ const GROUPS: { key: string; items: ServiceItem[] }[] = [
   },
 ];
 
-export function ServicesSection() {
+// /services: one photo per service (owner 2026-11-24). Our own footage where it
+// shows the service; no client names. Verification, payment and air freight have
+// no own footage, so they use free Unsplash-License photos (public/media/stock):
+// 8iDaJg7TPz4, Q6uqw_Hjye8, miHHRMLDDH8 (airline logo cropped off).
+// shortcut: replace the stock ones with our own photos when we have them.
+const SERVICE_PHOTOS: Record<string, string> = {
+  // Owner's own photo of Yiwu International Trade Market, plate blurred.
+  sourcing: '/media/steps/yiwu-market.webp',
+  // A Chinese supplier's factory, being checked (owner 2026-11-24).
+  verification: '/media/stock/china-factory-check.webp',
+  payment: '/media/stock/qr-payment.webp',
+  reception: '/media/proof/generator.webp',
+  consolidation: '/media/steps/consolidation.webp',
+  registration: '/media/app/colis.webp',
+  airFreight: '/media/stock/air-cargo.webp',
+  seaFreight: '/media/container-loaded.webp',
+  // Bamako warehouse unloading (owner 2026-11-23).
+  delivery: '/media/steps/livraison.webp',
+};
+
+// Home page (owner decision 2026-11-23): the three ways in, nothing else.
+const HOME_KEYS = ['sourcing', 'airFreight', 'seaFreight'];
+const HOME_GROUPS = [
+  { key: 'home', items: GROUPS.flatMap((g) => g.items).filter((i) => HOME_KEYS.includes(i.key)) },
+];
+
+/** `bare`: /services page — group labels + titles, no heading (the PageHero is the heading), no descriptions. */
+export function ServicesSection({ compact = false, bare = false }: { compact?: boolean; bare?: boolean }) {
   const t = useTranslations('services');
+  const tHome = useTranslations('home');
   const locale = useLocale();
+  const groups = compact ? HOME_GROUPS : GROUPS;
+  const flowRef = useRef<HTMLDivElement>(null);
+  useFlowLine(flowRef, bare);
 
   // Numbering runs across the whole section rather than restarting per group,
   // so the nine rows read as one sequence the reader is moving through.
@@ -97,11 +129,17 @@ export function ServicesSection() {
   return (
     <Band id={SECTION_IDS.SERVICES} tone="paper">
       <Shell>
-        <SectionHead title={t('title')} lede={t('subtitle')} />
+        {!bare && (
+          <SectionHead
+            title={compact ? tHome('servicesTitle') : t('title')}
+            lede={compact ? undefined : t('subtitle')}
+          />
+        )}
 
-        {GROUPS.map((group) => (
+        <div ref={flowRef} className={bare ? 'svc-flow flow-line' : undefined}>
+        {groups.map((group) => (
           <section key={group.key} style={{ marginBottom: 'var(--space-2xl)' }}>
-            <Reveal>
+            {!compact && <Reveal>
               <h3
                 style={{
                   fontFamily: 'var(--font-mono)',
@@ -115,7 +153,7 @@ export function ServicesSection() {
               >
                 {t(`groups.${group.key}`)}
               </h3>
-            </Reveal>
+            </Reveal>}
 
             <RevealGroup stagger={0.07} selector="[data-service-row]">
               <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
@@ -131,8 +169,8 @@ export function ServicesSection() {
                     alignItems: 'center',
                     gap: 'clamp(1rem, 2.5vw, 2.25rem)',
                     padding: 'var(--space-lg) 0',
-                    borderTop: indexInGroup === 0 ? '1px solid var(--color-rule)' : undefined,
-                    borderBottom: '1px solid var(--color-rule)',
+                    borderTop: indexInGroup === 0 && !bare ? '1px solid var(--color-rule)' : undefined,
+                    borderBottom: bare ? undefined : '1px solid var(--color-rule)',
                     textDecoration: 'none',
                     color: 'inherit',
                   };
@@ -140,6 +178,7 @@ export function ServicesSection() {
                   const content = (
                     <>
                       <span
+                        className={bare ? 'flow-node' : undefined}
                         style={{
                           fontFamily: 'var(--font-mono)',
                           fontSize: 'var(--text-xs)',
@@ -150,12 +189,23 @@ export function ServicesSection() {
                         {String(counter).padStart(2, '0')}
                       </span>
 
-                      <Icon
-                        size={20}
-                        aria-hidden
-                        className="service-icon"
-                        style={{ color: 'var(--color-accent)', flexShrink: 0 }}
-                      />
+                      {bare ? (
+                        <Figure
+                          src={SERVICE_PHOTOS[item.key]}
+                          alt=""
+                          focal="55%"
+                          style={{ borderRadius: 10 }}
+                          className="svc-photo"
+                          sizes="(max-width: 760px) 96px, 176px"
+                        />
+                      ) : (
+                        <Icon
+                          size={20}
+                          aria-hidden
+                          className="service-icon"
+                          style={{ color: 'var(--color-accent)', flexShrink: 0 }}
+                        />
+                      )}
 
                       <h4
                         style={{
@@ -172,7 +222,7 @@ export function ServicesSection() {
                         {t(`items.${item.key}.title`)}
                       </h4>
 
-                      <p
+                      {!compact && !bare && <p
                         className="service-desc"
                         style={{
                           fontFamily: 'var(--font-body)',
@@ -185,7 +235,7 @@ export function ServicesSection() {
                         }}
                       >
                         {t(`items.${item.key}.description`)}
-                      </p>
+                      </p>}
 
                       {item.href ? (
                         <ArrowRight
@@ -224,6 +274,36 @@ export function ServicesSection() {
             </RevealGroup>
           </section>
         ))}
+        </div>
+
+        {/* Owner 2026-11-23: machines and big volumes, shown with a real crate
+            being loaded by forklift at our China warehouse (no client data). */}
+        {compact && (
+          <Figure
+            src="/media/steps/gros-volumes.webp"
+            alt={tHome('bigVolumesAlt')}
+            focal="50%"
+            scrim={0.55}
+            sizes="(max-width: 760px) 100vw, 80vw"
+            style={{ aspectRatio: '21 / 9', marginBottom: 'var(--space-xl)' }}
+          >
+            <div className="how-step-text">
+              <strong>{tHome('bigVolumesTitle')}</strong>
+              <span>{tHome('bigVolumesSub')}</span>
+            </div>
+          </Figure>
+        )}
+
+        {compact && (
+          <Link
+            href={`/${locale}/services`}
+            className="inline-flex items-center gap-2"
+            style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}
+          >
+            {tHome('allServices')}
+            <ArrowRight size={16} aria-hidden />
+          </Link>
+        )}
       </Shell>
     </Band>
   );

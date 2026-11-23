@@ -2,24 +2,23 @@
  * Shared navbar.
  *
  * A floating pill, identical on every page and every band, which is what lets
- * pages stop declaring what sits under the bar. Same links, same tools dropdown,
+ * pages stop declaring what sits under the bar. Same links,
  * same language and theme controls; the mobile menu opens as a full-height panel.
  */
 
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Calculator, ShieldCheck, MessageCircle } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from '@/components/language/LanguageSelector';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { Cta } from '@/components/site/Cta';
 import { ScrollProgress } from '@/components/moments/ScrollProgress';
 import { WHATSAPP_URL } from '@/constants/contact';
-import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 
 interface SharedNavbarProps {
@@ -36,43 +35,25 @@ const WHATSAPP_HREF = WHATSAPP_URL;
 // Audit 2026-11-20: prices and parcel tracking are the two most frequent tasks, so
 // they are top-level. Home (the logo), why-us, community and contact moved out:
 // the WhatsApp button covers contact, the footer lists the rest.
+// Owner decision 2026-11-23: five links + WhatsApp. Blog, reviews and the tools
+// (calculator, product check) live in the footer.
 const NAV_LINKS = [
   { key: 'services', href: '/services', label: 'navigation.services' },
   { key: 'pricing', href: '/tarifs', label: 'navigation.pricing' },
   { key: 'trackParcel', href: '/suivi', label: 'navigation.trackParcel' },
-  { key: 'blog', href: '/blog', label: 'navigation.blog' },
-  { key: 'reviews', href: '/avis', label: 'navigation.reviews' },
-  { key: 'about', href: '/#about', label: 'navigation.about' },
-] as const;
-
-const TOOL_LINKS = [
-  { key: 'shippingMark', href: '/#shipping-mark', label: 'shippingMarkExample.navLabel', icon: null },
-  { key: 'calculator', href: '/calculateur', label: 'navigation.calculator', icon: Calculator },
-  { key: 'checkProduct', href: '/verifier-produit', label: 'navigation.checkProduct', icon: ShieldCheck },
+  { key: 'about', href: '/qui-sommes-nous', label: 'navigation.about' },
+  { key: 'contact', href: '/contact', label: 'navigation.contact' },
 ] as const;
 
 export function SharedNavbar({ locale }: SharedNavbarProps) {
   const t = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isToolsOpen, setIsToolsOpen] = useState(false);
-  const toolsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (toolsRef.current && !toolsRef.current.contains(event.target as Node)) {
-        setIsToolsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const linkColor = 'var(--color-ink-2)';
   const linkHover = 'var(--color-ink)';
   const wordmark = 'var(--color-ink)';
 
   const getNavHref = (link: (typeof NAV_LINKS)[number]) => `/${locale}${link.href}`;
-  const getToolHref = (href: string) => `/${locale}${href}`;
 
   return (
     <header className="nav-shell">
@@ -93,7 +74,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
               />
             </span>
             <span
-              className="hidden sm:block"
+              className="nav-wordmark"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-md)',
@@ -102,7 +83,7 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                 color: wordmark,
               }}
             >
-              CHINALINK
+              ChinaLink Express
             </span>
           </Link>
 
@@ -123,64 +104,6 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                 {t(link.label)}
               </Link>
             ))}
-
-            <div ref={toolsRef} className="relative">
-              <button
-                onClick={() => setIsToolsOpen(!isToolsOpen)}
-                onMouseEnter={() => setIsToolsOpen(true)}
-                className="nav-link inline-flex items-center gap-1"
-                aria-expanded={isToolsOpen}
-                aria-haspopup="true"
-                style={
-                  {
-                    '--nav-link': isToolsOpen ? linkHover : linkColor,
-                    '--nav-link-hover': linkHover,
-                  } as React.CSSProperties
-                }
-              >
-                {t('navigation.tools')}
-                <ChevronDown
-                  size={15}
-                  className={cn('transition-transform duration-200', isToolsOpen && 'rotate-180')}
-                />
-              </button>
-
-              <AnimatePresence>
-                {isToolsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
-                    onMouseLeave={() => setIsToolsOpen(false)}
-                    className="absolute top-full left-0 mt-2 w-60 py-2"
-                    style={{
-                      backgroundColor: 'var(--color-paper)',
-                      border: '1px solid var(--color-rule)',
-                      borderRadius: 'var(--radius-card)',
-                      boxShadow: 'var(--shadow-lift)',
-                    }}
-                  >
-                    {TOOL_LINKS.map((tool) => {
-                      const Icon = tool.icon;
-                      return (
-                        <Link
-                          key={tool.key}
-                          href={getToolHref(tool.href)}
-                          onClick={() => setIsToolsOpen(false)}
-                          className="tool-link"
-                        >
-                          <span className="w-4 h-4 shrink-0 inline-flex items-center justify-center">
-                            {Icon && <Icon size={15} />}
-                          </span>
-                          {t(tool.label)}
-                        </Link>
-                      );
-                    })}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </nav>
 
           {/* ── right ────────────────────────────────────────────────────── */}
@@ -256,36 +179,6 @@ export function SharedNavbar({ locale }: SharedNavbarProps) {
                   borderTop: '1px solid var(--color-rule)',
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: 'var(--tracking-label)',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-neutral)',
-                    padding: '0 0 var(--space-xs)',
-                  }}
-                >
-                  {t('navigation.tools')}
-                </div>
-
-                {TOOL_LINKS.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <Link
-                      key={tool.key}
-                      href={getToolHref(tool.href)}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="mobile-link"
-                    >
-                      <span className="w-4 h-4 shrink-0 inline-flex items-center justify-center">
-                        {Icon && <Icon size={16} />}
-                      </span>
-                      {t(tool.label)}
-                    </Link>
-                  );
-                })}
-
                 <div
                   className="flex items-center justify-between"
                   style={{ paddingBlock: 'var(--space-md)' }}

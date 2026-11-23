@@ -15,14 +15,14 @@ export const SEO_KEYWORDS = {
     'freight forwarding', 'shipping from China', 'logistics company', 'international shipping',
     'sea freight', 'air freight', 'freight forwarder', 'China Mali shipping',
     // Long-tail
-    'shipping from China to Mali', 'freight forwarding China to Bamako', 'Alibaba shipping agent',
+    'shipping from China to Mali', 'freight forwarding China to Bamako',
     'China procurement services', 'door to door shipping China Mali',
     'container shipping China Mali', 'FCL shipping', 'LCL consolidation',
     // Locations
     'shipping China Bamako', 'freight forwarder China Mali', 'import China Mali',
     'Bamako logistics', 'China to Bamako shipping',
     // Services
-    'air cargo China Mali', 'express shipping China Mali', 'Alibaba payment agent',
+    'air cargo China Mali', 'express shipping China Mali',
     'supplier verification China', 'quality inspection China',
     'customs clearance Mali', 'import export China Mali', 'sourcing agent Mali',
   ].join(', '),
@@ -42,7 +42,7 @@ export const SEO_KEYWORDS = {
     'expédition Chine Bamako', 'fret Chine Bamako', 'transitaire Bamako',
     'envoi colis Chine Bamako', 'fret maritime Chine Mali', 'expédition Chine Mali',
     // Services
-    'cargo aérien Chine Mali', 'express Chine Mali', 'agent paiement Alipay',
+    'cargo aérien Chine Mali', 'express Chine Mali',
     'vérification fournisseur', 'inspection qualité Chine', 'entrepôt Chine Mali',
     'formalités douanières', 'déclaration en douane', 'import export Chine Mali',
   ].join(', '),
@@ -95,14 +95,14 @@ export const PAGE_SEO = {
     
     sourcing: {
     en: {
-      title: 'China Sourcing Agent for Mali | Alibaba Procurement',
-        description: 'Professional sourcing agent in China. We buy from Alibaba on your behalf. Supplier verification, quality inspection, payment processing. Start sourcing today!',
-        keywords: 'China sourcing agent, Alibaba agent, procurement China, supplier verification, quality inspection China',
+      title: 'China Sourcing Agent for West & East Africa',
+        description: 'Professional sourcing agent in China. We find suppliers in China and buy on your behalf. Supplier verification, quality inspection, payment processing. Start sourcing today!',
+        keywords: 'China sourcing agent, procurement China, supplier verification, quality inspection China',
       },
     fr: {
-      title: 'Agent Sourcing Chine pour le Mali | Achat Alibaba',
-      description: 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
-      keywords: 'agent sourcing Chine Mali, agent Alibaba Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
+      title: 'Agent Sourcing Chine pour l’Afrique de l’Ouest et de l’Est',
+      description: 'Agent sourcing en Chine pour les importateurs d’Afrique de l’Ouest et de l’Est. Recherche de fournisseurs, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako (Mali) et Kampala (Ouganda).',
+      keywords: 'agent sourcing Chine Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
       },
     },
   },

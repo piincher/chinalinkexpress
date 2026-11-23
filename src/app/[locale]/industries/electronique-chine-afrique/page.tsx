@@ -100,7 +100,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/fr/services/agent-sourcing-chine', label: 'Agent sourcing Chine' },
+      { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
       { href: '/fr/services/air-freight', label: 'Fret aérien sécurisé' },
       { href: '/fr/services/verification-fournisseur-chine', label: 'Vérification fournisseur' },
       { href: '/fr/calculateur', label: 'Calculer coût fret électronique' },
@@ -191,7 +191,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/en/services/agent-sourcing-chine', label: 'China sourcing agent' },
+      { href: '/en/services/sourcing', label: 'China sourcing agent' },
       { href: '/en/services/air-freight', label: 'Secure air freight' },
       { href: '/en/services/verification-fournisseur-chine', label: 'Supplier verification' },
       { href: '/en/calculateur', label: 'Calculate electronics freight cost' },
@@ -282,7 +282,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sourcing', label: '中国采购代理' },
       { href: '/zh/services/air-freight', label: '安全空运' },
       { href: '/zh/services/verification-fournisseur-chine', label: '供应商核验' },
       { href: '/zh/calculateur', label: '计算电子产品运费' },
@@ -373,7 +373,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
       { href: '/ar/services/air-freight', label: 'شحن جوي آمن' },
       { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المورد' },
       { href: '/ar/calculateur', label: 'احسب كلفة شحن الإلكترونيات' },

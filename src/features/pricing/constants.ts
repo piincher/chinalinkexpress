@@ -327,8 +327,3 @@ export const PRICING_FAQ = [
   },
 ];
 
-// Country destinations for pricing
-export const DESTINATIONS = [
-  { code: 'ML', nameKey: 'destinations.mali', flag: '🇲🇱' },
-  { code: 'UG', nameKey: 'destinations.uganda', flag: '🇺🇬' },
-];

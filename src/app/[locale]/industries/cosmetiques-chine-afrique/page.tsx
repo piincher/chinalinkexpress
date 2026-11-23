@@ -100,7 +100,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/fr/services/agent-sourcing-chine', label: 'Agent sourcing Chine' },
+      { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
       { href: '/fr/services/air-freight', label: 'Fret aérien cosmétiques' },
       { href: '/fr/services/verification-fournisseur-chine', label: 'Vérification usine' },
       { href: '/fr/calculateur', label: 'Devis import cosmétiques' },
@@ -191,7 +191,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/en/services/agent-sourcing-chine', label: 'China sourcing agent' },
+      { href: '/en/services/sourcing', label: 'China sourcing agent' },
       { href: '/en/services/air-freight', label: 'Air freight cosmetics' },
       { href: '/en/services/verification-fournisseur-chine', label: 'Factory verification' },
       { href: '/en/calculateur', label: 'Cosmetics import quote' },
@@ -282,7 +282,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sourcing', label: '中国采购代理' },
       { href: '/zh/services/air-freight', label: '化妆品空运' },
       { href: '/zh/services/verification-fournisseur-chine', label: '工厂核验' },
       { href: '/zh/calculateur', label: '化妆品进口报价' },
@@ -373,7 +373,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
       { href: '/ar/services/air-freight', label: 'الشحن الجوي لمستحضرات التجميل' },
       { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المصنع' },
       { href: '/ar/calculateur', label: 'عرض سعر لاستيراد مستحضرات التجميل' },

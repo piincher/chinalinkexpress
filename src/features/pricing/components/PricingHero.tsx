@@ -37,7 +37,6 @@ export function PricingHero({ shipmentsHandled }: { shipmentsHandled: number }) 
 
   return (
     <PageHero
-      eyebrow={t('hero.speedBadge')}
       title={t('hero.title')}
       lede={t('hero.subtitle')}
       photo={{

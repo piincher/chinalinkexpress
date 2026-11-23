@@ -36,6 +36,7 @@ export function ParcelTrackView() {
   const [last4, setLast4] = useState('');
   const [state, setState] = useState<ViewState>({ status: 'idle' });
   const inFlight = useRef<AbortController | null>(null);
+  const resultRef = useRef<HTMLElement | null>(null);
 
   // /suivi?code=G-2609-0069 (links in messages, receipts) fills the code; the phone digits stay required.
   useEffect(() => {
@@ -60,6 +61,11 @@ export function ParcelTrackView() {
   const notice = state.status in NOTICE_KEY ? NOTICE_KEY[state.status as keyof typeof NOTICE_KEY] : null;
   const parcel = state.status === 'found' ? state.parcel : null;
   const current = parcel ? STEPS.indexOf(parcel.status) : -1;
+
+  // On a phone the result lands below the fold; bring it into view.
+  useEffect(() => {
+    if (parcel) resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [parcel]);
 
   return (
     <>
@@ -91,25 +97,29 @@ export function ParcelTrackView() {
             ) : null}
 
             {parcel ? (
-              <section aria-live="polite" style={{ padding: 'var(--space-lg)', borderRadius: 'var(--radius-panel)', background: 'var(--color-paper)', border: '1px solid var(--color-rule)', display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neutral)' }}>
-                    {parcel.code}
-                    {parcel.mode ? ` · ${t(parcel.mode === 'AIR' ? 'modeAir' : 'modeSea')}` : ''}
+              <section ref={resultRef} aria-live="polite" className="ptrack" style={{ scrollMarginTop: '6rem' }}>
+                <div className="ptrack-head">
+                  <div className="ptrack-meta">
+                    <span style={{ fontFamily: 'var(--font-mono)' }}>{parcel.code}</span>
+                    {parcel.mode ? <span className="ptrack-chip">{t(parcel.mode === 'AIR' ? 'modeAir' : 'modeSea')}</span> : null}
                   </div>
-                  <h2 style={{ margin: 'var(--space-xs) 0 0', fontFamily: 'var(--font-display)', color: 'var(--color-ink)' }}>
-                    {t.has(`stages.${parcel.status}`) ? t(`stages.${parcel.status}`) : t('stages.other')}
-                  </h2>
-                  {parcel.estimatedArrival ? (
-                    <p style={{ margin: 'var(--space-xs) 0 0', color: 'var(--color-ink-2)' }}>
-                      {t('eta', { date: new Date(parcel.estimatedArrival).toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' }) })}
-                    </p>
+                  <h2 className="ptrack-status">{t.has(`stages.${parcel.status}`) ? t(`stages.${parcel.status}`) : t('stages.other')}</h2>
+                  {current >= 0 ? (
+                    <div className="ptrack-bar" aria-hidden="true">
+                      <span style={{ width: `${((current + 1) / STEPS.length) * 100}%` }} />
+                    </div>
                   ) : null}
                 </div>
+                {parcel.estimatedArrival ? (
+                  <p className="ptrack-eta">
+                    {t('eta', { date: new Date(parcel.estimatedArrival).toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' }) })}
+                  </p>
+                ) : null}
                 {current >= 0 ? (
-                  <ol style={{ margin: 0, paddingInlineStart: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                  <ol className="ptrack-steps">
                     {STEPS.map((step, i) => (
-                      <li key={step} aria-current={i === current ? 'step' : undefined} style={{ color: i <= current ? 'var(--color-ink)' : 'var(--color-neutral)', fontWeight: i === current ? 'var(--weight-semibold)' : undefined }}>
+                      <li key={step} aria-current={i === current ? 'step' : undefined} data-state={i < current ? 'done' : i === current ? 'now' : 'next'}>
+                        <span className="ptrack-dot" aria-hidden="true">{i < current ? '✓' : null}</span>
                         {t(`stages.${step}`)}
                       </li>
                     ))}

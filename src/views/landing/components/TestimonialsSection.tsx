@@ -29,6 +29,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight, ChevronRight, HelpCircle, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Band, Shell } from '@/components/site';
 import { SectionHead } from '@/components/site/SectionHead';
@@ -41,7 +43,7 @@ import {
   type PublicReview,
   type PublicReviewStats,
 } from '@/lib/publicReviewsApi';
-import { TESTIMONIALS, SECTION_IDS } from '../constants';
+import { SECTION_IDS } from '../constants';
 
 interface TestimonialsSectionProps {
   /** Real app reviews, newest first. Empty when the API is unreachable. */
@@ -58,6 +60,8 @@ export function TestimonialsSection({
 }: TestimonialsSectionProps) {
   const t = useTranslations('testimonials');
   const tr = useTranslations('reviews');
+  const tHome = useTranslations('home');
+  const tApp = useTranslations('appPage');
   const locale = useLocale();
 
   /*
@@ -110,41 +114,51 @@ export function TestimonialsSection({
               rating={review.rating}
               provenance={tr(review.mode === 'AIR' ? 'provenanceAir' : 'provenanceSea')}
               meta={formatReviewDate(review.createdAt, locale)}
-              response={review.adminResponse}
-              responseLabel={tr('responseLabel')}
             />
           ))}
 
-          {TESTIMONIALS.map((testimonial) => (
-            <ReviewFigure
-              key={testimonial.id}
-              author={testimonial.name}
-              text={testimonial.text}
-              meta={testimonial.company}
-              provenance={tr('provenanceWhatsapp')}
-            />
-          ))}
         </RevealGroup>
 
-        {hasMore && (
-          <div style={{ marginTop: 'var(--space-2xl)' }}>
-            <Link
-              href={`/${locale}/avis`}
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: 'var(--text-sm)',
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                color: 'var(--color-accent)',
-                textDecoration: 'none',
-                borderBottom: '1px solid var(--color-accent)',
-                paddingBottom: '0.15rem',
-              }}
-            >
-              {tr('seeAll')}
+        {/* Next steps as two tappable cards (owner 2026-11-24: the underlined
+            mono links read as an afterthought). FAQ left the home page on
+            2026-11-23, so this card is its one entry point. */}
+        <div className="next-links">
+          {hasMore && (
+            <Link href={`/${locale}/avis`} className="next-link">
+              <span className="next-link-icon" aria-hidden><Star size={20} /></span>
+              <span className="next-link-text">
+                <strong>{tr('seeAll')}</strong>
+                <span>{tHome('reviewsSub')}</span>
+              </span>
+              <ChevronRight size={20} className="next-link-arrow" aria-hidden />
             </Link>
+          )}
+          <Link href={`/${locale}/faq`} className="next-link">
+            <span className="next-link-icon" aria-hidden><HelpCircle size={20} /></span>
+            <span className="next-link-text">
+              <strong>{tHome('faqCard')}</strong>
+              <span>{tHome('faqSub')}</span>
+            </span>
+            <ChevronRight size={20} className="next-link-arrow" aria-hidden />
+          </Link>
+        </div>
+
+        {/* App promo (owner 2026-11-24: the plain text link was not appealing).
+            Same yellow flyer style as /application; the whole card is the link. */}
+        <Link href={`/${locale}/application`} className="app-promo">
+          <div className="app-promo-text">
+            <span className="app-promo-chip">{tApp('homeLink')}</span>
+            <strong className="app-promo-title">{tApp('title')}</strong>
+            <span className="app-promo-line">{tApp('features.photos.title')} · {tApp('features.steps.title')}</span>
           </div>
-        )}
+          <span className="app-promo-btn">
+            {tHome('appCta')}
+            <ArrowRight size={18} aria-hidden />
+          </span>
+          <div className="app-promo-phone" aria-hidden>
+            <Image src="/media/app/colis.webp" alt="" fill sizes="(max-width: 760px) 40vw, 14rem" />
+          </div>
+        </Link>
       </Shell>
     </Band>
   );

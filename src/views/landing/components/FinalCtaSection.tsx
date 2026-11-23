@@ -20,14 +20,15 @@
  */
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { MessageCircle } from 'lucide-react';
 import { Band, Shell, Cta } from '@/components/site';
 import { Reveal } from '@/components/motion';
-import { SECTION_IDS, HERO_WHATSAPP_URL } from '../constants';
+import { HERO_WHATSAPP_URL } from '../constants';
 
 export function FinalCtaSection() {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <Band tone="void">
@@ -48,18 +49,6 @@ export function FinalCtaSection() {
             {t('landing.finalCta.title')}
           </h2>
 
-          <p
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'var(--text-md)',
-              lineHeight: 'var(--leading-body)',
-              color: 'var(--color-void-ink-2)',
-              maxWidth: '48ch',
-              margin: 'var(--space-lg) 0 0',
-            }}
-          >
-            {t('landing.finalCta.lede')}
-          </p>
 
           <div
             style={{
@@ -78,16 +67,16 @@ export function FinalCtaSection() {
               data-cta="final-whatsapp"
               icon={<MessageCircle size={18} aria-hidden />}
             >
-              {t('cta.startShipping')}
+              {t('home.getQuote')}
             </Cta>
             <Cta
-              href={`#${SECTION_IDS.CONTACT}`}
-              variant="outline"
+              href={`/${locale}/tarifs`}
+              variant="quiet"
               tone="void"
               size="lg"
-              data-cta="final-contact"
+              data-cta="final-prices"
             >
-              {t('cta.contactUs')}
+              {t('home.seePrices')}
             </Cta>
           </div>
         </Reveal>

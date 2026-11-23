@@ -5,7 +5,6 @@
  */
 
 export { HeroSection } from './HeroSection';
-export { SourcingSection } from './SourcingSection';
 export { StatsSection } from './StatsSection';
 export { AboutSection } from './AboutSection';
 export { ServicesSection } from './ServicesSection';

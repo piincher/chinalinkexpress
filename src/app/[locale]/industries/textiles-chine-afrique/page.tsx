@@ -98,7 +98,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/fr/services/agent-sourcing-chine', label: 'Agent sourcing Chine' },
+      { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
       { href: '/fr/services/sea-freight', label: 'Fret maritime conteneur' },
       { href: '/fr/services/air-freight', label: 'Fret aérien express' },
       { href: '/fr/calculateur', label: 'Calculer coût conteneur textile' },
@@ -187,7 +187,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/en/services/agent-sourcing-chine', label: 'China sourcing agent' },
+      { href: '/en/services/sourcing', label: 'China sourcing agent' },
       { href: '/en/services/sea-freight', label: 'Sea freight container' },
       { href: '/en/services/air-freight', label: 'Air freight express' },
       { href: '/en/calculateur', label: 'Calculate textile container cost' },
@@ -276,7 +276,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sourcing', label: '中国采购代理' },
       { href: '/zh/services/sea-freight', label: '集装箱海运' },
       { href: '/zh/services/air-freight', label: '快速空运' },
       { href: '/zh/calculateur', label: '计算纺织品集装箱费用' },
@@ -365,7 +365,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
       { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
       { href: '/ar/services/air-freight', label: 'شحن جوي سريع' },
       { href: '/ar/calculateur', label: 'احسب كلفة حاوية منسوجات' },

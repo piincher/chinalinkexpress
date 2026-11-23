@@ -24,7 +24,8 @@
     "reviews": "Client reviews",
     "shippingCalendar": "Shipping calendar",
     "verifyPhoto": "Verify a photo",
-    "trackParcel": "Track my parcel"
+    "trackParcel": "Track my parcel",
+    "application": "The app"
   },
   "cta": {
     "getQuote": "Get Free Quote",
@@ -160,7 +161,7 @@
       "items": {
         "scam": {
           "title": "Scam risk",
-          "description": "You find suppliers yourself on Alibaba or 1688. Without local verification, the risk of fraud is real."
+          "description": "You find suppliers yourself. Without local verification, the risk of fraud is real."
         },
         "quality": {
           "title": "No quality control",
@@ -168,7 +169,7 @@
         },
         "payment": {
           "title": "Payment headaches",
-          "description": "Alipay, Chinese bank transfers... You handle everything alone, with currency and fraud risks."
+          "description": "Chinese payments, bank transfers... You handle everything alone, with currency and fraud risks."
         },
         "consolidation": {
           "title": "Multiple vendors",
@@ -199,7 +200,7 @@
         },
         "payment": {
           "label": "Supplier payment",
-          "simple": "You handle Alipay and transfers",
+          "simple": "You handle payment alone",
           "full": "We pay on your behalf"
         },
         "consolidation": {
@@ -261,7 +262,7 @@
       "sourcing": {
         "label": "Supplier Sourcing",
         "us": "We find and verify your suppliers in China",
-        "them": "You have to find them alone on Alibaba"
+        "them": "You have to find them alone"
       },
       "qualityControl": {
         "label": "Quality Control",
@@ -271,7 +272,7 @@
       "payment": {
         "label": "Supplier Payment",
         "us": "We pay for you in China",
-        "them": "You handle Alipay/ alone"
+        "them": "You handle China payments alone"
       },
       "multiCountry": {
         "label": "Full Service",
@@ -315,11 +316,11 @@
       },
       "payment": {
         "title": "Paying the supplier",
-        "description": "You settle with us in CFA francs at the day’s rate. We pay the supplier in China by Alipay or transfer — no Chinese bank account needed on your side."
+        "description": "You settle with us in CFA francs (Mali) or Ugandan shillings (Uganda) at the day’s rate. We pay the supplier in China in yuan, through local payment methods — no Chinese bank account needed on your side."
       },
       "verification": {
         "title": "Supplier verification",
-        "description": "Already found someone on Alibaba or 1688? We check them out on the ground before you send a single franc."
+        "description": "Already found a supplier in China? We check them out on the ground before you send a single franc."
       },
       "reception": {
         "title": "Warehouse receiving",
@@ -358,7 +359,7 @@
         "tracking": "Online Tracking"
       },
       "payment": {
-        "alipay": "Alipay Payment",
+        "yuan": "Payment in yuan",
         "secure": "100% Secure",
         "fast": "24h Processing"
       },
@@ -378,7 +379,7 @@
     "groups": {
       "before": "Before the shipment",
       "inChina": "In China",
-      "toBamako": "On to Bamako and Kampala"
+      "toBamako": "To Bamako (Mali) and Kampala (Uganda)"
     }
   },
   "whyUs": {
@@ -448,7 +449,7 @@
       },
       "3": {
         "question": "How does supplier payment work?",
-        "answer": "We facilitate secure payment to your suppliers in China via Alipay, credit cards and other methods. You pay the amount to us based on the daily rate and we settle with your suppliers."
+        "answer": "We facilitate secure payment to your suppliers in China through payment methods used in China. You pay the amount to us based on the daily rate and we settle with your suppliers."
       },
       "4": {
         "question": "How do I top up my ChinaLink Express account?",
@@ -540,7 +541,8 @@
     "newsletterPlaceholder": "Your email",
     "scanToFollow": "Scan to follow us on facebook",
     "copyright": "All rights reserved.",
-    "developedBy": "Developed and maintained by NUVOTECH"
+    "developedBy": "Developed and maintained by NUVOTECH",
+    "company": "Company"
   },
   "common": {
     "language": "Language"
@@ -551,8 +553,8 @@
   },
   "pricing": {
     "hero": {
-      "title": "China to Mali freight rates: air, sea, and cargo",
-      "subtitle": "Transparent rates for shipments from China to Bamako. Compare air freight, sea freight, urgent cargo, and economical options based on your margin.",
+      "title": "Our rates",
+      "subtitle": "Published prices to Bamako (Mali), updated live. For Kampala (Uganda), get a quote on WhatsApp.",
       "speedBadge": "Published prices, updated live",
       "stats": {
         "standard": "Air Standard: 14-21 days",
@@ -620,8 +622,8 @@
       "classicView": "By Mode"
     },
     "calculatorPage": {
-      "title": "China to Mali shipping cost calculator",
-      "subtitle": "Estimate freight cost to Bamako based on weight, volume, product type, and deadline."
+      "title": "Freight calculator",
+      "subtitle": "Estimate your freight cost to Bamako (Mali). Kampala (Uganda): coming soon."
     },
     "deadlineCalculator": {
       "title": "By Deadline",
@@ -931,6 +933,19 @@
         "Standard rate 10,500 XOF/kg -> 14,700 XOF"
       ],
       "termsLink": "Read article 3.1 of the terms"
+    },
+    "weightNote": "Air freight: weight rounded up to the next 0.1 kg, then a 5% packaging coefficient.",
+    "details": "Details",
+    "uganda": {
+      "destination": "Destination",
+      "mali": "Mali · Bamako",
+      "kampala": "Uganda · Kampala",
+      "soon": "Soon",
+      "title": "Uganda · Kampala",
+      "air": "Air freight",
+      "sea": "Sea freight",
+      "text": "Air and sea prices to Kampala are coming soon. Meanwhile, ask for your quote on WhatsApp.",
+      "cta": "Quote for Kampala"
     }
   },
   "privacy": {
@@ -1205,7 +1220,7 @@
   },
   "sourcing": {
     "title": "From the Chinese marketplace to your door",
-    "subtitle": "Buy on 1688, Taobao, Alibaba or straight from the factory. Your orders reach our warehouse in China, then your door in Bamako.",
+    "subtitle": "Buy from factories and wholesalers in China. Your orders reach our warehouse in China, then Bamako (Mali) or Kampala (Uganda).",
     "steps": {
       "buy": "You buy",
       "consolidate": "We receive",
@@ -1221,7 +1236,7 @@
       {
         "key": "01",
         "title": "You order",
-        "description": "On 1688, Taobao, Alibaba or straight from the factory. We can also buy on your behalf."
+        "description": "From factories and wholesalers in China. We can also buy on your behalf."
       },
       {
         "key": "02",
@@ -1382,7 +1397,7 @@
     "payment": {
       "eyebrow": "Supplier payment",
       "title": "You pay in Bamako, we pay in China",
-      "body": "Your supplier quotes you in yuan. You pay us in FCFA in Bamako, we pay the supplier in China, and you receive the proof of payment.",
+      "body": "Your supplier quotes you in yuan. You pay us in FCFA in Bamako or in Ugandan shillings in Kampala, we pay the supplier in China, and you receive the proof of payment.",
       "stage": "Payment",
       "caption": "example",
       "quote": "Supplier quote",
@@ -1466,7 +1481,8 @@
     "bannerLine": "Received •• •• •••• · Foshan warehouse (SEA) · Sea · • cartons",
     "code": "Verification code ••••-••••",
     "scan": "Scan or enter the code at chinalinkexpress.com/verifier",
-    "note": "Fictional example of a photo banner",
+    "note": "Real intake photo · Foshan · client details hidden",
+    "photoAlt": "Generator received at our Foshan warehouse, with the ChinaLink Express “Authentic” photo banner",
     "chain": "Chain of custody",
     "stages": [
       "Received at the warehouse",
@@ -1517,6 +1533,178 @@
       "DELIVERED": "Handed to the client",
       "HANDED_OVER_EXPRESS": "Handed to your express courier",
       "other": "Being processed"
+    }
+  },
+  "home": {
+    "headlineLead": "Sourcing & shipping from China",
+    "headlineAccent": "to Africa",
+    "routeLine": "West & East Africa · Bamako · Kampala",
+    "getQuote": "Get a quote",
+    "steps": {
+      "source": "Source",
+      "ship": "Ship",
+      "clear": "Clear",
+      "deliver": "Deliver"
+    },
+    "seePrices": "See prices",
+    "servicesTitle": "Three ways to work with us",
+    "allServices": "All our services",
+    "networkTitle": "The network right now",
+    "proofClients": "{clients} clients",
+    "aboutLine": "An office in Bamako, two warehouses in China. Since 2019.",
+    "howTitle": "How it works",
+    "stepsSub": {
+      "source": "Factories and wholesalers in China",
+      "ship": "Air or sea",
+      "clear": "We handle it",
+      "deliver": "Bamako, Mali · West Africa\nKampala, Uganda · East Africa"
+    },
+    "faqLink": "Frequently asked questions",
+    "aboutPhotoAlt": "A ChinaLink Express team member at our warehouse in China",
+    "aboutMore": "About us",
+    "bigVolumesTitle": "Machines and large volumes",
+    "bigVolumesSub": "Generators, machinery, wooden crates: by container",
+    "bigVolumesAlt": "Wooden crate loaded by forklift at our warehouse in China",
+    "appCta": "Discover the app",
+    "reviewsSub": "What our clients say",
+    "faqSub": "Delays, payment, customs",
+    "faqCard": "Common questions"
+  },
+  "aboutPage": {
+    "metaTitle": "About us | ChinaLink Express",
+    "metaDescription": "ChinaLink Express: a team in China and Bamako since 2019. Sourcing and shipping from China to Mali and Uganda.",
+    "title": "About us",
+    "line": "A team in China and Bamako that buys, receives and ships your goods.",
+    "stats": "{clients} clients · {shipments} shipments",
+    "facts": {
+      "office": {
+        "label": "Office",
+        "value": "Bamako, Mali"
+      },
+      "warehouses": {
+        "label": "Warehouses",
+        "value": "Guangzhou · Foshan"
+      },
+      "delivery": {
+        "label": "Delivery",
+        "value": "Bamako (Mali) · Kampala (Uganda)"
+      },
+      "since": {
+        "label": "Since",
+        "value": "2019"
+      }
+    },
+    "gallery": {
+      "warehouse": "Our warehouse in China",
+      "loading": "Loading in China",
+      "unloading": "Unloading in Bamako",
+      "team": "The team at work"
+    }
+  },
+  "appPage": {
+    "metaTitle": "The ChinaLink Express app | Parcel tracking China → Mali and Uganda",
+    "metaDescription": "Track your parcels from China to Bamako (Mali) or Kampala (Uganda): photo on arrival, verification code, status at every step.",
+    "title": "Your goods, in your pocket.",
+    "line": "Track your parcels from China to Bamako (Mali) or Kampala (Uganda), on your phone.",
+    "note": "For registered clients. Ask for your account on WhatsApp.",
+    "trackLabel": "Track a parcel without the app",
+    "trackPlaceholder": "Parcel code",
+    "trackButton": "Track",
+    "shotTracking": "Parcel detail in the app: photo, volume, weight and status",
+    "shotShipments": "App dashboard: goods and shipments in progress",
+    "homeLink": "The app",
+    "downloadLead": "Download",
+    "features": {
+      "photos": {
+        "title": "Photos, CBM and weight",
+        "text": "From the moment it reaches our warehouse in China."
+      },
+      "steps": {
+        "title": "Step-by-step tracking",
+        "text": "Received, loaded, in transit, arrived, delivered."
+      },
+      "eta": {
+        "title": "Estimated arrival",
+        "text": "Follow your container until it arrives."
+      },
+      "address": {
+        "title": "Your address in China",
+        "text": "A ready-made card to send to your supplier."
+      }
+    }
+  },
+  "servicesPage": {
+    "title": "Our services",
+    "line": "From buying in China to delivery in West Africa (Bamako, Mali) and East Africa (Kampala, Uganda)."
+  },
+  "sourcingPage": {
+    "title": "Sourcing in China",
+    "line": "We find your suppliers in China, check the goods, pay for you and ship to West and East Africa.",
+    "steps": {
+      "find": {
+        "title": "Find the supplier",
+        "line": "Tell us what you need; we find the factory or wholesaler."
+      },
+      "check": {
+        "title": "Check",
+        "line": "Photos and a check of the goods before any payment."
+      },
+      "pay": {
+        "title": "Pay",
+        "line": "You pay us; we pay the supplier in China and send you the proof."
+      },
+      "ship": {
+        "title": "Ship",
+        "line": "Grouped at our warehouse, by air or sea.\nBamako (Mali) · Kampala (Uganda)"
+      }
+    }
+  },
+  "paymentPage": {
+    "metaTitle": "Pay a Supplier in China | ChinaLink Express",
+    "metaDescription": "You pay us, we pay your supplier in China and send you the proof of payment. For importers in West Africa (Mali) and East Africa (Uganda).",
+    "title": "Pay a supplier in China",
+    "line": "You pay us, we pay your supplier in China and send you the proof.",
+    "steps": {
+      "quote": {
+        "title": "Send the quote",
+        "line": "Your supplier's invoice or quote."
+      },
+      "payUs": {
+        "title": "You pay us",
+        "line": "In FCFA (Mali) or Ugandan shillings (Uganda), at the day's rate. No Chinese bank account needed."
+      },
+      "wePay": {
+        "title": "We pay in China",
+        "line": "The supplier is paid in yuan."
+      },
+      "proof": {
+        "title": "You get the proof",
+        "line": "The proof of payment, then order tracking."
+      }
+    }
+  },
+  "verificationPage": {
+    "metaTitle": "Chinese Supplier Verification | ChinaLink Express",
+    "metaDescription": "Before you pay a Chinese supplier, we check the company, its prices and the goods. For importers in West Africa (Mali) and East Africa (Uganda).",
+    "title": "Chinese supplier verification",
+    "line": "Before you pay a Chinese supplier, we check the company and the goods.",
+    "steps": {
+      "send": {
+        "title": "Send us the supplier",
+        "line": "Their name, contact details and quote."
+      },
+      "company": {
+        "title": "We check the company",
+        "line": "Company details and whether the prices add up."
+      },
+      "goods": {
+        "title": "We see the goods",
+        "line": "Production photos and videos."
+      },
+      "decide": {
+        "title": "You decide",
+        "line": "Our view before any payment."
+      }
     }
   }
 }

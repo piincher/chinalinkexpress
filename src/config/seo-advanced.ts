@@ -5,7 +5,7 @@
  * hreflang management, and logistics-specific schema markup.
  * 
  * EXPANDED FOR #1 RANKINGS - Covers 200+ keywords across
- * shipping, sourcing, supplier payment, Alibaba, 1688, 
+ * shipping, sourcing, supplier payment, 
  * and all major African markets.
  */
 
@@ -267,7 +267,7 @@ export function generateLocalBusinessSchema() {
  * Generate Service schema for specific offerings - EXPANDED
  */
 export function generateServiceSchema(
-  serviceType: 'air' | 'sea' | 'sourcing' | 'payment' | 'verification' | 'alibaba',
+  serviceType: 'air' | 'sea' | 'sourcing' | 'payment' | 'verification',
   locale: Locale = 'fr'
 ) {
   const isEn = locale === 'en';
@@ -296,8 +296,8 @@ export function generateServiceSchema(
     sourcing: {
       name: isEn ? 'China Sourcing Agent & Procurement' : isZh ? '中国采购与供应代理' : isAr ? 'وكيل التوريد والتموين في الصين' : 'Agent Sourcing & Approvisionnement Chine',
       description: isEn
-        ? 'Professional China sourcing agent for African importers. We buy from Alibaba, 1688, and Chinese factories. Supplier verification, quality inspection, payment processing, and shipping to Mali and Uganda (West and East Africa).'
-        : isZh ? '为非洲进口商服务的中国专业采购代理。在 Alibaba、1688 和中国工厂采购。供应商核验、质量检验、付款并发往马里和乌干达（西非和东非）。' : isAr ? 'وكيل توريد محترف في الصين للمستوردين الأفارقة. الشراء من Alibaba و1688 والمصانع الصينية. التحقق من الموردين وفحص الجودة والدفع والشحن إلى مالي وأوغندا (غرب أفريقيا وشرقها).' : 'Agent sourcing professionnel en Chine pour importateurs africains. Achat sur Alibaba, 1688 et usines chinoises. Vérification fournisseurs, inspection qualité, paiement et expédition vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est).',
+        ? 'Professional China sourcing agent for African importers. We buy from factories and wholesalers in China. Supplier verification, quality inspection, payment processing, and shipping to Mali and Uganda (West and East Africa).'
+        : isZh ? '为非洲进口商服务的中国专业采购代理。向中国工厂和批发商采购。供应商核验、质量检验、付款并发往马里和乌干达（西非和东非）。' : isAr ? 'وكيل توريد محترف في الصين للمستوردين الأفارقة. الشراء من المصانع وتجار الجملة في الصين. التحقق من الموردين وفحص الجودة والدفع والشحن إلى مالي وأوغندا (غرب أفريقيا وشرقها).' : 'Agent sourcing professionnel en Chine pour importateurs africains. Achat auprès d’usines et de grossistes en Chine. Vérification fournisseurs, inspection qualité, paiement et expédition vers le Mali et l’Ouganda (Afrique de l’Ouest et de l’Est).',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: { '@type': 'Place', name: 'Worldwide' },
@@ -305,8 +305,8 @@ export function generateServiceSchema(
     payment: {
       name: isEn ? 'Chinese Supplier Payment Service' : isZh ? '中国供应商付款服务' : isAr ? 'خدمة الدفع للموردين الصينيين' : 'Service Paiement Fournisseur Chinois',
       description: isEn
-        ? 'Secure payment service for Chinese suppliers. We pay your Alibaba, 1688, and factory suppliers safely via Alipay, WeChat Pay, or bank transfer. Protect your money from scams and payment failures.'
-        : isZh ? '面向中国供应商的安全付款服务。我们通过支付宝、微信支付或银行转账，安全地向您的 Alibaba、1688 和工厂供应商付款。保护您的资金免受诈骗。' : isAr ? 'خدمة دفع آمنة للموردين الصينيين. ندفع لمورديك في Alibaba و1688 والمصانع بأمان عبر Alipay أو WeChat Pay أو التحويل المصرفي. احمِ أموالك من الاحتيال.' : 'Service de paiement sécurisé pour fournisseurs chinois. Nous payons vos fournisseurs Alibaba, 1688 et usines en toute sécurité via Alipay, WeChat Pay ou virement bancaire. Protégez votre argent des arnaques.',
+        ? 'Secure payment service for Chinese suppliers. We pay your suppliers in China safely, in yuan, and send you the proof of payment. Protect your money from scams and payment failures.'
+        : isZh ? '面向中国供应商的安全付款服务。我们以人民币安全地向您的中国供应商付款，并发送付款凭证。保护您的资金免受诈骗。' : isAr ? 'خدمة دفع آمنة للموردين الصينيين. ندفع لمورديك في الصين بأمان باليوان ونرسل لك إثبات الدفع. احمِ أموالك من الاحتيال.' : 'Service de paiement sécurisé pour fournisseurs chinois. Nous payons vos fournisseurs en Chine en toute sécurité, en yuan, et vous envoyons la preuve de paiement. Protégez votre argent des arnaques.',
       provider: generateOrganizationSchema(),
       serviceType: 'FinancialService',
       areaServed: SERVED_COUNTRIES,
@@ -314,17 +314,8 @@ export function generateServiceSchema(
     verification: {
       name: isEn ? 'Chinese Supplier Verification Service' : isZh ? '中国供应商核验服务' : isAr ? 'خدمة التحقق من الموردين الصينيين' : 'Service Vérification Fournisseur Chinois',
       description: isEn
-        ? 'Avoid scams on Alibaba and 1688. We verify Chinese suppliers on-site: check business licenses, visit factories, inspect production capacity, and validate product quality before you pay. Essential for safe importing from China to Africa.'
-        : isZh ? '避免 Alibaba 和 1688 上的诈骗。我们实地核验中国供应商：执照核查、工厂考察、产能检查，并在付款前确认质量。' : isAr ? 'تجنب الاحتيال في Alibaba و1688. نتحقق من الموردين الصينيين ميدانيًا: فحص الرخص وزيارة المصنع وفحص القدرة الإنتاجية والتأكد من الجودة قبل الدفع.' : 'Évitez les arnaques sur Alibaba et 1688. Nous vérifions les fournisseurs chinois sur place : vérification des licences, visite d\'usine, inspection de la capacité de production et validation de la qualité avant paiement.',
-      provider: generateOrganizationSchema(),
-      serviceType: 'ProfessionalService',
-      areaServed: SERVED_COUNTRIES,
-    },
-    alibaba: {
-      name: isEn ? 'Alibaba Agent for Africa' : isZh ? '面向非洲的 Alibaba 代理' : isAr ? 'وكيل Alibaba لأفريقيا' : 'Agent Alibaba pour l\'Afrique',
-      description: isEn
-        ? 'Your trusted Alibaba buying agent in China. We help African businesses buy safely from Alibaba: find suppliers, negotiate prices, verify quality, handle payment, and ship to Mali and Uganda (West and East Africa).'
-        : isZh ? '您在中国值得信赖的 Alibaba 采购代理。我们帮助非洲企业在 Alibaba 安全购买：寻找供应商、议价、质量核验、付款和运输。' : isAr ? 'وكيلك الموثوق للشراء من Alibaba في الصين. نساعد الشركات الأفريقية على الشراء بأمان من Alibaba: البحث عن موردين والتفاوض والتحقق من الجودة والدفع والشحن.' : 'Votre agent achat Alibaba de confiance en Chine. Nous aidons les entreprises africaines à acheter en toute sécurité sur Alibaba : recherche de fournisseurs, négociation, vérification qualité, paiement et expédition.',
+        ? 'Avoid supplier scams. We verify Chinese suppliers on-site: check business licenses, visit factories, inspect production capacity, and validate product quality before you pay. Essential for safe importing from China to Africa.'
+        : isZh ? '避免供应商诈骗。我们实地核验中国供应商：执照核查、工厂考察、产能检查，并在付款前确认质量。' : isAr ? 'تجنب احتيال الموردين. نتحقق من الموردين الصينيين ميدانيًا: فحص الرخص وزيارة المصنع وفحص القدرة الإنتاجية والتأكد من الجودة قبل الدفع.' : 'Évitez les arnaques fournisseurs. Nous vérifions les fournisseurs chinois sur place : vérification des licences, visite d\'usine, inspection de la capacité de production et validation de la qualité avant paiement.',
       provider: generateOrganizationSchema(),
       serviceType: 'ProfessionalService',
       areaServed: SERVED_COUNTRIES,
@@ -423,7 +414,7 @@ export function generateFAQPageSchema(
  * This function used to carry four invented reviews as its default payload:
  * "Amadou Diallo", "Fatou Keita", "Moussa Traore" and "Aisha Cissé", with
  * invented ratings, invented publication dates and an invented story about a
- * €5,000 Alibaba scam. Any caller that omitted the argument published all four
+ * €5,000 supplier scam. Any caller that omitted the argument published all four
  * to Google as real customer testimony, along with an aggregateRating derived
  * from them.
  *
@@ -761,8 +752,6 @@ export const PAGE_PATHS = {
     sourcing: '/services/sourcing',
     payment: '/services/paiement-fournisseur-chine',
     verification: '/services/verification-fournisseur-chine',
-    alibabaAgent: '/services/agent-sourcing-chine',
-    alibabaBuying: '/services/achat-alibaba-mali',
   },
   routes: {
     chinaToMali: '/cargo-chine-mali',
@@ -798,21 +787,21 @@ export const SEO_KEYWORDS = {
     // Core shipping keywords
     primary: 'freight forwarding, shipping from China, logistics company, international shipping, sea freight, air freight, cargo shipping, express delivery, freight forwarder, shipping agent',
     // Long-tail search queries
-    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, Alibaba shipping agent, how to import from China to Mali, cheapest shipping from China to Africa, reliable freight forwarder China Africa, shipping agent for small business, door to door shipping China Africa',
+    longTail: 'shipping from China to Africa, China to West Africa shipping, freight forwarding China to Mali, how to import from China to Mali, cheapest shipping from China to Africa, reliable freight forwarder China Africa, shipping agent for small business, door to door shipping China Africa',
     // Service-specific keywords
     service: 'air cargo China Africa, express shipping China Mali, FCL shipping, LCL consolidation, customs clearance Africa, container shipping China Africa, bulk cargo shipping, parcel delivery China Africa, package consolidation China, warehousing China Africa, door to door delivery, multimodal transport',
     // Location keywords
     location: 'shipping China Bamako, freight forwarder China Mali, import China Mali, sourcing Bamako, logistics company Bamako, shipping agent Mali, cargo Mali, freight Mali, import export Mali, shipping to West Africa, China Africa trade route',
     // Sourcing keywords - NEW
-    sourcing: 'China sourcing agent, Alibaba sourcing agent, 1688 sourcing agent, buy from Alibaba, buy from 1688, Chinese supplier finder, factory direct sourcing, wholesale from China, import from China, China procurement services, product sourcing China, private label manufacturing China, OEM factory China',
+    sourcing: 'China sourcing agent, Chinese supplier finder, factory direct sourcing, wholesale from China, import from China, China procurement services, product sourcing China, private label manufacturing China, OEM factory China',
     // Payment keywords - NEW
-    payment: 'pay Chinese supplier, supplier payment China, Alibaba payment service, 1688 payment, pay factory in China, secure payment China, WeChat Pay supplier, Alipay supplier payment, bank transfer China supplier, payment agent China, avoid Alibaba scam, safe payment China',
+    payment: 'pay Chinese supplier, supplier payment China, pay factory in China, secure payment China, bank transfer China supplier, payment agent China, safe payment China',
     // Verification keywords - NEW
-    verification: 'verify Chinese supplier, Alibaba supplier verification, check Chinese factory, avoid China scam, legitimate Chinese supplier, factory audit China, supplier background check, Alibaba scam check, 1688 supplier check, China supplier blacklist, reliable supplier China, trusted manufacturer China',
+    verification: 'verify Chinese supplier, check Chinese factory, avoid China scam, legitimate Chinese supplier, factory audit China, supplier background check, China supplier blacklist, reliable supplier China, trusted manufacturer China',
     // Industry keywords - NEW
     industry: 'import textiles from China, import electronics from China, import machinery from China, import cosmetics from China, import auto parts from China, import construction materials from China, wholesale clothing China, wholesale phones China, wholesale machines China',
     // Comparison keywords - NEW
-    comparison: 'air freight vs sea freight China Africa, DHL vs freight forwarder China, cheapest shipping method China Africa, Alibaba vs 1688 for Africa, shipping by air or sea from China, container vs air cargo cost',
+    comparison: 'air freight vs sea freight China Africa, DHL vs freight forwarder China, cheapest shipping method China Africa, shipping by air or sea from China, container vs air cargo cost',
   },
   fr: {
     // Core shipping keywords
@@ -824,15 +813,15 @@ export const SEO_KEYWORDS = {
     // Location keywords
     location: 'expédition Chine Bamako, transitaire Bamako, fret Chine Mali, sourcing Mali, société logistique Bamako, agent maritime Mali, cargo Mali, fret Mali, import export Mali, expédition Afrique de l\'Ouest, route commerciale Chine Afrique',
     // Sourcing keywords - NEW
-    sourcing: 'agent sourcing Chine, agent sourcing Alibaba, agent sourcing 1688, acheter sur Alibaba, acheter sur 1688, trouver fournisseur chinois, sourcing direct usine, grossiste Chine, importer de Chine, service approvisionnement Chine, sourcing produits Chine, fabrication marque privée Chine, usine OEM Chine',
+    sourcing: 'agent sourcing Chine, trouver fournisseur chinois, sourcing direct usine, grossiste Chine, importer de Chine, service approvisionnement Chine, sourcing produits Chine, fabrication marque privée Chine, usine OEM Chine',
     // Payment keywords - NEW
-    payment: 'payer fournisseur chinois, paiement fournisseur Chine, service paiement Alibaba, paiement 1688, payer usine Chine, paiement sécurisé Chine, WeChat Pay fournisseur, Alipay paiement fournisseur, virement bancaire fournisseur Chine, agent paiement Chine, éviter arnaque Alibaba, paiement sécurisé Chine',
+    payment: 'payer fournisseur chinois, paiement fournisseur Chine, payer usine Chine, paiement sécurisé Chine, virement bancaire fournisseur Chine, agent paiement Chine',
     // Verification keywords - NEW
-    verification: 'vérifier fournisseur chinois, vérification fournisseur Alibaba, vérifier usine chinoise, éviter arnaque Chine, fournisseur chinois sérieux, audit usine Chine, vérification antécédents fournisseur, vérification arnaque Alibaba, vérification fournisseur 1688, liste noire fournisseurs Chine, fournisseur fiable Chine, fabricant de confiance Chine',
+    verification: 'vérifier fournisseur chinois, vérifier usine chinoise, éviter arnaque Chine, fournisseur chinois sérieux, audit usine Chine, vérification antécédents fournisseur, liste noire fournisseurs Chine, fournisseur fiable Chine, fabricant de confiance Chine',
     // Industry keywords - NEW
     industry: 'importer textiles Chine, importer électronique Chine, importer machines Chine, importer cosmétiques Chine, importer pièces auto Chine, importer matériaux construction Chine, gros vêtements Chine, gros téléphones Chine, gros machines Chine',
     // Comparison keywords - NEW
-    comparison: 'fret aérien vs maritime Chine Afrique, DHL vs transitaire Chine, moyen expédition pas cher Chine Afrique, Alibaba vs 1688 pour Afrique, expédition air ou mer depuis Chine, conteneur vs cargo aérien coût',
+    comparison: 'fret aérien vs maritime Chine Afrique, DHL vs transitaire Chine, moyen expédition pas cher Chine Afrique, expédition air ou mer depuis Chine, conteneur vs cargo aérien coût',
   },
   zh: {
     // Core shipping keywords
@@ -844,19 +833,19 @@ export const SEO_KEYWORDS = {
     // Location keywords
     location: '中国巴马科发货, 巴马科货代, 中国马里货运, 马里采购, 巴马科物流公司, 马里海运代理, 马里货运, 马里运输, 马里进出口, 西非发货, 中国非洲贸易路线',
     // Sourcing keywords - NEW
-    sourcing: '中国采购代理, Alibaba 采购代理, 1688 采购代理, 在 Alibaba 购买, 在 1688 购买, 寻找中国供应商, 工厂直采, 中国批发商, 从中国进口, 中国采购服务, 中国产品采购, 中国贴牌生产, 中国 OEM 工厂',
+    sourcing: '中国采购代理, 寻找中国供应商, 工厂直采, 中国批发商, 从中国进口, 中国采购服务, 中国产品采购, 中国贴牌生产, 中国 OEM 工厂',
     // Payment keywords - NEW
-    payment: '向中国供应商付款, 中国供应商付款, Alibaba 付款服务, 1688 付款, 向中国工厂付款, 中国安全付款, 微信支付供应商, 支付宝供应商付款, 中国供应商银行转账, 中国付款代理, 避免 Alibaba 诈骗, 中国安全付款',
+    payment: '向中国供应商付款, 中国供应商付款, 向中国工厂付款, 中国安全付款, 中国供应商银行转账, 中国付款代理',
     // Verification keywords - NEW
-    verification: '核验中国供应商, Alibaba 供应商核验, 核验中国工厂, 避免中国诈骗, 可靠的中国供应商, 中国工厂审核, 供应商背景调查, Alibaba 诈骗核查, 1688 供应商核验, 中国供应商黑名单, 中国可靠供应商, 中国值得信赖的制造商',
+    verification: '核验中国供应商, 核验中国工厂, 避免中国诈骗, 可靠的中国供应商, 中国工厂审核, 供应商背景调查, 中国供应商黑名单, 中国可靠供应商, 中国值得信赖的制造商',
     // Industry keywords - NEW
     industry: '从中国进口纺织品, 从中国进口电子产品, 从中国进口机器, 从中国进口化妆品, 从中国进口汽配, 从中国进口建材, 中国服装批发, 中国手机批发, 中国机器批发',
     // Comparison keywords - NEW
-    comparison: '中国非洲空运与海运, DHL 与中国货代, 中国非洲便宜运输方式, 非洲 Alibaba 与 1688, 从中国空运还是海运, 集装箱与空运成本',
+    comparison: '中国非洲空运与海运, DHL 与中国货代, 中国非洲便宜运输方式, 从中国空运还是海运, 集装箱与空运成本',
   },
   ar: {
     // Core shipping keywords
-    primary: 'الشحن البحري، الشحن الجوي، الشحن من الصين، وكيل شحن، الخدمات اللوجستية الدولية، النقل البحري، النقل الجوي، الشحن من الصين، شركة لوجستية، وكيل بحري',
+    primary: 'الشحن البحري، الشحن الجوي، الشحن من الصين، وكيل شحن، الخدمات اللوجستية الدولية، النقل البحري، النقل الجوي، شركة لوجستية، وكيل بحري',
     // Long-tail search queries
     longTail: 'إرسال طرد من الصين إلى أفريقيا، الشحن من الصين إلى مالي، وكيل توريد في الصين، الدفع لمورد صيني، كيفية الاستيراد من الصين إلى مالي، شحن رخيص من الصين إلى أفريقيا، وكيل شحن موثوق من الصين إلى أفريقيا، وكيل بحري للتجارة الصغيرة، التسليم من الباب إلى الباب',
     // Service-specific keywords
@@ -864,15 +853,15 @@ export const SEO_KEYWORDS = {
     // Location keywords
     location: 'الشحن من الصين إلى باماكو، وكيل شحن في باماكو، الشحن من الصين إلى مالي، التوريد إلى مالي، شركة لوجستية في باماكو، وكيل بحري في مالي، الشحن إلى مالي، الاستيراد والتصدير في مالي، الشحن إلى غرب أفريقيا، طريق التجارة بين الصين وأفريقيا',
     // Sourcing keywords - NEW
-    sourcing: 'وكيل توريد في الصين، وكيل توريد Alibaba، وكيل توريد 1688، الشراء من Alibaba، الشراء من 1688، العثور على مورد صيني، التوريد مباشرة من المصنع، تاجر جملة في الصين، الاستيراد من الصين، خدمة التوريد من الصين، توريد المنتجات من الصين، تصنيع بعلامة خاصة في الصين، مصنع OEM في الصين',
+    sourcing: 'وكيل توريد في الصين، العثور على مورد صيني، التوريد مباشرة من المصنع، تاجر جملة في الصين، الاستيراد من الصين، خدمة التوريد من الصين، توريد المنتجات من الصين، تصنيع بعلامة خاصة في الصين، مصنع OEM في الصين',
     // Payment keywords - NEW
-    payment: 'الدفع لمورد صيني، الدفع للموردين في الصين، خدمة الدفع في Alibaba، الدفع في 1688، الدفع لمصنع في الصين، الدفع الآمن في الصين، الضمان في الصين، WeChat Pay للموردين، Alipay للدفع للموردين، تحويل مصرفي لمورد في الصين، وكيل دفع في الصين، تجنب احتيال Alibaba',
+    payment: 'الدفع لمورد صيني، الدفع للموردين في الصين، الدفع لمصنع في الصين، الدفع الآمن في الصين، الضمان في الصين، تحويل مصرفي لمورد في الصين، وكيل دفع في الصين',
     // Verification keywords - NEW
-    verification: 'التحقق من مورد صيني، التحقق من موردي Alibaba، التحقق من مصنع صيني، تجنب الاحتيال في الصين، مورد صيني جاد، تدقيق المصانع في الصين، فحص خلفية المورد، فحص احتيال Alibaba، التحقق من موردي 1688، القائمة السوداء للموردين في الصين، مورد موثوق في الصين، مصنّع موثوق في الصين',
+    verification: 'التحقق من مورد صيني، التحقق من مصنع صيني، تجنب الاحتيال في الصين، مورد صيني جاد، تدقيق المصانع في الصين، فحص خلفية المورد، القائمة السوداء للموردين في الصين، مورد موثوق في الصين، مصنّع موثوق في الصين',
     // Industry keywords - NEW
     industry: 'استيراد المنسوجات من الصين، استيراد الإلكترونيات من الصين، استيراد الآلات من الصين، استيراد مستحضرات التجميل من الصين، استيراد قطع السيارات من الصين، استيراد مواد البناء من الصين، ملابس بالجملة من الصين، هواتف بالجملة من الصين، آلات بالجملة من الصين',
     // Comparison keywords - NEW
-    comparison: 'الشحن الجوي مقابل البحري من الصين إلى أفريقيا، DHL مقابل وكيل شحن صيني، أرخص طريقة شحن من الصين إلى أفريقيا، Alibaba مقابل 1688 لأفريقيا، الشحن جوًا أم بحرًا من الصين، كلفة الحاوية مقابل الشحن الجوي',
+    comparison: 'الشحن الجوي مقابل البحري من الصين إلى أفريقيا، DHL مقابل وكيل شحن صيني، أرخص طريقة شحن من الصين إلى أفريقيا، الشحن جوًا أم بحرًا من الصين، كلفة الحاوية مقابل الشحن الجوي',
   },
 } as const;
 

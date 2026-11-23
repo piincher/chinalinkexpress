@@ -22,9 +22,10 @@
     "compareShipping": "运费对比",
     "checkProduct": "产品检查",
     "reviews": "客户评价",
-    "shippingCalendar": "Shipping calendar",
+    "shippingCalendar": "发船日历",
     "verifyPhoto": "验证照片",
-    "trackParcel": "查询我的包裹"
+    "trackParcel": "查询我的包裹",
+    "application": "应用程序"
   },
   "cta": {
     "getQuote": "获取免费报价",
@@ -159,11 +160,11 @@
       },
       "payment": {
         "title": "代付供应商货款",
-        "description": "您按当日汇率用西非法郎在我们这里结算，我们在中国用支付宝或电汇付给供应商，您无需开设中国账户。"
+        "description": "您按当日汇率用西非法郎（马里）或乌干达先令（乌干达）在我们这里结算，我们在中国以人民币付给供应商，您无需开设中国账户。"
       },
       "verification": {
         "title": "供应商核实",
-        "description": "已经在阿里巴巴或1688上找到人了？在您付款之前，我们先实地核实对方。"
+        "description": "已经在中国找到供应商了？在您付款之前，我们先实地核实对方。"
       },
       "reception": {
         "title": "仓库收货",
@@ -202,7 +203,7 @@
         "tracking": "在线追踪"
       },
       "payment": {
-        "alipay": "支付宝付款",
+        "yuan": "人民币付款",
         "secure": "100%安全",
         "fast": "24小时处理"
       },
@@ -222,7 +223,7 @@
     "groups": {
       "before": "发货前",
       "inChina": "在中国",
-      "toBamako": "运往巴马科和坎帕拉"
+      "toBamako": "发往巴马科（马里）和坎帕拉（乌干达）"
     }
   },
   "whyUs": {
@@ -292,7 +293,7 @@
       },
       "3": {
         "question": "供应商付款如何运作？",
-        "answer": "我们通过支付宝、、信用卡和其他方式为您在中国向供应商提供安全付款。您根据当日汇率向我们支付金额，我们会与您的供应商结算。"
+        "answer": "我们通过中国常用的付款方式为您向中国供应商安全付款。您根据当日汇率向我们支付金额，我们会与您的供应商结算。"
       },
       "4": {
         "question": "如何为我的ChinaLink Express账户充值？",
@@ -384,7 +385,8 @@
     "newsletterPlaceholder": "您的电子邮箱",
     "scanToFollow": "扫描二维码关注我们的Facebook",
     "copyright": "版权所有。",
-    "developedBy": "由 NUVOTECH 开发和维护"
+    "developedBy": "由 NUVOTECH 开发和维护",
+    "company": "公司"
   },
   "language": {
     "select": "选择语言",
@@ -523,8 +525,8 @@
   },
   "pricing": {
     "hero": {
-      "title": "中国至马里运费：空运与海运",
-      "subtitle": "从中国运往巴马科的公开价格。根据您的时效和利润，比较空运与海运。",
+      "title": "我们的价格",
+      "subtitle": "发往巴马科（马里）的公开价格，实时更新。坎帕拉（乌干达）请通过 WhatsApp 询价。",
       "speedBadge": "公开价格，实时更新",
       "stats": {
         "standard": "空运标准: 14-21天",
@@ -589,7 +591,7 @@
     },
     "calculatorPage": {
       "title": "运费计算器",
-      "subtitle": "只需点击几下即可获得准确的运费估算"
+      "subtitle": "估算发往巴马科（马里）的运费。坎帕拉（乌干达）：即将推出。"
     },
     "airCalculator": {
       "weight": "实际重量",
@@ -903,6 +905,19 @@
         "air_standard": "不紧急时的明智选择",
         "sea_economy": "大批量最便宜"
       }
+    },
+    "weightNote": "空运：重量向上取整至 0.1 公斤，再加 5% 包装系数。",
+    "details": "详情",
+    "uganda": {
+      "destination": "目的地",
+      "mali": "马里 · 巴马科",
+      "kampala": "乌干达 · 坎帕拉",
+      "soon": "即将推出",
+      "title": "乌干达 · 坎帕拉",
+      "air": "空运",
+      "sea": "海运",
+      "text": "发往坎帕拉的空运和海运价格即将推出。在此之前，请通过 WhatsApp 询价。",
+      "cta": "坎帕拉询价"
     }
   },
   "reviews": {
@@ -986,7 +1001,7 @@
       "sourcing": {
         "label": "供应商采购",
         "us": "我们在中国为您寻找并验证供应商",
-        "them": "您必须自己在上寻找"
+        "them": "您必须自己寻找"
       },
       "qualityControl": {
         "label": "质量控制",
@@ -996,7 +1011,7 @@
       "payment": {
         "label": "供应商付款",
         "us": "我们为您在中国付款",
-        "them": "您自己处理支付宝/"
+        "them": "您自己处理在中国的付款"
       },
       "multiCountry": {
         "label": "全方位服务",
@@ -1039,7 +1054,7 @@
       "items": {
         "scam": {
           "title": "诈骗风险",
-          "description": "您自己在阿里巴巴或 1688 上找供应商。没有本地核实，欺诈风险确实存在。"
+          "description": "您自己寻找供应商。没有本地核实，欺诈风险确实存在。"
         },
         "quality": {
           "title": "没有质量检查",
@@ -1047,7 +1062,7 @@
         },
         "payment": {
           "title": "付款麻烦",
-          "description": "支付宝、中国银行转账……一切都要您自己处理，还要承担汇率和欺诈风险。"
+          "description": "中国付款、银行转账……您必须独自处理一切，承担汇率和欺诈风险。"
         },
         "consolidation": {
           "title": "多个卖家",
@@ -1078,7 +1093,7 @@
         },
         "payment": {
           "label": "供应商付款",
-          "simple": "您自己处理支付宝和转账",
+          "simple": "您自己处理付款",
           "full": "我们代您付款"
         },
         "consolidation": {
@@ -1205,7 +1220,7 @@
   },
   "sourcing": {
     "title": "从中国市场直达您家门口",
-    "subtitle": "在1688、淘宝、阿里巴巴或工厂直接采购。您的订单先到达我们的中国仓库，再送到巴马科您的家门口。",
+    "subtitle": "向中国工厂和批发商采购。您的订单先到达我们的中国仓库，再送到巴马科（马里）或坎帕拉（乌干达）。",
     "steps": {
       "buy": "您下单",
       "consolidate": "我们收货",
@@ -1221,7 +1236,7 @@
       {
         "key": "01",
         "title": "您下单",
-        "description": "在1688、淘宝、阿里巴巴或直接从工厂采购。我们也可代您采购。"
+        "description": "向中国工厂和批发商采购。我们也可代您采购。"
       },
       {
         "key": "02",
@@ -1382,7 +1397,7 @@
     "payment": {
       "eyebrow": "代付供应商",
       "title": "您在巴马科付款，我们在中国付款",
-      "body": "供应商用人民币给您报价。您在巴马科用西非法郎付给我们，我们在中国支付供应商，并把付款凭证发给您。",
+      "body": "供应商用人民币给您报价。您在巴马科用西非法郎或在坎帕拉用乌干达先令付给我们，我们在中国支付供应商，并把付款凭证发给您。",
       "stage": "付款",
       "caption": "示例",
       "quote": "供应商报价",
@@ -1466,7 +1481,8 @@
     "bannerLine": "收货日期 •• •• •••• · 佛山仓库 (SEA) · 海运 · • 箱",
     "code": "验证码 ••••-••••",
     "scan": "扫码或在 chinalinkexpress.com/verifier 输入验证码",
-    "note": "照片水印虚构示例",
+    "note": "真实入库照片 · 佛山 · 客户信息已隐藏",
+    "photoAlt": "在我们佛山仓库收到的发电机，带有 ChinaLink Express“真实”照片水印",
     "chain": "货物交接链",
     "stages": [
       "仓库收货",
@@ -1517,6 +1533,178 @@
       "DELIVERED": "已交付客户",
       "HANDED_OVER_EXPRESS": "已交给您的快递公司",
       "other": "处理中"
+    }
+  },
+  "home": {
+    "headlineLead": "从中国采购与发货",
+    "headlineAccent": "到非洲",
+    "routeLine": "西非与东非 · 巴马科 · 坎帕拉",
+    "getQuote": "获取报价",
+    "steps": {
+      "source": "采购",
+      "ship": "运输",
+      "clear": "清关",
+      "deliver": "交付"
+    },
+    "seePrices": "查看价格",
+    "servicesTitle": "与我们合作的三种方式",
+    "allServices": "全部服务",
+    "networkTitle": "此刻的物流网络",
+    "proofClients": "{clients} 位客户",
+    "aboutLine": "巴马科设有办公室，中国有两个仓库。始于 2019 年。",
+    "howTitle": "服务流程",
+    "stepsSub": {
+      "source": "中国工厂和批发商",
+      "ship": "空运或海运",
+      "clear": "由我们办理",
+      "deliver": "马里巴马科 · 西非\n乌干达坎帕拉 · 东非"
+    },
+    "faqLink": "常见问题",
+    "aboutPhotoAlt": "ChinaLink Express 团队成员在我们的中国仓库",
+    "aboutMore": "关于我们",
+    "bigVolumesTitle": "机器与大件货物",
+    "bigVolumesSub": "发电机、机械、木箱：集装箱运输",
+    "bigVolumesAlt": "在我们中国仓库用叉车装载木箱",
+    "appCta": "了解应用",
+    "reviewsSub": "听听客户怎么说",
+    "faqSub": "时效、付款、清关",
+    "faqCard": "常见问题"
+  },
+  "aboutPage": {
+    "metaTitle": "关于我们 | ChinaLink Express",
+    "metaDescription": "ChinaLink Express：自 2019 年起在中国和巴马科设有团队。从中国采购并发货至马里和乌干达。",
+    "title": "关于我们",
+    "line": "我们的团队在中国和巴马科，为您采购、收货和发货。",
+    "stats": "{clients} 位客户 · {shipments} 次发货",
+    "facts": {
+      "office": {
+        "label": "办公室",
+        "value": "马里巴马科"
+      },
+      "warehouses": {
+        "label": "仓库",
+        "value": "广州 · 佛山"
+      },
+      "delivery": {
+        "label": "交付",
+        "value": "巴马科（马里）· 坎帕拉（乌干达）"
+      },
+      "since": {
+        "label": "成立",
+        "value": "2019"
+      }
+    },
+    "gallery": {
+      "warehouse": "我们在中国的仓库",
+      "loading": "在中国装柜",
+      "unloading": "在巴马科卸货",
+      "team": "团队工作中"
+    }
+  },
+  "appPage": {
+    "metaTitle": "ChinaLink Express 应用 | 中国 → 马里和乌干达包裹追踪",
+    "metaDescription": "追踪您从中国到巴马科或坎帕拉的包裹：到仓照片、验证码、每一步的状态。",
+    "title": "您的货物，尽在掌中。",
+    "line": "在手机上追踪您从中国到巴马科或坎帕拉的包裹。",
+    "note": "仅限注册客户。请通过 WhatsApp 申请账户。",
+    "trackLabel": "无需应用即可追踪包裹",
+    "trackPlaceholder": "包裹编号",
+    "trackButton": "追踪",
+    "shotTracking": "应用中的包裹详情：照片、体积、重量和状态",
+    "shotShipments": "应用首页：货物和进行中的发货",
+    "homeLink": "应用程序",
+    "downloadLead": "下载",
+    "features": {
+      "photos": {
+        "title": "照片、体积和重量",
+        "text": "货物到达我们的中国仓库即可查看。"
+      },
+      "steps": {
+        "title": "逐步追踪",
+        "text": "已收货、已装柜、运输中、已到达、已交付。"
+      },
+      "eta": {
+        "title": "预计到达",
+        "text": "追踪您的集装箱直到到达。"
+      },
+      "address": {
+        "title": "您的中国收货地址",
+        "text": "一张可直接发给供应商的地址卡。"
+      }
+    }
+  },
+  "servicesPage": {
+    "title": "我们的服务",
+    "line": "从中国采购，到西非（马里巴马科）和东非（乌干达坎帕拉）交付。"
+  },
+  "sourcingPage": {
+    "title": "中国采购",
+    "line": "我们为您寻找中国供应商、检查货物、代为付款，并发往西非和东非。",
+    "steps": {
+      "find": {
+        "title": "寻找供应商",
+        "line": "告诉我们您的需求，我们找到工厂或批发商。"
+      },
+      "check": {
+        "title": "核验",
+        "line": "付款前拍照并检查货物。"
+      },
+      "pay": {
+        "title": "付款",
+        "line": "您付款给我们，我们在中国向供应商付款并发送凭证。"
+      },
+      "ship": {
+        "title": "发运",
+        "line": "在我们的仓库合并，空运或海运。\n巴马科（马里）· 坎帕拉（乌干达）"
+      }
+    }
+  },
+  "paymentPage": {
+    "metaTitle": "向中国供应商付款 | ChinaLink Express",
+    "metaDescription": "您付款给我们，我们向您的中国供应商付款并发送付款凭证。服务西非（马里）和东非（乌干达）的进口商。",
+    "title": "向中国供应商付款",
+    "line": "您付款给我们，我们向您的中国供应商付款并发送凭证。",
+    "steps": {
+      "quote": {
+        "title": "发送报价单",
+        "line": "您供应商的发票或报价单。"
+      },
+      "payUs": {
+        "title": "您付款给我们",
+        "line": "用西非法郎（马里）或乌干达先令（乌干达），按当日汇率。无需中国银行账户。"
+      },
+      "wePay": {
+        "title": "我们在中国付款",
+        "line": "以人民币向供应商付款。"
+      },
+      "proof": {
+        "title": "您收到凭证",
+        "line": "付款凭证，以及后续订单跟踪。"
+      }
+    }
+  },
+  "verificationPage": {
+    "metaTitle": "中国供应商核验 | ChinaLink Express",
+    "metaDescription": "在您向中国供应商付款之前，我们核验公司、价格和货物。服务西非（马里）和东非（乌干达）的进口商。",
+    "title": "中国供应商核验",
+    "line": "在您向中国供应商付款之前，我们核验公司和货物。",
+    "steps": {
+      "send": {
+        "title": "把供应商发给我们",
+        "line": "名称、联系方式和报价单。"
+      },
+      "company": {
+        "title": "我们核验公司",
+        "line": "公司信息和价格是否合理。"
+      },
+      "goods": {
+        "title": "我们查看货物",
+        "line": "生产照片和视频。"
+      },
+      "decide": {
+        "title": "由您决定",
+        "line": "付款前给出我们的意见。"
+      }
     }
   }
 }

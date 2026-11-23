@@ -21,7 +21,12 @@ export function InstallPrompt() {
 
   useEffect(() => {
     // Check if user previously dismissed
-    const dismissed = localStorage.getItem('chinalink-install-dismissed');
+    let dismissed: string | null = null;
+    try {
+      dismissed = localStorage.getItem('chinalink-install-dismissed');
+    } catch {
+      return; // storage blocked: never prompt
+    }
     if (dismissed) {
       const dismissedTime = parseInt(dismissed, 10);
       const oneWeek = 7 * 24 * 60 * 60 * 1000;
@@ -32,6 +37,20 @@ export function InstallPrompt() {
     }
 
     if (isInstalled || isDismissed) return;
+
+    // Owner decision 2026-11-23: first-time visitors never see the prompt; it
+    // starts on a later visit: at least 6 h after the first page view, so a second
+    // tab opened during the first visit doesn't count.
+    try {
+      const first = Number(localStorage.getItem('chinalink-first-visit'));
+      if (!first) {
+        localStorage.setItem('chinalink-first-visit', Date.now().toString());
+        return;
+      }
+      if (Date.now() - first < 6 * 60 * 60 * 1000) return;
+    } catch {
+      return; // storage blocked: treat as a first visit
+    }
 
     /*
      * Wait for interest, not for a stopwatch.
@@ -78,7 +97,11 @@ export function InstallPrompt() {
   const handleDismiss = () => {
     setIsVisible(false);
     setIsDismissed(true);
-    localStorage.setItem('chinalink-install-dismissed', Date.now().toString());
+    try {
+      localStorage.setItem('chinalink-install-dismissed', Date.now().toString());
+    } catch {
+      // storage blocked: the dismissal still holds for this page view
+    }
   };
 
   const handleInstall = async () => {

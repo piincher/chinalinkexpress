@@ -46,8 +46,8 @@ const faqsFr = [
     answer: 'En groupage, le maritime est facturé au CBM selon nos tarifs publics (page Tarifs), avec un minimum de 0,1 CBM. Pour un conteneur complet, le prix dépend du volume, du poids et de la date de départ : demandez un devis sur WhatsApp.',
   },
   {
-    question: 'Comment acheter sur Alibaba depuis le Mali ?',
-    answer: 'Créez un compte Alibaba, choisissez vos produits, puis contactez ChinaLink pour la vérification du fournisseur, le paiement sécurisé et l\u2019expédition vers Bamako. Nous gérons toute la chaîne pour vous.',
+    question: 'Comment acheter en Chine depuis le Mali ou l’Ouganda ?',
+    answer: 'Choisissez vos produits et votre fournisseur, puis contactez ChinaLink pour la vérification du fournisseur, le paiement sécurisé et l\u2019expédition vers Bamako ou Kampala. Nous gérons toute la chaîne pour vous.',
   },
   {
     question: 'Quels documents faut-il pour importer au Mali ?',
@@ -74,12 +74,12 @@ const faqsFr = [
     answer: 'Votre marchandise vous est réservée gratuitement pendant 72 heures à compter de son arrivée dans notre entrepôt de Bamako, et nous vous prévenons dès qu’elle est disponible. Passé ce délai, des frais de stockage de 3 000 FCFA par jour et par expédition sont appliqués, afin de préserver la capacité de l’entrepôt pour l’ensemble de nos clients. Si vous ne pouvez pas venir dans les temps, contactez-nous avant l’échéance : nous trouverons une solution ensemble.',
   },
   {
-    question: 'Comment éviter les arnaques sur Alibaba ?',
+    question: 'Comment éviter les arnaques de fournisseurs chinois ?',
     answer: 'Vérifiez l\u2019identité du fournisseur, demandez des preuves réelles, évitez les prix trop bas, utilisez un paiement traçable et faites appel à ChinaLink pour la vérification et le paiement sécurisé.',
   },
   {
     question: 'Pouvez-vous payer mon fournisseur chinois ?',
-    answer: 'Oui. Nous facilitons le paiement de fournisseurs en Chine via Alipay ou virement bancaire, avec preuve de paiement et suivi de la commande.',
+    answer: 'Oui. Nous facilitons le paiement de fournisseurs en Chine en yuan, avec preuve de paiement et suivi de la commande.',
   },
   {
     question: 'Expédiez-vous vers d\u2019autres pays d\u2019Afrique ?',
@@ -125,8 +125,8 @@ const faqsZh = [
     answer: '拼箱海运按 CBM 计费，采用我们公开的价格（见价格页面），最低 0.1 CBM。整柜价格取决于体积、重量和发船日期：请通过 WhatsApp 询价。',
   },
   {
-    question: '如何从马里在 Alibaba 购买？',
-    answer: '创建 Alibaba 账户，选择产品，然后联系 ChinaLink 进行供应商核验、安全付款并发往巴马科。我们为您管理整个流程。',
+    question: '如何从马里或乌干达在中国采购？',
+    answer: '选择产品和供应商，然后联系 ChinaLink 进行供应商核验、安全付款并发往巴马科或坎帕拉。我们为您管理整个流程。',
   },
   {
     question: '进口到马里需要哪些文件？',
@@ -153,12 +153,12 @@ const faqsZh = [
     answer: '自货物到达我们巴马科仓库起，免费为您保留 72 小时，货物可取时我们会立即通知您。超过此期限，每票货物每天收取 3 000 西非法郎的仓储费，以便为所有客户保留仓库容量。如果您无法按时前来，请在到期前联系我们，我们会一起找到解决办法。',
   },
   {
-    question: '如何避免 Alibaba 上的诈骗？',
+    question: '如何避免中国供应商诈骗？',
     answer: '核验供应商身份，索取真实证明，避开过低的价格，使用可追溯的付款方式，并请 ChinaLink 进行核验和安全付款。',
   },
   {
     question: '你们可以向我的中国供应商付款吗？',
-    answer: '可以。我们通过支付宝或银行转账协助向中国供应商付款，并提供付款凭证和订单跟踪。',
+    answer: '可以。我们以人民币协助向中国供应商付款，并提供付款凭证和订单跟踪。',
   },
   {
     question: '你们发货到其他非洲国家吗？',
@@ -204,8 +204,8 @@ const faqsAr = [
     answer: 'في الشحن المجمّع، يُحتسب الشحن البحري بالـCBM وفق أسعارنا المنشورة (صفحة الأسعار)، بحد أدنى 0.1 CBM. أما الحاوية الكاملة فيتوقف سعرها على الحجم والوزن وتاريخ الشحن: اطلب عرض سعر عبر واتساب.',
   },
   {
-    question: 'كيف أشتري من Alibaba من مالي؟',
-    answer: 'أنشئ حسابًا في Alibaba، واختر منتجاتك، ثم تواصل مع ChinaLink للتحقق من المورد والدفع الآمن والشحن إلى باماكو. نتولى السلسلة كلها نيابة عنك.',
+    question: 'كيف أشتري من الصين من مالي أو أوغندا؟',
+    answer: 'اختر منتجاتك ومورّدك، ثم تواصل مع ChinaLink للتحقق من المورد والدفع الآمن والشحن إلى باماكو أو كمبالا. نتولى السلسلة كلها نيابة عنك.',
   },
   {
     question: 'ما المستندات اللازمة للاستيراد إلى مالي؟',
@@ -232,12 +232,12 @@ const faqsAr = [
     answer: 'تُحجز بضاعتك لك مجانًا لمدة 72 ساعة من وصولها إلى مستودعنا في باماكو، ونبلغك فور توفرها. وبعد هذه المدة تُطبق رسوم تخزين قدرها 3 000 فرنك CFA يوميًا لكل شحنة، للحفاظ على سعة المستودع لجميع عملائنا. إذا لم تتمكن من الحضور في الموعد، تواصل معنا قبل انتهاء المهلة وسنجد حلًا معًا.',
   },
   {
-    question: 'كيف أتجنب الاحتيال في Alibaba؟',
+    question: 'كيف أتجنب احتيال الموردين الصينيين؟',
     answer: 'تحقق من هوية المورد، واطلب أدلة حقيقية، وتجنب الأسعار المنخفضة جدًا، واستخدم دفعًا قابلًا للتتبع، واستعن بـChinaLink للتحقق والدفع الآمن.',
   },
   {
     question: 'هل يمكنكم الدفع لموردي الصيني؟',
-    answer: 'نعم. نسهل الدفع للموردين في الصين عبر Alipay أو التحويل المصرفي، مع إثبات الدفع ومتابعة الطلب.',
+    answer: 'نعم. نسهل الدفع للموردين في الصين باليوان، مع إثبات الدفع ومتابعة الطلب.',
   },
   {
     question: 'هل تشحنون إلى دول أفريقية أخرى؟',
@@ -283,8 +283,8 @@ const faqsEn = [
     answer: 'In groupage, sea freight is billed per CBM at our published rates (Pricing page), with a 0.1 CBM minimum. For a full container, the price depends on volume, weight and departure date: ask for a quote on WhatsApp.',
   },
   {
-    question: 'How do I buy on Alibaba from Mali or West Africa?',
-    answer: 'Create an Alibaba account, choose your products, then contact ChinaLink for supplier verification, secure payment and shipping coordination. We can manage the full chain for you.',
+    question: 'How do I buy from China from Mali, Uganda or elsewhere in Africa?',
+    answer: 'Choose your products and supplier, then contact ChinaLink for supplier verification, secure payment and shipping coordination. We can manage the full chain for you.',
   },
   {
     question: 'Which documents are needed for importing to Mali?',
@@ -311,12 +311,12 @@ const faqsEn = [
     answer: 'Your goods are held free of charge for 72 hours from the moment they arrive at our Bamako warehouse, and we notify you as soon as they are ready for collection. After that, a storage fee of 3,000 FCFA per day, per shipment applies, so warehouse capacity stays available for every client. If you cannot collect in time, contact us before the deadline and we will arrange something with you.',
   },
   {
-    question: 'How do I avoid Alibaba scams?',
+    question: 'How do I avoid Chinese supplier scams?',
     answer: 'Verify supplier identity, request real proof, avoid prices that look too low, use traceable payment and involve ChinaLink for supplier verification and secure payment support.',
   },
   {
     question: 'Can you pay my Chinese supplier?',
-    answer: 'Yes. We can facilitate payment to Chinese suppliers through Alipay or bank transfer, with proof of payment and order follow-up.',
+    answer: 'Yes. We can facilitate payment to Chinese suppliers in yuan, with proof of payment and order follow-up.',
   },
   {
     question: 'Do you ship to other African countries?',

@@ -7,6 +7,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Clock, SlidersHorizontal } from 'lucide-react';
@@ -16,10 +17,17 @@ import { ModeSelector } from './ModeSelector';
 import { AirCalculator } from './AirCalculator';
 import { SeaCalculator } from './SeaCalculator';
 import { DeadlineCalculator } from './DeadlineCalculator';
+import { UgandaSoon } from './UgandaSoon';
 
 export function CalculatorCard() {
   const t = useTranslations('pricing');
   const { view, setView, mode } = usePricingStore();
+  // Owner 2026-11-24: Mali prices are live; Uganda (air + sea) is coming soon.
+  const [dest, setDest] = useState<'ML' | 'UG'>('ML');
+  const dests = [
+    { id: 'ML' as const, label: t('uganda.mali') },
+    { id: 'UG' as const, label: t('uganda.kampala'), soon: true },
+  ];
 
   const views = [
     { id: 'deadline' as const, label: t('calculator.deadlineView', { defaultValue: 'Par Deadline' }), icon: <Clock className="w-4 h-4" /> },
@@ -45,6 +53,31 @@ export function CalculatorCard() {
             </p>
           </div>
 
+          {/* Destination: one choice for every calculator view. */}
+          <div className="pt-6 px-6 md:px-8">
+            <div className="dest-pick" role="radiogroup" aria-label={t('uganda.destination')}>
+              {dests.map((d) => (
+                <button
+                  key={d.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={dest === d.id}
+                  onClick={() => setDest(d.id)}
+                  className="dest-pick-opt"
+                >
+                  <span className="dest-pick-label">{d.label}</span>
+                  {d.soon && <span className="dest-pick-soon">{t('uganda.soon')}</span>}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {dest === 'UG' ? (
+            <div className="p-6 md:p-8">
+              <UgandaSoon />
+            </div>
+          ) : (
+          <>
           {/* View Selector */}
           <div className="pt-6 px-6 md:px-8">
             <div className="flex justify-center mb-6">
@@ -126,6 +159,8 @@ export function CalculatorCard() {
               )}
             </AnimatePresence>
           </div>
+          </>
+          )}
         </motion.div>
       </div>
     </section>

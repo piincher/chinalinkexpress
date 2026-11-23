@@ -56,8 +56,6 @@ const SERVICE_PAGES: PageConfig[] = [
   { path: 'services/sourcing', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/paiement-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: 'services/verification-fournisseur-chine', priority: 0.9, changeFrequency: 'weekly' as const },
-  { path: 'services/agent-sourcing-chine', priority: 0.9, changeFrequency: 'weekly' as const },
-  { path: 'services/achat-alibaba-mali', priority: 0.9, changeFrequency: 'weekly' as const },
 ];
 
 const LANDING_PAGES: PageConfig[] = [
@@ -75,14 +73,11 @@ const ROUTE_PAGES = [
 
 const GUIDE_PAGES = [
   { path: 'guides/importer-de-chine-au-mali', priority: 0.85, changeFrequency: 'monthly' as const },
-  { path: 'guides/acheter-sur-alibaba-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'guides/acheter-sur-1688-depuis-le-mali', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: 'guides/fret-aerien-vs-maritime-chine-mali', priority: 0.8, changeFrequency: 'monthly' as const },
 ];
 
 const MULTILINGUAL_GUIDE_PAGES: PageConfig[] = [
   { path: 'guides/douane-mali-import-chine', priority: 0.8, changeFrequency: 'monthly' as const },
-  { path: 'guides/alibaba-vs-1688-pour-afrique', priority: 0.85, changeFrequency: 'monthly' as const },
 ];
 
 const TOOL_PAGES: PageConfig[] = [
@@ -97,6 +92,8 @@ const TOOL_PAGES: PageConfig[] = [
    * "ce qui change" section, which is the argument it expands on.
    */
   { path: 'pourquoi-nous', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'qui-sommes-nous', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: 'application', priority: 0.7, changeFrequency: 'monthly' as const },
 ];
 
 const COMMUNITY_PAGES: PageConfig[] = [

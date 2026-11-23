@@ -77,7 +77,7 @@ const steps: Step[] = [
     bgColor: 'bg-emerald-50',
     description: 'Un bon fournisseur est un partenaire de long terme. Prenez le temps de bien choisir.',
     tips: [
-      'Utilisez Alibaba, Made-in-China, ou Global Sources',
+      'Cherchez des usines et des grossistes en Chine',
       'Privilégiez les fournisseurs "Gold Supplier" depuis 3+ ans',
       'Vérifiez les certifications du fabricant',
       'Demandez des références de clients africains',
@@ -121,7 +121,7 @@ const steps: Step[] = [
     tips: [
       'Négociez le prix, mais aussi la qualité et les délais',
       'Demandez toujours un contrat écrit en anglais',
-      'Utilisez Alibaba Trade Assurance ou un paiement sécurisé',
+      'Utilisez un paiement sécurisé, avec preuve',
       'Précisez TOUJOURS les Incoterms (FOB, CIF, etc.)',
     ],
     actions: [

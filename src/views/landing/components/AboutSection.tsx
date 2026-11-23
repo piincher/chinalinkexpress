@@ -22,15 +22,18 @@
  */
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
-import { Band, Shell, Figure, PHOTOS } from '@/components/site';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Band, Shell, Figure } from '@/components/site';
 import { Reveal } from '@/components/motion';
 import { FOUNDING_YEAR } from '@/constants/companyFacts';
 import { SECTION_IDS } from '../constants';
 
 export function AboutSection() {
   const t = useTranslations('about');
-  const tags = (t.raw('tags') as string[]) ?? [];
+  const tHome = useTranslations('home');
+  const locale = useLocale();
 
   return (
     <Band id={SECTION_IDS.ABOUT} tone="paper">
@@ -43,75 +46,15 @@ export function AboutSection() {
             alignItems: 'center',
           }}
         >
-          {/* ── the photographs ──────────────────────────────────────────── */}
-          <Reveal
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-              gap: 'clamp(0.6rem, 1.4vw, 1rem)',
-              minWidth: 0,
-            }}
-          >
+          {/* Owner 2026-11-23: a real face beats warehouse photos. Unnamed on purpose. */}
+          <Reveal style={{ minWidth: 0 }}>
             <Figure
-              src={PHOTOS.warehouseWide}
-              alt={`${t('gallery.warehouseLabel')} — ${t('gallery.warehouseLocation')}`}
-              focal="42%"
-              scrim={0.55}
-              tint
-              sizes="(max-width: 760px) 100vw, 34vw"
-              style={{ gridColumn: '1 / -1', aspectRatio: '16 / 10' }}
-            >
-              <figcaption
-                style={{
-                  position: 'absolute',
-                  left: 'var(--space-lg)',
-                  bottom: 'var(--space-lg)',
-                  right: 'var(--space-lg)',
-                }}
-              >
-                <span
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: 'var(--tracking-label)',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-accent-bright)',
-                  }}
-                >
-                  {t('gallery.warehouseLabel')}
-                </span>
-                <span
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'var(--text-md)',
-                    fontWeight: 'var(--weight-heading)',
-                    color: 'var(--color-void-ink)',
-                  }}
-                >
-                  {t('gallery.warehouseLocation')}
-                </span>
-              </figcaption>
-            </Figure>
-
-            <Figure
-              src={PHOTOS.warehouseAisle}
-              alt="Allée de stockage et marchandises consolidées"
-              focal="45%"
-              scrim={0.3}
-              tint
-              sizes="(max-width: 760px) 50vw, 17vw"
-              style={{ aspectRatio: '1 / 1' }}
-            />
-            <Figure
-              src={PHOTOS.readyToLoad}
-              alt="Colis emballés et étiquetés, prêts au départ"
-              focal="45%"
-              scrim={0.3}
-              tint
-              sizes="(max-width: 760px) 50vw, 17vw"
-              style={{ aspectRatio: '1 / 1' }}
+              src="/media/team/china-warehouse.webp"
+              alt={tHome('aboutPhotoAlt')}
+              focal="40%"
+              scrim={0.35}
+              sizes="(max-width: 760px) 100vw, 40vw"
+              style={{ aspectRatio: '4 / 3' }}
             />
           </Reveal>
 
@@ -170,37 +113,26 @@ export function AboutSection() {
               </span>
             </div>
 
-            {[t('description1'), t('description2')].map((para) => (
-              <p
-                key={para.slice(0, 24)}
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 'var(--text-base)',
-                  lineHeight: 'var(--leading-body)',
-                  color: 'var(--color-ink-2)',
-                  margin: '0 0 var(--space-md)',
-                  maxWidth: 'var(--measure)',
-                }}
-              >
-                {para}
-              </p>
-            ))}
-
-            {tags.length > 0 && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--text-xs)',
-                  letterSpacing: 'var(--tracking-label)',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-neutral)',
-                  marginTop: 'var(--space-xl)',
-                  marginBottom: 0,
-                }}
-              >
-                {tags.join('  ·  ')}
-              </p>
-            )}
+            {/* Owner 2026-11-23: minimum text — one line. Full story on /pourquoi-nous. */}
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-lg)',
+                lineHeight: 'var(--leading-body)',
+                color: 'var(--color-ink-2)',
+                margin: 0,
+              }}
+            >
+              {tHome('aboutLine')}
+            </p>
+            <Link
+              href={`/${locale}/qui-sommes-nous`}
+              className="inline-flex items-center gap-2"
+              style={{ marginTop: 'var(--space-md)', color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}
+            >
+              {tHome('aboutMore')}
+              <ArrowRight size={16} aria-hidden />
+            </Link>
           </Reveal>
         </div>
       </Shell>

@@ -108,7 +108,6 @@ export { Counter } from './Counter';
 // ============================================================================
 // Sourcing constellation — the "what this business does" hero graphic
 // ============================================================================
-export { SourcingConstellation } from './SourcingConstellation';
 
 // ============================================================================
 // Type re-exports for convenience

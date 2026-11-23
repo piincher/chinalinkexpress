@@ -101,7 +101,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/fr/services/agent-sourcing-chine', label: 'Agent sourcing Chine' },
+      { href: '/fr/services/sourcing', label: 'Agent sourcing Chine' },
       { href: '/fr/services/sea-freight', label: 'Fret maritime conteneur' },
       { href: '/fr/services/verification-fournisseur-chine', label: 'Vérification usine' },
       { href: '/fr/calculateur', label: 'Devis conteneur machines' },
@@ -193,7 +193,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/en/services/agent-sourcing-chine', label: 'China sourcing agent' },
+      { href: '/en/services/sourcing', label: 'China sourcing agent' },
       { href: '/en/services/sea-freight', label: 'Sea freight container' },
       { href: '/en/services/verification-fournisseur-chine', label: 'Factory verification' },
       { href: '/en/calculateur', label: 'Machinery container quote' },
@@ -285,7 +285,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/zh/services/agent-sourcing-chine', label: '中国采购代理' },
+      { href: '/zh/services/sourcing', label: '中国采购代理' },
       { href: '/zh/services/sea-freight', label: '集装箱海运' },
       { href: '/zh/services/verification-fournisseur-chine', label: '工厂核验' },
       { href: '/zh/calculateur', label: '机器集装箱报价' },
@@ -377,7 +377,7 @@ const content = {
       },
     ],
     links: [
-      { href: '/ar/services/agent-sourcing-chine', label: 'وكيل التوريد في الصين' },
+      { href: '/ar/services/sourcing', label: 'وكيل التوريد في الصين' },
       { href: '/ar/services/sea-freight', label: 'الشحن البحري بالحاويات' },
       { href: '/ar/services/verification-fournisseur-chine', label: 'التحقق من المصنع' },
       { href: '/ar/calculateur', label: 'عرض سعر لحاوية آلات' },

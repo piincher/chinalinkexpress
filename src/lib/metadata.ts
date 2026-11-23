@@ -142,14 +142,14 @@ export async function generateServiceMetadata(
     },
     sourcing: {
       title: isEn
-        ? 'China Sourcing Agent for Africa | Alibaba & 1688 Procurement'
-        : isZh ? '中国采购代理 | Alibaba 采购 | 供应商付款' : isAr ? 'وكيل توريد في الصين | الشراء من Alibaba | الدفع للموردين' : 'Agent Sourcing Chine | Achat Alibaba | Paiement Fournisseur',
+        ? 'China Sourcing Agent for West & East Africa | Supplier Search & Payment'
+        : isZh ? '中国采购代理 | 寻找供应商 | 供应商付款' : isAr ? 'وكيل توريد في الصين | البحث عن الموردين | الدفع للموردين' : 'Agent Sourcing Chine | Recherche et Paiement Fournisseur',
       description: isEn
-        ? 'China sourcing agent for African importers. We buy from Alibaba and 1688, verify suppliers, inspect goods, process payment, and ship through our Mali hub and West Africa routes.'
-        : isZh ? '面向马里进口商的中国采购代理。Alibaba 采购、供应商核验、质量检验、付款并发往巴马科。' : isAr ? 'وكيل توريد في الصين للمستوردين الماليين. الشراء من Alibaba والتحقق من الموردين وفحص الجودة والدفع والشحن إلى باماكو.' : 'Agent sourcing en Chine pour les importateurs maliens. Achat Alibaba, vérification fournisseur, inspection qualité, paiement et expédition vers Bamako.',
+        ? 'China sourcing agent for importers in West and East Africa. We find suppliers in China, check the goods, pay for you and ship by air or sea to Bamako (Mali) and Kampala (Uganda).'
+        : isZh ? '面向西非和东非进口商的中国采购代理。寻找中国供应商、检查货物、代为付款，并通过空运或海运发往巴马科（马里）和坎帕拉（乌干达）。' : isAr ? 'وكيل توريد في الصين للمستوردين في غرب أفريقيا وشرقها. نجد الموردين في الصين ونفحص البضاعة وندفع عنك ونشحن جواً أو بحراً إلى باماكو (مالي) وكمبالا (أوغندا).' : 'Agent sourcing en Chine pour les importateurs d’Afrique de l’Ouest et de l’Est. Recherche de fournisseurs, contrôle de la marchandise, paiement en Chine et expédition par avion ou bateau vers Bamako (Mali) et Kampala (Ouganda).',
       keywords: isEn
-        ? 'China sourcing agent Africa, Alibaba agent Africa, China procurement services, supplier verification China, 1688 sourcing agent'
-        : isZh ? '中国马里采购代理, 马里 Alibaba 代理, 中国马里采购, 中国供应商核验, 中国质量检验' : isAr ? 'وكيل توريد من الصين إلى مالي، وكيل Alibaba في مالي، التوريد من الصين إلى مالي، التحقق من الموردين في الصين، فحص الجودة في الصين' : 'agent sourcing Chine Mali, agent Alibaba Mali, approvisionnement Chine Mali, vérification fournisseur Chine, inspection qualité Chine',
+        ? 'China sourcing agent Africa, China procurement services, supplier verification China, sourcing agent Mali, sourcing agent Uganda'
+        : isZh ? '中国采购代理, 中国马里采购, 中国乌干达采购, 中国供应商核验, 中国质量检验' : isAr ? 'وكيل توريد في الصين، التوريد من الصين إلى مالي، التوريد من الصين إلى أوغندا، التحقق من الموردين في الصين، فحص الجودة في الصين' : 'agent sourcing Chine, agent sourcing Chine Mali, agent sourcing Chine Ouganda, vérification fournisseur Chine, inspection qualité Chine',
       path: '/services/sourcing',
     },
   };

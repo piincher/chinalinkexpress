@@ -44,23 +44,12 @@ import React from 'react';
 import { type Locale } from '@/i18n/config';
 import {
   HeroSection,
-  SourcingSection,
   ServicesSection,
   AboutSection,
-  WhyUsSection,
-  FAQSection,
-  ContactSection,
   FinalCtaSection,
 } from './components';
-import { VideoTestimonialsSection } from '@/features/reviews/components/VideoTestimonialsSection';
 import { TestimonialsBand } from './components/TestimonialsBand';
-import { LiveStatsSection } from './components/LiveStatsSection';
-import { OccasionsHomeBand } from './components/OccasionsHomeBand';
-import { AppPreviewSection } from './components/AppPreviewSection';
-import { JourneySection } from './components/JourneySection';
-import { ProofSection } from './components/ProofSection';
-import { RouteChip } from './components/RouteChip';
-import { ShippingMarkExampleSection } from './components/ShippingMarkExampleSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
 
 interface LandingPageProps {
   locale?: Locale;
@@ -95,39 +84,24 @@ export function LandingPage({ locale = 'fr' }: LandingPageProps) {
           effect stays in the hero (SeasonalAtmosphere): it is a decoration for
           one full-bleed photo, not for a blog post. */}
 
-      {/* ── I. the promise ───────────────────────────────────────────────── */}
-      <RouteChip />
-      <HeroSection />
-
       {/*
-        Order since the 2026-11-20 audit: what we do → how → proof → other people
-        → services → figures → tracking → the close. On a phone the page was 34
-        screens with the reviews 15th of 17 sections. Removed from the home page:
-        the 3D live feed (heaviest script on the page), the container fill, the
-        tagline band and the quiz (still at /quiz; its block hard-coded an old
-        client count). Reviews moved up to sit right after the photo proof.
+        2026-11-23, after a visitor said the page was too crowded and never said
+        who we are (prod was 18 sections, 30 phone screens; "Qui nous sommes" was
+        screen 22). Owner decisions: one action (WhatsApp), who-we-are first, each
+        idea told once. Off the home page now: the pinned journey (same story as
+        Sourcing), the second stats block, video testimonials (/avis), the
+        shipping-mark example (/services), the seasons band (/calendrier), why-us,
+        the contact form (/contact) and the route chip.
+        Second pass, same day: photo proof + live numbers move to a future
+        /application page, FAQ to /faq (linked under the reviews); Sourcing is
+        replaced by a 4-step « Comment ça marche » matching the hero icons.
       */}
-      <SourcingSection />
-      <JourneySection />
-      <ProofSection />
-
-      {/* Real reviews from the app plus the WhatsApp quotes; the rating is stated with its count. */}
-      <TestimonialsBand />
-      <VideoTestimonialsSection />
-
-      <ServicesSection />
-      <LiveStatsSection />
-      <AppPreviewSection />
-      <ShippingMarkExampleSection />
-      <OccasionsHomeBand />
-
-      <WhyUsSection />
+      <HeroSection />
       <AboutSection />
-
-      <FAQSection />
+      <ServicesSection compact />
+      <HowItWorksSection />
+      <TestimonialsBand />
       <FinalCtaSection />
-      <ContactSection />
-
     </div>
   );
 }
