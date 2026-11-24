@@ -69,10 +69,32 @@ export interface SharedShipmentOrder {
   }>;
 }
 
-export type SharedShipmentData = SharedShipmentGoods | SharedShipmentContainer | SharedShipmentOrder;
+/** A partner's end customer (backend partnerShareLinkService). */
+export interface PartnerShareCarton {
+  code: string;
+  description: string | null;
+  /** Goods status, or WITH_PARTNER once the partner collected it. */
+  status: string;
+  mode: 'AIR' | 'SEA' | null;
+  estimatedArrival: string | null;
+  dates: Record<string, string | null>;
+  photos: string[];
+  /** null when the partner hides prices. */
+  price: { sellPrice: number; paid: number; remaining: number } | { pending: true } | null;
+}
+
+export interface PartnerShareData {
+  partner: { name: string; phoneNumber: string | null };
+  customer: { name: string };
+  showPrice: boolean;
+  totals: { sold: number; paid: number; remaining: number; unpriced: number } | null;
+  cartons: PartnerShareCarton[];
+}
+
+export type SharedShipmentData = SharedShipmentGoods | SharedShipmentContainer | SharedShipmentOrder | PartnerShareData;
 
 export interface SharedShipmentResult {
-  type: 'goods' | 'container' | 'order';
+  type: 'goods' | 'container' | 'order' | 'partner_customer';
   data: SharedShipmentData;
   currentStatus: string;
   timeline: SharedShipmentTimelineItem[];

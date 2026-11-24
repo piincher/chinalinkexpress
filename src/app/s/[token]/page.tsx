@@ -9,7 +9,8 @@ import { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { fetchSharedShipment } from '@/lib/shareApi';
 import { SharePageClient } from './SharePageClient';
-import { SharedShipmentResult, getStatusConfig, TYPE_LABELS } from './types';
+import { SharedShipmentResult, getStatusConfig, TYPE_LABELS, type PartnerShareData } from './types';
+import { PartnerSharePage } from './PartnerSharePage';
 
 export const dynamic = 'force-dynamic';
 
@@ -82,6 +83,21 @@ export async function generateMetadata({
   }
 
   const data = result.data;
+
+  // Partner-branded link: the preview names the partner, and no ChinaLink app banner.
+  if (data.type === 'partner_customer') {
+    const partnerName = (data.data as PartnerShareData).partner.name;
+    const title = `Suivi de vos colis — ${partnerName}`;
+    const description = 'Où en sont vos colis, étape par étape.';
+    return {
+      title,
+      description,
+      metadataBase: new URL(WEB_BASE_URL),
+      openGraph: { title, description, url: `${WEB_BASE_URL}/s/${encodeURIComponent(token)}`, type: 'website' },
+      robots: { index: false, follow: false },
+    };
+  }
+
   const statusConfig = getStatusConfig(data.currentStatus);
   const typeLabel = TYPE_LABELS[data.type] || data.type;
 
@@ -136,6 +152,10 @@ export default async function SharePage({
 }) {
   const { token } = await params;
   const result = await fetchSharedShipment(token);
+
+  if (result.data?.type === 'partner_customer') {
+    return <PartnerSharePage data={result.data.data as PartnerShareData} />;
+  }
 
   // Detect platform from user-agent server-side
   const headersList = await headers();
