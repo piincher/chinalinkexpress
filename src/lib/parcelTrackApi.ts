@@ -14,6 +14,8 @@ export interface TrackedParcel {
   status: string;
   mode: 'AIR' | 'SEA' | null;
   estimatedArrival: string | null;
+  /** When each stage happened (ISO), by status; missing when unknown. */
+  dates: Record<string, string>;
 }
 
 export type ParcelTrackOutcome =
@@ -47,6 +49,11 @@ const parse = (data: unknown): TrackedParcel | null => {
     status: d.status,
     mode: d.mode === 'AIR' || d.mode === 'SEA' ? d.mode : null,
     estimatedArrival: typeof d.estimatedArrival === 'string' ? d.estimatedArrival : null,
+    dates: Object.fromEntries(
+      Object.entries(d.dates && typeof d.dates === 'object' ? (d.dates as Record<string, unknown>) : {}).filter(
+        (entry): entry is [string, string] => typeof entry[1] === 'string',
+      ),
+    ),
   };
 };
 

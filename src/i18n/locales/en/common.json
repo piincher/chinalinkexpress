@@ -1521,6 +1521,7 @@
     "modeAir": "Air",
     "modeSea": "Sea",
     "eta": "Expected arrival: {date}",
+    "expected": "Expected {date}",
     "moreInApp": "Photos, documents and payment details: in the ChinaLink Express app or on WhatsApp.",
     "stages": {
       "RECEIVED_AT_WAREHOUSE": "Received at our warehouse in China",

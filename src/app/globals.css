@@ -2301,3 +2301,7 @@ main .font-black, main .font-bold { font-weight: 600; }
 .ptrack-steps li[data-state='now'] { color: var(--color-ink); font-weight: 600; }
 .ptrack-steps li[data-state='now'] .ptrack-dot { border-color: var(--color-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 25%, transparent); background: radial-gradient(circle, var(--color-accent) 40%, var(--color-paper) 45%); }
 @media (prefers-reduced-motion: reduce) { .ptrack-bar > span { transition: none; } }
+.ptrack-steps li { padding-bottom: 1.1rem; }
+.ptrack-label { display: flex; flex-direction: column; gap: 0.1rem; }
+.ptrack-label time { font-size: var(--text-sm); font-weight: 400; line-height: 1.3; color: var(--color-neutral); }
+.ptrack-steps li[data-state='now'] .ptrack-label time { color: var(--color-accent); font-weight: 600; }

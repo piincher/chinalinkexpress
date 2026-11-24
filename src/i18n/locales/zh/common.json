@@ -1521,6 +1521,7 @@
     "modeAir": "空运",
     "modeSea": "海运",
     "eta": "预计到达：{date}",
+    "expected": "预计 {date}",
     "moreInApp": "照片、单据和付款详情：请查看 ChinaLink Express App 或 WhatsApp。",
     "stages": {
       "RECEIVED_AT_WAREHOUSE": "已到达我们的中国仓库",

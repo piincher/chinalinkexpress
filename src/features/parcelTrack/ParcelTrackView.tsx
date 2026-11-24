@@ -61,6 +61,7 @@ export function ParcelTrackView() {
   const notice = state.status in NOTICE_KEY ? NOTICE_KEY[state.status as keyof typeof NOTICE_KEY] : null;
   const parcel = state.status === 'found' ? state.parcel : null;
   const current = parcel ? STEPS.indexOf(parcel.status) : -1;
+  const fmtDate = (iso: string) => new Date(iso).toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
 
   // On a phone the result lands below the fold; bring it into view.
   useEffect(() => {
@@ -117,12 +118,21 @@ export function ParcelTrackView() {
                 ) : null}
                 {current >= 0 ? (
                   <ol className="ptrack-steps">
-                    {STEPS.map((step, i) => (
-                      <li key={step} aria-current={i === current ? 'step' : undefined} data-state={i < current ? 'done' : i === current ? 'now' : 'next'}>
-                        <span className="ptrack-dot" aria-hidden="true">{i < current ? '✓' : null}</span>
-                        {t(`stages.${step}`)}
-                      </li>
-                    ))}
+                    {STEPS.map((step, i) => {
+                      // Only dates of reached stages: a status bounce can leave a later stamp behind.
+                      const when = i <= current ? parcel.dates[step] : undefined;
+                      const expected = step === 'ARRIVED_DESTINATION' && i > current ? parcel.estimatedArrival : null;
+                      return (
+                        <li key={step} aria-current={i === current ? 'step' : undefined} data-state={i < current ? 'done' : i === current ? 'now' : 'next'}>
+                          <span className="ptrack-dot" aria-hidden="true">{i < current ? '✓' : null}</span>
+                          <span className="ptrack-label">
+                            {t(`stages.${step}`)}
+                            {when ? <time dateTime={when}>{fmtDate(when)}</time> : null}
+                            {expected ? <time dateTime={expected}>{t('expected', { date: fmtDate(expected) })}</time> : null}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ol>
                 ) : null}
                 <p style={{ margin: 0, fontSize: 'var(--text-sm)', color: 'var(--color-neutral)' }}>{t('moreInApp')}</p>

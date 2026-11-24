@@ -1521,6 +1521,7 @@
     "modeAir": "جوي",
     "modeSea": "بحري",
     "eta": "الوصول المتوقع: {date}",
+    "expected": "متوقع في {date}",
     "moreInApp": "الصور والمستندات وتفاصيل الدفع: في تطبيق ChinaLink Express أو عبر WhatsApp.",
     "stages": {
       "RECEIVED_AT_WAREHOUSE": "وصل إلى مستودعنا في الصين",
