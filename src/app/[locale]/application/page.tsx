@@ -11,6 +11,7 @@ import { Search } from 'lucide-react';
 import { generatePageMetadata } from '@/config/seo-advanced';
 import type { Locale } from '@/i18n/config';
 import { Band, Shell } from '@/components/site';
+import { Reveal } from '@/components/motion';
 import { AppShowcase } from '@/views/landing/components/AppShowcase';
 import { ProofSection } from '@/views/landing/components/ProofSection';
 import { LiveNetworkBand } from '@/views/landing/components/LiveNetworkBand';
@@ -45,21 +46,25 @@ export default async function ApplicationPage({ params }: Props) {
       {/* Tracking works without the app: /suivi reads ?code= and pre-fills it. */}
       <Band tone="paper">
         <Shell>
-          <form action={`/${locale}/suivi`} method="get" className="app-page-track" style={{ marginTop: 0, borderTop: 0, paddingTop: 0 }}>
-            <label htmlFor="track-code">{t('trackLabel')}</label>
-            <div>
-              <input id="track-code" name="code" required placeholder={t('trackPlaceholder')} autoComplete="off" />
-              <button type="submit">
-                <Search size={16} aria-hidden />
-                {t('trackButton')}
-              </button>
-            </div>
-          </form>
+          <Reveal>
+            <form action={`/${locale}/suivi`} method="get" className="app-page-track" style={{ marginTop: 0, borderTop: 0, paddingTop: 0 }}>
+              <label htmlFor="track-code">{t('trackLabel')}</label>
+              <div>
+                <input id="track-code" name="code" required placeholder={t('trackPlaceholder')} autoComplete="off" />
+                <button type="submit">
+                  <Search size={16} aria-hidden />
+                  {t('trackButton')}
+                </button>
+              </div>
+            </form>
+          </Reveal>
         </Shell>
       </Band>
 
       <ProofSection />
-      <LiveNetworkBand />
+      <Reveal distance={0}>
+        <LiveNetworkBand />
+      </Reveal>
     </>
   );
 }

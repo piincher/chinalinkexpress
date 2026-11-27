@@ -11,6 +11,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { AppStoreButtons } from '@/components/shared/AppStoreButtons';
+import { Reveal } from '@/components/motion';
 
 const FEATURES = [
   { key: 'photos', src: '/media/app/colis.webp' },
@@ -44,7 +45,7 @@ export function AppShowcase({ headingLevel = 'h2' }: { headingLevel?: 'h1' | 'h2
           ))}
         </ol>
 
-        <div className="app-show-bar">
+        <Reveal className="app-show-bar">
           <div>
             <p className="app-show-bar-title">
               {t('downloadLead')} <span>ChinaLink Express</span>
@@ -52,7 +53,7 @@ export function AppShowcase({ headingLevel = 'h2' }: { headingLevel?: 'h1' | 'h2
             <p className="app-show-bar-note">{t('note')}</p>
           </div>
           <AppStoreButtons />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

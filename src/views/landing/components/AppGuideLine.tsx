@@ -10,24 +10,28 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight } from 'lucide-react';
 import { Band, SectionHead, Shell } from '@/components/site';
 import { BUSINESS_INFO, generateHowToSchema } from '@/config/seo-advanced';
+import { AppGuideFlow } from './AppGuideFlow';
 import type { Locale } from '@/i18n/config';
 
+// `h`: image height at 640px wide (tall captures scroll inside the phone; default one screen).
+// `hint`: centre of the button the step names, as fractions of the image (tap ripple).
 // `paper`: the supplier sheet is an A4-like document, not a phone screen.
-const GUIDE_STEPS = [
-  { key: 'account', src: 'compte' },
-  { key: 'address', src: 'adresse-envoi' },
-  { key: 'sheet', src: 'fiche', paper: true },
-  { key: 'home', src: 'accueil' },
-  { key: 'goods', src: 'marchandises' },
-  { key: 'detail', src: 'detail' },
-  { key: 'warehouse3d', src: 'entrepot-3d' },
-  { key: 'custody', src: 'chaine' },
-  { key: 'shipments', src: 'expeditions' },
-  { key: 'container', src: 'carte' },
-  { key: 'orders', src: 'commandes' },
-  { key: 'points', src: 'points' },
-  { key: 'notifications', src: 'notifications' },
-] as const;
+type GuideStep = { key: string; src: string; h?: number; hint?: { x: number; y: number }; paper?: true };
+const GUIDE_STEPS: GuideStep[] = [
+  { key: 'account', src: 'compte', hint: { x: 0.66, y: 0.503 } },
+  { key: 'address', src: 'adresse-envoi', h: 2957, hint: { x: 0.5372, y: 0.5011 } },
+  { key: 'sheet', src: 'fiche', h: 905, paper: true },
+  { key: 'home', src: 'accueil', h: 3138, hint: { x: 0.5282, y: 0.2806 } },
+  { key: 'goods', src: 'marchandises', hint: { x: 0.6436, y: 0.2844 } },
+  { key: 'detail', src: 'detail', hint: { x: 0.2462, y: 0.294 } },
+  { key: 'warehouse3d', src: 'entrepot-3d', hint: { x: 0.5, y: 0.45 } },
+  { key: 'custody', src: 'chaine', h: 4183, hint: { x: 0.3391, y: 0.6877 } },
+  { key: 'shipments', src: 'expeditions', hint: { x: 0.8385, y: 0.4905 } },
+  { key: 'container', src: 'carte', hint: { x: 0.755, y: 0.455 } },
+  { key: 'orders', src: 'commandes', hint: { x: 0.3632, y: 0.2701 } },
+  { key: 'points', src: 'points', h: 3070, hint: { x: 0.7077, y: 0.2453 } },
+  { key: 'notifications', src: 'notifications', hint: { x: 0.5, y: 0.23 } },
+];
 
 const imgPath = (src: string) => `/media/app/guide/${src}.webp`;
 
@@ -51,12 +55,12 @@ export async function AppGuideLine({ locale }: { locale: Locale }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
         <SectionHead label={t('eyebrow')} title={t('title')} lede={t('intro')} />
 
-        <ol className="app-guide">
+        <AppGuideFlow>
           {GUIDE_STEPS.map((step, i) => {
             const title = t(`steps.${step.key}.title`);
             return (
               <li key={step.key} id={`app-${step.key}`} className="app-guide-step">
-                <span className="app-guide-num" aria-hidden>{i + 1}</span>
+                <span className="flow-node" aria-hidden>{String(i + 1).padStart(2, '0')}</span>
                 <div className="app-guide-copy">
                   <h3>{title}</h3>
                   <p>{t(`steps.${step.key}.text`)}</p>
@@ -68,18 +72,24 @@ export async function AppGuideLine({ locale }: { locale: Locale }) {
                     </span>
                   </p>
                 </div>
-                <div className={'paper' in step ? 'app-guide-paper' : 'app-guide-phone'}>
+                <div
+                  className={step.paper ? 'app-guide-paper' : 'app-guide-phone'}
+                  data-hint-x={step.hint?.x}
+                  data-hint-y={step.hint?.y}
+                >
                   <Image
                     src={imgPath(step.src)}
                     alt={title}
-                    fill
+                    width={640}
+                    height={step.h ?? 1385}
                     sizes="(max-width: 47.5rem) 60vw, 16rem"
                   />
+                  {step.hint && <span className="app-guide-tap" aria-hidden />}
                 </div>
               </li>
             );
           })}
-        </ol>
+        </AppGuideFlow>
       </Shell>
     </Band>
   );
