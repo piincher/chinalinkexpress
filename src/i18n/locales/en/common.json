@@ -1615,6 +1615,70 @@
     "shotShipments": "App dashboard: goods and shipments in progress",
     "homeLink": "The app",
     "downloadLead": "Download",
+    "guide": {
+      "eyebrow": "How it works",
+      "title": "How to use the app",
+      "intro": "Every screen, in the order you will use it: from signing in to collecting your parcels. The app is in French, so buttons are named as they appear on screen.",
+      "doLabel": "What to do:",
+      "metaName": "Using the ChinaLink Express app",
+      "steps": {
+        "account": {
+          "title": "Sign in with your phone number",
+          "text": "Enter the number registered with ChinaLink. A six-digit code arrives on your WhatsApp: it replaces a password.",
+          "do": "Not a client yet? Tap “Explorer sans compte” to look around the app."
+        },
+        "address": {
+          "title": "Your address in China",
+          "text": "Profil → Adresses d’entrepôt. One address for sea freight, one for air freight, with your client ID already filled in.",
+          "do": "On the Fret maritime (sea) or Fret aérien (air) card, tap “Partager avec mon fournisseur” (share with my supplier)."
+        },
+        "sheet": {
+          "title": "The card for your supplier",
+          "text": "A card in Chinese and French: warehouse address, your client code, your number and the mark to write on every carton.",
+          "do": "Your supplier copies the mark onto every carton, so we know whose it is the moment it arrives."
+        },
+        "home": {
+          "title": "Home: everything at a glance",
+          "text": "How many parcels are in transit or ready for pickup, the amount to pay, what needs your attention and the latest photos of your parcels.",
+          "do": "Tap a card to jump to that parcel or shipment. The bottom bar leads to Colis (parcels), Envois (shipments), Commandes (your orders, grouped by shipment), Points (your rewards) and Profil."
+        },
+        "goods": {
+          "title": "My goods",
+          "text": "The Colis tab lists all your goods with their photo, volume, weight and status: received, prepared, paid.",
+          "do": "Search by number, description or container, or filter by status."
+        },
+        "detail": {
+          "title": "Parcel detail",
+          "text": "Photos taken on arrival at our warehouse in China, carton count, CBM, weight and where it sits in the warehouse.",
+          "do": "Tap a photo to enlarge it and check your cartons."
+        },
+        "warehouse3d": {
+          "title": "Your cartons in 3D in the warehouse",
+          "text": "A 3D view of the warehouse shows where your cartons are stored. Only your cartons are shown.",
+          "do": "Drag to rotate, pinch to zoom."
+        },
+        "custody": {
+          "title": "Chain of custody",
+          "text": "Every step of your parcel’s journey, with its date and photos: received, labelled, arrived at destination, handed to the client.",
+          "do": "At pickup, the name of the person who collected the parcel is recorded here."
+        },
+        "shipments": {
+          "title": "My shipments",
+          "text": "The Envois tab groups your containers and flights: origin, destination, departure date and estimated arrival.",
+          "do": "Filter Maritime or Aérien, and tap “Partager” to send the tracking to someone."
+        },
+        "container": {
+          "title": "Container tracking",
+          "text": "The ship’s position on the map, reported by the shipping line, the share of the journey completed and the estimated arrival date.",
+          "do": "Tap “Agrandir” to follow the ship full screen."
+        },
+        "notifications": {
+          "title": "Notifications",
+          "text": "An alert at every step: parcel received in China, container loaded, payment confirmed, parcel ready for pickup.",
+          "do": "Allow notifications when you first open the app: no more calling to ask where your parcel is."
+        }
+      }
+    },
     "features": {
       "photos": {
         "title": "Photos, CBM and weight",

@@ -2,6 +2,7 @@
  * L'application — owner decisions 2026-11-23: the app-related proof that left
  * the home page lives here (download, track a parcel, photo + code, live
  * network). Minimum text; existing sections reused as they are.
+ * 2026-11-28: AppGuideLine walks through every core screen, in order.
  */
 
 import type { Metadata } from 'next';
@@ -13,6 +14,7 @@ import { Band, Shell } from '@/components/site';
 import { AppShowcase } from '@/views/landing/components/AppShowcase';
 import { ProofSection } from '@/views/landing/components/ProofSection';
 import { LiveNetworkBand } from '@/views/landing/components/LiveNetworkBand';
+import { AppGuideLine } from '@/views/landing/components/AppGuideLine';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -38,6 +40,7 @@ export default async function ApplicationPage({ params }: Props) {
   return (
     <>
       <AppShowcase headingLevel="h1" />
+      <AppGuideLine locale={locale as Locale} />
 
       {/* Tracking works without the app: /suivi reads ?code= and pre-fills it. */}
       <Band tone="paper">

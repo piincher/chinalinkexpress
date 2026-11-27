@@ -1587,6 +1587,70 @@
     "shotShipments": "Tableau de bord de l’application : marchandises et expéditions en cours",
     "homeLink": "L’application",
     "downloadLead": "Téléchargez",
+    "guide": {
+      "eyebrow": "Mode d’emploi",
+      "title": "Comment utiliser l’application",
+      "intro": "Chaque écran, dans l’ordre où vous l’utiliserez : de la connexion jusqu’au retrait de vos colis.",
+      "doLabel": "À faire :",
+      "metaName": "Utiliser l’application ChinaLink Express",
+      "steps": {
+        "account": {
+          "title": "Connectez-vous avec votre numéro",
+          "text": "Entrez le numéro enregistré chez ChinaLink. Un code à six chiffres arrive sur votre WhatsApp : il remplace le mot de passe.",
+          "do": "Pas encore client ? Touchez « Explorer sans compte » pour découvrir l’application."
+        },
+        "address": {
+          "title": "Votre adresse en Chine",
+          "text": "Profil → Adresses d’entrepôt. Une adresse pour le maritime, une pour l’aérien, avec votre identifiant client déjà rempli.",
+          "do": "Sur la carte Fret maritime ou Fret aérien, touchez « Partager avec mon fournisseur »."
+        },
+        "sheet": {
+          "title": "La fiche pour votre fournisseur",
+          "text": "Une fiche en chinois et en français : adresse de l’entrepôt, votre code client, votre numéro et la marque à écrire sur chaque carton.",
+          "do": "Votre fournisseur reporte la marque sur chaque carton : nous savons ainsi à qui il appartient dès son arrivée."
+        },
+        "home": {
+          "title": "L’accueil : tout en un coup d’œil",
+          "text": "Combien de colis sont en transit ou prêts au retrait, le montant à régler, ce qui demande votre attention et les dernières photos de vos colis.",
+          "do": "Touchez une carte pour aller au colis ou à l’envoi concerné. La barre du bas mène à Colis, Envois, Commandes (vos commandes regroupées par envoi), Points (vos récompenses) et Profil."
+        },
+        "goods": {
+          "title": "Mes marchandises",
+          "text": "L’onglet Colis liste toutes vos marchandises avec leur photo, leur volume, leur poids et leur statut : reçu, préparé, payé.",
+          "do": "Cherchez par numéro, description ou conteneur, ou filtrez par statut."
+        },
+        "detail": {
+          "title": "Le détail d’un colis",
+          "text": "Les photos prises à la réception dans notre entrepôt en Chine, le nombre de cartons, le CBM, le poids et l’emplacement dans l’entrepôt.",
+          "do": "Touchez une photo pour l’agrandir et vérifier vos cartons."
+        },
+        "warehouse3d": {
+          "title": "Vos cartons en 3D dans l’entrepôt",
+          "text": "Une vue 3D de l’entrepôt montre où sont rangés vos cartons. Seuls vos cartons sont affichés.",
+          "do": "Glissez pour tourner, pincez pour zoomer."
+        },
+        "custody": {
+          "title": "La chaîne de possession",
+          "text": "Chaque étape du parcours de votre colis, avec sa date et ses photos : réception, étiquetage, arrivée à destination, remise au client.",
+          "do": "Au retrait, le nom de la personne qui a récupéré le colis est inscrit ici."
+        },
+        "shipments": {
+          "title": "Mes expéditions",
+          "text": "L’onglet Envois regroupe vos conteneurs et vols : origine, destination, date de départ et arrivée estimée.",
+          "do": "Filtrez Maritime ou Aérien, touchez « Partager » pour envoyer le suivi à un proche."
+        },
+        "container": {
+          "title": "Le suivi du conteneur",
+          "text": "La position du navire sur la carte, transmise par la compagnie maritime, le pourcentage du parcours réalisé et la date d’arrivée estimée.",
+          "do": "Touchez « Agrandir » pour suivre le navire en plein écran."
+        },
+        "notifications": {
+          "title": "Les notifications",
+          "text": "Une alerte à chaque étape : colis reçu en Chine, conteneur chargé, paiement confirmé, colis prêt au retrait.",
+          "do": "Activez les notifications à l’ouverture : vous n’avez plus besoin d’appeler pour savoir où en est votre colis."
+        }
+      }
+    },
     "features": {
       "photos": {
         "title": "Photos, CBM et poids",
