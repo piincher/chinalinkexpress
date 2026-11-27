@@ -1644,6 +1644,16 @@
           "text": "La position du navire sur la carte, transmise par la compagnie maritime, le pourcentage du parcours réalisé et la date d’arrivée estimée.",
           "do": "Touchez « Agrandir » pour suivre le navire en plein écran."
         },
+        "orders": {
+          "title": "Mes commandes",
+          "text": "L’onglet Commandes regroupe vos colis par envoi : statut, avancement, nombre de colis, état du paiement et montant restant à régler.",
+          "do": "Touchez une commande pour voir son détail, ou glissez-la vers la gauche puis touchez « Partager » pour envoyer son suivi."
+        },
+        "points": {
+          "title": "Vos points et récompenses",
+          "text": "L’onglet Points affiche votre solde de points et le catalogue des produits que vous pouvez obtenir en échange.",
+          "do": "Activez « Échangeable » pour ne voir que les produits à votre portée, puis touchez un produit pour lire ses conditions et confirmer l’échange."
+        },
         "notifications": {
           "title": "Les notifications",
           "text": "Une alerte à chaque étape : colis reçu en Chine, conteneur chargé, paiement confirmé, colis prêt au retrait.",

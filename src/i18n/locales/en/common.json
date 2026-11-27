@@ -1672,6 +1672,16 @@
           "text": "The ship’s position on the map, reported by the shipping line, the share of the journey completed and the estimated arrival date.",
           "do": "Tap “Agrandir” to follow the ship full screen."
         },
+        "orders": {
+          "title": "My orders",
+          "text": "The Commandes tab groups your parcels by shipment: status, progress, number of parcels, payment status and the amount still to pay.",
+          "do": "Tap an order to see its details, or swipe it left and tap “Partager” to send its tracking."
+        },
+        "points": {
+          "title": "Your points and rewards",
+          "text": "The Points tab shows your points balance and the catalogue of products you can get in exchange.",
+          "do": "Turn on “Échangeable” to see only the products within reach, then tap a product to read its conditions and confirm the exchange."
+        },
         "notifications": {
           "title": "Notifications",
           "text": "An alert at every step: parcel received in China, container loaded, payment confirmed, parcel ready for pickup.",

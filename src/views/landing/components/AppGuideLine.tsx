@@ -24,6 +24,8 @@ const GUIDE_STEPS = [
   { key: 'custody', src: 'chaine' },
   { key: 'shipments', src: 'expeditions' },
   { key: 'container', src: 'carte' },
+  { key: 'orders', src: 'commandes' },
+  { key: 'points', src: 'points' },
   { key: 'notifications', src: 'notifications' },
 ] as const;
 
